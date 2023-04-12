@@ -1,6 +1,6 @@
-import Image from "next/image";
+// import Image from "next/image";
 
-import styles from "./page.module.css";
+// import styles from "./page.module.css";
 import useNavigationHeight from "./hooks/useNavigationHeight";
 import Carousel from "./carousel/carousel";
 import CarouselCopy from "./carousel/carouselCopy";
@@ -16,12 +16,33 @@ import Testimonial from "./components/testimonial";
 
 // const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
+async function getArtist() {
+  const res = await fetch(`http://localhost:3000/api/getInTouch`);
+  return res.json();
+}
+
+async function postArtist() {
+  await fetch("http://localhost:3000/api/getInTouch", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      // "API-Key": process.env.DATA_API_KEY,
+    },
+    body: JSON.stringify({ firstName: "Kewo" }),
+  });
+}
+
+export default async function Home() {
+  const artistData = await getArtist();
+  // console.log("🚀 ~ file: page.tsx:26 ~ Home ~ artistData:", artistData);
+  // await postArtist();
+
   // const { height } = useNavigationHeight();
   // console.log(height);
 
   return (
     <main className="">
+      <h1>ssss - {artistData.data.email}</h1>
       {/* <CarouselCopy /> */}
       <Hero />
       <About />
@@ -29,9 +50,10 @@ export default function Home() {
       {/* <ApplyForm /> */}
       <OurServices />
       <Testimonial />
-      <SupportedCountries />
       <GetInTouch />
     </main>
+    // <SupportedCountries />
+    // {/* @ts-expect-error Server Component */}
     // <main className={styles.main}>
     //   <div className={styles.description}>
     //     <p>
