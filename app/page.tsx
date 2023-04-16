@@ -7,6 +7,7 @@ import Testimonial from "./components/testimonial";
 
 async function getArtist() {
   const res = await fetch(`https://uat.d2ergyqxpebfoy.amplifyapp.com/api/test`);
+  // const res = await fetch(`http://localhost:3000/api/test`);
   return res.json();
 }
 
