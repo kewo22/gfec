@@ -1,4 +1,3 @@
-
 import Hero from "./components/hero";
 import SupportedCountries from "./components/supported-countries";
 import About from "./components/about";
@@ -6,16 +5,14 @@ import OurServices from "./components/our-services";
 import GetInTouch from "./components/get-in-touch";
 import Testimonial from "./components/testimonial";
 
-// const inter = Inter({ subsets: ["latin"] });
+async function getArtist() {
+  const res = await fetch(`http://localhost:3000/api/test`);
+  return res.json();
+}
 
-// async function getArtist() {
-//   const res = await fetch(`http://localhost:3000/api/getInTouch`);
-//   return res.json();
-// }
-
-export default function Home() {
-  // const artistData = await getArtist();
-  // console.log("🚀 ~ file: page.tsx:26 ~ Home ~ artistData:", artistData);
+export default async function Home() {
+  const artistData = await getArtist();
+  console.log("🚀 ~ file: page.tsx:26 ~ Home ~ artistData:", artistData.data);
   // await postArtist();
 
   // const { height } = useNavigationHeight();
@@ -23,7 +20,7 @@ export default function Home() {
 
   return (
     <main className="">
-      {/* <h1>ssss - {artistData.data.email}</h1> */}
+      <h1>ssss - {artistData.data[0].email}</h1>
       <Hero />
       <About />
       <OurServices />

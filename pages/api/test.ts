@@ -27,7 +27,7 @@ const get = async (
     // await collection.insertOne({ firstName: "Kewin" });
     // const data = await GetInTouch.find<GetInTouchType>({});
 
-    const data = await collection.findOne();
+    const data = await collection.find({}).toArray();
 
     // const data2 = await collection.find<GetInTouchDocument>({});
     //   .map((obj) => obj.toObject());
