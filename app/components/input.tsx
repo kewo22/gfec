@@ -1,3 +1,5 @@
+"use client";
+
 import { Label, TextInput, TextInputSizes } from "flowbite-react";
 import React, { useEffect, useState } from "react";
 
@@ -6,6 +8,7 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   type?: string;
   placeholder?: string;
   sizing?: keyof TextInputSizes;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const Input: React.FC<InputProps> = ({ ...props }) => {
@@ -15,14 +18,30 @@ export const Input: React.FC<InputProps> = ({ ...props }) => {
     type = "text",
     placeholder = "",
     className = "",
+    name = "",
+    value = "",
+    min = "",
+    max = "",
+    onChange = null,
   } = props;
 
   const [htmlFor, setHtmlFor] = useState("");
+
+  const [inputValue, setInputValue] = useState<string>("");
+
+  useEffect(() => {
+    setInputValue(value as string);
+  }, [value]);
 
   useEffect(() => {
     const withoutSpace = label.replace(/\s+/g, "");
     setHtmlFor(withoutSpace);
   }, [label]);
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(event.target.value);
+    if (onChange) onChange(event);
+  };
 
   return (
     <div className={`w-full relative bg-white ${className}`}>
@@ -34,8 +53,11 @@ export const Input: React.FC<InputProps> = ({ ...props }) => {
       <TextInput
         id={htmlFor}
         type={type}
+        name={name}
+        value={inputValue}
         sizing={sizing}
         placeholder={placeholder || ""}
+        onChange={handleChange}
         theme={{
           base: "w-full",
           field: {
@@ -45,6 +67,8 @@ export const Input: React.FC<InputProps> = ({ ...props }) => {
           },
         }}
         autoComplete="off"
+        min={min}
+        max={max}
       />
     </div>
   );

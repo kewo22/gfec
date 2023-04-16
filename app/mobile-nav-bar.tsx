@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useLayoutEffect, useRef } from "react";
+import React, { useEffect, useLayoutEffect, useRef } from "react";
 
 import Image from "next/image";
 
@@ -29,7 +29,7 @@ export default function MobileNavigation(props: MobileNav) {
   const { mobileNavPositionClass } = props;
   const { onCloseMenu } = props;
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     (
       wrapperElement.current! as HTMLDivElement
     ).style.height = `${window.innerHeight}px`;
