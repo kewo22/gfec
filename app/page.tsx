@@ -21,7 +21,7 @@ export default async function Home() {
 
   return (
     <main className="">
-      <h1>ssss - {artistData?.data[0]?.email}</h1>
+      <h1>ssss - {JSON.stringify(artistData)}</h1>
       <Hero />
       <About />
       <OurServices />
