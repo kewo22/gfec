@@ -8,10 +8,10 @@ import Testimonial from "./components/testimonial";
 
 // const inter = Inter({ subsets: ["latin"] });
 
-async function getArtist() {
-  const res = await fetch(`http://localhost:3000/api/getInTouch`);
-  return res.json();
-}
+// async function getArtist() {
+//   const res = await fetch(`http://localhost:3000/api/getInTouch`);
+//   return res.json();
+// }
 
 export default function Home() {
   // const artistData = await getArtist();
