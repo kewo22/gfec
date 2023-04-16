@@ -112,8 +112,8 @@ export interface GetInTouch {
   email: string;
   phone: string;
   address: string;
-  profferedDate: string;
-  profferedTime: string;
+  preferredDate: string;
+  preferredTime: string;
 }
 
 export const getInTouchSchema = new Schema<GetInTouch>({
@@ -122,8 +122,8 @@ export const getInTouchSchema = new Schema<GetInTouch>({
   email: { type: String, required: true },
   phone: { type: String, required: true },
   address: { type: String, required: false },
-  profferedDate: { type: String, required: false },
-  profferedTime: { type: String, required: false },
+  preferredDate: { type: String, required: false },
+  preferredTime: { type: String, required: false },
 });
 
 export const GetInTouch = model<GetInTouch>("GetInTouch", getInTouchSchema);
