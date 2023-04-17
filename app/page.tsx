@@ -22,7 +22,7 @@ export default async function Home() {
     <main className="">
       <h1>ssss - {JSON.stringify(artistData)}</h1>
       <h1>ooo - {artistData.data[0].email || "NO"}</h1>
-      {/* <Hero /> */}
+      <Hero />
       <About />
       <OurServices />
       <Testimonial />
