@@ -13,7 +13,6 @@ async function getGetInTouchData() {
 
 export default async function Home() {
   const artistData = await getGetInTouchData();
-
   // console.log("🚀 ~ file: page.tsx:26 ~ Home ~ artistData:", artistData.data);
 
   // const { height } = useNavigationHeight();
