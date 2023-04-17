@@ -7,6 +7,7 @@ import { MongoClient } from "mongodb";
 type ApiResponse<T> = {
   data?: T;
   message: string;
+  error?: any;
 };
 
 const get = async (
@@ -15,8 +16,6 @@ const get = async (
 ) => {
   try {
     const uri = process.env.MONGO_URL || "";
-    // const uri =
-    //   "mongodb+srv://kewo22:pYa4sy0FylRbOB6r@gfec.lwodaum.mongodb.net/gfec?retryWrites=true&w=majority";
     const client = await new MongoClient(uri.trim()).connect();
     // const client = await clientPromise;
     const db = await client.db("gfec");
@@ -25,7 +24,9 @@ const get = async (
 
     return res.status(200).json({ data: data, message: "Success - 1" });
   } catch (error) {
-    return res.status(500).json({ data: "catch err", message: "Success - 2" });
+    return res
+      .status(500)
+      .json({ data: "catch err", message: "Success - 2", error });
   }
 };
 
@@ -36,7 +37,8 @@ const post = async (
   try {
     const uri = process.env.MONGO_URL || "";
     // const uri =
-    //   "mongodb+srv://kewo22:pYa4sy0FylRbOB6r@gfec.lwodaum.mongodb.net/gfec?retryWrites=true&w=majority";
+    // "mongodb+srv://kewo22:pYa4sy0FylRbOB6r@gfec.lwodaum.mongodb.net/gfec?retryWrites=true&w=majority";
+    console.log("🚀 ~ file: getInTouch.ts:39 ~ uri:", uri);
     const client = await new MongoClient(uri.trim()).connect();
     // const client = await clientPromise;
     const db = await client.db("gfec");
@@ -77,7 +79,7 @@ const cors = initMiddleware(
       "Date",
       "X-Api-Version",
     ],
-    origin: "http://localhost:3000/",
+    origin: "https://uat.d2ergyqxpebfoy.amplifyapp.com/",
     credentials: false,
   })
 );
