@@ -32,13 +32,18 @@ const post = async (
   req: NextApiRequest,
   res: NextApiResponse<ApiResponse<any>>
 ) => {
-  const uri =
-    "mongodb+srv://kewo22:pYa4sy0FylRbOB6r@gfec.lwodaum.mongodb.net/gfec?retryWrites=true&w=majority";
-  const client = await new MongoClient(uri.trim()).connect();
-  const db = await client.db("gfec");
-  const collection = db.collection("getInTouch");
-  await collection.insertOne(req.body);
-  return res.status(200).json({ message: "Success" });
+  try {
+    const uri =
+      "mongodb+srv://kewo22:pYa4sy0FylRbOB6r@gfec.lwodaum.mongodb.net/gfec?retryWrites=true&w=majority";
+    const client = await new MongoClient(uri.trim()).connect();
+    // const client = await clientPromise;
+    const db = await client.db("gfec");
+    const collection = db.collection("getInTouch");
+    await collection.insertOne(req.body);
+    return res.status(200).json({ message: "Success" });
+  } catch (error) {
+    return res.status(500).json({ data: "catch err", message: "Success - 2" });
+  }
 };
 
 function initMiddleware(middleware: any) {
