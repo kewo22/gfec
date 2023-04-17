@@ -6,9 +6,13 @@ import GetInTouch from "./components/get-in-touch";
 import Testimonial from "./components/testimonial";
 
 async function getGetInTouchData() {
-  const url = `https://uat.d2ergyqxpebfoy.amplifyapp.com/api/getInTouch`;
-  const res = await fetch(url);
-  return res.json();
+  try {
+    const url = `https://uat.d2ergyqxpebfoy.amplifyapp.com/api/getInTouch`;
+    const res = await fetch(url);
+    return res.json();
+  } catch (error) {
+    return null;
+  }
 }
 
 export default async function Home() {
@@ -20,8 +24,8 @@ export default async function Home() {
 
   return (
     <main className="">
-      <h1>ssss - {JSON.stringify(artistData)}</h1>
-      <h1>ooo - {artistData.data[0].email || "NO"}</h1>
+      <h1>ssss - {JSON.stringify(artistData || null)}</h1>
+      <h1>ooo - {artistData?.data[0]?.email || "NO"}</h1>
       <Hero />
       <About />
       <OurServices />
