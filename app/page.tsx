@@ -5,14 +5,14 @@ import OurServices from "./components/our-services";
 import GetInTouch from "./components/get-in-touch";
 import Testimonial from "./components/testimonial";
 
-async function hhhhh() {
+async function getGetInTouchData() {
   const url = `${process.env.API_BASE_URL_UAT}/getInTouch` || "";
   const res = await fetch(url);
   return res.json();
 }
 
 export default async function Home() {
-  const artistData = await hhhhh();
+  const artistData = await getGetInTouchData();
   // console.log("🚀 ~ file: page.tsx:26 ~ Home ~ artistData:", artistData.data);
 
   // const { height } = useNavigationHeight();
