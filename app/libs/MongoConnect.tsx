@@ -14,7 +14,8 @@ if (!process.env.MONGO_URL) {
   throw new Error('Invalid/Missing environment variable: "MONGO_URL"');
 }
 
-const uri = process.env.MONGO_URL;
+const uri =
+  "mongodb+srv://kewo22:pYa4sy0FylRbOB6r@gfec.lwodaum.mongodb.net/gfec?retryWrites=true&w=majority";
 const options = {};
 
 let client;
