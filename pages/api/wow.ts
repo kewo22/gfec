@@ -9,7 +9,5 @@ export default async function handler(
   // const db = await client.db("gfec");
   // const collection = db.collection("getInTouch");
 
-  return res
-    .status(200)
-    .json({ data: "ddddddddddddddddddddd", message: "Success" });
+  return res.status(200).json({ data: client, message: "Success" });
 }
