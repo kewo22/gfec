@@ -13,8 +13,9 @@ export default async function handler(
     // const client = await clientPromise;
     const db = await client.db("gfec");
     const collection = db.collection("getInTouch");
+    const data = await collection.find({}).toArray();
 
-    return res.status(200).json({ data: collection, message: "Success - 1" });
+    return res.status(200).json({ data: data, message: "Success - 1" });
   } catch (error) {
     return res.status(500).json({ data: "catch err", message: "Success - 2" });
   } finally {
