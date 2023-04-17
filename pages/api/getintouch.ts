@@ -46,7 +46,9 @@ const post = async (
     await collection.insertOne(req.body);
     return res.status(200).json({ message: "Success" });
   } catch (error) {
-    return res.status(500).json({ data: "catch err", message: "Success - 2" });
+    return res
+      .status(500)
+      .json({ data: "catch err", message: "Success - 2", error });
   }
 };
 
