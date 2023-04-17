@@ -8,7 +8,10 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   type?: string;
   placeholder?: string;
   sizing?: keyof TextInputSizes;
+  error?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onFocusInput?: (event: React.FocusEvent<HTMLInputElement>) => void;
+  onBlurInput?: (event: React.FocusEvent<HTMLInputElement>) => void;
 }
 
 export const Input: React.FC<InputProps> = ({ ...props }) => {
@@ -22,10 +25,16 @@ export const Input: React.FC<InputProps> = ({ ...props }) => {
     value = "",
     min = "",
     max = "",
+    error = "",
     onChange = null,
+    onFocusInput = null,
+    onBlurInput = null,
   } = props;
 
   const [htmlFor, setHtmlFor] = useState("");
+  const [inputBaseClass, setInputBaseClass] = useState(
+    "bg-white w-full h-16 rounded-none pt-8"
+  );
 
   const [inputValue, setInputValue] = useState<string>("");
 
@@ -38,13 +47,27 @@ export const Input: React.FC<InputProps> = ({ ...props }) => {
     setHtmlFor(withoutSpace);
   }, [label]);
 
+  useEffect(() => {
+    error
+      ? setInputBaseClass("bg-red-200 w-full h-16 rounded-none pt-8")
+      : setInputBaseClass("bg-white w-full h-16 rounded-none pt-8");
+  }, [error]);
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
     if (onChange) onChange(event);
   };
 
+  const handleFocus = (event: React.FocusEvent<HTMLInputElement>) => {
+    if (onFocusInput) onFocusInput(event);
+  };
+
+  const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
+    if (onBlurInput) onBlurInput(event);
+  };
+
   return (
-    <div className={`w-full relative bg-white ${className}`}>
+    <div className={`w-full relative ${className}`}>
       <Label
         htmlFor={htmlFor}
         value={label}
@@ -58,11 +81,13 @@ export const Input: React.FC<InputProps> = ({ ...props }) => {
         sizing={sizing}
         placeholder={placeholder || ""}
         onChange={handleChange}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
         theme={{
           base: "w-full",
           field: {
             input: {
-              base: "bg-white w-full h-16 rounded-none pt-8",
+              base: inputBaseClass,
             },
           },
         }}
@@ -70,6 +95,9 @@ export const Input: React.FC<InputProps> = ({ ...props }) => {
         min={min}
         max={max}
       />
+      <small className={error && error.length ? "visible" : "invisible"}>
+        {error || ""}
+      </small>
     </div>
   );
 };

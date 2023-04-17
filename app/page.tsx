@@ -5,16 +5,15 @@ import OurServices from "./components/our-services";
 import GetInTouch from "./components/get-in-touch";
 import Testimonial from "./components/testimonial";
 
-async function getArtist() {
-  const res = await fetch(`https://uat.d2ergyqxpebfoy.amplifyapp.com/api/test`);
-  // const res = await fetch(`http://localhost:3000/api/test`);
+async function hhhhh() {
+  const url = `${process.env.API_BASE_URL_UAT}/test` || "";
+  const res = await fetch(url);
   return res.json();
 }
 
 export default async function Home() {
-  const artistData = await getArtist();
-  console.log("🚀 ~ file: page.tsx:26 ~ Home ~ artistData:", artistData.data);
-  // await postArtist();
+  const artistData = await hhhhh();
+  // console.log("🚀 ~ file: page.tsx:26 ~ Home ~ artistData:", artistData.data);
 
   // const { height } = useNavigationHeight();
   // console.log(height);

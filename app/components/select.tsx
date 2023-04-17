@@ -44,7 +44,7 @@ export const Select: React.FC<InputProps> = ({ ...props }) => {
   };
 
   return (
-    <div className={`w-full relative ${props.className} bg-white`}>
+    <div className={`w-full relative ${props.className}`}>
       <Label
         htmlFor={htmlFor}
         value={label}
