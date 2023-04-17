@@ -76,7 +76,7 @@ export default function GetInTouch() {
         Get in touch
       </h1>
 
-      <p className="font-light text-base xl:text-xl leading-8 tracking-tight text-gray-900 text-center lg:px-0 mb-5">
+      <p className="font-light text-base leading-8 tracking-tight text-gray-900 text-center lg:px-0 mb-5">
         Thank you for your interest in our organization and the services we
         offer. We would be more than happy to arrange a FREE information session
         for you.
@@ -177,7 +177,7 @@ export default function GetInTouch() {
             type="submit"
             className="w-full sm:w-56 mx-auto bg-secondary xl:w-56 hover:bg-primary focus:ring-0 focus:outline-none transition-all ease-in-out"
           >
-            <span className="text-base xl:text-xl">Send</span>
+            <span className="text-base">Send</span>
           </Button>
         </div>
       </form>

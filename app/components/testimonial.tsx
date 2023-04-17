@@ -52,7 +52,7 @@ export default function Testimonial() {
                 <figure className="max-w-screen-md mx-auto">
                   <span className="text-6xl icon-format-quote text-primary"></span>
                   <blockquote>
-                    <p className="mb-4 font-light text-base xl:text-xl leading-8 tracking-tight text-gray-900 text-center">
+                    <p className="mb-4 font-light text-base leading-8 tracking-tight text-gray-900 text-center">
                       &quot;{obj.testimonial}&quot;
                     </p>
                   </blockquote>

@@ -26,7 +26,7 @@ export default function About() {
         {/* <span className="sm:hidden text-primary">&nbsp;GEFC</span> */}
       </h1>
 
-      <p className="font-light text-base xl:text-xl leading-8 tracking-tight text-gray-900 text-justify mb-10 px-10 lg:px-24 xl:px-52">
+      <p className="font-light text-base leading-8 tracking-tight text-gray-900 text-justify mb-10 px-10 lg:px-24 xl:px-52">
         We believe that access to quality education is a fundamental right, and
         we&apos;re proud to be part of a community of organizations that share
         this vision. <br /> <br /> As a leading overseas educational
@@ -45,19 +45,19 @@ export default function About() {
 
       <div className="flex flex-col sm:flex-row sm:gap-5 mb-10 px-10 lg:px-24 xl:px-52">
         <div className="bg-primary p-5 mb-5 sm:mb-0 rounded-md sm:flex-grow shadow-lg shadow-yellow-500/50">
-          <h1 className="text-2xl sm:text-3xl font-bold leading-normal tracking-tight text-center text-white mb-2">
+          <h1 className="text-2xl font-bold leading-normal tracking-tight text-center text-white mb-2">
             Our Vision
           </h1>
-          <p className="font-light text-base xl:text-xl leading-8 tracking-tight text-white text-center">
+          <p className="font-light text-base leading-8 tracking-tight text-white text-center">
             Our Vision is to be a market leader and most reliable organization
             in International Education Consultation Services in Sri Lanka.
           </p>
         </div>
         <div className="bg-primary p-5 rounded-md sm:flex-grow shadow-lg shadow-yellow-500/50">
-          <h1 className="text-2xl sm:text-3xl font-bold leading-normal tracking-tight text-center text-white mb-2">
+          <h1 className="text-2xl font-bold leading-normal tracking-tight text-center text-white mb-2">
             Our Mission
           </h1>
-          <p className="font-light text-base xl:text-xl leading-8 tracking-tight text-white text-center">
+          <p className="font-light text-base leading-8 tracking-tight text-white text-center">
             Our Mission is to provide accurate information, professional service
             and maintain the highest level success rate in international
             education student enrollments.
@@ -71,16 +71,16 @@ export default function About() {
           by following the following principles.
         </p>
         <div className="flex flex-col sm:flex-row gap-5 lg:gap-0">
-          <p className="font-light text-base xl:text-xl leading-8 tracking-tight text-gray-900 text-justify sm:text-center lg:mx-10">
+          <p className="font-light text-base leading-8 tracking-tight text-gray-900 text-justify sm:text-center lg:mx-10">
             Provide accurate information so that you can make informed decisions
             about your education needs
           </p>
-          <p className="font-light text-base xl:text-xl leading-8 tracking-tight text-gray-900 text-justify sm:text-center lg:mx-10 border-0 sm:border-l-2 sm:border-r-2 border-l-primary border-r-primary px-0 sm:px-2 lg:px-10">
+          <p className="font-light text-base leading-8 tracking-tight text-gray-900 text-justify sm:text-center lg:mx-10 border-0 sm:border-l-2 sm:border-r-2 border-l-primary border-r-primary px-0 sm:px-2 lg:px-10">
             Provide professional service by providing clear, concise and
             accurate information on every aspect of your study abroad
             experience.
           </p>
-          <p className="font-light text-base xl:text-xl leading-8 tracking-tight text-gray-900 text-justify sm:text-center lg:mx-10">
+          <p className="font-light text-base leading-8 tracking-tight text-gray-900 text-justify sm:text-center lg:mx-10">
             Maintain the highest level of success rate by providing quality
             service and support for all our students throughout their study
             abroad experience.

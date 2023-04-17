@@ -46,7 +46,7 @@ export default function Navigation() {
             return (
               <Link
                 key={item.text}
-                className={`text-accent flex items-center justify-center pr-5 ml-5 first:m-0 font-bold ${item.class} hover:text-primary transition-all ease-in-out text-base xl:text-xl`}
+                className={`text-accent flex items-center justify-center pr-5 ml-5 first:m-0 font-bold ${item.class} hover:text-primary transition-all ease-in-out text-base`}
                 href={item.route}
                 onClick={onCloseMenu}
               >

@@ -18,7 +18,7 @@ export default function About() {
         </div>
 
         <div className="xl:xl:w-1/2">
-          <p className="mb-4 font-light text-base xl:text-xl leading-8 tracking-tight text-gray-900 text-justify">
+          <p className="mb-4 font-light text-base leading-8 tracking-tight text-gray-900 text-justify">
             We understand that the prospect of higher education can be daunting,
             but with our help, you can confidently navigate the college and
             university landscape. Our counselors have years of experience

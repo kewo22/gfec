@@ -14,7 +14,7 @@ export default function Hero() {
         <h1 className="text-2xl lg:text-3xl font-bold leading-normal tracking-tight text-center sm:text-left text-gray-900 mb-5">
           Study in Overseas with GFEC
         </h1>
-        <p className="font-light text-base xl:text-xl leading-8 tracking-tight text-gray-900 text-justify lg:px-0 mb-5">
+        <p className="font-light text-base leading-8 tracking-tight text-gray-900 text-justify lg:px-0 mb-5">
           Are you a student looking to pursue higher education but feeling
           overwhelmed by the process? Look no further! Our team of expert
           counselors has partnered with some of the top educational institutions
@@ -23,7 +23,7 @@ export default function Hero() {
         </p>
 
         <Button className="bg-secondary xl:w-56 hover:bg-primary focus:ring-0 focus:outline-none transition-all ease-in-out">
-          <Link href="apply" className="text-base xl:text-xl">
+          <Link href="apply" className="text-base">
             Apply Now
           </Link>
         </Button>
