@@ -25,7 +25,7 @@ const validationSchema = Yup.object().shape({
 });
 
 async function postGetInTouch(values: IGetInTouch) {
-  const url = `${process.env.API_BASE_URL_UAT}/getInTouch` || "";
+  const url = `${process.env.API_BASE_URL_UAT}/test` || "";
   await fetch(url, {
     method: "POST",
     headers: {

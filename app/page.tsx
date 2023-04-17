@@ -6,7 +6,7 @@ import GetInTouch from "./components/get-in-touch";
 import Testimonial from "./components/testimonial";
 
 async function getGetInTouchData() {
-  const url = `${process.env.API_BASE_URL_UAT}/getInTouch` || "";
+  const url = `${process.env.API_BASE_URL_UAT}/test` || "";
   const res = await fetch(url);
   return res.json();
 }
