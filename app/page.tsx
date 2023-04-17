@@ -6,14 +6,14 @@ import GetInTouch from "./components/get-in-touch";
 import Testimonial from "./components/testimonial";
 
 async function getGetInTouchData() {
-  const url = `${process.env.API_BASE_URL_UAT}/test` || "";
+  const url = `https://uat.d2ergyqxpebfoy.amplifyapp.com/api/getInTouch`;
   const res = await fetch(url);
   return res.json();
 }
 
 export default async function Home() {
   const artistData = await getGetInTouchData();
-  
+
   // console.log("🚀 ~ file: page.tsx:26 ~ Home ~ artistData:", artistData.data);
 
   // const { height } = useNavigationHeight();
