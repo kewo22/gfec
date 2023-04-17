@@ -22,26 +22,13 @@ const get = async (
   res: NextApiResponse<ApiResponse<any>>
 ) => {
   try {
-    const client = await clientPromise;
-    const db = await client.db("gfec");
-    const collection = db.collection("getInTouch");
-
-    // const collections = GetInTouch.find().exec();
-    // await collection.insertOne({ firstName: "Kewin" });
-    // const data = await GetInTouch.find<GetInTouchType>({});
-
-    const data = await collection.find({}).toArray();
-
-    // const data2 = await collection.find<GetInTouchDocument>({});
-    //   .map((obj) => obj.toObject());
-
-    // return NextApiResponse.json({ isConnected: "true", data });
-    return res.status(200).json({ data, message: "Success" });
+    return res
+      .status(200)
+      .json({ data: "ddddddddddddddddddddd", message: "Success" });
     // return data;
   } catch (e) {
     console.error(e);
     return res.status(500).send({ message: "Server error!" });
-    // return NextApiResponse.json({ isConnected: "f" });
   }
 };
 
