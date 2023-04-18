@@ -8,7 +8,7 @@ import Testimonial from "./components/testimonial";
 async function getGetInTouchData() {
   try {
     const url = `https://uat.d2ergyqxpebfoy.amplifyapp.com/api/getintouch`;
-    const res = await fetch(url);
+    const res = await fetch(url, { mode: "no-cors" });
     return res.json();
   } catch (error) {
     return { data: [] };

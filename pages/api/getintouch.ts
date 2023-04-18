@@ -35,10 +35,11 @@ const post = async (
   res: NextApiResponse<ApiResponse<any>>
 ) => {
   try {
-    const uri = process.env.MONGO_URL || "";
+    const uri =
+      process.env.MONGO_URL ||
+      "mongodb+srv://kewo22:pYa4sy0FylRbOB6r@gfec.lwodaum.mongodb.net/gfec?retryWrites=true&w=majority";
     // const uri =
     // "mongodb+srv://kewo22:pYa4sy0FylRbOB6r@gfec.lwodaum.mongodb.net/gfec?retryWrites=true&w=majority";
-    console.log("🚀 ~ file: getInTouch.ts:39 ~ uri:", uri);
     const client = await new MongoClient(uri.trim()).connect();
     // const client = await clientPromise;
     const db = await client.db("gfec");
@@ -81,7 +82,7 @@ const cors = initMiddleware(
       "Date",
       "X-Api-Version",
     ],
-    origin: "https://uat.d2ergyqxpebfoy.amplifyapp.com/",
+    origin: "*",
     credentials: false,
   })
 );
@@ -91,6 +92,7 @@ export default async function handler(
   res: NextApiResponse<ApiResponse<any>>
 ) {
   try {
+    // await cors(req, res);
     switch (req.method) {
       case "GET":
         //some code...
@@ -98,7 +100,6 @@ export default async function handler(
         break;
 
       case "POST":
-        await cors(req, res);
         //some code...
         post(req, res);
         // res.status(201).json({ message: "POST" });
