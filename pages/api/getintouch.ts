@@ -14,7 +14,7 @@ const get = async (
   req: NextApiRequest,
   res: NextApiResponse<ApiResponse<any>>
 ) => {
-  const uri = process.env.MONGO_URL || "";
+  const uri = process.env.MONGO_URL || "no url";
   try {
     const client = await new MongoClient(uri.trim()).connect();
     // const client = await clientPromise;
