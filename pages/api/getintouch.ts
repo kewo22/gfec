@@ -14,21 +14,19 @@ const get = async (
   req: NextApiRequest,
   res: NextApiResponse<ApiResponse<any>>
 ) => {
+  const uri = process.env.MONGO_URL || "";
   try {
-    const uri =
-      process.env.MONGO_URL ||
-      "mongodb+srv://kewo22:pYa4sy0FylRbOB6r@gfec.lwodaum.mongodb.net/gfec?retryWrites=true&w=majority";
     const client = await new MongoClient(uri.trim()).connect();
     // const client = await clientPromise;
     const db = await client.db("gfec");
     const collection = db.collection("getInTouch");
     const data = await collection.find({}).toArray();
 
-    return res.status(200).json({ data: data, message: "Success - 1" });
+    return res.status(200).json({ data: data, message: uri });
   } catch (error) {
     return res
       .status(500)
-      .json({ data: "catch err", message: "Success - 3", error });
+      .json({ data: "catch err", message: `Success - 3 ${uri}`, error });
   }
 };
 
@@ -36,12 +34,12 @@ const post = async (
   req: NextApiRequest,
   res: NextApiResponse<ApiResponse<any>>
 ) => {
+  const uri =
+    process.env.MONGO_URL ||
+    "mongodb+srv://kewo22:pYa4sy0FylRbOB6r@gfec.lwodaum.mongodb.net/gfec?retryWrites=true&w=majority";
+  // const uri =
+  // "mongodb+srv://kewo22:pYa4sy0FylRbOB6r@gfec.lwodaum.mongodb.net/gfec?retryWrites=true&w=majority";
   try {
-    const uri =
-      process.env.MONGO_URL ||
-      "mongodb+srv://kewo22:pYa4sy0FylRbOB6r@gfec.lwodaum.mongodb.net/gfec?retryWrites=true&w=majority";
-    // const uri =
-    // "mongodb+srv://kewo22:pYa4sy0FylRbOB6r@gfec.lwodaum.mongodb.net/gfec?retryWrites=true&w=majority";
     const client = await new MongoClient(uri.trim()).connect();
     // const client = await clientPromise;
     const db = await client.db("gfec");
