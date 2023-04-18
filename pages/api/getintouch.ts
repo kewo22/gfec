@@ -15,7 +15,9 @@ const get = async (
   res: NextApiResponse<ApiResponse<any>>
 ) => {
   try {
-    const uri = process.env.MONGO_URL || "";
+    const uri =
+      process.env.MONGO_URL ||
+      "mongodb+srv://kewo22:pYa4sy0FylRbOB6r@gfec.lwodaum.mongodb.net/gfec?retryWrites=true&w=majority";
     const client = await new MongoClient(uri.trim()).connect();
     // const client = await clientPromise;
     const db = await client.db("gfec");
@@ -35,7 +37,9 @@ const post = async (
   res: NextApiResponse<ApiResponse<any>>
 ) => {
   try {
-    const uri = process.env.MONGO_URL || "";
+    const uri =
+      process.env.MONGO_URL ||
+      "mongodb+srv://kewo22:pYa4sy0FylRbOB6r@gfec.lwodaum.mongodb.net/gfec?retryWrites=true&w=majority";
     // const uri =
     // "mongodb+srv://kewo22:pYa4sy0FylRbOB6r@gfec.lwodaum.mongodb.net/gfec?retryWrites=true&w=majority";
     const client = await new MongoClient(uri.trim()).connect();
