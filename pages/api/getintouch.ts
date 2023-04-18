@@ -42,10 +42,10 @@ const post = async (
   try {
     const client = await new MongoClient(uri.trim()).connect();
     // const client = await clientPromise;
-    // const db = await client.db("gfec");
-    // const collection = db.collection("getInTouch");
+    const db = await client.db("gfec");
+    const collection = db.collection("getInTouch");
     // const insertOneRes = await collection.insertOne(req.body);
-    return res.status(200).json({ message: "Success", data: req.body });
+    return res.status(200).json({ message: "Success", data: 'insertOneRes' });
   } catch (error) {
     return res
       .status(500)
