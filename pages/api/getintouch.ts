@@ -46,8 +46,19 @@ const post = async (
     // const client = await clientPromise;
     const db = await client.db("gfec");
     const collection = db.collection("getInTouch");
-    const insertOneRes = await collection.insertOne(req.body);
-    return res.status(200).json({ message: "Success", data: insertOneRes });
+    const x = {
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      email: req.body.email,
+      phone: req.body.phone,
+      address: req.body.address,
+      preferredDate: req.body.preferredDate,
+      preferredTime: req.body.preferredTime,
+    };
+    const insertOneRes = await collection.insertOne(x);
+    return res
+      .status(200)
+      .json({ message: "Success", data: { ...insertOneRes, ...x } });
   } catch (error) {
     return res
       .status(500)
