@@ -8,6 +8,7 @@ import Testimonial from "./components/testimonial";
 async function getGetInTouchData() {
   try {
     const url = `https://uat.d2ergyqxpebfoy.amplifyapp.com/api/getintouch`;
+    // const url = `http://localhost:3000/api/getintouch`;
     const res = await fetch(url, { mode: "no-cors" });
     return res.json();
   } catch (error) {
@@ -25,7 +26,7 @@ export default async function Home() {
 
   return (
     <main className="">
-      <h1>ssss - {JSON.stringify(artistData || null)}</h1>
+      <pre>ssss - {JSON.stringify(artistData || null, null, 4)}</pre>
       <h1>ooo - {artistData?.data[0]?.email || "NO"}</h1>
       <h1>--- FFFFFFFFFFFFFFFF ----</h1>
       <Hero />

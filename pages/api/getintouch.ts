@@ -26,7 +26,7 @@ const get = async (
   } catch (error) {
     return res
       .status(500)
-      .json({ data: "catch err", message: "Success - 2", error });
+      .json({ data: "catch err", message: "Success - 3", error });
   }
 };
 
@@ -35,21 +35,19 @@ const post = async (
   res: NextApiResponse<ApiResponse<any>>
 ) => {
   try {
-    const uri =
-      process.env.MONGO_URL ||
-      "mongodb+srv://kewo22:pYa4sy0FylRbOB6r@gfec.lwodaum.mongodb.net/gfec?retryWrites=true&w=majority";
+    const uri = process.env.MONGO_URL || "";
     // const uri =
     // "mongodb+srv://kewo22:pYa4sy0FylRbOB6r@gfec.lwodaum.mongodb.net/gfec?retryWrites=true&w=majority";
     const client = await new MongoClient(uri.trim()).connect();
     // const client = await clientPromise;
     const db = await client.db("gfec");
     const collection = db.collection("getInTouch");
-    await collection.insertOne(req.body);
-    return res.status(200).json({ message: "Success" });
+    const insertOneRes = await collection.insertOne(req.body);
+    return res.status(200).json({ message: "Success", data: insertOneRes });
   } catch (error) {
     return res
       .status(500)
-      .json({ data: "catch err", message: "Success - 2", error });
+      .json({ data: "catch err", message: "Success - 4", error });
   }
 };
 
