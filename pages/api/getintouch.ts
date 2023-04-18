@@ -14,7 +14,9 @@ const get = async (
   req: NextApiRequest,
   res: NextApiResponse<ApiResponse<any>>
 ) => {
-  const uri = process.env.MONGO_URL || "mongodb+srv://kewo22:pYa4sy0FylRbOB6r@gfec.lwodaum.mongodb.net/gfec?retryWrites=true&w=majority";
+  const uri =
+    process.env.MONGO_URL ||
+    "mongodb+srv://kewo22:pYa4sy0FylRbOB6r@gfec.lwodaum.mongodb.net/gfec?retryWrites=true&w=majority";
   try {
     const client = await new MongoClient(uri.trim()).connect();
     // const client = await clientPromise;
@@ -44,8 +46,8 @@ const post = async (
     // const client = await clientPromise;
     const db = await client.db("gfec");
     const collection = db.collection("getInTouch");
-    // const insertOneRes = await collection.insertOne(req.body);
-    return res.status(200).json({ message: "Success", data: 'insertOneRes' });
+    const insertOneRes = await collection.insertOne(req.body);
+    return res.status(200).json({ message: "Success", data: insertOneRes });
   } catch (error) {
     return res
       .status(500)
