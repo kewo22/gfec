@@ -17,7 +17,6 @@ const get = async (
   const uri = process.env.MONGO_URL || "";
   try {
     const client = await new MongoClient(uri.trim()).connect();
-    // const client = await clientPromise;
     const db = await client.db("gfec");
     const collection = db.collection("getInTouch");
     const data = await collection.find({}).toArray();
@@ -35,11 +34,8 @@ const post = async (
   res: NextApiResponse<ApiResponse<any>>
 ) => {
   const uri = process.env.MONGO_URL || "";
-  // const uri =
-  // "mongodb+srv://kewo22:pYa4sy0FylRbOB6r@gfec.lwodaum.mongodb.net/gfec?retryWrites=true&w=majority";
   try {
     const client = await new MongoClient(uri.trim()).connect();
-    // const client = await clientPromise;
     const db = await client.db("gfec");
     const collection = db.collection("getInTouch");
     const x = {
@@ -74,27 +70,27 @@ function initMiddleware(middleware: any) {
     });
 }
 
-// Initialize the cors middleware
-const cors = initMiddleware(
-  // You can read more about the available options here: https://github.com/expressjs/cors#configuration-options
-  Cors({
-    // Only allow requests with GET, POST and OPTIONS
-    methods: ["POST", "OPTIONS"],
-    allowedHeaders: [
-      "X-CSRF-Token",
-      "X-Requested-With",
-      "Accept",
-      "Accept-Version",
-      "Content-Length",
-      "Content-MD5",
-      "Content-Type",
-      "Date",
-      "X-Api-Version",
-    ],
-    origin: "*",
-    credentials: false,
-  })
-);
+// // Initialize the cors middleware
+// const cors = initMiddleware(
+//   // You can read more about the available options here: https://github.com/expressjs/cors#configuration-options
+//   Cors({
+//     // Only allow requests with GET, POST and OPTIONS
+//     methods: ["POST", "OPTIONS"],
+//     allowedHeaders: [
+//       "X-CSRF-Token",
+//       "X-Requested-With",
+//       "Accept",
+//       "Accept-Version",
+//       "Content-Length",
+//       "Content-MD5",
+//       "Content-Type",
+//       "Date",
+//       "X-Api-Version",
+//     ],
+//     origin: "*",
+//     credentials: false,
+//   })
+// );
 
 export default async function handler(
   req: NextApiRequest,
@@ -104,18 +100,14 @@ export default async function handler(
     // await cors(req, res);
     switch (req.method) {
       case "GET":
-        //some code...
         return get(req, res);
         break;
 
       case "POST":
-        //some code...
         return post(req, res);
-        // res.status(201).json({ message: "POST" });
         break;
 
       case "PATCH":
-        //some code...
         res.status(200).json({ message: "PATCH" });
         break;
 
@@ -123,12 +115,7 @@ export default async function handler(
         res.status(405).end(`${req.method} Not Allowed`);
         break;
     }
-
-    // if (!allowedMethods.includes(req.method!) || req.method == 'OPTIONS') {
-    //   return res.status(405).send({ message: 'Method not allowed.' });
-    // }
   } catch (error) {
-    // Catch and log errors - return a 500 with a message
     console.error(error);
     // Sentry.captureException(error);
     res.status(500).send({ message: "Server Error" });
