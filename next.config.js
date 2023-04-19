@@ -29,6 +29,9 @@ const nextConfig = {
     config.experiments = { ...config.experiments, topLevelAwait: true };
     return config;
   },
+  env: {
+    MONGO_URL: process.env.MONGO_URL || 'NO URL FROM NEXT.CONFIG',
+  },
 };
 
 module.exports = nextConfig;
