@@ -14,7 +14,7 @@ const get = async (
   req: NextApiRequest,
   res: NextApiResponse<ApiResponse<any>>
 ) => {
-  const uri = process.env.MONGO_URL || "no url";
+  const uri = process.env.MONGO_URL || "";
   try {
     const client = await new MongoClient(uri.trim()).connect();
     // const client = await clientPromise;
@@ -34,7 +34,7 @@ const post = async (
   req: NextApiRequest,
   res: NextApiResponse<ApiResponse<any>>
 ) => {
-  const uri = process.env.MONGO_URL || "no url";
+  const uri = process.env.MONGO_URL || "";
   // const uri =
   // "mongodb+srv://kewo22:pYa4sy0FylRbOB6r@gfec.lwodaum.mongodb.net/gfec?retryWrites=true&w=majority";
   try {
