@@ -50,7 +50,7 @@ export default function Navigation() {
             setVersionClass("invisible");
           }}
         >
-          V 0.0.1
+          {process.env.APP_VER}
         </small>
 
         <Image

@@ -24,7 +24,6 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  console.info(`VERSION - ${process.env.APP_VER}`)
   return (
     <html lang="en">
       {/*
