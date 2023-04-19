@@ -1,16 +1,17 @@
 "use client";
 
-import React from "react";
-import { Button } from "flowbite-react";
+import React, { useState } from "react";
+import { Button, Spinner } from "flowbite-react";
 import * as Yup from "yup";
 
-import styles from "../page.module.css";
 import { Input } from "./input";
 import { Select } from "./select";
-import { Form, Formik, FormikHelpers, useFormik } from "formik";
+import { useFormik } from "formik";
 
 import { GetInTouch as IGetInTouch } from "../models/GetInTouch";
 import { toDateString } from "../../util/date";
+
+// import styles from "../page.module.css";
 
 const validationSchema = Yup.object().shape({
   firstName: Yup.string().required("Required"),
@@ -39,6 +40,9 @@ async function postGetInTouch(values: IGetInTouch) {
 }
 
 export default function GetInTouch() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [successTextClass, setSuccessTextClass] = useState("top-0 opacity-0");
+
   const today = toDateString();
 
   const initialValues = {
@@ -55,8 +59,15 @@ export default function GetInTouch() {
     initialValues,
     validationSchema,
     onSubmit: async (values: IGetInTouch) => {
-      console.log(values);
+      setIsSubmitting(true);
       await postGetInTouch(values);
+      setIsSubmitting(false);
+      resetForm();
+      setSuccessTextClass("top-12 opacity-100");
+
+      setTimeout(() => {
+        setSuccessTextClass("top-0 opacity-0");
+      }, 5000);
     },
     validateOnMount: false,
     validateOnChange: true,
@@ -69,6 +80,10 @@ export default function GetInTouch() {
 
   const onBlur = (event: React.FocusEvent<HTMLInputElement>) => {
     formik.setFieldTouched(event.target.name, false, false);
+  };
+
+  const resetForm = () => {
+    formik.resetForm();
   };
 
   return (
@@ -84,7 +99,7 @@ export default function GetInTouch() {
       </p>
 
       <form onSubmit={formik.handleSubmit}>
-        <div className="">
+        <div className="relative">
           {/* <pre>{JSON.stringify(formik, null, 4)}</pre> */}
           <div className="flex flex-col sm:flex-row gap-5 mb-6">
             <Input
@@ -174,12 +189,21 @@ export default function GetInTouch() {
             />
           </div>
 
-          <Button
-            type="submit"
-            className="w-full sm:w-56 mx-auto bg-secondary xl:w-56 hover:bg-primary focus:ring-0 focus:outline-none transition-all ease-in-out"
-          >
-            <span className="text-base">Send</span>
-          </Button>
+          <div className="relative">
+            <Button
+              type="submit"
+              className="w-full sm:w-56 mx-auto bg-secondary xl:w-56 hover:bg-primary focus:ring-0 focus:outline-none transition-all ease-in-out"
+              disabled={isSubmitting}
+            >
+              {isSubmitting && <Spinner size="md" className="ml-2" />}
+              {!isSubmitting && <span className="text-base">Send</span>}
+            </Button>
+            <div
+              className={`block text-center w-full mx-auto text-secondary absolute transition-all duration-1000 ease-in-out z-[-1] ${successTextClass}`}
+            >
+              Successfully Submitted
+            </div>
+          </div>
         </div>
       </form>
     </section>

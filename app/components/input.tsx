@@ -49,9 +49,7 @@ export const Input: React.FC<InputProps> = ({ ...props }) => {
 
   useEffect(() => {
     error
-      ? setInputBaseClass(
-          "bg-red-200 w-full h-16 pt-8 rounded-lg"
-        )
+      ? setInputBaseClass("bg-red-200 w-full h-16 pt-8 rounded-lg")
       : setInputBaseClass("bg-white w-full h-16 pt-8 rounded-lg");
   }, [error]);
 
@@ -71,9 +69,10 @@ export const Input: React.FC<InputProps> = ({ ...props }) => {
   return (
     <div className={`w-full relative ${className}`}>
       <Label
+        id={`lbl-${htmlFor}`}
         htmlFor={htmlFor}
         value={label}
-        className="absolute z-10 w-full pl-3 mt-2 font-extrabold text-xs"
+        className="absolute z-10 w-full pl-3 mt-2 text-xs font-bold"
       />
       <TextInput
         id={htmlFor}

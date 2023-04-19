@@ -204,6 +204,12 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 }
 /* Remove this if flowbite select allows theme prop */
 
+/* Remove this if flowbite label allows theme prop */
+label[id*="lbl-"] {
+  font-weight: 700;
+}
+/* Remove this if flowbite label allows theme prop */
+
 .bg {
   animation: slide 3s ease-in-out infinite alternate;
   background-image: linear-gradient(-100deg, #eeeeee 50%, #fff5f5 50%);
