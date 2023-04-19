@@ -14,9 +14,7 @@ const get = async (
   req: NextApiRequest,
   res: NextApiResponse<ApiResponse<any>>
 ) => {
-  const uri =
-    process.env.MONGO_URL ||
-    "mongodb+srv://kewo22:pYa4sy0FylRbOB6r@gfec.lwodaum.mongodb.net/gfec?retryWrites=true&w=majority";
+  const uri = process.env.MONGO_URL || "no url";
   try {
     const client = await new MongoClient(uri.trim()).connect();
     // const client = await clientPromise;
@@ -36,9 +34,7 @@ const post = async (
   req: NextApiRequest,
   res: NextApiResponse<ApiResponse<any>>
 ) => {
-  const uri =
-    process.env.MONGO_URL ||
-    "mongodb+srv://kewo22:pYa4sy0FylRbOB6r@gfec.lwodaum.mongodb.net/gfec?retryWrites=true&w=majority";
+  const uri = process.env.MONGO_URL || "no url";
   // const uri =
   // "mongodb+srv://kewo22:pYa4sy0FylRbOB6r@gfec.lwodaum.mongodb.net/gfec?retryWrites=true&w=majority";
   try {
@@ -47,20 +43,20 @@ const post = async (
     const db = await client.db("gfec");
     const collection = db.collection("getInTouch");
     const x = {
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      email: req.body.email,
-      phone: req.body.phone,
-      address: req.body.address,
-      preferredDate: req.body.preferredDate,
-      preferredTime: req.body.preferredTime,
+      firstName: JSON.parse(req.body).firstName,
+      lastName: JSON.parse(req.body).lastName,
+      email: JSON.parse(req.body).email,
+      phone: JSON.parse(req.body).phone,
+      address: JSON.parse(req.body).address,
+      preferredDate: JSON.parse(req.body).preferredDate,
+      preferredTime: JSON.parse(req.body).preferredTime,
     };
     const insertOneRes = await collection.insertOne(x);
     return res.status(200).json({ message: "Success", data: insertOneRes });
   } catch (error) {
     return res
       .status(500)
-      .json({ data: "catch err", message: "Success - 4", error });
+      .json({ data: "catch err", message: `Success - 4 ${uri}`, error });
   }
 };
 
@@ -107,12 +103,12 @@ export default async function handler(
     switch (req.method) {
       case "GET":
         //some code...
-        get(req, res);
+        return get(req, res);
         break;
 
       case "POST":
         //some code...
-        post(req, res);
+        return post(req, res);
         // res.status(201).json({ message: "POST" });
         break;
 
