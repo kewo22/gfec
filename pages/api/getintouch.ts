@@ -1,8 +1,9 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
-
-import Cors from "cors";
+import nodemailer from "nodemailer";
 import { MongoClient } from "mongodb";
+import Cors from "cors";
+import Mail from "nodemailer/lib/mailer";
 
 type ApiResponse<T> = {
   data?: T;
@@ -21,11 +22,9 @@ const get = async (
     const collection = db.collection("getInTouch");
     const data = await collection.find({}).toArray();
 
-    return res.status(200).json({ data: data, message: uri });
+    return res.status(200).json({ data: data, message: "Success" });
   } catch (error) {
-    return res
-      .status(500)
-      .json({ data: "catch err", message: `Success - 1 ${uri}`, error });
+    return res.status(500).json({ data: null, message: `Error`, error });
   }
 };
 
@@ -47,14 +46,79 @@ const post = async (
       preferredDate: JSON.parse(req.body).preferredDate,
       preferredTime: JSON.parse(req.body).preferredTime,
     };
+
     const insertOneRes = await collection.insertOne(x);
-    return res
-      .status(200)
-      .json({ message: `Success - 2 ${uri}`, data: insertOneRes });
+    if (insertOneRes.insertedId) {
+      const transporter = nodemailer.createTransport({
+        service: process.env.NODEMAILER_SERVICE,
+        auth: {
+          user: process.env.NODEMAILER_USER,
+          pass: process.env.NODEMAILER_PASSWORD,
+        },
+      });
+
+      const html = `
+          <table style="border: 1px solid black; border-collapse: collapse; width: 300px; min-width: 300px;">
+            <tr>
+              <th style="border: 1px solid black; border-collapse: collapse; padding: 5px;" align='left'>Name</th>
+              <td style="border: 1px solid black; border-collapse: collapse; padding: 5px;">${
+                x.firstName
+              } ${x.lastName}</td>
+            </tr>
+            <tr>
+              <th style="border: 1px solid black; border-collapse: collapse; padding: 5px;" align='left'>Email</th>
+              <td style="border: 1px solid black; border-collapse: collapse; padding: 5px;">${
+                x.email
+              }</td>
+            </tr>
+            <tr>
+              <th style="border: 1px solid black; border-collapse: collapse; padding: 5px;" align='left'>Phone</th>
+              <td style="border: 1px solid black; border-collapse: collapse; padding: 5px;">${
+                x.phone
+              }</td>
+            </tr>
+            <tr>
+              <th style="border: 1px solid black; border-collapse: collapse; padding: 5px;" align='left'>Preferred Date</th>
+              <td style="border: 1px solid black; border-collapse: collapse; padding: 5px;">${
+                x.preferredDate
+              }</td>
+            </tr>
+            <tr>
+              <th style="border: 1px solid black; border-collapse: collapse; padding: 5px;" align='left'>Preferred Time</th>
+              <td style="border: 1px solid black; border-collapse: collapse; padding: 5px;">${
+                x.preferredTime
+              }</td>
+            </tr>
+            <tr>
+              <th style="border: 1px solid black; border-collapse: collapse; padding: 5px;" align='left'>Address</th>
+              <td style="border: 1px solid black; border-collapse: collapse; padding: 5px;">${
+                x.address ? x.address : "-"
+              }</td>
+            </tr>
+          </table>
+        `;
+
+      const mailOptions: Mail.Options = {
+        from: process.env.NODEMAILER_USER,
+        to: (process.env.TO_MAIL as unknown as string).split(","),
+        subject: `Get In Touch With ${x.firstName} ${x.lastName}`,
+        text: "Record Added",
+        html,
+      };
+
+      const yy = await transporter.sendMail(mailOptions);
+      console.log("🚀 ~ file: getInTouch.ts:151 ~ yy:", yy);
+      // try {
+      //   console.log("🚀 ~ file: getInTouch.ts:69 ~ x:", x);
+      // } catch (error) {
+      //   console.log("mail err");
+      //   console.log(error);
+      // }
+    }
+
+    return res.status(200).json({ message: `Success`, data: insertOneRes });
   } catch (error) {
-    return res
-      .status(500)
-      .json({ data: "catch err", message: `Success - 3 ${uri}`, error });
+    return res.status(500).json({ data: null, message: `Error`, error });
   }
 };
 
@@ -101,11 +165,9 @@ export default async function handler(
     switch (req.method) {
       case "GET":
         return get(req, res);
-        break;
 
       case "POST":
         return post(req, res);
-        break;
 
       case "PATCH":
         res.status(200).json({ message: "PATCH" });
