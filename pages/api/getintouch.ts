@@ -56,9 +56,7 @@ const post = async (
       preferredTime: req.body.preferredTime,
     };
     const insertOneRes = await collection.insertOne(x);
-    return res
-      .status(200)
-      .json({ message: "Success", data: { ...insertOneRes, ...x } });
+    return res.status(200).json({ message: "Success", data: insertOneRes });
   } catch (error) {
     return res
       .status(500)
