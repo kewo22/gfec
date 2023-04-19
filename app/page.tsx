@@ -24,9 +24,9 @@ export default async function Home() {
 
   return (
     <main className="">
-      <pre>ssss - {JSON.stringify(artistData || null, null, 4)}</pre>
+      {/* <pre>ssss - {JSON.stringify(artistData || null, null, 4)}</pre>
       <h1>ooo - {artistData?.data[0]?.email || "NO"}</h1>
-      <h1>--- HHHHHHHHHHHH87878787878787878HHHHHHHHHHHHHHh ----</h1>
+      <h1>--- HHHHHHHHHHHH87878787878787878HHHHHHHHHHHHHHh ----</h1> */}
       <Hero />
       <About />
       <OurServices />
