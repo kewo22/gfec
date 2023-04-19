@@ -49,9 +49,10 @@ const post = async (
 
     const insertOneRes = await collection.insertOne(x);
     if (insertOneRes.insertedId) {
+      const port = process.env.NODEMAILER_PORT as unknown as number;
       const transporter = nodemailer.createTransport({
         service: process.env.NODEMAILER_SERVICE,
-        port: process.env.NODEMAILER_PORT as unknown as number,
+        port,
         auth: {
           user: process.env.NODEMAILER_USER,
           pass: process.env.NODEMAILER_PASSWORD,
