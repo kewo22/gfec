@@ -16,6 +16,7 @@ const nextConfig = {
     NODEMAILER_PORT: process.env.NODEMAILER_PORT || 'NO NODEMAILER_PORT FROM NEXT.CONFIG',
     TO_MAIL: process.env.TO_MAIL || 'NO TO_MAIL FROM NEXT.CONFIG',
     APP_VER: process.env.APP_VER || 'NO APP_VER FROM NEXT.CONFIG',
+    API_BASE_URL: process.env.API_BASE_URL || 'NO API_BASE_URL FROM NEXT.CONFIG',
   },
 };
 

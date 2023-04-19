@@ -26,9 +26,7 @@ const validationSchema = Yup.object().shape({
 });
 
 async function postGetInTouch(values: IGetInTouch) {
-  const url = `https://uat.d2ergyqxpebfoy.amplifyapp.com/api/getintouch`;
-  // const url = `http://localhost:3000/api/getintouch`;
-
+  const url = `${process.env.API_BASE_URL}/getintouch` || "";
   await fetch(url, {
     method: "POST",
     headers: {
