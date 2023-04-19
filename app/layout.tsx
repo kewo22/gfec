@@ -1,11 +1,6 @@
 "use client";
-/* eslint-disable @next/next/no-sync-scripts */
 import Navigation from "./navigation";
 import { Ubuntu } from "@next/font/google";
-
-// import { config } from "@fortawesome/fontawesome-svg-core";
-// import "@fortawesome/fontawesome-svg-core/styles.css";
-// config.autoAddCss = false;
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
@@ -31,9 +26,14 @@ export default function RootLayout({
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
       <head />
+      {/* from-gray-100 to-gray-200 */}
       <body
-        className={`${ubuntu.className} text-accent h-full bg-gradient-to-b from-gray-100 to-gray-200`}
+        className={`${ubuntu.className} text-accent h-full bg-gradient-to-b `}
       >
+        <div className="bg"></div>
+        <div className="bg bg2"></div>
+        <div className="bg bg3"></div>
+
         <Navigation />
         {children}
         <Footer />

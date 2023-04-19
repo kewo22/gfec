@@ -48,7 +48,7 @@ export const Select: React.FC<InputProps> = ({ ...props }) => {
       <Label
         htmlFor={htmlFor}
         value={label}
-        className="absolute z-10 w-full pl-3 mt-2 font-bold"
+        className="absolute z-10 w-full pl-3 mt-2 font-extrabold text-xs"
       />
       <FBSelect
         id={htmlFor}

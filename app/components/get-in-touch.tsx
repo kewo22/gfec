@@ -72,7 +72,7 @@ export default function GetInTouch() {
   };
 
   return (
-    <section className="mb-20 mx-7 lg:mx-20 xl:mx-36">
+    <section className="mb-24 mx-7 lg:mx-20 xl:mx-36">
       <h1 className="text-2xl sm:text-3xl font-bold leading-normal tracking-tight text-center text-gray-900 mb-5">
         Get in touch
       </h1>

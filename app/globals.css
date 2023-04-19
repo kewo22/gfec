@@ -186,8 +186,8 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 /* Remove this if flowbite select allows theme prop */
 #PreferredTime {
   background: white !important;
-  border: none !important;
-  border-radius: 0 !important;
+  border: 1px solid rgb(209 213 219) !important;
+  border-radius: 0.5rem !important;
   outline: none !important;
 
   height: 4rem;
@@ -198,8 +198,39 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 
 #PreferredTime:focus {
   background: white !important ;
-  border: none !important;
-  border-radius: 0 !important;
+  border: 1px solid rgb(209 213 219) !important;
+  border-radius: 0.5rem !important;
   outline: none !important;
 }
 /* Remove this if flowbite select allows theme prop */
+
+.bg {
+  animation: slide 3s ease-in-out infinite alternate;
+  background-image: linear-gradient(-100deg, #eeeeee 50%, #fff5f5 50%);
+  /* background-image: linear-gradient(-100deg, #b5f1cc 50%, #b9f3fc 50%); */
+  bottom: 0;
+  left: -50%;
+  opacity: 0.5;
+  position: fixed;
+  right: -50%;
+  top: 0;
+  z-index: -1;
+}
+
+.bg2 {
+  animation-direction: alternate-reverse;
+  animation-duration: 4s;
+}
+
+.bg3 {
+  animation-duration: 5s;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(-25%);
+  }
+  100% {
+    transform: translateX(25%);
+  }
+}

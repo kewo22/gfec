@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useMemo } from "react";
 import { GoogleMap, MarkerF, useJsApiLoader } from "@react-google-maps/api";
 import { Spinner } from "flowbite-react";
 import GetInTouch from "../components/get-in-touch";
@@ -35,8 +35,8 @@ export default function About() {
   }, []);
 
   return (
-    <section className="mb-20 lg:mt-10">
-      <div className="w-full h-96 flex items-center justify-center mb-10">
+    <section className="mb-20 sm:mb-32 lg:mt-10">
+      <div className="w-full h-[450px] flex items-center justify-center mb-20 sm:mb-32">
         {isLoaded && (
           <GoogleMap
             mapContainerStyle={containerStyle}
