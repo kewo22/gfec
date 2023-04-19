@@ -51,6 +51,7 @@ const post = async (
     if (insertOneRes.insertedId) {
       const transporter = nodemailer.createTransport({
         service: process.env.NODEMAILER_SERVICE,
+        port: process.env.NODEMAILER_PORT as unknown as number,
         auth: {
           user: process.env.NODEMAILER_USER,
           pass: process.env.NODEMAILER_PASSWORD,
