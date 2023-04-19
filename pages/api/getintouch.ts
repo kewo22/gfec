@@ -26,7 +26,7 @@ const get = async (
   } catch (error) {
     return res
       .status(500)
-      .json({ data: "catch err", message: `Success - 3 ${uri}`, error });
+      .json({ data: "catch err", message: `Success - 1 ${uri}`, error });
   }
 };
 
@@ -52,11 +52,13 @@ const post = async (
       preferredTime: JSON.parse(req.body).preferredTime,
     };
     const insertOneRes = await collection.insertOne(x);
-    return res.status(200).json({ message: "Success", data: insertOneRes });
+    return res
+      .status(200)
+      .json({ message: `Success - 2 ${uri}`, data: insertOneRes });
   } catch (error) {
     return res
       .status(500)
-      .json({ data: "catch err", message: `Success - 4 ${uri}`, error });
+      .json({ data: "catch err", message: `Success - 3 ${uri}`, error });
   }
 };
 
