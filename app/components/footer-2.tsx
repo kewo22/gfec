@@ -132,7 +132,7 @@ export default function Footer2() {
           </div>
         </div>
       </div>
-      <hr className="mt-6 mb-2 border-gray-200 sm:mx-auto  lg:my-8" />
+      <hr className="mt-6 mb-2 border-secondary sm:mx-auto  lg:my-8" />
       <div className="sm:flex sm:items-center sm:justify-between">
         <span className="text-sm sm:text-center text-white">
           © 2023 &nbsp;
