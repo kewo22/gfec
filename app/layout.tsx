@@ -7,7 +7,8 @@ import { fas } from "@fortawesome/free-solid-svg-icons";
 library.add(fas);
 
 import "./globals.css";
-import Footer from "./components/footer";
+// import Footer from "./components/footer";
+import Footer2 from "./components/footer-2";
 
 const ubuntu = Ubuntu({
   weight: "300",
@@ -36,7 +37,7 @@ export default function RootLayout({
 
         <Navigation />
         {children}
-        <Footer />
+        <Footer2 />
       </body>
     </html>
   );
