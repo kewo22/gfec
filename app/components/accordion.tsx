@@ -22,11 +22,11 @@ export default function Accordion() {
     //   description:
     //     "Provide complete career counseling to students on the range of courses based on his/her interest such as Pathways, Foundation, Diploma, Undergraduate, Postgraduate, & English language courses.",
     // },
-    {
-      header: "Health Insurance",
-      description:
-        "Health Insurance for Overseas Students, 485 & 457 Visa Holders.",
-    },
+    // {
+    //   header: "Health Insurance",
+    //   description:
+    //     "Health Insurance for Overseas Students, 485 & 457 Visa Holders.",
+    // },
   ];
 
   return (
