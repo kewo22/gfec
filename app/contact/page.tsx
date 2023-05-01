@@ -35,12 +35,18 @@ export default function About() {
   }, []);
 
   return (
-    <section className="mb-20 sm:mb-32 lg:mt-10">
-      <h1 className="text-2xl sm:text-3xl font-bold leading-normal tracking-tight text-center text-gray-900 mb-5">
-        Find Us At
-      </h1>
+    <section className="mb-20 sm:mb-32 mt-20 lg:mt-10 mx-7 lg:mx-20 xl:mx-36">
+      <div className="mb-10">
+        <h1 className="text-2xl sm:text-3xl font-bold leading-normal tracking-tight text-center text-gray-900 mb-5">
+          How can we help?
+        </h1>
+        <p className="font-light text-base leading-8 tracking-tight text-gray-900 text-center lg:px-0">
+          If you are planning to study abroad please fill below form or get in
+          touch with our office and we will consult you throughout your journey.
+        </p>
+      </div>
 
-      <div className="w-full h-[450px] flex items-center justify-center mb-20 sm:mb-32">
+      <div className="w-full h-[450px] flex items-center justify-center">
         {isLoaded && (
           <GoogleMap
             mapContainerStyle={containerStyle}

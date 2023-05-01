@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 import { Bars3Icon, PhoneArrowDownLeftIcon } from "@heroicons/react/24/outline";
 
@@ -11,6 +12,8 @@ import MobileNavigation from "./mobile-nav-bar";
 import { NavItems } from "./constants/nav-items.constants";
 
 export default function Navigation() {
+  const router = useRouter();
+
   const [mobileNavPositionClass, setMobileNavPositionClass] =
     useState("left-full");
 
@@ -33,21 +36,26 @@ export default function Navigation() {
     });
   };
 
+  const onLogoClick = () => {
+    router.push("/");
+  };
+
   return (
     <>
       <nav
         id="main-nav"
-        className="relative bg-white flex items-center sm:justify-between w-full mb-5 sm:mb-16 border-b-2 px-5 lg:px-20 xl:px-36"
+        className="relative bg-white flex items-center sm:justify-between w-full border-b-2 px-5 lg:px-20 xl:px-36"
       >
-        <Image
-          src="/GFEC-Trans.png"
-          alt="Next.js Logo"
-          width={170}
-          height={120}
-          priority
-          className=""
-        />
-
+        <div role="button" onClick={onLogoClick}>
+          <Image
+            src="/GFEC-Trans.png"
+            alt="Next.js Logo"
+            width={170}
+            height={120}
+            priority
+            className=""
+          />
+        </div>
         <div className="flex flex-col items-end">
           <section className="hidden sm:flex mb-3">
             <div className="flex items-center">
@@ -87,13 +95,11 @@ export default function Navigation() {
             </div>
           </div>
         </div>
-
         <PhoneArrowDownLeftIcon
           className="h-6 w-6 mr-5 ml-auto sm:hidden"
           role="button"
           onClick={onRequestCallbackClick}
         />
-
         <Bars3Icon onClick={onMenuClick} className="h-10 w-10 sm:hidden mr-5" />
       </nav>
       <MobileNavigation

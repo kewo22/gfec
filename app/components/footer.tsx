@@ -1,15 +1,10 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 
 import styles from "../page.module.css";
-import { Button, Label, TextInput } from "flowbite-react";
-import FaceBookIcon from "../icons/fb";
-import InstagramIcon from "../icons/instagram";
-import LinkedinIcon from "../icons/linkedIn";
-import TwitterIcon from "../icons/twitter";
-import YoutubeIcon from "../icons/youtube";
+import { Button } from "flowbite-react";
+
 import {
   AtSymbolIcon,
   BuildingOfficeIcon,
@@ -18,6 +13,9 @@ import {
 } from "@heroicons/react/24/outline";
 
 export default function Footer2() {
+  const emails = (process.env.EMAILS as unknown as string)?.split(",") || [];
+  const phoneNos = (process.env.PHONE as unknown as string)?.split(",") || [];
+
   return (
     <footer className="bg-primary">
       <div className="md:flex md:justify-between p-5 pb-0">
@@ -32,26 +30,20 @@ export default function Footer2() {
           <div className="flex items-center mb-5">
             <PhoneIcon className="h-4 w-4 mr-2 text-white" strokeWidth={2} />
             <div className="border-l-2 border-l-secondary pl-1">
-              <a
-                className="text-sm font-light text-white"
-                href="tel:0761561870"
-              >
-                076 156 1870
-              </a>
-              <br />
-              <a
-                className="text-sm font-light text-white"
-                href="tel:0779024112"
-              >
-                077 902 4112
-              </a>
-              <br />
-              <a
-                className="text-sm font-light text-white"
-                href="tel:076 858359"
-              >
-                076 285 8359
-              </a>
+              {phoneNos?.map((phoneNo, i) => {
+                return (
+                  <>
+                    <a
+                      className="text-sm font-light text-white"
+                      href={`tel:${phoneNo}`}
+                      key={i}
+                    >
+                      {phoneNo}
+                    </a>
+                    {i !== phoneNos.length - 1 && <br />}
+                  </>
+                );
+              })}
             </div>
           </div>
 
@@ -59,7 +51,21 @@ export default function Footer2() {
             <AtSymbolIcon className="h-4 w-4 mr-2 text-white" strokeWidth={2} />
             {/* <img src="mail.svg" class="h-4 w-4 mr-2" /> */}
             <div className="border-l-2 border-l-secondary pl-1">
-              <a
+              {emails?.map((mail, i) => {
+                return (
+                  <>
+                    <a
+                      className="text-sm font-light text-white"
+                      href={`tel:${mail}`}
+                      key={i}
+                    >
+                      {mail}
+                    </a>
+                    {i !== phoneNos.length - 1 && <br />}
+                  </>
+                );
+              })}
+              {/* <a
                 className="text-sm font-light text-white"
                 href="mailto:mgr@gfeconsultancy.com"
               >
@@ -71,7 +77,7 @@ export default function Footer2() {
                 href="mailto:paviyan@gfeconsultancy.com"
               >
                 paviyan@gfeconsultancy.com
-              </a>
+              </a> */}
             </div>
           </div>
         </div>
