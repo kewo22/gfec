@@ -12,13 +12,13 @@ export default function About() {
       </h1>
 
       <div className="xl:flex xl:gap-8">
-        <div className="mb-4 xl:w-1/2 flex items-center">
+        <div className="mb-4 xl:mb-0 xl:w-1/2 flex items-center">
           <video autoPlay={true} controls={true} src="https://gfce.s3.amazonaws.com/vid.mp4" width="100%" />
           {/* <video autoPlay={true} controls={true} src="/vid.mp4" width="100%" /> */}
         </div>
 
         <div className="xl:xl:w-1/2">
-          <p className="mb-4 font-light text-base leading-8 tracking-tight text-gray-900 text-justify">
+          <p className="mb-4 font-light text-base leading-8 tracking-tight text-gray-900 text-justify bg-white h-full p-10 flex items-center justify-center">
             We understand that the prospect of higher education can be daunting,
             but with our help, you can confidently navigate the college and
             university landscape. Our counselors have years of experience

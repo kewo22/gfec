@@ -1,14 +1,15 @@
 "use client";
-import Navigation from "./navigation";
 import { Ubuntu } from "@next/font/google";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
+
+import Navigation from "./navigation-3";
+
 library.add(fas);
 
 import "./globals.css";
-// import Footer from "./components/footer";
-import Footer2 from "./components/footer-2";
+import Footer from "./components/footer";
 
 const ubuntu = Ubuntu({
   weight: "300",
@@ -37,7 +38,7 @@ export default function RootLayout({
 
         <Navigation />
         {children}
-        <Footer2 />
+        <Footer />
       </body>
     </html>
   );

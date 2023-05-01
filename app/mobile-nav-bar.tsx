@@ -1,12 +1,12 @@
 "use client";
 
-import React, { useEffect, useLayoutEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 
 import Image from "next/image";
 
 import {
   AtSymbolIcon,
-  ChevronRightIcon,
+  PhoneArrowDownLeftIcon,
   PhoneIcon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
@@ -14,12 +14,6 @@ import {
 import { MobileNav } from "./types/props/mobile-nav";
 import { NavItems } from "./constants/nav-items.constants";
 import Link from "next/link";
-
-import FaceBookIcon from "./icons/fb";
-import TwitterIcon from "./icons/twitter";
-import LinkedinIcon from "./icons/linkedIn";
-import YoutubeIcon from "./icons/youtube";
-import InstagramIcon from "./icons/instagram";
 
 import styles from "./page.module.css";
 
@@ -53,7 +47,6 @@ export default function MobileNavigation(props: MobileNav) {
           height={70}
           priority
         />
-        {/* <XMarkIcon className="h-6 w-6" onClick={onCloseMenu} /> */}
       </div>
 
       <section className="text-lg font-medium">
@@ -66,32 +59,27 @@ export default function MobileNavigation(props: MobileNav) {
               onClick={onCloseMenu}
             >
               {item.text}
-              {/* <ChevronRightIcon className="h-4 w-4" /> */}
             </Link>
           );
         })}
       </section>
 
       <section className="">
-        <div className="flex flex-row items-start justify-between mb-4">
+        {/* <div className="flex flex-row items-start justify-between mb-4">
           <div className="text-accent flex items-center text-sm font-medium">
             <PhoneIcon className="h-4 w-4 mr-2" strokeWidth={2} />
-            <a href="tel:0771782888">0771782888</a>
+            <a href="tel:0771789038">0771789038</a>
           </div>
           <div className="text-accent flex items-center text-base font-medium">
             <AtSymbolIcon className="h-4 w-4 mr-2" strokeWidth={2} />
             <a href="mailto:email@gmail.com">email@gmail.com</a>
           </div>
-        </div>
+        </div> */}
+
         <div className="flex items-center justify-center">
           <span className="text-lg text-accent icon-facebook mr-2"></span>
           <span className="text-lg text-accent icon-instagram mr-2"></span>
           <span className="text-lg text-accent icon-linkedln mr-2"></span>
-          {/* <FaceBookIcon />
-          <TwitterIcon />
-          <LinkedinIcon />
-          <YoutubeIcon />
-          <InstagramIcon /> */}
         </div>
       </section>
     </div>

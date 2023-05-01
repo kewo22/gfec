@@ -36,6 +36,10 @@ export default function About() {
 
   return (
     <section className="mb-20 sm:mb-32 lg:mt-10">
+      <h1 className="text-2xl sm:text-3xl font-bold leading-normal tracking-tight text-center text-gray-900 mb-5">
+        Find Us At
+      </h1>
+
       <div className="w-full h-[450px] flex items-center justify-center mb-20 sm:mb-32">
         {isLoaded && (
           <GoogleMap

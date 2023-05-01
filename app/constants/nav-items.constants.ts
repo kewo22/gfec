@@ -4,16 +4,25 @@ export const NavItems: MobileNavItem[] = [
   {
     text: "Home",
     route: "",
-    class: "border-r-2 border-r-primary",
+    class: "px-2",
+    // border-r-2 border-r-primary
   },
   {
     text: "About",
     route: "about",
-    class: "border-r-2 border-r-primary",
+    class: "px-2",
+    // border-r-2 border-r-primary
+  },
+  {
+    text: "Destination",
+    route: "destination",
+    class: "px-2",
+    // border-r-2 border-r-primary
   },
   {
     text: "Contact",
     route: "contact",
-    class: "border-r-0",
+    class: "px-2",
+    // border-r-0
   },
 ];

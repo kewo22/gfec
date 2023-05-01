@@ -110,7 +110,7 @@ export default function SupportedCountries(props: ButtonProps) {
   ];
 
   return (
-    <section className="w-full mb-20">
+    <section className="w-full">
       <h1 className="text-2xl sm:text-3xl font-bold leading-normal tracking-tight text-center text-gray-900 mb-5">
         Could your next home be?
       </h1>

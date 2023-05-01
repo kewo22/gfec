@@ -2,12 +2,19 @@
 
 import React from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 import styles from "../page.module.css";
 import { Button } from "flowbite-react";
 import Link from "next/link";
 
 export default function Hero() {
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push('/apply');
+  };
+
   return (
     <section className="mb-20 mx-7 lg:mx-20 xl:mx-36 sm:flex">
       <div className="h-full w-full m-auto flex flex-col justify-center text-center sm:mx-5 sm:text-left sm:px-0 lg:px-0">
@@ -22,7 +29,7 @@ export default function Hero() {
           about your future.
         </p>
 
-        <Button className="bg-secondary xl:w-56 hover:bg-primary focus:ring-0 focus:outline-none transition-all ease-in-out">
+        <Button className="bg-secondary xl:w-56 hover:bg-primary focus:ring-0 focus:outline-none transition-all ease-in-out" onClick={handleClick}>
           <Link href="apply" className="text-base">
             Apply Now
           </Link>

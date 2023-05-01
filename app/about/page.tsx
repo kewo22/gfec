@@ -5,16 +5,6 @@ import styles from "../page.module.css";
 export default function About() {
   return (
     <section className="mb-20 lg:mt-10">
-      <div className={`${styles.imageContainer} mb-20 sm:mb-32`}>
-        <Image
-          src="/about-banner.jpg"
-          alt="Illustration"
-          fill
-          priority
-          className={`opacity-100 sm:opacity-100 ${styles.image} ${styles.aboutBannerImage}`}
-        />
-      </div>
-
       <h1 className="text-2xl sm:text-3xl font-bold leading-normal tracking-tight text-center text-gray-900 mb-5">
         Who We Are?
       </h1>
@@ -36,8 +26,18 @@ export default function About() {
         support to students for years to come.
       </p>
 
+      <div className={`${styles.imageContainer} my-20 sm:my-32`}>
+        <Image
+          src="/about-banner.jpg"
+          alt="Illustration"
+          fill
+          priority
+          className={`opacity-100 sm:opacity-100 ${styles.image} ${styles.aboutBannerImage}`}
+        />
+      </div>
+
       <div className="flex flex-col sm:flex-row sm:gap-12 mb-20 sm:mb-32 px-10 lg:px-24 xl:px-52">
-        <div className="bg-primary p-8 mb-5 sm:mb-0 rounded-lg sm:flex-grow shadow-xl shadow-yellow-500/50">
+        <div className="bg-primary p-8 mb-16 sm:mb-0 rounded-lg sm:flex-grow shadow-xl shadow-yellow-500/50">
           <h1 className="text-2xl font-bold leading-normal tracking-tight text-center text-white mb-2">
             Our Vision
           </h1>
