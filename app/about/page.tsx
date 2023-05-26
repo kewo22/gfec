@@ -5,26 +5,29 @@ import styles from "../page.module.css";
 export default function About() {
   return (
     <section className="mb-20 lg:mt-10">
-      <h1 className="text-2xl sm:text-3xl font-bold leading-normal tracking-tight text-center text-gray-900 my-5">
-        Who We Are?
-      </h1>
+      <div className="mt-10 mb-20 sm:mb-32">
+        <h1 className="text-2xl sm:text-3xl font-bold leading-normal tracking-tight text-center text-gray-900 my-5">
+          Who We Are?
+        </h1>
 
-      <p className="font-light text-base leading-8 tracking-tight text-gray-900 text-justify mb-20 sm:mb-32 px-10 lg:px-24 xl:px-52">
-        We believe that access to quality education is a fundamental right, and
-        we&apos;re proud to be part of a community of organizations that share
-        this vision. <br /> <br /> As a leading overseas educational
-        consultation service provider in Sri Lanka, we understand the importance
-        of providing reliable and comprehensive guidance to students who are
-        looking to pursue higher education abroad. We recognize that studying
-        overseas can be a daunting prospect, with numerous challenges and
-        uncertainties that can make the process overwhelming. <br /> <br /> At
-        GFEC we&apos;re driven by a passion for education and a commitment to
-        ensuring that every student has access to the best possible
-        opportunities to achieve their goals. We&apos;re proud to be a leading
-        overseas educational consultation service provider in Sri Lanka, and
-        we&apos;re committed to continuing to provide exceptional guidance and
-        support to students for years to come.
-      </p>
+        <p className="font-light text-base leading-8 tracking-tight text-gray-900 text-justify px-10 lg:px-24 xl:px-52">
+          We believe that access to quality education is a fundamental right,
+          and we&apos;re proud to be part of a community of organizations that
+          share this vision. <br /> <br /> As a leading overseas educational
+          consultation service provider in Sri Lanka, we understand the
+          importance of providing reliable and comprehensive guidance to
+          students who are looking to pursue higher education abroad. We
+          recognize that studying overseas can be a daunting prospect, with
+          numerous challenges and uncertainties that can make the process
+          overwhelming. <br /> <br /> At GFEC we&apos;re driven by a passion for
+          education and a commitment to ensuring that every student has access
+          to the best possible opportunities to achieve their goals. We&apos;re
+          proud to be a leading overseas educational consultation service
+          provider in Sri Lanka, and we&apos;re committed to continuing to
+          provide exceptional guidance and support to students for years to
+          come.
+        </p>
+      </div>
 
       <div className={`${styles.imageContainer} my-20 sm:my-32`}>
         <Image

@@ -9,7 +9,8 @@ import { useRouter } from "next/navigation";
 import { Bars3Icon, PhoneArrowDownLeftIcon } from "@heroicons/react/24/outline";
 
 import MobileNavigation from "./mobile-nav-bar";
-import { NavItems } from "./constants/nav-items.constants";
+import { CountriesRoute, NavItems } from "./constants/nav-items.constants";
+import { Dropdown } from "flowbite-react";
 
 export default function Navigation() {
   const router = useRouter();
@@ -74,14 +75,34 @@ export default function Navigation() {
           <div className="hidden sm:flex flex-row">
             {NavItems.map((item, i) => {
               return (
-                <Link
-                  key={item.text}
-                  className={`text-accent flex items-center justify-center first:m-0 font-bold ${item.class} hover:text-primary transition-all ease-in-out text-base lg:text-lg`}
-                  href={item.route}
-                  onClick={onCloseMenu}
-                >
-                  {item.text}
-                </Link>
+                <div key={i} className="flex items-center justify-center">
+                  {item.type === "link" && (
+                    <Link
+                      key={item.text}
+                      className={`text-accent flex items-center justify-center first:m-0 font-bold ${item.class} hover:text-primary transition-all ease-in-out text-base lg:text-lg`}
+                      href={item.route}
+                      onClick={onCloseMenu}
+                    >
+                      {item.text}
+                    </Link>
+                  )}
+                  {/* {item.type === "popover" && (
+                    <Dropdown
+                      key={i}
+                      label={item.text}
+                      inline={true}
+                      arrowIcon={false}
+                    >
+                      {CountriesRoute.map((country, i) => {
+                        return (
+                          <Dropdown.Item key={i}>
+                            <Link href={country.route}>{country.country}</Link>
+                          </Dropdown.Item>
+                        );
+                      })}
+                    </Dropdown>
+                  )} */}
+                </div>
               );
             })}
 

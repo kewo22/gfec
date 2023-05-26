@@ -9,7 +9,7 @@ import Accordion from "./accordion";
 export default function OurServices() {
   return (
     <div className="mb-20 mx-7 lg:mx-20 xl:mx-36">
-      <h1 className="mb-4 text-xl sm:text-3xl font-bold leading-normal tracking-tight text-center text-gray-900 lg:px-32 xl:px-60">
+      <h1 className="mb-4 text-2xl sm:text-3xl font-bold leading-normal tracking-tight text-center text-gray-900 lg:px-32 xl:px-60">
         Our Services
       </h1>
       <div className="w-full flex flex-col xl:flex-row gap-5">

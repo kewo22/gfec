@@ -7,6 +7,7 @@ import Image from "next/image";
 import styles from "../page.module.css";
 import Swipe from "react-easy-swipe";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
+import { COUNTRIES } from "../constants/countries.constants";
 
 interface ButtonProps extends React.AllHTMLAttributes<HTMLElement> {
   title?: string;
@@ -41,74 +42,6 @@ export default function SupportedCountries(props: ButtonProps) {
     document.querySelector("#country-list")?.scrollBy(scrollToOptions);
   };
 
-  const countries = [
-    {
-      image: "/aus.jpg",
-      country: "Australia",
-      class: "mr-4",
-    },
-    {
-      image: "/uk-2.jpg",
-      country: "United Kingdom",
-      class: "mr-4",
-    },
-    {
-      image: "/toronto.jpg",
-      country: "Canada",
-      class: "mr-4",
-    },
-    {
-      image: "/finland-2.jpg",
-      country: "Finland",
-      class: "mr-4",
-    },
-    {
-      image: "/belarus.jpg",
-      country: "Belarus",
-      class: "mr-4",
-    },
-    {
-      image: "/germany.jpg",
-      country: "Germany",
-      class: "mr-4",
-    },
-    {
-      image: "/italy.jpg",
-      country: "Italy",
-      class: "mr-4",
-    },
-    {
-      image: "/sweden.jpg",
-      country: "Sweden",
-      class: "mr-4",
-    },
-    {
-      image: "/russia.jpg",
-      country: "Russia",
-      class: "mr-4",
-    },
-    {
-      image: "/france.jpg",
-      country: "France",
-      class: "mr-4",
-    },
-    {
-      image: "/netherlands.jpg",
-      country: "Netherlands",
-      class: "mr-4",
-    },
-    {
-      image: "/latvia.jpg",
-      country: "Latvia",
-      class: "mr-4",
-    },
-    {
-      image: "/switzerland.jpg",
-      country: "Switzerland",
-      class: "",
-    },
-  ];
-
   return (
     <section className="w-full">
       <h1 className="text-2xl sm:text-3xl font-bold leading-normal tracking-tight text-center text-gray-900 mb-5">
@@ -119,7 +52,7 @@ export default function SupportedCountries(props: ButtonProps) {
         id="country-list"
         className={`${styles.hideScroll} flex overflow-x-auto px-4`}
       >
-        {countries.map((country, index) => {
+        {COUNTRIES.map((country) => {
           return (
             <div
               key={country.country}

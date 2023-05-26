@@ -29,9 +29,8 @@ export default function RootLayout({
       */}
       <head />
       {/* from-gray-100 to-gray-200 */}
-      <body
-        className={`${ubuntu.className} text-accent h-full bg-gradient-to-b `}
-      >
+      {/* `${ubuntu.className} text-accent h-full bg-gradient-to-b ` */}
+      <body className={`${ubuntu.className}`}>
         <div className="bg"></div>
         <div className="bg bg2"></div>
         <div className="bg bg3"></div>

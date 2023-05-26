@@ -12,7 +12,7 @@ import {
   PhoneIcon,
 } from "@heroicons/react/24/outline";
 
-export default function Footer2() {
+export default function Footer() {
   const emails = (process.env.EMAILS as unknown as string)?.split(",") || [];
   const phoneNos = (process.env.PHONE as unknown as string)?.split(",") || [];
 
@@ -32,16 +32,14 @@ export default function Footer2() {
             <div className="border-l-2 border-l-secondary pl-1">
               {phoneNos?.map((phoneNo, i) => {
                 return (
-                  <>
+                  <div key={i}>
                     <a
                       className="text-sm font-light text-white"
                       href={`tel:${phoneNo}`}
-                      key={i}
                     >
                       {phoneNo}
                     </a>
-                    {i !== phoneNos.length - 1 && <br />}
-                  </>
+                  </div>
                 );
               })}
             </div>
@@ -53,16 +51,14 @@ export default function Footer2() {
             <div className="border-l-2 border-l-secondary pl-1">
               {emails?.map((mail, i) => {
                 return (
-                  <>
+                  <div key={i}>
                     <a
                       className="text-sm font-light text-white"
                       href={`tel:${mail}`}
-                      key={i}
                     >
                       {mail}
                     </a>
-                    {i !== phoneNos.length - 1 && <br />}
-                  </>
+                  </div>
                 );
               })}
               {/* <a
@@ -147,6 +143,15 @@ export default function Footer2() {
             GEFC™
           </a>
           . All Rights Reserved.
+        </span>
+
+        <span className="text-xs sm:text-center text-white">
+          <a
+            href={`${process.env.APP_BASE_URL}/privacy-policy`}
+            className="hover:underline"
+          >
+            Privacy Policy
+          </a>
         </span>
       </div>
     </footer>
