@@ -27,6 +27,7 @@ export default function Footer() {
               <br /> Sri Lanka.
             </span>
           </div>
+
           <div className="flex items-center mb-5">
             <PhoneIcon className="h-4 w-4 mr-2 text-white" strokeWidth={2} />
             <div className="border-l-2 border-l-secondary pl-1">
@@ -47,7 +48,6 @@ export default function Footer() {
 
           <div className="flex items-center mb-5">
             <AtSymbolIcon className="h-4 w-4 mr-2 text-white" strokeWidth={2} />
-            {/* <img src="mail.svg" class="h-4 w-4 mr-2" /> */}
             <div className="border-l-2 border-l-secondary pl-1">
               {emails?.map((mail, i) => {
                 return (
@@ -61,19 +61,6 @@ export default function Footer() {
                   </div>
                 );
               })}
-              {/* <a
-                className="text-sm font-light text-white"
-                href="mailto:mgr@gfeconsultancy.com"
-              >
-                mgr@gfeconsultancy.com
-              </a>
-              <br />
-              <a
-                className="text-sm font-light text-white"
-                href="mailto:paviyan@gfeconsultancy.com"
-              >
-                paviyan@gfeconsultancy.com
-              </a> */}
             </div>
           </div>
         </div>
@@ -105,9 +92,6 @@ export default function Footer() {
               <span className="text-sm font-light text-white">
                 Saturday: 9:00 AM - 1:00 PM
               </span>
-              {/* <span className="text-sm font-light text-white">
-                Saturday : 9:00 AM - 1:00 PM
-              </span> */}
             </div>
           </div>
         </div>
@@ -137,22 +121,22 @@ export default function Footer() {
       </div>
       <hr className="border-secondary sm:mx-auto" />
       <div className="sm:flex sm:items-center sm:justify-between py-2 px-4">
-        {/* <span className="text-xs sm:text-center text-white">
+        <span className="text-xs sm:text-center text-white">
           © 2023 &nbsp;
           <a href="https://flowbite.com/" className="hover:underline">
             GEFC™
           </a>
           . All Rights Reserved.
-        </span> */}
+        </span>
 
-        {/* <span className="text-xs sm:text-center text-white">
+        <span className="text-xs sm:text-center text-white">
           <a
             href={`${process.env.APP_BASE_URL}/privacy-policy`}
             className="hover:underline"
           >
             Privacy Policy
           </a>
-        </span> */}
+        </span>
       </div>
     </footer>
   );
