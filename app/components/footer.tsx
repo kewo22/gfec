@@ -137,22 +137,22 @@ export default function Footer() {
       </div>
       <hr className="border-secondary sm:mx-auto" />
       <div className="sm:flex sm:items-center sm:justify-between py-2 px-4">
-        <span className="text-xs sm:text-center text-white">
+        {/* <span className="text-xs sm:text-center text-white">
           © 2023 &nbsp;
           <a href="https://flowbite.com/" className="hover:underline">
             GEFC™
           </a>
           . All Rights Reserved.
-        </span>
+        </span> */}
 
-        <span className="text-xs sm:text-center text-white">
+        {/* <span className="text-xs sm:text-center text-white">
           <a
             href={`${process.env.APP_BASE_URL}/privacy-policy`}
             className="hover:underline"
           >
             Privacy Policy
           </a>
-        </span>
+        </span> */}
       </div>
     </footer>
   );

@@ -85,7 +85,7 @@ export default function GetInTouch() {
   };
 
   return (
-    <section className="pt-20 mb-24" id="get-in-touch">
+    <section className="pt-20 mb-20 mx-7 lg:mx-20 xl:mx-36" id="get-in-touch">
       <h1 className="text-2xl sm:text-3xl font-bold leading-normal tracking-tight text-center text-gray-900 mb-5">
         Get in touch
       </h1>
