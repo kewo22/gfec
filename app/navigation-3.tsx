@@ -15,6 +15,9 @@ import { Dropdown } from "flowbite-react";
 export default function Navigation() {
   const router = useRouter();
 
+  const emails = (process.env.EMAILS as unknown as string)?.split(",") || [];
+  const phoneNos = (process.env.PHONE as unknown as string)?.split(",") || [];
+
   const [mobileNavPositionClass, setMobileNavPositionClass] =
     useState("left-full");
 
@@ -45,48 +48,81 @@ export default function Navigation() {
     <>
       <nav
         id="main-nav"
-        className="relative bg-white flex items-center sm:justify-between w-full border-b-2 px-5 lg:px-20 xl:px-36"
+        className="relative bg-white flex sm:flex-col w-full border-b-2"
       >
-        <div role="button" onClick={onLogoClick}>
-          <Image
-            src="/GFEC-Trans.png"
-            alt="Next.js Logo"
-            width={170}
-            height={120}
-            priority
-            className=""
-          />
-        </div>
-        <div className="flex flex-col items-end">
-          <section className="hidden sm:flex mb-3">
-            <div className="flex items-center">
-              <span className="mr-2 p-2 rounded-xl bg-primary flex items-center justify-center">
-                <span className="text-base text-white icon-facebook"></span>
-              </span>
-              <span className="mr-2 p-2 rounded-xl bg-primary flex items-center justify-center">
-                <span className="text-base text-white icon-instagram"></span>
-              </span>
-              <span className="mr-2 p-2 rounded-xl bg-primary flex items-center justify-center">
-                <span className="text-base text-white icon-linkedln"></span>
-              </span>
-            </div>
-          </section>
-
-          <div className="hidden sm:flex flex-row">
-            {NavItems.map((item, i) => {
+        <div className="hidden sm:flex justify-between bg-primary text-accent py-1 pl-1 lg:pl-5 lg:pr-3">
+          <div>
+            {emails?.map((mail, i) => {
               return (
-                <div key={i} className="flex items-center justify-center">
-                  {item.type === "link" && (
-                    <Link
-                      key={item.text}
-                      className={`text-accent flex items-center justify-center first:m-0 font-bold ${item.class} hover:text-primary transition-all ease-in-out text-base lg:text-lg`}
-                      href={item.route}
-                      onClick={onCloseMenu}
-                    >
-                      {item.text}
-                    </Link>
-                  )}
-                  {/* {item.type === "popover" && (
+                <div key={i} className="inline">
+                  <a
+                    className="text-xs lg:text-sm font-light text-white"
+                    href={`tel:${mail}`}
+                  >
+                    {mail} &nbsp;
+                  </a>
+                </div>
+              );
+            })}
+          </div>
+
+          <div>
+            {phoneNos?.map((phone, i) => {
+              return (
+                <div key={i} className="inline">
+                  <a
+                    className="text-xs lg:text-sm font-light text-white"
+                    href={`tel:${phone}`}
+                  >
+                    {phone} &nbsp;
+                  </a>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        <div className="flex items-center sm:justify-between w-full px-5 lg:px-20 xl:px-36">
+          <div role="button" onClick={onLogoClick}>
+            <Image
+              src="/GFEC-Trans.png"
+              alt="Next.js Logo"
+              width={170}
+              height={120}
+              priority
+              className=""
+            />
+          </div>
+          <div className="flex flex-col items-end">
+            <section className="hidden sm:flex mb-3">
+              <div className="flex items-center">
+                <span className="mr-2 p-2 rounded-xl bg-primary flex items-center justify-center">
+                  <span className="text-base text-white icon-facebook"></span>
+                </span>
+                <span className="mr-2 p-2 rounded-xl bg-primary flex items-center justify-center">
+                  <span className="text-base text-white icon-instagram"></span>
+                </span>
+                <span className="mr-2 p-2 rounded-xl bg-primary flex items-center justify-center">
+                  <span className="text-base text-white icon-linkedln"></span>
+                </span>
+              </div>
+            </section>
+
+            <div className="hidden sm:flex flex-row">
+              {NavItems.map((item, i) => {
+                return (
+                  <div key={i} className="flex items-center justify-center">
+                    {item.type === "link" && (
+                      <Link
+                        key={item.text}
+                        className={`text-accent flex items-center justify-center first:m-0 font-bold ${item.class} hover:text-primary transition-all ease-in-out text-base lg:text-lg`}
+                        href={item.route}
+                        onClick={onCloseMenu}
+                      >
+                        {item.text}
+                      </Link>
+                    )}
+                    {/* {item.type === "popover" && (
                     <Dropdown
                       key={i}
                       label={item.text}
@@ -102,26 +138,32 @@ export default function Navigation() {
                       })}
                     </Dropdown>
                   )} */}
-                </div>
-              );
-            })}
+                  </div>
+                );
+              })}
 
-            <div
-              className="bg-primary ml-5 px-5 py-2 rounded-lg text-white flex items-center text-sm"
-              role="button"
-              onClick={onRequestCallbackClick}
-            >
-              <PhoneArrowDownLeftIcon className="h-4 w-4 text-white mr-3" />
-              Request a callback
+              <div
+                className="bg-primary ml-5 px-5 py-2 rounded-lg text-white flex items-center text-sm"
+                role="button"
+                onClick={onRequestCallbackClick}
+              >
+                <PhoneArrowDownLeftIcon className="h-4 w-4 text-white mr-3" />
+                Request a callback
+              </div>
             </div>
           </div>
         </div>
-        <PhoneArrowDownLeftIcon
-          className="h-6 w-6 mr-5 ml-auto sm:hidden"
-          role="button"
-          onClick={onRequestCallbackClick}
-        />
-        <Bars3Icon onClick={onMenuClick} className="h-10 w-10 sm:hidden mr-5" />
+        <div className="flex items-center">
+          <PhoneArrowDownLeftIcon
+            className="h-6 w-6 mr-5 ml-auto sm:hidden"
+            role="button"
+            onClick={onRequestCallbackClick}
+          />
+          <Bars3Icon
+            onClick={onMenuClick}
+            className="h-10 w-10 sm:hidden mr-5"
+          />
+        </div>
       </nav>
       <MobileNavigation
         mobileNavPositionClass={mobileNavPositionClass}

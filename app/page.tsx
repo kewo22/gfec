@@ -17,13 +17,13 @@ async function getGetInTouchData() {
 }
 
 export default async function Home() {
-  const artistData = await getGetInTouchData();
+  // const artistData = await getGetInTouchData();
 
   // const { height } = useNavigationHeight();
   // console.log(height);
 
   return (
-    <main className="mt-10">
+    <main className="mt-10 lg:mt-20">
       {/* <pre>ssss - {JSON.stringify(artistData || null, null, 4)}</pre>
       <h1>ooo - {artistData?.data[0]?.email || "NO"}</h1>
       <h1>--- HHHHHHHHHHHH87878787878787878HHHHHHHHHHHHHHh ----</h1> */}

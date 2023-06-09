@@ -13,12 +13,17 @@ export default function About() {
 
       <div className="xl:flex xl:gap-8">
         <div className="mb-4 xl:mb-0 xl:w-1/2 flex items-center">
-          <video autoPlay={true} controls={true} src="https://gfce.s3.amazonaws.com/vid.mp4" width="100%" />
+          <video
+            autoPlay={true}
+            controls={true}
+            src="https://gfce.s3.amazonaws.com/vid.mp4"
+            width="100%"
+          />
           {/* <video autoPlay={true} controls={true} src="/vid.mp4" width="100%" /> */}
         </div>
 
         <div className="xl:xl:w-1/2">
-          <p className="mb-4 font-light text-base leading-8 tracking-tight text-gray-900 text-justify bg-white h-full p-10 flex items-center justify-center">
+          <p className="mb-4 font-light text-base leading-8 tracking-tight text-white text-justify bg-primary h-full p-10 flex items-center justify-center">
             We understand that the prospect of higher education can be daunting,
             but with our help, you can confidently navigate the college and
             university landscape. Our counselors have years of experience
@@ -26,16 +31,6 @@ export default function About() {
             expertise to help you identify your strengths, interests, and career
             goals.
           </p>
-
-          {/* <p className="font-light text-base leading-8 tracking-tight text-gray-900 text-justify">
-            Boomerang International Educational Services is registered with the
-            Office of Consumer and Business Affairs of South Australia, and is
-            run as ASIC registered Company in Australia. The company is well
-            aware of the Education Services for Overseas Students Act 2000 and
-            the obligations of the providers in respect to the requirements of
-            the act. Our values are Honesty, Good Communication and Good Service
-            to Students.
-          </p> */}
         </div>
       </div>
     </section>

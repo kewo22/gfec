@@ -190,7 +190,7 @@ export default function GetInTouch() {
           <div className="relative">
             <Button
               type="submit"
-              className="w-full sm:w-56 mx-auto bg-secondary xl:w-56 hover:bg-primary focus:ring-0 focus:outline-none transition-all ease-in-out"
+              className="w-full sm:w-56 mx-auto bg-primary xl:w-56 hover:bg-secondary focus:ring-0 focus:outline-none transition-all ease-in-out"
               disabled={isSubmitting}
             >
               {isSubmitting && <Spinner size="md" className="ml-2" />}
