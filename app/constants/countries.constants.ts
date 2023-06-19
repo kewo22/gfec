@@ -106,3 +106,5 @@ export const COUNTRIES: Country[] = [
     isCourseDetailAvailable: false,
   },
 ];
+
+export const PRE_SELECTED_COUNTRY: Country = COUNTRIES[0]

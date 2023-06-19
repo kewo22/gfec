@@ -4,7 +4,10 @@ import { GlobeAltIcon } from "@heroicons/react/24/outline";
 import { Button, Card } from "flowbite-react";
 import React, { useState } from "react";
 import Filter from "../components/filter";
-import { COUNTRIES } from "../constants/countries.constants";
+import {
+  COUNTRIES,
+  PRE_SELECTED_COUNTRY,
+} from "../constants/countries.constants";
 import Image from "next/image";
 import styles from "../page.module.css";
 import Aus from "./country-info/aus";
@@ -14,7 +17,9 @@ import Uk from "./country-info/uk";
 
 export default function Destination() {
   const [filterPosition, setFilterPosition] = useState("right-full");
-  const [selectedCountry, setSelectedCountry] = useState<Country | null>(null);
+  const [selectedCountry, setSelectedCountry] = useState<Country | null>(
+    PRE_SELECTED_COUNTRY
+  );
   const [sectionClass, setSectionClass] = useState("my-14");
 
   const onMenuClick = () => {
@@ -35,7 +40,7 @@ export default function Destination() {
     }, 600);
   };
 
-  const onCountrySelect = (e: Country) => {
+  const onCountryChange = (e: Country) => {
     setSelectedCountry(e);
     onCloseMenu();
   };
@@ -48,10 +53,17 @@ export default function Destination() {
         Study Abroad Destinations
       </h1>
 
+      <p className="font-light text-base leading-8 tracking-tight text-gray-900 text-justify sm:text-center mx-7 lg:mx-32 mb-10 sm:col-start-1 sm:col-end-3">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam iusto
+        quam magni laborum recusandae consequuntur atque, eaque molestiae
+        possimus laudantium corporis eius quisquam sint aliquid sit nisi esse
+        adipisci pariatur!
+      </p>
+
       <Filter
         filterPosition={filterPosition}
         onCloseMenu={onCloseMenu}
-        onCountrySelect={onCountrySelect}
+        onCountryChange={onCountryChange}
       />
 
       <div className="mb-10 text-center block sm:hidden" onClick={onMenuClick}>
@@ -78,7 +90,7 @@ export default function Destination() {
 
       {selectedCountry && (
         <div>
-          <Card className="mx-7">
+          <Card className="mx-7 h-[642px]">
             <h5 className="text-xl font-bold tracking-tight text-gray-900">
               {selectedCountry.country}
             </h5>

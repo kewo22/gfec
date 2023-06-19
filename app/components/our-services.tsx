@@ -135,8 +135,16 @@ export default function OurServices() {
   return (
     <div className="mb-20 mx-7 lg:mx-20 xl:mx-36">
       <h1 className="mb-4 text-2xl sm:text-3xl font-bold leading-normal tracking-tight text-center text-gray-900 lg:px-32 xl:px-60">
-        Our Services
+        How We Differentiate Form Others
       </h1>
+
+      <p className="font-light text-base leading-8 tracking-tight text-gray-900 text-center lg:px-0 mb-5">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam iusto
+        quam magni laborum recusandae consequuntur atque, eaque molestiae
+        possimus laudantium corporis eius quisquam sint aliquid sit nisi esse
+        adipisci pariatur!
+      </p>
+
       <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8">
         {dataArr.map((data, i) => {
           return (

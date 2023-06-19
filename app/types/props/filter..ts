@@ -4,5 +4,5 @@ export type FilterProps = {
   filterPosition: string;
 
   onCloseMenu: () => void;
-  onCountrySelect: (e: Country) => void;
+  onCountryChange: (e: Country) => void;
 };
