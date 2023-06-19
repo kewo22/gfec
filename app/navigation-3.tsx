@@ -11,9 +11,12 @@ import { Bars3Icon, PhoneArrowDownLeftIcon } from "@heroicons/react/24/outline";
 import MobileNavigation from "./mobile-nav-bar";
 import { CountriesRoute, NavItems } from "./constants/nav-items.constants";
 import { Dropdown } from "flowbite-react";
+import useNavigationEvent from "./hooks/useNavigationEvent";
 
 export default function Navigation() {
   const router = useRouter();
+  const { url } = useNavigationEvent();
+  const plainRoute = url.split("/")[1];
 
   const emails = (process.env.EMAILS as unknown as string)?.split(",") || [];
   const phoneNos = (process.env.PHONE as unknown as string)?.split(",") || [];
@@ -115,7 +118,11 @@ export default function Navigation() {
                     {item.type === "link" && (
                       <Link
                         key={item.text}
-                        className={`text-accent flex items-center justify-center first:m-0 font-bold ${item.class} hover:text-primary transition-all ease-in-out text-base lg:text-lg`}
+                        className={`${item.class} transition-all ease-in-out ${
+                          plainRoute === item.route
+                            ? "border-b-4 border-primary"
+                            : "border-b-4 border-transparent"
+                        } `}
                         href={item.route}
                         onClick={onCloseMenu}
                       >
