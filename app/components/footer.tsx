@@ -15,6 +15,9 @@ import {
 export default function Footer() {
   const emails = (process.env.EMAILS as unknown as string)?.split(",") || [];
   const phoneNos = (process.env.PHONE as unknown as string)?.split(",") || [];
+  const addressLine1 = process.env.ADDRESS_LINE_1 as unknown as string;
+  const addressLine2 = process.env.ADDRESS_LINE_2 as unknown as string;
+  const addressLine3 = process.env.ADDRESS_LINE_3 as unknown as string;
 
   return (
     <footer className="bg-primary">
@@ -23,13 +26,15 @@ export default function Footer() {
           <div className="flex items-center mb-3">
             <BuildingOfficeIcon className="h-4 w-4 mr-2 text-secondary" />
             <span className="text-sm font-light border-l-2 border-l-white pl-2 text-secondary">
-              50, Kassapa Road, <br /> Colombo 5,
-              <br /> Sri Lanka.
+              {addressLine1}, <br /> {addressLine2}, <br /> {addressLine3}.
             </span>
           </div>
 
           <div className="flex items-center mb-5">
-            <PhoneIcon className="h-4 w-4 mr-2 text-secondary" strokeWidth={2} />
+            <PhoneIcon
+              className="h-4 w-4 mr-2 text-secondary"
+              strokeWidth={2}
+            />
             <div className="border-l-2 border-l-white pl-2">
               {phoneNos?.map((phoneNo, i) => {
                 return (
@@ -47,7 +52,10 @@ export default function Footer() {
           </div>
 
           <div className="flex items-center mb-5">
-            <AtSymbolIcon className="h-4 w-4 mr-2 text-secondary" strokeWidth={2} />
+            <AtSymbolIcon
+              className="h-4 w-4 mr-2 text-secondary"
+              strokeWidth={2}
+            />
             <div className="border-l-2 border-l-white pl-2">
               {emails?.map((mail, i) => {
                 return (
@@ -67,7 +75,10 @@ export default function Footer() {
 
         <div className="flex flex-col">
           <div className="flex items-center">
-            <ClockIcon className="h-4 w-4 mr-2 text-secondary" strokeWidth={2} />
+            <ClockIcon
+              className="h-4 w-4 mr-2 text-secondary"
+              strokeWidth={2}
+            />
             <div className="border-l-2 border-l-white pl-2">
               <span className="text-sm font-light text-secondary">
                 Monday: 9:00 AM - 5:00 PM

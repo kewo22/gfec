@@ -99,15 +99,35 @@ export default function Navigation() {
           <div className="flex flex-col items-end">
             <section className="hidden sm:flex mb-3">
               <div className="flex items-center">
-                <span className="mr-2 p-2 rounded-xl bg-primary flex items-center justify-center">
-                  <span className="text-base text-white icon-facebook"></span>
-                </span>
-                <span className="mr-2 p-2 rounded-xl bg-primary flex items-center justify-center">
-                  <span className="text-base text-white icon-instagram"></span>
-                </span>
-                <span className="mr-2 p-2 rounded-xl bg-primary flex items-center justify-center">
-                  <span className="text-base text-white icon-linkedln"></span>
-                </span>
+                <a
+                  target="_blank"
+                  href="https://www.facebook.com/people/Gordon-Foreign-Educational-Consultancy-Pvt-Ltd/100089486356607/"
+                  rel="noopener noreferrer"
+                >
+                  <span className="mr-2 p-2 rounded-xl bg-primary flex items-center justify-center">
+                    <span className="text-base text-white icon-facebook"></span>
+                  </span>
+                </a>
+
+                <a
+                  target="_blank"
+                  href="https://twitter.com/"
+                  rel="noopener noreferrer"
+                >
+                  <span className="mr-2 p-2 rounded-xl bg-primary flex items-center justify-center">
+                    <span className="text-base text-white icon-instagram"></span>
+                  </span>
+                </a>
+
+                <a
+                  target="_blank"
+                  href="https://www.linkedin.com/company/gordon-foreign-education-consultancy-pvt-ltd/"
+                  rel="noopener noreferrer"
+                >
+                  <span className="mr-2 p-2 rounded-xl bg-primary flex items-center justify-center">
+                    <span className="text-base text-white icon-linkedln"></span>
+                  </span>
+                </a>
               </div>
             </section>
 
@@ -118,10 +138,12 @@ export default function Navigation() {
                     {item.type === "link" && (
                       <Link
                         key={item.text}
-                        className={`${item.class} transition-all ease-in-out ${
+                        className={`${
+                          item.class
+                        } transition-all ease-in-out border-b-2 ${
                           plainRoute === item.route
-                            ? "border-b-4 border-primary"
-                            : "border-b-4 border-transparent"
+                            ? "border-primary"
+                            : "border-transparent"
                         } `}
                         href={item.route}
                         onClick={onCloseMenu}
