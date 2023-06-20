@@ -295,3 +295,7 @@ label[id*="lbl-"] {
 }
 
 /*  */
+
+.animate-spin {
+  fill: #BD9519 !important;
+}

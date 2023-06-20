@@ -1,14 +1,16 @@
 "use client";
 
+import React, { useEffect, useState } from "react";
+import Image from "next/image";
+import { useRouter, useSearchParams } from "next/navigation";
 import { GlobeAltIcon } from "@heroicons/react/24/outline";
-import { Button, Card } from "flowbite-react";
-import React, { useState } from "react";
+import { Button, Card, Spinner } from "flowbite-react";
+
 import Filter from "../components/filter";
 import {
   COUNTRIES,
   PRE_SELECTED_COUNTRY,
 } from "../constants/countries.constants";
-import Image from "next/image";
 import styles from "../page.module.css";
 import Aus from "./country-info/aus";
 import { Country } from "../types/constants/country";
@@ -16,11 +18,22 @@ import NoData from "./country-info/no-detail";
 import Uk from "./country-info/uk";
 
 export default function Destination() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const countryInUrl = searchParams.get("country");
+
   const [filterPosition, setFilterPosition] = useState("right-full");
-  const [selectedCountry, setSelectedCountry] = useState<Country | null>(
-    PRE_SELECTED_COUNTRY
-  );
+  const [selectedCountry, setSelectedCountry] = useState<Country | null>(null);
   const [sectionClass, setSectionClass] = useState("my-14");
+
+  useEffect(() => {
+    setSelectedCountry(null);
+    const country = COUNTRIES.find((country) => {
+      return country.id === countryInUrl;
+    });
+    setSelectedCountry(country || PRE_SELECTED_COUNTRY);
+  }, [countryInUrl]);
 
   const onMenuClick = () => {
     const body = document.querySelector("body");
@@ -41,6 +54,7 @@ export default function Destination() {
   };
 
   const onCountryChange = (e: Country) => {
+    router.push(`/destination?country=${e.id}`);
     setSelectedCountry(e);
     onCloseMenu();
   };
@@ -62,6 +76,7 @@ export default function Destination() {
 
       <Filter
         filterPosition={filterPosition}
+        selectedCountry={selectedCountry}
         onCloseMenu={onCloseMenu}
         onCountryChange={onCountryChange}
       />
@@ -74,16 +89,13 @@ export default function Destination() {
 
       {!selectedCountry && (
         <div
-          className={`${styles.imageContainer} w-full flex justify-center items-center`}
+          className={`${styles.imageContainer} w-full flex justify-center items-center h-full `}
         >
-          <Card className="mx-7 flex items-center justify-center h-full w-full">
-            <Image
-              src="/search-no-results.svg"
-              alt="search-no-results"
-              fill
-              priority
-              className={`!relative !w-3/6 mx-auto my-10 sm:my-0`}
-            />
+          <Card className="relative mx-7 flex items-center justify-center min-h-[300px] w-full sm:h-full">
+            <div className="flex items-center justify-center">
+              <Spinner size="xl" />
+            </div>
+            <p className="text-base font-bold mt-10">Fetching Information</p>
           </Card>
         </div>
       )}

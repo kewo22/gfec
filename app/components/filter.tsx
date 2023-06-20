@@ -19,15 +19,10 @@ import {
 import { Country } from "../types/constants/country";
 
 export default function Filter(props: FilterProps) {
-  const router = useRouter();
   const wrapperElement = useRef(null);
 
-  const { filterPosition } = props;
+  const { filterPosition, selectedCountry } = props;
   const { onCloseMenu, onCountryChange } = props;
-
-  const [selectedCountry, setSelectedCountry] = useState<Country | null>(
-    PRE_SELECTED_COUNTRY
-  );
 
   useEffect(() => {
     const navHeight = document.querySelector("#main-nav")?.clientHeight!;
@@ -39,8 +34,6 @@ export default function Filter(props: FilterProps) {
   const smClass = `sm:relative sm:w-auto sm:top-auto sm:right-auto sm:z-[0] sm:!h-full sm:drop-shadow-lg sm:rounded-md sm:ml-5`;
 
   const onCountrySelect = (e: Country) => {
-    // router.replace('/destination#dwqdd')
-    setSelectedCountry(e);
     onCountryChange(e);
   };
 
