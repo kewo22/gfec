@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useCallback, useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 import Image from "next/image";
 
@@ -8,6 +9,7 @@ import styles from "../page.module.css";
 import Swipe from "react-easy-swipe";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import { COUNTRIES } from "../constants/countries.constants";
+import { Country } from "../types/constants/country";
 
 interface ButtonProps extends React.AllHTMLAttributes<HTMLElement> {
   title?: string;
@@ -15,6 +17,8 @@ interface ButtonProps extends React.AllHTMLAttributes<HTMLElement> {
 }
 
 export default function SupportedCountries(props: ButtonProps) {
+  const router = useRouter();
+
   const [btnClass, setBtnClass] = useState("hidden");
 
   useEffect(() => {
@@ -42,6 +46,10 @@ export default function SupportedCountries(props: ButtonProps) {
     document.querySelector("#country-list")?.scrollBy(scrollToOptions);
   };
 
+  const onCountryClick = (country: Country) => {
+    router.push(`/destination?country=${country.id}`);
+  };
+
   return (
     <section className="w-full">
       <h1 className="text-2xl sm:text-3xl font-bold leading-normal tracking-tight text-center text-gray-900 mb-5">
@@ -56,8 +64,9 @@ export default function SupportedCountries(props: ButtonProps) {
           return (
             <div
               key={country.country}
-              className={`group mb-4 sm:mb-0 relative h-60 lg:h-72 w-full rounded-xl ${country.class}`}
+              className={`group mb-4 sm:mb-0 relative h-60 lg:h-72 w-full rounded-xl ${country.class} hover:cursor-pointer`}
               style={{ flex: "0 0 350px" }}
+              onClick={() => onCountryClick(country)}
             >
               <Image
                 src={country.image}
