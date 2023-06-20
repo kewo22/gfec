@@ -24,6 +24,8 @@ const nextConfig = {
     ADDRESS_LINE_2: process.env.ADDRESS_LINE_2 || 'NO ADDRESS_LINE_2 FROM NEXT.CONFIG',
     ADDRESS_LINE_3: process.env.ADDRESS_LINE_3 || 'NO ADDRESS_LINE_3 FROM NEXT.CONFIG',
     GL_MAP_KEY: process.env.GL_MAP_KEY || 'NO GL_MAP_KEY FROM NEXT.CONFIG',
+    LAT: process.env.LAT || 'NO LAT FROM NEXT.CONFIG',
+    LNG: process.env.LNG || 'NO LNG FROM NEXT.CONFIG',
   },
 };
 

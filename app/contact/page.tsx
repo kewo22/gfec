@@ -18,13 +18,13 @@ const center = {
 export default function About() {
   const [map, setMap] = React.useState<google.maps.Map | null>(null);
 
-  const mapCenter = useMemo(
-    () => ({
-      lat: process.env.LAT as unknown as number,
-      lng: process.env.LNG as unknown as number,
-    }),
-    []
-  );
+  const mapCenter = useMemo(() => {
+    const latLngLiteral: google.maps.LatLngLiteral = {
+      lat: +process.env.LAT! as unknown as number,
+      lng: +process.env.LNG! as unknown as number,
+    };
+    return latLngLiteral;
+  }, []);
 
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",

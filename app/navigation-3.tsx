@@ -111,7 +111,7 @@ export default function Navigation() {
 
                 <a
                   target="_blank"
-                  href="https://twitter.com/"
+                  href="https://instagram.com/gfe_consultancy?igshid=MzRlODBiNWFlZA=="
                   rel="noopener noreferrer"
                 >
                   <span className="mr-2 p-2 rounded-xl bg-primary flex items-center justify-center">
