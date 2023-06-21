@@ -4,7 +4,7 @@ import { Ubuntu } from "@next/font/google";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 
-import Navigation from "./navigation-3";
+import Navigation from "./navigation";
 
 library.add(fas);
 
