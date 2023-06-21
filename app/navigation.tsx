@@ -10,8 +10,9 @@ import { Bars3Icon, PhoneArrowDownLeftIcon } from "@heroicons/react/24/outline";
 
 import MobileNavigation from "./mobile-nav-bar";
 import { CountriesRoute, NavItems } from "./constants/nav-items.constants";
-import { Dropdown } from "flowbite-react";
+import { Dropdown, Modal } from "flowbite-react";
 import useNavigationEvent from "./hooks/useNavigationEvent";
+import GetInTouch from "./components/get-in-touch";
 
 export default function Navigation() {
   const router = useRouter();
@@ -23,6 +24,8 @@ export default function Navigation() {
 
   const [mobileNavPositionClass, setMobileNavPositionClass] =
     useState("left-full");
+
+  const [isModelOpen, setIsModelOpen] = useState(false);
 
   const onMenuClick = () => {
     const body = document.querySelector("body");
@@ -37,10 +40,20 @@ export default function Navigation() {
   };
 
   const onRequestCallbackClick = () => {
-    const getInTouchEl = document.querySelector("#get-in-touch");
-    getInTouchEl?.scrollIntoView({
-      behavior: "smooth",
-    });
+    const mailEL = document.querySelector('#main'); // app/page.tsx
+    const getInTouchEl = mailEL?.querySelector("#get-in-touch");
+
+    if (mailEL && getInTouchEl) {
+      getInTouchEl?.scrollIntoView({
+        behavior: "smooth",
+      });
+    } else {
+      setIsModelOpen(true);
+    }
+  };
+
+  const onModelClose = () => {
+    setIsModelOpen(false);
   };
 
   const onLogoClick = () => {
@@ -51,7 +64,7 @@ export default function Navigation() {
     <>
       <nav
         id="main-nav"
-        className="relative bg-white flex sm:flex-col w-full border-b-2"
+        className="relative bg-white flex sm:flex-col w-full border-b-2 border-b-primary"
       >
         <div className="hidden sm:flex justify-between bg-primary text-accent py-1 pl-1 lg:pl-5 lg:pr-3">
           <div>
@@ -198,6 +211,24 @@ export default function Navigation() {
         mobileNavPositionClass={mobileNavPositionClass}
         onCloseMenu={onCloseMenu}
       />
+
+      <Modal id="get-in-touch-model" show={isModelOpen} onClose={() => onModelClose()}>
+        <Modal.Header className="flex items-center">
+          <h1 className="font-bold">Get in touch</h1>
+          <p className="font-light text-sm text-gray-900">
+            Thank you for your interest in our organization and the services we
+            offer. We would be more than happy to arrange a FREE information
+            session for you.
+          </p>
+        </Modal.Header>
+        <Modal.Body>
+          <GetInTouch isOpenInModel={true} />
+        </Modal.Body>
+        {/* <Modal.Footer>
+          <button>I accept</button>
+          <button>Decline</button>
+        </Modal.Footer> */}
+      </Modal>
     </>
   );
 }

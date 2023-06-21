@@ -11,7 +11,7 @@ import Link from "next/link";
 import styles from "./page.module.css";
 import { Dropdown } from "flowbite-react";
 import { MobileNav } from "../types/props/mobile-nav";
-import { FilterProps } from "../types/props/filter.";
+import { FilterProps } from "../types/props/filter";
 import {
   COUNTRIES,
   PRE_SELECTED_COUNTRY,

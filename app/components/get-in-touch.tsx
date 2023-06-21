@@ -10,6 +10,7 @@ import { useFormik } from "formik";
 
 import { GetInTouch as IGetInTouch } from "../models/GetInTouch";
 import { toDateString } from "../../util/date";
+import { GetInTouchProps } from "../types/props/get-in-touch";
 
 // import styles from "../page.module.css";
 
@@ -37,9 +38,11 @@ async function postGetInTouch(values: IGetInTouch) {
   });
 }
 
-export default function GetInTouch() {
+export default function GetInTouch(props: GetInTouchProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [successTextClass, setSuccessTextClass] = useState("top-0 opacity-0");
+
+  const { isOpenInModel = false } = props;
 
   const today = toDateString();
 
@@ -84,17 +87,25 @@ export default function GetInTouch() {
     formik.resetForm();
   };
 
-  return (
-    <section className="pt-20 mb-20 mx-7 lg:mx-20 xl:mx-36" id="get-in-touch">
-      <h1 className="text-2xl sm:text-3xl font-bold leading-normal tracking-tight text-center text-gray-900 mb-5">
-        Get in touch
-      </h1>
+  const wrapperClass = isOpenInModel
+    ? ""
+    : "pt-20 mb-20 mx-7 lg:mx-20 xl:mx-36";
 
-      <p className="font-light text-base leading-8 tracking-tight text-gray-900 text-center lg:px-0 mb-5">
-        Thank you for your interest in our organization and the services we
-        offer. We would be more than happy to arrange a FREE information session
-        for you.
-      </p>
+  return (
+    <section className={wrapperClass} id="get-in-touch">
+      {!isOpenInModel && (
+        <h1 className="text-2xl sm:text-3xl font-bold leading-normal tracking-tight text-center text-gray-900 mb-5">
+          Get in touch
+        </h1>
+      )}
+
+      {!isOpenInModel && (
+        <p className="font-light text-base leading-8 tracking-tight text-gray-900 text-center lg:px-0 mb-5">
+          Thank you for your interest in our organization and the services we
+          offer. We would be more than happy to arrange a FREE information
+          session for you.
+        </p>
+      )}
 
       <form onSubmit={formik.handleSubmit}>
         <div className="relative">
