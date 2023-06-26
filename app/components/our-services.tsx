@@ -150,17 +150,17 @@ export default function OurServices() {
           return (
             <div
               key={i}
-              className="text-base bg-gradient-to-b from-[#DCFBBD] to-[#F2D67F] text-accent rounded-lg drop-shadow-lg p-7 sm:flex sm:justify-center sm:flex-col"
+              className="text-base bg-gradient-to-b from-[#DCFBBD] to-[#F2D67F] text-accent rounded-lg drop-shadow-lg p-7 sm:flex sm:justify-center sm:flex-col flex items-center justify-center"
             >
               <Image
                 src={data.image.name}
                 alt={data.image.alt}
                 height={data.image.height}
                 width={data.image.width}
-                className="!relative mb-3"
+                className="!relative mb-3 text-center"
               />
-              <div className="font-bold mb-3">{data.title}</div>
-              <div className="font-light leading-6">{data.description}</div>
+              <div className="font-bold text-center">{data.title}</div>
+              {/* <div className="font-light leading-6">{data.description}</div> */}
             </div>
           );
         })}
