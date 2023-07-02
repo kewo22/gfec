@@ -1,21 +1,23 @@
 "use client";
 
-import { Label, Radio as FlRadio, TextInputSizes } from "flowbite-react";
+import { Label, Checkbox as FlCheckbox, TextInputSizes } from "flowbite-react";
 import React, { useEffect, useState } from "react";
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label: string;
   error?: string;
+  isChecked?: boolean;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const Radio: React.FC<InputProps> = ({ ...props }) => {
+export const CheckBox: React.FC<InputProps> = ({ ...props }) => {
   const {
     label,
     className = "",
     name = "",
     value = "",
     error = "",
+    isChecked = false,
     onChange = null,
   } = props;
 
@@ -42,8 +44,9 @@ export const Radio: React.FC<InputProps> = ({ ...props }) => {
   // }, [error]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(event.target.value);
+    // setInputValue(event.target.checked);
     if (onChange) onChange(event);
+    // console.log(event);
   };
 
   // const handleFocus = (event: React.FocusEvent<HTMLInputElement>) => {
@@ -56,12 +59,12 @@ export const Radio: React.FC<InputProps> = ({ ...props }) => {
 
   return (
     <div className={`relative ${className}`}>
-      <FlRadio
+      <FlCheckbox
         id={htmlFor}
         name={name}
         value={inputValue}
+        defaultChecked={isChecked}
         onChange={handleChange}
-        defaultChecked={false}
         className="mr-2"
       />
       <Label htmlFor={htmlFor} id={`lbl-${htmlFor}`}>
