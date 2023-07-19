@@ -68,10 +68,12 @@ export default function Destination() {
       </h1>
 
       <p className="font-light text-base leading-8 tracking-tight text-gray-900 text-justify sm:text-center mx-7 lg:mx-32 mb-10 sm:col-start-1 sm:col-end-3">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam iusto
-        quam magni laborum recusandae consequuntur atque, eaque molestiae
-        possimus laudantium corporis eius quisquam sint aliquid sit nisi esse
-        adipisci pariatur!
+        Embark on an enriching educational adventure with GFEC, your premier
+        foreign education consultancy based in Sri Lanka. Explore a myriad of
+        captivating study abroad destinations that open doors to endless
+        opportunities. From vibrant cultural experiences to world-class
+        institutions, we'll help you navigate the diverse landscape of study
+        options and find the perfect destination to shape your future success.
       </p>
 
       <Filter

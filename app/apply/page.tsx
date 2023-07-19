@@ -2,7 +2,7 @@
 
 import { Button, Card, Label, Select } from "flowbite-react";
 import { useFormik } from "formik";
-import React from "react";
+import React, { useState } from "react";
 import { Input } from "../components/input";
 import * as Yup from "yup";
 import { Apply as IApply } from "../models/Apply";
@@ -12,87 +12,38 @@ import { CheckBox } from "../components/checkbox";
 import { COUNTRIES } from "../constants/countries.constants";
 import { TextArea } from "../components/textarea";
 
+// async function postGetInTouch(values: IGetInTouch) {
+//   const url = `${process.env.API_BASE_URL}/getintouch` || "";
+//   await fetch(url, {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify(values),
+//     mode: "no-cors",
+//   });
+// }
+
 const validationSchema = Yup.object().shape({
-  // personal: Yup.object().shape({
-  firstName: Yup.string().required("Required"),
-  lastName: Yup.string().required("Required"),
-  dob: Yup.string().required("Required"),
-  mob: Yup.string().required("Required"),
-  email: Yup.string().email("Invalid email").required("Required"),
-  // firstName: Yup.number()
-  //   .typeError("must be a number")
-  //   .transform((value, originalValue) =>
-  //     originalValue.trim() === "" ? null : value
-  //   )
-  //   .nullable(),
-  // }),
+  personal: Yup.object().shape({
+    firstName: Yup.string().required("Required"),
+    lastName: Yup.string().required("Required"),
+    dob: Yup.date().max(new Date(), "Invalid Date").required("Required"),
+    gender: Yup.string().required("Required"),
+    mob: Yup.string()
+      .required("Required")
+      .matches(/^[0]{1}[7]{1}[01245678]{1}[0-9]{7}$/, "Invalid mobile number"),
+    email: Yup.string().email("Invalid email").required("Required"),
+    // firstName: Yup.number()
+    //   .typeError("must be a number")
+    //   .transform((value, originalValue) =>
+    //     originalValue.trim() === "" ? null : value
+    //   )
+    //   .nullable(),
+  }),
 });
 
 export default function Apply() {
-  const initialValues: IApply = {
-    personal: {
-      firstName: "",
-      lastName: "",
-      address: "",
-      dob: "",
-      gender: "",
-      tel: "",
-      mob: "",
-      email: "",
-      fb: "",
-    },
-    education: {
-      school: {
-        name: "",
-        ol: {
-          year: 0,
-          type: "",
-          subjects: {
-            Maths: "",
-            English: "",
-          },
-          resultsSummary: {
-            a: 0,
-            b: 0,
-            c: 0,
-            d: 0,
-            s: 0,
-          },
-        },
-        al: {
-          year: 0,
-          type: "",
-          subjects: {
-            Maths: "",
-            English: "",
-          },
-          resultsSummary: {
-            a: 0,
-            b: 0,
-            c: 0,
-            d: 0,
-            s: 0,
-          },
-        },
-      },
-      degree: null,
-    },
-    workExperience: {
-      designation: "",
-      experience: {
-        month: 0,
-        year: 0,
-      },
-    },
-    budget: "0",
-    comments: "",
-    preference: {
-      destination: [],
-      migratingAlone: true,
-      studyArea: [],
-    },
-  };
-
   const studyPreferences = [
     "Computing",
     "Business",
@@ -114,76 +65,89 @@ export default function Apply() {
     "Biomedical Science Top-Up",
   ];
 
-  const resultsGroup = { subject: "", result: "" };
+  const [idDegreeCompleted, setIdDegreeCompleted] = useState(false);
+
   const formik = useFormik({
     initialValues: {
-      firstName: "",
-      lastName: "",
-      dob: "",
-      gender: "",
-      tel: "",
-      mob: "",
-      email: "",
-      fb: "",
-
-      school: "",
-      ol: {
-        year: "",
-        type: "",
-        subjects: [
-          {
-            english: "",
-          },
-          {
-            mathematics: "",
-          },
-        ],
-        results: [
-          {
-            a: 0,
-          },
-          {
-            b: 0,
-          },
-          {
-            c: 0,
-          },
-          {
-            d: 0,
-          },
-          {
-            s: 0,
-          },
-        ],
+      personal: {
+        firstName: "",
+        lastName: "",
+        dob: "",
+        gender: "",
+        tel: "",
+        mob: "",
+        email: "",
+        fb: "",
+        address: "",
       },
-      al: {
-        year: "",
-        type: "",
-        subjects: [
-          {
-            english: "",
-          },
-          {
-            mathematics: "",
-          },
-        ],
-        results: [
-          {
-            a: 0,
-          },
-          {
-            b: 0,
-          },
-          {
-            c: 0,
-          },
-          {
-            d: 0,
-          },
-          {
-            s: 0,
-          },
-        ],
+      education: {
+        school: "",
+        ol: {
+          year: "",
+          type: "",
+          subjects: [
+            {
+              english: "",
+            },
+            {
+              mathematics: "",
+            },
+          ],
+          results: [
+            {
+              a: 0,
+            },
+            {
+              b: 0,
+            },
+            {
+              c: 0,
+            },
+            {
+              d: 0,
+            },
+            {
+              s: 0,
+            },
+          ],
+        },
+        al: {
+          year: "",
+          type: "",
+          subjects: [
+            {
+              english: "",
+            },
+            {
+              mathematics: "",
+            },
+          ],
+          results: [
+            {
+              a: 0,
+            },
+            {
+              b: 0,
+            },
+            {
+              c: 0,
+            },
+            {
+              d: 0,
+            },
+            {
+              s: 0,
+            },
+          ],
+        },
+        degree: {
+          isCompleted: "0",
+          year: "",
+          stream: "",
+          affiliatedUniversity: "",
+          gpa: "",
+          class: "",
+        },
       },
       preference: {
         study: [],
@@ -194,7 +158,7 @@ export default function Apply() {
         comment: "",
       },
     },
-    // validationSchema,
+    validationSchema,
     onSubmit: async (values: any) => {
       console.log(values);
     },
@@ -213,9 +177,10 @@ export default function Apply() {
     return years;
   };
 
-  const onStudyPreferenceChange = (formik: any) => {
-    console.log(formik);
-    // formik.handleChange();
+  const onDegreeCompletedChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const isChecked = e.target.value === "0" ? false : true;
+    setIdDegreeCompleted(isChecked);
+    formik.handleChange(e);
   };
 
   return (
@@ -233,7 +198,7 @@ export default function Apply() {
 
       <div className="mx-5 sm:mx-16 xl:mx-28 2xl:mx-64">
         <form onSubmit={formik.handleSubmit}>
-          {/* <pre>{JSON.stringify(formik, null, 4)}</pre> */}
+          <pre>{JSON.stringify(formik, null, 4)}</pre>
 
           <Card className="mb-5">
             <h5 className="text-xl sm:text-3xl font-bold leading-normal tracking-tight text-center text-gray-900 m-0 mb-2">
@@ -244,11 +209,12 @@ export default function Apply() {
               <Input
                 label="First Name"
                 sizing="xl"
-                name="firstName"
-                value={formik.values.firstName}
+                name="personal.firstName"
+                value={formik.values.personal.firstName}
                 error={
-                  formik.errors.firstName && formik.touched.firstName
-                    ? formik.errors.firstName
+                  formik.errors.personal?.firstName &&
+                  formik.touched.personal?.firstName
+                    ? formik.errors.personal!.firstName
                     : ""
                 }
                 onChange={formik.handleChange}
@@ -257,11 +223,12 @@ export default function Apply() {
               <Input
                 label="Last Name"
                 sizing="xl"
-                name="lastName"
-                value={formik.values.lastName}
+                name="personal.lastName"
+                value={formik.values.personal.lastName}
                 error={
-                  formik.errors.lastName && formik.touched.lastName
-                    ? formik.errors.lastName
+                  formik.errors.personal?.lastName &&
+                  formik.touched.personal?.lastName
+                    ? formik.errors.personal!.lastName
                     : ""
                 }
                 onChange={formik.handleChange}
@@ -272,7 +239,8 @@ export default function Apply() {
             <Input
               label="Address"
               sizing="xl"
-              name="address"
+              name="personal.address"
+              value={formik.values.personal.address}
               onChange={formik.handleChange}
               onBlurInput={formik.handleBlur}
             />
@@ -282,11 +250,11 @@ export default function Apply() {
                 label="Date of Birth"
                 type="date"
                 sizing="xl"
-                name="dob"
-                value={formik.values.dob}
+                name="personal.dob"
+                value={formik.values.personal.dob}
                 error={
-                  formik.errors.dob && formik.touched.dob
-                    ? formik.errors.dob
+                  formik.errors.personal?.dob && formik.touched.personal?.dob
+                    ? formik.errors.personal!.dob
                     : ""
                 }
                 className="flex-grow"
@@ -294,27 +262,45 @@ export default function Apply() {
                 onBlurInput={formik.handleBlur}
               />
 
-              <div className="flex-[1_0_50%] flex flex-col self-stretch">
+              <div className="flex-[1_0_50%] flex flex-col">
                 <legend className="text-sm font-medium text-gray-900">
                   Gender
                 </legend>
-                <div className="flex items-center h-full">
+                <div className="flex items-center">
                   <Radio
                     label="Male"
-                    name="gender"
+                    name="personal.gender"
                     value="male"
                     className="mr-2"
+                    error={
+                      formik.errors.personal?.gender &&
+                      formik.touched.personal?.gender
+                    }
                     defaultChecked={false}
                     onChange={formik.handleChange}
                   />
                   <Radio
                     label="Female"
-                    name="gender"
+                    name="personal.gender"
                     value="female"
+                    error={
+                      formik.errors.personal?.gender &&
+                      formik.touched.personal?.gender
+                    }
                     defaultChecked={false}
                     onChange={formik.handleChange}
                   />
                 </div>
+                <small
+                // className={
+                //   formik.errors.personal?.gender &&
+                //   formik.touched.personal?.gender
+                //     ? "visible"
+                //     : "invisible"
+                // }
+                >
+                  {formik.errors.personal?.gender || ""}
+                </small>
               </div>
             </div>
 
@@ -322,11 +308,11 @@ export default function Apply() {
               <Input
                 label="Mobile No"
                 sizing="xl"
-                name="mob"
-                value={formik.values.mob}
+                name="personal.mob"
+                value={formik.values.personal.mob}
                 error={
-                  formik.errors.mob && formik.touched.mob
-                    ? formik.errors.mob
+                  formik.errors.personal?.mob && formik.touched.personal?.mob
+                    ? formik.errors.personal!.mob
                     : ""
                 }
                 onChange={formik.handleChange}
@@ -336,13 +322,13 @@ export default function Apply() {
               <Input
                 label="Telephone No"
                 sizing="xl"
-                name="tel"
-                value={formik.values.tel}
-                error={
-                  formik.errors.tel && formik.touched.tel
-                    ? formik.errors.tel
-                    : ""
-                }
+                name="personal.tel"
+                value={formik.values.personal.tel}
+                // error={
+                //   formik.errors.tel && formik.touched.tel
+                //     ? formik.errors.tel
+                //     : ""
+                // }
                 onChange={formik.handleChange}
                 onBlurInput={formik.handleBlur}
               />
@@ -352,11 +338,12 @@ export default function Apply() {
               <Input
                 label="Email"
                 sizing="xl"
-                name="email"
-                value={formik.values.email}
+                name="personal.email"
+                value={formik.values.personal.email}
                 error={
-                  formik.errors.email && formik.touched.email
-                    ? formik.errors.email
+                  formik.errors.personal?.email &&
+                  formik.touched.personal?.email
+                    ? formik.errors.personal!.email
                     : ""
                 }
                 onChange={formik.handleChange}
@@ -366,8 +353,8 @@ export default function Apply() {
               <Input
                 label="Facebook"
                 sizing="xl"
-                name="fb"
-                value={formik.values.fb}
+                name="personal.fb"
+                value={formik.values.personal.fb}
                 onChange={formik.handleChange}
                 onBlurInput={formik.handleBlur}
               />
@@ -382,20 +369,22 @@ export default function Apply() {
             <Input
               label="School"
               sizing="xl"
-              name="school"
-              value={formik.values.school}
-              error={
-                formik.errors.school && formik.touched.school
-                  ? formik.errors.school
-                  : ""
-              }
+              name="education.school"
+              value={formik.values.education.school}
+              // error={
+              //   formik.errors.school && formik.touched.school
+              //     ? formik.errors.school
+              //     : ""
+              // }
               className="mb-3"
               onChange={formik.handleChange}
               onBlurInput={formik.handleBlur}
             />
 
             <div className="relative rounded-lg border-[1px] border-[#d1d5db] border-1 p-4 mb-3">
-              <h1 className="font-semibold text-gray-900 m-0 absolute top-[-12.5px] bg-white w-[75px] flex justify-center">O Level</h1>
+              <h1 className="font-semibold text-gray-900 m-0 absolute top-[-12.5px] bg-white w-[75px] flex justify-center">
+                O Level
+              </h1>
               <div className="flex items-center">
                 <div className="flex flex-col mr-5 mb-5">
                   <Label
@@ -405,8 +394,8 @@ export default function Apply() {
                   />
                   <Select
                     id="olYear"
-                    name="ol.year"
-                    defaultValue={formik.values.ol.year}
+                    name="education.ol.year"
+                    defaultValue={formik.values.education.ol.year}
                     onChange={formik.handleChange}
                   >
                     {getYears().map((year) => {
@@ -420,12 +409,12 @@ export default function Apply() {
                 </div>
                 <div className="flex flex-col self-stretch mb-5">
                   <legend className="text-sm font-medium text-gray-900">
-                    Gender
+                    Type
                   </legend>
                   <div className="flex flex-grow">
                     <Radio
                       label="Local"
-                      name="ol.type"
+                      name="education.ol.type"
                       value="local"
                       className="flex items-center mr-2"
                       defaultChecked={false}
@@ -433,7 +422,7 @@ export default function Apply() {
                     />
                     <Radio
                       label="London"
-                      name="ol.type"
+                      name="education.ol.type"
                       value="london"
                       className="flex items-center"
                       defaultChecked={false}
@@ -448,8 +437,8 @@ export default function Apply() {
                   <Input
                     label="English"
                     sizing="xl"
-                    name="ol.subjects[0].english"
-                    value={formik.values.ol.subjects[0].english}
+                    name="education.ol.subjects[0].english"
+                    value={formik.values.education.ol.subjects[0].english}
                     className=""
                     onChange={formik.handleChange}
                     onBlurInput={formik.handleBlur}
@@ -457,8 +446,8 @@ export default function Apply() {
                   <Input
                     label="Mathematics"
                     sizing="xl"
-                    name="ol.subjects[1].mathematics"
-                    value={formik.values.ol.subjects[1].mathematics}
+                    name="education.ol.subjects[1].mathematics"
+                    value={formik.values.education.ol.subjects[1].mathematics}
                     className=""
                     onChange={formik.handleChange}
                     onBlurInput={formik.handleBlur}
@@ -468,44 +457,44 @@ export default function Apply() {
                   <Input
                     label="A"
                     sizing="xl"
-                    name="ol.results[0].a"
-                    value={formik.values.ol.results[0].a}
+                    name="education.ol.results[0].a"
+                    value={formik.values.education.ol.results[0].a}
                     className=""
                     onChange={formik.handleChange}
                     onBlurInput={formik.handleBlur}
                   />
                   <Input
-                    label="A"
+                    label="B"
                     sizing="xl"
-                    name="ol.results[0].a"
-                    value={formik.values.ol.results[0].a}
+                    name="education.ol.results[1].b"
+                    value={formik.values.education.ol.results[1].b}
                     className=""
                     onChange={formik.handleChange}
                     onBlurInput={formik.handleBlur}
                   />
                   <Input
-                    label="A"
+                    label="C"
                     sizing="xl"
-                    name="ol.results[0].a"
-                    value={formik.values.ol.results[0].a}
+                    name="education.ol.results[2].c"
+                    value={formik.values.education.ol.results[2].c}
                     className=""
                     onChange={formik.handleChange}
                     onBlurInput={formik.handleBlur}
                   />
                   <Input
-                    label="A"
+                    label="D"
                     sizing="xl"
-                    name="ol.results[0].a"
-                    value={formik.values.ol.results[0].a}
+                    name="education.ol.results[3].d"
+                    value={formik.values.education.ol.results[3].d}
                     className=""
                     onChange={formik.handleChange}
                     onBlurInput={formik.handleBlur}
                   />
                   <Input
-                    label="A"
+                    label="S"
                     sizing="xl"
-                    name="ol.results[0].a"
-                    value={formik.values.ol.results[0].a}
+                    name="education.ol.results[4].s"
+                    value={formik.values.education.ol.results[4].s}
                     className=""
                     onChange={formik.handleChange}
                     onBlurInput={formik.handleBlur}
@@ -515,7 +504,9 @@ export default function Apply() {
             </div>
 
             <div className="relative rounded-lg border-[1px] border-[#d1d5db] border-1 p-4 mb-3">
-              <h1 className="font-semibold text-gray-900 m-0 absolute top-[-12.5px] bg-white w-[75px] flex justify-center">A Level</h1>
+              <h1 className="font-semibold text-gray-900 m-0 absolute top-[-12.5px] bg-white w-[75px] flex justify-center">
+                A Level
+              </h1>
               <div className="flex items-center">
                 <div className="flex flex-col mr-5 mb-5">
                   <Label
@@ -525,8 +516,8 @@ export default function Apply() {
                   />
                   <Select
                     id="alYear"
-                    name="al.year"
-                    defaultValue={formik.values.al.year}
+                    name="education.al.year"
+                    defaultValue={formik.values.education.al.year}
                     onChange={formik.handleChange}
                   >
                     {getYears().map((year) => {
@@ -540,12 +531,12 @@ export default function Apply() {
                 </div>
                 <div className="flex flex-col self-stretch mb-5">
                   <legend className="text-sm font-medium text-gray-900">
-                    Gender
+                    Type
                   </legend>
                   <div className="flex flex-grow">
                     <Radio
                       label="Local"
-                      name="al.type"
+                      name="education.al.type"
                       value="local"
                       className="flex items-center mr-2"
                       defaultChecked={false}
@@ -553,7 +544,7 @@ export default function Apply() {
                     />
                     <Radio
                       label="London"
-                      name="al.type"
+                      name="education.al.type"
                       value="london"
                       className="flex items-center"
                       defaultChecked={false}
@@ -568,8 +559,8 @@ export default function Apply() {
                   <Input
                     label="English"
                     sizing="xl"
-                    name="al.subjects[0].english"
-                    value={formik.values.al.subjects[0].english}
+                    name="education.al.subjects[0].english"
+                    value={formik.values.education.al.subjects[0].english}
                     className=""
                     onChange={formik.handleChange}
                     onBlurInput={formik.handleBlur}
@@ -577,8 +568,8 @@ export default function Apply() {
                   <Input
                     label="Mathematics"
                     sizing="xl"
-                    name="al.subjects[1].mathematics"
-                    value={formik.values.al.subjects[1].mathematics}
+                    name="education.al.subjects[1].mathematics"
+                    value={formik.values.education.al.subjects[1].mathematics}
                     className=""
                     onChange={formik.handleChange}
                     onBlurInput={formik.handleBlur}
@@ -588,8 +579,8 @@ export default function Apply() {
                   <Input
                     label="A"
                     sizing="xl"
-                    name="al.results[0].a"
-                    value={formik.values.al.results[0].a}
+                    name="education.al.results[0].a"
+                    value={formik.values.education.al.results[0].a}
                     className=""
                     onChange={formik.handleChange}
                     onBlurInput={formik.handleBlur}
@@ -597,8 +588,8 @@ export default function Apply() {
                   <Input
                     label="B"
                     sizing="xl"
-                    name="al.results[1].b"
-                    value={formik.values.al.results[0].b}
+                    name="education.al.results[1].b"
+                    value={formik.values.education.al.results[1].b}
                     className=""
                     onChange={formik.handleChange}
                     onBlurInput={formik.handleBlur}
@@ -606,8 +597,8 @@ export default function Apply() {
                   <Input
                     label="C"
                     sizing="xl"
-                    name="al.results[2].c"
-                    value={formik.values.al.results[0].c}
+                    name="education.al.results[2].c"
+                    value={formik.values.education.al.results[2].c}
                     className=""
                     onChange={formik.handleChange}
                     onBlurInput={formik.handleBlur}
@@ -615,8 +606,8 @@ export default function Apply() {
                   <Input
                     label="D"
                     sizing="xl"
-                    name="al.results[3].d"
-                    value={formik.values.al.results[0].d}
+                    name="education.al.results[3].d"
+                    value={formik.values.education.al.results[3].d}
                     className=""
                     onChange={formik.handleChange}
                     onBlurInput={formik.handleBlur}
@@ -624,13 +615,131 @@ export default function Apply() {
                   <Input
                     label="S"
                     sizing="xl"
-                    name="al.results[4].s"
-                    value={formik.values.al.results[0].s}
+                    name="education.al.results[4].s"
+                    value={formik.values.education.al.results[4].s}
                     className=""
                     onChange={formik.handleChange}
                     onBlurInput={formik.handleBlur}
                   />
                 </div>
+              </div>
+            </div>
+
+            <div className="relative rounded-lg border-[1px] border-[#d1d5db] border-1 p-4 mb-3">
+              <h1 className="font-semibold text-gray-900 m-0 absolute top-[-12.5px] bg-white w-[75px] flex justify-center">
+                Degree
+              </h1>
+
+              <div className="flex flex-row self-stretch mb-3">
+                <legend className="text-sm font-medium text-gray-900 mr-2">
+                  Have you completed degree ?
+                </legend>
+                <div className="flex flex-grow">
+                  <Radio
+                    label="Yes"
+                    name="education.degree.isCompleted"
+                    value={1}
+                    className="flex items-center mr-2"
+                    defaultChecked={false}
+                    onChange={(e) => {
+                      onDegreeCompletedChange(e);
+                    }}
+                  />
+                  <Radio
+                    label="No"
+                    name="education.degree.isCompleted"
+                    value={0}
+                    className="flex items-center"
+                    defaultChecked={true}
+                    onChange={(e) => {
+                      onDegreeCompletedChange(e);
+                    }}
+                  />
+                </div>
+              </div>
+
+              <div className="flex flex-col mb-5">
+                <Label
+                  htmlFor="alYear"
+                  value="Year"
+                  className="font-medium text-gray-900"
+                />
+                <Select
+                  id="alYear"
+                  name="education.degree.year"
+                  defaultValue={formik.values.education.degree.year}
+                  onChange={formik.handleChange}
+                  disabled={!idDegreeCompleted}
+                >
+                  {getYears().map((year) => {
+                    return (
+                      <option key={year} value={year}>
+                        {year}
+                      </option>
+                    );
+                  })}
+                </Select>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-5 mb-5">
+                <Input
+                  label="Stream"
+                  sizing="xl"
+                  name="education.degree.stream"
+                  value={formik.values.education.degree.stream}
+                  disabled={!idDegreeCompleted}
+                  // error={
+                  //   formik.errors.personal.firstName && formik.touched.firstName
+                  //     ? formik.errors.firstName
+                  //     : ""
+                  // }
+                  onChange={formik.handleChange}
+                  onBlurInput={formik.handleBlur}
+                />
+                <Input
+                  label="Affiliated University"
+                  sizing="xl"
+                  name="education.degree.affiliatedUniversity"
+                  value={formik.values.education.degree.affiliatedUniversity}
+                  disabled={!idDegreeCompleted}
+                  // error={
+                  //   formik.errors.personal.firstName && formik.touched.firstName
+                  //     ? formik.errors.firstName
+                  //     : ""
+                  // }
+                  onChange={formik.handleChange}
+                  onBlurInput={formik.handleBlur}
+                />
+              </div>
+              <div className="flex flex-col sm:flex-row gap-5">
+                <Input
+                  label="GPA"
+                  sizing="xl"
+                  name="education.degree.gpa"
+                  value={formik.values.education.degree.gpa}
+                  disabled={!idDegreeCompleted}
+                  // error={
+                  //   formik.errors.personal.firstName && formik.touched.firstName
+                  //     ? formik.errors.firstName
+                  //     : ""
+                  // }
+                  onChange={formik.handleChange}
+                  onBlurInput={formik.handleBlur}
+                />
+                <Input
+                  label="Class"
+                  sizing="xl"
+                  name="education.degree.class"
+                  value={formik.values.education.degree.class}
+                  disabled={!idDegreeCompleted}
+                  // error={
+                  //   formik.errors.personal.firstName && formik.touched.firstName
+                  //     ? formik.errors.firstName
+                  //     : ""
+                  // }
+                  onChange={formik.handleChange}
+                  onBlurInput={formik.handleBlur}
+                />
               </div>
             </div>
           </Card>
@@ -659,7 +768,7 @@ export default function Apply() {
               </div>
             </div>
 
-            <div className="flex flex-col self-stretch mb-5">
+            <div className="flex flex-col self-stretch">
               <h1 className="font-semibold text-gray-900 m-0 mb-3">
                 Destination
               </h1>

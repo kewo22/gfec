@@ -62,24 +62,28 @@ export default function About() {
       </div>
 
       <div className="px-10 mb-20 sm:mb-32">
-        <p className="text-base xl:text-xl font-bold leading-normal tracking-tight text-center text-gray-900 mb-5 px-0 sm:px-24 md:px-48 lg:px-96">
+        <p className="text-base xl:text-xl font-bold leading-normal tracking-tight text-center text-gray-900 mb-5 px-0 sm:px-24 lg:px-36">
           We are committed to providing the best possible service to our clients
           by following the following principles.
         </p>
         <div className="flex flex-col sm:flex-row gap-5 lg:gap-0">
           <p className="font-light text-base leading-8 tracking-tight text-gray-900 text-justify sm:text-center lg:mx-10">
-            Provide accurate information so that you can make informed decisions
-            about your education needs
+            <span className="font-bold">Personalized Guidance - </span>
+            We believe in tailoring our services to meet your unique needs,
+            providing individualized guidance to help you make informed
+            decisions about your study abroad plans.
           </p>
           <p className="font-light text-base leading-8 tracking-tight text-gray-900 text-justify sm:text-center lg:mx-10 border-0 sm:border-l-2 sm:border-r-2 border-l-primary border-r-primary px-0 sm:px-2 lg:px-10">
-            Provide professional service by providing clear, concise and
-            accurate information on every aspect of your study abroad
-            experience.
+            <span className="font-bold">Comprehensive Support - </span>
+            We offer end-to-end assistance, covering everything from university
+            selection to visa processing, ensuring that you receive
+            comprehensive support throughout your educational journey.
           </p>
           <p className="font-light text-base leading-8 tracking-tight text-gray-900 text-justify sm:text-center lg:mx-10">
-            Maintain the highest level of success rate by providing quality
-            service and support for all our students throughout their study
-            abroad experience.
+            <span className="font-bold">Unwavering Commitment - </span>
+            Our dedication knows no bounds. We are committed to going the extra
+            mile, ensuring your satisfaction and success by providing the
+            highest level of service and support at all times.
           </p>
         </div>
       </div>

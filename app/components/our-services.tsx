@@ -138,11 +138,13 @@ export default function OurServices() {
         How We Differentiate Form Others
       </h1>
 
-      <p className="font-light text-base leading-8 tracking-tight text-gray-900 text-center lg:px-0 mb-5">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam iusto
-        quam magni laborum recusandae consequuntur atque, eaque molestiae
-        possimus laudantium corporis eius quisquam sint aliquid sit nisi esse
-        adipisci pariatur!
+      <p className="font-light text-base leading-8 tracking-tight text-gray-900 text-justify sm:text-center lg:px-0 mb-5">
+        At GFEC, we redefine the experience of foreign education consultancy in
+        Sri Lanka. Our unwavering commitment to personalized guidance, extensive
+        global network, and comprehensive support sets us apart from other
+        consultancy agencies. Discover a refreshing approach that puts your
+        aspirations first and helps you achieve your educational dreams with
+        confidence.
       </p>
 
       <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8">

@@ -5,7 +5,8 @@ import React, { useEffect, useState } from "react";
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label: string;
-  error?: string;
+  error?: boolean | undefined | "";
+  defaultChecked?: boolean;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -15,14 +16,16 @@ export const Radio: React.FC<InputProps> = ({ ...props }) => {
     className = "",
     name = "",
     value = "",
-    error = "",
+    error = false,
+    defaultChecked = false,
     onChange = null,
   } = props;
 
   const [htmlFor, setHtmlFor] = useState("");
-  const [inputBaseClass, setInputBaseClass] = useState(
-    "bg-white w-full h-16 pt-8 rounded-lg"
-  );
+  const [baseClass, setBaseClass] = useState("");
+  // const [inputBaseClass, setInputBaseClass] = useState(
+  //   "bg-white w-full h-16 pt-8 rounded-lg"
+  // );
 
   const [inputValue, setInputValue] = useState<string>("");
 
@@ -34,6 +37,10 @@ export const Radio: React.FC<InputProps> = ({ ...props }) => {
     const withoutSpace = label.replace(/\s+/g, "");
     setHtmlFor(withoutSpace);
   }, [label]);
+
+  useEffect(() => {
+    error ? setBaseClass("border-solid border-red-600") : setBaseClass("");
+  }, [error]);
 
   // useEffect(() => {
   //   error
@@ -61,8 +68,13 @@ export const Radio: React.FC<InputProps> = ({ ...props }) => {
         name={name}
         value={inputValue}
         onChange={handleChange}
-        defaultChecked={false}
+        defaultChecked={defaultChecked}
         className="mr-2"
+        theme={{
+          root: {
+            base: baseClass,
+          },
+        }}
       />
       <Label htmlFor={htmlFor} id={`lbl-${htmlFor}`}>
         {label}

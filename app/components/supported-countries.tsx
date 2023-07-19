@@ -56,6 +56,15 @@ export default function SupportedCountries(props: ButtonProps) {
         Could your next home be?
       </h1>
 
+      <p className="font-light text-base leading-8 tracking-tight text-gray-900 text-justify sm:text-center lg:px-0 mb-5 mx-7 lg:mx-20 xl:mx-36">
+        Discover your next home in the world of education with GFEC, your
+        trusted foreign education consultancy based in Sri Lanka. Explore a
+        multitude of countries and unlock endless possibilities for your
+        academic journey. Our expert team will guide you in finding the perfect
+        destination that aligns with your aspirations and paves the way for a
+        bright future.
+      </p>
+
       <div
         id="country-list"
         className={`${styles.hideScroll} flex overflow-x-auto px-4`}
@@ -82,7 +91,6 @@ export default function SupportedCountries(props: ButtonProps) {
           );
         })}
       </div>
-
       <div
         className={`${btnClass} w-full flex items-center justify-center mt-5`}
       >

@@ -9,6 +9,7 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   placeholder?: string;
   sizing?: keyof TextInputSizes;
   error?: string;
+  disabled?: boolean;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onFocusInput?: (event: React.FocusEvent<HTMLInputElement>) => void;
   onBlurInput?: (event: React.FocusEvent<HTMLInputElement>) => void;
@@ -26,6 +27,7 @@ export const Input: React.FC<InputProps> = ({ ...props }) => {
     min = "",
     max = "",
     error = "",
+    disabled = false,
     onChange = null,
     onFocusInput = null,
     onBlurInput = null,
@@ -52,6 +54,12 @@ export const Input: React.FC<InputProps> = ({ ...props }) => {
       ? setInputBaseClass("bg-red-200 w-full h-16 pt-8 rounded-lg")
       : setInputBaseClass("bg-white w-full h-16 pt-8 rounded-lg");
   }, [error]);
+
+  useEffect(() => {
+    disabled
+      ? setInputBaseClass("bg-slate-100 opacity-50 w-full h-16 pt-8 rounded-lg")
+      : setInputBaseClass("bg-white opacity-100 w-full h-16 pt-8 rounded-lg");
+  }, [disabled]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
@@ -81,6 +89,7 @@ export const Input: React.FC<InputProps> = ({ ...props }) => {
         value={inputValue}
         sizing={sizing}
         placeholder={placeholder || ""}
+        disabled={disabled}
         onChange={handleChange}
         onFocus={handleFocus}
         onBlur={handleBlur}

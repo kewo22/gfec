@@ -100,10 +100,12 @@ export default function GetInTouch(props: GetInTouchProps) {
       )}
 
       {!isOpenInModel && (
-        <p className="font-light text-base leading-8 tracking-tight text-gray-900 text-center lg:px-0 mb-5">
-          Thank you for your interest in our organization and the services we
-          offer. We would be more than happy to arrange a FREE information
-          session for you.
+        <p className="font-light text-base leading-8 tracking-tight text-gray-900 text-justify sm:text-center lg:px-0 mb-5">
+          At GFEC, we are your trusted gateway to international education. Get
+          in touch with our expert team today and embark on a transformative
+          journey towards your educational goals. Experience personalized
+          guidance, invaluable resources, and unparalleled support as we guide
+          you every step of the way.
         </p>
       )}
 

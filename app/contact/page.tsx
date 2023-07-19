@@ -47,8 +47,13 @@ export default function About() {
           How can we help?
         </h1>
         <p className="font-light text-base leading-8 tracking-tight text-gray-900 text-center lg:px-0">
-          If you are planning to study abroad please fill below form or get in
-          touch with our office and we will consult you throughout your journey.
+          GFEC is here to guide you every step of the way. We provide
+          comprehensive support and personalized assistance to help you navigate
+          the complex world of international education. From university
+          selection to visa processing and beyond, our expert team is dedicated
+          to ensuring a smooth and successful journey towards your educational
+          aspirations. Trust GFEC to be your partner in achieving your dreams of
+          studying abroad.
         </p>
       </div>
 

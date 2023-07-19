@@ -2,9 +2,10 @@ export interface Apply {
   personal: Personal;
   education: Education;
   preference: Preference;
-  workExperience: WorkExperience;
-  budget: string;
-  comments: string;
+  otherInfo: OtherInfo;
+  // workExperience: WorkExperience;
+  // budget: string;
+  // comments: string;
 }
 
 interface Personal {
@@ -20,47 +21,38 @@ interface Personal {
 }
 
 interface Education {
-  school: {
-    name: "";
-    ol: Results;
-    al: Results;
-  };
-  degree: Degree | null;
+  school: string;
+  ol: SchoolResults;
+  al: SchoolResults;
+}
+
+interface SchoolResults {
+  type: string;
+  year: "london" | "local";
+  results: Results[];
+  subjects: SubjectResults[];
 }
 
 interface Results {
-  year: number;
-  type: string;
-  subjects: Record<string, string>;
-  resultsSummary: ResultsSummary;
+  // [key: string]: string;
+  a: string;
+  b: string;
+  c: string;
+  d: string;
+  s: string;
 }
 
-interface ResultsSummary {
-  a: number;
-  b: number;
-  c: number;
-  d: number;
-  s: number;
-}
-
-interface Degree {
-  year: null;
-  stream: string;
-  university: string;
-  universityAffiliation: string;
-  gpa: null;
+interface SubjectResults {
+  english: string;
+  mathematics: string;
 }
 
 interface Preference {
-  studyArea: string[];
-  destination: string[];
-  migratingAlone: boolean;
+  destination: string;
+  study: string[];
 }
 
-interface WorkExperience {
-  designation: string;
-  experience: {
-    month: 0;
-    year: 0;
-  };
+interface OtherInfo {
+  budget: string;
+  comment: string;
 }
