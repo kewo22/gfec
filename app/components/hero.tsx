@@ -17,6 +17,7 @@ export default function Hero() {
 
   return (
     <section className="mb-20 mx-7 lg:mx-20 xl:mx-36 sm:flex">
+      {/* motion-safe:animate-fadeIn */}
       <div className="h-full w-full my-auto sm:mx-5 lg:mx-10 mb-10 sm:mb-0 flex flex-col justify-center text-center  sm:text-left sm:px-0 lg:px-0">
         <h1 className="text-2xl lg:text-3xl font-bold leading-normal tracking-tight text-center sm:text-left text-gray-900 mb-5">
           Study in Overseas with GFEC
