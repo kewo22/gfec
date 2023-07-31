@@ -20,12 +20,12 @@ export default function Footer() {
   const addressLine3 = process.env.ADDRESS_LINE_3 as unknown as string;
 
   return (
-    <footer className="bg-primary">
-      <div className="md:flex md:justify-between p-5 pb-0">
+    <footer className="">
+      <div className="md:flex md:justify-between p-5 pb-0 border-t-2 border-primary">
         <div className="mb-6 md:mb-0">
           <div className="flex items-center mb-3">
             <BuildingOfficeIcon className="h-4 w-4 mr-2 text-secondary" />
-            <span className="text-sm font-light border-l-2 border-l-white pl-2 text-secondary">
+            <span className="text-sm font-light border-l-2 border-l-secondary pl-2 text-secondary">
               {addressLine1}, <br /> {addressLine2}, <br /> {addressLine3}.
             </span>
           </div>
@@ -35,7 +35,7 @@ export default function Footer() {
               className="h-4 w-4 mr-2 text-secondary"
               strokeWidth={2}
             />
-            <div className="border-l-2 border-l-white pl-2">
+            <div className="border-l-2 border-l-secondary pl-2">
               {phoneNos?.map((phoneNo, i) => {
                 return (
                   <div key={i}>
@@ -56,7 +56,7 @@ export default function Footer() {
               className="h-4 w-4 mr-2 text-secondary"
               strokeWidth={2}
             />
-            <div className="border-l-2 border-l-white pl-2">
+            <div className="border-l-2 border-l-secondary pl-2">
               {emails?.map((mail, i) => {
                 return (
                   <div key={i}>
@@ -79,7 +79,7 @@ export default function Footer() {
               className="h-4 w-4 mr-2 text-secondary"
               strokeWidth={2}
             />
-            <div className="border-l-2 border-l-white pl-2">
+            <div className="border-l-2 border-l-secondary pl-2">
               <span className="text-sm font-light text-secondary">
                 Monday: 9:00 AM - 5:00 PM
               </span>
@@ -131,7 +131,7 @@ export default function Footer() {
         </div>
       </div>
       <hr className="border-secondary sm:mx-auto" />
-      <div className="flex items-center justify-between py-2 px-4">
+      <div className="flex items-center justify-between py-2 px-4 bg-primary">
         <span className="text-xs sm:text-center text-secondary">
           © 2023 &nbsp;
           <a href="https://flowbite.com/" className="hover:underline">

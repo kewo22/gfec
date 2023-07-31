@@ -35,3 +35,6 @@ module.exports = {
     animation: ["motion-safe"],
   },
 };
+
+
+// https://www.youtube.com/watch?v=aSlK3GhRuXA
