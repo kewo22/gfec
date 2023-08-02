@@ -16,7 +16,7 @@ export default function About() {
           <video
             autoPlay={true}
             controls={true}
-            src="https://gfce.s3.amazonaws.com/vid.mp4"
+            src="https://gfce.s3.amazonaws.com/GFEC-PROMO.mp4"
             width="100%"
           />
           {/* <video autoPlay={true} controls={true} src="/vid.mp4" width="100%" /> */}
