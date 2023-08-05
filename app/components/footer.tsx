@@ -79,30 +79,31 @@ export default function Footer() {
               className="h-4 w-4 mr-2 text-secondary"
               strokeWidth={2}
             />
-            <div className="border-l-2 border-l-secondary pl-2">
-              <span className="text-sm font-light text-secondary">
-                Monday: 9:00 AM - 5:00 PM
-              </span>
-              <br />
-              <span className="text-sm font-light text-secondary">
-                Tuesday: 9:00 AM - 5:00 PM
-              </span>
-              <br />
-              <span className="text-sm font-light text-secondary">
-                Wednesday : 9:00 AM - 5:00 PM
-              </span>
-              <br />
-              <span className="text-sm font-light text-secondary">
-                Thursday: 9:00 AM - 5:00 PM
-              </span>
-              <br />
-              <span className="text-sm font-light text-secondary">
-                Friday: 9:00 AM - 5:00 PM
-              </span>
-              <br />
-              <span className="text-sm font-light text-secondary">
-                Saturday: 9:00 AM - 1:00 PM
-              </span>
+            <div className="border-l-2 border-l-secondary pl-2 grid grid-cols-[80px_auto] gap-1">
+              <div className="text-sm font-light text-secondary">Monday</div>
+              <div className="text-sm font-light text-secondary">
+                9:00 AM - 5:00 PM
+              </div>
+              <div className="text-sm font-light text-secondary">Tuesday</div>
+              <div className="text-sm font-light text-secondary">
+                9:00 AM - 5:00 PM
+              </div>
+              <div className="text-sm font-light text-secondary">Wednesday</div>
+              <div className="text-sm font-light text-secondary">
+                9:00 AM - 5:00 PM
+              </div>
+              <div className="text-sm font-light text-secondary">Thursday</div>
+              <div className="text-sm font-light text-secondary">
+                9:00 AM - 5:00 PM
+              </div>
+              <div className="text-sm font-light text-secondary">Friday</div>
+              <div className="text-sm font-light text-secondary">
+                9:00 AM - 5:00 PM
+              </div>
+              <div className="text-sm font-light text-secondary">Saturday</div>
+              <div className="text-sm font-light text-secondary">
+                9:00 AM - 1:00 PM
+              </div>
             </div>
           </div>
         </div>
