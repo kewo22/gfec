@@ -2,7 +2,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import nodemailer from "nodemailer";
 import { MongoClient } from "mongodb";
-import Cors from "cors";
 import Mail from "nodemailer/lib/mailer";
 
 type ApiResponse<T> = {
@@ -37,6 +36,7 @@ const post = async (
     const client = await new MongoClient(uri.trim()).connect();
     const db = await client.db("gfec");
     const collection = db.collection("getInTouch");
+    console.log(req.body)
     const x = {
       firstName: JSON.parse(req.body).firstName,
       lastName: JSON.parse(req.body).lastName,
@@ -46,7 +46,7 @@ const post = async (
       preferredDate: JSON.parse(req.body).preferredDate,
       preferredTime: JSON.parse(req.body).preferredTime,
     };
-
+    console.log(x)
     const insertOneRes = await collection.insertOne(x);
     if (insertOneRes.insertedId) {
       const port = process.env.NODEMAILER_PORT as unknown as number;

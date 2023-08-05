@@ -1,28 +1,27 @@
 "use client";
 
-import { Button, Card, Label, Select } from "flowbite-react";
-import { useFormik } from "formik";
 import React, { useState } from "react";
-import { Input } from "../components/input";
+import { useFormik } from "formik";
+import { Button, Card, Label, Select, Spinner } from "flowbite-react";
 import * as Yup from "yup";
-import { Apply as IApply } from "../models/Apply";
+
+import { Input } from "../components/input";
 import { Radio } from "../components/radio";
-import { NumberInput } from "../components/number-input";
 import { CheckBox } from "../components/checkbox";
 import { COUNTRIES } from "../constants/countries.constants";
 import { TextArea } from "../components/textarea";
 
-// async function postGetInTouch(values: IGetInTouch) {
-//   const url = `${process.env.API_BASE_URL}/getintouch` || "";
-//   await fetch(url, {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify(values),
-//     mode: "no-cors",
-//   });
-// }
+async function postApplicationForm(values: any) {
+  const url = `${process.env.API_BASE_URL}/applicationform` || "";
+  await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(values),
+    mode: "no-cors",
+  });
+}
 
 const validationSchema = Yup.object().shape({
   personal: Yup.object().shape({
@@ -34,12 +33,6 @@ const validationSchema = Yup.object().shape({
       .required("Required")
       .matches(/^[0]{1}[7]{1}[01245678]{1}[0-9]{7}$/, "Invalid mobile number"),
     email: Yup.string().email("Invalid email").required("Required"),
-    // firstName: Yup.number()
-    //   .typeError("must be a number")
-    //   .transform((value, originalValue) =>
-    //     originalValue.trim() === "" ? null : value
-    //   )
-    //   .nullable(),
   }),
 });
 
@@ -66,6 +59,8 @@ export default function Apply() {
   ];
 
   const [idDegreeCompleted, setIdDegreeCompleted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [successTextClass, setSuccessTextClass] = useState("top-0 opacity-0");
 
   const formik = useFormik({
     initialValues: {
@@ -83,7 +78,7 @@ export default function Apply() {
       education: {
         school: "",
         ol: {
-          year: "",
+          year: 0,
           type: "",
           subjects: [
             {
@@ -112,7 +107,7 @@ export default function Apply() {
           ],
         },
         al: {
-          year: "",
+          year: 0,
           type: "",
           subjects: [
             {
@@ -142,7 +137,7 @@ export default function Apply() {
         },
         degree: {
           isCompleted: "0",
-          year: "",
+          year: 0,
           stream: "",
           affiliatedUniversity: "",
           gpa: "",
@@ -160,7 +155,13 @@ export default function Apply() {
     },
     validationSchema,
     onSubmit: async (values: any) => {
-      console.log(values);
+      setIsSubmitting(true);
+      await postApplicationForm(values);
+      setIsSubmitting(false);
+      setSuccessTextClass("top-12 opacity-100");
+      setTimeout(() => {
+        setSuccessTextClass("top-0 opacity-0");
+      }, 5000);
     },
     // validateOnMount: false,
     validateOnChange: true,
@@ -198,7 +199,7 @@ export default function Apply() {
 
       <div className="mx-5 sm:mx-16 xl:mx-28 2xl:mx-64">
         <form onSubmit={formik.handleSubmit}>
-          <pre>{JSON.stringify(formik, null, 4)}</pre>
+          {/* <pre>{JSON.stringify(formik, null, 4)}</pre> */}
 
           <Card className="mb-5">
             <h5 className="text-xl sm:text-3xl font-bold leading-normal tracking-tight text-center text-gray-900 m-0 mb-2">
@@ -398,6 +399,7 @@ export default function Apply() {
                     defaultValue={formik.values.education.ol.year}
                     onChange={formik.handleChange}
                   >
+                    <option value={0}>Select year</option>
                     {getYears().map((year) => {
                       return (
                         <option key={year} value={year}>
@@ -520,6 +522,7 @@ export default function Apply() {
                     defaultValue={formik.values.education.al.year}
                     onChange={formik.handleChange}
                   >
+                    <option value={0}>Select year</option>
                     {getYears().map((year) => {
                       return (
                         <option key={year} value={year}>
@@ -671,6 +674,7 @@ export default function Apply() {
                   onChange={formik.handleChange}
                   disabled={!idDegreeCompleted}
                 >
+                  <option value={0}>Select year</option>
                   {getYears().map((year) => {
                     return (
                       <option key={year} value={year}>
@@ -824,13 +828,23 @@ export default function Apply() {
             />
           </Card>
 
-          <Button
-            type="submit"
-            className="w-full sm:w-56 mx-auto mb-6"
-            gradientMonochrome="info"
-          >
-            Submit
-          </Button>
+          <div className="relative">
+            <Button
+              type="submit"
+              className="w-full sm:w-56 mx-auto bg-primary xl:w-56 hover:bg-secondary focus:ring-0 focus:outline-none transition-all ease-in-out mb-6"
+              disabled={isSubmitting}
+            >
+              {isSubmitting && <Spinner size="md" className="ml-2" />}
+              {!isSubmitting && (
+                <span className="text-base">Submit Your Details</span>
+              )}
+            </Button>
+            <div
+              className={`block text-center w-full mx-auto text-secondary absolute transition-all duration-1000 ease-in-out z-[-1] ${successTextClass}`}
+            >
+              Successfully Submitted
+            </div>
+          </div>
         </form>
       </div>
     </section>
