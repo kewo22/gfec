@@ -68,19 +68,19 @@ export default function About() {
         </p>
         <div className="flex flex-col sm:flex-row gap-5 lg:gap-0">
           <p className="font-light text-base leading-8 tracking-tight text-gray-900 text-justify sm:text-center lg:mx-10">
-            <span className="font-bold">Personalized Guidance - </span>
+            <span className="font-bold text-primary">Personalized Guidance - </span>
             We believe in tailoring our services to meet your unique needs,
             providing individualized guidance to help you make informed
             decisions about your study abroad plans.
           </p>
           <p className="font-light text-base leading-8 tracking-tight text-gray-900 text-justify sm:text-center lg:mx-10 border-0 sm:border-l-2 sm:border-r-2 border-l-primary border-r-primary px-0 sm:px-2 lg:px-10">
-            <span className="font-bold">Comprehensive Support - </span>
+            <span className="font-bold text-primary">Comprehensive Support - </span>
             We offer end-to-end assistance, covering everything from university
             selection to visa processing, ensuring that you receive
             comprehensive support throughout your educational journey.
           </p>
           <p className="font-light text-base leading-8 tracking-tight text-gray-900 text-justify sm:text-center lg:mx-10">
-            <span className="font-bold">Unwavering Commitment - </span>
+            <span className="font-bold text-primary">Unwavering Commitment - </span>
             Our dedication knows no bounds. We are committed to going the extra
             mile, ensuring your satisfaction and success by providing the
             highest level of service and support at all times.

@@ -21,7 +21,7 @@ export default function Footer() {
 
   return (
     <footer className="">
-      <div className="md:flex md:justify-between p-5 pb-0 border-t-2 border-primary">
+      <div className="md:flex md:justify-between p-5 pb-0 border-t-2 border-primary bg-gradient-to-b from-primary">
         <div className="mb-6 md:mb-0">
           <div className="flex items-center mb-3">
             <BuildingOfficeIcon className="h-4 w-4 mr-2 text-secondary" />
