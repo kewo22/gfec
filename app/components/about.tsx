@@ -14,12 +14,11 @@ export default function About() {
       <div className="xl:flex xl:gap-8">
         <div className="mb-4 xl:mb-0 xl:w-1/2 flex items-center">
           <video
-            autoPlay={true}
+            autoPlay={false}
             controls={true}
             src="https://gfce.s3.amazonaws.com/GFEC-PROMO.mp4"
             width="100%"
           />
-          {/* <video autoPlay={true} controls={true} src="/vid.mp4" width="100%" /> */}
         </div>
 
         <div className="xl:xl:w-1/2">
