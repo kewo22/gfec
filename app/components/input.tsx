@@ -105,7 +105,7 @@ export const Input: React.FC<InputProps> = ({ ...props }) => {
         min={min}
         max={max}
       />
-      <small className={error && error.length ? "visible" : "invisible"}>
+      <small className={error && error.length ? "visible text-red-600" : "invisible"}>
         {error || ""}
       </small>
     </div>
