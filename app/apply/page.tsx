@@ -292,9 +292,11 @@ export default function Apply() {
                     onChange={formik.handleChange}
                   />
                 </div>
-                <small className="text-red-600">
-                  {formik.errors.personal?.gender || ""}
-                </small>
+                {Boolean(formik.touched.personal?.gender) && (
+                  <small className="text-red-600">
+                    {formik.errors.personal?.gender || ""}
+                  </small>
+                )}
               </div>
             </div>
 
@@ -375,7 +377,7 @@ export default function Apply() {
               onBlurInput={formik.handleBlur}
             />
 
-            <div className="lg:flex lg:flex-row lg:gap-2">
+            <div className="lg:flex lg:flex-row lg:gap-5">
               <div className="relative rounded-lg border-[1px] border-[#d1d5db] border-1 p-4 mb-5 lg:mb-0 flex-1">
                 <h1 className="font-semibold text-gray-900 m-0 absolute top-[-12.5px] bg-white w-[75px] flex justify-center">
                   O Level

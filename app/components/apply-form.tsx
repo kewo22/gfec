@@ -8,7 +8,7 @@ export default function ApplyForm() {
       <h1 className="font-bold leading-normal tracking-tight text-center sm:text-left text-gray-900 mb-5">
         Study Abroad with <br />
         <span className="text-primary">
-          Gordon Foregin Educational Consultancy
+          Gordon Foreign Educational Consultancy
         </span>
       </h1>
 
