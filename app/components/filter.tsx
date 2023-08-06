@@ -24,13 +24,7 @@ export default function Filter(props: FilterProps) {
   const { filterPosition, selectedCountry } = props;
   const { onCloseMenu, onCountryChange } = props;
 
-  useEffect(() => {
-    const navHeight = document.querySelector("#main-nav")?.clientHeight!;
-    const el = wrapperElement.current! as HTMLDivElement;
-    el.style.height = `${window.innerHeight - navHeight}px`;
-  }, []);
-
-  const mobileClass = `absolute w-full bg-primary p-10 transition-all duration-1000 ease-in-out overflow-x-hidden overflow-y-auto z-[1] ${filterPosition}`;
+  const mobileClass = `fixed top-0 h-screen w-full bg-primary p-10 transition-all duration-1000 ease-in-out overflow-x-hidden overflow-y-auto z-[1] ${filterPosition}`;
   const smClass = `sm:relative sm:w-auto sm:top-auto sm:right-auto sm:z-[0] sm:!h-full sm:drop-shadow-lg sm:rounded-md sm:ml-5`;
 
   const onCountrySelect = (e: Country) => {
