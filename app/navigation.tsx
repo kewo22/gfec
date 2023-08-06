@@ -40,7 +40,7 @@ export default function Navigation() {
   };
 
   const onRequestCallbackClick = () => {
-    const mailEL = document.querySelector('#main'); // app/page.tsx
+    const mailEL = document.querySelector("#main"); // app/page.tsx
     const getInTouchEl = mailEL?.querySelector("#get-in-touch");
 
     if (mailEL && getInTouchEl) {
@@ -212,7 +212,11 @@ export default function Navigation() {
         onCloseMenu={onCloseMenu}
       />
 
-      <Modal id="get-in-touch-model" show={isModelOpen} onClose={() => onModelClose()}>
+      <Modal
+        id="get-in-touch-model"
+        show={isModelOpen}
+        onClose={() => onModelClose()}
+      >
         <Modal.Header className="flex items-center">
           <h1 className="font-bold">Get in touch</h1>
           <p className="font-light text-sm text-gray-900">

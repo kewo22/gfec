@@ -42,7 +42,7 @@ export default function GetInTouch(props: GetInTouchProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [successTextClass, setSuccessTextClass] = useState("top-0 opacity-0");
 
-  const { isOpenInModel = false } = props;
+  const { isOpenInModel = false, wrapperClass } = props;
 
   const today = toDateString();
 
@@ -86,10 +86,6 @@ export default function GetInTouch(props: GetInTouchProps) {
   const resetForm = () => {
     formik.resetForm();
   };
-
-  const wrapperClass = isOpenInModel
-    ? ""
-    : "pt-20 mb-20 mx-7 lg:mx-20 xl:mx-80";
 
   return (
     <section className={wrapperClass} id="get-in-touch">

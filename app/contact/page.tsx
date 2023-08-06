@@ -74,7 +74,7 @@ export default function About() {
         )}
         {!isLoaded && <Spinner size="xl" />}
       </div>
-      <GetInTouch />
+      <GetInTouch wrapperClass="pt-20"/>
     </section>
   );
 }

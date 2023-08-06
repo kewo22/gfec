@@ -32,7 +32,7 @@ export default async function Home() {
       <OurServices />
       <Testimonial />
       <SupportedCountries />
-      <GetInTouch />
+      <GetInTouch wrapperClass="pt-20 mb-20 mx-7 lg:mx-20 xl:mx-80"/>
     </main>
   );
 }
