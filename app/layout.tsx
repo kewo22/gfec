@@ -1,15 +1,19 @@
 "use client";
+
 import { Ubuntu } from "@next/font/google";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 
 import Navigation from "./navigation";
+import Footer from "./components/footer";
 
-library.add(fas);
+import "swiper/css";
+import "swiper/css/bundle";
 
 import "./globals.css";
-import Footer from "./components/footer";
+
+library.add(fas);
 
 const ubuntu = Ubuntu({
   weight: "300",

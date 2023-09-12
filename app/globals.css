@@ -35,18 +35,23 @@
 .icon-instagram:before {
   content: "\e905";
 }
+
 .icon-format-quote:before {
   content: "\e901";
 }
+
 .icon-linkedln:before {
   content: "\e902";
 }
+
 .icon-twitter:before {
   content: "\e903";
 }
+
 .icon-youtube:before {
   content: "\e904";
 }
+
 .icon-facebook:before {
   content: "\e900";
 }
@@ -197,17 +202,19 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 }
 
 #PreferredTime:focus {
-  background: white !important ;
+  background: white !important;
   border: 1px solid rgb(209 213 219) !important;
   border-radius: 0.5rem !important;
   outline: none !important;
 }
+
 /* Remove this if flowbite select allows theme prop */
 
 /* Remove this if flowbite label allows theme prop */
 label[id*="lbl-"] {
   font-weight: 700;
 }
+
 /* Remove this if flowbite label allows theme prop */
 
 .bg {
@@ -236,6 +243,7 @@ label[id*="lbl-"] {
   0% {
     transform: translateX(-25%);
   }
+
   100% {
     transform: translateX(25%);
   }
@@ -298,4 +306,37 @@ label[id*="lbl-"] {
 
 .animate-spin {
   fill: #BD9519 !important;
+}
+
+
+
+
+
+
+
+
+.swiper-slide-success-stories {
+  width: auto !important;
+  min-width: fit-content !important;
+}
+
+.swiper-pagination {
+  position: initial;
+}
+
+.swiper-pagination-bullet {
+  width: 8px !important;
+  height: 8px !important;
+  margin: 0 3px !important;
+  background: theme("colors.secondary") !important;
+  opacity: 1 !important;
+  border-radius: 100% !important;
+  transition: all 0.3s linear !important;
+}
+
+.swiper-pagination-bullet-active {
+  width: 23px !important;
+  background: theme("colors.primary") !important;
+  opacity: 1 !important;
+  border-radius: 33px !important;
 }

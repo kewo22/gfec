@@ -1,12 +1,12 @@
 "use client";
 
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 import Image from "next/image";
 
 import styles from "../page.module.css";
-import Swipe from "react-easy-swipe";
+
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import { COUNTRIES } from "../constants/countries.constants";
 import { Country } from "../types/constants/country";
