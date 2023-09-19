@@ -22,11 +22,11 @@ export default function Accordion() {
     //   description:
     //     "Provide complete career counseling to students on the range of courses based on his/her interest such as Pathways, Foundation, Diploma, Undergraduate, Postgraduate, & English language courses.",
     // },
-    {
-      header: "Health Insurance",
-      description:
-        "Health Insurance for Overseas Students, 485 & 457 Visa Holders.",
-    },
+    // {
+    //   header: "Health Insurance",
+    //   description:
+    //     "Health Insurance for Overseas Students, 485 & 457 Visa Holders.",
+    // },
   ];
 
   return (
@@ -39,7 +39,7 @@ export default function Accordion() {
                 {({ open }) => (
                   <>
                     <Disclosure.Button className="flex w-full justify-between rounded-lg bg-primary px-4 py-2 text-left font-medium text-accent hover:bg-accent hover:text-white transition-all ease-in-out">
-                      <span className="text-base xl:text-xl">{obj.header}</span>
+                      <span className="text-base">{obj.header}</span>
                       {/* <ChevronUpIcon
                         className={`${
                           open ? "rotate-180 transform" : ""
@@ -48,7 +48,7 @@ export default function Accordion() {
                       {!open && <PlusIcon className="h-5 w-5" />}
                       {open && <MinusIcon className="h-5 w-5" />}
                     </Disclosure.Button>
-                    <Disclosure.Panel className="mb-4 font-light text-base xl:text-xl leading-8 tracking-tight text-gray-900 text-justify px-4 pt-4 pb-2">
+                    <Disclosure.Panel className="mb-4 font-light text-base leading-8 tracking-tight text-gray-900 text-justify px-4 pt-4 pb-2">
                       {obj.description}
                     </Disclosure.Panel>
                   </>

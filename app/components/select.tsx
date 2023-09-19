@@ -44,11 +44,12 @@ export const Select: React.FC<InputProps> = ({ ...props }) => {
   };
 
   return (
-    <div className={`w-full relative ${props.className} bg-white`}>
+    <div className={`w-full relative ${props.className}`}>
       <Label
+        id={`lbl-${htmlFor}`}
         htmlFor={htmlFor}
         value={label}
-        className="absolute z-10 w-full pl-3 mt-2 font-bold"
+        className="absolute z-10 w-full pl-3 mt-2 font-extrabold text-xs"
       />
       <FBSelect
         id={htmlFor}

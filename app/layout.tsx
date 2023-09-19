@@ -1,18 +1,20 @@
 "use client";
-/* eslint-disable @next/next/no-sync-scripts */
-import Navigation from "./navigation";
-import { Ubuntu } from "@next/font/google";
 
-// import { config } from "@fortawesome/fontawesome-svg-core";
-// import "@fortawesome/fontawesome-svg-core/styles.css";
-// config.autoAddCss = false;
+import { Ubuntu } from "@next/font/google";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
-library.add(fas);
+
+import Navigation from "./navigation";
+import Footer from "./components/footer";
+
+import "swiper/css";
+import "swiper/css/bundle";
+import 'keen-slider/keen-slider.min.css'
 
 import "./globals.css";
-import Footer from "./components/footer";
+
+library.add(fas);
 
 const ubuntu = Ubuntu({
   weight: "300",
@@ -31,9 +33,13 @@ export default function RootLayout({
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
       <head />
-      <body
-        className={`${ubuntu.className} text-accent h-full bg-gradient-to-b from-gray-100 to-gray-200`}
-      >
+      {/* from-gray-100 to-gray-200 */}
+      {/* `${ubuntu.className} text-accent h-full bg-gradient-to-b ` */}
+      <body className={`${ubuntu.className}`}>
+        <div className="bg"></div>
+        <div className="bg bg2"></div>
+        <div className="bg bg3"></div>
+
         <Navigation />
         {children}
         <Footer />

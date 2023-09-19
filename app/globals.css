@@ -35,23 +35,28 @@
 .icon-instagram:before {
   content: "\e905";
 }
+
 .icon-format-quote:before {
   content: "\e901";
 }
+
 .icon-linkedln:before {
   content: "\e902";
 }
+
 .icon-twitter:before {
   content: "\e903";
 }
+
 .icon-youtube:before {
   content: "\e904";
 }
+
 .icon-facebook:before {
   content: "\e900";
 }
 
-:root {
+/* :root {
   --max-width: 1100px;
   --border-radius: 12px;
   --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
@@ -91,7 +96,7 @@
   --callout-border-rgb: 172, 175, 176;
   --card-rgb: 180, 185, 188;
   --card-border-rgb: 131, 134, 135;
-}
+} */
 
 /* @media (prefers-color-scheme: dark) {
   :root {
@@ -186,8 +191,8 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 /* Remove this if flowbite select allows theme prop */
 #PreferredTime {
   background: white !important;
-  border: none !important;
-  border-radius: 0 !important;
+  border: 1px solid rgb(209 213 219) !important;
+  border-radius: 0.5rem !important;
   outline: none !important;
 
   height: 4rem;
@@ -197,9 +202,215 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 }
 
 #PreferredTime:focus {
-  background: white !important ;
-  border: none !important;
-  border-radius: 0 !important;
+  background: white !important;
+  border: 1px solid rgb(209 213 219) !important;
+  border-radius: 0.5rem !important;
   outline: none !important;
 }
+
 /* Remove this if flowbite select allows theme prop */
+
+/* Remove this if flowbite label allows theme prop */
+label[id*="lbl-"] {
+  font-weight: 700;
+}
+
+/* Remove this if flowbite label allows theme prop */
+
+.bg {
+  animation: slide 3s ease-in-out infinite alternate;
+  background-image: linear-gradient(-100deg, #eeeeee 50%, #d1a104 50%);
+  /* background-image: linear-gradient(-100deg, #b5f1cc 50%, #b9f3fc 50%); */
+  bottom: 0;
+  left: -50%;
+  opacity: 0.5;
+  position: fixed;
+  right: -50%;
+  top: 0;
+  z-index: -1;
+}
+
+.bg2 {
+  animation-direction: alternate-reverse;
+  animation-duration: 4s;
+}
+
+.bg3 {
+  animation-duration: 5s;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(-25%);
+  }
+
+  100% {
+    transform: translateX(25%);
+  }
+}
+
+[data-testid="flowbite-tooltip-target"] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0.5rem;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.75rem;
+  margin: auto;
+}
+
+/* TAB STYLE OVERRIDE */
+/* [aria-labelledby=":r0:-tab-0"] {
+  padding: 1rem 0;
+} */
+/* TAB STYLE OVERRIDE */
+
+/* Desktops and laptops ----------- */
+@media only screen and (min-width: 1224px) {
+  ::-webkit-scrollbar {
+    width: 0.5rem;
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: rgb(138, 138, 138);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: rgb(212, 212, 212);
+  }
+}
+
+/* Large screens ----------- */
+@media only screen and (min-width: 1824px) {
+  ::-webkit-scrollbar {
+    width: 0.5rem;
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: rgb(138, 138, 138);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: rgb(212, 212, 212);
+  }
+}
+
+/*  */
+
+.animate-spin {
+  fill: #BD9519 !important;
+}
+
+
+
+
+
+
+
+
+.swiper-slide-success-stories {
+  width: auto !important;
+  min-width: fit-content !important;
+}
+
+.swiper-pagination {
+  position: initial;
+}
+
+.swiper-pagination-bullet {
+  width: 8px !important;
+  height: 8px !important;
+  margin: 0 3px !important;
+  background: theme("colors.secondary") !important;
+  opacity: 1 !important;
+  border-radius: 100% !important;
+  transition: all 0.3s linear !important;
+}
+
+.swiper-pagination-bullet-active {
+  width: 23px !important;
+  background: theme("colors.primary") !important;
+  opacity: 1 !important;
+  border-radius: 33px !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.dots {
+  display: flex;
+  padding: 10px 0;
+  justify-content: center;
+}
+
+.dot {
+  border: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin: 0 5px;
+  padding: 5px;
+  cursor: pointer;
+  background: theme("colors.secondary") !important;
+  opacity: 1 !important;
+  transition: all 0.3s linear !important;
+}
+
+.dot:focus {
+  outline: none;
+}
+
+.dot.active {
+  width: 23px !important;
+  background: theme("colors.primary") !important;
+  opacity: 1 !important;
+  border-radius: 33px !important;
+}
+
+.keen-slider__slide {
+  /* min-width: 390px !important; */
+  border-radius: 5%;
+}

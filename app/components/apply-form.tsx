@@ -4,11 +4,11 @@ import { Button, Label, TextInput } from "flowbite-react";
 
 export default function ApplyForm() {
   return (
-    <section className="mt-40">
-      <h1 className="mb-4 text-xl sm:text-3xl font-bold leading-normal tracking-tight text-center text-gray-900">
+    <section className="">
+      <h1 className="font-bold leading-normal tracking-tight text-center sm:text-left text-gray-900 mb-5">
         Study Abroad with <br />
         <span className="text-primary">
-          Gordon Foregin Educational Consultancy
+          Gordon Foreign Educational Consultancy
         </span>
       </h1>
 

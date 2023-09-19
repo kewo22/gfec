@@ -5,31 +5,34 @@ import OurServices from "./components/our-services";
 import GetInTouch from "./components/get-in-touch";
 import Testimonial from "./components/testimonial";
 
-async function getArtist() {
-  const res = await fetch(`https://uat.d2ergyqxpebfoy.amplifyapp.com/api/test`);
-  // const res = await fetch(`http://localhost:3000/api/test`);
-  return res.json();
+// Promise<any>
+async function getGetInTouchData() {
+  try {
+    const url = `${process.env.API_BASE_URL}/getintouch` || "";
+    const res = await fetch(url, { cache: "no-store" });
+    return res.json();
+  } catch (error) {
+    return { data: [] };
+  }
 }
 
 export default async function Home() {
-  const artistData = await getArtist();
-  console.log("🚀 ~ file: page.tsx:26 ~ Home ~ artistData:", artistData.data);
-  // await postArtist();
+  // const artistData = await getGetInTouchData();
 
   // const { height } = useNavigationHeight();
   // console.log(height);
 
   return (
-    <main className="">
-      <h1>ssss - {JSON.stringify(artistData)}</h1>
+    <main id="main" className="mt-10 lg:mt-20">
+      {/* <pre>ssss - {JSON.stringify(artistData || null, null, 4)}</pre>
+      <h1>ooo - {artistData?.data[0]?.email || "NO"}</h1>
+      <h1>--- HHHHHHHHHHHH87878787878787878HHHHHHHHHHHHHHh ----</h1> */}
       <Hero />
       <About />
       <OurServices />
       <Testimonial />
       <SupportedCountries />
-      <GetInTouch />
+      <GetInTouch wrapperClass="pt-20 mb-20 mx-7 lg:mx-20 xl:mx-80"/>
     </main>
-    // {/* @ts-expect-error Server Component */}
-    // <SupportedCountries />
   );
 }

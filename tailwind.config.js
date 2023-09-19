@@ -18,7 +18,23 @@ module.exports = {
         secondary: "#000080",
         accent: "#040607",
       },
+      animation: {
+        fadeIn: "fadeIn 0.5s ease-in forwards",
+      },
+      keyframes: {
+        fadeIn: {
+          "0%": { opacity: 0 },
+          "50%": { opacity: 0.5 },
+          "100%": { opacity: 1 },
+        },
+      },
     },
   },
   plugins: [require("flowbite/plugin")],
+  variants: {
+    animation: ["motion-safe"],
+  },
 };
+
+
+// https://www.youtube.com/watch?v=aSlK3GhRuXA

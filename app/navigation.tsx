@@ -4,15 +4,28 @@ import { useState } from "react";
 
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
-import { Bars3Icon } from "@heroicons/react/24/outline";
+import { Bars3Icon, PhoneArrowDownLeftIcon } from "@heroicons/react/24/outline";
 
 import MobileNavigation from "./mobile-nav-bar";
-import { NavItems } from "./constants/nav-items.constants";
+import { CountriesRoute, NavItems } from "./constants/nav-items.constants";
+import { Dropdown, Modal } from "flowbite-react";
+import useNavigationEvent from "./hooks/useNavigationEvent";
+import GetInTouch from "./components/get-in-touch";
 
 export default function Navigation() {
+  const router = useRouter();
+  const { url } = useNavigationEvent();
+  const plainRoute = url.split("/")[1];
+
+  const emails = (process.env.EMAILS as unknown as string)?.split(",") || [];
+  const phoneNos = (process.env.PHONE as unknown as string)?.split(",") || [];
+
   const [mobileNavPositionClass, setMobileNavPositionClass] =
     useState("left-full");
+
+  const [isModelOpen, setIsModelOpen] = useState(false);
 
   const onMenuClick = () => {
     const body = document.querySelector("body");
@@ -26,79 +39,200 @@ export default function Navigation() {
     setMobileNavPositionClass("left-full");
   };
 
+  const onRequestCallbackClick = () => {
+    const mailEL = document.querySelector("#main"); // app/page.tsx
+    const getInTouchEl = mailEL?.querySelector("#get-in-touch");
+
+    if (mailEL && getInTouchEl) {
+      getInTouchEl?.scrollIntoView({
+        behavior: "smooth",
+      });
+    } else {
+      setIsModelOpen(true);
+    }
+  };
+
+  const onModelClose = () => {
+    setIsModelOpen(false);
+  };
+
+  const onLogoClick = () => {
+    router.push("/");
+  };
+
   return (
     <>
       <nav
         id="main-nav"
-        className="relative bg-transparent flex items-center sm:justify-between w-full mb-5 mt-5 lg:mb-0 my-10 lg:my-16"
+        className="relative bg-white flex sm:flex-col w-full border-b-2 border-b-primary"
       >
-        <Image
-          src="/GFEC-Trans.png"
-          alt="Next.js Logo"
-          width={150}
-          height={100}
-          priority
-          className="sm:ml-6 lg:ml-20 xl:ml-36"
-        />
+        <div className="hidden sm:flex justify-between bg-primary text-accent py-1 pl-1 lg:pl-5 lg:pr-3">
+          <div>
+            {emails?.map((mail, i) => {
+              return (
+                <div key={i} className="inline">
+                  <a
+                    className="text-xs lg:text-sm font-light text-white"
+                    href={`tel:${mail}`}
+                  >
+                    {mail} &nbsp;
+                  </a>
+                </div>
+              );
+            })}
+          </div>
 
-        <div className="hidden sm:flex flex-row flex-1 ml-5">
-          {NavItems.map((item, i) => {
-            return (
-              <Link
-                key={item.text}
-                className={`text-accent flex items-center justify-center pr-5 ml-5 first:m-0 font-bold ${item.class} hover:text-primary transition-all ease-in-out text-base xl:text-xl`}
-                href={item.route}
-                onClick={onCloseMenu}
-              >
-                {item.text}
-              </Link>
-            );
-          })}
+          <div>
+            {phoneNos?.map((phone, i) => {
+              return (
+                <div key={i} className="inline">
+                  <a
+                    className="text-xs lg:text-sm font-light text-white"
+                    href={`tel:${phone}`}
+                  >
+                    {phone} &nbsp;
+                  </a>
+                </div>
+              );
+            })}
+          </div>
         </div>
 
-        <section className="hidden sm:flex flex-col sm:mr-6 lg:mr-20 xl:mr-36">
-          <div className="flex items-center">
-            <span className="text-lg lg:text-2xl text-accent icon-facebook mr-2"></span>
-            {/* <span className="text-lg lg:text-2xl text-accent icon-instagram mr-2"></span> */}
-            <span className="text-lg lg:text-2xl text-accent icon-instagram mr-2"></span>
-            <span className="text-lg lg:text-2xl text-accent icon-linkedln mr-2"></span>
-            {/* <span className="text-lg lg:text-2xl text-accent icon-youtube"></span> */}
+        <div className="flex items-center sm:justify-between w-full px-5 lg:px-20 xl:px-36">
+          <div role="button" onClick={onLogoClick}>
+            <Image
+              src="/GFEC-Trans.png"
+              alt="Next.js Logo"
+              width={170}
+              height={120}
+              priority
+              className=""
+            />
           </div>
-          {/* <div className="w-full flex justify-end items-center flex-1"> */}
-          {/* <div className="text-accent flex items-center text-sm font-medium">
-            <PhoneIcon className="h-4 w-4 mr-2" strokeWidth={2} />
-            <a href="tel:0771782888">0771782888</a>
-          </div>
-          <div className="text-accent flex items-center text-base font-medium">
-            <AtSymbolIcon className="h-4 w-4 mr-2" strokeWidth={2} />
-            <a href="mailto:email@gmail.com">email@gmail.com</a>
-          </div>
-          <div className="flex items-center">
-            <span className="icon-facebook mr-2"></span>
-            <span className="icon-instagram mr-2"></span>
-            <span className="icon-linkedln mr-2"></span>
-            <span className="icon-twitter mr-2"></span>
-            <span className="icon-youtube"></span>
-          </div> */}
-          {/* </div> */}
+          <div className="flex flex-col items-end">
+            <section className="hidden sm:flex mb-3">
+              <div className="flex items-center">
+                <a
+                  target="_blank"
+                  href="https://www.facebook.com/people/Gordon-Foreign-Educational-Consultancy-Pvt-Ltd/100089486356607/"
+                  rel="noopener noreferrer"
+                >
+                  <span className="mr-2 p-2 rounded-xl bg-primary flex items-center justify-center">
+                    <span className="text-base text-white icon-facebook"></span>
+                  </span>
+                </a>
 
-          {/* <button
-            type="button"
-            className="px-3 py-2 text-xs font-medium text-center text-white bg-secondary rounded-full hover:bg-primary focus:ring-0 focus:outline-none ml-auto transition-all ease-in-out"
-          >
-            <Link href="apply">Apply Now</Link>
-          </button> */}
-        </section>
+                <a
+                  target="_blank"
+                  href="https://instagram.com/gfe_consultancy?igshid=MzRlODBiNWFlZA=="
+                  rel="noopener noreferrer"
+                >
+                  <span className="mr-2 p-2 rounded-xl bg-primary flex items-center justify-center">
+                    <span className="text-base text-white icon-instagram"></span>
+                  </span>
+                </a>
 
-        <Bars3Icon
-          onClick={onMenuClick}
-          className="h-6 w-6 sm:hidden ml-auto mr-5"
-        />
+                <a
+                  target="_blank"
+                  href="https://www.linkedin.com/company/gordon-foreign-education-consultancy-pvt-ltd/"
+                  rel="noopener noreferrer"
+                >
+                  <span className="mr-2 p-2 rounded-xl bg-primary flex items-center justify-center">
+                    <span className="text-base text-white icon-linkedln"></span>
+                  </span>
+                </a>
+              </div>
+            </section>
+
+            <div className="hidden sm:flex flex-row">
+              {NavItems.map((item, i) => {
+                return (
+                  <div key={i} className="flex items-center justify-center">
+                    {item.type === "link" && (
+                      <Link
+                        key={item.text}
+                        className={`${
+                          item.class
+                        } transition-all ease-in-out border-b-2 ${
+                          plainRoute === item.route
+                            ? "border-primary"
+                            : "border-transparent"
+                        } `}
+                        href={item.route}
+                        onClick={onCloseMenu}
+                      >
+                        {item.text}
+                      </Link>
+                    )}
+                    {/* {item.type === "popover" && (
+                    <Dropdown
+                      key={i}
+                      label={item.text}
+                      inline={true}
+                      arrowIcon={false}
+                    >
+                      {CountriesRoute.map((country, i) => {
+                        return (
+                          <Dropdown.Item key={i}>
+                            <Link href={country.route}>{country.country}</Link>
+                          </Dropdown.Item>
+                        );
+                      })}
+                    </Dropdown>
+                  )} */}
+                  </div>
+                );
+              })}
+
+              <div
+                className="bg-primary ml-5 px-5 py-2 rounded-lg text-white flex items-center text-sm"
+                role="button"
+                onClick={onRequestCallbackClick}
+              >
+                <PhoneArrowDownLeftIcon className="h-4 w-4 text-white mr-3" />
+                Request a callback
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="flex items-center">
+          <PhoneArrowDownLeftIcon
+            className="h-6 w-6 mr-5 ml-auto sm:hidden"
+            role="button"
+            onClick={onRequestCallbackClick}
+          />
+          <Bars3Icon
+            onClick={onMenuClick}
+            className="h-10 w-10 sm:hidden mr-5"
+          />
+        </div>
       </nav>
       <MobileNavigation
         mobileNavPositionClass={mobileNavPositionClass}
         onCloseMenu={onCloseMenu}
       />
+
+      <Modal
+        id="get-in-touch-model"
+        show={isModelOpen}
+        onClose={() => onModelClose()}
+      >
+        <Modal.Header className="flex items-center">
+          <h1 className="font-bold">Get in touch</h1>
+          <p className="font-light text-sm text-gray-900">
+            Thank you for your interest in our organization and the services we
+            offer. We would be more than happy to arrange a FREE information
+            session for you.
+          </p>
+        </Modal.Header>
+        <Modal.Body>
+          <GetInTouch isOpenInModel={true} />
+        </Modal.Body>
+        {/* <Modal.Footer>
+          <button>I accept</button>
+          <button>Decline</button>
+        </Modal.Footer> */}
+      </Modal>
     </>
   );
 }

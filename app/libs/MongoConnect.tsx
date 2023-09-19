@@ -14,7 +14,7 @@ if (!process.env.MONGO_URL) {
   throw new Error('Invalid/Missing environment variable: "MONGO_URL"');
 }
 
-const uri = process.env.MONGO_URL;
+const uri = process.env.MONGO_URL!;
 const options = {};
 
 let client;
@@ -34,7 +34,7 @@ if (process.env.NODE_ENV === "development") {
   clientPromise = globalWithMongo._mongoClientPromise;
 } else {
   // In production mode, it's best to not use a global variable.
-  client = new MongoClient(uri, options);
+  client = new MongoClient(uri.trim(), options);
   clientPromise = client.connect();
 }
 

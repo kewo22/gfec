@@ -1,78 +1,141 @@
 "use client";
 
-import React from "react";
-import { Button } from "flowbite-react";
+import React, { useState } from "react";
+import { Button, Spinner } from "flowbite-react";
+import * as Yup from "yup";
 
-import styles from "../page.module.css";
 import { Input } from "./input";
 import { Select } from "./select";
-import { Form, Formik, FormikHelpers, useFormik } from "formik";
+import { useFormik } from "formik";
 
 import { GetInTouch as IGetInTouch } from "../models/GetInTouch";
 import { toDateString } from "../../util/date";
+import { GetInTouchProps } from "../types/props/get-in-touch";
 
-// async function postGetInTouch(values: IGetInTouch) {
-//   await fetch("http://localhost:3000/api/getInTouch", {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify(values),
-//   });
-// }
+// import styles from "../page.module.css";
 
-export default function GetInTouch() {
+const validationSchema = Yup.object().shape({
+  firstName: Yup.string().required("Required"),
+  lastName: Yup.string().required("Required"),
+  email: Yup.string().email("Invalid email").required("Required"),
+  phone: Yup.string()
+    .matches(/^[0-9]{10}$/g, {
+      message: "Invalid phone",
+      excludeEmptyString: true,
+    })
+    .required("Required"),
+});
+
+async function postGetInTouch(values: IGetInTouch) {
+  const url = `${process.env.API_BASE_URL}/getintouch` || "";
+  await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(values),
+    mode: "no-cors",
+  });
+}
+
+export default function GetInTouch(props: GetInTouchProps) {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [successTextClass, setSuccessTextClass] = useState("top-0 opacity-0");
+
+  const { isOpenInModel = false, wrapperClass } = props;
+
   const today = toDateString();
 
+  const initialValues = {
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    address: "",
+    preferredDate: today,
+    preferredTime: "9:00 - 9:30",
+  };
+
   const formik = useFormik({
-    initialValues: {
-      firstName: "",
-      lastName: "",
-      email: "",
-      phone: "",
-      address: "",
-      preferredDate: today,
-      preferredTime: "9:00 - 9:30",
+    initialValues,
+    validationSchema,
+    onSubmit: async (values: IGetInTouch) => {
+      setIsSubmitting(true);
+      await postGetInTouch(values);
+      setIsSubmitting(false);
+      resetForm();
+      setSuccessTextClass("top-12 opacity-100");
+
+      setTimeout(() => {
+        setSuccessTextClass("top-0 opacity-0");
+      }, 5000);
     },
-    // validationSchema,
-    onSubmit: (values: IGetInTouch) => {
-      console.log(
-        "🚀 ~ file: get-in-touch.tsx:33 ~ GetInTouch ~ values:",
-        values
-      );
-    },
-    validateOnMount: true,
+    validateOnMount: false,
     validateOnChange: true,
+    validateOnBlur: true,
   });
 
-  return (
-    <section className="mb-20 mx-7 lg:mx-20 xl:mx-36">
-      <h1 className="text-2xl sm:text-3xl font-bold leading-normal tracking-tight text-center text-gray-900 mb-5">
-        Get in touch
-      </h1>
+  const onFocus = (event: React.FocusEvent<HTMLInputElement>) => {
+    formik.setFieldTouched(event.target.name, true, false);
+  };
 
-      <p className="font-light text-base xl:text-xl leading-8 tracking-tight text-gray-900 text-center lg:px-0 mb-5">
-        Thank you for your interest in our organization and the services we
-        offer. We would be more than happy to arrange a FREE information session
-        for you.
-      </p>
+  const onBlur = (event: React.FocusEvent<HTMLInputElement>) => {
+    formik.setFieldTouched(event.target.name, false, false);
+  };
+
+  const resetForm = () => {
+    formik.resetForm();
+  };
+
+  return (
+    <section className={wrapperClass} id="get-in-touch">
+      {!isOpenInModel && (
+        <h1 className="text-2xl sm:text-3xl font-bold leading-normal tracking-tight text-center text-gray-900 mb-5">
+          Get in touch
+        </h1>
+      )}
+
+      {!isOpenInModel && (
+        <p className="font-light text-base leading-8 tracking-tight text-gray-900 text-justify sm:text-center lg:px-0 mb-5">
+          At GFEC, we are your trusted gateway to international education. Get
+          in touch with our expert team today and embark on a transformative
+          journey towards your educational goals. Experience personalized
+          guidance, invaluable resources, and unparalleled support as we guide
+          you every step of the way.
+        </p>
+      )}
 
       <form onSubmit={formik.handleSubmit}>
-        <div className="">
+        <div className="relative">
+          {/* <pre>{JSON.stringify(formik, null, 4)}</pre> */}
           <div className="flex flex-col sm:flex-row gap-5 mb-6">
             <Input
               label="First Name"
               sizing="xl"
               name="firstName"
               value={formik.values.firstName}
+              error={
+                formik.errors.firstName && formik.touched.firstName
+                  ? formik.errors.firstName
+                  : ""
+              }
               onChange={formik.handleChange}
+              onFocusInput={onFocus}
+              onBlurInput={onBlur}
             />
             <Input
               label="Last Name"
               sizing="xl"
               name="lastName"
               value={formik.values.lastName}
+              error={
+                formik.errors.lastName && formik.touched.lastName
+                  ? formik.errors.lastName
+                  : ""
+              }
               onChange={formik.handleChange}
+              onFocusInput={onFocus}
+              onBlurInput={onBlur}
             />
           </div>
           <div className="flex flex-col sm:flex-row gap-5 mb-6">
@@ -81,14 +144,28 @@ export default function GetInTouch() {
               sizing="xl"
               name="email"
               value={formik.values.email}
+              error={
+                formik.errors.email && formik.touched.email
+                  ? formik.errors.email
+                  : ""
+              }
               onChange={formik.handleChange}
+              onFocusInput={onFocus}
+              onBlurInput={onBlur}
             />
             <Input
               label="Phone"
               sizing="xl"
               name="phone"
               value={formik.values.phone}
+              error={
+                formik.errors.phone && formik.touched.phone
+                  ? formik.errors.phone
+                  : ""
+              }
               onChange={formik.handleChange}
+              onFocusInput={onFocus}
+              onBlurInput={onBlur}
             />
           </div>
           <div className="flex mb-6">
@@ -119,12 +196,21 @@ export default function GetInTouch() {
             />
           </div>
 
-          <Button
-            type="submit"
-            className="w-full sm:w-56 mx-auto bg-secondary xl:w-56 hover:bg-primary focus:ring-0 focus:outline-none transition-all ease-in-out"
-          >
-            <span className="text-base xl:text-xl">Send</span>
-          </Button>
+          <div className="relative">
+            <Button
+              type="submit"
+              className="w-full sm:w-56 mx-auto bg-primary xl:w-56 hover:bg-secondary focus:ring-0 focus:outline-none transition-all ease-in-out"
+              disabled={isSubmitting}
+            >
+              {isSubmitting && <Spinner size="md" className="ml-2" />}
+              {!isSubmitting && <span className="text-base">Send</span>}
+            </Button>
+            <div
+              className={`block text-center w-full mx-auto text-secondary absolute transition-all duration-1000 ease-in-out z-[-1] ${successTextClass}`}
+            >
+              Successfully Submitted
+            </div>
+          </div>
         </div>
       </form>
     </section>

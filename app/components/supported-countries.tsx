@@ -1,12 +1,15 @@
 "use client";
 
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 import Image from "next/image";
 
 import styles from "../page.module.css";
-import Swipe from "react-easy-swipe";
+
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
+import { COUNTRIES } from "../constants/countries.constants";
+import { Country } from "../types/constants/country";
 
 interface ButtonProps extends React.AllHTMLAttributes<HTMLElement> {
   title?: string;
@@ -14,6 +17,8 @@ interface ButtonProps extends React.AllHTMLAttributes<HTMLElement> {
 }
 
 export default function SupportedCountries(props: ButtonProps) {
+  const router = useRouter();
+
   const [btnClass, setBtnClass] = useState("hidden");
 
   useEffect(() => {
@@ -41,90 +46,36 @@ export default function SupportedCountries(props: ButtonProps) {
     document.querySelector("#country-list")?.scrollBy(scrollToOptions);
   };
 
-  const countries = [
-    {
-      image: "/aus.jpg",
-      country: "Australia",
-      class: "mr-4",
-    },
-    {
-      image: "/uk-2.jpg",
-      country: "United Kingdom",
-      class: "mr-4",
-    },
-    {
-      image: "/toronto.jpg",
-      country: "Canada",
-      class: "mr-4",
-    },
-    {
-      image: "/finland-2.jpg",
-      country: "Finland",
-      class: "mr-4",
-    },
-    {
-      image: "/belarus.jpg",
-      country: "Belarus",
-      class: "mr-4",
-    },
-    {
-      image: "/germany.jpg",
-      country: "Germany",
-      class: "mr-4",
-    },
-    {
-      image: "/italy.jpg",
-      country: "Italy",
-      class: "mr-4",
-    },
-    {
-      image: "/sweden.jpg",
-      country: "Sweden",
-      class: "mr-4",
-    },
-    {
-      image: "/russia.jpg",
-      country: "Russia",
-      class: "mr-4",
-    },
-    {
-      image: "/france.jpg",
-      country: "France",
-      class: "mr-4",
-    },
-    {
-      image: "/netherlands.jpg",
-      country: "Netherlands",
-      class: "mr-4",
-    },
-    {
-      image: "/latvia.jpg",
-      country: "Latvia",
-      class: "mr-4",
-    },
-    {
-      image: "/switzerland.jpg",
-      country: "Switzerland",
-      class: "",
-    },
-  ];
+  const onCountryClick = (country: Country) => {
+    router.push(`/destination?country=${country.id}`);
+  };
 
   return (
-    <section className="w-full mb-20">
+    <section className="w-full">
       <h1 className="text-2xl sm:text-3xl font-bold leading-normal tracking-tight text-center text-gray-900 mb-5">
         Could your next home be?
       </h1>
+
+      <p className="font-light text-base leading-8 tracking-tight text-gray-900 text-justify sm:text-center lg:px-0 mb-5 mx-7 lg:mx-20 xl:mx-36">
+        Discover your next home in the world of education with GFEC, your
+        trusted foreign education consultancy based in Sri Lanka. Explore a
+        multitude of countries and unlock endless possibilities for your
+        academic journey. Our expert team will guide you in finding the perfect
+        destination that aligns with your aspirations and paves the way for a
+        bright future.
+      </p>
 
       <div
         id="country-list"
         className={`${styles.hideScroll} flex overflow-x-auto px-4`}
       >
-        {countries.map((country, index) => {
+        {COUNTRIES.map((country) => {
           return (
             <div
               key={country.country}
-              className={`group mb-4 sm:mb-0 relative h-60 lg:h-72 w-full rounded-xl ${country.class}`}
+              className={`group mb-4 sm:mb-0 relative h-60 lg:h-72 w-full rounded-xl ${country.class} hover:cursor-pointer`}
               style={{ flex: "0 0 350px" }}
+              onClick={() => onCountryClick(country)}
             >
               <Image
                 src={country.image}
@@ -140,7 +91,6 @@ export default function SupportedCountries(props: ButtonProps) {
           );
         })}
       </div>
-
       <div
         className={`${btnClass} w-full flex items-center justify-center mt-5`}
       >

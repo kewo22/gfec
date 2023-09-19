@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useMemo } from "react";
 import { GoogleMap, MarkerF, useJsApiLoader } from "@react-google-maps/api";
 import { Spinner } from "flowbite-react";
 import GetInTouch from "../components/get-in-touch";
@@ -18,11 +18,17 @@ const center = {
 export default function About() {
   const [map, setMap] = React.useState<google.maps.Map | null>(null);
 
-  const mapCenter = useMemo(() => ({ lat: 6.8939848, lng: 79.866222 }), []);
+  const mapCenter = useMemo(() => {
+    const latLngLiteral: google.maps.LatLngLiteral = {
+      lat: +process.env.LAT! as unknown as number,
+      lng: +process.env.LNG! as unknown as number,
+    };
+    return latLngLiteral;
+  }, []);
 
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
-    googleMapsApiKey: "AIzaSyB4WP_EMYOUSDuSzGOjNurg2TLNOj-R_gU",
+    googleMapsApiKey: process.env.GL_MAP_KEY as unknown as string,
   });
 
   const onLoad = React.useCallback(function callback(map: google.maps.Map) {
@@ -35,8 +41,23 @@ export default function About() {
   }, []);
 
   return (
-    <section className="mb-20 lg:mt-10">
-      <div className="w-full h-96 flex items-center justify-center mb-10">
+    <section className="mb-20 sm:mb-32 mt-20 lg:mt-10 mx-7 lg:mx-20 xl:mx-36">
+      <div className="mb-10">
+        <h1 className="text-2xl sm:text-3xl font-bold leading-normal tracking-tight text-center text-gray-900 mb-5">
+          How can we help?
+        </h1>
+        <p className="font-light text-base leading-8 tracking-tight text-gray-900 text-center lg:px-0">
+          GFEC is here to guide you every step of the way. We provide
+          comprehensive support and personalized assistance to help you navigate
+          the complex world of international education. From university
+          selection to visa processing and beyond, our expert team is dedicated
+          to ensuring a smooth and successful journey towards your educational
+          aspirations. Trust GFEC to be your partner in achieving your dreams of
+          studying abroad.
+        </p>
+      </div>
+
+      <div className="w-full h-[450px] flex items-center justify-center">
         {isLoaded && (
           <GoogleMap
             mapContainerStyle={containerStyle}
@@ -53,7 +74,7 @@ export default function About() {
         )}
         {!isLoaded && <Spinner size="xl" />}
       </div>
-      <GetInTouch />
+      <GetInTouch wrapperClass="pt-20"/>
     </section>
   );
 }
