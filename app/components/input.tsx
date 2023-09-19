@@ -45,6 +45,10 @@ export const Input: React.FC<InputProps> = ({ ...props }) => {
   }, [value]);
 
   useEffect(() => {
+    setInputValue(value as string);
+  }, [value]);
+
+  useEffect(() => {
     const withoutSpace = label.replace(/\s+/g, "");
     setHtmlFor(withoutSpace);
   }, [label]);
