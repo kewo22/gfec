@@ -10,6 +10,7 @@ import Footer from "./components/footer";
 
 import "swiper/css";
 import "swiper/css/bundle";
+import 'keen-slider/keen-slider.min.css'
 
 import "./globals.css";
 
