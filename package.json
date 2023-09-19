@@ -1,5 +1,5 @@
 {
-  "name": "gordon-foregin-educational-consultancy",
+  "name": "gfec",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,44 +9,17 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^6.3.0",
-    "@fortawesome/free-regular-svg-icons": "^6.3.0",
-    "@fortawesome/free-solid-svg-icons": "^6.3.0",
-    "@fortawesome/react-fontawesome": "^0.2.0",
-    "@headlessui/react": "^1.7.13",
-    "@heroicons/react": "^2.0.16",
-    "@next/font": "13.1.6",
-    "@react-google-maps/api": "^2.18.1",
-    "@types/node": "18.13.0",
-    "@types/react": "18.0.27",
-    "@types/react-dom": "18.0.10",
-    "babel-plugin-macros": "^3.1.0",
-    "cors": "^2.8.5",
-    "date-fns": "^2.29.3",
-    "eslint": "8.33.0",
-    "eslint-config-next": "13.1.6",
-    "flowbite": "^1.6.3",
-    "flowbite-react": "^0.3.8",
-    "formik": "^2.2.9",
-    "keen-slider": "^6.8.6",
-    "mongodb": "^5.2.0",
-    "mongoose": "^7.0.3",
-    "next": "13.1.6",
-    "next-connect": "^0.13.0",
-    "nodemailer": "^6.9.1",
+    "@types/node": "20.6.2",
+    "@types/react": "18.2.22",
+    "@types/react-dom": "18.2.7",
+    "autoprefixer": "10.4.15",
+    "eslint": "8.49.0",
+    "eslint-config-next": "13.5.1",
+    "next": "13.5.1",
+    "postcss": "8.4.30",
     "react": "18.2.0",
-    "react-day-picker": "^8.6.0",
     "react-dom": "18.2.0",
-    "swiper": "^10.2.0",
-    "typescript": "4.9.5",
-    "use-breakpoint": "^3.1.1",
-    "yup": "^1.1.1"
-  },
-  "devDependencies": {
-    "@types/cors": "^2.8.13",
-    "@types/nodemailer": "^6.4.7",
-    "autoprefixer": "^10.4.13",
-    "postcss": "^8.4.21",
-    "tailwindcss": "^3.2.6"
+    "tailwindcss": "3.3.3",
+    "typescript": "5.2.2"
   }
 }
