@@ -17,11 +17,124 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
+  /* color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
       transparent,
       rgb(var(--background-end-rgb))
     )
-    rgb(var(--background-start-rgb));
+    rgb(var(--background-start-rgb)); */
+}
+
+.banner-img::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: linear-gradient(180deg, rgba(255, 234, 44, 0.55), rgb(255 255 255 / 93%));
+  transform: matrix(1, 0, 0, -1, 0, 0);
+  z-index: 2;
+}
+
+
+
+
+.coolBeans {
+  border: 2px solid transparent;
+  /* border-radius: 3rem; */
+  color: #ffffff;
+  background-color: theme("colors.secondary");
+  overflow: hidden;
+  position: relative;
+  text-decoration: none;
+  transition: 0.2s transform ease-in-out;
+  will-change: transform;
+  z-index: 0;
+}
+
+.coolBeans::after {
+  background-color: theme("colors.primary");
+  border-radius: 1.5rem;
+  content: '';
+  display: block;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translate(-100%, 0) rotate(10deg);
+  transform-origin: top left;
+  transition: 0.2s transform ease-out;
+  will-change: transform;
+  z-index: -1;
+}
+
+.coolBeans:hover::after {
+  transform: translate(0, 0);
+}
+
+.coolBeans:hover {
+  border: 2px solid transparent;
+  color: theme("colors.secondary");
+  /* color: white; */
+  transform: scale(1.05);
+  will-change: transform;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.nav-link {
+  color: var(--color);
+  transition: 0.25s;
+  border: 2px solid;
+  border-radius: 3rem;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+  border-color: var(--hover);
+  color: theme("colors.secondary");
+}
+
+.pulse {
+  --color: theme("colors.secondary");
+  --hover: theme("colors.primary");
+}
+
+.pulse:hover,
+.pulse:focus {
+  color: theme("colors.primary");
+  -webkit-animation: pulse 1s;
+  animation: pulse 1s;
+  box-shadow: 0 0 0 2em transparent;
+}
+
+.pulse:hover h5,
+.pulse:focus h5 {
+  font-weight: bold;
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 var(--hover);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 var(--hover);
+  }
 }
