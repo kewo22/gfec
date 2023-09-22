@@ -9,12 +9,23 @@ const config: Config = {
   theme: {
     extend: {
       backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        "home-banner": "url('/home-banner.jpg')",
+        "home-banner-1": "url('/home-banner-1.jpg')",
+        "home-banner-crop": "url('/home-banner-crop.jpg')",
       },
+      colors: {
+        primary: "#BD9519",
+        secondary: "#000080",
+        accent: "#040607",
+      },
+      height: {
+        'nav-height': 'calc(100vh - 3px)',
+        '128': '32rem',
+      }
     },
   },
   plugins: [],
 }
 export default config
+
+// https://www.youtube.com/watch?v=aSlK3GhRuXA
