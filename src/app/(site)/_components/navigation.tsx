@@ -17,7 +17,7 @@ export default function Navigation() {
         <NavContactRibbon />
       </section>
 
-      <div className="relative bg-home-banner-1 bg-slate-300 bg-center bg-cover w-full max-h-[550px] flex-grow flex flex-col items-center banner-img">
+      <div className="relative bg-home-banner-1 bg-slate-300 bg-center bg-cover w-full h-full flex-grow flex flex-col items-center banner-img">
         <div className="absolute z-10 w-full h-full">
           <Image
             src="/GFEC-Trans.png"

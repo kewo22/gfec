@@ -22,7 +22,7 @@ export default function MobileNav() {
 
   return (
     <>
-      <ul id="menu" onClick={menuOnClick} className="z-50">
+      <ul id="menu" onClick={menuOnClick} className="block sm:hidden z-50">
         <li></li>
         <li></li>
         <li></li>

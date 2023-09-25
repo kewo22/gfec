@@ -6,6 +6,7 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --plyr-video-background: transparent;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -194,4 +195,36 @@ ul.active li:nth-of-type(2)::before {
   transition-delay: 1s;
 }
 
-/*  */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.plyr {
+  border-radius: 12px;
+  /* width: 50%; */
+  /* margin: 150px auto; */
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
