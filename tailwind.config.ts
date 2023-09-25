@@ -19,7 +19,7 @@ const config: Config = {
         accent: "#040607",
       },
       height: {
-        'nav-height': 'calc(100vh - 3px)',
+        'nav-height': '600px',
         '128': '32rem',
       }
     },

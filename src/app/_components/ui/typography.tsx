@@ -27,7 +27,7 @@ const typographyClasses = {
   h4: "font-bold text-xl xl:text-2xl",
   h5: "font-bold text-lg xl:text-xl",
   p: "text-base xl:text-lg 2xl:text-xl",
-  small: "text-xs xl:text-sm 2xl:text-base",
+  small: "text-xs xl:text-base 2xl:text-lg",
 };
 
 const sizes: Record<Variant, string> = {
