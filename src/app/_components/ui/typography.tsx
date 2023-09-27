@@ -1,7 +1,15 @@
 import React, { ElementType } from "react";
 import { twMerge } from "tailwind-merge";
 
-type Variant = "h1" | "h2" | "h3" | "h4" | "h5" | "p" | "small";
+type Variant =
+  | "h1"
+  | "h2"
+  | "h3"
+  | "h4"
+  | "h5"
+  | "p"
+  | "small"
+  | "xs";
 
 interface Props {
   variant?: Variant;
@@ -18,6 +26,7 @@ const tags: Record<Variant, ElementType> = {
   h5: "h5",
   p: "p",
   small: "p",
+  xs: "p",
 };
 
 const typographyClasses = {
@@ -27,7 +36,8 @@ const typographyClasses = {
   h4: "font-bold text-xl xl:text-2xl",
   h5: "font-bold text-lg xl:text-xl",
   p: "text-base xl:text-lg 2xl:text-xl",
-  small: "text-xs xl:text-xs 2xl:text-sm",
+  small: "text-xs xl:text-sm 2xl:text-base",
+  xs: "text-xs xl:text-sm",
 };
 
 const sizes: Record<Variant, string> = {
@@ -38,6 +48,7 @@ const sizes: Record<Variant, string> = {
   h5: typographyClasses.h5,
   p: typographyClasses.p,
   small: typographyClasses.small,
+  xs: typographyClasses.xs,
 };
 
 export const Typography = ({

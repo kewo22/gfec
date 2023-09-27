@@ -135,7 +135,7 @@ export default function HowWeDifferentiateFromOthers() {
         How We <span className="text-primary">Differentiate</span> From Others?
       </Typography>
 
-      <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-8">
+      <div className="w-full grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5 sm:gap-8">
         {dataArr.map((data, i) => {
           return (
             <div
