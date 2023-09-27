@@ -3,10 +3,11 @@ import React from "react";
 import Image from "next/image";
 
 import { Typography } from "../../_components/ui/typography";
+import Container from "./layouts/container";
 
 export default function SuccessPath() {
   return (
-    <section className="text-center max-w-[1200px] lg:mx-auto">
+    <Container className="mx-auto py-20">
       <Typography variant="h2" className="text-secondary mb-10">
         Your <span className="text-primary">Pathway</span> to Achieving{" "}
         <span className="text-primary">Success</span>
@@ -56,7 +57,7 @@ export default function SuccessPath() {
         </div>
       </div>
 
-      <div className="hidden lg:block relative h-64 max-w-3xl mx-auto">
+      <div className="hidden lg:block relative h-56 max-w-3xl mx-auto">
         <div className="flex flex-row justify-between relative">
           <div className="absolute top-[0] -left-[5%] z-10">
             <Image
@@ -121,6 +122,6 @@ export default function SuccessPath() {
           className="absolute top-16 left-0 right-0 bottom-0 w-full h-auto"
         />
       </div>
-    </section>
+    </Container>
   );
 }
