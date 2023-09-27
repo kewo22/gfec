@@ -31,11 +31,11 @@ export default function Input(props: TextInputProps) {
         disabled: "",
       },
       label: {
-        default: "mr-1 font-semibold",
+        default: "mr-1 font-semibold text-left",
         error: "",
       },
       input: "outline-none bg-transparent flex-grow",
-      errorText: "text-red-600 text-xs font-semibold",
+      errorText: "text-red-600 text-xs font-semibold text-right",
     };
 
     const classNameCopy = JSON.parse(JSON.stringify(className));
@@ -90,8 +90,8 @@ export default function Input(props: TextInputProps) {
       )}
       <input
         {...field}
-        id={field.name}
-        value={field.value ? field.value : ""}
+        id={field.name} 
+        value={field.value ? field.value : ""} // if date format val - 2000-05-05
         className={className.input}
         type={type}
         inputMode={inputMode || "text"}
@@ -99,7 +99,7 @@ export default function Input(props: TextInputProps) {
         disabled={isDisabled}
       />
       {!isDisabled && (
-        <Typography variant="small" className={className.errorText}>
+        <Typography variant="xs" className={className.errorText}>
           {fieldState.error?.message}
         </Typography>
         // <p className={className.errorText}></p>
