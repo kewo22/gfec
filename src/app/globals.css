@@ -288,10 +288,10 @@ body {
   margin: 0 1rem !important;
 }
 
-.slick-slider {
+/* .slick-slider {
   width: 90% !important;
   margin: auto !important;
-}
+} */
 
 @media only screen and (min-width: 600px) {
   .slick-track {
@@ -311,9 +311,9 @@ body {
     right: 2% !important;
   }
 
-  .slick-slider {
+  /* .slick-slider {
     width: 100% !important;
-  }
+  } */
 }
 
 

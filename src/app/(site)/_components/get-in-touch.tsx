@@ -55,7 +55,7 @@ export default function GetInTouch() {
 
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col items-start gap-5"
+        className="flex flex-col items-start gap-10"
       >
         <div className="flex flex-col lg:flex-row w-full gap-10">
           <Input
