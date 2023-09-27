@@ -22,10 +22,10 @@ export default function MobileNav() {
 
   return (
     <>
-      <ul id="menu" onClick={menuOnClick} className="block sm:hidden z-50">
-        <li></li>
-        <li></li>
-        <li></li>
+      <ul id="menu" onClick={menuOnClick} className="menu block sm:hidden z-50">
+        <li className="bar"></li>
+        <li className="bar"></li>
+        <li className="bar"></li>
       </ul>
       <section
         id="sss"

@@ -1,8 +1,9 @@
 import { Ubuntu } from "next/font/google";
 
-// import "./globals.css";
 import type { Metadata } from "next";
+
 import Navigation from "./_components/navigation";
+import Footer from "./_components/footer";
 
 const ubuntu = Ubuntu({
   weight: "400",
@@ -23,8 +24,8 @@ export default function SiteLayout({
     <html lang="en">
       <body className={ubuntu.className}>
         <Navigation />
-        <main className="pb-14 sm:pb-0">{children}</main>
-        {/* </Footer> */}
+        <main className="">{children}</main>
+        <Footer />
       </body>
     </html>
   );

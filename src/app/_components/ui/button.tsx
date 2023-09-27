@@ -11,7 +11,7 @@ type ButtonProps = {
   size?: "xs" | "sm" | "md" | "lg";
   customClass?: string;
   isDisabled?: boolean;
-  onClick: () => void;
+  onClick?: () => void;
 };
 
 export default function Button(props: ButtonProps) {
