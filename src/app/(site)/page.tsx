@@ -18,22 +18,6 @@ export default function SitePage() {
 
       <CouldYourNextHomeBe />
 
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-
       <SuccessStories />
       
       <GetInTouch />
