@@ -275,44 +275,44 @@ body {
 
 
 .slick-prev {
-  left: 10%;
-  z-index: 1;
+  left: 10% !important;
+  z-index: 1 !important;
 }
 
 .slick-next {
-  right: 10%;
-  z-index: 1;
+  right: 10% !important;
+  z-index: 1 !important;
 }
 
 .slick-list {
-  margin: 0 1rem;
+  margin: 0 1rem !important;
 }
 
 .slick-slider {
-  width: 90%;
-  margin: auto;
+  width: 90% !important;
+  margin: auto !important;
 }
 
 @media only screen and (min-width: 600px) {
   .slick-track {
-    display: flex;
-    gap: 1rem;
+    display: flex !important;
+    gap: 1rem !important;
   }
 
   .slick-list {
-    margin: 0;
+    margin: 0 !important;
   }
 
   .slick-prev {
-    left: 2%;
+    left: 2% !important;
   }
 
   .slick-next {
-    right: 2%;
+    right: 2% !important;
   }
 
   .slick-slider {
-    width: 100%;
+    width: 100% !important;
   }
 }
 
