@@ -16,10 +16,10 @@ export default function SitePage() {
 
       <HowWeDifferentiateFromOthers />
 
-      {/* <CouldYourNextHomeBe /> */}
+      <CouldYourNextHomeBe />
 
       <SuccessStories />
-
+      
       <GetInTouch />
     </section>
   );
