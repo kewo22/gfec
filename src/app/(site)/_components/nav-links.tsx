@@ -12,7 +12,7 @@ export default function NavLinks() {
   const rawPathName = pathname.split("/")[1];
 
   return (
-    <div className="hidden w-full sm:flex items-center justify-center gap-10 my-10">
+    <div className="hidden w-full sm:flex items-center justify-center gap-10 my-0">
       {NavItems.map((item, i) => {
         return (
           <Link
@@ -25,7 +25,7 @@ export default function NavLinks() {
             href={item.route}
           >
             <Typography
-              variant="p"
+              variant="h5"
               className="uppercase font-bold tracking-widest text-white"
             >
               {item.text}

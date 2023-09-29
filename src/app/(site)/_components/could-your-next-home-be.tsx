@@ -62,6 +62,7 @@ export default function CouldYourNextHomeBe() {
     arrows: true,
     nextArrow: <PrevIcon />,
     prevArrow: <NextIcon />,
+    className: "xxx",
     responsive: [
       {
         breakpoint: 768,

@@ -10,8 +10,8 @@ const config: Config = {
     extend: {
       backgroundImage: {
         "home-banner": "url('/home-banner.jpg')",
-        "home-banner-1": "url('/home-banner-1.jpg')",
-        "home-banner-crop": "url('/home-banner-crop.jpg')",
+        "home-banner-1": "url('/video-poster.jpg')",
+        "home-banner-2": "url('/home-banner-crop.jpg')",
       },
       colors: {
         primary: "#BD9519",
@@ -19,7 +19,7 @@ const config: Config = {
         accent: "#040607",
       },
       height: {
-        'nav-height': '600px',
+        'nav-height': '1000px',
         '128': '32rem',
       }
     },

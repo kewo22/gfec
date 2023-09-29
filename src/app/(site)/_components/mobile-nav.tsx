@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
@@ -31,12 +29,12 @@ export default function MobileNav() {
         id="sss"
         className="sm:hidden z-40 fixed top-0 -right-[500px] h-screen w-full bg-slate-100 transition-all ease-in-out duration-1000"
       >
-        <div className="h-full flex flex-col items-center justify-start gap-5">
+        <div className="h-full flex flex-col items-center justify-start gap-20">
           <Image
             src="/GFEC-Trans.png"
             alt="Next.js Logo"
-            width={250}
-            height={200}
+            width={190}
+            height={140}
             priority
             className="mx-auto mt-24"
           />

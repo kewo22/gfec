@@ -6,19 +6,19 @@ import Button from "@/app/_components/ui/button";
 
 export default function NavActions() {
   return (
-    <div className="flex flex-col sm:flex-row gap-5 justify-center">
+    <div className="flex flex-col sm:flex-row gap-5">
       <Button
         text="Apply Now"
-        size="lg"
-        customClass="mx-auto mt-5 sm:m-0"
+        size="md"
+        customClass="w-fit"
         onClick={() => {
           alert("");
         }}
       />
       <Button
         text="Free Consultation"
-        size="lg"
-        customClass="mx-auto mt-5 sm:m-0"
+        size="md"
+        customClass="w-fit"
         onClick={() => {
           alert("");
         }}
