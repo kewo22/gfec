@@ -32,20 +32,19 @@ export default function StudyOverseasWithGfec() {
 
   return (
     <Container className="mx-5 xl:mx-auto py-20">
-      <Typography variant="h2" className="text-secondary">
+      <Typography variant="h2" className="text-secondary section-title-border-box">
         Study in Overseas with <span className="text-primary">GFEC</span>
       </Typography>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 lg:divide-primary divide-x my-10">
-        <Typography className="text-justify lg:pr-5">
+      <div className="grid grid-cols-1 lg:grid-cols-2 lg:divide-primary divide-x my-10 gap-10">
+        <Typography className="text-justify p-10 bg-primary text-white rounded-lg">
           Are you a student looking to pursue higher education but feeling
           overwhelmed by the process? Look no further! Our team of expert
           counselors has partnered with some of the top educational institutions
           to provide you with the guidance you need to make informed decisions
           about your future.
         </Typography>
-        <br className="lg:hidden" />
-        <Typography className="text-justify lg:pl-5">
+        <Typography className="text-justify p-10 bg-primary text-white rounded-lg">
           We understand that the prospect of higher education can be daunting,
           but with our help, you can confidently navigate the college and
           university landscape. Our counselors have years of experience working
