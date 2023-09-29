@@ -9,7 +9,7 @@ import GetInTouch from "./_components/get-in-touch";
 
 export default function SitePage() {
   return (
-    <section className="bg-slate-100">
+    <section className="bg-slate-100 px">
       <StudyOverseasWithGfec />
 
       <SuccessPath />

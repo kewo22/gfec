@@ -11,6 +11,7 @@ import { Typography } from "@/app/_components/ui/typography";
 import Input from "@/app/_components/ui/input";
 import Button from "@/app/_components/ui/button";
 import Select from "@/app/_components/ui/select";
+import SectionTitle from "./section-title";
 
 export interface GetInTouchModel {
   firstName: string;
@@ -174,14 +175,12 @@ export default function GetInTouch() {
   ];
 
   return (
-    <Container className="mx-5 xl:mx-auto py-12">
-      <Typography variant="h2" className="text-secondary mb-10">
-        Get in <span className="text-primary">Touch</span>
-      </Typography>
+    <Container className="mx-5 xl:mx-auto py-40 bg-white grid place-items-center">
+      <SectionTitle title="Get in Touch" />
 
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col items-start gap-10"
+        className="w-[90%] mx-auto flex flex-col items-start gap-10"
       >
         <div className="flex flex-col lg:flex-row w-full gap-10">
           <Input

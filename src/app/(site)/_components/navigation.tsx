@@ -36,7 +36,7 @@ export default function Navigation() {
   const Items = () => {
     return (
       <>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 w-full h-[90%] max-w-[1200px] flex flex-col gap-10">
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 w-full h-[90%] max-w-[1000px] flex flex-col gap-10">
           <Image
             src="/GFEC-Trans.png"
             alt="Next.js Logo"
@@ -48,7 +48,7 @@ export default function Navigation() {
           <Image
             src="/GFEC-Trans.png"
             alt="Next.js Logo"
-            width={190}
+            width={170}
             height={140}
             priority
             className="!block lg:!hidden mx-auto"
@@ -118,7 +118,7 @@ export default function Navigation() {
   };
 
   return (
-    <nav className={`h-[850px] flex flex-col items-center relative`}>
+    <nav className={`h-[880px] flex flex-col items-center relative`}>
       <section className="w-full h-auto">
         <NavContactRibbon />
       </section>

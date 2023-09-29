@@ -14,6 +14,7 @@ import Container from "./layouts/container";
 import { Typography } from "../../_components/ui/typography";
 
 import { COUNTRIES } from "../_constants/countries.constants";
+import SectionTitle from "./section-title";
 
 export default function CouldYourNextHomeBe() {
   const PrevIcon = (props: any) => {
@@ -81,10 +82,19 @@ export default function CouldYourNextHomeBe() {
   };
 
   return (
-    <Container className="mx-0 lg:mx-auto py-20">
-      <Typography variant="h2" className="text-secondary mb-10">
-        Could Your Next <span className="text-primary">Home</span> Be?
-      </Typography>
+    <Container className="mx-0 lg:mx-auto py-20 relative bg-white">
+      <Image
+        src="/buildings.png"
+        alt="Next.js Logo"
+        priority
+        width="0"
+        height="200"
+        sizes="100vw"
+        className="absolute left-0 bottom-[62px] sm:bottom-[44px] md:bottom-[24px] opacity-10 w-full h-auto"
+      />
+
+      <SectionTitle title="Could Your Next Home Be?" />
+
       <Slider {...settings}>
         {COUNTRIES.map((country) => {
           return (
