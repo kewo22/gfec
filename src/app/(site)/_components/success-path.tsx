@@ -4,14 +4,12 @@ import Image from "next/image";
 
 import { Typography } from "../../_components/ui/typography";
 import Container from "./layouts/container";
+import SectionTitle from "./section-title";
 
 export default function SuccessPath() {
   return (
-    <Container className="mx-auto py-20">
-      <Typography variant="h2" className="text-secondary mb-10">
-        Your <span className="text-primary">Pathway</span> to Achieving{" "}
-        <span className="text-primary">Success</span>
-      </Typography>
+    <Container className="mx-auto py-20 bg-white">
+      <SectionTitle title="You Pathway to Achieving Success" />
 
       <div className="flex flex-col items-center lg:hidden gap-10">
         <div className="flex flex-col items-center">

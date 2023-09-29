@@ -31,7 +31,7 @@ export default function Input(props: TextInputProps) {
         disabled: "",
       },
       label: {
-        default: "mr-1 font-semibold text-left",
+        default: "mr-1 font-semibold text-left text-sm",
         error: "",
       },
       input: "outline-none bg-transparent flex-grow",

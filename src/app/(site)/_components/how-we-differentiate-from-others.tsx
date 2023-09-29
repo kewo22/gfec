@@ -3,6 +3,7 @@ import Image from "next/image";
 
 import Container from "./layouts/container";
 import { Typography } from "../../_components/ui/typography";
+import SectionTitle from "./section-title";
 
 export default function HowWeDifferentiateFromOthers() {
   const dataArr = [
@@ -131,8 +132,15 @@ export default function HowWeDifferentiateFromOthers() {
 
   return (
     <Container className="mx-5 xl:mx-auto py-12">
-      <Typography variant="h2" className="text-secondary mb-10">
-        How We <span className="text-primary">Differentiate</span> From Others?
+      <SectionTitle title="How We Differentiate From Others?" />
+
+      <Typography className="mb-10">
+        At GFEC, we redefine the experience of foreign education consultancy in
+        Sri Lanka. Our unwavering commitment to personalized guidance, extensive
+        global network, and comprehensive support sets us apart from other
+        consultancy agencies. Discover a refreshing approach that puts your
+        aspirations first and helps you achieve your educational dreams with
+        confidence.
       </Typography>
 
       <div className="w-full grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5 sm:gap-8">

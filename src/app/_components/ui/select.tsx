@@ -28,7 +28,7 @@ export default function Select(props: SelectInputs) {
         disabled: "",
       },
       label: {
-        default: "mr-1 font-semibold",
+        default: "mr-1 font-semibold text-sm",
         error: "",
       },
       input:

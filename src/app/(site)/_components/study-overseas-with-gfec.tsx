@@ -2,11 +2,14 @@
 
 import React from "react";
 
+import Image from "next/image";
 import Plyr, { PlyrProps } from "plyr-react";
 
 import Container from "./layouts/container";
 import "plyr-react/plyr.css";
 import { Typography } from "@/app/_components/ui/typography";
+import Button from "@/app/_components/ui/button";
+import SectionTitle from "./section-title";
 
 export default function StudyOverseasWithGfec() {
   const plyrProps: PlyrProps = {
@@ -20,8 +23,7 @@ export default function StudyOverseasWithGfec() {
           size: 1080,
         },
       ],
-      poster:
-        "/video-poster.jpg",
+      poster: "/video-poster.jpg",
     }, // https://github.com/sampotts/plyr#the-source-setter
     options: {
       volume: 0.3,
@@ -31,29 +33,53 @@ export default function StudyOverseasWithGfec() {
   };
 
   return (
-    <Container className="mx-5 xl:mx-auto py-20">
-      <Typography variant="h2" className="text-secondary section-title-border-box">
-        Study in Overseas with <span className="text-primary">GFEC</span>
-      </Typography>
+    <Container className="relative mx-5 xl:mx-auto py-20">
+      <SectionTitle title=" Study in Overseas with GFEC" />
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 lg:divide-primary divide-x my-10 gap-10">
-        <Typography className="text-justify p-10 bg-primary text-white rounded-lg">
-          Are you a student looking to pursue higher education but feeling
-          overwhelmed by the process? Look no further! Our team of expert
-          counselors has partnered with some of the top educational institutions
-          to provide you with the guidance you need to make informed decisions
-          about your future.
-        </Typography>
-        <Typography className="text-justify p-10 bg-primary text-white rounded-lg">
-          We understand that the prospect of higher education can be daunting,
-          but with our help, you can confidently navigate the college and
-          university landscape. Our counselors have years of experience working
-          with students just like you, and they have the knowledge and expertise
-          to help you identify your strengths, interests, and career goals.
-        </Typography>
+      <div className="flex flex-col sm:grid sm:grid-cols-[400px_1fr] sm:grid-rows-2">
+        <div className="row-span-2">
+          <div className="image-container inline-block relative rounded-lg">
+            <Image
+              src="/grad-1.jpg"
+              alt="Next.js Logo"
+              priority
+              width="400"
+              height="600"
+              className="rounded-lg"
+            />
+          </div>
+        </div>
+        <div>
+          <Typography className="text-justify p-6 md:p-10 bg-primary/80 text-secondary rounded-lg leading-8 sm:relative -left-[35%] top-[12%] sm:w-[130%] lg:-left-[25%] lg:w-[100%]">
+            Are you a student looking to pursue higher education but feeling
+            overwhelmed by the process? Look no further! Our team of expert
+            counselors has partnered with some of the top educational
+            institutions to provide you with the guidance you need to make
+            informed decisions about your future.
+          </Typography>
+        </div>
+        <div className="pt-10 lg:pt-0 px-5 text-center sm:text-left w-full md:w-[85%] lg:w-[112%]">
+          <Typography variant="h3" className="mb-3 text-secondary">
+            Providing the Best Visa Services to Students
+          </Typography>
+          <Typography className="text-justify mb-3">
+            We understand that the prospect of higher education can be daunting,
+            but with our help, you can confidently navigate the college and
+            university landscape. Our counselors have years of experience
+            working with students just like you, and they have the knowledge and
+            expertise to help you identify your strengths, interests, and career
+            goals.
+          </Typography>
+          <Button
+            text="Apply Now"
+            size="md"
+            customClass="w-fit block mx-auto sm:hidden lg:block lg:!ml-[inherit]"
+            onClick={() => {
+              alert("");
+            }}
+          />
+        </div>
       </div>
-
-      <Plyr {...plyrProps} />
     </Container>
   );
 }

@@ -11,6 +11,7 @@ import Container from "./layouts/container";
 import { Typography } from "../../_components/ui/typography";
 
 import "plyr-react/plyr.css";
+import SectionTitle from "./section-title";
 
 type SuccessStoryAudio = {
   image: string;
@@ -148,9 +149,7 @@ export default function SuccessStories() {
 
   return (
     <Container className="mx-0 lg:mx-auto py-20">
-      <Typography variant="h2" className="text-secondary mb-10">
-        Our <span className="text-primary">Success</span> Stories
-      </Typography>
+      <SectionTitle title="Our Success Stories" />
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 place-items-center sm:gap-8">
         {xxxState.map((data, i) => {
