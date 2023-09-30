@@ -118,7 +118,7 @@ export default function Navigation() {
   };
 
   return (
-    <nav className={`h-[880px] flex flex-col items-center relative`}>
+    <nav className={`h-[900px] flex flex-col items-center relative`}>
       <section className="w-full h-auto">
         <NavContactRibbon />
       </section>
