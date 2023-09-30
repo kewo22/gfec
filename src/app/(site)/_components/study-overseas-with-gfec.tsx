@@ -36,7 +36,7 @@ export default function StudyOverseasWithGfec() {
     <Container className="relative mx-5 xl:mx-auto py-20">
       <SectionTitle title=" Study in Overseas with GFEC" />
 
-      <div className="flex flex-col sm:grid sm:grid-cols-[400px_1fr] sm:grid-rows-2">
+      <div className="flex flex-col sm:grid sm:grid-cols-[400px_1fr] sm:grid-rows-2 mb-20">
         <div className="row-span-2">
           <div className="image-container inline-block relative rounded-lg">
             <Image
@@ -80,6 +80,8 @@ export default function StudyOverseasWithGfec() {
           />
         </div>
       </div>
+
+      <Plyr {...plyrProps} />
     </Container>
   );
 }
