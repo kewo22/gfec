@@ -1,11 +1,18 @@
-import { Typography } from "@/app/_components/ui/typography";
-import Image from "next/image";
 import React from "react";
+
+import { Typography } from "@/app/_components/ui/typography";
 
 export default function Aus() {
   return (
     <div className="">
-      <div className="bg-aus-banner bg-center bg-cover w-full h-60"></div>
+      <div className="bg-aus-banner bg-center bg-cover w-full h-60 grid place-items-center">
+        <Typography
+          variant="h1"
+          className="text-white tracking-wider shadow-2xl"
+        >
+          AUSTRALIA
+        </Typography>
+      </div>
 
       <div className="p-10">
         <div className="mb-3 block sm:flex items-center">

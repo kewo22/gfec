@@ -23,7 +23,7 @@ export const COUNTRIES: Country[] = [
     },
     {
         id: "can",
-        image: "/toronto.jpg",
+        image: "/canada.jpg",
         country: "Canada",
         class: "",
         description: "",
