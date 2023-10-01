@@ -129,10 +129,10 @@ export default function Navigation() {
 
       <Slider {...settings}>
         <div className="bg-home-banner-1 bg-center bg-cover w-full h-full banner-img">
-          wqdwqdwqdwq
+          wqdwqdwqdwq111111111
         </div>
         <div className="bg-home-banner-2 bg-center bg-cover w-full h-full banner-img">
-          wqdwqdwqdwq
+          wqdwqdwqdwq22222222222
         </div>
       </Slider>
 
