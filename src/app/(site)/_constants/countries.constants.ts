@@ -8,6 +8,8 @@ export const COUNTRIES: Country[] = [
         class: "",
         description: "",
         isCourseDetailAvailable: true,
+        flag: "/au.svg",
+        flagBg: 'au'
     },
     {
         id: "uk",
@@ -16,6 +18,8 @@ export const COUNTRIES: Country[] = [
         class: "",
         description: "",
         isCourseDetailAvailable: false,
+        flag: "/gb.svg",
+        flagBg: 'gb'
     },
     {
         id: "can",
@@ -24,6 +28,8 @@ export const COUNTRIES: Country[] = [
         class: "",
         description: "",
         isCourseDetailAvailable: false,
+        flag: "/ca.svg",
+        flagBg: 'ca'
     },
     {
         id: "fin",
@@ -32,6 +38,8 @@ export const COUNTRIES: Country[] = [
         class: "",
         description: "",
         isCourseDetailAvailable: false,
+        flag: "/fi.svg",
+        flagBg: 'fi'
     },
     {
         id: "bal",
@@ -40,6 +48,8 @@ export const COUNTRIES: Country[] = [
         class: "",
         description: "",
         isCourseDetailAvailable: false,
+        flag: "/by.svg",
+        flagBg: 'by'
     },
     {
         id: "ger",
@@ -48,6 +58,8 @@ export const COUNTRIES: Country[] = [
         class: "",
         description: "",
         isCourseDetailAvailable: false,
+        flag: "/de.svg",
+        flagBg: 'de'
     },
     {
         id: "ita",
@@ -56,6 +68,8 @@ export const COUNTRIES: Country[] = [
         class: "",
         description: "",
         isCourseDetailAvailable: false,
+        flag: "/it.svg",
+        flagBg: 'it'
     },
     {
         id: "swe",
@@ -64,6 +78,8 @@ export const COUNTRIES: Country[] = [
         class: "",
         description: "",
         isCourseDetailAvailable: false,
+        flag: "/se.svg",
+        flagBg: 'se'
     },
     {
         id: "rus",
@@ -72,6 +88,8 @@ export const COUNTRIES: Country[] = [
         class: "",
         description: "",
         isCourseDetailAvailable: false,
+        flag: "/ru.svg",
+        flagBg: 'ru'
     },
     {
         id: "fra",
@@ -80,6 +98,8 @@ export const COUNTRIES: Country[] = [
         class: "",
         description: "",
         isCourseDetailAvailable: false,
+        flag: "/fr.svg",
+        flagBg: 'fr'
     },
     {
         id: "ned",
@@ -88,6 +108,8 @@ export const COUNTRIES: Country[] = [
         class: "",
         description: "",
         isCourseDetailAvailable: false,
+        flag: "/nl.svg",
+        flagBg: 'nl'
     },
     {
         id: "lat",
@@ -96,6 +118,8 @@ export const COUNTRIES: Country[] = [
         class: "",
         description: "",
         isCourseDetailAvailable: false,
+        flag: "/lv.svg",
+        flagBg: 'lv'
     },
     {
         id: "swi",
@@ -104,6 +128,8 @@ export const COUNTRIES: Country[] = [
         class: "",
         description: "",
         isCourseDetailAvailable: false,
+        flag: "/ch.svg",
+        flagBg: 'ch'
     },
 ];
 

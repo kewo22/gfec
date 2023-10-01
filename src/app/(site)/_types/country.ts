@@ -5,4 +5,6 @@ export type Country = {
     class: string;
     description?: string;
     isCourseDetailAvailable: boolean;
+    flag: string;
+    flagBg: string;
 };
