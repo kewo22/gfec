@@ -123,14 +123,14 @@ export default function Navigation() {
         <NavContactRibbon />
       </section>
 
-      <Slider {...settings}>
+      {/* <Slider {...settings}>
         <div className="bg-home-banner-1 bg-center bg-cover w-full h-full banner-img">
           <Items />
         </div>
         <div className="bg-home-banner-2 bg-center bg-cover w-full h-full banner-img">
           <Items />
         </div>
-      </Slider>
+      </Slider> */}
 
       <MobileNav />
     </nav>
