@@ -13,7 +13,7 @@ export const COUNTRIES: Country[] = [
     },
     {
         id: "uk",
-        image: "/uk-2.jpg",
+        image: "/uk.jpg",
         country: "United Kingdom",
         class: "",
         description: "",
@@ -33,7 +33,7 @@ export const COUNTRIES: Country[] = [
     },
     {
         id: "fin",
-        image: "/finland-2.jpg",
+        image: "/finland.jpg",
         country: "Finland",
         class: "",
         description: "",

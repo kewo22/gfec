@@ -9,14 +9,16 @@ export default function Aus() {
 
       <div className="p-10">
         <div className="mb-3 block sm:flex items-center">
-          <Typography className="h5">CIM</Typography>
+          <Typography variant="h5">CIM</Typography>
           <span className="hidden sm:inline">&nbsp;-&nbsp;</span>
-          <Typography className="">
+          <Typography variant="h5">
             CANTERBURY INSTITUTE OF MANAGEMENT
           </Typography>
         </div>
 
-        <ul className="!list-disc !list-outside mb-3 px-4 text-left">
+        <br />
+
+        <ul className="!list-disc !list-outside px-4 text-left">
           <li>
             <Typography>Master of Business Administration</Typography>
           </li>
@@ -34,13 +36,19 @@ export default function Aus() {
           </li>
         </ul>
 
-        <Typography className="text-left font-bold">
+        <br />
+        <br />
+
+        <Typography className="text-left">
           Work permit after degree / masters 2 - 4 years.
         </Typography>
 
-        <Typography className="text-left font-bold">
+        <Typography className="text-left">
           Intake Now On - July 2023/Jan 2024
         </Typography>
+
+        <br />
+        <br />
 
         <Typography className="text-left">
           Choose a program that excites and motivates you, where you will gain
