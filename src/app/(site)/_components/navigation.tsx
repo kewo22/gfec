@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
 
 import Image from "next/image";
 
@@ -117,6 +118,9 @@ export default function Navigation() {
     );
   };
 
+  const staticElement = renderToStaticMarkup(<Items />);
+  console.log("🚀 ~ file: navigation.tsx:122 ~ Navigation ~ staticElement:", staticElement)
+
   return (
     <nav className={`h-[900px] flex flex-col items-center relative`}>
       <section className="w-full h-auto">
@@ -125,11 +129,9 @@ export default function Navigation() {
 
       <Slider {...settings}>
         <div className="bg-home-banner-1 bg-center bg-cover w-full h-full banner-img">
-          {/* <Items /> */}
           wqdwqdwqdwq
         </div>
         <div className="bg-home-banner-2 bg-center bg-cover w-full h-full banner-img">
-          {/* <Items /> */}
           wqdwqdwqdwq
         </div>
       </Slider>
