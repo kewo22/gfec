@@ -30,7 +30,7 @@ export default function Destination() {
           foreign education consultancy based in Sri Lanka. Explore a myriad of
           captivating study abroad destinations that open doors to endless
           opportunities. From vibrant cultural experiences to world-class
-          institutions, we'll help you navigate the diverse landscape of study
+          institutions, we&apos;ll help you navigate the diverse landscape of study
           options and find the perfect destination to shape your future success.
         </Typography>
 
