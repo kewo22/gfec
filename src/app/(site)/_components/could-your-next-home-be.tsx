@@ -95,7 +95,7 @@ export default function CouldYourNextHomeBe() {
 
       <SectionTitle title="Could Your Next Home Be?" />
 
-      {/* <Slider {...settings}>
+      <Slider {...settings}>
         {COUNTRIES.map((country) => {
           return (
             <div
@@ -119,7 +119,7 @@ export default function CouldYourNextHomeBe() {
             </div>
           );
         })}
-      </Slider> */}
+      </Slider>
     </Container>
   );
 }
