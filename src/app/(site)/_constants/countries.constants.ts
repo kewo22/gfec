@@ -9,7 +9,7 @@ export const COUNTRIES: Country[] = [
         description: "",
         isCourseDetailAvailable: true,
         flag: "/au.svg",
-        flagBg: 'au'
+        flagBg: 'bg-au-flag'
     },
     {
         id: "uk",
@@ -19,7 +19,7 @@ export const COUNTRIES: Country[] = [
         description: "",
         isCourseDetailAvailable: false,
         flag: "/gb.svg",
-        flagBg: 'gb'
+        flagBg: 'bg-gb-flag'
     },
     {
         id: "can",
@@ -29,7 +29,7 @@ export const COUNTRIES: Country[] = [
         description: "",
         isCourseDetailAvailable: false,
         flag: "/ca.svg",
-        flagBg: 'ca'
+        flagBg: 'bg-ca-flag'
     },
     {
         id: "fin",
@@ -39,7 +39,7 @@ export const COUNTRIES: Country[] = [
         description: "",
         isCourseDetailAvailable: false,
         flag: "/fi.svg",
-        flagBg: 'fi'
+        flagBg: 'bg-fi-flag'
     },
     {
         id: "bal",
@@ -49,7 +49,7 @@ export const COUNTRIES: Country[] = [
         description: "",
         isCourseDetailAvailable: false,
         flag: "/by.svg",
-        flagBg: 'by'
+        flagBg: 'bg-by-flag'
     },
     {
         id: "ger",
@@ -59,7 +59,7 @@ export const COUNTRIES: Country[] = [
         description: "",
         isCourseDetailAvailable: false,
         flag: "/de.svg",
-        flagBg: 'de'
+        flagBg: 'bg-de-flag'
     },
     {
         id: "ita",
@@ -69,7 +69,7 @@ export const COUNTRIES: Country[] = [
         description: "",
         isCourseDetailAvailable: false,
         flag: "/it.svg",
-        flagBg: 'it'
+        flagBg: 'bg-it-flag'
     },
     {
         id: "swe",
@@ -79,7 +79,7 @@ export const COUNTRIES: Country[] = [
         description: "",
         isCourseDetailAvailable: false,
         flag: "/se.svg",
-        flagBg: 'se'
+        flagBg: 'bg-se-flag'
     },
     {
         id: "rus",
@@ -89,7 +89,7 @@ export const COUNTRIES: Country[] = [
         description: "",
         isCourseDetailAvailable: false,
         flag: "/ru.svg",
-        flagBg: 'ru'
+        flagBg: 'bg-ru-flag'
     },
     {
         id: "fra",
@@ -99,7 +99,7 @@ export const COUNTRIES: Country[] = [
         description: "",
         isCourseDetailAvailable: false,
         flag: "/fr.svg",
-        flagBg: 'fr'
+        flagBg: 'bg-fr-flag'
     },
     {
         id: "ned",
@@ -109,7 +109,7 @@ export const COUNTRIES: Country[] = [
         description: "",
         isCourseDetailAvailable: false,
         flag: "/nl.svg",
-        flagBg: 'nl'
+        flagBg: 'bg-nl-flag'
     },
     {
         id: "lat",
@@ -119,7 +119,7 @@ export const COUNTRIES: Country[] = [
         description: "",
         isCourseDetailAvailable: false,
         flag: "/lv.svg",
-        flagBg: 'lv'
+        flagBg: 'bg-lv-flag'
     },
     {
         id: "swi",
@@ -129,7 +129,7 @@ export const COUNTRIES: Country[] = [
         description: "",
         isCourseDetailAvailable: false,
         flag: "/ch.svg",
-        flagBg: 'ch'
+        flagBg: 'bg-ch-flag'
     },
 ];
 
