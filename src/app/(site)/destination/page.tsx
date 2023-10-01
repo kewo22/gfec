@@ -5,21 +5,26 @@ import Container from "../_components/layouts/container";
 import SectionTitle from "../_components/section-title";
 import Image from "next/image";
 import { Typography } from "@/app/_components/ui/typography";
-import { COUNTRIES } from "../_constants/countries.constants";
+import {
+  COUNTRIES,
+  PRE_SELECTED_COUNTRY,
+} from "../_constants/countries.constants";
 import { Country } from "../_types/country";
 import { twMerge } from "tailwind-merge";
+import Aus from "../_components/countries/aus";
 
 export default function Destination() {
-  const [selectedCountryIndex, setSelectedCountryIndex] = useState(0);
-  const onCountryClick = (country: Country, i: number) => {
-    setSelectedCountryIndex(i);
+  const [selectedCountry, setSelectedCountry] = useState(PRE_SELECTED_COUNTRY);
+
+  const onCountryClick = (country: Country) => {
+    setSelectedCountry(country);
   };
 
   return (
     <section className="bg-slate-100">
       <Container className="relative mx-5 xl:mx-auto py-20">
         <SectionTitle title="Ready to Travel the World ?" />
-        <div className="flex flex-row">
+        <div className="flex flex-row gap-5">
           <div className="flex-[0_0_280px] bg-slate-300">
             <ul className="countries-details">
               {COUNTRIES.map((country, i) => {
@@ -31,11 +36,11 @@ export default function Destination() {
                 return (
                   <li
                     className={`flex flex-row justify-between bg-slate-200 h-24 cursor-pointer ${
-                      selectedCountryIndex === i && "active"
+                      selectedCountry.id === country.id && "active"
                     }`}
                     key={i}
                     onClick={() => {
-                      onCountryClick(country, i);
+                      onCountryClick(country);
                     }}
                   >
                     <Typography className="country-name relative grid place-items-center pl-5">
@@ -47,7 +52,9 @@ export default function Destination() {
               })}
             </ul>
           </div>
-          <div className="flex-grow">wqdwq</div>
+          <div className="flex-grow bg-white">
+            {selectedCountry.id === "aus" && <Aus />}
+          </div>
         </div>
       </Container>
     </section>

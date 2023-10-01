@@ -25,6 +25,7 @@ const config: Config = {
         "nl-flag": "url('/nl.svg')",
         "lv-flag": "url('/lv.svg')",
         "ch-flag": "url('/ch.svg')",
+        "aus-banner": "url('/aus.jpg')",
       },
       colors: {
         primary: "#BD9519",
