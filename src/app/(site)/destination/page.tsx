@@ -23,9 +23,19 @@ export default function Destination() {
   return (
     <section className="bg-slate-100">
       <Container className="relative mx-5 xl:mx-auto py-20">
-        <SectionTitle title="Ready to Travel the World ?" />
+        <SectionTitle title="Study Abroad Destinations" />
+
+        <Typography className="mb-16">
+          Embark on an enriching educational adventure with GFEC, your premier
+          foreign education consultancy based in Sri Lanka. Explore a myriad of
+          captivating study abroad destinations that open doors to endless
+          opportunities. From vibrant cultural experiences to world-class
+          institutions, we'll help you navigate the diverse landscape of study
+          options and find the perfect destination to shape your future success.
+        </Typography>
+
         <div className="flex flex-row gap-5">
-          <div className="flex-[0_0_280px] bg-slate-300">
+          <div className="flex-[0_0_280px] bg-slate-300 h-max sticky top-0">
             <ul className="countries-details">
               {COUNTRIES.map((country, i) => {
                 const mergedClassName = twMerge(
