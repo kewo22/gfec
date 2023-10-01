@@ -108,7 +108,7 @@ export default function About() {
         </div>
 
         <div className="flex flex-col lg:flex-row gap-10 mb-20">
-          <div className="bg-white ccc rounded-2xl border-2 border-secondary p-10 flex flex-col justify-center items-center gap-5">
+          <div className="bg-white shadow-about-card rounded-2xl border-2 border-secondary p-10 flex flex-col justify-center items-center gap-5">
             <Image
               src="/personalized-guidance.svg"
               alt="Next.js Logo"
@@ -126,7 +126,7 @@ export default function About() {
               </Typography>
             </div>
           </div>
-          <div className="bg-white ccc rounded-2xl border-2 border-secondary p-10 flex flex-col justify-center items-center gap-5">
+          <div className="bg-white shadow-about-card rounded-2xl border-2 border-secondary p-10 flex flex-col justify-center items-center gap-5">
             <Image
               src="/comprehensive -support.svg"
               alt="Next.js Logo"
@@ -145,7 +145,7 @@ export default function About() {
               </Typography>
             </div>
           </div>
-          <div className="bg-white ccc rounded-2xl border-2 border-secondary p-10 flex flex-col justify-center items-center gap-5">
+          <div className="bg-white shadow-about-card rounded-2xl border-2 border-secondary p-10 flex flex-col justify-center items-center gap-5">
             <Image
               src="/unwavering-commitment.svg"
               alt="Next.js Logo"
