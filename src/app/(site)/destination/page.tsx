@@ -1,11 +1,19 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import Container from "../_components/layouts/container";
 import SectionTitle from "../_components/section-title";
 import Image from "next/image";
 import { Typography } from "@/app/_components/ui/typography";
 import { COUNTRIES } from "../_constants/countries.constants";
+import { Country } from "../_types/country";
 
 export default function Destination() {
+  const [selectedCountryIndex, setSelectedCountryIndex] = useState(0);
+  const onCountryClick = (country: Country, i: number) => {
+    setSelectedCountryIndex(i);
+  };
+
   return (
     <section className="bg-slate-100">
       <Container className="relative mx-5 xl:mx-auto py-20">
@@ -16,8 +24,13 @@ export default function Destination() {
               {COUNTRIES.map((country, i) => {
                 return (
                   <li
-                    className="active flex flex-row justify-between bg-slate-200 h-24"
+                    className={`flex flex-row justify-between bg-slate-200 h-24 cursor-pointer ${
+                      selectedCountryIndex === i && "active"
+                    }`}
                     key={i}
+                    onClick={() => {
+                      onCountryClick(country, i);
+                    }}
                   >
                     <Typography className="country-name relative grid place-items-center pl-5 font-bold">
                       {country.country}

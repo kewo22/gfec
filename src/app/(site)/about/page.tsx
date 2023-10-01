@@ -18,7 +18,7 @@ export default function About() {
             </Typography>
             <Typography className="text-justify">
               We believe that access to quality education is a fundamental
-              right, and we're proud to be part of a community of organizations
+              right, and we&apos;re proud to be part of a community of organizations
               that share this vision.
               <br />
               <br />
@@ -30,11 +30,11 @@ export default function About() {
               that can make the process overwhelming.
               <br />
               <br />
-              At GFEC we're driven by a passion for education and a commitment
+              At GFEC we&apos;re driven by a passion for education and a commitment
               to ensuring that every student has access to the best possible
-              opportunities to achieve their goals. We're proud to be a leading
+              opportunities to achieve their goals. We&apos;re proud to be a leading
               overseas educational consultation service provider in Sri Lanka,
-              and we're committed to continuing to provide exceptional guidance
+              and we&apos;re committed to continuing to provide exceptional guidance
               and support to students for years to come.
             </Typography>
           </div>
