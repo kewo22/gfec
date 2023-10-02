@@ -18,7 +18,7 @@ export default function Fra() {
         <Typography className="text-left">
           France is known for its prestigious universities, cultural heritage
           and culinary delights. With a strong emphasis on arts, humanities and
-          sciences, France offers a wide array of programs. The country's
+          sciences, France offers a wide array of programs. The country&apos;s
           cosmopolitan cities and picturesque regions provide an enriching
           backdrop for academic pursuits.
         </Typography>
