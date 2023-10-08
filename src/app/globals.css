@@ -17,6 +17,10 @@
   }
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   /* color: rgb(var(--foreground-rgb));
   background: linear-gradient(
@@ -25,6 +29,7 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb)); */
+    min-height: 100vh;
 }
 
 .banner-img::before {
@@ -349,12 +354,12 @@ body {
 
 
 .testimonial-slider .slick-prev {
-  left: 10% !important;
+  left: 8% !important;
   z-index: 1 !important;
 }
 
 .testimonial-slider .slick-next {
-  right: 10% !important;
+  right: 8% !important;
   z-index: 1 !important;
 }
 

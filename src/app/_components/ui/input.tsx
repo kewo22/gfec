@@ -26,7 +26,7 @@ export default function Input(props: TextInputProps) {
     let className = {
       wrapper: {
         default:
-          "w-full border-b border-b-stone-600 flex flex-row items-center focus-within:border-blue-600 transition-all py-1 px-3",
+          "w-full border-b border-b-stone-600 flex flex-row items-center focus-within:border-blue-600 transition-all py-1 px-0 sm:px-3 relative",
         error: "",
         disabled: "",
       },
@@ -35,7 +35,8 @@ export default function Input(props: TextInputProps) {
         error: "",
       },
       input: "outline-none bg-transparent flex-grow",
-      errorText: "text-red-600 text-xs font-semibold text-right",
+      errorText:
+        "text-red-600 text-xs font-semibold text-right absolute right-0 bg-slate-100 z-10",
     };
 
     const classNameCopy = JSON.parse(JSON.stringify(className));
@@ -90,7 +91,7 @@ export default function Input(props: TextInputProps) {
       )}
       <input
         {...field}
-        id={field.name} 
+        id={field.name}
         value={field.value ? field.value : ""} // if date format val - 2000-05-05
         className={className.input}
         type={type}
@@ -104,12 +105,6 @@ export default function Input(props: TextInputProps) {
         </Typography>
         // <p className={className.errorText}></p>
       )}
-      {/* <button className={`${className.btn.btn} ${className.btn.save}`}>
-            Save
-          </button>
-          <button className={`${className.btn.btn} ${className.btn.cancel}`}>
-            Cancel
-          </button> */}
       {/* <p>{fieldState.isTouched && "Touched"}</p>
           <p>{fieldState.isDirty && "Dirty"}</p>
           <p>{fieldState.invalid ? "invalid" : "valid"}</p>
