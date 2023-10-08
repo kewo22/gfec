@@ -22,9 +22,7 @@ export default function Aus() {
             CANTERBURY INSTITUTE OF MANAGEMENT
           </Typography>
         </div>
-
         <br />
-
         <ul className="!list-disc !list-outside px-4 text-left">
           <li>
             <Typography>Master of Business Administration</Typography>
@@ -42,21 +40,16 @@ export default function Aus() {
             </Typography>
           </li>
         </ul>
-
         <br />
         <br />
-
         <Typography className="text-left">
           Work permit after degree / masters 2 - 4 years.
         </Typography>
-
         <Typography className="text-left">
           Intake Now On - July 2023/Jan 2024
         </Typography>
-
         <br />
         <br />
-
         <Typography className="text-left">
           Choose a program that excites and motivates you, where you will gain
           the knowledge, industry connections and real-world experience needed
@@ -93,36 +86,34 @@ export default function Aus() {
           to improve the experience of its students. CIMSA Office Bearers will
           be at the forefront of communicating the opinions of the student body.
         </Typography>
-
         <br />
         <br />
-
         <Typography className="text-left">
           Registered with Australia&apos;s independent national quality
           assurance and regulatory agency for higher education TEQSA
-          <br />
-          <br />
-          <Typography className="font-bold">
-            TEQSA Provider ID: PRV14258
-          </Typography>
-          <br />
-          <br />
+        </Typography>
+        <br />
+        <br />
+        <Typography className="text-left font-bold">
+          TEQSA Provider ID: PRV14258
+        </Typography>
+        <br />
+        <br />
+        <Typography className="text-left">
           Member of Independent Tertiary Education Council Australia (ITECA) is
           the peak body representing independent providers in the higher
           education and vocational education.
-          <br />
-          <br />
-          <Typography className="text-left font-bold">
-            ITECA Membership ID: 215159
-          </Typography>
-          <Typography className="text-left font-bold">
-            CRICOS Provider Code: 03809A
-          </Typography>
         </Typography>
-
         <br />
         <br />
-
+        <Typography className="text-left font-bold">
+          ITECA Membership ID: 215159
+        </Typography>
+        <Typography className="text-left font-bold">
+          CRICOS Provider Code: 03809A
+        </Typography>
+        <br />
+        <br />
         <div>
           <Typography className="font-bold text-left">Accreditation</Typography>
           <ul className="text-left !list-disc !list-outside mb-3 px-4">
