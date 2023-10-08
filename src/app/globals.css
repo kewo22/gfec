@@ -216,13 +216,16 @@ body {
 
 
 
-
 .plyr {
   border-radius: 12px;
-  /* width: 50%; */
-  /* margin: 150px auto; */
+}
+
+.about-plyr .plyr {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
+
+
+
 
 
 
@@ -312,9 +315,7 @@ body {
 
 .nav-slider {
   height: 100%;
-  /* min-height: 100%; */
   width: 100%;
-  /* overflow: hidden; */
 }
 
 .nav-slider .slick-list {
@@ -342,13 +343,30 @@ body {
 
 
 
+.testimonial-slider .slick-list {
+  margin: 0 1rem !important;
+}
 
 
+.testimonial-slider .slick-prev {
+  left: 10% !important;
+  z-index: 1 !important;
+}
 
+.testimonial-slider .slick-next {
+  right: 10% !important;
+  z-index: 1 !important;
+}
 
+@media only screen and (min-width: 600px) {
+  .testimonial-slider .slick-prev {
+    left: 4% !important;
+  }
 
-
-
+  .testimonial-slider .slick-next {
+    right: 4% !important;
+  }
+}
 
 
 

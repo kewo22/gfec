@@ -175,7 +175,7 @@ export default function GetInTouch() {
   ];
 
   return (
-    <Container className="mx-5 xl:mx-auto py-40 bg-white grid place-items-center">
+    <Container className="mx-5 xl:mx-auto py-40 grid place-items-center">
       <SectionTitle title="Get in Touch" />
 
       <form
