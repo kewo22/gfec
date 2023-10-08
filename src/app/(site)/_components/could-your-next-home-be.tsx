@@ -15,43 +15,45 @@ import { Typography } from "../../_components/ui/typography";
 
 import { COUNTRIES } from "../_constants/countries.constants";
 import SectionTitle from "./section-title";
+import PrevIcon from "./ui/slider-previous";
+import NextIcon from "./ui/slider-next";
 
 export default function CouldYourNextHomeBe() {
-  const PrevIcon = (props: any) => {
-    const { className, style, onClick } = props;
-    return (
-      <FontAwesomeIcon
-        icon={faChevronRight}
-        size="2x"
-        className={className}
-        style={{
-          ...style,
-          display: "block",
-          background: "none",
-          color: "white",
-        }}
-        onClick={onClick}
-      />
-    );
-  };
+  // const PrevIcon = (props: any) => {
+  //   const { className, style, onClick } = props;
+  //   return (
+  //     <FontAwesomeIcon
+  //       icon={faChevronRight}
+  //       size="2x"
+  //       className={className}
+  //       style={{
+  //         ...style,
+  //         display: "block",
+  //         background: "none",
+  //         color: "white",
+  //       }}
+  //       onClick={onClick}
+  //     />
+  //   );
+  // };
 
-  const NextIcon = (props: any) => {
-    const { className, style, onClick } = props;
-    return (
-      <FontAwesomeIcon
-        icon={faChevronLeft}
-        size="2x"
-        className={className}
-        style={{
-          ...style,
-          display: "block",
-          background: "none",
-          color: "white",
-        }}
-        onClick={onClick}
-      />
-    );
-  };
+  // const NextIcon = (props: any) => {
+  //   const { className, style, onClick } = props;
+  //   return (
+  //     <FontAwesomeIcon
+  //       icon={faChevronLeft}
+  //       size="2x"
+  //       className={className}
+  //       style={{
+  //         ...style,
+  //         display: "block",
+  //         background: "none",
+  //         color: "white",
+  //       }}
+  //       onClick={onClick}
+  //     />
+  //   );
+  // };
 
   const settings = {
     dots: false,

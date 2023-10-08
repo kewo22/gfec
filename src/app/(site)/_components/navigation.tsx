@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 
 import Image from "next/image";
+import Slider from "react-slick";
 
 import NavLinks from "./nav-links";
 import NavContactRibbon from "./nav-contact-ribbon";
@@ -13,7 +14,6 @@ import { Typography } from "@/app/_components/ui/typography";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import Slider from "react-slick";
 
 function getWindowSize() {
   const { innerWidth, innerHeight } = window;

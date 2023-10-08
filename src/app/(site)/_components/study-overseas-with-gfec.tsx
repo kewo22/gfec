@@ -81,7 +81,9 @@ export default function StudyOverseasWithGfec() {
         </div>
       </div>
 
-      <Plyr {...plyrProps} />
+      <div className="about-plyr">
+        <Plyr {...plyrProps} />
+      </div>
     </Container>
   );
 }
