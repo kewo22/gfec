@@ -19,42 +19,6 @@ import PrevIcon from "./ui/slider-previous";
 import NextIcon from "./ui/slider-next";
 
 export default function CouldYourNextHomeBe() {
-  // const PrevIcon = (props: any) => {
-  //   const { className, style, onClick } = props;
-  //   return (
-  //     <FontAwesomeIcon
-  //       icon={faChevronRight}
-  //       size="2x"
-  //       className={className}
-  //       style={{
-  //         ...style,
-  //         display: "block",
-  //         background: "none",
-  //         color: "white",
-  //       }}
-  //       onClick={onClick}
-  //     />
-  //   );
-  // };
-
-  // const NextIcon = (props: any) => {
-  //   const { className, style, onClick } = props;
-  //   return (
-  //     <FontAwesomeIcon
-  //       icon={faChevronLeft}
-  //       size="2x"
-  //       className={className}
-  //       style={{
-  //         ...style,
-  //         display: "block",
-  //         background: "none",
-  //         color: "white",
-  //       }}
-  //       onClick={onClick}
-  //     />
-  //   );
-  // };
-
   const settings = {
     dots: false,
     infinite: false,
