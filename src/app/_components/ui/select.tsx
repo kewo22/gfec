@@ -23,7 +23,7 @@ export default function Select(props: SelectInputs) {
     let className = {
       wrapper: {
         default:
-          "w-full border-b border-b-stone-600 flex flex-row items-center focus-within:border-blue-600 transition-all py-1 px-3",
+          "w-full border-b border-b-stone-600 flex flex-row items-center focus-within:border-blue-600 transition-all py-1 px-0 sm:px-3",
         error: "",
         disabled: "",
       },

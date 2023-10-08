@@ -86,6 +86,20 @@ export default function Testimonial() {
     },
   };
 
+  const plyrPropsTestimonial3: PlyrProps = {
+    ...plyrProps,
+    source: {
+      type: "video",
+      sources: [
+        {
+          src: "https://gfce.s3.amazonaws.com/testimonial-3.mp4",
+          type: "video/webm",
+          size: 1080,
+        },
+      ],
+    },
+  };
+
   return (
     <Container className="mx-5 xl:mx-auto py-20 bg-white">
       <div className="mx-4">
@@ -103,7 +117,7 @@ export default function Testimonial() {
           <Plyr {...plyrPropsTestimonial2} />
         </div>
         <div className="h-full w-full">
-          <Plyr {...plyrProps} />
+          <Plyr {...plyrPropsTestimonial3} />
         </div>
         <div className="h-full w-full">
           <Plyr {...plyrPropsTestimonial1} />
