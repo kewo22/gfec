@@ -31,7 +31,7 @@ export default function Input(props: TextInputProps) {
         disabled: "",
       },
       label: {
-        default: "mr-1 font-semibold text-left text-sm",
+        default: "mr-3 text-left",
         error: "",
       },
       input: "outline-none bg-transparent flex-grow",
@@ -82,12 +82,19 @@ export default function Input(props: TextInputProps) {
       className={`${className.wrapper.default} ${className.wrapper.error} ${className.wrapper.disabled}`}
     >
       {label && (
-        <label
+        <Typography
           htmlFor={field.name}
+          variant="label"
           className={`${className.label.default} ${className.label.error}`}
         >
           {label}
-        </label>
+        </Typography>
+        // <label
+        //   htmlFor={field.name}
+        //   className={`${className.label.default} ${className.label.error}`}
+        // >
+        //   {label}
+        // </label>
       )}
       <input
         {...field}

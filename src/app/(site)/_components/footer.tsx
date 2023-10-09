@@ -31,8 +31,8 @@ export default function Footer() {
 
   return (
     <>
-      <section className="bg-secondary p-10 lg:px-28 lg:py-20 flex flex-col gap-10 lg:gap-14">
-        <div className="row-1 flex flex-wrap flex-row gap-14 items-start">
+      <section className="bg-secondary flex flex-col lg:flex-row p-5 gap-5 md:justify-around">
+        <div className="row-1 flex flex-col sm:flex-row gap-5 sm:gap-0 md:gap-5 lg:gap-10 sm:justify-around items-start">
           <div>
             <Typography className="text-primary font-bold mb-3" variant="md">
               Explore
@@ -53,7 +53,7 @@ export default function Footer() {
               Contact
             </Typography>
 
-            <div className="flex flex-row flex-wrap gap-8">
+            <div className="flex flex-col 2xl:flex-row gap-8 2xl:gap-16">
               <div className="flex items-center">
                 <FontAwesomeIcon
                   icon={faBuilding}
@@ -87,7 +87,7 @@ export default function Footer() {
                 </div>
               </div>
 
-              <div className="flex items-center mb-5">
+              <div className="flex items-center mb-5 2xl:mb-0">
                 <FontAwesomeIcon icon={faAt} color="white" className="mr-2" />
                 <div className="border-l-2 border-l-primary pl-2">
                   {emails?.map((mail, i) => {
@@ -137,8 +137,8 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="row-2 ">
-          <div className="flex flex-col sm:flex-row gap-8">
+        <div className="row-2">
+          <div className="flex flex-col sm:flex-row lg:flex-col gap-5">
             <button className="flex flex-row items-center justify-center gap-2 p-3 rounded-lg bg-primary hover:bg-accent transition-all duration-500 ease-in-out w-64 shadow-sm shadow-black">
               <FontAwesomeIcon
                 icon={faSquareFacebook}

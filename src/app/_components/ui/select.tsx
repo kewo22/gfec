@@ -1,5 +1,6 @@
 import React, { useMemo } from "react";
 import { useController } from "react-hook-form";
+import { Typography } from "./typography";
 
 interface SelectInputs {
   placeHolder?: string;
@@ -28,7 +29,7 @@ export default function Select(props: SelectInputs) {
         disabled: "",
       },
       label: {
-        default: "mr-1 font-semibold text-sm",
+        default: "mr-3",
         error: "",
       },
       input:
@@ -63,12 +64,20 @@ export default function Select(props: SelectInputs) {
     <div
       className={`${className.wrapper.default} ${className.wrapper.error} ${className.wrapper.disabled}`}
     >
-      <label
+      <Typography
+        htmlFor={field.name}
+        variant="label"
+        className={`${className.label.default} ${className.label.error}`}
+      >
+        {label}
+      </Typography>
+
+      {/* <label
         htmlFor={field.name}
         className={`${className.label.default} ${className.label.error}`}
       >
         {label}
-      </label>
+      </label> */}
       <select
         {...field}
         name="cars"
