@@ -11,13 +11,15 @@ type Variant =
   | "small"
   | "xs"
   | "xl"
-  | "md";
+  | "md"
+  | "label";
 
 interface Props {
   variant?: Variant;
   children: React.ReactNode;
   className?: string;
   as?: ElementType;
+  htmlFor?: string;
 }
 
 const tags: Record<Variant, ElementType> = {
@@ -31,6 +33,7 @@ const tags: Record<Variant, ElementType> = {
   xs: "p",
   xl: "p",
   md: "p",
+  label: "label",
 };
 
 const typographyClasses = {
@@ -44,6 +47,7 @@ const typographyClasses = {
   small: "text-xs xl:text-sm 2xl:text-base",
   xs: "text-xs xl:text-sm",
   xl: "font-bold text-4xl lg:font-normal lg:text-5xl xl:text-7xl",
+  label: "text-base xl:text-lg",
 };
 
 const sizes: Record<Variant, string> = {
@@ -57,6 +61,7 @@ const sizes: Record<Variant, string> = {
   xs: typographyClasses.xs,
   xl: typographyClasses.xl,
   md: typographyClasses.md,
+  label: typographyClasses.label,
 };
 
 export const Typography = ({
@@ -64,10 +69,15 @@ export const Typography = ({
   children,
   className,
   as,
+  htmlFor = "",
 }: Props) => {
   const sizeClasses = sizes[variant];
   const Tag = as || tags[variant];
   const mergedClassName = twMerge(sizeClasses, className);
 
-  return <Tag className={mergedClassName}> {children} </Tag>;
+  return (
+    <Tag htmlFor={htmlFor} className={mergedClassName}>
+      {children}
+    </Tag>
+  );
 };

@@ -58,7 +58,7 @@ export default function StudyOverseasWithGfec() {
             informed decisions about your future.
           </Typography>
         </div>
-        <div className="pt-10 lg:pt-0 px-5 text-center sm:text-left w-full md:w-[85%] lg:w-[112%]">
+        <div className="pt-10 lg:pt-0 px-5 text-center sm:text-left w-full md:w-[85%] lg:w-full">
           <Typography variant="h3" className="mb-3 text-secondary">
             Providing the Best Visa Services to Students
           </Typography>
