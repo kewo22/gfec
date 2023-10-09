@@ -43,7 +43,7 @@ const typographyClasses = {
   md: "text-base xl:text-lg",
   small: "text-xs xl:text-sm 2xl:text-base",
   xs: "text-xs xl:text-sm",
-  xl: "text-5xl xl:text-7xl",
+  xl: "font-bold text-4xl lg:font-normal lg:text-5xl xl:text-7xl",
 };
 
 const sizes: Record<Variant, string> = {
