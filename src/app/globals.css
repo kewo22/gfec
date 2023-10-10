@@ -356,11 +356,17 @@ body {
 .testimonial-slider .slick-prev {
   left: 8% !important;
   z-index: 1 !important;
+  background-color: theme("colors.secondary") !important;
+  padding: 0.8%;
+  border-radius: 50% !important;
 }
 
 .testimonial-slider .slick-next {
   right: 8% !important;
   z-index: 1 !important;
+  background-color: theme("colors.secondary") !important;
+  padding: 0.8%;
+  border-radius: 50% !important;
 }
 
 @media only screen and (min-width: 600px) {

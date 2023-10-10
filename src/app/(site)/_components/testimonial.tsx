@@ -1,65 +1,14 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 
-import Slider from "react-slick";
 import Plyr, { PlyrProps } from "plyr-react";
 
 import Container from "./layouts/container";
 import SectionTitle from "./section-title";
-import PrevIcon from "./ui/slider-previous";
-import NextIcon from "./ui/slider-next";
 
 export default function Testimonial() {
-  const settings = {
-    dots: false,
-    fade: true,
-    infinite: true,
-    speed: 1000,
-    autoplay: true,
-    autoplaySpeed: 5000,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    nextArrow: <PrevIcon />,
-    prevArrow: <NextIcon />,
-    className: "testimonial-slider",
-  };
-
-  //   const settings = {
-  //     dots: true,
-  //     infinite: false,
-  //     speed: 500,
-  //     slidesToShow: 3,
-  //     slidesToScroll: 3,
-  //     // dots: false,
-  //     // speed: 800,
-  //     // autoplaySpeed: 3000,
-  //     // slidesToShow: 4,
-  //     // slidesToScroll: 1,
-  //     // className: "nav-slider",
-  //   };
-
   const plyrProps: PlyrProps = {
-    source: {
-      type: "video",
-      sources: [
-        {
-          src: "https://gfce.s3.amazonaws.com/GFEC-PROMO.mp4",
-          type: "video/webm",
-          size: 1080,
-        },
-      ],
-      poster: "/video-poster.jpg",
-    }, // https://github.com/sampotts/plyr#the-source-setter
-    options: {
-      volume: 0.3,
-      // controls: ["play-large", "f"],
-      // hideControls: true,
-    }, // https://github.com/sampotts/plyr#options
-  };
-
-  const plyrPropsTestimonial1: PlyrProps = {
-    ...plyrProps,
     source: {
       type: "video",
       sources: [
@@ -69,35 +18,83 @@ export default function Testimonial() {
           size: 1080,
         },
       ],
+      // poster: "/video-poster.jpg",
+    },
+    options: {
+      volume: 0,
     },
   };
 
-  const plyrPropsTestimonial2: PlyrProps = {
-    ...plyrProps,
-    source: {
-      type: "video",
-      sources: [
-        {
-          src: "https://gfce.s3.amazonaws.com/testimonial-2.mp4",
-          type: "video/webm",
-          size: 1080,
-        },
-      ],
-    },
+  const [currentVideo, setCurrentVideo] = useState(0);
+  const [first, setFirst] = useState(plyrProps);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const videos = [
+    "https://gfce.s3.amazonaws.com/testimonial-1.mp4",
+    "https://gfce.s3.amazonaws.com/testimonial-2.mp4",
+    "https://gfce.s3.amazonaws.com/testimonial-3.mp4",
+  ];
+
+  const onNextClick = () => {
+    setIsLoading(true);
+
+    setCurrentVideo((state) => {
+      if (state === videos.length - 1) {
+        afterChange(0);
+        return 0;
+      }
+      afterChange(state + 1);
+      return state + 1;
+    });
   };
 
-  const plyrPropsTestimonial3: PlyrProps = {
-    ...plyrProps,
-    source: {
-      type: "video",
-      sources: [
-        {
-          src: "https://gfce.s3.amazonaws.com/testimonial-3.mp4",
-          type: "video/webm",
-          size: 1080,
-        },
-      ],
-    },
+  const onPrevClick = () => {
+    setIsLoading(true);
+
+    setCurrentVideo((state) => {
+      if (state === 0) {
+        afterChange(videos.length - 1);
+        return videos.length - 1;
+      }
+      afterChange(state - 1);
+      return state - 1;
+    });
+  };
+
+  const afterChange = (currentSlide: number) => {
+    const promise = new Promise(function (resolve, reject) {
+      const tempPlyrProps = { ...plyrProps };
+      setTimeout(() => {
+        switch (currentSlide) {
+          case 0:
+            tempPlyrProps.source!.sources[0].src =
+              "https://gfce.s3.amazonaws.com/testimonial-1.mp4";
+            break;
+          case 1:
+            tempPlyrProps.source!.sources[0].src =
+              "https://gfce.s3.amazonaws.com/testimonial-2.mp4";
+            break;
+          case 2:
+            tempPlyrProps.source!.sources[0].src =
+              "https://gfce.s3.amazonaws.com/testimonial-3.mp4";
+            break;
+
+          default:
+            break;
+        }
+        setFirst(tempPlyrProps);
+        resolve(tempPlyrProps);
+      }, 1000);
+    });
+
+    promise
+      .then(() => {
+        setIsLoading(false);
+      })
+      .catch((e) => console.log(e))
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
   return (
@@ -106,23 +103,20 @@ export default function Testimonial() {
         <SectionTitle title="What They're Talking About GFEC" />
       </div>
 
-      <Slider {...settings}>
-        <div className="h-full w-full">
-          <Plyr {...plyrProps} />
-        </div>
-        <div className="h-full w-full">
-          <Plyr {...plyrPropsTestimonial1} />
-        </div>
-        <div className="h-full w-full">
-          <Plyr {...plyrPropsTestimonial2} />
-        </div>
-        <div className="h-full w-full">
-          <Plyr {...plyrPropsTestimonial3} />
-        </div>
-        <div className="h-full w-full">
-          <Plyr {...plyrPropsTestimonial1} />
-        </div>
-      </Slider>
+      <div
+        className={`${
+          isLoading ? "opacity-0" : "opacity-100"
+        } mx-5 transition-all duration-1000 ease-in-out`}
+      >
+        <Plyr {...first} />
+      </div>
+
+      <button className="p-5 mx-2" onClick={onPrevClick}>
+        prev
+      </button>
+      <button className="p-5 mx-2" onClick={onNextClick}>
+        next
+      </button>
     </Container>
   );
 }
