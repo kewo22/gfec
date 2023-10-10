@@ -108,9 +108,9 @@ export default function Testimonial() {
       <div
         className={`${
           isLoading ? "opacity-0" : "opacity-100"
-        } mx-5 transition-all duration-1000 ease-in-out min-h-[522px]`}
+        } mx-5 transition-all duration-1000 ease-in-out`}
       >
-        <Plyr {...first} style={{ minHeight: "522px", height: "522px" }} />
+        <Plyr {...first} />
       </div>
 
       <div className="flex flex-row mt-5 gap-5 justify-center">
