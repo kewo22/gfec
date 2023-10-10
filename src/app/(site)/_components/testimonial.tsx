@@ -6,6 +6,8 @@ import Plyr, { PlyrProps } from "plyr-react";
 
 import Container from "./layouts/container";
 import SectionTitle from "./section-title";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCaretLeft, faCaretRight } from "@fortawesome/free-solid-svg-icons";
 
 export default function Testimonial() {
   const plyrProps: PlyrProps = {
@@ -98,7 +100,7 @@ export default function Testimonial() {
   };
 
   return (
-    <Container className="mx-5 xl:mx-auto py-20 bg-white">
+    <Container className="py-10 sm:py-20 bg-white">
       <div className="mx-4">
         <SectionTitle title="What They're Talking About GFEC" />
       </div>
@@ -106,17 +108,33 @@ export default function Testimonial() {
       <div
         className={`${
           isLoading ? "opacity-0" : "opacity-100"
-        } mx-5 transition-all duration-1000 ease-in-out`}
+        } mx-5 transition-all duration-1000 ease-in-out min-h-[522px]`}
       >
-        <Plyr {...first} />
+        <Plyr {...first} style={{ minHeight: "522px", height: "522px" }} />
       </div>
 
-      <button className="p-5 mx-2" onClick={onPrevClick}>
-        prev
-      </button>
-      <button className="p-5 mx-2" onClick={onNextClick}>
-        next
-      </button>
+      <div className="flex flex-row mt-5 gap-5 justify-center">
+        <button
+          className="py-2 px-4 bg-secondary rounded-full"
+          onClick={onPrevClick}
+        >
+          <FontAwesomeIcon
+            icon={faCaretLeft}
+            className="text-white"
+            size="1x"
+          />
+        </button>
+        <button
+          className="py-2 px-4 bg-secondary rounded-full"
+          onClick={onNextClick}
+        >
+          <FontAwesomeIcon
+            icon={faCaretRight}
+            className="text-white"
+            size="1x"
+          />
+        </button>
+      </div>
     </Container>
   );
 }
