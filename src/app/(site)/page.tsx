@@ -7,6 +7,7 @@ import StudyOverseasWithGfec from "./_components/study-overseas-with-gfec";
 import HowWeDifferentiateFromOthers from "./_components/how-we-differentiate-from-others";
 import GetInTouch from "./_components/get-in-touch";
 import Testimonial from "./_components/testimonial";
+import SuccessStoriesText from "./_components/success-stories-text";
 
 export default function SitePage() {
   return (
@@ -19,7 +20,8 @@ export default function SitePage() {
 
       <CouldYourNextHomeBe />
 
-      <SuccessStories />
+      {/* <SuccessStories /> */}
+      <SuccessStoriesText />
 
       <Testimonial />
 
