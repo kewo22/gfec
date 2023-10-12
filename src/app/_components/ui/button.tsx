@@ -5,12 +5,13 @@ import React from "react";
 import { twMerge } from "tailwind-merge";
 
 type ButtonProps = {
-  text: string;
+  text?: string;
   type?: "submit" | "reset" | "button";
   buttonStyle?: string;
   size?: "xs" | "sm" | "md" | "lg";
   customClass?: string;
   isDisabled?: boolean;
+  children?: any;
   onClick?: () => void;
 };
 
@@ -22,6 +23,7 @@ export default function Button(props: ButtonProps) {
     buttonStyle,
     customClass = "",
     isDisabled = false,
+    children,
     onClick,
   } = props;
 
@@ -64,7 +66,8 @@ export default function Button(props: ButtonProps) {
       className={mergedClassName}
       disabled={isDisabled}
     >
-      {text}
+      {children && children}
+      {!children && text}
       {/* <Typography as="span" className="text-white">
       </Typography> */}
     </button>

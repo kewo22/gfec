@@ -29,7 +29,7 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb)); */
-    min-height: 100vh;
+  min-height: 100vh;
 }
 
 .banner-img::before {
@@ -562,4 +562,76 @@ div.image-container:before {
   transform: translateY(-50%);
   -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.animation_background_test {
+  -webkit-animation-name: animation;
+  -webkit-animation-duration: 5s;
+  -webkit-animation-timing-function: ease-in-out;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-play-state: running;
+
+  animation-name: animation;
+  animation-duration: 5s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-play-state: running;
+  color: theme('colors.secondary');
+}
+
+@-webkit-keyframes animation {
+  0% {
+    color: theme('colors.secondary');
+  }
+
+  50% {
+    color: theme('colors.primary');
+  }
+
+  100% {
+    color: theme('colors.secondary');
+  }
+}
+
+@keyframes animation {
+  0% {
+    color: theme('colors.secondary');
+  }
+
+  50% {
+    color: theme('colors.primary');
+  }
+
+  100% {
+    color: theme('colors.secondary');
+  }
 }
