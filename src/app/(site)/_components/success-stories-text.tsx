@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 import Container from "./layouts/container";
 
@@ -18,8 +18,64 @@ import Image from "next/image";
 import Button from "@/app/_components/ui/button";
 
 export default function SuccessStoriesText() {
-  const onPrevClick = () => {};
-  const onNextClick = () => {};
+  const data = [
+    {
+      name: "Isanka Edirisooriya",
+      uni: "Student of Oxford, UK.",
+      successStory:
+        "I'm Isanka Edirisooriya, student of University of Essex UK. I got this opportunity through GFE Consultancy. There was a consultant who guided me throughout this process. I got to know about GFE Consultancy through Facebook. I visited the place and they guided me throughout my SOP's until the VISA Process in which they did VISA's for my whole family of 4 members. We got our VISA's success within the specific period of time without any delay. So GFE Consultancy guided me very much and I highly recommend this place for you all.",
+    },
+    {
+      name: "Janitha Dineshan",
+      uni: "Student of Oxford, UK.",
+      successStory:
+        "Hi! Good Afternoon! My name is Janitha Dineshan and this is my husband Manoharan Dineshan. We got the VISA to the UK. අපි GFE Consultation එකෙන් තමයි කරේ. එයාලා හරියටම documents arrange කරලා, අපිට හරියටම එකේ ඉදලා පටන් ගන්න වෙලාව ඔක්කොම හරියටම කරලා, අපිට calls ඔක්කොම support කරලා, අපිට හොදට කියලා දුන්නා. ඒක නිසා තමයි අපි VISA වලට Monday දාලා Saturday ගත්තේ. එයාලා හරියටම අපිට ඔක්කොම කියලා දුන්නා. ඒක නිසා තමයි අපි ඉක්මනට VISA එක ගත්තේ. මේ වගේ සල්ලි මුකුත් ගන්නේ නැතුව, කවුරුත් මේ වගේ කරලා දෙන්නේ නැහැ. මේ Agency එකට ඔයාලත් අවොත්, ඔයාලට පරිස්සමින්, ඉක්මනට VISA ගන්න පුළුවන්. අපි වගේ ඔයාලටත් UK යන්න පුළුවන්. නැත්නම් වෙන countries වලටත් VISA එයාලා කරලා දෙනවා.",
+    },
+  ];
+
+  const [selectedSuccessStory, setSelectedSuccessStory] = useState(0);
+
+  const fullNameRef = useRef<any>();
+  const uniRef = useRef<any>();
+  const successStoryRef = useRef<any>();
+
+  useEffect(() => {
+    if (!fullNameRef) return;
+    setTimeout(() => {
+      fullNameRef.current?.classList.remove("opacity-0");
+      fullNameRef.current?.classList.add("opacity-1");
+      uniRef.current?.classList.remove("opacity-0");
+      uniRef.current?.classList.add("opacity-1");
+      successStoryRef.current?.classList.remove("opacity-0");
+      successStoryRef.current?.classList.add("opacity-1");
+    }, 500);
+  }, [selectedSuccessStory]);
+
+  const onPrevClick = () => {
+    fullNameRef.current?.classList.add("opacity-0");
+    uniRef.current?.classList.add("opacity-0");
+    successStoryRef.current?.classList.add("opacity-0");
+    setTimeout(() => {
+      if (selectedSuccessStory === 0) {
+        setSelectedSuccessStory(data.length - 1);
+        return;
+      }
+      setSelectedSuccessStory((state) => state - 1);
+    }, 500);
+  };
+
+  const onNextClick = () => {
+    fullNameRef.current?.classList.add("opacity-0");
+    uniRef.current?.classList.add("opacity-0");
+    successStoryRef.current?.classList.add("opacity-0");
+    setTimeout(() => {
+      if (selectedSuccessStory === data.length - 1) {
+        setSelectedSuccessStory(0);
+        return;
+      }
+      setSelectedSuccessStory((state) => state + 1);
+    }, 500);
+  };
 
   return (
     <Container className="mx-0 lg:mx-auto py-20">
@@ -49,13 +105,21 @@ export default function SuccessStoriesText() {
             className="rounded-full"
           />
           <div>
-            <Typography className="text-center sm:text-left" variant="h4">
-              Kewin
+            <Typography
+              className="text-center sm:text-left transition-all duration-500 ease-in-out"
+              // id="test"
+              variant="h4"
+              ref={fullNameRef}
+            >
+              {data[selectedSuccessStory].name}
             </Typography>
-            <Typography className="text-center sm:text-left" variant="h4">
-              Fernando
+            <Typography
+              variant="small"
+              className="text-center sm:text-left"
+              ref={uniRef}
+            >
+              {data[selectedSuccessStory].uni}
             </Typography>
-            <Typography variant="small">Student of Oxford, UX.</Typography>
           </div>
           <div className="justify-self-center sm:justify-self-end flex flex-row gap-1">
             {[1, 2, 3, 4, 5].map((i) => {
@@ -70,21 +134,11 @@ export default function SuccessStoriesText() {
             })}
           </div>
         </div>
-        <Typography className="text-justify my-10">
-          deleniti expedita quisquam, facilis quibusdam excepturi unde, quo
-          officiis ducimus ipsa accusantium iusto quos voluptates hic
-          distinctio? Recusandae consequatur iusto quas. Lorem ipsum dolor sit
-          amet consectetur adipisicing elit. Pariatur deleniti expedita
-          quisquam, facilis quibusdam excepturi unde, quo officiis ducimus ipsa
-          accusantium iusto quos voluptates hic distinctio? Recusandae
-          consequatur iusto quas. Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Pariatur
+        <Typography className="text-justify my-10" ref={successStoryRef}>
+          {data[selectedSuccessStory].successStory}
         </Typography>
         <div className="flex flex-row gap-5 justify-center sm:justify-end">
-          <Button
-            customClass="bg-secondary rounded-full"
-            onClick={onPrevClick}
-          >
+          <Button customClass="bg-secondary rounded-full" onClick={onPrevClick}>
             <FontAwesomeIcon
               icon={faCaretLeft}
               className="text-white"
@@ -92,10 +146,7 @@ export default function SuccessStoriesText() {
             />
           </Button>
 
-          <Button
-            customClass="bg-secondary rounded-full"
-            onClick={onNextClick}
-          >
+          <Button customClass="bg-secondary rounded-full" onClick={onNextClick}>
             <FontAwesomeIcon
               icon={faCaretRight}
               className="text-white"
