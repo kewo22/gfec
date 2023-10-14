@@ -1,4 +1,10 @@
-import React, { ElementType } from "react";
+import React, {
+  DOMElement,
+  ElementType,
+  InputHTMLAttributes,
+  RefAttributes,
+  forwardRef,
+} from "react";
 import { twMerge } from "tailwind-merge";
 
 type Variant =
@@ -15,11 +21,13 @@ type Variant =
   | "label";
 
 interface Props {
+  // interface Props extends React.HtmlHTMLAttributes<HTMLElement> {
   variant?: Variant;
   children: React.ReactNode;
   className?: string;
   as?: ElementType;
   htmlFor?: string;
+  ref?: any;
 }
 
 const tags: Record<Variant, ElementType> = {
@@ -64,20 +72,37 @@ const sizes: Record<Variant, string> = {
   label: typographyClasses.label,
 };
 
-export const Typography = ({
-  variant = "p",
-  children,
-  className,
-  as,
-  htmlFor = "",
-}: Props) => {
+// export const Typography = ({
+// variant = "p",
+// children,
+// className,
+// as,
+// htmlFor = "",
+// ref,
+// }: Props) => {
+//   const sizeClasses = sizes[variant];
+//   const Tag = as || tags[variant];
+//   const mergedClassName = twMerge(sizeClasses, className);
+
+//   return (
+//     <Tag htmlFor={htmlFor} className={mergedClassName} ref={ref}>
+//       {children}
+//     </Tag>
+//   );
+// };
+
+export const Typography = forwardRef<HTMLDivElement, Props>(function Typography(
+  props,
+  ref
+) {
+  const { variant = "p", children, className, as, htmlFor = "" } = props;
+
   const sizeClasses = sizes[variant];
   const Tag = as || tags[variant];
   const mergedClassName = twMerge(sizeClasses, className);
-
   return (
-    <Tag htmlFor={htmlFor} className={mergedClassName}>
+    <Tag htmlFor={htmlFor} className={mergedClassName} ref={ref}>
       {children}
     </Tag>
   );
-};
+});
