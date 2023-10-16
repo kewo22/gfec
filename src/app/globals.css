@@ -46,6 +46,13 @@ body {
   z-index: 2;
 }
 
+.multi-line-truncate {
+  display: -webkit-box;
+  -webkit-line-clamp: 10;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 .app-btn {
   cursor: pointer;
   transition: all 0.8s, color 0.7s 0.7s;
