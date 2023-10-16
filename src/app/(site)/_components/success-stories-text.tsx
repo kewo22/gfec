@@ -1,11 +1,8 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 
-import Container from "./layouts/container";
-
-import { Typography } from "../../_components/ui/typography";
-import SectionTitle from "./section-title";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCaretLeft,
@@ -14,11 +11,15 @@ import {
   faQuoteRight,
   faStar,
 } from "@fortawesome/free-solid-svg-icons";
-import Image from "next/image";
+
+import Container from "./layouts/container";
+import { Typography } from "../../_components/ui/typography";
+import SectionTitle from "./section-title";
 import Button from "@/app/_components/ui/button";
+import Modal from "@/app/_components/ui/modal";
 
 export default function SuccessStoriesText() {
-  const data = [
+  let data: any[] | null = [
     {
       name: "Isanka Edirisooriya",
       uni: "Student of Oxford, UK.",
@@ -34,10 +35,14 @@ export default function SuccessStoriesText() {
   ];
 
   const [selectedSuccessStory, setSelectedSuccessStory] = useState(0);
+  const [isChanging, setIsChanging] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const fullNameRef = useRef<any>();
   const uniRef = useRef<any>();
   const successStoryRef = useRef<any>();
+  const startsRef = useRef<any>();
+  const imageRef = useRef<any>();
 
   useEffect(() => {
     if (!fullNameRef) return;
@@ -48,32 +53,46 @@ export default function SuccessStoriesText() {
       uniRef.current?.classList.add("opacity-1");
       successStoryRef.current?.classList.remove("opacity-0");
       successStoryRef.current?.classList.add("opacity-1");
+      startsRef.current?.classList.remove("opacity-0");
+      startsRef.current?.classList.add("opacity-1");
+      imageRef.current?.classList.remove("opacity-0");
+      imageRef.current?.classList.add("opacity-1");
     }, 500);
   }, [selectedSuccessStory]);
 
   const onPrevClick = () => {
+    setIsChanging(true);
     fullNameRef.current?.classList.add("opacity-0");
     uniRef.current?.classList.add("opacity-0");
     successStoryRef.current?.classList.add("opacity-0");
+    startsRef.current?.classList.add("opacity-0");
+    imageRef.current?.classList.add("opacity-0");
     setTimeout(() => {
       if (selectedSuccessStory === 0) {
-        setSelectedSuccessStory(data.length - 1);
+        setSelectedSuccessStory(data!.length - 1);
+        setIsChanging(false);
         return;
       }
       setSelectedSuccessStory((state) => state - 1);
+      setIsChanging(false);
     }, 500);
   };
 
   const onNextClick = () => {
+    setIsChanging(true);
     fullNameRef.current?.classList.add("opacity-0");
     uniRef.current?.classList.add("opacity-0");
     successStoryRef.current?.classList.add("opacity-0");
+    startsRef.current?.classList.add("opacity-0");
+    imageRef.current?.classList.add("opacity-0");
     setTimeout(() => {
-      if (selectedSuccessStory === data.length - 1) {
+      if (selectedSuccessStory === data!.length - 1) {
         setSelectedSuccessStory(0);
+        setIsChanging(false);
         return;
       }
       setSelectedSuccessStory((state) => state + 1);
+      setIsChanging(false);
     }, 500);
   };
 
@@ -102,26 +121,29 @@ export default function SuccessStoriesText() {
             alt="img"
             width={100}
             height={100}
-            className="rounded-full"
+            className="rounded-full transition-all duration-500 ease-in-out"
+            ref={imageRef}
           />
           <div>
             <Typography
               className="text-center sm:text-left transition-all duration-500 ease-in-out"
-              // id="test"
               variant="h4"
               ref={fullNameRef}
             >
-              {data[selectedSuccessStory].name}
+              {data![selectedSuccessStory].name}
             </Typography>
             <Typography
               variant="small"
-              className="text-center sm:text-left"
+              className="text-center sm:text-left transition-all duration-500 ease-in-out"
               ref={uniRef}
             >
-              {data[selectedSuccessStory].uni}
+              {data![selectedSuccessStory].uni}
             </Typography>
           </div>
-          <div className="justify-self-center sm:justify-self-end flex flex-row gap-1">
+          <div
+            className="justify-self-center sm:justify-self-end flex flex-row gap-1 transition-all duration-500 ease-in-out"
+            ref={startsRef}
+          >
             {[1, 2, 3, 4, 5].map((i) => {
               return (
                 <FontAwesomeIcon
@@ -134,11 +156,26 @@ export default function SuccessStoriesText() {
             })}
           </div>
         </div>
-        <Typography className="text-justify my-10" ref={successStoryRef}>
-          {data[selectedSuccessStory].successStory}
+        <Typography
+          className="text-justify my-10 multi-line-truncate transition-all duration-500 ease-in-out"
+          ref={successStoryRef}
+        >
+          {data![selectedSuccessStory].successStory}
         </Typography>
+        <Button
+          customClass="my-10 mx-auto block sm:hidden"
+          onClick={() => {
+            setIsOpen(!isOpen);
+          }}
+        >
+          Read More
+        </Button>
         <div className="flex flex-row gap-5 justify-center sm:justify-end">
-          <Button customClass="bg-secondary rounded-full" onClick={onPrevClick}>
+          <Button
+            customClass="bg-secondary rounded-full"
+            isDisabled={isChanging}
+            onClick={onPrevClick}
+          >
             <FontAwesomeIcon
               icon={faCaretLeft}
               className="text-white"
@@ -146,7 +183,11 @@ export default function SuccessStoriesText() {
             />
           </Button>
 
-          <Button customClass="bg-secondary rounded-full" onClick={onNextClick}>
+          <Button
+            customClass="bg-secondary rounded-full"
+            isDisabled={isChanging}
+            onClick={onNextClick}
+          >
             <FontAwesomeIcon
               icon={faCaretRight}
               className="text-white"
@@ -155,6 +196,37 @@ export default function SuccessStoriesText() {
           </Button>
         </div>
       </div>
+
+      <Modal
+        isOpen={isOpen}
+        onClose={() => {
+          setIsOpen(false);
+        }}
+      >
+        <>
+          <div className="flex flex-row items-center justify-start gap-5 mb-5">
+            <Image
+              src="/team1.png"
+              alt="img"
+              width={100}
+              height={100}
+              className="rounded-full"
+              ref={imageRef}
+            />
+            <div className="flex-grow">
+              <Typography className="" variant="h4">
+                {data![selectedSuccessStory].name}
+              </Typography>
+              <Typography variant="small" className="">
+                {data![selectedSuccessStory].uni}
+              </Typography>
+            </div>
+          </div>
+          <Typography className="text-justify">
+            {data![selectedSuccessStory].successStory}
+          </Typography>
+        </>
+      </Modal>
     </Container>
   );
 }
