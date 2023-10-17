@@ -211,7 +211,6 @@ export default function SuccessStoriesText() {
               width={100}
               height={100}
               className="rounded-full"
-              ref={imageRef}
             />
             <div className="flex-grow">
               <Typography className="" variant="h4">
