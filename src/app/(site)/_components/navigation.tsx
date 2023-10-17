@@ -14,12 +14,6 @@ import { Typography } from "@/app/_components/ui/typography";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-
-function getWindowSize() {
-  const { innerWidth, innerHeight } = window;
-  return { innerWidth, innerHeight };
-}
-
 export default function Navigation() {
   const settings = {
     dots: false,

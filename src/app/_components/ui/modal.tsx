@@ -46,14 +46,14 @@ export default function Modal(props: ModalProps) {
       id="modal"
       className="fixed z-50 bg-slate-950/50 scale-0 transition-all duration-500 ease-in-out top-0 left-0 bottom-0 right-0 grid place-items-center h-screen w-screen"
     >
-      <div className="relative max-h-[90%] h-auto w-[90%] max-w-3xl bg-white rounded-lg overflow-y-auto overflow-x-hidden p-5">
+      <div className="relative max-h-[90%] h-auto w-[90%] lg:max-w-4xl xl:max-w-5xl bg-white rounded-lg overflow-y-auto overflow-x-hidden p-5">
         <FontAwesomeIcon
           icon={faTimesCircle}
           size="2x"
-          className="text-slate-500 absolute right-5 top-5"
+          className="text-slate-500 absolute right-5 top-5 cursor-pointer hover:text-secondary transition-all duration-500 ease-in-out"
           onClick={onCloseClick}
         />
-        <div className="mt-5">{children}</div>
+        <div className="mt-10">{children}</div>
       </div>
     </section>
   );

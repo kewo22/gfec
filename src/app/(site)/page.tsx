@@ -25,7 +25,9 @@ export default function SitePage() {
 
       <Testimonial />
 
-      <GetInTouch />
+      <div id="get-in-touch-container">
+        <GetInTouch />
+      </div>
     </section>
   );
 }

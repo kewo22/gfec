@@ -8,7 +8,9 @@ export default function Contact() {
     <section className="bg-slate-100">
       <GfecMap />
 
-      <GetInTouch />
+      <div id="get-in-touch-container">
+        <GetInTouch />
+      </div>
     </section>
   );
 }
