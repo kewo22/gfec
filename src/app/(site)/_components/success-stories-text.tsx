@@ -115,15 +115,15 @@ export default function SuccessStoriesText() {
             className="text-secondary"
           />
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-[100px_auto_1fr] gap-5 place-items-center sm:place-items-start sm:items-center">
-          <Image
+        <div className="grid grid-cols-1 sm:grid-cols-[auto_1fr] gap-5 place-items-center sm:place-items-start sm:items-center">
+          {/* <Image
             src="/team1.png"
             alt="img"
             width={100}
             height={100}
             className="rounded-full transition-all duration-500 ease-in-out"
             ref={imageRef}
-          />
+          /> */}
           <div>
             <Typography
               className="text-center sm:text-left transition-all duration-500 ease-in-out"
@@ -205,13 +205,13 @@ export default function SuccessStoriesText() {
       >
         <>
           <div className="flex flex-row items-center justify-start gap-5 mb-5">
-            <Image
+            {/* <Image
               src="/team1.png"
               alt="img"
               width={100}
               height={100}
               className="rounded-full"
-            />
+            /> */}
             <div className="flex-grow">
               <Typography className="" variant="h4">
                 {data![selectedSuccessStory].name}

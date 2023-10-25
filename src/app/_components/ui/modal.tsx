@@ -38,6 +38,7 @@ export default function Modal(props: ModalProps) {
     const modalEl = document.querySelector("#modal")!;
     modalEl.classList.add("scale-0");
     modalEl.classList.remove("scale-100");
+    document.querySelector("body")!.removeChild(modalEl);
     onClose();
   };
 

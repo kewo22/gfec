@@ -8,6 +8,7 @@ import HowWeDifferentiateFromOthers from "./_components/how-we-differentiate-fro
 import GetInTouch from "./_components/get-in-touch";
 import Testimonial from "./_components/testimonial";
 import SuccessStoriesText from "./_components/success-stories-text";
+import StudentLife from "./_components/student-life";
 
 export default function SitePage() {
   return (
@@ -24,6 +25,8 @@ export default function SitePage() {
       <SuccessStoriesText />
 
       <Testimonial />
+
+      <StudentLife />
 
       <div id="get-in-touch-container">
         <GetInTouch />
