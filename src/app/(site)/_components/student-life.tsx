@@ -1,6 +1,7 @@
 "use client";
 
 import React, { BaseSyntheticEvent } from "react";
+import { isMobile } from "react-device-detect";
 
 import Image from "next/image";
 
@@ -9,6 +10,7 @@ import SectionTitle from "./section-title";
 
 export default function StudentLife() {
   const onMouseOver = (e: BaseSyntheticEvent) => {
+    if (isMobile) return;
     const target = e.target as HTMLElement;
     target.classList.add("absolute", "z-50");
     const images = document.querySelectorAll(".image");
@@ -19,6 +21,7 @@ export default function StudentLife() {
     });
   };
   const onMouseLeave = () => {
+    if (isMobile) return;
     const images = document.querySelectorAll(".image");
     images.forEach((image) => {
       image.classList.remove("blur-sm");
@@ -41,7 +44,7 @@ export default function StudentLife() {
             width="0"
             height="0"
             sizes="100vw"
-            className="w-full h-auto border-secondary border-2 p-2 rounded-tl-3xl rounded-br-3xl sm:hover:scale-125 transition-all ease-in-out duration-200 image"
+            className="w-full h-auto border-secondary border-2 p-2 rounded-tl-3xl rounded-br-3xl sm:hover:scale-150 transition-all ease-in-out duration-200 image"
             onMouseOver={onMouseOver}
             onMouseLeave={onMouseLeave}
           />
@@ -54,7 +57,7 @@ export default function StudentLife() {
             width="0"
             height="0"
             sizes="100vw"
-            className="w-full h-auto border-secondary border-2 p-2 rounded-tl-3xl rounded-br-3xl sm:hover:scale-125 transition-all ease-in-out duration-200 image"
+            className="w-full h-auto border-secondary border-2 p-2 rounded-tl-3xl rounded-br-3xl sm:hover:scale-150 transition-all ease-in-out duration-200 image"
             onMouseOver={onMouseOver}
             onMouseLeave={onMouseLeave}
           />
@@ -67,7 +70,7 @@ export default function StudentLife() {
             width="0"
             height="0"
             sizes="100vw"
-            className="w-full h-auto border-secondary border-2 p-2 rounded-tl-3xl rounded-br-3xl sm:hover:scale-125 transition-all ease-in-out duration-200 image"
+            className="w-full h-auto border-secondary border-2 p-2 rounded-tl-3xl rounded-br-3xl sm:hover:scale-150 transition-all ease-in-out duration-200 image"
             onMouseOver={onMouseOver}
             onMouseLeave={onMouseLeave}
           />
@@ -80,7 +83,7 @@ export default function StudentLife() {
             width="0"
             height="0"
             sizes="100vw"
-            className="w-full h-auto border-secondary border-2 p-2 rounded-tl-3xl rounded-br-3xl sm:hover:scale-125 transition-all ease-in-out duration-200 image"
+            className="w-full h-auto border-secondary border-2 p-2 rounded-tl-3xl rounded-br-3xl sm:hover:scale-150 transition-all ease-in-out duration-200 image"
             onMouseOver={onMouseOver}
             onMouseLeave={onMouseLeave}
           />
@@ -93,7 +96,7 @@ export default function StudentLife() {
             width="0"
             height="0"
             sizes="100vw"
-            className="w-full h-auto border-secondary border-2 p-2 rounded-tl-3xl rounded-br-3xl sm:hover:scale-125 transition-all ease-in-out duration-200 image"
+            className="w-full h-auto border-secondary border-2 p-2 rounded-tl-3xl rounded-br-3xl sm:hover:scale-150 transition-all ease-in-out duration-200 image"
             onMouseOver={onMouseOver}
             onMouseLeave={onMouseLeave}
           />
@@ -106,7 +109,7 @@ export default function StudentLife() {
             width="0"
             height="0"
             sizes="100vw"
-            className="w-full h-auto border-secondary border-2 p-2 rounded-tl-3xl rounded-br-3xl sm:hover:scale-125 transition-all ease-in-out duration-200 image"
+            className="w-full h-auto border-secondary border-2 p-2 rounded-tl-3xl rounded-br-3xl sm:hover:scale-150 transition-all ease-in-out duration-200 image"
             onMouseOver={onMouseOver}
             onMouseLeave={onMouseLeave}
           />
