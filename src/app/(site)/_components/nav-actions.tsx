@@ -53,6 +53,7 @@ export default function NavActions() {
 
       <Modal
         isOpen={isOpen}
+        type="GetInTouchForm"
         onClose={() => {
           setIsOpen(false);
         }}

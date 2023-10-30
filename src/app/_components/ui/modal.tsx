@@ -10,11 +10,13 @@ import React, { useEffect } from "react";
 type ModalProps = {
   isOpen: boolean;
   children: React.ReactNode;
+  type: string;
   onClose: () => void;
 };
 
 export default function Modal(props: ModalProps) {
-  const { children, isOpen = false, onClose } = props;
+  const { children, isOpen = false, type, onClose } = props;
+  console.log("🚀 ~ file: modal.tsx:19 ~ Modal ~ type:", type, isOpen);
 
   useEffect(() => {
     if (isOpen) {
@@ -29,18 +31,28 @@ export default function Modal(props: ModalProps) {
       }, 100);
     } else {
       //
+      console.log("is open false");
     }
+    return () => {
+      console.log("cleanup");
+      //  debugger
+    };
   }, [isOpen]);
 
   const onCloseClick = () => {
+    debugger
     const bodyEl = document.querySelector("body");
-    bodyEl?.classList.remove("overflow-hidden");
-    const modalEl = document.querySelector("#modal")!;
-    modalEl.classList.add("scale-0");
-    modalEl.classList.remove("scale-100");
-    document.querySelector("body")!.removeChild(modalEl);
-    onClose();
+    const modalEl = document.querySelector("#modal");
+    if (modalEl && bodyEl) {
+      bodyEl.classList.remove("overflow-hidden");
+      modalEl.classList.add("scale-0");
+      modalEl.classList.remove("scale-100");
+      bodyEl.removeChild(modalEl);
+      onClose();
+    }
   };
+
+  if (!isOpen) return;
 
   return (
     <section
