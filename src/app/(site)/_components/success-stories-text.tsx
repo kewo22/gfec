@@ -162,15 +162,8 @@ export default function SuccessStoriesText() {
         >
           {data![selectedSuccessStory].successStory}
         </Typography>
-        <Button
-          customClass="my-10 mx-auto block sm:hidden"
-          onClick={() => {
-            setIsOpen(!isOpen);
-          }}
-        >
-          Read More
-        </Button>
-        <div className="flex flex-row gap-5 justify-center sm:justify-end">
+
+        <div className="flex flex-row gap-5 justify-center items-center sm:justify-end">
           <Button
             customClass="bg-secondary rounded-full"
             isDisabled={isChanging}
@@ -181,6 +174,15 @@ export default function SuccessStoriesText() {
               className="text-white"
               size="1x"
             />
+          </Button>
+
+          <Button
+            customClass="block sm:hidden"
+            onClick={() => {
+              setIsOpen(!isOpen);
+            }}
+          >
+            Read More
           </Button>
 
           <Button
@@ -199,6 +201,7 @@ export default function SuccessStoriesText() {
 
       <Modal
         isOpen={isOpen}
+        type="SuccessStory"
         onClose={() => {
           setIsOpen(false);
         }}
