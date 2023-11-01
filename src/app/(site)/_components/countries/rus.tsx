@@ -15,7 +15,7 @@ export default function Rus() {
       </div>
 
       <div className="p-10">
-        <Typography className="text-left">
+        <Typography className="text-justify sm:text-left">
           Russia offers a diverse range of educational opportunities, from
           classical literature and arts to cutting-edge science and technology.
           Its historic universities in Moscow and St. Petersburg are renowned

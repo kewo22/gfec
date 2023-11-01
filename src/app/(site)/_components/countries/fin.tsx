@@ -15,7 +15,7 @@ export default function Fin() {
       </div>
 
       <div className="p-10">
-        <Typography className="text-left">
+        <Typography className="text-justify sm:text-left">
           Finland is recognized for its innovative education system, which
           emphasizes student well-being and individualized learning. It boasts
           numerous English-taught degree programs and a strong focus on

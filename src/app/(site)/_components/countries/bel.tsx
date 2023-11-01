@@ -15,7 +15,7 @@ export default function Bel() {
       </div>
 
       <div className="p-10">
-        <Typography className="text-left">
+        <Typography className="text-justify sm:text-left">
           Belarus is an emerging destination for international students due to
           its affordable tuition fees and diverse range of programs. Its
           universities offer degrees in various fields, and the country&apos;s rich

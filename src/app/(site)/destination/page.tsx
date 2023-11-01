@@ -56,7 +56,9 @@ export default function Destination() {
               return (
                 <div
                   key={i}
-                  className="flex-[0_0_150px] p-2 my-2 bg-secondary rounded-full text-white"
+                  className={`flex-[0_0_150px] p-2 my-3 bg-secondary rounded-full text-white ${
+                    selectedCountry.id === country.id && "!bg-primary"
+                  }`}
                   onClick={() => {
                     onCountryClick(country);
                   }}

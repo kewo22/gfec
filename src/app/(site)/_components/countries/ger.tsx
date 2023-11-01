@@ -15,7 +15,7 @@ export default function Ger() {
       </div>
 
       <div className="p-10">
-        <Typography className="text-left">
+        <Typography className="text-justify sm:text-left">
           Germany is known for its excellent higher education institutions, many
           of which offer tuition-free or low-cost education to international
           students. The country&apos;s strong emphasis on research and innovation,

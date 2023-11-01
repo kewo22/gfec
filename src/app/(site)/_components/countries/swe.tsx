@@ -15,7 +15,7 @@ export default function Swe() {
       </div>
 
       <div className="p-10">
-        <Typography className="text-left">
+        <Typography className="text-justify sm:text-left">
           Sweden is celebrated for its high-quality education system, with a
           strong focus on research and innovation. English-taught programs are
           widely available, and the country&apos;s commitment to sustainability and
