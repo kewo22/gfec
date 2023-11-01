@@ -40,7 +40,7 @@ export default function Destination() {
       <Container className="relative mx-5 xl:mx-auto py-20">
         <SectionTitle title="Study Abroad Destinations" />
 
-        <Typography className="mb-16">
+        <Typography className="mb-16 text-justify sm:text-center">
           Embark on an enriching educational adventure with GFEC, your premier
           foreign education consultancy based in Sri Lanka. Explore a myriad of
           captivating study abroad destinations that open doors to endless
@@ -50,8 +50,24 @@ export default function Destination() {
           success.
         </Typography>
 
-        <div className="flex flex-row gap-5">
-          <div className="flex-[0_0_280px] bg-slate-300 max-h-[700px] overflow-x-hidden overflow-y-auto sticky top-0">
+        <div className="flex flex-col sm:flex-row gap-5">
+          <div className="flex flex-row overflow-auto sm:hidden gap-5">
+            {COUNTRIES.map((country, i) => {
+              return (
+                <div
+                  key={i}
+                  className="flex-[0_0_150px] p-2 my-2 bg-secondary rounded-full text-white"
+                  onClick={() => {
+                    onCountryClick(country);
+                  }}
+                >
+                  {country.country}
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="hidden sm:block flex-[0_0_280px] bg-slate-300 max-h-[700px] overflow-x-hidden overflow-y-auto sticky top-0">
             <ul className="countries-details">
               {COUNTRIES.map((country, i) => {
                 const mergedClassName = twMerge(
