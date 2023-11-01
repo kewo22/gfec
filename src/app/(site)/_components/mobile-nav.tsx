@@ -1,7 +1,10 @@
-import React from "react";
+"use client";
+import React, { useEffect } from "react";
+
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 import { NavItems } from "../_constants/nav-items.constants";
 import { Typography } from "@/app/_components/ui/typography";
@@ -10,6 +13,22 @@ import NavSocial from "./nav-social";
 export default function MobileNav() {
   const pathname = usePathname();
   const rawPathName = pathname.split("/")[1];
+
+  const router = useRouter();
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "auto",
+    });
+    setTimeout(() => {
+      document.querySelector("body")?.classList.toggle("overflow-hidden");
+      document.getElementById("menu")!.classList.toggle("active");
+      document.getElementById("sss")!.classList.toggle("-right-[500px]");
+      document.getElementById("sss")!.classList.toggle("right-0");
+    }, 100);
+  }, [pathname]);
 
   const menuOnClick = () => {
     document.querySelector("body")?.classList.toggle("overflow-hidden");
@@ -20,7 +39,11 @@ export default function MobileNav() {
 
   return (
     <>
-      <ul id="menu" onClick={menuOnClick} className="menu block sm:hidden z-[41]">
+      <ul
+        id="menu"
+        onClick={menuOnClick}
+        className="menu block sm:hidden z-[41]"
+      >
         <li className="bar"></li>
         <li className="bar"></li>
         <li className="bar"></li>
