@@ -74,9 +74,7 @@ export default function StudyOverseasWithGfec() {
             text="Apply Now"
             size="md"
             customClass="w-fit block mx-auto sm:hidden lg:block lg:!ml-[inherit]"
-            onClick={() => {
-              alert("");
-            }}
+            onClick={() => {}}
           />
         </div>
       </div>

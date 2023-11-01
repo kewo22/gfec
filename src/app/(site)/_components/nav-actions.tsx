@@ -28,9 +28,7 @@ export default function NavActions({ openModel }: any) {
         text="Apply Now"
         size="md"
         customClass="w-fit"
-        onClick={() => {
-          alert("");
-        }}
+        onClick={() => {}}
       />
       <Button
         text="Free Consultation"
