@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 
 import Image from "next/image";
 import Slider from "react-slick";
@@ -13,8 +13,12 @@ import MobileNav from "./mobile-nav";
 import { Typography } from "@/app/_components/ui/typography";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Modal from "@/app/_components/ui/modal";
+import GetInTouchForm from "./get-in-touch-form";
 
 export default function Navigation() {
+  const [isOpen, setIsOpen] = useState(false);
+
   const settings = {
     dots: false,
     fade: true,
@@ -26,6 +30,11 @@ export default function Navigation() {
     slidesToScroll: 1,
     className: "nav-slider",
   };
+
+
+  const onOpenModel = () => {
+    setIsOpen(true)
+  }
 
   const Items = () => {
     return (
@@ -102,7 +111,7 @@ export default function Navigation() {
               </div>
             </div>
 
-            <NavActions />
+            <NavActions openModel={onOpenModel}/>
           </div>
 
           <NavSocial wrapperClass="flex flex-row gap-8 items-center justify-start mx-5 lg:mx-0" />
@@ -127,6 +136,19 @@ export default function Navigation() {
       </Slider>
 
       <MobileNav />
+
+      <Modal
+        isOpen={isOpen}
+        type="GetInTouchForm"
+        onClose={() => {
+          setIsOpen(false);
+        }}
+      >
+        <Typography variant="h3" className="my-5 mx-auto text-center">
+          Get in Touch
+        </Typography>
+        <GetInTouchForm />
+      </Modal>
     </nav>
   );
 }

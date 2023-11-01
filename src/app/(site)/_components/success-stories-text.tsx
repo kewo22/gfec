@@ -206,15 +206,8 @@ export default function SuccessStoriesText() {
           setIsOpen(false);
         }}
       >
-        <>
+        <div className="">
           <div className="flex flex-row items-center justify-start gap-5 mb-5">
-            {/* <Image
-              src="/team1.png"
-              alt="img"
-              width={100}
-              height={100}
-              className="rounded-full"
-            /> */}
             <div className="flex-grow">
               <Typography className="" variant="h4">
                 {data![selectedSuccessStory].name}
@@ -224,10 +217,10 @@ export default function SuccessStoriesText() {
               </Typography>
             </div>
           </div>
-          <Typography className="text-justify">
+          <Typography className="text-justify ">
             {data![selectedSuccessStory].successStory}
           </Typography>
-        </>
+        </div>
       </Modal>
     </Container>
   );
