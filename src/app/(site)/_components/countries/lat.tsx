@@ -15,7 +15,7 @@ export default function Lat() {
       </div>
 
       <div className="p-10">
-        <Typography className="text-left">
+        <Typography className="text-justify sm:text-left">
           Latvia, with its picturesque landscapes and vibrant cities, is gaining
           popularity among international students. Its universities provide
           various programs in English, making it accessible to a global

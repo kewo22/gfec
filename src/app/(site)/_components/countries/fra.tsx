@@ -15,7 +15,7 @@ export default function Fra() {
       </div>
 
       <div className="p-10">
-        <Typography className="text-left">
+        <Typography className="text-justify sm:text-left">
           France is known for its prestigious universities, cultural heritage
           and culinary delights. With a strong emphasis on arts, humanities and
           sciences, France offers a wide array of programs. The country&apos;s

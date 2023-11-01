@@ -15,7 +15,7 @@ export default function Uk() {
       </div>
 
       <div className="p-10">
-        <Typography className="text-left">
+        <Typography className="text-justify sm:text-left">
           The United Kingdom is renowned for its prestigious universities and
           diverse academic opportunities. Whether you choose the historic charm
           of Oxford and Cambridge or the bustling cosmopolitan life in London,

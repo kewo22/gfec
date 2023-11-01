@@ -15,7 +15,7 @@ export default function Ita() {
       </div>
 
       <div className="p-10">
-        <Typography className="text-left">
+        <Typography className="text-justify sm:text-left">
           Italy offers a rich blend of history, culture and academic excellence.
           Renowned for its art, architecture and cuisine, Italy provides a
           unique backdrop for education. Universities in cities like Florence,

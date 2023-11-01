@@ -15,7 +15,7 @@ export default function Swi() {
       </div>
 
       <div className="p-10">
-        <Typography className="text-left">
+        <Typography className="text-justify sm:text-left">
           Switzerland is known for its precision, innovation, and high standards
           of education. Its universities are renowned for research and
           technology. The country&apos;s stunning Alpine scenery and multicultural

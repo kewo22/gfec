@@ -15,7 +15,7 @@ export default function Can() {
       </div>
 
       <div className="p-10">
-        <Typography className="text-left">
+        <Typography className="text-justify sm:text-left">
           Canada is known for its high-quality education system, stunning
           natural landscapes and multicultural society. Canadian universities
           consistently rank among the best globally, and the country provides a

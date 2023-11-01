@@ -42,15 +42,15 @@ export default function Aus() {
         </ul>
         <br />
         <br />
-        <Typography className="text-left">
+        <Typography className="text-justify sm:text-left">
           Work permit after degree / masters 2 - 4 years.
         </Typography>
-        <Typography className="text-left">
+        <Typography className="text-justify sm:text-left">
           Intake Now On - July 2023/Jan 2024
         </Typography>
         <br />
         <br />
-        <Typography className="text-left">
+        <Typography className="text-justify sm:text-left">
           Choose a program that excites and motivates you, where you will gain
           the knowledge, industry connections and real-world experience needed
           to create the career you want.
@@ -88,28 +88,28 @@ export default function Aus() {
         </Typography>
         <br />
         <br />
-        <Typography className="text-left">
+        <Typography className="text-justify sm:text-left">
           Registered with Australia&apos;s independent national quality
           assurance and regulatory agency for higher education TEQSA
         </Typography>
         <br />
         <br />
-        <Typography className="text-left font-bold">
+        <Typography className="text-justify sm:text-left font-bold">
           TEQSA Provider ID: PRV14258
         </Typography>
         <br />
         <br />
-        <Typography className="text-left">
+        <Typography className="text-justify sm:text-left">
           Member of Independent Tertiary Education Council Australia (ITECA) is
           the peak body representing independent providers in the higher
           education and vocational education.
         </Typography>
         <br />
         <br />
-        <Typography className="text-left font-bold">
+        <Typography className="text-justify sm:text-left font-bold">
           ITECA Membership ID: 215159
         </Typography>
-        <Typography className="text-left font-bold">
+        <Typography className="text-justify sm:text-left font-bold">
           CRICOS Provider Code: 03809A
         </Typography>
         <br />

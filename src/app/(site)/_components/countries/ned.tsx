@@ -15,7 +15,7 @@ export default function Ned() {
       </div>
 
       <div className="p-10">
-        <Typography className="text-left">
+        <Typography className="text-justify sm:text-left">
           The Netherlands is a popular destination for international students
           due to its high-quality education, English-taught programs, and
           welcoming atmosphere. Renowned for its research, innovation, and
