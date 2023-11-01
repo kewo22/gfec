@@ -23,10 +23,10 @@ export default function MobileNav() {
       behavior: "auto",
     });
     setTimeout(() => {
-      document.querySelector("body")?.classList.toggle("overflow-hidden");
-      document.getElementById("menu")!.classList.toggle("active");
-      document.getElementById("sss")!.classList.toggle("-right-[500px]");
-      document.getElementById("sss")!.classList.toggle("right-0");
+      document.querySelector("body")?.classList.remove("overflow-hidden");
+      document.getElementById("menu")!.classList.remove("active");
+      document.getElementById("sss")!.classList.remove("-right-[500px]");
+      document.getElementById("sss")!.classList.remove("right-0");
     }, 100);
   }, [pathname]);
 
