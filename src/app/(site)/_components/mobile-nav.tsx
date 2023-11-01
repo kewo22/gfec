@@ -25,7 +25,7 @@ export default function MobileNav() {
     setTimeout(() => {
       document.querySelector("body")?.classList.remove("overflow-hidden");
       document.getElementById("menu")!.classList.remove("active");
-      document.getElementById("sss")!.classList.remove("-right-[500px]");
+      document.getElementById("sss")!.classList.add("-right-[500px]");
       document.getElementById("sss")!.classList.remove("right-0");
     }, 100);
   }, [pathname]);
