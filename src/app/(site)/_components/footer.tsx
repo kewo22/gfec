@@ -38,7 +38,8 @@ export default function Footer() {
 
     case "preview":
       console.log("222", process.env.NEXT_PUBLIC_VERCEL_BRANCH_URL);
-      privacyBasePolicyUrl = process.env.NEXT_PUBLIC_VERCEL_BRANCH_URL!;
+      privacyBasePolicyUrl =
+        "https://" + process.env.NEXT_PUBLIC_VERCEL_BRANCH_URL!;
       break;
 
     default:
