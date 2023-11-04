@@ -1,7 +1,7 @@
 export const ResolveBaseUrl = (env: string) => {
   let privacyBasePolicyUrl = "";
 
-  switch (process.env.NEXT_PUBLIC_VERCEL_ENV) {
+  switch (env) {
     case "production":
       privacyBasePolicyUrl = process.env.APP_BASE_URL!;
       break;
