@@ -29,11 +29,26 @@ export default function Footer() {
   const addressLine2 = process.env.ADDRESS_LINE_2 as unknown as string;
   const addressLine3 = process.env.ADDRESS_LINE_3 as unknown as string;
 
-  const privacyBasePolicyUrl =
-    process.env.NEXT_PUBLIC_VERCEL_ENV === "production"
-      ? process.env.APP_BASE_URL
-      : process.env.NEXT_PUBLIC_VERCEL_BRANCH_URL;
+  let privacyBasePolicyUrl = "";
 
+  switch (process.env.NEXT_PUBLIC_VERCEL_ENV) {
+    case "production":
+      privacyBasePolicyUrl = process.env.APP_BASE_URL!;
+      break;
+
+    case "preview":
+      privacyBasePolicyUrl = process.env.NEXT_PUBLIC_VERCEL_BRANCH_URL!;
+      break;
+
+    default:
+      privacyBasePolicyUrl = process.env.APP_BASE_URL!;
+      break;
+  }
+
+  console.log(
+    "🚀 ~ file: footer.tsx:33 ~ Footer ~ privacyBasePolicyUrl:",
+    privacyBasePolicyUrl
+  );
   return (
     <>
       <section className="bg-secondary flex flex-col lg:flex-row p-5 gap-5 md:justify-around">
