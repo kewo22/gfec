@@ -2,6 +2,7 @@
 
 import React, { useEffect } from "react";
 
+import useSWR from "swr";
 import Image from "next/image";
 import Plyr, { PlyrProps } from "plyr-react";
 
@@ -10,6 +11,9 @@ import "plyr-react/plyr.css";
 import { Typography } from "@/app/_components/ui/typography";
 import Button from "@/app/_components/ui/button";
 import SectionTitle from "./section-title";
+import { ResolveBaseUrl } from "@/app/utils/common";
+
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 export default function StudyOverseasWithGfec() {
   useEffect(() => {
@@ -17,6 +21,19 @@ export default function StudyOverseasWithGfec() {
     console.log(process.env.NEXT_PUBLIC_VERCEL_URL);
     console.log(process.env.NEXT_PUBLIC_VERCEL_BRANCH_URL);
   }, []);
+
+  // const privacyBasePolicyUrl = ResolveBaseUrl(
+  //   process.env.NEXT_PUBLIC_VERCEL_ENV!
+  // );
+
+  // const { data, isLoading } = useSWR(
+  //   `${privacyBasePolicyUrl}/api`,
+  //   fetcher
+  //   // { revalidateOnFocus: false, revalidateOnReconnect: false }
+  // );
+
+  // console.log(isLoading);
+  // console.log(data);
 
   const plyrProps: PlyrProps = {
     source: {

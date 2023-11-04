@@ -9,6 +9,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import Input from "@/app/_components/ui/input";
 import Button from "@/app/_components/ui/button";
 import Select from "@/app/_components/ui/select";
+import { ResolveBaseUrl } from "@/app/utils/common";
 
 export interface GetInTouchModel {
   firstName: string;
@@ -56,7 +57,18 @@ export default function GetInTouchForm() {
     reValidateMode: "onBlur",
   });
 
-  const onSubmit: SubmitHandler<GetInTouchModel> = (data) => console.log(data);
+  const privacyBasePolicyUrl = ResolveBaseUrl(
+    process.env.NEXT_PUBLIC_VERCEL_ENV!
+  );
+
+  const onSubmit: SubmitHandler<GetInTouchModel> = (data) => {
+    console.log(data);
+
+    fetch(`${privacyBasePolicyUrl}/api`, {
+      method: "post",
+      body: JSON.stringify(data),
+    });
+  };
 
   const selectionItems = [
     {
