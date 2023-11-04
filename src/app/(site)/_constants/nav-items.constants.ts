@@ -2,7 +2,7 @@ import { NavItemLink } from "../_types/mobile-nav-item";
 
 export const NavItems: NavItemLink[] = [
   {
-    text: "Home333",
+    text: "Home555",
     route: "/",
     class: "",
     isActive: false,
