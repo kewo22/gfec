@@ -33,12 +33,10 @@ export default function Footer() {
 
   switch (process.env.NEXT_PUBLIC_VERCEL_ENV) {
     case "production":
-      console.log("PROD", process.env.APP_BASE_URL!);
       privacyBasePolicyUrl = process.env.APP_BASE_URL!;
       break;
 
     case "preview":
-      console.log("222", process.env.NEXT_PUBLIC_VERCEL_BRANCH_URL);
       privacyBasePolicyUrl =
         "https://" + process.env.NEXT_PUBLIC_VERCEL_BRANCH_URL!;
       break;
@@ -48,10 +46,6 @@ export default function Footer() {
       break;
   }
 
-  console.log(
-    "🚀 ~ file: footer.tsx:33 ~ Footer ~ privacyBasePolicyUrl:",
-    privacyBasePolicyUrl
-  );
   return (
     <>
       <section className="bg-secondary flex flex-col lg:flex-row p-5 gap-5 md:justify-around">
