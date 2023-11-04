@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 
 import Image from "next/image";
 import Plyr, { PlyrProps } from "plyr-react";
@@ -12,6 +12,12 @@ import Button from "@/app/_components/ui/button";
 import SectionTitle from "./section-title";
 
 export default function StudyOverseasWithGfec() {
+  useEffect(() => {
+    console.log(process.env.NEXT_PUBLIC_VERCEL_ENV);
+    console.log(process.env.NEXT_PUBLIC_VERCEL_URL);
+    console.log(process.env.NEXT_PUBLIC_VERCEL_BRANCH_URL);
+  }, []);
+
   const plyrProps: PlyrProps = {
     source: {
       type: "video",
