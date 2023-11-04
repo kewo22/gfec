@@ -16,6 +16,10 @@ export default function StudyOverseasWithGfec() {
     console.log(process.env.NEXT_PUBLIC_VERCEL_ENV);
     console.log(process.env.NEXT_PUBLIC_VERCEL_URL);
     console.log(process.env.NEXT_PUBLIC_VERCEL_BRANCH_URL);
+    console.log('VERCEL_URL')
+    console.log(process.env.VERCEL_ENV);
+    console.log(process.env.VERCEL_URL);
+    console.log(process.env.VERCEL_BRANCH_URL);
   }, []);
 
   const plyrProps: PlyrProps = {
