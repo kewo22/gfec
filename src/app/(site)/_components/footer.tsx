@@ -33,6 +33,7 @@ export default function Footer() {
 
   switch (process.env.NEXT_PUBLIC_VERCEL_ENV) {
     case "production":
+      console.log("PROD", process.env.APP_BASE_URL!);
       privacyBasePolicyUrl = process.env.APP_BASE_URL!;
       break;
 
