@@ -2,10 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
 
-import { Typography } from "@/app/_components/ui/typography";
-import { NavItems } from "../_constants/nav-items.constants";
 import {
   faAt,
   faBuilding,
@@ -21,6 +18,9 @@ import {
   faSquareFacebook,
 } from "@fortawesome/free-brands-svg-icons";
 
+import { Typography } from "@/app/_components/ui/typography";
+import { NavItems } from "../_constants/nav-items.constants";
+
 export default function Footer() {
   const emails = (process.env.EMAILS as unknown as string)?.split(",") || [];
   const phoneNos = (process.env.PHONE as unknown as string)?.split(",") || [];
@@ -28,6 +28,11 @@ export default function Footer() {
   const addressLine1 = process.env.ADDRESS_LINE_1 as unknown as string;
   const addressLine2 = process.env.ADDRESS_LINE_2 as unknown as string;
   const addressLine3 = process.env.ADDRESS_LINE_3 as unknown as string;
+
+  const privacyBasePolicyUrl =
+    process.env.NEXT_PUBLIC_VERCEL_ENV === "production"
+      ? process.env.APP_BASE_URL
+      : process.env.NEXT_PUBLIC_VERCEL_BRANCH_URL;
 
   return (
     <>
@@ -183,7 +188,7 @@ export default function Footer() {
 
         <span className="text-xs sm:text-center text-secondary">
           <a
-            href={`${process.env.APP_BASE_URL}/privacy-policy`}
+            href={`${privacyBasePolicyUrl}/privacy-policy`}
             className="hover:underline"
           >
             Privacy Policy
