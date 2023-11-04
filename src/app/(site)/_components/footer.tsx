@@ -20,6 +20,7 @@ import {
 
 import { Typography } from "@/app/_components/ui/typography";
 import { NavItems } from "../_constants/nav-items.constants";
+import { ResolveBaseUrl } from "@/app/utils/common";
 
 export default function Footer() {
   const emails = (process.env.EMAILS as unknown as string)?.split(",") || [];
@@ -29,22 +30,9 @@ export default function Footer() {
   const addressLine2 = process.env.ADDRESS_LINE_2 as unknown as string;
   const addressLine3 = process.env.ADDRESS_LINE_3 as unknown as string;
 
-  let privacyBasePolicyUrl = "";
-
-  switch (process.env.NEXT_PUBLIC_VERCEL_ENV) {
-    case "production":
-      privacyBasePolicyUrl = process.env.APP_BASE_URL!;
-      break;
-
-    case "preview":
-      privacyBasePolicyUrl =
-        "https://" + process.env.NEXT_PUBLIC_VERCEL_BRANCH_URL!;
-      break;
-
-    default:
-      privacyBasePolicyUrl = process.env.APP_BASE_URL!;
-      break;
-  }
+  const privacyBasePolicyUrl = ResolveBaseUrl(
+    process.env.NEXT_PUBLIC_VERCEL_ENV!
+  );
 
   return (
     <>
