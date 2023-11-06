@@ -102,7 +102,7 @@ export async function POST(request: Request) {
     // return res.status(200).json({ message: `Success`, data: insertOneRes });
     return Response.json({ message: `Success`, data: insertOneRes })
   } catch (error) {
-
+    return Response.json({ message: `Failed`, data: null })
   }
 
 }
