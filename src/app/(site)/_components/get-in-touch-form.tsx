@@ -67,6 +67,9 @@ export default function GetInTouchForm() {
     fetch(`${privacyBasePolicyUrl}/api`, {
       method: "post",
       body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
   };
 

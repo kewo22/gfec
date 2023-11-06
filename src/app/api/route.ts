@@ -25,6 +25,10 @@ export async function GET(request: Request) {
 }
 
 export async function POST(request: Request) {
-  const res = await request.json();
-  return Response.json({ res });
+  const data = await request.json();
+
+  const uri = process.env.MONGO_URL || "";
+  console.log("🚀 ~ file: route.ts:31 ~ POST ~ uri:", uri);
+
+  return Response.json({ data });
 }
