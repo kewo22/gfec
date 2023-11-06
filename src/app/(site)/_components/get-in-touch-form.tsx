@@ -3,7 +3,7 @@
 import React from "react";
 
 import { SubmitHandler, useForm } from "react-hook-form";
-import { date, number, object, string } from "yup";
+import { date, object, string } from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import Input from "@/app/_components/ui/input";
