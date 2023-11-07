@@ -102,7 +102,7 @@ export default function Testimonial() {
       <div
         className={`${
           isLoading ? "opacity-0" : "opacity-100"
-        } mx-5 transition-all duration-[1000] ease-in-out min-h-[490px]`}
+        } mx-5 transition-all duration-1000 ease-in-out min-h-[630px]`}
       >
         <Plyr {...first} />
       </div>
