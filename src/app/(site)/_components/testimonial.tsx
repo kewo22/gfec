@@ -41,6 +41,7 @@ export default function Testimonial() {
     setIsLoading(true);
 
     setCurrentVideo((state) => {
+      console.log("🚀 ~ file: testimonial.tsx:44 ~ setCurrentVideo ~ state:", state)
       if (state === videos.length - 1) {
         afterChange(0);
         return 0;
@@ -54,6 +55,7 @@ export default function Testimonial() {
     setIsLoading(true);
 
     setCurrentVideo((state) => {
+      console.log("🚀 ~ file: testimonial.tsx:57 ~ setCurrentVideo ~ state:", state)
       if (state === 0) {
         afterChange(videos.length - 1);
         return videos.length - 1;
@@ -64,6 +66,7 @@ export default function Testimonial() {
   };
 
   const afterChange = (currentSlide: number) => {
+    console.log("🚀 ~ file: testimonial.tsx:67 ~ afterChange ~ currentSlide:", currentSlide)
     const promise = new Promise(function (resolve, reject) {
       const tempPlyrProps = { ...plyrProps };
       setTimeout(() => {
