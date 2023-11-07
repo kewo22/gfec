@@ -28,7 +28,7 @@ export default function Testimonial() {
   };
 
   const [currentVideo, setCurrentVideo] = useState(0);
-  const [first, setFirst] = useState<PlyrProps | null>(plyrProps);
+  const [first, setFirst] = useState<PlyrProps>(plyrProps);
   const [isLoading, setIsLoading] = useState(false);
 
   const videos = [
@@ -41,10 +41,6 @@ export default function Testimonial() {
     setIsLoading(true);
 
     setCurrentVideo((state) => {
-      console.log(
-        "🚀 ~ file: testimonial.tsx:44 ~ setCurrentVideo ~ state:",
-        state
-      );
       if (state === videos.length - 1) {
         afterChange(0);
         return 0;
@@ -72,13 +68,8 @@ export default function Testimonial() {
   };
 
   const afterChange = (currentSlide: number) => {
-    console.log(
-      "🚀 ~ file: testimonial.tsx:67 ~ afterChange ~ currentSlide:",
-      currentSlide
-    );
     const promise = new Promise(function (resolve, reject) {
       const tempPlyrProps = { ...plyrProps };
-      setFirst(null);
       setTimeout(() => {
         switch (currentSlide) {
           case 0:
@@ -97,13 +88,14 @@ export default function Testimonial() {
           default:
             break;
         }
-        setFirst(tempPlyrProps);
         resolve(tempPlyrProps);
       }, 2000);
     });
 
     promise
-      .then(() => {
+      .then((data: any) => {
+        console.log("🚀 ~ file: testimonial.tsx:105 ~ .then ~ data:", data);
+        setFirst(data);
         setIsLoading(false);
       })
       .catch((e) => console.log(e))
@@ -123,7 +115,7 @@ export default function Testimonial() {
           isLoading ? "opacity-0" : "opacity-100"
         } mx-5 transition-all duration-1000 ease-in-out`}
       >
-        {first && <Plyr {...first} />}
+        <Plyr {...first} />
       </div>
 
       <div className="flex flex-row mt-5 gap-5 justify-center">
