@@ -86,7 +86,7 @@ export default function Testimonial() {
         }
         setFirst(tempPlyrProps);
         resolve(tempPlyrProps);
-      }, 1000);
+      }, 2000);
     });
 
     promise
