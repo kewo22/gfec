@@ -95,7 +95,9 @@ export default function Testimonial() {
     promise
       .then((data: any) => {
         console.log("🚀 ~ file: testimonial.tsx:105 ~ .then ~ data:", data);
-        setFirst(data);
+        setFirst(state => {
+          return data
+        });
         setIsLoading(false);
       })
       .catch((e) => console.log(e))
