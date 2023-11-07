@@ -27,7 +27,7 @@ export default function Testimonial() {
     },
   };
 
-  const [currentVideo, setCurrentVideo] = useState(0);
+  // const [currentVideo, setCurrentVideo] = useState(0);
   const [first, setFirst] = useState<PlyrProps>(plyrProps);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -38,33 +38,71 @@ export default function Testimonial() {
   ];
 
   const onNextClick = () => {
-    setIsLoading(true);
+    // setIsLoading(true);
+    const tempPlyrProps: PlyrProps = JSON.parse(JSON.stringify(first));
+    const src = tempPlyrProps.source?.sources[0].src;
+    if (!src) return;
 
-    setCurrentVideo((state) => {
-      if (state === videos.length - 1) {
-        afterChange(0);
-        return 0;
-      }
-      afterChange(state + 1);
-      return state + 1;
+    const currentVideoIndex = videos.findIndex((vid) => {
+      return vid === src;
     });
+
+    if (currentVideoIndex === -1) return;
+
+    if (currentVideoIndex === videos.length - 1) {
+      tempPlyrProps.source!.sources[0].src = videos[0];
+      return setFirst({ ...tempPlyrProps });
+      // setIsLoading(false);
+    }
+
+    tempPlyrProps.source!.sources[0].src = videos[currentVideoIndex + 1];
+    return setFirst({ ...tempPlyrProps });
+    // setIsLoading(false);
+
+    // setCurrentVideo((state) => {
+    //   if (state === videos.length - 1) {
+    //     afterChange(0);
+    //     return 0;
+    //   }
+    //   afterChange(state + 1);
+    //   return state + 1;
+    // });
   };
 
   const onPrevClick = () => {
-    setIsLoading(true);
+    // setIsLoading(true);
+    const tempPlyrProps: PlyrProps = JSON.parse(JSON.stringify(first));
+    const src = tempPlyrProps.source?.sources[0].src;
+    if (!src) return;
 
-    setCurrentVideo((state) => {
-      console.log(
-        "🚀 ~ file: testimonial.tsx:57 ~ setCurrentVideo ~ state:",
-        state
-      );
-      if (state === 0) {
-        afterChange(videos.length - 1);
-        return videos.length - 1;
-      }
-      afterChange(state - 1);
-      return state - 1;
+    const currentVideoIndex = videos.findIndex((vid) => {
+      return vid === src;
     });
+
+    if (currentVideoIndex === -1) return;
+
+    if (currentVideoIndex === 0) {
+      tempPlyrProps.source!.sources[0].src = videos[videos.length - 1];
+      return setFirst({ ...tempPlyrProps });
+      // setIsLoading(false);
+    }
+
+    tempPlyrProps.source!.sources[0].src = videos[currentVideoIndex - 1];
+    return setFirst({ ...tempPlyrProps });
+    // setIsLoading(false);
+
+    // setCurrentVideo((state) => {
+    //   console.log(
+    //     "🚀 ~ file: testimonial.tsx:57 ~ setCurrentVideo ~ state:",
+    //     state
+    //   );
+    //   if (state === 0) {
+    //     afterChange(videos.length - 1);
+    //     return videos.length - 1;
+    //   }
+    //   afterChange(state - 1);
+    //   return state - 1;
+    // });
   };
 
   const afterChange = (currentSlide: number) => {
@@ -95,8 +133,8 @@ export default function Testimonial() {
     promise
       .then((data: any) => {
         console.log("🚀 ~ file: testimonial.tsx:105 ~ .then ~ data:", data);
-        setFirst(state => {
-          return data
+        setFirst((state) => {
+          return data;
         });
         setIsLoading(false);
       })
@@ -113,10 +151,11 @@ export default function Testimonial() {
       </div>
 
       <div
-        className={`${
-          isLoading ? "opacity-0" : "opacity-100"
-        } mx-5 transition-all duration-[2000] ease-in-out`}
+      // className={`${
+      //   isLoading ? "opacity-0" : "opacity-100"
+      // } mx-5 transition-all duration-[2000] ease-in-out`}
       >
+        {first.source?.sources[0].src}
         <Plyr {...first} />
       </div>
 
