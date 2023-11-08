@@ -76,8 +76,8 @@ export default function ApplyNow() {
 
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5">
           <div className="bg-white shadow-2xl p-10 pt-12 flex flex-col gap-5 relative">
-            <div className="flex flex-row items-center justify-center gap-3 absolute -top-[5%] left-[3%] bg-secondary py-2 px-3 shadow-md">
-              {/* <FontAwesomeIcon icon={faUserTie} className="text-secondary" size="xl"/> */}
+            <div className="flex flex-row items-center justify-center gap-4 absolute -top-[4%] sm:-top-[7%] left-[3%] bg-secondary py-2 px-4 shadow-md">
+              <FontAwesomeIcon icon={faUserTie} className="text-white" />
               {/* <FontAwesomeIcon icon={faGraduationCap} /> */}
               {/* <FontAwesomeIcon icon={faHeart} /> */}
               {/* <FontAwesomeIcon icon={faCircleInfo} /> */}
