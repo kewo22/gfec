@@ -10,6 +10,7 @@ interface TextInputProps {
   label?: string;
   useControllerProps: any;
   isDisabled?: boolean;
+  isRequired?: boolean;
 }
 
 export default function Input(props: TextInputProps) {
@@ -19,6 +20,7 @@ export default function Input(props: TextInputProps) {
     type = "text",
     label = "",
     isDisabled = false,
+    isRequired = false,
   } = props;
   const { field, fieldState } = useController(useControllerProps);
 
@@ -31,10 +33,10 @@ export default function Input(props: TextInputProps) {
         disabled: "",
       },
       label: {
-        default: "mr-3 text-left",
+        default: "text-left",
         error: "",
       },
-      input: "outline-none bg-transparent flex-grow",
+      input: "outline-none bg-transparent flex-grow pl-3",
       errorText:
         "text-red-600 text-xs font-semibold text-right absolute right-0 bg-slate-100 z-10",
     };
@@ -82,13 +84,16 @@ export default function Input(props: TextInputProps) {
       className={`${className.wrapper.default} ${className.wrapper.error} ${className.wrapper.disabled}`}
     >
       {label && (
-        <Typography
-          htmlFor={field.name}
-          variant="label"
-          className={`${className.label.default} ${className.label.error}`}
-        >
-          {label}
-        </Typography>
+        <div className="relative">
+          <Typography
+            htmlFor={field.name}
+            variant="label"
+            className={`${className.label.default} ${className.label.error}`}
+          >
+            {label}
+          </Typography>
+          {isRequired && <span className="absolute text-red-700">*</span>}
+        </div>
         // <label
         //   htmlFor={field.name}
         //   className={`${className.label.default} ${className.label.error}`}

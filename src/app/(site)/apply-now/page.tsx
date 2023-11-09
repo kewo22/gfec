@@ -81,18 +81,22 @@ export default function ApplyNow() {
               {/* <FontAwesomeIcon icon={faGraduationCap} /> */}
               {/* <FontAwesomeIcon icon={faHeart} /> */}
               {/* <FontAwesomeIcon icon={faCircleInfo} /> */}
-              <Typography variant="p" className="text-white tracking-wide">About You..</Typography>
+              <Typography variant="p" className="text-white tracking-wide">
+                About You..
+              </Typography>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-5">
               <Input
                 label="First Name"
                 type="text"
+                isRequired={true}
                 useControllerProps={{ control, name: "firstName" }}
               />
               <Input
                 label="Last Name"
                 type="text"
+                isRequired={true}
                 useControllerProps={{ control, name: "lastName" }}
               />
             </div>
@@ -110,11 +114,14 @@ export default function ApplyNow() {
                 <Input
                   label="Date of Birth"
                   type="date"
+                  isRequired={true}
                   useControllerProps={{ control, name: "dob" }}
                 />
               </div>
               <div className="flex flex-row gap-5 items-center flex-grow">
-                <Typography className="text-left">Gender</Typography>
+                <Typography className="text-left" variant="label">
+                  Gender
+                </Typography>
                 <div className="flex flex-row gap-5">
                   <RadioButton
                     label="Male"
@@ -134,12 +141,14 @@ export default function ApplyNow() {
               <Input
                 label="Email"
                 type="text"
+                isRequired={true}
                 useControllerProps={{ control, name: "email" }}
               />
 
               <Input
                 label="Mobile"
                 type="text"
+                isRequired={true}
                 useControllerProps={{ control, name: "mobile" }}
               />
             </div>
