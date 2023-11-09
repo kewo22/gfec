@@ -59,8 +59,14 @@ export default function Input(props: TextInputProps) {
       }
     }
 
+    if (type === "date") {
+      classNameCopy.errorText =
+        "text-red-600 text-xs font-semibold text-right absolute right-[40px] bg-slate-100 z-10";
+      className = { ...classNameCopy };
+    }
+
     return className;
-  }, [isDisabled, fieldState]);
+  }, [isDisabled, fieldState, type]);
 
   let inputMode: any =
     "none" ||

@@ -5,15 +5,16 @@ import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { date, object, string } from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGraduationCap, faUserTie } from "@fortawesome/free-solid-svg-icons";
 
 import Container from "../_components/layouts/container";
+import ApplyFormLayout from "../_components/layouts/apply-form-layout";
+
 import SectionTitle from "../_components/section-title";
 import Input from "@/app/_components/ui/input";
 import RadioButton from "@/app/_components/ui/radio";
 import Button from "@/app/_components/ui/button";
 import { Typography } from "@/app/_components/ui/typography";
-import { faUserTie } from "@fortawesome/free-solid-svg-icons";
 
 export interface ApplicationFormModel {
   firstName: string;
@@ -22,8 +23,10 @@ export interface ApplicationFormModel {
   dob: Date | null;
   gender: string;
   email: string;
-  //   mobile: string;
-  //   preferredTime?: string;
+  mobile: string;
+
+  //
+  school?: string;
 }
 
 const schema = object().shape({
@@ -36,9 +39,7 @@ const schema = object().shape({
   mobile: string()
     .required("Required")
     .matches(/^[0]{1}[7]{1}[01245678]{1}[0-9]{7}$/, "Invalid Format"),
-  //     .required("Required")
-  //     .matches(/^[0]{1}[7]{1}[01245678]{1}[0-9]{7}$/, "Invalid Format"),
-  //   preferredTime: string().optional(),
+  school: string(),
 });
 
 export default function ApplyNow() {
@@ -55,8 +56,10 @@ export default function ApplyNow() {
       dob: null,
       gender: "",
       email: "",
-      //   mobile: "",
-      //   preferredTime: "",
+      mobile: "",
+
+      //
+      school: "",
     },
     mode: "all",
     resolver: yupResolver<ApplicationFormModel>(schema),
@@ -67,6 +70,8 @@ export default function ApplyNow() {
     console.log(data);
   };
 
+  console.log(errors);
+
   // about you, about your education, what do you prefer, other information
 
   return (
@@ -74,18 +79,11 @@ export default function ApplyNow() {
       <Container className="mx-5 xl:mx-auto py-20">
         <SectionTitle title="Apply now" />
 
-        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5">
-          <div className="bg-white shadow-2xl p-10 pt-12 flex flex-col gap-5 relative">
-            <div className="flex flex-row items-center justify-center gap-4 absolute -top-[4%] sm:-top-[7%] left-[3%] bg-secondary py-2 px-4 shadow-md">
-              <FontAwesomeIcon icon={faUserTie} className="text-white" />
-              {/* <FontAwesomeIcon icon={faGraduationCap} /> */}
-              {/* <FontAwesomeIcon icon={faHeart} /> */}
-              {/* <FontAwesomeIcon icon={faCircleInfo} /> */}
-              <Typography variant="p" className="text-white tracking-wide">
-                About You..
-              </Typography>
-            </div>
-
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="flex flex-col gap-14"
+        >
+          <ApplyFormLayout icon={faUserTie} title="About you">
             <div className="flex flex-col sm:flex-row gap-5">
               <Input
                 label="First Name"
@@ -119,9 +117,18 @@ export default function ApplyNow() {
                 />
               </div>
               <div className="flex flex-row gap-5 items-center flex-grow">
-                <Typography className="text-left" variant="label">
-                  Gender
-                </Typography>
+                <div className="relative">
+                  <Typography
+                    variant="label"
+                    className={`${
+                      errors.gender ? "text-red-700" : "text-black"
+                    }`}
+                  >
+                    Gender
+                  </Typography>
+                  <span className="absolute text-red-700">*</span>
+                </div>
+
                 <div className="flex flex-row gap-5">
                   <RadioButton
                     label="Male"
@@ -152,7 +159,17 @@ export default function ApplyNow() {
                 useControllerProps={{ control, name: "mobile" }}
               />
             </div>
-          </div>
+          </ApplyFormLayout>
+
+          <ApplyFormLayout icon={faGraduationCap} title="About your education">
+            <div className="">
+              <Input
+                label="School"
+                type="text"
+                useControllerProps={{ control, name: "school" }}
+              />
+            </div>
+          </ApplyFormLayout>
 
           <Button text="Save" type="submit" customClass="w-[150px] mx-auto" />
         </form>
