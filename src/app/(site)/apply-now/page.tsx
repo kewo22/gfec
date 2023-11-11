@@ -84,7 +84,7 @@ export default function ApplyNow() {
           className="flex flex-col gap-14"
         >
           <ApplyFormLayout icon={faUserTie} title="About you">
-            <div className="flex flex-col sm:flex-row gap-5">
+            <div className="flex flex-col sm:flex-row gap-8">
               <Input
                 label="First Name"
                 type="text"
@@ -107,7 +107,7 @@ export default function ApplyNow() {
               />
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-5">
+            <div className="flex flex-col sm:flex-row gap-8">
               <div className="flex-grow">
                 <Input
                   label="Date of Birth"
@@ -116,7 +116,7 @@ export default function ApplyNow() {
                   useControllerProps={{ control, name: "dob" }}
                 />
               </div>
-              <div className="flex flex-row gap-5 items-center flex-grow">
+              <div className="flex flex-row gap-8 items-center flex-grow">
                 <div className="relative">
                   <Typography
                     variant="label"
@@ -144,7 +144,7 @@ export default function ApplyNow() {
               </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-5">
+            <div className="flex flex-col sm:flex-row gap-8">
               <Input
                 label="Email"
                 type="text"

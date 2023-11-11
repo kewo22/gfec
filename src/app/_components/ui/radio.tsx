@@ -1,9 +1,7 @@
-import React, { useMemo, useState } from "react";
-import {
-  UseControllerProps,
-  useController,
-  FieldValues,
-} from "react-hook-form";
+import React, { useMemo } from "react";
+import { useController } from "react-hook-form";
+
+import { Typography } from "./typography";
 
 interface RadioButtonInputs {
   value: string;
@@ -51,9 +49,18 @@ export default function RadioButton(props: RadioButtonInputs) {
 
   return (
     <div className={`${className.wrapper.default}`}>
-      <label htmlFor={field.name} className={`${className.label.default}`}>
+      {/* <label htmlFor={field.name} className={`${className.label.default}`}>
         {label}
-      </label>
+      </label> */}
+
+      <Typography
+        htmlFor={field.name}
+        className={`${className.label.default}`}
+        variant="label"
+      >
+        {label}
+      </Typography>
+
       <input
         {...field}
         value={value}
