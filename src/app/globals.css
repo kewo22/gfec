@@ -698,13 +698,13 @@ input[type='radio'] {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  height: 1.5rem;
+  height: 1.2rem;
   display: inline-block;
   vertical-align: top;
   position: relative;
   margin: 0;
   cursor: pointer;
-  border: 1px solid theme("colors.blue.600");
+  border: 1px solid theme("colors.secondary");
   background-color: transparent;
   transition: background 0.3s, border-color 0.3s, outline 0.2s;
 }
@@ -722,7 +722,7 @@ input[type='radio']:after {
 input[type='checkbox']:checked,
 input[type='radio']:checked {
   background-color: transparent;
-  border-color: #275EFE;
+  border-color: theme("colors.secondary");
   transition: transform 0.6s cubic-bezier(0.2, 0.85, 0.32, 1.2), opacity 0.3s;
 }
 
@@ -756,7 +756,7 @@ input[type='radio']:focus-visible {
 
 input[type='checkbox']:not(.switch),
 input[type='radio']:not(.switch) {
-  width: 1.5rem;
+  width: 1.2rem;
 }
 
 input[type='checkbox']+label,
@@ -834,7 +834,7 @@ input[type='radio']:disabled:after {
 
 input[type='radio']:checked:after {
   transform: scale(0.5);
-  background: theme("colors.blue.600");
+  background: theme("colors.secondary");
 }
 
 /* CHECKBOX AND RADIO */

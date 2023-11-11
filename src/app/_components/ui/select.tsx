@@ -33,7 +33,7 @@ export default function Select(props: SelectInputs) {
         error: "",
       },
       input:
-        "outline-none bg-transparent flex-grow appearance-none select-input",
+        "outline-none bg-transparent flex-grow appearance-none select-input text-sm",
       errorText: "text-red-600 text-xs font-semibold",
     };
 

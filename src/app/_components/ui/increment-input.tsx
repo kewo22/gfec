@@ -4,39 +4,46 @@ import { useController } from "react-hook-form";
 
 import { Typography } from "./typography";
 
-interface TextInputProps {
-  type?: "text" | "num" | "date" | "time";
+interface IncrementInputProps {
   placeHolder?: string;
   label?: string;
   useControllerProps: any;
   isDisabled?: boolean;
   isRequired?: boolean;
+  step?: number;
+  min?: number;
+  max?: number;
+  onChange: (e: number) => void;
 }
 
-export default function Input(props: TextInputProps) {
+export default function IncrementInput(props: IncrementInputProps) {
   const {
     useControllerProps,
     placeHolder = "",
-    type = "text",
     label = "",
     isDisabled = false,
     isRequired = false,
+    step = 1,
+    min = 0,
+    max = 99999,
+    onChange = null,
   } = props;
-  const { field, fieldState } = useController(useControllerProps);
+  const { field, fieldState, formState } = useController(useControllerProps);
 
   const className = useMemo(() => {
     let className = {
       wrapper: {
         default:
-          "w-full overflow-hidden border-b border-b-stone-600 flex flex-row items-center focus-within:border-blue-600 transition-all py-1 px-0 sm:px-3 relative",
+          "w-full overflow-hidden border-b border-b-stone-600 focus-within:border-blue-600 transition-all py-1 px-0 sm:px-3 relative flex items-center gap-1",
         error: "",
         disabled: "",
       },
       label: {
+        wrapper: "inline-block truncate max-w-[50px] min-w-[5px] align-middle",
         default: "text-left",
         error: "",
       },
-      input: "outline-none bg-transparent flex-grow pl-3",
+      input: "outline-none bg-transparent overflow-hidden flex-[1_0_60%]",
       errorText:
         "text-red-600 text-xs font-semibold text-right absolute right-0 z-10",
     };
@@ -59,38 +66,29 @@ export default function Input(props: TextInputProps) {
       }
     }
 
-    if (type === "date") {
-      classNameCopy.errorText =
-        "text-red-600 text-xs font-semibold text-right absolute right-[40px] z-10";
-      className = { ...classNameCopy };
-    }
-
     return className;
-  }, [isDisabled, fieldState, type]);
+  }, [isDisabled, fieldState]);
 
-  let inputMode: any =
-    "none" ||
-    "text" ||
-    "tel" ||
-    "url" ||
-    "email" ||
-    "numeric" ||
-    "decimal" ||
-    "search" ||
-    undefined;
+  const onIncrement = () => {
+    let valNum = +field.value;
+    const incremented = (valNum += step);
+    if (incremented > max) return;
+    if (onChange) onChange(incremented);
+  };
 
-  if (type === "num") {
-    inputMode = "numeric";
-  } else {
-    inputMode = "text";
-  }
+  const onDecrement = () => {
+    let valNum = +field.value;
+    const decremented = (valNum -= step);
+    if (decremented < min) return;
+    if (onChange) onChange(decremented);
+  };
 
   return (
     <div
       className={`${className.wrapper.default} ${className.wrapper.error} ${className.wrapper.disabled}`}
     >
       {label && (
-        <div className="relative">
+        <div className={`${className.label.wrapper}`}>
           <Typography
             htmlFor={field.name}
             variant="label"
@@ -100,33 +98,38 @@ export default function Input(props: TextInputProps) {
           </Typography>
           {isRequired && <span className="absolute text-red-700">*</span>}
         </div>
-        // <label
-        //   htmlFor={field.name}
-        //   className={`${className.label.default} ${className.label.error}`}
-        // >
-        //   {label}
-        // </label>
       )}
       <input
         {...field}
         id={field.name}
         value={field.value ? field.value : ""} // if date format val - 2000-05-05
         className={className.input}
-        type={type}
-        inputMode={inputMode || "text"}
         placeholder={placeHolder}
         disabled={isDisabled}
       />
+      <div className="flex flex-row gap-1">
+        <button
+          type="button"
+          onClick={onIncrement}
+          disabled={field.value >= max}
+          className="font-bold text-sm border border-slate-300 rounded-full w-6 h-6 disabled:bg-gray-300"
+        >
+          +
+        </button>
+        <button
+          type="button"
+          onClick={onDecrement}
+          disabled={field.value <= min}
+          className="font-bold text-sm border border-slate-300 rounded-full w-6 h-6 disabled:bg-gray-300"
+        >
+          -
+        </button>
+      </div>
       {!isDisabled && (
         <Typography variant="xs" className={className.errorText}>
           {fieldState.error?.message}
         </Typography>
-        // <p className={className.errorText}></p>
       )}
-      {/* <p>{fieldState.isTouched && "Touched"}</p>
-          <p>{fieldState.isDirty && "Dirty"}</p>
-          <p>{fieldState.invalid ? "invalid" : "valid"}</p>
-          <p>{fieldState.error ? "error" : fieldState.error}</p> */}
     </div>
   );
 }
