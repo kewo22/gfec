@@ -5,7 +5,11 @@ import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { date, object, string } from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { faGraduationCap, faUserTie } from "@fortawesome/free-solid-svg-icons";
+import {
+  faGraduationCap,
+  faHeart,
+  faUserTie,
+} from "@fortawesome/free-solid-svg-icons";
 
 import Container from "../_components/layouts/container";
 import ApplyFormLayout from "../_components/layouts/apply-form-layout";
@@ -17,6 +21,7 @@ import Button from "@/app/_components/ui/button";
 import { Typography } from "@/app/_components/ui/typography";
 import Select from "@/app/_components/ui/select";
 import IncrementInput from "@/app/_components/ui/increment-input";
+import Checkbox from "@/app/_components/ui/checkbox";
 
 export interface ApplicationFormModel {
   firstName: string;
@@ -567,6 +572,104 @@ export default function ApplyNow() {
                 </Typography>
                 <div className="flex flex-col gap-5">qwdjkl</div>
               </div> */}
+            </div>
+          </ApplyFormLayout>
+
+          <ApplyFormLayout icon={faHeart} title="Your preferences">
+            <div className="flex flex-col items-start gap-2">
+              <Typography variant="label" className="font-bold">Study Area</Typography>
+              <div className="w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
+                <Checkbox
+                  value="computing"
+                  useControllerProps={{ control, name: "studyArea" }}
+                  label="Computing"
+                />
+                <Checkbox
+                  value="business"
+                  useControllerProps={{ control, name: "studyArea" }}
+                  label="Business"
+                />
+                <Checkbox
+                  value="bioMedicalScience"
+                  useControllerProps={{ control, name: "studyArea" }}
+                  label="Bio Medical Science"
+                />
+                <Checkbox
+                  value="law"
+                  useControllerProps={{ control, name: "studyArea" }}
+                  label="Law"
+                />
+                <Checkbox
+                  value="civilEngineering"
+                  useControllerProps={{ control, name: "studyArea" }}
+                  label="Civil Engineering"
+                />
+                <Checkbox
+                  value="studyMedicine"
+                  useControllerProps={{ control, name: "studyArea" }}
+                  label="Study Medicine"
+                />
+                <Checkbox
+                  value="hotelManagement"
+                  useControllerProps={{ control, name: "studyArea" }}
+                  label="Hotel Management"
+                />
+                <Checkbox
+                  value="quantitySurveying"
+                  useControllerProps={{ control, name: "studyArea" }}
+                  label="Quantity Surveying"
+                />
+                <Checkbox
+                  value="teacherTraining"
+                  useControllerProps={{ control, name: "studyArea" }}
+                  label="Teacher Training"
+                />
+                <Checkbox
+                  value="foundation"
+                  useControllerProps={{ control, name: "studyArea" }}
+                  label="Foundation"
+                />
+                <Checkbox
+                  value="llb"
+                  useControllerProps={{ control, name: "studyArea" }}
+                  label="LLB"
+                />
+                <Checkbox
+                  value="mba"
+                  useControllerProps={{ control, name: "studyArea" }}
+                  label="MBA"
+                />
+                <Checkbox
+                  value="msc"
+                  useControllerProps={{ control, name: "studyArea" }}
+                  label="MSC"
+                />
+                <Checkbox
+                  value="itTopUp"
+                  useControllerProps={{ control, name: "studyArea" }}
+                  label="IT Top-up"
+                />
+                <Checkbox
+                  value="businessTopUp"
+                  useControllerProps={{ control, name: "studyArea" }}
+                  label="Business Top-up"
+                />
+                <Checkbox
+                  value="civilTopUp"
+                  useControllerProps={{ control, name: "studyArea" }}
+                  label="Civil Top-up"
+                />
+                <Checkbox
+                  value="qSTopUp"
+                  useControllerProps={{ control, name: "studyArea" }}
+                  label="QS Top-up"
+                />
+                <Checkbox
+                  value="bioMedicalScienceTopUp"
+                  useControllerProps={{ control, name: "studyArea" }}
+                  label="Biomedical Science Top-up"
+                />
+              </div>
             </div>
           </ApplyFormLayout>
 
