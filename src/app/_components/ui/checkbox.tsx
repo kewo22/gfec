@@ -18,12 +18,13 @@ export default function Checkbox(props: CheckboxButtonInputs) {
     let className = {
         // check justify-between in all other places, working in apply page, make dynamic if needed
       wrapper: {
-        default: "w-full flex flex-row items-center justify-between",
+        default: "w-full flex flex-row items-start justify-start",
       },
       label: {
-        default: "mr-1 text-left",
+        default: "ml-1 text-left",
       },
       input: {
+        wrapper:"",
         disabled: "",
         error: "",
       },
@@ -50,6 +51,13 @@ export default function Checkbox(props: CheckboxButtonInputs) {
 
   return (
     <div className={`${className.wrapper.default}`}>
+      <input
+        {...field}
+        value={value}
+        className={`${className.input.wrapper} ${className.input.disabled} ${className.input.error}`}
+        type="checkbox"
+        disabled={isDisabled}
+      />
       <Typography
         htmlFor={field.name}
         className={`${className.label.default}`}
@@ -57,14 +65,6 @@ export default function Checkbox(props: CheckboxButtonInputs) {
       >
         {label}
       </Typography>
-
-      <input
-        {...field}
-        value={value}
-        className={`${className.input.disabled} ${className.input.error}`}
-        type="checkbox"
-        disabled={isDisabled}
-      />
       {/* <p className={className.errorText}>{fieldState.error?.message}</p> */}
     </div>
   );

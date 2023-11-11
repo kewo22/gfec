@@ -763,8 +763,8 @@ input[type='checkbox']+label,
 input[type='radio']+label {
   display: inline-block;
   cursor: pointer;
-  font-size: 1.4rem;
-  margin-left: 0.2em;
+  /* font-size: 1.4rem; */
+  /* margin-left: 0.2em; */
   vertical-align: top;
 }
 
