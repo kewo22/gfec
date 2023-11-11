@@ -49,10 +49,6 @@ export default function RadioButton(props: RadioButtonInputs) {
 
   return (
     <div className={`${className.wrapper.default}`}>
-      {/* <label htmlFor={field.name} className={`${className.label.default}`}>
-        {label}
-      </label> */}
-
       <Typography
         htmlFor={field.name}
         className={`${className.label.default}`}
