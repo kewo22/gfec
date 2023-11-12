@@ -73,6 +73,10 @@ export default function GetInTouchForm() {
     });
   };
 
+  const onYearOfCompletionChange = (e: string) => {
+    setValue("preferredTime", e);
+  };
+
   const selectionItems = [
     {
       id: 0,
@@ -232,6 +236,7 @@ export default function GetInTouchForm() {
             placeHolder="Select One"
             useControllerProps={{ control, name: "preferredTime" }}
             isDisabled={false}
+            onChange={onYearOfCompletionChange}
           />
         </div>
 

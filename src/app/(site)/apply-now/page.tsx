@@ -1,9 +1,9 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 
 import { SubmitHandler, useForm } from "react-hook-form";
-import { date, object, string } from "yup";
+import { array, date, object, string } from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import {
   faGraduationCap,
@@ -21,7 +21,7 @@ import Button from "@/app/_components/ui/button";
 import { Typography } from "@/app/_components/ui/typography";
 import Select from "@/app/_components/ui/select";
 import IncrementInput from "@/app/_components/ui/increment-input";
-import Checkbox from "@/app/_components/ui/checkbox";
+import Checkboxes from "@/app/_components/ui/checkbox";
 
 export interface ApplicationFormModel {
   firstName: string;
@@ -55,7 +55,15 @@ export interface ApplicationFormModel {
   alResultC?: string;
   alResultD?: string;
   alResultS?: string;
+
   //
+  yearOfCompletion?: string;
+  affiliatedUniversity?: string;
+  affiliatedUniversityText?: string;
+  stream?: string;
+
+  //
+  studyArea?: string[];
 }
 
 const schema = object().shape({
@@ -70,7 +78,7 @@ const schema = object().shape({
     .matches(/^[0]{1}[7]{1}[01245678]{1}[0-9]{7}$/, "Invalid Format"),
 
   //
-  olSchool: string(),
+  olSchool: string().optional(),
   olYear: string().optional(),
   olType: string().optional(),
   olMathematics: string().optional(),
@@ -82,7 +90,7 @@ const schema = object().shape({
   olResultS: string().optional(),
 
   //
-  alSchool: string(),
+  alSchool: string().optional(),
   alYear: string().optional(),
   alType: string().optional(),
   alMathematics: string().optional(),
@@ -92,9 +100,20 @@ const schema = object().shape({
   alResultC: string().optional(),
   alResultD: string().optional(),
   alResultS: string().optional(),
+
+  //
+  yearOfCompletion: string().optional(),
+  affiliatedUniversity: string().optional(),
+  affiliatedUniversityText: string().optional(),
+  stream: string().optional(),
+
+  //
+  studyArea: array().optional(),
 });
 
 export default function ApplyNow() {
+  const [isOtherUni, setIsOtherUni] = useState(false);
+
   const {
     handleSubmit,
     control,
@@ -132,6 +151,14 @@ export default function ApplyNow() {
       alResultC: "",
       alResultD: "",
       alResultS: "",
+
+      //
+      yearOfCompletion: "",
+      affiliatedUniversity: "",
+      affiliatedUniversityText: "",
+      stream: "",
+
+      studyArea: ["Computing"],
     },
     mode: "all",
     resolver: yupResolver<ApplicationFormModel>(schema),
@@ -144,8 +171,6 @@ export default function ApplyNow() {
 
   // console.log(errors);
 
-  // about you, about your education, what do you prefer, other information
-
   const selectionItems = [
     {
       id: 0,
@@ -154,8 +179,63 @@ export default function ApplyNow() {
     },
   ];
 
+  const uniList = [
+    {
+      id: -1,
+      value: "other",
+      text: "Other",
+    },
+    {
+      id: 0,
+      value: "SLIIT",
+      text: "SLIIT",
+    },
+  ];
+
+  const studyPreferences = [
+    "Computing",
+    "Business",
+    "Biomedical Science",
+    "Law",
+    // "Civil Engineering",
+    // "Study Medicine",
+    // "Hotel Management",
+    // "Quantity Surveying",
+    // "Teacher Training",
+    // "Foundation",
+    // "LLB",
+    // "MBA",
+    // "MSC",
+    // "IT Top-Up",
+    // "Business Top-Up",
+    // "Civil Top-Up",
+    // "Qs Top-Up",
+    // "Biomedical Science Top-Up",
+  ];
+
   const onChange = (value: number, field: any) => {
     setValue(field, value.toString());
+  };
+
+  const onUniChange = (value: string) => {
+    setValue("affiliatedUniversity", value.toString());
+    if (value === "other") {
+      setIsOtherUni(true);
+    } else {
+      setIsOtherUni(false);
+    }
+  };
+
+  const onOlYearChange = (value: string) => {
+    setValue("olYear", value.toString());
+  };
+
+  const onAlYearChange = (value: string) => {
+    setValue("alYear", value.toString());
+  };
+
+  const onYearOfCompletionChange = (value: string) => {
+    setValue("yearOfCompletion", value.toString());
   };
 
   return (
@@ -246,7 +326,7 @@ export default function ApplyNow() {
           </ApplyFormLayout>
 
           <ApplyFormLayout icon={faGraduationCap} title="About your education">
-            <div className="flex flex-col sm:flex-row gap-8">
+            <div className="flex flex-col gap-8">
               {/* OL */}
               <div className="border border-slate-300 px-3 py-4 rounded-md relative">
                 <Typography
@@ -264,97 +344,117 @@ export default function ApplyNow() {
                       useControllerProps={{ control, name: "olSchool" }}
                     />
                   </div>
+
                   <Select
                     label="Year"
                     selectionItems={selectionItems}
                     placeHolder="Select One"
                     useControllerProps={{ control, name: "olYear" }}
                     isDisabled={false}
+                    onChange={onOlYearChange}
                   />
-                  <div className="flex flex-row gap-8 items-center flex-grow">
-                    <div className="relative">
-                      <Typography variant="label">Type</Typography>
+
+                  <div className="flex flex-col sm:flex-row gap-5">
+                    <div className="flex flex-col gap-2 items-start flex-grow">
+                      <div className="relative">
+                        <Typography variant="label">Type</Typography>
+                      </div>
+
+                      <div className="flex flex-row gap-2">
+                        <RadioButton
+                          label="Local"
+                          value="local"
+                          useControllerProps={{ control, name: "olType" }}
+                        />
+                        <RadioButton
+                          label="London"
+                          value="london"
+                          useControllerProps={{ control, name: "olType" }}
+                        />
+                      </div>
                     </div>
 
-                    <div className="flex flex-row gap-5">
-                      <RadioButton
-                        label="Local"
-                        value="local"
-                        useControllerProps={{ control, name: "olType" }}
-                      />
-                      <RadioButton
-                        label="London"
-                        value="london"
-                        useControllerProps={{ control, name: "olType" }}
-                      />
-                    </div>
-                  </div>
+                    <div className="flex flex-col gap-2 items-start flex-grow">
+                      <div className="relative">
+                        <Typography variant="label">Mathematics</Typography>
+                      </div>
 
-                  <div className="flex flex-col gap-2 items-start flex-grow">
-                    <div className="relative">
-                      <Typography variant="label">Mathematics</Typography>
-                    </div>
-
-                    <div className="flex flex-row gap-5">
-                      <RadioButton
-                        label="A"
-                        value="a"
-                        useControllerProps={{ control, name: "olMathematics" }}
-                      />
-                      <RadioButton
-                        label="B"
-                        value="b"
-                        useControllerProps={{ control, name: "olMathematics" }}
-                      />
-                      <RadioButton
-                        label="C"
-                        value="c"
-                        useControllerProps={{ control, name: "olMathematics" }}
-                      />
-                      <RadioButton
-                        label="D"
-                        value="d"
-                        useControllerProps={{ control, name: "olMathematics" }}
-                      />
-                      <RadioButton
-                        label="S"
-                        value="s"
-                        useControllerProps={{ control, name: "olMathematics" }}
-                      />
-                    </div>
-                  </div>
-
-                  <div className="flex flex-col gap-2 items-start flex-grow">
-                    <div className="relative">
-                      <Typography variant="label">English</Typography>
+                      <div className="flex flex-row gap-2">
+                        <RadioButton
+                          label="A"
+                          value="a"
+                          useControllerProps={{
+                            control,
+                            name: "olMathematics",
+                          }}
+                        />
+                        <RadioButton
+                          label="B"
+                          value="b"
+                          useControllerProps={{
+                            control,
+                            name: "olMathematics",
+                          }}
+                        />
+                        <RadioButton
+                          label="C"
+                          value="c"
+                          useControllerProps={{
+                            control,
+                            name: "olMathematics",
+                          }}
+                        />
+                        <RadioButton
+                          label="D"
+                          value="d"
+                          useControllerProps={{
+                            control,
+                            name: "olMathematics",
+                          }}
+                        />
+                        <RadioButton
+                          label="S"
+                          value="s"
+                          useControllerProps={{
+                            control,
+                            name: "olMathematics",
+                          }}
+                        />
+                      </div>
                     </div>
 
-                    <div className="flex flex-row gap-5">
-                      <RadioButton
-                        label="A"
-                        value="a"
-                        useControllerProps={{ control, name: "olEnglish" }}
-                      />
-                      <RadioButton
-                        label="B"
-                        value="b"
-                        useControllerProps={{ control, name: "olEnglish" }}
-                      />
-                      <RadioButton
-                        label="C"
-                        value="c"
-                        useControllerProps={{ control, name: "olEnglish" }}
-                      />
-                      <RadioButton
-                        label="D"
-                        value="d"
-                        useControllerProps={{ control, name: "olEnglish" }}
-                      />
-                      <RadioButton
-                        label="S"
-                        value="s"
-                        useControllerProps={{ control, name: "olEnglish" }}
-                      />
+                    <div className="flex flex-col gap-2 items-start flex-grow">
+                      <div className="relative">
+                        <Typography variant="label">English</Typography>
+                      </div>
+
+                      <div className="flex flex-row gap-2">
+                        <RadioButton
+                          label="A"
+                          value="a"
+                          useControllerProps={{ control, name: "olEnglish" }}
+                        />
+                        <RadioButton
+                          label="B"
+                          value="b"
+                          useControllerProps={{ control, name: "olEnglish" }}
+                        />
+                        <RadioButton
+                          label="C"
+                          value="c"
+                          useControllerProps={{ control, name: "olEnglish" }}
+                        />
+                        <RadioButton
+                          label="D"
+                          value="d"
+                          useControllerProps={{ control, name: "olEnglish" }}
+                        />
+                        <RadioButton
+                          label="S"
+                          value="s"
+                          useControllerProps={{ control, name: "olEnglish" }}
+                        />
+                      </div>
                     </div>
                   </div>
 
@@ -428,8 +528,114 @@ export default function ApplyNow() {
                     placeHolder="Select One"
                     useControllerProps={{ control, name: "alYear" }}
                     isDisabled={false}
+                    onChange={onAlYearChange}
                   />
-                  <div className="flex flex-row gap-8 items-center flex-grow">
+
+                  <div className="flex flex-col sm:flex-row gap-5">
+                    <div className="flex flex-col gap-2 items-start flex-grow">
+                      <div className="relative">
+                        <Typography variant="label">Type</Typography>
+                      </div>
+
+                      <div className="flex flex-row gap-2">
+                        <RadioButton
+                          label="Local"
+                          value="local"
+                          useControllerProps={{ control, name: "alType" }}
+                        />
+                        <RadioButton
+                          label="London"
+                          value="london"
+                          useControllerProps={{ control, name: "alType" }}
+                        />
+                      </div>
+                    </div>
+
+                    <div className="flex flex-col gap-2 items-start flex-grow">
+                      <div className="relative">
+                        <Typography variant="label">Mathematics</Typography>
+                      </div>
+
+                      <div className="flex flex-row gap-2">
+                        <RadioButton
+                          label="A"
+                          value="a"
+                          useControllerProps={{
+                            control,
+                            name: "alMathematics",
+                          }}
+                        />
+                        <RadioButton
+                          label="B"
+                          value="b"
+                          useControllerProps={{
+                            control,
+                            name: "alMathematics",
+                          }}
+                        />
+                        <RadioButton
+                          label="C"
+                          value="c"
+                          useControllerProps={{
+                            control,
+                            name: "alMathematics",
+                          }}
+                        />
+                        <RadioButton
+                          label="D"
+                          value="d"
+                          useControllerProps={{
+                            control,
+                            name: "alMathematics",
+                          }}
+                        />
+                        <RadioButton
+                          label="S"
+                          value="s"
+                          useControllerProps={{
+                            control,
+                            name: "alMathematics",
+                          }}
+                        />
+                      </div>
+                    </div>
+
+                    <div className="flex flex-col gap-2 items-start flex-grow">
+                      <div className="relative">
+                        <Typography variant="label">English</Typography>
+                      </div>
+
+                      <div className="flex flex-row gap-2">
+                        <RadioButton
+                          label="A"
+                          value="a"
+                          useControllerProps={{ control, name: "alEnglish" }}
+                        />
+                        <RadioButton
+                          label="B"
+                          value="b"
+                          useControllerProps={{ control, name: "alEnglish" }}
+                        />
+                        <RadioButton
+                          label="C"
+                          value="c"
+                          useControllerProps={{ control, name: "alEnglish" }}
+                        />
+                        <RadioButton
+                          label="D"
+                          value="d"
+                          useControllerProps={{ control, name: "alEnglish" }}
+                        />
+                        <RadioButton
+                          label="S"
+                          value="s"
+                          useControllerProps={{ control, name: "alEnglish" }}
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* <div className="flex flex-col sm:flex-row gap-5">
                     <div className="relative">
                       <Typography variant="label">Type</Typography>
                     </div>
@@ -514,7 +720,7 @@ export default function ApplyNow() {
                         useControllerProps={{ control, name: "alEnglish" }}
                       />
                     </div>
-                  </div>
+                  </div> */}
 
                   <div className="flex flex-col items-start gap-2">
                     <Typography variant="label">Results</Typography>
@@ -563,22 +769,94 @@ export default function ApplyNow() {
               </div>
               {/* END AL */}
 
-              {/* <div className="border border-slate-300 px-3 py-4 rounded-md relative">
+              <div className="border border-slate-300 px-3 py-4 rounded-md relative">
                 <Typography
                   variant="md"
                   className="absolute -top-[14px] left-[5%] font-bold bg-white px-3"
                 >
                   Degree
                 </Typography>
-                <div className="flex flex-col gap-5">qwdjkl</div>
-              </div> */}
+                <div className="flex flex-col gap-5">
+                  <div className="">
+                    <Select
+                      label="Year of completion"
+                      selectionItems={selectionItems}
+                      placeHolder="Select One"
+                      useControllerProps={{ control, name: "yearOfCompletion" }}
+                      isDisabled={false}
+                      onChange={onYearOfCompletionChange}
+                    />
+                  </div>
+                  <div className="flex flex-col items-start gap-3">
+                    <Typography variant="label">
+                      Affiliated University
+                    </Typography>
+                    <Select
+                      selectionItems={uniList}
+                      placeHolder="Select One"
+                      useControllerProps={{
+                        control,
+                        name: "affiliatedUniversity",
+                      }}
+                      isDisabled={false}
+                      onChange={onUniChange}
+                    />
+                    {isOtherUni && (
+                      <div className="mt-3 w-full">
+                        <Input
+                          placeHolder="Type here"
+                          useControllerProps={{
+                            control,
+                            name: "affiliatedUniversityText",
+                          }}
+                        />
+                      </div>
+                    )}
+                  </div>
+                  <div>
+                    <Input
+                      label="Stream"
+                      useControllerProps={{
+                        control,
+                        name: "stream",
+                      }}
+                    />
+                  </div>
+                  <div className="flex flex-row gap-3">
+                    <Input
+                      label="GPA"
+                      useControllerProps={{
+                        control,
+                        name: "gpa",
+                      }}
+                    />
+                    <Input
+                      label="Class"
+                      useControllerProps={{
+                        control,
+                        name: "class",
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
           </ApplyFormLayout>
 
           <ApplyFormLayout icon={faHeart} title="Your preferences">
-            <div className="flex flex-col items-start gap-2">
-              <Typography variant="label" className="font-bold">Study Area</Typography>
+            <div className="flex flex-col items-start gap-3">
+              <Typography variant="label" className="font-bold">
+                Study Area
+              </Typography>
               <div className="w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
+                <Checkboxes
+                  options={studyPreferences}
+                  control={control}
+                  name="studyArea"
+                />
+              </div>
+
+              {/* <div className="w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
                 <Checkbox
                   value="computing"
                   useControllerProps={{ control, name: "studyArea" }}
@@ -669,7 +947,7 @@ export default function ApplyNow() {
                   useControllerProps={{ control, name: "studyArea" }}
                   label="Biomedical Science Top-up"
                 />
-              </div>
+              </div> */}
             </div>
           </ApplyFormLayout>
 
