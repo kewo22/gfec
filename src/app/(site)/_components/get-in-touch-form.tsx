@@ -62,8 +62,6 @@ export default function GetInTouchForm() {
   );
 
   const onSubmit: SubmitHandler<GetInTouchModel> = (data) => {
-    console.log(data);
-
     fetch(`${privacyBasePolicyUrl}/api`, {
       method: "post",
       body: JSON.stringify(data),

@@ -9,8 +9,6 @@ type ApiResponse<T> = {
 };
 
 export async function GET(request: Request) {
-  console.log("APIII");
-
   //   const res = await fetch("https://data.mongodb-api.com/...", {
   //     headers: {
   //       "Content-Type": "application/json",
@@ -18,9 +16,7 @@ export async function GET(request: Request) {
   //     },
   //   });
   //   const data = await res.json();
-
   const data = 1;
-
   return Response.json({ data });
 }
 
@@ -28,7 +24,6 @@ export async function POST(request: Request) {
   const data = await request.json();
 
   const uri = process.env.MONGO_URL || "";
-  console.log("🚀 ~ file: route.ts:31 ~ POST ~ uri:", uri);
 
   try {
     const client = await new MongoClient(uri.trim()).connect();
@@ -91,18 +86,14 @@ export async function POST(request: Request) {
 
       const yy = await transporter.sendMail(mailOptions);
       console.log("🚀 ~ file: getInTouch.ts:151 ~ yy:", yy);
-      // try {
-      //   console.log("🚀 ~ file: getInTouch.ts:69 ~ x:", x);
-      // } catch (error) {
-      //   console.log("mail err");
-      //   console.log(error);
-      // }
+    } else {
+      throw Error('Insert failed')
     }
 
     // return res.status(200).json({ message: `Success`, data: insertOneRes });
     return Response.json({ message: `Success`, data: insertOneRes })
   } catch (error) {
-    return Response.json({ message: `Failed`, data: null })
+    return Response.json({ message: `Failed`, data: null, error })
   }
 
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 
 import { SubmitHandler, useForm } from "react-hook-form";
 import { array, date, object, string } from "yup";
@@ -22,6 +22,11 @@ import { Typography } from "@/app/_components/ui/typography";
 import Select from "@/app/_components/ui/select";
 import IncrementInput from "@/app/_components/ui/increment-input";
 import Checkboxes from "@/app/_components/ui/checkbox";
+import { ResolveBaseUrl } from "@/app/utils/common";
+import {
+  COUNTRIES,
+  COUNTRIES_FOR_SELECT,
+} from "../_constants/countries.constants";
 
 export interface ApplicationFormModel {
   firstName: string;
@@ -63,6 +68,7 @@ export interface ApplicationFormModel {
   stream?: string;
 
   //
+  country?: string;
   studyArea?: string[];
 }
 
@@ -108,10 +114,14 @@ const schema = object().shape({
   stream: string().optional(),
 
   //
+  country: string().optional(),
   studyArea: array().optional(),
 });
 
 export default function ApplyNow() {
+  const privacyBasePolicyUrl = ResolveBaseUrl(
+    process.env.NEXT_PUBLIC_VERCEL_ENV!
+  );
   const [isOtherUni, setIsOtherUni] = useState(false);
 
   const {
@@ -158,26 +168,56 @@ export default function ApplyNow() {
       affiliatedUniversityText: "",
       stream: "",
 
-      studyArea: ["Computing"],
+      country: "",
+      studyArea: [],
     },
     mode: "all",
     resolver: yupResolver<ApplicationFormModel>(schema),
     reValidateMode: "onBlur",
   });
 
-  const onSubmit: SubmitHandler<ApplicationFormModel> = (data) => {
-    console.log(data);
-  };
+  // let selectionItems: any = [];
+  // const selectionItemsRef = useRef<any>([]);
 
-  // console.log(errors);
+  const selectionItems = useMemo(() => {
+    const years = [];
+    for (let i = 0; i < 10; i++) {
+      const d = new Date();
+      const pastYear = d.getFullYear() - i;
+      years.push({
+        id: i,
+        text: pastYear,
+        value: pastYear,
+      });
+    }
+    return years;
+  }, []);
 
-  const selectionItems = [
-    {
-      id: 0,
-      value: "2000",
-      text: "2000",
-    },
-  ];
+  // useEffect(() => {
+  //   // const getYears = () => {
+  //   const years = [];
+  //   for (let i = 0; i < 10; i++) {
+  //     const d = new Date();
+  //     const pastYear = d.getFullYear() - i;
+  //     years.push({
+  //       id: i,
+  //       text: pastYear,
+  //       value: pastYear,
+  //     });
+  //   }
+  //   selectionItemsRef.current = [...years];
+  //   // selectionItems = [...years];
+  //   // return years;
+  //   // };
+  // }, []);
+
+  // const selectionItems = [
+  //   {
+  //     id: 0,
+  //     value: "2000",
+  //     text: "2000",
+  //   },
+  // ];
 
   const uniList = [
     {
@@ -234,8 +274,27 @@ export default function ApplyNow() {
     setValue("alYear", value.toString());
   };
 
+  const onCountryChange = (value: string) => {
+    setValue("country", value.toString());
+  };
+
   const onYearOfCompletionChange = (value: string) => {
     setValue("yearOfCompletion", value.toString());
+  };
+
+  const onSubmit: SubmitHandler<ApplicationFormModel> = (data) => {
+    let tempData = data;
+    const studyArea = data.studyArea?.filter((obj) => {
+      return obj !== null || obj !== undefined;
+    });
+    tempData = { ...tempData, studyArea };
+    fetch(`${privacyBasePolicyUrl}/api/apply`, {
+      method: "post",
+      body: JSON.stringify(tempData),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
   };
 
   return (
@@ -859,99 +918,16 @@ export default function ApplyNow() {
                   name="studyArea"
                 />
               </div>
-
-              {/* <div className="w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
-                <Checkbox
-                  value="computing"
-                  useControllerProps={{ control, name: "studyArea" }}
-                  label="Computing"
-                />
-                <Checkbox
-                  value="business"
-                  useControllerProps={{ control, name: "studyArea" }}
-                  label="Business"
-                />
-                <Checkbox
-                  value="bioMedicalScience"
-                  useControllerProps={{ control, name: "studyArea" }}
-                  label="Bio Medical Science"
-                />
-                <Checkbox
-                  value="law"
-                  useControllerProps={{ control, name: "studyArea" }}
-                  label="Law"
-                />
-                <Checkbox
-                  value="civilEngineering"
-                  useControllerProps={{ control, name: "studyArea" }}
-                  label="Civil Engineering"
-                />
-                <Checkbox
-                  value="studyMedicine"
-                  useControllerProps={{ control, name: "studyArea" }}
-                  label="Study Medicine"
-                />
-                <Checkbox
-                  value="hotelManagement"
-                  useControllerProps={{ control, name: "studyArea" }}
-                  label="Hotel Management"
-                />
-                <Checkbox
-                  value="quantitySurveying"
-                  useControllerProps={{ control, name: "studyArea" }}
-                  label="Quantity Surveying"
-                />
-                <Checkbox
-                  value="teacherTraining"
-                  useControllerProps={{ control, name: "studyArea" }}
-                  label="Teacher Training"
-                />
-                <Checkbox
-                  value="foundation"
-                  useControllerProps={{ control, name: "studyArea" }}
-                  label="Foundation"
-                />
-                <Checkbox
-                  value="llb"
-                  useControllerProps={{ control, name: "studyArea" }}
-                  label="LLB"
-                />
-                <Checkbox
-                  value="mba"
-                  useControllerProps={{ control, name: "studyArea" }}
-                  label="MBA"
-                />
-                <Checkbox
-                  value="msc"
-                  useControllerProps={{ control, name: "studyArea" }}
-                  label="MSC"
-                />
-                <Checkbox
-                  value="itTopUp"
-                  useControllerProps={{ control, name: "studyArea" }}
-                  label="IT Top-up"
-                />
-                <Checkbox
-                  value="businessTopUp"
-                  useControllerProps={{ control, name: "studyArea" }}
-                  label="Business Top-up"
-                />
-                <Checkbox
-                  value="civilTopUp"
-                  useControllerProps={{ control, name: "studyArea" }}
-                  label="Civil Top-up"
-                />
-                <Checkbox
-                  value="qSTopUp"
-                  useControllerProps={{ control, name: "studyArea" }}
-                  label="QS Top-up"
-                />
-                <Checkbox
-                  value="bioMedicalScienceTopUp"
-                  useControllerProps={{ control, name: "studyArea" }}
-                  label="Biomedical Science Top-up"
-                />
-              </div> */}
+            </div>
+            <div>
+              <Select
+                label="Country"
+                selectionItems={COUNTRIES_FOR_SELECT}
+                placeHolder="Select One"
+                useControllerProps={{ control, name: "country" }}
+                isDisabled={false}
+                onChange={onCountryChange}
+              />
             </div>
           </ApplyFormLayout>
 

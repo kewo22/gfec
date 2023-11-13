@@ -134,3 +134,12 @@ export const COUNTRIES: Country[] = [
 ];
 
 export const PRE_SELECTED_COUNTRY: Country = COUNTRIES[0]
+
+export const COUNTRIES_FOR_SELECT = COUNTRIES.map(obj => {
+    const mapped = {
+        id: obj.id,
+        value: obj.country,
+        text: obj.country
+    }
+    return mapped
+})
