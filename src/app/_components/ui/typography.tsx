@@ -55,7 +55,7 @@ const typographyClasses = {
   small: "text-xs xl:text-sm 2xl:text-base",
   xs: "text-xs xl:text-sm",
   xl: "font-bold text-4xl lg:font-normal lg:text-5xl xl:text-7xl",
-  label: "text-sm xl:text-base",
+  label: "text-sm xl:text-base text-left",
 };
 
 const sizes: Record<Variant, string> = {

@@ -197,20 +197,20 @@ export default function ApplyNow() {
     "Business",
     "Biomedical Science",
     "Law",
-    // "Civil Engineering",
-    // "Study Medicine",
-    // "Hotel Management",
-    // "Quantity Surveying",
-    // "Teacher Training",
-    // "Foundation",
-    // "LLB",
-    // "MBA",
-    // "MSC",
-    // "IT Top-Up",
-    // "Business Top-Up",
-    // "Civil Top-Up",
-    // "Qs Top-Up",
-    // "Biomedical Science Top-Up",
+    "Civil Engineering",
+    "Study Medicine",
+    "Hotel Management",
+    "Quantity Surveying",
+    "Teacher Training",
+    "Foundation",
+    "LLB",
+    "MBA",
+    "MSC",
+    "IT Top-Up",
+    "Business Top-Up",
+    "Civil Top-Up",
+    "Qs Top-Up",
+    "Biomedical Science Top-Up",
   ];
 
   const onChange = (value: number, field: any) => {
@@ -461,45 +461,47 @@ export default function ApplyNow() {
                   <div className="flex flex-col items-start gap-2">
                     <Typography variant="label">Results</Typography>
 
-                    <IncrementInput
-                      label="A"
-                      onChange={(e: number) => {
-                        onChange(e, "olResultA");
-                      }}
-                      useControllerProps={{ control, name: "olResultA" }}
-                    />
+                    <div className="w-full flex flex-col md:flex-row items-start gap-2">
+                      <IncrementInput
+                        label="A"
+                        onChange={(e: number) => {
+                          onChange(e, "olResultA");
+                        }}
+                        useControllerProps={{ control, name: "olResultA" }}
+                      />
 
-                    <IncrementInput
-                      label="B"
-                      onChange={(e: number) => {
-                        onChange(e, "olResultB");
-                      }}
-                      useControllerProps={{ control, name: "olResultB" }}
-                    />
+                      <IncrementInput
+                        label="B"
+                        onChange={(e: number) => {
+                          onChange(e, "olResultB");
+                        }}
+                        useControllerProps={{ control, name: "olResultB" }}
+                      />
 
-                    <IncrementInput
-                      label="C"
-                      onChange={(e: number) => {
-                        onChange(e, "olResultC");
-                      }}
-                      useControllerProps={{ control, name: "olResultC" }}
-                    />
+                      <IncrementInput
+                        label="C"
+                        onChange={(e: number) => {
+                          onChange(e, "olResultC");
+                        }}
+                        useControllerProps={{ control, name: "olResultC" }}
+                      />
 
-                    <IncrementInput
-                      label="D"
-                      onChange={(e: number) => {
-                        onChange(e, "olResultD");
-                      }}
-                      useControllerProps={{ control, name: "olResultD" }}
-                    />
+                      <IncrementInput
+                        label="D"
+                        onChange={(e: number) => {
+                          onChange(e, "olResultD");
+                        }}
+                        useControllerProps={{ control, name: "olResultD" }}
+                      />
 
-                    <IncrementInput
-                      label="S"
-                      onChange={(e: number) => {
-                        onChange(e, "olResultS");
-                      }}
-                      useControllerProps={{ control, name: "olResultS" }}
-                    />
+                      <IncrementInput
+                        label="S"
+                        onChange={(e: number) => {
+                          onChange(e, "olResultS");
+                        }}
+                        useControllerProps={{ control, name: "olResultS" }}
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -725,45 +727,47 @@ export default function ApplyNow() {
                   <div className="flex flex-col items-start gap-2">
                     <Typography variant="label">Results</Typography>
 
-                    <IncrementInput
-                      label="A"
-                      onChange={(e: number) => {
-                        onChange(e, "alResultA");
-                      }}
-                      useControllerProps={{ control, name: "alResultA" }}
-                    />
+                    <div className="w-full flex flex-col md:flex-row items-start gap-2">
+                      <IncrementInput
+                        label="A"
+                        onChange={(e: number) => {
+                          onChange(e, "alResultA");
+                        }}
+                        useControllerProps={{ control, name: "alResultA" }}
+                      />
 
-                    <IncrementInput
-                      label="B"
-                      onChange={(e: number) => {
-                        onChange(e, "alResultB");
-                      }}
-                      useControllerProps={{ control, name: "alResultB" }}
-                    />
+                      <IncrementInput
+                        label="B"
+                        onChange={(e: number) => {
+                          onChange(e, "alResultB");
+                        }}
+                        useControllerProps={{ control, name: "alResultB" }}
+                      />
 
-                    <IncrementInput
-                      label="C"
-                      onChange={(e: number) => {
-                        onChange(e, "alResultC");
-                      }}
-                      useControllerProps={{ control, name: "alResultC" }}
-                    />
+                      <IncrementInput
+                        label="C"
+                        onChange={(e: number) => {
+                          onChange(e, "alResultC");
+                        }}
+                        useControllerProps={{ control, name: "alResultC" }}
+                      />
 
-                    <IncrementInput
-                      label="D"
-                      onChange={(e: number) => {
-                        onChange(e, "alResultD");
-                      }}
-                      useControllerProps={{ control, name: "alResultD" }}
-                    />
+                      <IncrementInput
+                        label="D"
+                        onChange={(e: number) => {
+                          onChange(e, "alResultD");
+                        }}
+                        useControllerProps={{ control, name: "alResultD" }}
+                      />
 
-                    <IncrementInput
-                      label="S"
-                      onChange={(e: number) => {
-                        onChange(e, "alResultS");
-                      }}
-                      useControllerProps={{ control, name: "alResultS" }}
-                    />
+                      <IncrementInput
+                        label="S"
+                        onChange={(e: number) => {
+                          onChange(e, "alResultS");
+                        }}
+                        useControllerProps={{ control, name: "alResultS" }}
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -848,7 +852,7 @@ export default function ApplyNow() {
               <Typography variant="label" className="font-bold">
                 Study Area
               </Typography>
-              <div className="w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
+              <div className="w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
                 <Checkboxes
                   options={studyPreferences}
                   control={control}

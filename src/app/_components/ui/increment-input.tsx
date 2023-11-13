@@ -39,11 +39,11 @@ export default function IncrementInput(props: IncrementInputProps) {
         disabled: "",
       },
       label: {
-        wrapper: "inline-block truncate max-w-[50px] min-w-[5px] align-middle",
+        wrapper: "inline-block truncate max-w-[50px] min-w-[10px] align-middle",
         default: "text-left",
         error: "",
       },
-      input: "outline-none bg-transparent overflow-hidden flex-[1_0_60%]",
+      input: "outline-none bg-transparent overflow-hidden flex-[1_0_40%]",
       errorText:
         "text-red-600 text-xs font-semibold text-right absolute right-0 z-10",
     };
