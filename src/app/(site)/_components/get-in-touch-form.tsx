@@ -50,7 +50,7 @@ export default function GetInTouchForm() {
       email: "",
       mobile: "",
       preferredTime: "",
-      preferredDate: new Date(),
+      preferredDate: null,
     },
     mode: "all",
     resolver: yupResolver<GetInTouchModel>(schema),
@@ -62,9 +62,16 @@ export default function GetInTouchForm() {
   );
 
   const onSubmit: SubmitHandler<GetInTouchModel> = (data) => {
+    let tempData = { ...data, preferredDate: "" };
+    if (data.preferredDate) {
+      tempData = {
+        ...data,
+        preferredDate: new Date(data.preferredDate).toString(),
+      };
+    }
     fetch(`${privacyBasePolicyUrl}/api`, {
       method: "post",
-      body: JSON.stringify(data),
+      body: JSON.stringify(tempData),
       headers: {
         "Content-Type": "application/json",
       },

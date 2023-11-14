@@ -30,6 +30,7 @@ export async function POST(request: Request) {
     const db = await client.db("gfec");
     const collection = db.collection("getInTouch");
     const insertOneRes = await collection.insertOne(data);
+
     if (insertOneRes.insertedId) {
       const port = process.env.NODEMAILER_PORT as unknown as number;
       const transporter = nodemailer.createTransport({
@@ -40,6 +41,9 @@ export async function POST(request: Request) {
           pass: process.env.NODEMAILER_PASSWORD,
         },
       });
+
+      const date = data.preferredDate ? new Date(data.preferredDate).toLocaleDateString('en-GB') : '-'
+      const time = data.preferredTime ? data.preferredTime : '-';
 
       const html = `
       <table style="border: 1px solid black; border-collapse: collapse; width: 300px; min-width: 300px;">
@@ -54,38 +58,56 @@ export async function POST(request: Request) {
         }</td>
         </tr>
         <tr>
-          <th style="border: 1px solid black; border-collapse: collapse; padding: 5px;" align='left'>Phone</th>
-          <td style="border: 1px solid black; border-collapse: collapse; padding: 5px;">${data.phone
+          <th style="border: 1px solid black; border-collapse: collapse; padding: 5px;" align='left'>Mobile</th>
+          <td style="border: 1px solid black; border-collapse: collapse; padding: 5px;">${data.mobile
         }</td>
         </tr>
         <tr>
           <th style="border: 1px solid black; border-collapse: collapse; padding: 5px;" align='left'>Preferred Date</th>
-          <td style="border: 1px solid black; border-collapse: collapse; padding: 5px;">${data.preferredDate
-        }</td>
+          <td style="border: 1px solid black; border-collapse: collapse; padding: 5px;">${date}
+        </td>
         </tr>
         <tr>
           <th style="border: 1px solid black; border-collapse: collapse; padding: 5px;" align='left'>Preferred Time</th>
-          <td style="border: 1px solid black; border-collapse: collapse; padding: 5px;">${data.preferredTime
-        }</td>
-        </tr>
-        <tr>
-          <th style="border: 1px solid black; border-collapse: collapse; padding: 5px;" align='left'>Address</th>
-          <td style="border: 1px solid black; border-collapse: collapse; padding: 5px;">${data.address ? data.address : "-"
-        }</td>
+          <td style="border: 1px solid black; border-collapse: collapse; padding: 5px;">${time}</td>
         </tr>
       </table>
     `;
 
       const mailOptions: Mail.Options = {
         from: process.env.NODEMAILER_USER,
-        to: (process.env.TO_MAIL as unknown as string).split(","),
+        to: (process.env.TO_MAIL as unknown as string),
         subject: `Get In Touch With ${data.firstName} ${data.lastName}`,
         text: "Record Added",
         html,
       };
 
-      const yy = await transporter.sendMail(mailOptions);
-      console.log("🚀 ~ file: getInTouch.ts:151 ~ yy:", yy);
+      const mailOptions1: Mail.Options = {
+        from: process.env.NODEMAILER_USER,
+        to: (process.env.TO_MAIL2 as unknown as string),
+        subject: `Get In Touch With ${data.firstName} ${data.lastName}`,
+        text: "Record Added",
+        html,
+      };
+
+      const mailOptions2: Mail.Options = {
+        from: process.env.NODEMAILER_USER,
+        to: (process.env.TO_MAIL3 as unknown as string),
+        subject: `Get In Touch With ${data.firstName} ${data.lastName}`,
+        text: "Record Added",
+        html,
+      };
+
+      Promise.all([
+        transporter.sendMail(mailOptions),
+        transporter.sendMail(mailOptions1),
+        transporter.sendMail(mailOptions2),
+      ])
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err));
+
+      // const yy = await transporter.sendMail(mailOptions);
+      // console.log("🚀 ~ file: getInTouch.ts:151 ~ yy:", yy);
     } else {
       throw Error('Insert failed')
     }
