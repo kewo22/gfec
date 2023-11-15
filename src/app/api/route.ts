@@ -44,6 +44,8 @@ export async function POST(request: Request) {
         },
       });
 
+      console.log(transporter)
+
       const date = data.preferredDate
         ? new Date(data.preferredDate).toLocaleDateString("en-GB")
         : "-";
@@ -120,18 +122,21 @@ export async function POST(request: Request) {
             log: JSON.stringify(res)
           })
         )
-        .catch((err) => {
-          throw Error(err);
+        .catch((error) => {
+          console.log("🚀 ~ file: route.ts:124 ~ POST ~ err:", error)
+          loggerCollection.insertOne({
+            type: "email failed",
+            log: JSON.stringify(error)
+          })
+          return Response.json({ message: `Failed`, data: null, error });
         });
 
-      // const yy = await transporter.sendMail(mailOptions);
-      // console.log("🚀 ~ file: getInTouch.ts:151 ~ yy:", yy);
     } else {
       loggerCollection.insertOne({
         type: "insert failed",
         log: JSON.stringify(insertOneRes)
       })
-      throw Error("Insert failed");
+      return Response.json({ message: `Failed`, data: null });
     }
 
     loggerCollection.insertOne({
@@ -141,6 +146,7 @@ export async function POST(request: Request) {
     // return res.status(200).json({ message: `Success`, data: insertOneRes });
     return Response.json({ message: `Success`, data: insertOneRes });
   } catch (error) {
+    console.log("🚀 ~ file: route.ts:146 ~ POST ~ error:", error)
     loggerCollection.insertOne({
       type: "failed",
       log: JSON.stringify(error)
