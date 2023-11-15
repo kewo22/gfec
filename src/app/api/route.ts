@@ -115,15 +115,16 @@ export async function POST(request: Request) {
         transporter.sendMail(mailOptions2),
         transporter.sendMail(mailOptions3),
       ])
-        .then((res) =>
-          // console.log(res)
+        .then((res) => {
+          console.log(res)
           loggerCollection.insertOne({
             type: "email success",
             log: JSON.stringify(res)
           })
+        }
         )
         .catch((error) => {
-          console.log("🚀 ~ file: route.ts:124 ~ POST ~ err:", error)
+          console.log(error)
           loggerCollection.insertOne({
             type: "email failed",
             log: JSON.stringify(error)
@@ -146,7 +147,7 @@ export async function POST(request: Request) {
     // return res.status(200).json({ message: `Success`, data: insertOneRes });
     return Response.json({ message: `Success`, data: insertOneRes });
   } catch (error) {
-    console.log("🚀 ~ file: route.ts:146 ~ POST ~ error:", error)
+    console.log(error)
     loggerCollection.insertOne({
       type: "failed",
       log: JSON.stringify(error)
