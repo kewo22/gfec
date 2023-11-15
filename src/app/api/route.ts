@@ -24,12 +24,13 @@ export async function POST(request: Request) {
   const data = await request.json();
 
   const uri = process.env.MONGO_URL || "";
+  const client = await new MongoClient(uri.trim()).connect();
+  const db = await client.db("gfec");
+  const collection = db.collection("getInTouch");
+  const loggerCollection = db.collection("logger");
+  const insertOneRes = await collection.insertOne(data);
 
   try {
-    const client = await new MongoClient(uri.trim()).connect();
-    const db = await client.db("gfec");
-    const collection = db.collection("getInTouch");
-    const insertOneRes = await collection.insertOne(data);
 
     if (insertOneRes.insertedId) {
       const port = process.env.NODEMAILER_PORT as unknown as number;
@@ -112,8 +113,16 @@ export async function POST(request: Request) {
         transporter.sendMail(mailOptions2),
         transporter.sendMail(mailOptions3),
       ])
-        .then((res) => console.log(res))
-        .catch((err) => console.log(err));
+        .then((res) =>
+          // console.log(res)
+          loggerCollection.insertOne({
+            type: "email success",
+            log: JSON.stringify(res)
+          })
+        )
+        .catch((err) => {
+          throw Error(err);
+        });
 
       // const yy = await transporter.sendMail(mailOptions);
       // console.log("🚀 ~ file: getInTouch.ts:151 ~ yy:", yy);
@@ -124,6 +133,10 @@ export async function POST(request: Request) {
     // return res.status(200).json({ message: `Success`, data: insertOneRes });
     return Response.json({ message: `Success`, data: insertOneRes });
   } catch (error) {
+    loggerCollection.insertOne({
+      type: "email success",
+      log: JSON.stringify(error)
+    })
     return Response.json({ message: `Failed`, data: null, error });
   }
 }
