@@ -42,8 +42,8 @@ export const ToApplicationFormObject = (obj: ApplicationFormModel) => {
       olResultA: obj.olResultA,
       olResultB: obj.olResultB,
       olResultC: obj.olResultC,
-      olResultD: obj.olResultD,
       olResultS: obj.olResultS,
+      olResultW: obj.olResultW,
     },
     al: {
       alSchool: obj.alSchool,
@@ -54,8 +54,8 @@ export const ToApplicationFormObject = (obj: ApplicationFormModel) => {
       alResultA: obj.alResultA,
       alResultB: obj.alResultB,
       alResultC: obj.alResultC,
-      alResultD: obj.alResultD,
       alResultS: obj.alResultS,
+      alResultW: obj.alResultW,
     },
     degree: {
       yearOfCompletion: obj.yearOfCompletion,
