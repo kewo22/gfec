@@ -34,11 +34,9 @@ export async function POST(request: Request) {
     if (insertOneRes.insertedId) {
       const port = process.env.NODEMAILER_PORT as unknown as number;
       const transporter = nodemailer.createTransport({
-        // service: process.env.NODEMAILER_SERVICE,
-        host: "mail.privateemail.com",
+        service: process.env.NODEMAILER_SERVICE,
+        host: process.env.NODEMAILER_USER,
         port,
-        // port: 587,
-        // secure: false,
         auth: {
           user: process.env.NODEMAILER_USER,
           pass: process.env.NODEMAILER_PASSWORD,
@@ -112,7 +110,7 @@ export async function POST(request: Request) {
         transporter.sendMail(mailOptions),
         transporter.sendMail(mailOptions1),
         transporter.sendMail(mailOptions2),
-        // transporter.sendMail(mailOptions3),
+        transporter.sendMail(mailOptions3),
       ])
         .then((res) => console.log(res))
         .catch((err) => console.log(err));

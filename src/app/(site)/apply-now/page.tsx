@@ -46,8 +46,8 @@ export interface ApplicationFormModel {
   olResultA?: string;
   olResultB?: string;
   olResultC?: string;
-  olResultD?: string;
   olResultS?: string;
+  olResultW?: string;
 
   //
   alSchool?: string;
@@ -58,8 +58,8 @@ export interface ApplicationFormModel {
   alResultA?: string;
   alResultB?: string;
   alResultC?: string;
-  alResultD?: string;
   alResultS?: string;
+  alResultW?: string;
 
   //
   yearOfCompletion?: string;
@@ -92,8 +92,8 @@ const schema = object().shape({
   olResultA: string().optional(),
   olResultB: string().optional(),
   olResultC: string().optional(),
-  olResultD: string().optional(),
   olResultS: string().optional(),
+  olResultW: string().optional(),
 
   //
   alSchool: string().optional(),
@@ -104,8 +104,8 @@ const schema = object().shape({
   alResultA: string().optional(),
   alResultB: string().optional(),
   alResultC: string().optional(),
-  alResultD: string().optional(),
   alResultS: string().optional(),
+  alResultW: string().optional(),
 
   //
   yearOfCompletion: string().optional(),
@@ -148,8 +148,8 @@ export default function ApplyNow() {
       olResultA: "",
       olResultB: "",
       olResultC: "",
-      olResultD: "",
       olResultS: "",
+      olResultW: "",
       //
       alSchool: "",
       alYear: "",
@@ -159,8 +159,8 @@ export default function ApplyNow() {
       alResultA: "",
       alResultB: "",
       alResultC: "",
-      alResultD: "",
       alResultS: "",
+      alResultW: "",
 
       //
       yearOfCompletion: "",
@@ -464,16 +464,16 @@ export default function ApplyNow() {
                           }}
                         />
                         <RadioButton
-                          label="D"
-                          value="d"
+                          label="S"
+                          value="s"
                           useControllerProps={{
                             control,
                             name: "olMathematics",
                           }}
                         />
                         <RadioButton
-                          label="S"
-                          value="s"
+                          label="W"
+                          value="w"
                           useControllerProps={{
                             control,
                             name: "olMathematics",
@@ -504,13 +504,13 @@ export default function ApplyNow() {
                           useControllerProps={{ control, name: "olEnglish" }}
                         />
                         <RadioButton
-                          label="D"
-                          value="d"
+                          label="S"
+                          value="s"
                           useControllerProps={{ control, name: "olEnglish" }}
                         />
                         <RadioButton
-                          label="S"
-                          value="s"
+                          label="W"
+                          value="w"
                           useControllerProps={{ control, name: "olEnglish" }}
                         />
                       </div>
@@ -546,19 +546,19 @@ export default function ApplyNow() {
                       />
 
                       <IncrementInput
-                        label="D"
-                        onChange={(e: number) => {
-                          onChange(e, "olResultD");
-                        }}
-                        useControllerProps={{ control, name: "olResultD" }}
-                      />
-
-                      <IncrementInput
                         label="S"
                         onChange={(e: number) => {
                           onChange(e, "olResultS");
                         }}
                         useControllerProps={{ control, name: "olResultS" }}
+                      />
+
+                      <IncrementInput
+                        label="W"
+                        onChange={(e: number) => {
+                          onChange(e, "olResultW");
+                        }}
+                        useControllerProps={{ control, name: "olResultW" }}
                       />
                     </div>
                   </div>
@@ -643,16 +643,16 @@ export default function ApplyNow() {
                           }}
                         />
                         <RadioButton
-                          label="D"
-                          value="d"
+                          label="S"
+                          value="s"
                           useControllerProps={{
                             control,
                             name: "alMathematics",
                           }}
                         />
                         <RadioButton
-                          label="S"
-                          value="s"
+                          label="W"
+                          value="w"
                           useControllerProps={{
                             control,
                             name: "alMathematics",
@@ -683,13 +683,13 @@ export default function ApplyNow() {
                           useControllerProps={{ control, name: "alEnglish" }}
                         />
                         <RadioButton
-                          label="D"
-                          value="d"
+                          label="S"
+                          value="s"
                           useControllerProps={{ control, name: "alEnglish" }}
                         />
                         <RadioButton
-                          label="S"
-                          value="s"
+                          label="W"
+                          value="w"
                           useControllerProps={{ control, name: "alEnglish" }}
                         />
                       </div>
@@ -814,17 +814,17 @@ export default function ApplyNow() {
                       <IncrementInput
                         label="D"
                         onChange={(e: number) => {
-                          onChange(e, "alResultD");
+                          onChange(e, "alResultS");
                         }}
-                        useControllerProps={{ control, name: "alResultD" }}
+                        useControllerProps={{ control, name: "alResultS" }}
                       />
 
                       <IncrementInput
                         label="S"
                         onChange={(e: number) => {
-                          onChange(e, "alResultS");
+                          onChange(e, "alResultW");
                         }}
-                        useControllerProps={{ control, name: "alResultS" }}
+                        useControllerProps={{ control, name: "alResultW" }}
                       />
                     </div>
                   </div>
