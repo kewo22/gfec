@@ -34,10 +34,10 @@ export async function POST(request: Request) {
     if (insertOneRes.insertedId) {
       const port = process.env.NODEMAILER_PORT as unknown as number;
       const transporter = nodemailer.createTransport({
-        // service: process.env.NODEMAILER_SERVICE,
-        host: "mail.privateemail.com",
-        // port,
-        port: 587,
+        service: process.env.NODEMAILER_SERVICE,
+        // host: "mail.privateemail.com",
+        port,
+        // port: 587,
         secure: false,
         auth: {
           user: process.env.NODEMAILER_USER,
@@ -86,7 +86,7 @@ export async function POST(request: Request) {
 
       const mailOptions1: Mail.Options = {
         from: process.env.NODEMAILER_USER,
-        to: process.env.TO_MAIL2 as unknown as string,
+        to: process.env.TO_MAIL_1 as unknown as string,
         subject: `Get In Touch With ${data.firstName} ${data.lastName}`,
         text: "Record Added",
         html,
@@ -94,7 +94,15 @@ export async function POST(request: Request) {
 
       const mailOptions2: Mail.Options = {
         from: process.env.NODEMAILER_USER,
-        to: process.env.TO_MAIL3 as unknown as string,
+        to: process.env.TO_MAIL_2 as unknown as string,
+        subject: `Get In Touch With ${data.firstName} ${data.lastName}`,
+        text: "Record Added",
+        html,
+      };
+
+      const mailOptions3: Mail.Options = {
+        from: process.env.NODEMAILER_USER,
+        to: process.env.TO_MAIL_3 as unknown as string,
         subject: `Get In Touch With ${data.firstName} ${data.lastName}`,
         text: "Record Added",
         html,
@@ -104,6 +112,7 @@ export async function POST(request: Request) {
         transporter.sendMail(mailOptions),
         transporter.sendMail(mailOptions1),
         transporter.sendMail(mailOptions2),
+        transporter.sendMail(mailOptions3),
       ])
         .then((res) => console.log(res))
         .catch((err) => console.log(err));
