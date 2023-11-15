@@ -127,14 +127,22 @@ export async function POST(request: Request) {
       // const yy = await transporter.sendMail(mailOptions);
       // console.log("🚀 ~ file: getInTouch.ts:151 ~ yy:", yy);
     } else {
+      loggerCollection.insertOne({
+        type: "insert failed",
+        log: JSON.stringify(insertOneRes)
+      })
       throw Error("Insert failed");
     }
 
+    loggerCollection.insertOne({
+      type: "insert success",
+      log: JSON.stringify(insertOneRes)
+    })
     // return res.status(200).json({ message: `Success`, data: insertOneRes });
     return Response.json({ message: `Success`, data: insertOneRes });
   } catch (error) {
     loggerCollection.insertOne({
-      type: "email success",
+      type: "failed",
       log: JSON.stringify(error)
     })
     return Response.json({ message: `Failed`, data: null, error });
