@@ -36,8 +36,9 @@ export async function POST(request: Request) {
       const transporter = nodemailer.createTransport({
         // service: process.env.NODEMAILER_SERVICE,
         host: "mail.privateemail.com",
-        port,
-        secure: true,
+        // port,
+        port: 587,
+        secure: false,
         auth: {
           user: process.env.NODEMAILER_USER,
           pass: process.env.NODEMAILER_PASSWORD,
