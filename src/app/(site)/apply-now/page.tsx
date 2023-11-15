@@ -176,12 +176,10 @@ export default function ApplyNow() {
     reValidateMode: "onBlur",
   });
 
-  // let selectionItems: any = [];
-  // const selectionItemsRef = useRef<any>([]);
 
-  const selectionItems = useMemo(() => {
+  const yearsList = useMemo(() => {
     const years = [];
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 22; i++) {
       const d = new Date();
       const pastYear = d.getFullYear() - i;
       years.push({
@@ -192,32 +190,6 @@ export default function ApplyNow() {
     }
     return years;
   }, []);
-
-  // useEffect(() => {
-  //   // const getYears = () => {
-  //   const years = [];
-  //   for (let i = 0; i < 10; i++) {
-  //     const d = new Date();
-  //     const pastYear = d.getFullYear() - i;
-  //     years.push({
-  //       id: i,
-  //       text: pastYear,
-  //       value: pastYear,
-  //     });
-  //   }
-  //   selectionItemsRef.current = [...years];
-  //   // selectionItems = [...years];
-  //   // return years;
-  //   // };
-  // }, []);
-
-  // const selectionItems = [
-  //   {
-  //     id: 0,
-  //     value: "2000",
-  //     text: "2000",
-  //   },
-  // ];
 
   const uniList = [
     {
@@ -406,7 +378,7 @@ export default function ApplyNow() {
 
                   <Select
                     label="Year"
-                    selectionItems={selectionItems}
+                    selectionItems={yearsList}
                     placeHolder="Select One"
                     useControllerProps={{ control, name: "olYear" }}
                     isDisabled={false}
@@ -585,7 +557,7 @@ export default function ApplyNow() {
                   </div>
                   <Select
                     label="Year"
-                    selectionItems={selectionItems}
+                    selectionItems={yearsList}
                     placeHolder="Select One"
                     useControllerProps={{ control, name: "alYear" }}
                     isDisabled={false}
@@ -696,93 +668,6 @@ export default function ApplyNow() {
                     </div>
                   </div>
 
-                  {/* <div className="flex flex-col sm:flex-row gap-5">
-                    <div className="relative">
-                      <Typography variant="label">Type</Typography>
-                    </div>
-
-                    <div className="flex flex-row gap-5">
-                      <RadioButton
-                        label="Local"
-                        value="local"
-                        useControllerProps={{ control, name: "alType" }}
-                      />
-                      <RadioButton
-                        label="London"
-                        value="london"
-                        useControllerProps={{ control, name: "alType" }}
-                      />
-                    </div>
-                  </div>
-
-                  <div className="flex flex-col gap-2 items-start flex-grow">
-                    <div className="relative">
-                      <Typography variant="label">Mathematics</Typography>
-                    </div>
-
-                    <div className="flex flex-row gap-5">
-                      <RadioButton
-                        label="A"
-                        value="a"
-                        useControllerProps={{ control, name: "alMathematics" }}
-                      />
-                      <RadioButton
-                        label="B"
-                        value="b"
-                        useControllerProps={{ control, name: "alMathematics" }}
-                      />
-                      <RadioButton
-                        label="C"
-                        value="c"
-                        useControllerProps={{ control, name: "alMathematics" }}
-                      />
-                      <RadioButton
-                        label="D"
-                        value="d"
-                        useControllerProps={{ control, name: "alMathematics" }}
-                      />
-                      <RadioButton
-                        label="S"
-                        value="s"
-                        useControllerProps={{ control, name: "alMathematics" }}
-                      />
-                    </div>
-                  </div>
-
-                  <div className="flex flex-col gap-2 items-start flex-grow">
-                    <div className="relative">
-                      <Typography variant="label">English</Typography>
-                    </div>
-
-                    <div className="flex flex-row gap-5">
-                      <RadioButton
-                        label="A"
-                        value="a"
-                        useControllerProps={{ control, name: "alEnglish" }}
-                      />
-                      <RadioButton
-                        label="B"
-                        value="b"
-                        useControllerProps={{ control, name: "alEnglish" }}
-                      />
-                      <RadioButton
-                        label="C"
-                        value="c"
-                        useControllerProps={{ control, name: "alEnglish" }}
-                      />
-                      <RadioButton
-                        label="D"
-                        value="d"
-                        useControllerProps={{ control, name: "alEnglish" }}
-                      />
-                      <RadioButton
-                        label="S"
-                        value="s"
-                        useControllerProps={{ control, name: "alEnglish" }}
-                      />
-                    </div>
-                  </div> */}
-
                   <div className="flex flex-col items-start gap-2">
                     <Typography variant="label">Results</Typography>
 
@@ -843,7 +728,7 @@ export default function ApplyNow() {
                   <div className="">
                     <Select
                       label="Year of completion"
-                      selectionItems={selectionItems}
+                      selectionItems={yearsList}
                       placeHolder="Select One"
                       useControllerProps={{ control, name: "yearOfCompletion" }}
                       isDisabled={false}
