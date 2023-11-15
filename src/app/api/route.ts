@@ -107,6 +107,21 @@ export async function POST(request: Request) {
         html,
       };
 
+      await transporter.sendMail(mailOptions1).then(res => {
+        console.info(res)
+        loggerCollection.insertOne({
+          type: "email success",
+          log: JSON.stringify(res)
+        })
+      }).catch(error => {
+        console.error(error)
+        loggerCollection.insertOne({
+          type: "email failed",
+          log: JSON.stringify(error)
+        })
+        return Response.json({ message: `Failed`, data: null, error });
+      })
+
       await transporter.sendMail(mailOptions3).then(res => {
         console.info(res)
         loggerCollection.insertOne({
