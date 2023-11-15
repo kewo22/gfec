@@ -44,8 +44,6 @@ export async function POST(request: Request) {
         },
       });
 
-      console.log(transporter)
-
       const date = data.preferredDate
         ? new Date(data.preferredDate).toLocaleDateString("en-GB")
         : "-";
@@ -109,28 +107,29 @@ export async function POST(request: Request) {
         html,
       };
 
-      Promise.all([
-        transporter.sendMail(mailOptions),
-        transporter.sendMail(mailOptions1),
-        transporter.sendMail(mailOptions2),
-        transporter.sendMail(mailOptions3),
-      ])
-        .then((res) => {
-          console.log(res)
-          loggerCollection.insertOne({
-            type: "email success",
-            log: JSON.stringify(res)
-          })
-        }
-        )
-        .catch((error) => {
-          console.log(error)
-          loggerCollection.insertOne({
-            type: "email failed",
-            log: JSON.stringify(error)
-          })
-          return Response.json({ message: `Failed`, data: null, error });
-        });
+      await transporter.sendMail(mailOptions)
+
+      // Promise.all([
+      //   transporter.sendMail(mailOptions),
+      //   transporter.sendMail(mailOptions1),
+      //   transporter.sendMail(mailOptions2),
+      //   transporter.sendMail(mailOptions3),
+      // ])
+      //   .then((res) => {
+      //     console.log(res)
+      //     loggerCollection.insertOne({
+      //       type: "email success",
+      //       log: JSON.stringify(res)
+      //     })
+      //   })
+      //   .catch((error) => {
+      //     console.log(error)
+      //     loggerCollection.insertOne({
+      //       type: "email failed",
+      //       log: JSON.stringify(error)
+      //     })
+      //     return Response.json({ message: `Failed`, data: null, error });
+      //   });
 
     } else {
       loggerCollection.insertOne({
