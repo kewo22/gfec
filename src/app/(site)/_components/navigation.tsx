@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import Image from "next/image";
 import Slider from "react-slick";
+import { useInView } from "react-intersection-observer";
 
 import NavLinks from "./nav-links";
 import NavContactRibbon from "./nav-contact-ribbon";
@@ -19,6 +20,11 @@ import GetInTouchForm from "./get-in-touch-form";
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
 
+  const { ref, inView } = useInView({
+    threshold: 0,
+  });
+  console.log("🚀 ~ file: navigation.tsx:32 ~ Navigation ~ inView:", inView);
+
   const settings = {
     dots: false,
     fade: true,
@@ -31,10 +37,9 @@ export default function Navigation() {
     className: "nav-slider",
   };
 
-
   const onOpenModel = () => {
-    setIsOpen(true)
-  }
+    setIsOpen(true);
+  };
 
   const Items = () => {
     return (
@@ -111,7 +116,7 @@ export default function Navigation() {
               </div>
             </div>
 
-            <NavActions openModel={onOpenModel}/>
+            <NavActions openModel={onOpenModel} />
           </div>
 
           <NavSocial wrapperClass="flex flex-row gap-8 items-center justify-start mx-5 lg:mx-0" />
@@ -121,7 +126,11 @@ export default function Navigation() {
   };
 
   return (
-    <nav className={`h-[900px] flex flex-col items-center relative`}>
+    <nav
+      className={`h-[900px] flex flex-col items-center relative`}
+      id="main-nav"
+      ref={ref}
+    >
       <section className="w-full h-auto">
         <NavContactRibbon />
       </section>
@@ -135,6 +144,7 @@ export default function Navigation() {
         </div>
       </Slider>
 
+      {/* {!inView && <MobileNav />} */}
       <MobileNav />
 
       <Modal
