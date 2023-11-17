@@ -99,10 +99,11 @@ export default function Testimonial() {
         <SectionTitle title="What They're Talking About GFEC" />
       </div>
 
+      {/*  */}
       <div
         className={`${
           isLoading ? "opacity-0" : "opacity-100"
-        } mx-5 transition-all duration-1000 ease-in-out min-h-[630px]`}
+        } mx-5 transition-all duration-1000 ease-in-out xl:min-h-[630px]`}
       >
         <Plyr {...first} />
       </div>

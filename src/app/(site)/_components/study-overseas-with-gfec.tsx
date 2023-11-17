@@ -4,6 +4,7 @@ import React, { useEffect } from "react";
 
 import useSWR from "swr";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import Plyr, { PlyrProps } from "plyr-react";
 
 import Container from "./layouts/container";
@@ -16,6 +17,8 @@ import { ResolveBaseUrl } from "@/app/utils/common";
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 export default function StudyOverseasWithGfec() {
+  const router = useRouter();
+
   useEffect(() => {
     console.log(process.env.NEXT_PUBLIC_VERCEL_ENV);
     console.log(process.env.NEXT_PUBLIC_VERCEL_URL);
@@ -53,6 +56,10 @@ export default function StudyOverseasWithGfec() {
       // controls: ["play-large", "f"],
       // hideControls: true,
     }, // https://github.com/sampotts/plyr#options
+  };
+
+  const onApplyNowClick = () => {
+    router.push("/apply-now", { scroll: true });
   };
 
   return (
@@ -97,7 +104,9 @@ export default function StudyOverseasWithGfec() {
             text="Apply Now"
             size="md"
             customClass="w-fit block mx-auto sm:hidden lg:block lg:!ml-[inherit]"
-            onClick={() => {}}
+            onClick={() => {
+              onApplyNowClick();
+            }}
           />
         </div>
       </div>

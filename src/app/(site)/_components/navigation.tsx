@@ -5,6 +5,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Slider from "react-slick";
 import { useInView } from "react-intersection-observer";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import NavLinks from "./nav-links";
 import NavContactRibbon from "./nav-contact-ribbon";
@@ -13,7 +14,6 @@ import NavActions from "./nav-actions";
 import MobileNav from "./mobile-nav";
 import { Typography } from "@/app/_components/ui/typography";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Modal from "@/app/_components/ui/modal";
 import GetInTouchForm from "./get-in-touch-form";
 
@@ -23,7 +23,6 @@ export default function Navigation() {
   const { ref, inView } = useInView({
     threshold: 0,
   });
-  console.log("🚀 ~ file: navigation.tsx:32 ~ Navigation ~ inView:", inView);
 
   const settings = {
     dots: false,
@@ -145,7 +144,7 @@ export default function Navigation() {
       </Slider>
 
       {/* {!inView && <MobileNav />} */}
-      <MobileNav />
+      <MobileNav isMainNavInView={inView} />
 
       <Modal
         isOpen={isOpen}
