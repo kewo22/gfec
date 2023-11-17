@@ -144,12 +144,12 @@ export default function MobileNav({ isMainNavInView }: any) {
               className="flex flex-col items-center justify-center gap-1"
             >
               <FontAwesomeIcon
-                size="lg"
+                size="sm"
                 className={`text-white ${item.isActive && "!text-primary"}`}
                 icon={item.icon}
               />
               <Typography
-                variant="p"
+                variant="small"
                 className={`text-white ${item.isActive && "!text-primary"}`}
               >
                 {item.text}
