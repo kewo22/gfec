@@ -31,12 +31,12 @@ export default function SideNav() {
   });
 
   return (
-    <aside className="min-h-full overflow-hidden flex-[0_0_180px] bg-white rounded-lg shadow-lg flex flex-col">
+    <aside className="min-h-full overflow-hidden flex-[0_0_180px] bg-secondary rounded-lg shadow-lg flex flex-col">
       <div className="flex flex-col items-center justify-center py-14">
-        <Typography variant="h4" className="text-secondary font-bold">
+        <Typography variant="h4" className="text-white font-bold">
           GFEC
         </Typography>
-        <Typography variant="xs" className="">
+        <Typography variant="xs" className="text-white">
           DASHBOARD
         </Typography>
       </div>
@@ -50,26 +50,34 @@ export default function SideNav() {
             >
               <FontAwesomeIcon
                 icon={navItem.icon}
-                className={`text-slate-800 ${
-                  navItem.isActive && "!text-secondary font-bold"
+                className={`text-white ${
+                  navItem.isActive && "!text-primary font-bold"
                 }`}
               />
               <Typography
                 variant="small"
-                className={`text-slate-800 flex-grow ${
-                  navItem.isActive && "!text-secondary font-bold"
+                className={`text-white flex-grow ${
+                  navItem.isActive && "!text-primary font-bold"
                 }`}
               >
                 {navItem.text}
               </Typography>
-              {navItem.isActive && <FontAwesomeIcon icon={faChevronRight} className="text-secondary"/>}
+              {navItem.isActive && (
+                <FontAwesomeIcon
+                  icon={faChevronRight}
+                  className="text-primary"
+                />
+              )}
             </Link>
           );
         })}
       </div>
       <div className="flex flex-col py-10">
         <button>
-          <FontAwesomeIcon icon={faArrowRightFromBracket} />
+          <FontAwesomeIcon
+            icon={faArrowRightFromBracket}
+            className="text-white"
+          />
         </button>
       </div>
     </aside>

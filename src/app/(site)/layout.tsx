@@ -1,6 +1,7 @@
 import { Ubuntu } from "next/font/google";
 
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/react";
 
 import Navigation from "./_components/navigation";
 import Footer from "./_components/footer";
@@ -26,6 +27,7 @@ export default function SiteLayout({
         <Navigation />
         <main className="">{children}</main>
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
