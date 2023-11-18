@@ -1,10 +1,10 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from "tailwindcss";
 
 const config: Config = {
   content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
@@ -45,17 +45,21 @@ const config: Config = {
         accent: "#040607",
       },
       height: {
-        'nav-height': '1000px',
-        '128': '32rem',
-        'mobile-nav-height': "calc(100% - 5.4%)"
+        "nav-height": "1000px",
+        "128": "32rem",
+        "mobile-nav-height": "calc(100% - 5.4%)",
       },
       boxShadow: {
-        'about-card': 'rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px',
-      }
+        "about-card":
+          "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px",
+      },
+      backgroundColor: {
+        "alice-blue": "#DAEAF7",
+      },
     },
   },
   plugins: [],
-}
-export default config
+};
+export default config;
 
 // https://www.youtube.com/watch?v=aSlK3GhRuXA
