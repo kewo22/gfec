@@ -10,7 +10,7 @@ export default function Dxb() {
           variant="h1"
           className="text-white tracking-wider shadow-2xl"
         >
-          Dubai
+          DUBAI
         </Typography>
       </div>
 

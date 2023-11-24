@@ -28,6 +28,7 @@ import Ned from "../_components/countries/ned";
 import Lat from "../_components/countries/lat";
 import Swi from "../_components/countries/swi";
 import Dxb from "../_components/countries/dxb";
+import Malta from "../_components/countries/malta";
 
 export default function Destination() {
   const [selectedCountry, setSelectedCountry] = useState(PRE_SELECTED_COUNTRY);
@@ -112,6 +113,7 @@ export default function Destination() {
             {selectedCountry.id === "lat" && <Lat />}
             {selectedCountry.id === "swi" && <Swi />}
             {selectedCountry.id === "dxb" && <Dxb />}
+            {selectedCountry.id === "malta" && <Malta />}
           </div>
         </div>
       </Container>
