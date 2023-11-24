@@ -133,7 +133,7 @@ export const COUNTRIES: Country[] = [
     },
     {
         id: "dxb",
-        image: "/dubai.jpg",
+        image: "/dxb.jpg",
         country: "UAE - Dubai",
         class: "",
         description: "",
