@@ -131,6 +131,26 @@ export const COUNTRIES: Country[] = [
         flag: "/ch.svg",
         flagBg: 'bg-ch-flag'
     },
+    {
+        id: "dxb",
+        image: "/dxb.jpg",
+        country: "UAE - Dubai",
+        class: "",
+        description: "",
+        isCourseDetailAvailable: false,
+        flag: "/dxb.svg",
+        flagBg: 'bg-dxb-flag'
+    },
+    {
+        id: "malta",
+        image: "/malta.jpg",
+        country: "Malta",
+        class: "",
+        description: "",
+        isCourseDetailAvailable: false,
+        flag: "/malta.svg",
+        flagBg: 'bg-malta-flag'
+    },
 ];
 
 export const PRE_SELECTED_COUNTRY: Country = COUNTRIES[0]
