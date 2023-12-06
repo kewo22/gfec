@@ -1,28 +1,27 @@
-import { ApplicationFormModel } from "../(site)/apply-now/page";
+import { ApplicationFormModel } from "../_interfaces/application-form";
 
 export const ResolveBaseUrl = (env: string) => {
-  let privacyBasePolicyUrl = "";
+  let appBaseUrl = "";
 
   switch (env) {
     case "production":
-      privacyBasePolicyUrl = process.env.APP_BASE_URL!;
+      appBaseUrl = process.env.APP_BASE_URL!;
       break;
 
     case "preview":
-      privacyBasePolicyUrl =
+      appBaseUrl =
         "https://" + process.env.NEXT_PUBLIC_VERCEL_BRANCH_URL!;
       break;
 
     default:
-      privacyBasePolicyUrl = process.env.APP_BASE_URL!;
+      appBaseUrl = process.env.APP_BASE_URL!;
       break;
   }
 
-  return privacyBasePolicyUrl;
+  return appBaseUrl;
 };
 
 export const ToApplicationFormObject = (obj: ApplicationFormModel) => {
-
   return {
     personal: {
       firstName: obj.firstName,
@@ -68,3 +67,5 @@ export const ToApplicationFormObject = (obj: ApplicationFormModel) => {
     }
   }
 }
+
+export const Fetcher = (url: string) => fetch(url).then((res) => res.json());

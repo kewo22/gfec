@@ -1,62 +1,43 @@
+"use client";
+
 import React from "react";
 
-import {
-  Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/app/_components/ui/table";
-import {
-  ColumnDef,
-  getCoreRowModel,
-  useReactTable,
-} from "@tanstack/react-table";
+import useSWR from "swr";
+
+import { ResolveBaseUrl, Fetcher } from "@/app/utils/common";
+import { ApplicationFormModel } from "@/app/_interfaces/application-form";
+import { ApiResponse } from "@/app/_interfaces/response";
+
 import { DataGrid } from "./DataGrid";
-
-export type Payment = {
-  id: string;
-  amount: number;
-  status: "pending" | "processing" | "success" | "failed";
-  email: string;
-};
-
-export const payments: Payment[] = [
-  {
-    id: "728ed52f",
-    amount: 100,
-    status: "pending",
-    email: "m@example.com",
-  },
-  {
-    id: "489e1d42",
-    amount: 125,
-    status: "processing",
-    email: "example@gmail.com",
-  },
-];
-
-export const columns: ColumnDef<Payment>[] = [
-  {
-    accessorKey: "status",
-    header: "Status",
-  },
-  {
-    accessorKey: "email",
-    header: "Email",
-  },
-  {
-    accessorKey: "amount",
-    header: "Amount",
-  },
-];
+import Loader from "../_components/Loader";
+import { Typography } from "@/app/_components/ui/typography";
 
 export default function Application() {
+  const baseUrl = ResolveBaseUrl(process.env.NEXT_PUBLIC_VERCEL_ENV!);
+
+  const { data, isLoading } = useSWR<ApiResponse<ApplicationFormModel[]>>(
+    `${baseUrl}/api/application`,
+    Fetcher,
+    {
+      revalidateOnFocus: false,
+      revalidateOnReconnect: false,
+    }
+  );
+
+  if (isLoading) {
+    return <Loader />;
+  }
+
+  const _data: ApplicationFormModel[] = data?.data.concat(
+    data.data
+  ) as ApplicationFormModel[];
+
   return (
-    <div className="max-w-5xl mx-auto">
-      <DataGrid />
+    <div className="p-5 h-full overflow-hidden flex flex-col">
+      <Typography variant="h3" className="text-slate-700 flex-auto">
+        Applications
+      </Typography>
+      <div className="max-w-6xl flex-grow overflow-hidden">{data && <DataGrid data={_data} />}</div>
     </div>
   );
 }
