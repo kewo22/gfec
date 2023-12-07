@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 
 import useSWR from "swr";
 
@@ -9,11 +9,16 @@ import { ApplicationFormModel } from "@/app/_interfaces/application-form";
 import { ApiResponse } from "@/app/_interfaces/response";
 
 import { DataGrid } from "./DataGrid";
-import Loader from "../_components/Loader";
+import Loader from "../../_components/Loader";
 import { Typography } from "@/app/_components/ui/typography";
+import Details from "./Details";
 
 export default function Application() {
   const baseUrl = ResolveBaseUrl(process.env.NEXT_PUBLIC_VERCEL_ENV!);
+
+  const [application, setApplication] = useState<ApplicationFormModel | null>(
+    null
+  );
 
   const { data, isLoading } = useSWR<ApiResponse<ApplicationFormModel[]>>(
     `${baseUrl}/api/application`,
@@ -23,6 +28,11 @@ export default function Application() {
       revalidateOnReconnect: false,
     }
   );
+
+  const onViewRow = (row: ApplicationFormModel) => {
+    console.log("🚀 ~ file: page.tsx:28 ~ onViewRow ~ row:", row);
+    setApplication(row);
+  };
 
   if (isLoading) {
     return <Loader />;
@@ -37,7 +47,14 @@ export default function Application() {
       <Typography variant="h3" className="text-slate-700 flex-auto">
         Applications
       </Typography>
-      <div className="max-w-6xl flex-grow overflow-hidden">{data && <DataGrid data={_data} />}</div>
+      <div className="h-full overflow-hidden flex flex-row gap-5">
+        <div className="max-w-6xl flex-grow overflow-hidden">
+          {data && <DataGrid data={_data} onViewRow={onViewRow} />}
+        </div>
+        <div className="bg-slate-50 border border-slate-300 rounded-lg flex-grow m-5 p-5 h-full overflow-hidden">
+          <Details row={application} />
+        </div>
+      </div>
     </div>
   );
 }

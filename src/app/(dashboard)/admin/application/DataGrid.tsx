@@ -22,6 +22,8 @@ import {
   TableRow,
 } from "@/app/_components/ui/table";
 import { ApplicationFormModel } from "@/app/_interfaces/application-form";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye } from "@fortawesome/free-solid-svg-icons";
 // import { ArrowUpDown, ChevronDown, MoreHorizontal } from "lucide-react";
 
 // import { Button } from "@/components/ui/button";
@@ -85,158 +87,15 @@ import { ApplicationFormModel } from "@/app/_interfaces/application-form";
 //   email: string;
 // };
 
-export const columns: ColumnDef<ApplicationFormModel>[] = [
-  // {
-  //   id: "select",
-  //   header: ({ table }) => (
-  //     <>CH1</>
-  //     //   <Checkboxes
-  //     //     checked={
-  //     //       table.getIsAllPageRowsSelected() ||
-  //     //       (table.getIsSomePageRowsSelected() && "indeterminate")
-  //     //     }
-  //     //     onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-  //     //     aria-label="Select all"
-  //     //   />
-  //   ),
-  //   cell: ({ row }) => (
-  //     <>CH2</>
-  //     //   <Checkbox
-  //     //     checked={row.getIsSelected()}
-  //     //     onCheckedChange={(value) => row.toggleSelected(!!value)}
-  //     //     aria-label="Select row"
-  //     //   />
-  //   ),
-  //   enableSorting: false,
-  //   enableHiding: false,
-  // },
-  // {
-  //   accessorKey: "status",
-  //   header: "Status",
-  //   cell: ({ row }) => (
-  //     <div className="capitalize">{row.getValue("status")}</div>
-  //   ),
-  //   enableSorting: true,
-  // },
-  // {
-  //   accessorKey: "email",
-  //   header: ({ column }) => {
-  //     return (
-  //       <button
-  //         onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-  //       >
-  //         Email
-  //       </button>
-  // <Button
-  //   variant="ghost"
-  //   onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-  // >
-  //   Email
-  //   <ArrowUpDown className="ml-2 h-4 w-4" />
-  // </Button>
-  //     );
-  //   },
-  //   cell: ({ row }) => <div className="lowercase">{row.getValue("email")}</div>,
-  // },
-  // {
-  //   accessorKey: "amount",
-  //   header: () => <div className="text-right">Amount</div>,
-  //   cell: ({ row }) => {
-  //     const amount = parseFloat(row.getValue("amount"));
-
-  //     // Format the amount as a dollar amount
-  //     const formatted = new Intl.NumberFormat("en-US", {
-  //       style: "currency",
-  //       currency: "USD",
-  //     }).format(amount);
-
-  //     return <div className="text-right font-medium">{formatted}</div>;
-  //   },
-  // },
-  // {
-  //   id: "actions",
-  //   enableHiding: false,
-  //   cell: ({ row }) => {
-  //     const payment = row.original;
-
-  //     return (
-  //       <>DD</>
-  //       // <DropdownMenu>
-  //       //   <DropdownMenuTrigger asChild>
-  //       //     <Button variant="ghost" className="h-8 w-8 p-0">
-  //       //       <span className="sr-only">Open menu</span>
-  //       //       <MoreHorizontal className="h-4 w-4" />
-  //       //     </Button>
-  //       //   </DropdownMenuTrigger>
-  //       //   <DropdownMenuContent align="end">
-  //       //     <DropdownMenuLabel>Actions</DropdownMenuLabel>
-  //       //     <DropdownMenuItem
-  //       //       onClick={() => navigator.clipboard.writeText(payment.id)}
-  //       //     >
-  //       //       Copy payment ID
-  //       //     </DropdownMenuItem>
-  //       //     <DropdownMenuSeparator />
-  //       //     <DropdownMenuItem>View customer</DropdownMenuItem>
-  //       //     <DropdownMenuItem>View payment details</DropdownMenuItem>
-  //       //   </DropdownMenuContent>
-  //       // </DropdownMenu>
-  //     );
-  //   },
-  // },
-  {
-    id: "name",
-    header: ({ table }) => <>Name</>,
-    cell: ({ row }) => (
-      <>
-        {row.original.firstName} {row.original.lastName}
-      </>
-    ),
-    enableSorting: false,
-    enableHiding: false,
-  },
-  {
-    id: "email",
-    header: ({ table }) => <>Email</>,
-    cell: ({ row }) => <>{row.original.email}</>,
-    enableSorting: false,
-    enableHiding: false,
-  },
-  {
-    id: "mobile",
-    header: ({ table }) => <>Mobile</>,
-    cell: ({ row }) => <>{row.original.mobile}</>,
-    enableSorting: false,
-    enableHiding: false,
-  },
-  {
-    id: "DOB",
-    header: ({ table }) => <>DOB</>,
-    cell: ({ row }) => (
-      <>
-        {row.original.dob
-          ? new Date(row.original.dob.toString()).toDateString()
-          : "-"}
-      </>
-    ),
-    enableSorting: false,
-    enableHiding: false,
-  },
-  {
-    id: "Address",
-    header: ({ table }) => <>Address</>,
-    cell: ({ row }) => <>{row.original.address}</>,
-    enableSorting: false,
-    enableHiding: false,
-  },
-];
+// export ;
 
 interface DataGridProps {
   data: ApplicationFormModel[];
+  onViewRow: (row: ApplicationFormModel) => void;
 }
 
 export function DataGrid(props: DataGridProps) {
-  const { data } = props;
-  console.log("🚀 ~ file: DataGrid.tsx:239 ~ DataGrid ~ data:", data);
+  const { data, onViewRow } = props;
 
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
@@ -245,6 +104,178 @@ export function DataGrid(props: DataGridProps) {
   const [columnVisibility, setColumnVisibility] =
     React.useState<VisibilityState>({});
   const [rowSelection, setRowSelection] = React.useState({});
+
+  const columns: ColumnDef<ApplicationFormModel>[] = [
+    // {
+    //   id: "select",
+    //   header: ({ table }) => (
+    //     <>CH1</>
+    //     //   <Checkboxes
+    //     //     checked={
+    //     //       table.getIsAllPageRowsSelected() ||
+    //     //       (table.getIsSomePageRowsSelected() && "indeterminate")
+    //     //     }
+    //     //     onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+    //     //     aria-label="Select all"
+    //     //   />
+    //   ),
+    //   cell: ({ row }) => (
+    //     <>CH2</>
+    //     //   <Checkbox
+    //     //     checked={row.getIsSelected()}
+    //     //     onCheckedChange={(value) => row.toggleSelected(!!value)}
+    //     //     aria-label="Select row"
+    //     //   />
+    //   ),
+    //   enableSorting: false,
+    //   enableHiding: false,
+    // },
+    // {
+    //   accessorKey: "status",
+    //   header: "Status",
+    //   cell: ({ row }) => (
+    //     <div className="capitalize">{row.getValue("status")}</div>
+    //   ),
+    //   enableSorting: true,
+    // },
+    // {
+    //   accessorKey: "email",
+    //   header: ({ column }) => {
+    //     return (
+    //       <button
+    //         onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+    //       >
+    //         Email
+    //       </button>
+    // <Button
+    //   variant="ghost"
+    //   onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+    // >
+    //   Email
+    //   <ArrowUpDown className="ml-2 h-4 w-4" />
+    // </Button>
+    //     );
+    //   },
+    //   cell: ({ row }) => <div className="lowercase">{row.getValue("email")}</div>,
+    // },
+    // {
+    //   accessorKey: "amount",
+    //   header: () => <div className="text-right">Amount</div>,
+    //   cell: ({ row }) => {
+    //     const amount = parseFloat(row.getValue("amount"));
+
+    //     // Format the amount as a dollar amount
+    //     const formatted = new Intl.NumberFormat("en-US", {
+    //       style: "currency",
+    //       currency: "USD",
+    //     }).format(amount);
+
+    //     return <div className="text-right font-medium">{formatted}</div>;
+    //   },
+    // },
+    // {
+    //   id: "actions",
+    //   enableHiding: false,
+    //   cell: ({ row }) => {
+    //     const payment = row.original;
+
+    //     return (
+    //       <>DD</>
+    // <DropdownMenu>
+    //   <DropdownMenuTrigger asChild>
+    //     <Button variant="ghost" className="h-8 w-8 p-0">
+    //       <span className="sr-only">Open menu</span>
+    //       <MoreHorizontal className="h-4 w-4" />
+    //     </Button>
+    //   </DropdownMenuTrigger>
+    //   <DropdownMenuContent align="end">
+    //     <DropdownMenuLabel>Actions</DropdownMenuLabel>
+    //     <DropdownMenuItem
+    //       onClick={() => navigator.clipboard.writeText(payment.id)}
+    //     >
+    //       Copy payment ID
+    //     </DropdownMenuItem>
+    //     <DropdownMenuSeparator />
+    //     <DropdownMenuItem>View customer</DropdownMenuItem>
+    //     <DropdownMenuItem>View payment details</DropdownMenuItem>
+    //   </DropdownMenuContent>
+    // </DropdownMenu>
+    //     );
+    //   },
+    // },
+    {
+      id: "name",
+      header: ({ table }) => <>Name</>,
+      cell: ({ row }) => (
+        <span className="block w-40">
+          {row.original.firstName} {row.original.lastName}
+        </span>
+      ),
+      enableSorting: false,
+      enableHiding: false,
+    },
+    {
+      id: "email",
+      header: ({ table }) => <>Email</>,
+      cell: ({ row }) => <>{row.original.email}</>,
+      enableSorting: false,
+      enableHiding: false,
+    },
+    {
+      id: "mobile",
+      header: ({ table }) => <>Mobile</>,
+      cell: ({ row }) => <>{row.original.mobile}</>,
+      enableSorting: false,
+      enableHiding: false,
+    },
+    {
+      id: "DOB",
+      header: ({ table }) => <>DOB</>,
+      cell: ({ row }) => (
+        <>
+          {row.original.dob
+            ? new Date(row.original.dob.toString()).toLocaleDateString()
+            : "-"}
+        </>
+      ),
+      enableSorting: false,
+      enableHiding: false,
+    },
+    {
+      id: "gender",
+      header: ({ table }) => <>Gender</>,
+      cell: ({ row }) => <span className="capitalize">{row.original.gender}</span>,
+      enableSorting: false,
+      enableHiding: false,
+    },
+    {
+      id: "Address",
+      header: ({ table }) => <>Address</>,
+      cell: ({ row }) => <span className="block w-36">{row.original.address}</span>,
+      enableSorting: false,
+      enableHiding: false,
+    },
+    {
+      id: "actions",
+      header: ({ table }) => (
+        <span className="text-center w-full block">Actions</span>
+      ),
+      enableHiding: false,
+      cell: ({ row }) => {
+        const record = row.original;
+        return (
+          <>
+            <FontAwesomeIcon
+              icon={faEye}
+              size="lg"
+              className="text-slate-700 px-10 cursor-pointer hover:text-secondary"
+              onClick={() => onViewClick(record)}
+            />
+          </>
+        );
+      },
+    },
+  ];
 
   const table = useReactTable({
     data,
@@ -268,6 +299,10 @@ export function DataGrid(props: DataGridProps) {
       },
     },
   });
+
+  const onViewClick = (row: ApplicationFormModel) => {
+    onViewRow(row);
+  };
 
   return (
     <div className="w-full h-full overflow-hidden flex flex-col items-start justify-start">
@@ -307,7 +342,7 @@ export function DataGrid(props: DataGridProps) {
           </DropdownMenuContent>
         </DropdownMenu> */}
       </div>
-      <div className="rounded-md border flex-grow overflow-auto">
+      <div className="w-full rounded-md border flex-grow overflow-auto">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
