@@ -36,6 +36,8 @@ export interface ApplicationFormModel {
     affiliatedUniversity?: string;
     affiliatedUniversityText?: string;
     stream?: string;
+    gpa?: string;
+    class?: string;
 
     //
     country?: string;

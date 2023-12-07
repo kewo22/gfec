@@ -29,7 +29,6 @@ import {
 } from "../_constants/countries.constants";
 import { ApplicationFormModel } from "@/app/_interfaces/application-form";
 
-
 const schema = object().shape({
   firstName: string().required("Required"),
   lastName: string().required("Required"),
@@ -70,6 +69,8 @@ const schema = object().shape({
   affiliatedUniversity: string().optional(),
   affiliatedUniversityText: string().optional(),
   stream: string().optional(),
+  gpa: string().optional(),
+  class: string().optional(),
 
   //
   country: string().optional(),
@@ -125,7 +126,10 @@ export default function ApplyNow() {
       affiliatedUniversity: "",
       affiliatedUniversityText: "",
       stream: "",
+      gpa: "",
+      class: "",
 
+      //
       country: "",
       studyArea: [],
     },
@@ -133,7 +137,6 @@ export default function ApplyNow() {
     resolver: yupResolver<ApplicationFormModel>(schema),
     reValidateMode: "onBlur",
   });
-
 
   const yearsList = useMemo(() => {
     const years = [];

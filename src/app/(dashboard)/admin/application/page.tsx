@@ -51,7 +51,7 @@ export default function Application() {
         <div className="max-w-6xl flex-grow overflow-hidden">
           {data && <DataGrid data={_data} onViewRow={onViewRow} />}
         </div>
-        <div className="bg-slate-50 border border-slate-300 rounded-lg flex-grow m-5 p-5 h-full overflow-hidden">
+        <div className="bg-slate-50 border border-slate-300 rounded-lg flex-grow m-5 p-5 overflow-hidden">
           <Details row={application} />
         </div>
       </div>
