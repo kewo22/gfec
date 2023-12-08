@@ -30,7 +30,6 @@ export default function Application() {
   );
 
   const onViewRow = (row: ApplicationFormModel) => {
-    console.log("🚀 ~ file: page.tsx:28 ~ onViewRow ~ row:", row);
     setApplication(row);
   };
 
@@ -38,9 +37,9 @@ export default function Application() {
     return <Loader />;
   }
 
-  const _data: ApplicationFormModel[] = data?.data.concat(
-    data.data
-  ) as ApplicationFormModel[];
+  // const _data: ApplicationFormModel[] = data?.data.concat(
+  //   data.data
+  // ) as ApplicationFormModel[];
 
   return (
     <div className="p-5 h-full overflow-hidden flex flex-col">
@@ -48,10 +47,10 @@ export default function Application() {
         Applications
       </Typography>
       <div className="h-full overflow-hidden flex flex-row gap-5">
-        <div className="max-w-6xl flex-grow overflow-hidden">
-          {data && <DataGrid data={_data} onViewRow={onViewRow} />}
+        <div className="flex-grow overflow-hidden flex-[0_0_70%]">
+          {data && <DataGrid data={data.data} onViewRow={onViewRow} />}
         </div>
-        <div className="bg-slate-50 border border-slate-300 rounded-lg flex-grow m-5 p-5 overflow-hidden">
+        <div className="bg-slate-50 border border-slate-300 rounded-lg flex-[0_0_27%] m-5 p-5 overflow-hidden">
           <Details row={application} />
         </div>
       </div>
