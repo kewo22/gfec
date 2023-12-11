@@ -100,6 +100,7 @@ export default function Testimonial() {
       </div>
 
       {/*  */}
+      {/* FIX THIS HEIGHT */}
       <div
         className={`${
           isLoading ? "opacity-0" : "opacity-100"

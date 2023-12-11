@@ -16,8 +16,11 @@ import { Typography } from "@/app/_components/ui/typography";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import Modal from "@/app/_components/ui/modal";
 import GetInTouchForm from "./get-in-touch-form";
+import { Modal2 } from "@/app/_components/ui/modal2";
 
 export default function Navigation() {
+  const ffff = useRef(null);
+
   const [isOpen, setIsOpen] = useState(false);
 
   const { ref, inView } = useInView({
@@ -37,7 +40,10 @@ export default function Navigation() {
   };
 
   const onOpenModel = () => {
-    setIsOpen(true);
+    if (ffff && ffff.current) {
+      setIsOpen(true);
+      (ffff.current as HTMLDialogElement).showModal();
+    }
   };
 
   const Items = () => {
@@ -146,6 +152,14 @@ export default function Navigation() {
       {/* {!inView && <MobileNav />} */}
       <MobileNav isMainNavInView={inView} />
 
+      <Modal2 ref={ffff} isOpen={isOpen}>
+        <Typography variant="h3" className="my-5 mx-auto text-center">
+          Get in Touch
+        </Typography>
+        <GetInTouchForm />
+      </Modal2>
+
+      {/* 
       <Modal
         isOpen={isOpen}
         type="GetInTouchForm"
@@ -157,7 +171,7 @@ export default function Navigation() {
           Get in Touch
         </Typography>
         <GetInTouchForm />
-      </Modal>
+      </Modal> */}
     </nav>
   );
 }

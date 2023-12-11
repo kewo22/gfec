@@ -3,7 +3,7 @@ export interface ApplicationFormModel {
     lastName: string;
     address?: string;
     dob: Date | null;
-    gender: string;
+    gender: string | null;
     email: string;
     mobile: string;
 

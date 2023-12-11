@@ -9,6 +9,7 @@ import GetInTouch from "./_components/get-in-touch";
 import Testimonial from "./_components/testimonial";
 import SuccessStoriesText from "./_components/success-stories-text";
 import StudentLife from "./_components/student-life";
+import { Modal2 } from "../_components/ui/modal2";
 
 export default function SitePage() {
   return (

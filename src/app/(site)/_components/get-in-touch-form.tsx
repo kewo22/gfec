@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 
 import { SubmitHandler, useForm } from "react-hook-form";
 import { date, object, string } from "yup";
@@ -37,9 +37,20 @@ const schema = object().shape({
   preferredDate: date().notRequired().min(dateMinusOne(), "Select future date"),
 });
 
+// interface GetInTouchFormProps {
+//   submitted: () => void;
+// }
+
+// props: GetInTouchFormProps
+
 export default function GetInTouchForm() {
+  // const { submitted } = props;
+
+  const [isLoading, setIsLoading] = useState(false);
+
   const {
     handleSubmit,
+    reset,
     control,
     formState: { errors },
     setValue,
@@ -69,13 +80,25 @@ export default function GetInTouchForm() {
         preferredDate: new Date(data.preferredDate).toString(),
       };
     }
+    setIsLoading(true);
     fetch(`${privacyBasePolicyUrl}/api`, {
       method: "post",
       body: JSON.stringify(tempData),
       headers: {
         "Content-Type": "application/json",
       },
-    });
+    })
+      .then(() => {
+        setIsLoading(false);
+      })
+      .catch(() => {
+        setIsLoading(false);
+      })
+      .finally(() => {
+        setIsLoading(false);
+        reset();
+        // submitted();
+      });
   };
 
   const onYearOfCompletionChange = (e: string) => {
@@ -245,7 +268,12 @@ export default function GetInTouchForm() {
           />
         </div>
 
-        <Button text="Save" type="submit" customClass="w-[150px] mx-auto" />
+        <Button
+          text="Save"
+          type="submit"
+          customClass="w-[150px] mx-auto"
+          isLoading={isLoading}
+        />
       </form>
     </>
   );

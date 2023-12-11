@@ -77,62 +77,66 @@ const schema = object().shape({
   studyArea: array().optional(),
 });
 
+const defaultValues = {
+  firstName: "",
+  lastName: "",
+  address: "",
+  dob: null,
+  gender: null,
+  email: "",
+  mobile: "",
+
+  //
+  olSchool: "",
+  olYear: "",
+  olType: "",
+  olMathematics: "",
+  olEnglish: "",
+  olResultA: "",
+  olResultB: "",
+  olResultC: "",
+  olResultS: "",
+  olResultW: "",
+  //
+  alSchool: "",
+  alYear: "",
+  alType: "",
+  alMathematics: "",
+  alEnglish: "",
+  alResultA: "",
+  alResultB: "",
+  alResultC: "",
+  alResultS: "",
+  alResultW: "",
+
+  //
+  yearOfCompletion: "",
+  affiliatedUniversity: "",
+  affiliatedUniversityText: "",
+  stream: "",
+  gpa: "",
+  class: "",
+
+  //
+  country: "",
+  studyArea: [],
+};
+
 export default function ApplyNow() {
   const privacyBasePolicyUrl = ResolveBaseUrl(
     process.env.NEXT_PUBLIC_VERCEL_ENV!
   );
   const [isOtherUni, setIsOtherUni] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const {
+    reset,
     handleSubmit,
     control,
     formState: { errors },
     setValue,
   } = useForm<ApplicationFormModel>({
-    defaultValues: {
-      firstName: "",
-      lastName: "",
-      address: "",
-      dob: null,
-      gender: "",
-      email: "",
-      mobile: "",
-
-      //
-      olSchool: "",
-      olYear: "",
-      olType: "",
-      olMathematics: "",
-      olEnglish: "",
-      olResultA: "",
-      olResultB: "",
-      olResultC: "",
-      olResultS: "",
-      olResultW: "",
-      //
-      alSchool: "",
-      alYear: "",
-      alType: "",
-      alMathematics: "",
-      alEnglish: "",
-      alResultA: "",
-      alResultB: "",
-      alResultC: "",
-      alResultS: "",
-      alResultW: "",
-
-      //
-      yearOfCompletion: "",
-      affiliatedUniversity: "",
-      affiliatedUniversityText: "",
-      stream: "",
-      gpa: "",
-      class: "",
-
-      //
-      country: "",
-      studyArea: [],
-    },
+    defaultValues,
     mode: "all",
     resolver: yupResolver<ApplicationFormModel>(schema),
     reValidateMode: "onBlur",
@@ -221,13 +225,30 @@ export default function ApplyNow() {
       return obj !== null || obj !== undefined;
     });
     tempData = { ...tempData, studyArea };
+    setIsLoading(true);
     fetch(`${privacyBasePolicyUrl}/api/apply`, {
       method: "post",
       body: JSON.stringify(tempData),
       headers: {
         "Content-Type": "application/json",
       },
-    });
+    })
+      .then(() => {
+        setIsLoading(false);
+      })
+      .catch(() => {
+        setIsLoading(false);
+      })
+      .finally(() => {
+        setIsLoading(false);
+        setValue("gender", null);
+        reset(
+          { ...defaultValues },
+          {
+            keepDefaultValues: true,
+          }
+        );
+      });
   };
 
   return (
@@ -777,7 +798,12 @@ export default function ApplyNow() {
             </div>
           </ApplyFormLayout>
 
-          <Button text="Save" type="submit" customClass="w-[150px] mx-auto" />
+          <Button
+            text="Save"
+            type="submit"
+            customClass="w-[150px] mx-auto"
+            isLoading={isLoading}
+          />
         </form>
       </Container>
     </section>
