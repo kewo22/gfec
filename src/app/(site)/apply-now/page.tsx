@@ -67,7 +67,6 @@ const schema = object().shape({
   //
   yearOfCompletion: string().optional(),
   affiliatedUniversity: string().optional(),
-  affiliatedUniversityText: string().optional(),
   stream: string().optional(),
   gpa: string().optional(),
   class: string().optional(),
@@ -112,7 +111,6 @@ const defaultValues = {
   //
   yearOfCompletion: "",
   affiliatedUniversity: "",
-  affiliatedUniversityText: "",
   stream: "",
   gpa: "",
   class: "",
@@ -126,7 +124,6 @@ export default function ApplyNow() {
   const privacyBasePolicyUrl = ResolveBaseUrl(
     process.env.NEXT_PUBLIC_VERCEL_ENV!
   );
-  const [isOtherUni, setIsOtherUni] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   const {
@@ -156,19 +153,6 @@ export default function ApplyNow() {
     return years;
   }, []);
 
-  const uniList = [
-    {
-      id: -1,
-      value: "other",
-      text: "Other",
-    },
-    {
-      id: 0,
-      value: "SLIIT",
-      text: "SLIIT",
-    },
-  ];
-
   const studyPreferences = [
     "Computing",
     "Business",
@@ -192,15 +176,6 @@ export default function ApplyNow() {
 
   const onChange = (value: number, field: any) => {
     setValue(field, value.toString());
-  };
-
-  const onUniChange = (value: string) => {
-    setValue("affiliatedUniversity", value.toString());
-    if (value === "other") {
-      setIsOtherUni(true);
-    } else {
-      setIsOtherUni(false);
-    }
   };
 
   const onOlYearChange = (value: string) => {
@@ -718,30 +693,13 @@ export default function ApplyNow() {
                     />
                   </div>
                   <div className="flex flex-col items-start gap-3">
-                    <Typography variant="label">
-                      Affiliated University
-                    </Typography>
-                    <Select
-                      selectionItems={uniList}
-                      placeHolder="Select One"
+                    <Input
+                      label="Affiliated University"
                       useControllerProps={{
                         control,
                         name: "affiliatedUniversity",
                       }}
-                      isDisabled={false}
-                      onChange={onUniChange}
                     />
-                    {isOtherUni && (
-                      <div className="mt-3 w-full">
-                        <Input
-                          placeHolder="Type here"
-                          useControllerProps={{
-                            control,
-                            name: "affiliatedUniversityText",
-                          }}
-                        />
-                      </div>
-                    )}
                   </div>
                   <div>
                     <Input

@@ -59,7 +59,6 @@ export const ToApplicationFormObject = (obj: ApplicationFormModel) => {
     degree: {
       yearOfCompletion: obj.yearOfCompletion,
       affiliatedUniversity: obj.affiliatedUniversity,
-      affiliatedUniversityText: obj.affiliatedUniversityText,
       stream: obj.stream,
     },
     preference: {
