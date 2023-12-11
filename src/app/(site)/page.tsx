@@ -1,7 +1,6 @@
 import React from "react";
 
 import SuccessPath from "./_components/success-path";
-import SuccessStories from "./_components/success-stories";
 import CouldYourNextHomeBe from "./_components/could-your-next-home-be";
 import StudyOverseasWithGfec from "./_components/study-overseas-with-gfec";
 import HowWeDifferentiateFromOthers from "./_components/how-we-differentiate-from-others";
@@ -21,7 +20,7 @@ export default function SitePage() {
 
       <CouldYourNextHomeBe />
 
-      {/* <SuccessStories /> */}
+      {/* <SuccessStories /> audio not using*/}
       <SuccessStoriesText />
 
       <Testimonial />
