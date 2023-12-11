@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 
 import Image from "next/image";
 import Slider from "react-slick";
@@ -14,14 +14,11 @@ import NavActions from "./nav-actions";
 import MobileNav from "./mobile-nav";
 import { Typography } from "@/app/_components/ui/typography";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
-import Modal from "@/app/_components/ui/modal";
 import GetInTouchForm from "./get-in-touch-form";
-import { Modal2 } from "@/app/_components/ui/modal2";
+import { Modal } from "@/app/_components/ui/modal";
 
 export default function Navigation() {
-  const ffff = useRef(null);
-
-  const [isOpen, setIsOpen] = useState(false);
+  const modalRef = useRef(null);
 
   const { ref, inView } = useInView({
     threshold: 0,
@@ -40,9 +37,8 @@ export default function Navigation() {
   };
 
   const onOpenModel = () => {
-    if (ffff && ffff.current) {
-      setIsOpen(true);
-      (ffff.current as HTMLDialogElement).showModal();
+    if (modalRef && modalRef.current) {
+      (modalRef.current as HTMLDialogElement).showModal();
     }
   };
 
@@ -149,29 +145,14 @@ export default function Navigation() {
         </div>
       </Slider>
 
-      {/* {!inView && <MobileNav />} */}
       <MobileNav isMainNavInView={inView} />
 
-      <Modal2 ref={ffff} isOpen={isOpen}>
+      <Modal ref={modalRef}>
         <Typography variant="h3" className="my-5 mx-auto text-center">
           Get in Touch
         </Typography>
         <GetInTouchForm />
-      </Modal2>
-
-      {/* 
-      <Modal
-        isOpen={isOpen}
-        type="GetInTouchForm"
-        onClose={() => {
-          setIsOpen(false);
-        }}
-      >
-        <Typography variant="h3" className="my-5 mx-auto text-center">
-          Get in Touch
-        </Typography>
-        <GetInTouchForm />
-      </Modal> */}
+      </Modal>
     </nav>
   );
 }

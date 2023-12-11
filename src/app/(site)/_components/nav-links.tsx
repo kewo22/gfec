@@ -36,8 +36,8 @@ export default function NavLinks() {
             href={item.route}
           >
             <Typography
-              variant="h5"
-              className="uppercase tracking-widest text-white"
+              variant="p"
+              className="uppercase tracking-widest text-white font-bold"
             >
               {item.text}
             </Typography>

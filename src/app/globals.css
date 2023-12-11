@@ -913,3 +913,43 @@ input[type='radio']:checked:after {
 }
 
 /* CHECKBOX AND RADIO */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.modal::backdrop {
+  background: hsl(0 0% 0% / 50%);
+}

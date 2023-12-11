@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import Image from "next/image";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -16,9 +15,11 @@ import Container from "./layouts/container";
 import { Typography } from "../../_components/ui/typography";
 import SectionTitle from "./section-title";
 import Button from "@/app/_components/ui/button";
-import Modal from "@/app/_components/ui/modal";
+import { Modal } from "@/app/_components/ui/modal";
 
 export default function SuccessStoriesText() {
+  const modalRef = useRef(null);
+
   let data: any[] | null = [
     {
       name: "Isanka Edirisooriya",
@@ -36,7 +37,6 @@ export default function SuccessStoriesText() {
 
   const [selectedSuccessStory, setSelectedSuccessStory] = useState(0);
   const [isChanging, setIsChanging] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
 
   const fullNameRef = useRef<any>();
   const uniRef = useRef<any>();
@@ -94,6 +94,12 @@ export default function SuccessStoriesText() {
       setSelectedSuccessStory((state) => state + 1);
       setIsChanging(false);
     }, 500);
+  };
+
+  const onOpenModel = () => {
+    if (modalRef && modalRef.current) {
+      (modalRef.current as HTMLDialogElement).showModal();
+    }
   };
 
   return (
@@ -176,12 +182,7 @@ export default function SuccessStoriesText() {
             />
           </Button>
 
-          <Button
-            customClass="block sm:hidden"
-            onClick={() => {
-              setIsOpen(!isOpen);
-            }}
-          >
+          <Button customClass="block sm:hidden" onClick={onOpenModel}>
             Read More
           </Button>
 
@@ -199,13 +200,7 @@ export default function SuccessStoriesText() {
         </div>
       </div>
 
-      <Modal
-        isOpen={isOpen}
-        type="SuccessStory"
-        onClose={() => {
-          setIsOpen(false);
-        }}
-      >
+      <Modal ref={modalRef}>
         <div className="">
           <div className="flex flex-row items-center justify-start gap-5 mb-5">
             <div className="flex-grow">
