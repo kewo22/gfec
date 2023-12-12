@@ -29,7 +29,7 @@ export default function CouldYourNextHomeBe() {
     arrows: true,
     nextArrow: <PrevIcon />,
     prevArrow: <NextIcon />,
-    className: "xxx",
+    className: "country-slider-arrow",
     responsive: [
       {
         breakpoint: 768,
