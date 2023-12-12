@@ -3,7 +3,7 @@ import { Country } from "../_types/country";
 export const COUNTRIES: Country[] = [
     {
         id: "aus",
-        image: "/aus.jpg",
+        image: "/comp/aus.webp",
         country: "Australia",
         class: "",
         description: "",
@@ -13,7 +13,7 @@ export const COUNTRIES: Country[] = [
     },
     {
         id: "uk",
-        image: "/uk.jpg",
+        image: "/comp/uk.webp",
         country: "United Kingdom",
         class: "",
         description: "",
@@ -23,7 +23,7 @@ export const COUNTRIES: Country[] = [
     },
     {
         id: "can",
-        image: "/canada.jpg",
+        image: "/comp/canada.webp",
         country: "Canada",
         class: "",
         description: "",
@@ -33,7 +33,7 @@ export const COUNTRIES: Country[] = [
     },
     {
         id: "fin",
-        image: "/finland.jpg",
+        image: "/comp/finland.webp",
         country: "Finland",
         class: "",
         description: "",
@@ -43,7 +43,7 @@ export const COUNTRIES: Country[] = [
     },
     {
         id: "bal",
-        image: "/belarus.jpg",
+        image: "/comp/belarus.webp",
         country: "Belarus",
         class: "",
         description: "",
@@ -53,7 +53,7 @@ export const COUNTRIES: Country[] = [
     },
     {
         id: "ger",
-        image: "/germany.jpg",
+        image: "/comp/germany.webp",
         country: "Germany",
         class: "",
         description: "",
@@ -63,7 +63,7 @@ export const COUNTRIES: Country[] = [
     },
     {
         id: "ita",
-        image: "/italy.jpg",
+        image: "/comp/italy.webp",
         country: "Italy",
         class: "",
         description: "",
@@ -73,7 +73,7 @@ export const COUNTRIES: Country[] = [
     },
     {
         id: "swe",
-        image: "/sweden.jpg",
+        image: "/comp/sweden.webp",
         country: "Sweden",
         class: "",
         description: "",
@@ -83,7 +83,7 @@ export const COUNTRIES: Country[] = [
     },
     {
         id: "rus",
-        image: "/russia.jpg",
+        image: "/comp/russia.webp",
         country: "Russia",
         class: "",
         description: "",
@@ -93,7 +93,7 @@ export const COUNTRIES: Country[] = [
     },
     {
         id: "fra",
-        image: "/france.jpg",
+        image: "/comp/france.webp",
         country: "France",
         class: "",
         description: "",
@@ -103,7 +103,7 @@ export const COUNTRIES: Country[] = [
     },
     {
         id: "ned",
-        image: "/netherlands.jpg",
+        image: "/comp/netherlands.webp",
         country: "Netherlands",
         class: "",
         description: "",
@@ -113,7 +113,7 @@ export const COUNTRIES: Country[] = [
     },
     {
         id: "lat",
-        image: "/latvia.jpg",
+        image: "/comp/latvia.webp",
         country: "Latvia",
         class: "",
         description: "",
@@ -123,7 +123,7 @@ export const COUNTRIES: Country[] = [
     },
     {
         id: "swi",
-        image: "/switzerland.jpg",
+        image: "/comp/switzerland.webp",
         country: "Switzerland",
         class: "",
         description: "",
@@ -133,7 +133,7 @@ export const COUNTRIES: Country[] = [
     },
     {
         id: "dxb",
-        image: "/dxb.jpg",
+        image: "/comp/dxb.webp",
         country: "UAE - Dubai",
         class: "",
         description: "",
@@ -143,7 +143,7 @@ export const COUNTRIES: Country[] = [
     },
     {
         id: "malta",
-        image: "/malta.jpg",
+        image: "/comp/malta.webp",
         country: "Malta",
         class: "",
         description: "",

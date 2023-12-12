@@ -49,7 +49,7 @@ export default function StudyOverseasWithGfec() {
           size: 1080,
         },
       ],
-      poster: "/video-poster.jpg",
+      poster: "/comp/video-poster.webp",
     }, // https://github.com/sampotts/plyr#the-source-setter
     options: {
       volume: 0.3,
@@ -70,7 +70,7 @@ export default function StudyOverseasWithGfec() {
         <div className="row-span-2">
           <div className="image-container inline-block relative rounded-lg">
             <Image
-              src="/grad-1.jpg"
+              src="/comp/grad-1.webp"
               alt="Next.js Logo"
               priority
               width="400"

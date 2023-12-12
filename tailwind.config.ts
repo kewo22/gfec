@@ -16,9 +16,8 @@ const config: Config = {
     },
     extend: {
       backgroundImage: {
-        "home-banner": "url('/home-banner.jpg')",
-        "home-banner-1": "url('/video-poster.jpg')",
-        "home-banner-2": "url('/home-banner-crop.jpg')",
+        "home-banner-1": "url('/comp/video-poster.webp')",
+        "home-banner-2": "url('/comp/home-banner-crop.webp')",
         "au-flag": "url('/au.svg')",
         "gb-flag": "url('/gb.svg')",
         "ca-flag": "url('/ca.svg')",
