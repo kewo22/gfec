@@ -43,7 +43,7 @@ export default function About() {
               {/* // src="/about-1.jpg" */}
               <Image
                 src="/comp/about-1.webp"
-                alt="Next.js Logo"
+                alt="about-1"
                 priority
                 width="400"
                 height="600"
@@ -53,7 +53,7 @@ export default function About() {
             <div className="image-container inline-block relative rounded-lg mt-0 lg:mt-[40%]">
               <Image
                 src="/comp/about-2.webp"
-                alt="Next.js Logo"
+                alt="about-2"
                 priority
                 width="400"
                 height="600"
@@ -69,7 +69,7 @@ export default function About() {
               <div className="w-[80px] h-[80px] bg-primary p-3 rounded-full">
                 <Image
                   src="/vision.png"
-                  alt="Next.js Logo"
+                  alt="vision"
                   priority
                   width="64"
                   height="64"
@@ -90,7 +90,7 @@ export default function About() {
               <div className="w-[80px] h-[80px] bg-primary p-4 rounded-full">
                 <Image
                   src="/mission.png"
-                  alt="Next.js Logo"
+                  alt="mission"
                   priority
                   width="64"
                   height="64"
@@ -112,7 +112,7 @@ export default function About() {
           <div className="bg-white shadow-about-card rounded-2xl border-2 border-secondary p-10 flex flex-col justify-center items-center gap-5">
             <Image
               src="/personalized-guidance.svg"
-              alt="Next.js Logo"
+              alt="personalized-guidance"
               priority
               width="170"
               height="170"
@@ -131,8 +131,8 @@ export default function About() {
           </div>
           <div className="bg-white shadow-about-card rounded-2xl border-2 border-secondary p-10 flex flex-col justify-center items-center gap-5">
             <Image
-              src="/comprehensive -support.svg"
-              alt="Next.js Logo"
+              src="/comprehensive-support.svg"
+              alt="comprehensive-support"
               priority
               width="125"
               height="125"
@@ -153,7 +153,7 @@ export default function About() {
           <div className="bg-white shadow-about-card rounded-2xl border-2 border-secondary p-10 flex flex-col justify-center items-center gap-5">
             <Image
               src="/unwavering-commitment.svg"
-              alt="Next.js Logo"
+              alt="unwavering-commitment"
               priority
               width="150"
               height="150"

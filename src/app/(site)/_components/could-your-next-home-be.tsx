@@ -51,7 +51,7 @@ export default function CouldYourNextHomeBe() {
     <Container className="mx-0 lg:mx-auto py-20 relative bg-white">
       <Image
         src="/buildings.png"
-        alt="Next.js Logo"
+        alt="buildings-bg"
         priority
         width="0"
         height="200"
@@ -71,7 +71,7 @@ export default function CouldYourNextHomeBe() {
             >
               <Image
                 src={country.image}
-                alt="Next.js Logo"
+                alt={`country-${country.image}`}
                 fill
                 priority
                 className="rounded-xl"

@@ -38,8 +38,8 @@ export default function StudentLife() {
       <div className="relative grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-10 mx-5">
         <div className="relative">
           <Image
-            src="/grid-1.jpeg"
-            alt="Next.js Logo"
+            src="/comp/grid-1.webp"
+            alt="student-life-1"
             priority
             width="0"
             height="0"
@@ -51,8 +51,8 @@ export default function StudentLife() {
         </div>
         <div className="relative">
           <Image
-            src="/grid-2.jpeg"
-            alt="Next.js Logo"
+            src="/comp/grid-2.webp"
+            alt="student-life-2"
             priority
             width="0"
             height="0"
@@ -64,8 +64,8 @@ export default function StudentLife() {
         </div>
         <div className="relative">
           <Image
-            src="/grid-3.jpeg"
-            alt="Next.js Logo"
+            src="/comp/grid-3.webp"
+            alt="student-life-3"
             priority
             width="0"
             height="0"
@@ -77,8 +77,8 @@ export default function StudentLife() {
         </div>
         <div className="relative">
           <Image
-            src="/grid-4.jpeg"
-            alt="Next.js Logo"
+            src="/comp/grid-4.webp"
+            alt="student-life-4"
             priority
             width="0"
             height="0"
@@ -90,8 +90,8 @@ export default function StudentLife() {
         </div>
         <div className="relative">
           <Image
-            src="/grid-5.jpeg"
-            alt="Next.js Logo"
+            src="/comp/grid-5.webp"
+            alt="student-life-5"
             priority
             width="0"
             height="0"
@@ -103,8 +103,8 @@ export default function StudentLife() {
         </div>
         <div className="relative">
           <Image
-            src="/grid-7.jpeg"
-            alt="Next.js Logo"
+            src="/comp/grid-6.webp"
+            alt="student-life-6"
             priority
             width="0"
             height="0"

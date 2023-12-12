@@ -49,7 +49,7 @@ export default function Navigation() {
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 w-full h-[90%] max-w-[1000px] flex flex-col gap-10">
           <Image
             src="/GFEC-Trans.png"
-            alt="Next.js Logo"
+            alt="GFEC-Trans-mobile-lg"
             width={210}
             height={160}
             priority
@@ -57,7 +57,7 @@ export default function Navigation() {
           />
           <Image
             src="/GFEC-Trans.png"
-            alt="Next.js Logo"
+            alt="GFEC-Trans-mobile-sm"
             width={170}
             height={140}
             priority
@@ -68,8 +68,8 @@ export default function Navigation() {
 
           <div className="relative mx-5 lg:mx-0 flex-grow">
             <Image
-              src="/arrow-shape.png"
-              alt="Next.js Logo"
+              src="/comp/arrow-shape.webp"
+              alt="arrow-shape-anim"
               width={222}
               height={92}
               priority

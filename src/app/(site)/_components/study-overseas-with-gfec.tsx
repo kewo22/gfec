@@ -71,7 +71,7 @@ export default function StudyOverseasWithGfec() {
           <div className="image-container inline-block relative rounded-lg">
             <Image
               src="/comp/grad-1.webp"
-              alt="Next.js Logo"
+              alt="grad-1"
               priority
               width="400"
               height="600"

@@ -97,7 +97,7 @@ export default function MobileNav({ isMainNavInView }: any) {
         <div className="h-full flex flex-col items-center justify-around">
           <Image
             src="/GFEC-Trans.png"
-            alt="Next.js Logo"
+            alt="GFEC-Trans-mobile"
             width={150}
             height={100}
             priority
