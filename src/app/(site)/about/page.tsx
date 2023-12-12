@@ -18,8 +18,8 @@ export default function About() {
             </Typography>
             <Typography className="text-justify">
               We believe that access to quality education is a fundamental
-              right, and we&apos;re proud to be part of a community of organizations
-              that share this vision.
+              right, and we&apos;re proud to be part of a community of
+              organizations that share this vision.
               <br />
               <br />
               As a leading overseas educational consultation service provider in
@@ -30,19 +30,20 @@ export default function About() {
               that can make the process overwhelming.
               <br />
               <br />
-              At GFEC we&apos;re driven by a passion for education and a commitment
-              to ensuring that every student has access to the best possible
-              opportunities to achieve their goals. We&apos;re proud to be a leading
-              overseas educational consultation service provider in Sri Lanka,
-              and we&apos;re committed to continuing to provide exceptional guidance
-              and support to students for years to come.
+              At GFEC we&apos;re driven by a passion for education and a
+              commitment to ensuring that every student has access to the best
+              possible opportunities to achieve their goals. We&apos;re proud to
+              be a leading overseas educational consultation service provider in
+              Sri Lanka, and we&apos;re committed to continuing to provide
+              exceptional guidance and support to students for years to come.
             </Typography>
           </div>
           <div className="flex-[0_0_450px] 2xl:flex-[0_0_650px] flex flex-row items-start gap-5">
             <div className="image-container inline-block relative rounded-lg">
+              {/* // src="/about-1.jpg" */}
               <Image
-                src="/about-1.jpg"
-                alt="Next.js Logo"
+                src="/comp/about-1.webp"
+                alt="about-1"
                 priority
                 width="400"
                 height="600"
@@ -51,8 +52,8 @@ export default function About() {
             </div>
             <div className="image-container inline-block relative rounded-lg mt-0 lg:mt-[40%]">
               <Image
-                src="/about-2.jpg"
-                alt="Next.js Logo"
+                src="/comp/about-2.webp"
+                alt="about-2"
                 priority
                 width="400"
                 height="600"
@@ -68,7 +69,7 @@ export default function About() {
               <div className="w-[80px] h-[80px] bg-primary p-3 rounded-full">
                 <Image
                   src="/vision.png"
-                  alt="Next.js Logo"
+                  alt="vision"
                   priority
                   width="64"
                   height="64"
@@ -89,7 +90,7 @@ export default function About() {
               <div className="w-[80px] h-[80px] bg-primary p-4 rounded-full">
                 <Image
                   src="/mission.png"
-                  alt="Next.js Logo"
+                  alt="mission"
                   priority
                   width="64"
                   height="64"
@@ -111,14 +112,16 @@ export default function About() {
           <div className="bg-white shadow-about-card rounded-2xl border-2 border-secondary p-10 flex flex-col justify-center items-center gap-5">
             <Image
               src="/personalized-guidance.svg"
-              alt="Next.js Logo"
+              alt="personalized-guidance"
               priority
               width="170"
               height="170"
               className=""
             />
             <div className="flex flex-col">
-              <Typography variant="h5" className="mb-3">Personalized Guidance</Typography>
+              <Typography variant="h5" className="mb-3">
+                Personalized Guidance
+              </Typography>
               <Typography className="text-justify">
                 We believe in tailoring our services to meet your unique needs,
                 providing individualized guidance to help you make informed
@@ -128,15 +131,17 @@ export default function About() {
           </div>
           <div className="bg-white shadow-about-card rounded-2xl border-2 border-secondary p-10 flex flex-col justify-center items-center gap-5">
             <Image
-              src="/comprehensive -support.svg"
-              alt="Next.js Logo"
+              src="/comprehensive-support.svg"
+              alt="comprehensive-support"
               priority
               width="125"
               height="125"
               className=""
             />
             <div className="flex flex-col">
-              <Typography variant="h5" className="mb-3">Comprehensive Support</Typography>
+              <Typography variant="h5" className="mb-3">
+                Comprehensive Support
+              </Typography>
               <Typography className="text-justify">
                 We offer end-to-end assistance, covering everything from
                 university selection to visa processing, ensuring that you
@@ -148,14 +153,16 @@ export default function About() {
           <div className="bg-white shadow-about-card rounded-2xl border-2 border-secondary p-10 flex flex-col justify-center items-center gap-5">
             <Image
               src="/unwavering-commitment.svg"
-              alt="Next.js Logo"
+              alt="unwavering-commitment"
               priority
               width="150"
               height="150"
               className=""
             />
             <div className="flex flex-col">
-              <Typography variant="h5" className="mb-3">Unwavering Commitment</Typography>
+              <Typography variant="h5" className="mb-3">
+                Unwavering Commitment
+              </Typography>
               <Typography className="text-justify">
                 Our dedication knows no bounds. We are committed to going the
                 extra mile, ensuring your satisfaction and success by providing

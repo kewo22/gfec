@@ -8,6 +8,7 @@ interface SelectInputs {
   useControllerProps: any;
   selectionItems: Record<string, any>[];
   isDisabled?: boolean;
+  onChange?: (e: string) => void;
 }
 
 export default function Select(props: SelectInputs) {
@@ -17,6 +18,7 @@ export default function Select(props: SelectInputs) {
     label = "",
     selectionItems,
     isDisabled = false,
+    onChange,
   } = props;
   const { field, fieldState } = useController(useControllerProps);
 
@@ -33,7 +35,7 @@ export default function Select(props: SelectInputs) {
         error: "",
       },
       input:
-        "outline-none bg-transparent flex-grow appearance-none select-input",
+        "outline-none bg-transparent flex-grow appearance-none select-input text-sm",
       errorText: "text-red-600 text-xs font-semibold",
     };
 
@@ -60,6 +62,10 @@ export default function Select(props: SelectInputs) {
     return className;
   }, [isDisabled, fieldState]);
 
+  const onChangeSelect = (e: any) => {
+    if (onChange) onChange(e.target.value);
+  };
+
   return (
     <div
       className={`${className.wrapper.default} ${className.wrapper.error} ${className.wrapper.disabled}`}
@@ -85,6 +91,7 @@ export default function Select(props: SelectInputs) {
         value={field.value ? field.value : ""}
         className={className.input}
         disabled={isDisabled}
+        onChange={onChangeSelect}
       >
         <option value="">{placeHolder}</option>
         {selectionItems.map((item, i) => {

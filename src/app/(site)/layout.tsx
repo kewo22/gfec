@@ -1,6 +1,8 @@
 import { Ubuntu } from "next/font/google";
 
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import Navigation from "./_components/navigation";
 import Footer from "./_components/footer";
@@ -26,6 +28,8 @@ export default function SiteLayout({
         <Navigation />
         <main className="">{children}</main>
         <Footer />
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

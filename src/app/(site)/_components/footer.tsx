@@ -2,10 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
 
-import { Typography } from "@/app/_components/ui/typography";
-import { NavItems } from "../_constants/nav-items.constants";
 import {
   faAt,
   faBuilding,
@@ -21,6 +18,10 @@ import {
   faSquareFacebook,
 } from "@fortawesome/free-brands-svg-icons";
 
+import { Typography } from "@/app/_components/ui/typography";
+import { NavItems } from "../_constants/nav-items.constants";
+import { ResolveBaseUrl } from "@/app/utils/common";
+
 export default function Footer() {
   const emails = (process.env.EMAILS as unknown as string)?.split(",") || [];
   const phoneNos = (process.env.PHONE as unknown as string)?.split(",") || [];
@@ -28,6 +29,31 @@ export default function Footer() {
   const addressLine1 = process.env.ADDRESS_LINE_1 as unknown as string;
   const addressLine2 = process.env.ADDRESS_LINE_2 as unknown as string;
   const addressLine3 = process.env.ADDRESS_LINE_3 as unknown as string;
+
+  const privacyBasePolicyUrl = ResolveBaseUrl(
+    process.env.NEXT_PUBLIC_VERCEL_ENV!
+  );
+
+  const onFbClick = () => {
+    window.open(
+      "https://www.facebook.com/profile.php?id=100089486356607",
+      "_blank"
+    );
+  };
+
+  const onInstagramClick = () => {
+    window.open(
+      "https://instagram.com/gfe_consultancy?igshid=MTk0NTkyODZkYg==",
+      "_blank"
+    );
+  };
+
+  const onInClick = () => {
+    window.open(
+      "https://www.linkedin.com/company/gordon-foreign-education-consultancy-pvt-ltd/",
+      "_blank"
+    );
+  };
 
   return (
     <>
@@ -139,7 +165,10 @@ export default function Footer() {
 
         <div className="row-2">
           <div className="flex flex-col sm:flex-row lg:flex-col gap-5">
-            <button className="flex flex-row items-center justify-center gap-2 p-3 rounded-lg bg-primary hover:bg-accent transition-all duration-500 ease-in-out w-64 shadow-sm shadow-black">
+            <button
+              className="flex flex-row items-center justify-center gap-2 p-3 rounded-lg bg-primary hover:bg-accent transition-all duration-500 ease-in-out w-64 shadow-sm shadow-black"
+              onClick={onFbClick}
+            >
               <FontAwesomeIcon
                 icon={faSquareFacebook}
                 size="xl"
@@ -149,7 +178,10 @@ export default function Footer() {
                 Follow Us On Facebook
               </Typography>
             </button>
-            <button className="flex flex-row items-center justify-center gap-2 p-3 rounded-lg bg-primary hover:bg-accent transition-all duration-500 ease-in-out w-64 shadow-sm shadow-black">
+            <button
+              className="flex flex-row items-center justify-center gap-2 p-3 rounded-lg bg-primary hover:bg-accent transition-all duration-500 ease-in-out w-64 shadow-sm shadow-black"
+              onClick={onInstagramClick}
+            >
               <FontAwesomeIcon
                 icon={faInstagram}
                 size="xl"
@@ -159,7 +191,10 @@ export default function Footer() {
                 Follow Us On Instagram
               </Typography>
             </button>
-            <button className="flex flex-row items-center justify-center gap-2 p-3 rounded-lg bg-primary hover:bg-accent transition-all duration-500 ease-in-out w-64 shadow-sm shadow-black">
+            <button
+              className="flex flex-row items-center justify-center gap-2 p-3 rounded-lg bg-primary hover:bg-accent transition-all duration-500 ease-in-out w-64 shadow-sm shadow-black"
+              onClick={onInClick}
+            >
               <FontAwesomeIcon
                 icon={faLinkedin}
                 size="xl"
@@ -183,7 +218,7 @@ export default function Footer() {
 
         <span className="text-xs sm:text-center text-secondary">
           <a
-            href={`${process.env.APP_BASE_URL}/privacy-policy`}
+            href={`${privacyBasePolicyUrl}/privacy-policy`}
             className="hover:underline"
           >
             Privacy Policy

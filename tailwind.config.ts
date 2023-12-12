@@ -1,17 +1,23 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from "tailwindcss";
 
 const config: Config = {
   content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
+      },
+    },
     extend: {
       backgroundImage: {
-        "home-banner": "url('/home-banner.jpg')",
-        "home-banner-1": "url('/video-poster.jpg')",
-        "home-banner-2": "url('/home-banner-crop.jpg')",
+        "home-banner-1": "url('/comp/video-poster.webp')",
+        "home-banner-2": "url('/comp/home-banner-crop.webp')",
         "au-flag": "url('/au.svg')",
         "gb-flag": "url('/gb.svg')",
         "ca-flag": "url('/ca.svg')",
@@ -25,6 +31,8 @@ const config: Config = {
         "nl-flag": "url('/nl.svg')",
         "lv-flag": "url('/lv.svg')",
         "ch-flag": "url('/ch.svg')",
+        "dxb-flag": "url('/dxb.svg')",
+        "malta-flag": "url('/malta.svg')",
         "aus-banner": "url('/aus.jpg')",
         "belarus-banner": "url('/belarus.jpg')",
         "finland-banner": "url('/finland.jpg')",
@@ -38,6 +46,8 @@ const config: Config = {
         "switzerland-banner": "url('/switzerland.jpg')",
         "canada-banner": "url('/canada.jpg')",
         "uk-banner": "url('/uk.jpg')",
+        "dxb-banner": "url('/dxb.jpg')",
+        "malta-banner": "url('/malta.jpg')",
       },
       colors: {
         primary: "#BD9519",
@@ -45,17 +55,21 @@ const config: Config = {
         accent: "#040607",
       },
       height: {
-        'nav-height': '1000px',
-        '128': '32rem',
-        'mobile-nav-height': "calc(100% - 5.4%)"
+        "nav-height": "1000px",
+        "128": "32rem",
+        "mobile-nav-height": "calc(100% - 5.4%)",
       },
       boxShadow: {
-        'about-card': 'rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px',
-      }
+        "about-card":
+          "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px",
+      },
+      backgroundColor: {
+        "alice-blue": "#DAEAF7",
+      },
     },
   },
   plugins: [],
-}
-export default config
+};
+export default config;
 
 // https://www.youtube.com/watch?v=aSlK3GhRuXA

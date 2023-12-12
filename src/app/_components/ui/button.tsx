@@ -2,6 +2,9 @@
 
 import React from "react";
 
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import { twMerge } from "tailwind-merge";
 
 type ButtonProps = {
@@ -11,6 +14,7 @@ type ButtonProps = {
   size?: "xs" | "sm" | "md" | "lg";
   customClass?: string;
   isDisabled?: boolean;
+  isLoading?: boolean;
   children?: any;
   onClick?: () => void;
 };
@@ -24,6 +28,7 @@ export default function Button(props: ButtonProps) {
     customClass = "",
     isDisabled = false,
     children,
+    isLoading = false,
     onClick,
   } = props;
 
@@ -59,6 +64,19 @@ export default function Button(props: ButtonProps) {
     customClass
   );
 
+  if (isLoading) {
+    return (
+      <button className={mergedClassName} disabled>
+        <FontAwesomeIcon
+          icon={faSpinner}
+          size="lg"
+          spin
+          className="text-white"
+        />
+      </button>
+    );
+  }
+
   return (
     <button
       type={type}
@@ -68,8 +86,6 @@ export default function Button(props: ButtonProps) {
     >
       {children && children}
       {!children && text}
-      {/* <Typography as="span" className="text-white">
-      </Typography> */}
     </button>
   );
 }

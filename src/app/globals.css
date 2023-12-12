@@ -17,18 +17,86 @@
   }
 }
 
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 20 14.3% 4.1%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 20 14.3% 4.1%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 20 14.3% 4.1%;
+
+    --primary: 24 9.8% 10%;
+    --primary-foreground: 60 9.1% 97.8%;
+
+    --secondary: 60 4.8% 95.9%;
+    --secondary-foreground: 24 9.8% 10%;
+
+    --muted: 60 4.8% 95.9%;
+    --muted-foreground: 25 5.3% 44.7%;
+
+    --accent: 60 4.8% 95.9%;
+    --accent-foreground: 24 9.8% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 60 9.1% 97.8%;
+
+    --border: 20 5.9% 90%;
+    --input: 20 5.9% 90%;
+    --ring: 20 14.3% 4.1%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 20 14.3% 4.1%;
+    --foreground: 60 9.1% 97.8%;
+
+    --card: 20 14.3% 4.1%;
+    --card-foreground: 60 9.1% 97.8%;
+
+    --popover: 20 14.3% 4.1%;
+    --popover-foreground: 60 9.1% 97.8%;
+
+    --primary: 60 9.1% 97.8%;
+    --primary-foreground: 24 9.8% 10%;
+
+    --secondary: 12 6.5% 15.1%;
+    --secondary-foreground: 60 9.1% 97.8%;
+
+    --muted: 12 6.5% 15.1%;
+    --muted-foreground: 24 5.4% 63.9%;
+
+    --accent: 12 6.5% 15.1%;
+    --accent-foreground: 60 9.1% 97.8%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 60 9.1% 97.8%;
+
+    --border: 12 6.5% 15.1%;
+    --input: 12 6.5% 15.1%;
+    --ring: 24 5.7% 82.9%;
+  }
+}
+
+/* 
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+} */
+
 * {
   box-sizing: border-box;
 }
 
 body {
-  /* color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb)); */
   min-height: 100vh;
 }
 
@@ -39,8 +107,6 @@ body {
   height: 100%;
   top: 0;
   left: 0;
-  /* background: linear-gradient(180deg, rgb(0 0 0 / 55%), rgb(255 255 255 / 93%)); */
-  /* background: linear-gradient(180deg, rgba(255, 234, 44, 0.55), rgb(255 255 255 / 93%)); */
   background: linear-gradient(180deg, rgb(0 0 0 / 55%), rgb(190 190 190));
   transform: matrix(1, 0, 0, -1, 0, 0);
   z-index: 2;
@@ -88,45 +154,7 @@ body {
   transform: translate(-50%, -50%) scale(5.5);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* menu styles */
 .menu {
   position: fixed;
   top: 2%;
@@ -202,32 +230,9 @@ body {
   transition-delay: 1s;
 }
 
+/* menu styles */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* plyr styles */
 .plyr {
   border-radius: 12px;
 }
@@ -236,95 +241,45 @@ body {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
 
+/* plyr styles */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.xxx .slick-prev {
+/* country-slider-arrow */
+.country-slider-arrow .slick-prev {
   left: 10% !important;
   z-index: 1 !important;
 }
 
-.xxx .slick-next {
+.country-slider-arrow .slick-next {
   right: 10% !important;
   z-index: 1 !important;
 }
 
-.xxx .slick-list {
+.country-slider-arrow .slick-list {
   margin: 0 1rem !important;
 }
 
 @media only screen and (min-width: 600px) {
-  .xxx .slick-track {
+  .country-slider-arrow .slick-track {
     display: flex !important;
     gap: 1rem !important;
   }
 
-  .xxx .slick-list {
+  .country-slider-arrow .slick-list {
     margin: 0 !important;
   }
 
-  .xxx .slick-prev {
+  .country-slider-arrow .slick-prev {
     left: 2% !important;
   }
 
-  .xxx .slick-next {
+  .country-slider-arrow .slick-next {
     right: 2% !important;
   }
 }
 
+/* country-slider-arrow */
 
-
+/* nav-slider */
 .nav-slider {
   height: 100%;
   width: 100%;
@@ -351,14 +306,12 @@ body {
   display: none !important;
 }
 
+/* nav-slider */
 
-
-
-
+/* testimonial-slider */
 .testimonial-slider .slick-list {
   margin: 0 1rem !important;
 }
-
 
 .testimonial-slider .slick-prev {
   left: 8% !important;
@@ -386,11 +339,9 @@ body {
   }
 }
 
+/* testimonial-slider */
 
-
-
-
-
+/* playing */
 .playing {
   background: theme("colors.secondary");
   ;
@@ -449,46 +400,9 @@ body {
   }
 }
 
+/* playing */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* section-title */
 .section-title__border-box:before {
   content: "";
   position: absolute;
@@ -515,6 +429,7 @@ body {
   border: none;
 }
 
+/* section-title */
 
 div.image-container {
   display: inline-block;
@@ -531,14 +446,6 @@ div.image-container:before {
   left: 15px;
   border: 2px solid theme("colors.secondary");
 }
-
-
-
-
-
-
-
-
 
 .countries-details li.active p::before {
   background-color: theme("colors.secondary");
@@ -570,35 +477,6 @@ div.image-container:before {
   -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .animation_background_test {
   -webkit-animation-name: animation;
@@ -641,4 +519,156 @@ div.image-container:before {
   100% {
     color: theme('colors.secondary');
   }
+}
+
+
+/* CHECKBOX AND RADIO */
+input[type='checkbox'],
+input[type='radio'] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  height: 1.2rem;
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+  margin: 0;
+  cursor: pointer;
+  border: 1px solid theme("colors.secondary");
+  background-color: transparent;
+  transition: background 0.3s, border-color 0.3s, outline 0.2s;
+}
+
+input[type='checkbox']:after,
+input[type='radio']:after {
+  content: '';
+  display: block;
+  left: 0;
+  top: 0;
+  position: absolute;
+  transition: transform 0.3s ease, opacity 0.2s;
+}
+
+input[type='checkbox']:checked,
+input[type='radio']:checked {
+  background-color: transparent;
+  border-color: theme("colors.secondary");
+  transition: transform 0.6s cubic-bezier(0.2, 0.85, 0.32, 1.2), opacity 0.3s;
+}
+
+input[type='checkbox']:disabled,
+input[type='radio']:disabled {
+  background-color: theme('colors.gray.100');
+  border-color: #8F8F8F;
+  cursor: not-allowed;
+}
+
+input[type='checkbox']:disabled:checked,
+input[type='radio']:disabled:checked {
+  background-color: #8F8F8F;
+}
+
+input[type='checkbox']:disabled+label,
+input[type='radio']:disabled+label {
+  cursor: not-allowed;
+}
+
+input[type='checkbox']:hover:not(:checked):not(:disabled),
+input[type='radio']:hover:not(:checked):not(:disabled) {
+  border-color: #275EFE;
+}
+
+input[type='checkbox']:focus-visible,
+input[type='radio']:focus-visible {
+  outline: 2px solid #275EFE;
+  outline-offset: 4px;
+}
+
+input[type='checkbox']:not(.switch),
+input[type='radio']:not(.switch) {
+  width: 1.2rem;
+}
+
+input[type='checkbox']+label,
+input[type='radio']+label {
+  display: inline-block;
+  cursor: pointer;
+  /* font-size: 1.4rem; */
+  /* margin-left: 0.2em; */
+  vertical-align: top;
+}
+
+input[type='checkbox']:not(.switch) {
+  border-radius: 0.4rem;
+}
+
+input[type='checkbox']:not(.switch):after {
+  border: 2px solid transparent;
+  height: 45%;
+  width: 25%;
+  border-top: 0;
+  border-left: 0;
+  left: 38%;
+  top: 20%;
+  transform: rotate(23deg);
+}
+
+input[type='checkbox']:not(.switch):disabled:not(:checked):after {
+  border-color: transparent;
+}
+
+input[type='checkbox']:not(.switch):checked:after {
+  transform: rotate(43deg);
+  border-color: theme("colors.blue.600");
+}
+
+input[type='checkbox'].switch {
+  width: 2.6rem;
+  border-radius: 1.1rem;
+}
+
+input[type='checkbox'].switch:after {
+  left: 5%;
+  top: 10%;
+  border-radius: 50%;
+  width: 45%;
+  height: 80%;
+  background: #4F565D;
+  transform: translateX(0);
+}
+
+input[type='checkbox'].switch:checked:after {
+  background: #F6F8FF;
+  transform: translateX(100%);
+}
+
+input[type='checkbox'].switch:disabled:not(:checked):after {
+  background-color: #8F8F8F;
+}
+
+input[type='radio'] {
+  border-radius: 50%;
+}
+
+input[type='radio']:after {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: transparent;
+  transform: scale(0.7);
+}
+
+input[type='radio']:disabled:after {
+  background: #F6F8FF;
+}
+
+input[type='radio']:checked:after {
+  transform: scale(0.5);
+  background: theme("colors.secondary");
+}
+
+/* CHECKBOX AND RADIO */
+
+.modal::backdrop {
+  background: hsl(0 0% 0% / 50%);
 }

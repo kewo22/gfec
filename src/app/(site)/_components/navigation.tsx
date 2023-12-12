@@ -1,9 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useRef } from "react";
 
 import Image from "next/image";
 import Slider from "react-slick";
+import { useInView } from "react-intersection-observer";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import NavLinks from "./nav-links";
 import NavContactRibbon from "./nav-contact-ribbon";
@@ -12,12 +14,16 @@ import NavActions from "./nav-actions";
 import MobileNav from "./mobile-nav";
 import { Typography } from "@/app/_components/ui/typography";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Modal from "@/app/_components/ui/modal";
-import GetInTouchForm from "./get-in-touch-form";
+import GetInTouchForm, { GetInTouchFormHandle } from "./get-in-touch-form";
+import { Modal } from "@/app/_components/ui/modal";
 
 export default function Navigation() {
-  const [isOpen, setIsOpen] = useState(false);
+  const modalRef = useRef(null);
+  const getInTouchFormRef = useRef<GetInTouchFormHandle | null>(null);
+
+  const { ref, inView } = useInView({
+    threshold: 0,
+  });
 
   const settings = {
     dots: false,
@@ -31,10 +37,11 @@ export default function Navigation() {
     className: "nav-slider",
   };
 
-
   const onOpenModel = () => {
-    setIsOpen(true)
-  }
+    if (modalRef && modalRef.current) {
+      (modalRef.current as HTMLDialogElement).showModal();
+    }
+  };
 
   const Items = () => {
     return (
@@ -42,7 +49,7 @@ export default function Navigation() {
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 w-full h-[90%] max-w-[1000px] flex flex-col gap-10">
           <Image
             src="/GFEC-Trans.png"
-            alt="Next.js Logo"
+            alt="GFEC-Trans-mobile-lg"
             width={210}
             height={160}
             priority
@@ -50,7 +57,7 @@ export default function Navigation() {
           />
           <Image
             src="/GFEC-Trans.png"
-            alt="Next.js Logo"
+            alt="GFEC-Trans-mobile-sm"
             width={170}
             height={140}
             priority
@@ -61,8 +68,8 @@ export default function Navigation() {
 
           <div className="relative mx-5 lg:mx-0 flex-grow">
             <Image
-              src="/arrow-shape.png"
-              alt="Next.js Logo"
+              src="/comp/arrow-shape.webp"
+              alt="arrow-shape-anim"
               width={222}
               height={92}
               priority
@@ -111,7 +118,7 @@ export default function Navigation() {
               </div>
             </div>
 
-            <NavActions openModel={onOpenModel}/>
+            <NavActions openModel={onOpenModel} />
           </div>
 
           <NavSocial wrapperClass="flex flex-row gap-8 items-center justify-start mx-5 lg:mx-0" />
@@ -120,8 +127,17 @@ export default function Navigation() {
     );
   };
 
+  const onCloseModal = () => {
+    if (getInTouchFormRef && getInTouchFormRef.current)
+      getInTouchFormRef.current.resetForm();
+  };
+
   return (
-    <nav className={`h-[900px] flex flex-col items-center relative`}>
+    <nav
+      className={`h-[900px] flex flex-col items-center relative`}
+      id="main-nav"
+      ref={ref}
+    >
       <section className="w-full h-auto">
         <NavContactRibbon />
       </section>
@@ -135,19 +151,13 @@ export default function Navigation() {
         </div>
       </Slider>
 
-      <MobileNav />
+      <MobileNav isMainNavInView={inView} />
 
-      <Modal
-        isOpen={isOpen}
-        type="GetInTouchForm"
-        onClose={() => {
-          setIsOpen(false);
-        }}
-      >
+      <Modal onClose={onCloseModal} ref={modalRef}>
         <Typography variant="h3" className="my-5 mx-auto text-center">
           Get in Touch
         </Typography>
-        <GetInTouchForm />
+        <GetInTouchForm ref={getInTouchFormRef} />
       </Modal>
     </nav>
   );

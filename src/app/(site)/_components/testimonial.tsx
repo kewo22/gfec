@@ -27,8 +27,8 @@ export default function Testimonial() {
     },
   };
 
-  const [currentVideo, setCurrentVideo] = useState(0);
-  const [first, setFirst] = useState(plyrProps);
+  // const [currentVideo, setCurrentVideo] = useState(0);
+  const [first, setFirst] = useState<PlyrProps>(plyrProps);
   const [isLoading, setIsLoading] = useState(false);
 
   const videos = [
@@ -39,64 +39,58 @@ export default function Testimonial() {
 
   const onNextClick = () => {
     setIsLoading(true);
+    const tempPlyrProps: PlyrProps = JSON.parse(JSON.stringify(first));
+    const src = tempPlyrProps.source?.sources[0].src;
+    if (!src) return;
 
-    setCurrentVideo((state) => {
-      if (state === videos.length - 1) {
-        afterChange(0);
-        return 0;
-      }
-      afterChange(state + 1);
-      return state + 1;
+    const currentVideoIndex = videos.findIndex((vid) => {
+      return vid === src;
     });
+
+    if (currentVideoIndex === -1) return;
+
+    if (currentVideoIndex === videos.length - 1) {
+      tempPlyrProps.source!.sources[0].src = videos[0];
+      setFirst({ ...tempPlyrProps });
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 1000);
+      return;
+    }
+
+    tempPlyrProps.source!.sources[0].src = videos[currentVideoIndex + 1];
+    setFirst({ ...tempPlyrProps });
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
   };
 
   const onPrevClick = () => {
     setIsLoading(true);
+    const tempPlyrProps: PlyrProps = JSON.parse(JSON.stringify(first));
+    const src = tempPlyrProps.source?.sources[0].src;
+    if (!src) return;
 
-    setCurrentVideo((state) => {
-      if (state === 0) {
-        afterChange(videos.length - 1);
-        return videos.length - 1;
-      }
-      afterChange(state - 1);
-      return state - 1;
+    const currentVideoIndex = videos.findIndex((vid) => {
+      return vid === src;
     });
-  };
 
-  const afterChange = (currentSlide: number) => {
-    const promise = new Promise(function (resolve, reject) {
-      const tempPlyrProps = { ...plyrProps };
+    if (currentVideoIndex === -1) return;
+
+    if (currentVideoIndex === 0) {
+      tempPlyrProps.source!.sources[0].src = videos[videos.length - 1];
+      setFirst({ ...tempPlyrProps });
       setTimeout(() => {
-        switch (currentSlide) {
-          case 0:
-            tempPlyrProps.source!.sources[0].src =
-              "https://gfce.s3.amazonaws.com/testimonial-1.mp4";
-            break;
-          case 1:
-            tempPlyrProps.source!.sources[0].src =
-              "https://gfce.s3.amazonaws.com/testimonial-2.mp4";
-            break;
-          case 2:
-            tempPlyrProps.source!.sources[0].src =
-              "https://gfce.s3.amazonaws.com/testimonial-3.mp4";
-            break;
-
-          default:
-            break;
-        }
-        setFirst(tempPlyrProps);
-        resolve(tempPlyrProps);
+        setIsLoading(false);
       }, 1000);
-    });
+      return;
+    }
 
-    promise
-      .then(() => {
-        setIsLoading(false);
-      })
-      .catch((e) => console.log(e))
-      .finally(() => {
-        setIsLoading(false);
-      });
+    tempPlyrProps.source!.sources[0].src = videos[currentVideoIndex - 1];
+    setFirst({ ...tempPlyrProps });
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
   };
 
   return (

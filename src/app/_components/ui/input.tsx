@@ -10,6 +10,7 @@ interface TextInputProps {
   label?: string;
   useControllerProps: any;
   isDisabled?: boolean;
+  isRequired?: boolean;
 }
 
 export default function Input(props: TextInputProps) {
@@ -19,6 +20,7 @@ export default function Input(props: TextInputProps) {
     type = "text",
     label = "",
     isDisabled = false,
+    isRequired = false,
   } = props;
   const { field, fieldState } = useController(useControllerProps);
 
@@ -26,17 +28,17 @@ export default function Input(props: TextInputProps) {
     let className = {
       wrapper: {
         default:
-          "w-full border-b border-b-stone-600 flex flex-row items-center focus-within:border-blue-600 transition-all py-1 px-0 sm:px-3 relative",
+          "w-full overflow-hidden border-b border-b-stone-600 flex flex-col sm:flex-row items-start sm:items-center focus-within:border-blue-600 transition-all py-1 px-0 sm:px-3 relative",
         error: "",
         disabled: "",
       },
       label: {
-        default: "mr-3 text-left",
+        default: "text-left sm:block w-max",
         error: "",
       },
-      input: "outline-none bg-transparent flex-grow",
+      input: "outline-none bg-transparent flex-grow pl-3 w-full",
       errorText:
-        "text-red-600 text-xs font-semibold text-right absolute right-0 bg-slate-100 z-10",
+        "text-red-600 text-xs font-semibold text-right absolute right-0 z-10 mt-2 sm:mt-0",
     };
 
     const classNameCopy = JSON.parse(JSON.stringify(className));
@@ -57,8 +59,14 @@ export default function Input(props: TextInputProps) {
       }
     }
 
+    if (type === "date") {
+      classNameCopy.errorText =
+        "text-red-600 text-xs font-semibold text-right absolute right-0 sm:right-[40px] z-10 mt-1 sm:mt-0";
+      className = { ...classNameCopy };
+    }
+
     return className;
-  }, [isDisabled, fieldState]);
+  }, [isDisabled, fieldState, type]);
 
   let inputMode: any =
     "none" ||
@@ -82,13 +90,16 @@ export default function Input(props: TextInputProps) {
       className={`${className.wrapper.default} ${className.wrapper.error} ${className.wrapper.disabled}`}
     >
       {label && (
-        <Typography
-          htmlFor={field.name}
-          variant="label"
-          className={`${className.label.default} ${className.label.error}`}
-        >
-          {label}
-        </Typography>
+        <div className="relative">
+          <Typography
+            htmlFor={field.name}
+            variant="label"
+            className={`${className.label.default} ${className.label.error}`}
+          >
+            {label}
+          </Typography>
+          {isRequired && <span className="absolute text-red-700">*</span>}
+        </div>
         // <label
         //   htmlFor={field.name}
         //   className={`${className.label.default} ${className.label.error}`}

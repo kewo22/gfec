@@ -1,53 +1,55 @@
 "use client";
 
-import React, { createElement, useEffect, useState } from "react";
+import { forwardRef, memo, ReactNode } from "react";
 
 import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useMutationObserver } from "@/app/_hooks/useMutationObserver";
 
-type ModalProps = {
-  isOpen: boolean;
-  children: React.ReactNode;
-  type: string;
-  onClose: () => void;
-};
+interface ModalProps {
+  children?: ReactNode;
+  onClose?: () => void;
+}
+export type Ref = HTMLDialogElement;
 
-export default function Modal(props: ModalProps) {
-  const { children, isOpen = false, type, onClose } = props;
+export const Modal = forwardRef<Ref, ModalProps>((props, ref) => {
+  const { children, onClose } = props;
 
-  const test = () => {
-    onClose();
-  };
+  useMutationObserver(ref, (e: any) => {
+    const el =
+      (e[0].target as HTMLDialogElement) ||
+      ((ref as any).current as HTMLDialogElement);
 
-  if (isOpen) {
-    const bodyEl = document.querySelector("body");
-    bodyEl?.classList.add("overflow-hidden");
-    const u = createElement(
-      "div",
-      {
-        className:
-          "fixed z-50 top-0 left-0 h-full w-full overflow-hidden bg-slate-950/50 flex items-center justify-center",
-      },
-      createElement(
-        "div",
-        {
-          className: "bg-white mx-5 p-5",
-        },
-        <>
-          <div className="flex justify-end">
-            <FontAwesomeIcon icon={faTimesCircle} size="2x" onClick={test} />
-          </div>
-          {children}
-        </>
-      )
-    );
-
-    return u;
-  } else {
-    setTimeout(() => {
+    const isOpen = el.getAttribute("open");
+    if (isOpen === null) {
       const bodyEl = document.querySelector("body");
       bodyEl?.classList.remove("overflow-hidden");
-    }, 500);
-    return <></>;
-  }
-}
+    } else {
+      const bodyEl = document.querySelector("body");
+      bodyEl?.classList.add("overflow-hidden");
+    }
+  });
+
+  const onCloseModel = () => {
+    if (onClose) onClose();
+    ((ref as any).current as HTMLDialogElement).close();
+    const bodyEl = document.querySelector("body");
+    bodyEl?.classList.remove("overflow-hidden");
+  };
+
+  return (
+    <dialog className="p-5 modal" id="modal" ref={ref}>
+      <div className="flex justify-end">
+        <FontAwesomeIcon
+          icon={faTimesCircle}
+          size="2x"
+          className="cursor-pointer"
+          onClick={onCloseModel}
+        />
+      </div>
+      {children}
+    </dialog>
+  );
+});
+
+Modal.displayName = "Modal";

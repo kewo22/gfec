@@ -14,7 +14,6 @@ export default function NavLinks() {
 
   const defaultNavLinkClassName =
     "transition-all ease-in-out py-2 px-5 bg-transparent hover:bg-secondary transition-all duration-300 ease-in-out";
-  // border-b-4 border-b-transparent
 
   const navItems = NavItems.map((item) => {
     const clonedItem = { ...item };
@@ -37,8 +36,8 @@ export default function NavLinks() {
             href={item.route}
           >
             <Typography
-              variant="h5"
-              className="uppercase tracking-widest text-white"
+              variant="p"
+              className="uppercase tracking-widest text-white font-bold"
             >
               {item.text}
             </Typography>

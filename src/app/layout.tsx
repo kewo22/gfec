@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 
 import { Ubuntu } from "next/font/google";
 
@@ -29,6 +30,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <Script src="https://www.googletagmanager.com/gtag/js?id=G-VGW6MGB10Q" />
+      <Script id="google-analytics">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+ 
+          gtag('config', 'G-VGW6MGB10Q');
+        `}
+      </Script>
       <body className={ubuntu.className}>{children}</body>
     </html>
   );
