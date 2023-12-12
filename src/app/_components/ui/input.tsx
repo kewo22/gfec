@@ -28,17 +28,17 @@ export default function Input(props: TextInputProps) {
     let className = {
       wrapper: {
         default:
-          "w-full overflow-hidden border-b border-b-stone-600 flex flex-row items-center focus-within:border-blue-600 transition-all py-1 px-0 sm:px-3 relative",
+          "w-full overflow-hidden border-b border-b-stone-600 flex flex-col sm:flex-row items-start sm:items-center focus-within:border-blue-600 transition-all py-1 px-0 sm:px-3 relative",
         error: "",
         disabled: "",
       },
       label: {
-        default: "text-left",
+        default: "text-left sm:block sm:w-28 max-w-[100px]",
         error: "",
       },
-      input: "outline-none bg-transparent flex-grow pl-3",
+      input: "outline-none bg-transparent flex-grow pl-3 w-full",
       errorText:
-        "text-red-600 text-xs font-semibold text-right absolute right-0 z-10",
+        "text-red-600 text-xs font-semibold text-right absolute right-0 z-10 mt-2 sm:mt-0",
     };
 
     const classNameCopy = JSON.parse(JSON.stringify(className));
@@ -61,7 +61,7 @@ export default function Input(props: TextInputProps) {
 
     if (type === "date") {
       classNameCopy.errorText =
-        "text-red-600 text-xs font-semibold text-right absolute right-[40px] z-10";
+        "text-red-600 text-xs font-semibold text-right absolute right-0 sm:right-[40px] z-10 mt-1 sm:mt-0";
       className = { ...classNameCopy };
     }
 
