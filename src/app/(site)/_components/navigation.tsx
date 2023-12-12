@@ -14,11 +14,12 @@ import NavActions from "./nav-actions";
 import MobileNav from "./mobile-nav";
 import { Typography } from "@/app/_components/ui/typography";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
-import GetInTouchForm from "./get-in-touch-form";
+import GetInTouchForm, { GetInTouchFormHandle } from "./get-in-touch-form";
 import { Modal } from "@/app/_components/ui/modal";
 
 export default function Navigation() {
   const modalRef = useRef(null);
+  const getInTouchFormRef = useRef<GetInTouchFormHandle | null>(null);
 
   const { ref, inView } = useInView({
     threshold: 0,
@@ -126,6 +127,11 @@ export default function Navigation() {
     );
   };
 
+  const onCloseModal = () => {
+    if (getInTouchFormRef && getInTouchFormRef.current)
+      getInTouchFormRef.current.resetForm();
+  };
+
   return (
     <nav
       className={`h-[900px] flex flex-col items-center relative`}
@@ -147,11 +153,11 @@ export default function Navigation() {
 
       <MobileNav isMainNavInView={inView} />
 
-      <Modal ref={modalRef}>
+      <Modal onClose={onCloseModal} ref={modalRef}>
         <Typography variant="h3" className="my-5 mx-auto text-center">
           Get in Touch
         </Typography>
-        <GetInTouchForm />
+        <GetInTouchForm ref={getInTouchFormRef} />
       </Modal>
     </nav>
   );

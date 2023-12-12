@@ -8,11 +8,12 @@ import { useMutationObserver } from "@/app/_hooks/useMutationObserver";
 
 interface ModalProps {
   children?: ReactNode;
+  onClose?: () => void;
 }
 export type Ref = HTMLDialogElement;
 
 export const Modal = forwardRef<Ref, ModalProps>((props, ref) => {
-  const { children } = props;
+  const { children, onClose } = props;
 
   useMutationObserver(ref, (e: any) => {
     const el =
@@ -29,7 +30,8 @@ export const Modal = forwardRef<Ref, ModalProps>((props, ref) => {
     }
   });
 
-  const onClose = () => {
+  const onCloseModel = () => {
+    if (onClose) onClose();
     ((ref as any).current as HTMLDialogElement).close();
     const bodyEl = document.querySelector("body");
     bodyEl?.classList.remove("overflow-hidden");
@@ -42,7 +44,7 @@ export const Modal = forwardRef<Ref, ModalProps>((props, ref) => {
           icon={faTimesCircle}
           size="2x"
           className="cursor-pointer"
-          onClick={onClose}
+          onClick={onCloseModel}
         />
       </div>
       {children}

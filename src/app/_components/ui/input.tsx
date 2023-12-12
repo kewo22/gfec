@@ -33,7 +33,7 @@ export default function Input(props: TextInputProps) {
         disabled: "",
       },
       label: {
-        default: "text-left sm:block sm:w-28 max-w-[100px]",
+        default: "text-left sm:block w-max",
         error: "",
       },
       input: "outline-none bg-transparent flex-grow pl-3 w-full",
