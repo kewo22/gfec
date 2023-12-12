@@ -7,6 +7,7 @@ import {
   faPlaneDeparture,
 } from "@fortawesome/free-solid-svg-icons";
 
+
 export const NavItems: NavItemLink[] = [
   {
     text: "Home",
