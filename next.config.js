@@ -30,14 +30,7 @@ const nextConfig = {
     LAT: process.env.LAT || "NO LAT FROM NEXT.CONFIG",
     LNG: process.env.LNG || "NO LNG FROM NEXT.CONFIG",
   },
-  images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'bljdjlop0pwjm7eh.public.blob.vercel-storage.com',
-      },
-    ],
-  },
+  swcMinify: true,
 };
 
 module.exports = nextConfig;
