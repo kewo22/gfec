@@ -16,9 +16,9 @@ export default function SitePage() {
 
       <SuccessPath />
 
-      {/*<HowWeDifferentiateFromOthers />
+      <HowWeDifferentiateFromOthers />
 
-      <CouldYourNextHomeBe /> */}
+      {/* <CouldYourNextHomeBe /> */}
 
       {/* <SuccessStories /> audio not using*/}
       {/* <SuccessStoriesText />
