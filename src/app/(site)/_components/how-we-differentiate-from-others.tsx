@@ -5,11 +5,11 @@ import Container from "./layouts/container";
 import { Typography } from "../../_components/ui/typography";
 import SectionTitle from "./section-title";
 
-import books from "../../../../public/books.svg";
-import graduationHat from "../../../../public/graduation-hat.svg";
-import offer from "../../../../public/offer.svg";
-import finSupport from "../../../../public/fin-support.svg";
-import studentVisa from "../../../../public/student-visa.svg";
+import books from "../../../../public/books.png";
+import graduationHat from "../../../../public/graduation-hat.png";
+import offer from "../../../../public/offer.png";
+import finSupport from "../../../../public/fin-support.png";
+import studentVisa from "../../../../public/student-visa.png";
 import waitingRoom from "../../../../public/waiting-room.png";
 import roomKey from "../../../../public/room-key.png";
 import immigration from "../../../../public/immigration.png";
