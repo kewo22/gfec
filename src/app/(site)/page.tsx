@@ -14,7 +14,7 @@ export default function SitePage() {
     <section className="bg-slate-100">
       <StudyOverseasWithGfec />
 
-       <SuccessPath />
+      {/* <SuccessPath /> */}
 
       {/*<HowWeDifferentiateFromOthers />
 
