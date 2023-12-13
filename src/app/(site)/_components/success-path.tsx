@@ -16,7 +16,6 @@ export default function SuccessPath() {
           <Image
             src="/apply.svg"
             alt="success-path-apply"
-            priority
             width={140}
             height={140}
           />
@@ -26,7 +25,6 @@ export default function SuccessPath() {
           <Image
             src="/consult.svg"
             alt="success-path-consult"
-            priority
             width={140}
             height={140}
           />
@@ -36,7 +34,6 @@ export default function SuccessPath() {
           <Image
             src="/flight.svg"
             alt="success-path-flight"
-            priority
             width={140}
             height={140}
             className="-scale-x-[1] -rotate-[20deg] "
@@ -47,7 +44,6 @@ export default function SuccessPath() {
           <Image
             src="/graduate.svg"
             alt="success-path-graduate"
-            priority
             width={110}
             height={110}
           />
@@ -61,7 +57,6 @@ export default function SuccessPath() {
             <Image
               src="/apply.svg"
               alt="success-path-apply"
-              priority
               width={125}
               height={125}
             />
@@ -73,7 +68,6 @@ export default function SuccessPath() {
             <Image
               src="/consult.svg"
               alt="success-path-consult"
-              priority
               width={150}
               height={150}
             />
@@ -88,7 +82,6 @@ export default function SuccessPath() {
             <Image
               src="/flight.svg"
               alt="success-path-flight"
-              priority
               width={125}
               height={125}
               className="-scale-x-[1] -rotate-[20deg] "
@@ -101,7 +94,6 @@ export default function SuccessPath() {
             <Image
               src="/graduate.svg"
               alt="success-path-graduate"
-              priority
               width={100}
               height={100}
             />
@@ -113,7 +105,6 @@ export default function SuccessPath() {
         <Image
           src="/curve-dotted-line.svg"
           alt="success-path-curve-dotted-line"
-          priority
           width="0"
           height="0"
           sizes="100vw"
