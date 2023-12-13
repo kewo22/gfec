@@ -204,21 +204,27 @@ export function DataGrid(props: DataGridProps) {
     //   },
     // },
     {
-      id: "name",
-      header: ({ table }) => <>Name</>,
-      cell: ({ row }) => (
-        <span className="block w-40">
-          {row.original.firstName} {row.original.lastName}
-        </span>
-      ),
-      enableSorting: false,
+      id: "firstName",
+      accessorKey: "firstName",
+      header: ({ table }) => <>First Name</>,
+      cell: ({ row }) => <>{row.original.firstName}</>,
+      enableSorting: true,
+      enableHiding: false,
+    },
+    {
+      id: "lastName",
+      accessorKey: "lastName",
+      header: ({ table }) => <>Last Name</>,
+      cell: ({ row }) => <>{row.original.lastName}</>,
+      enableSorting: true,
       enableHiding: false,
     },
     {
       id: "email",
+      accessorKey: "email",
       header: ({ table }) => <>Email</>,
       cell: ({ row }) => <>{row.original.email}</>,
-      enableSorting: false,
+      enableSorting: true,
       enableHiding: false,
     },
     {
@@ -244,14 +250,18 @@ export function DataGrid(props: DataGridProps) {
     {
       id: "gender",
       header: ({ table }) => <>Gender</>,
-      cell: ({ row }) => <span className="capitalize">{row.original.gender}</span>,
+      cell: ({ row }) => (
+        <span className="capitalize">{row.original.gender}</span>
+      ),
       enableSorting: false,
       enableHiding: false,
     },
     {
       id: "Address",
       header: ({ table }) => <>Address</>,
-      cell: ({ row }) => <span className="block w-36">{row.original.address}</span>,
+      cell: ({ row }) => (
+        <span className="block w-36">{row.original.address}</span>
+      ),
       enableSorting: false,
       enableHiding: false,
     },
@@ -306,14 +316,30 @@ export function DataGrid(props: DataGridProps) {
 
   return (
     <div className="w-full h-full overflow-hidden flex flex-col items-start justify-start">
-      <div className="flex items-center py-4">
+      <div className="flex items-center gap-2 py-4">
         <input
-          placeholder="Filter emails..."
+          placeholder="Filter by first name"
+          value={(table.getColumn("firstName")?.getFilterValue() as string) ?? ""}
+          onChange={(event) =>
+            table.getColumn("firstName")?.setFilterValue(event.target.value)
+          }
+          className="max-w-sm border border-slate-500 rounded pl-2"
+        />
+        <input
+          placeholder="Filter by last name"
+          value={(table.getColumn("lastName")?.getFilterValue() as string) ?? ""}
+          onChange={(event) =>
+            table.getColumn("lastName")?.setFilterValue(event.target.value)
+          }
+          className="max-w-sm border border-slate-500 rounded pl-2"
+        />
+        <input
+          placeholder="Filter by email"
           value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
           onChange={(event) =>
             table.getColumn("email")?.setFilterValue(event.target.value)
           }
-          className="max-w-sm"
+          className="max-w-sm border border-slate-500 rounded pl-2"
         />
         {/* <DropdownMenu>
           <DropdownMenuTrigger asChild>
