@@ -72,7 +72,6 @@ export default function StudyOverseasWithGfec() {
             <Image
               src="/comp/grad-1.webp"
               alt="grad-1"
-              priority
               width="400"
               height="600"
               className="rounded-lg"
