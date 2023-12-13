@@ -18,7 +18,7 @@ export default function SitePage() {
 
       <HowWeDifferentiateFromOthers />
 
-      {/* <CouldYourNextHomeBe /> */}
+      <CouldYourNextHomeBe />
 
       {/* <SuccessStories /> audio not using*/}
       {/* <SuccessStoriesText />

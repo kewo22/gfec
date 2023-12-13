@@ -31,6 +31,7 @@ const nextConfig = {
     LNG: process.env.LNG || "NO LNG FROM NEXT.CONFIG",
   },
   swcMinify: true,
+  transpilePackages: ["plyr-react"],
 };
 
 module.exports = nextConfig;
