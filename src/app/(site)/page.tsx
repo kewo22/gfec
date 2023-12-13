@@ -21,9 +21,9 @@ export default function SitePage() {
       <CouldYourNextHomeBe />
 
       {/* <SuccessStories /> audio not using*/}
-      {/* <SuccessStoriesText />
+      <SuccessStoriesText />
 
-      <Testimonial />
+      {/*  <Testimonial />
 
       <StudentLife />
 
