@@ -23,9 +23,9 @@ export default function SitePage() {
       {/* <SuccessStories /> audio not using*/}
       <SuccessStoriesText />
 
-      {/*  <Testimonial />
+      <Testimonial />
 
-      <StudentLife />
+      {/*<StudentLife />
 
       <div id="get-in-touch-container">
         <GetInTouch />
