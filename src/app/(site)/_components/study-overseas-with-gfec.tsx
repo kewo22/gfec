@@ -82,7 +82,7 @@ export default function StudyOverseasWithGfec() {
             />
           </div>
         </div>
-        <div>
+        {/* <div>
           <Typography className="text-justify p-6 md:p-10 bg-primary/80 text-secondary rounded-lg leading-8 sm:relative -left-[35%] top-[12%] sm:w-[130%] lg:-left-[25%] lg:w-[100%]">
             Are you a student looking to pursue higher education but feeling
             overwhelmed by the process? Look no further! Our team of expert
@@ -111,7 +111,7 @@ export default function StudyOverseasWithGfec() {
               onApplyNowClick();
             }}
           />
-        </div>
+        </div> */}
       </div>
 
       <div className="about-plyr">
