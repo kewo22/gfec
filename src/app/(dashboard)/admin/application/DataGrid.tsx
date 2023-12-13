@@ -259,9 +259,7 @@ export function DataGrid(props: DataGridProps) {
     {
       id: "Address",
       header: ({ table }) => <>Address</>,
-      cell: ({ row }) => (
-        <span className="block w-36">{row.original.address}</span>
-      ),
+      cell: ({ row }) => <span className="block w-36">{row.original.address}</span>,
       enableSorting: false,
       enableHiding: false,
     },
