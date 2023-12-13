@@ -6,6 +6,11 @@ import { Typography } from "../../_components/ui/typography";
 import Container from "./layouts/container";
 import SectionTitle from "./section-title";
 
+import apply from "../../../../public/apply.svg";
+import consult from "../../../../public/apply.svg";
+import flight from "../../../../public/apply.svg";
+import graduate from "../../../../public/graduate.svg";
+
 export default function SuccessPath() {
   return (
     <Container className="mx-auto py-20 bg-white">
@@ -14,7 +19,7 @@ export default function SuccessPath() {
       <div className="flex flex-col items-center lg:hidden gap-10">
         <div className="flex flex-col items-center">
           <Image
-            src="/apply.svg"
+            src={apply}
             alt="success-path-apply"
             width={140}
             height={140}
@@ -23,7 +28,7 @@ export default function SuccessPath() {
         </div>
         <div className="flex flex-col items-center">
           <Image
-            src="/consult.svg"
+            src={consult}
             alt="success-path-consult"
             width={140}
             height={140}
@@ -32,7 +37,7 @@ export default function SuccessPath() {
         </div>
         <div className="flex flex-col items-center">
           <Image
-            src="/flight.svg"
+            src={flight}
             alt="success-path-flight"
             width={140}
             height={140}
@@ -42,7 +47,7 @@ export default function SuccessPath() {
         </div>
         <div className="flex flex-col items-center">
           <Image
-            src="/graduate.svg"
+            src={graduate}
             alt="success-path-graduate"
             width={110}
             height={110}
@@ -55,7 +60,7 @@ export default function SuccessPath() {
         <div className="flex flex-row justify-between relative">
           <div className="absolute top-[0] -left-[5%] z-10">
             <Image
-              src="/apply.svg"
+              src={apply}
               alt="success-path-apply"
               width={125}
               height={125}
@@ -66,7 +71,7 @@ export default function SuccessPath() {
           </div>
           <div className="absolute -top-[32px] left-[31%] z-10">
             <Image
-              src="/consult.svg"
+              src={consult}
               alt="success-path-consult"
               width={150}
               height={150}
@@ -80,7 +85,7 @@ export default function SuccessPath() {
           </div>
           <div className="absolute top-[85px] left-[60%] z-10">
             <Image
-              src="/flight.svg"
+              src={flight}
               alt="success-path-flight"
               width={125}
               height={125}
@@ -92,7 +97,7 @@ export default function SuccessPath() {
           </div>
           <div className="absolute top-[18px] -right-[5%] z-10">
             <Image
-              src="/graduate.svg"
+              src={graduate}
               alt="success-path-graduate"
               width={100}
               height={100}
