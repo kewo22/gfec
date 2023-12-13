@@ -27,9 +27,9 @@ export default function SitePage() {
 
       <StudentLife />
 
-      {/*<div id="get-in-touch-container">
+      <div id="get-in-touch-container">
         <GetInTouch />
-      </div> */}
+      </div>
     </section>
   );
 }

@@ -31,7 +31,7 @@ const nextConfig = {
     LNG: process.env.LNG || "NO LNG FROM NEXT.CONFIG",
   },
   swcMinify: true,
-  transpilePackages: ["plyr-react", "react-slick"],
+  transpilePackages: ["plyr-react", "react-slick", "react-device-detect"],
 };
 
 module.exports = nextConfig;
