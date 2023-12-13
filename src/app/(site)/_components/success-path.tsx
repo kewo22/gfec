@@ -7,9 +7,10 @@ import Container from "./layouts/container";
 import SectionTitle from "./section-title";
 
 import apply from "../../../../public/apply.svg";
-import consult from "../../../../public/apply.svg";
-import flight from "../../../../public/apply.svg";
+import consult from "../../../../public/consult.svg";
+import flight from "../../../../public/flight.svg";
 import graduate from "../../../../public/graduate.svg";
+import curveDottedLine from "../../../../public/curve-dotted-line.svg";
 
 export default function SuccessPath() {
   return (
@@ -117,7 +118,7 @@ export default function SuccessPath() {
         </div>
         <Image
           priority
-          src="/curve-dotted-line.svg"
+          src={curveDottedLine}
           alt="success-path-curve-dotted-line"
           width="0"
           height="0"
