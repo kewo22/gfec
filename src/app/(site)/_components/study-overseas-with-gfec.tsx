@@ -94,7 +94,7 @@ export default function StudyOverseasWithGfec() {
       </div>
 
       <div className="about-plyr">
-        {/* <Plyr {...plyrProps} /> */}
+        <Plyr {...plyrProps} />
       </div>
     </Container>
   );
