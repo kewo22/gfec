@@ -19,6 +19,7 @@ export default function SuccessPath() {
       <div className="flex flex-col items-center lg:hidden gap-10">
         <div className="flex flex-col items-center">
           <Image
+            priority
             src={apply}
             alt="success-path-apply"
             width={140}
@@ -28,6 +29,7 @@ export default function SuccessPath() {
         </div>
         <div className="flex flex-col items-center">
           <Image
+            priority
             src={consult}
             alt="success-path-consult"
             width={140}
@@ -37,6 +39,7 @@ export default function SuccessPath() {
         </div>
         <div className="flex flex-col items-center">
           <Image
+            priority
             src={flight}
             alt="success-path-flight"
             width={140}
@@ -47,6 +50,7 @@ export default function SuccessPath() {
         </div>
         <div className="flex flex-col items-center">
           <Image
+            priority
             src={graduate}
             alt="success-path-graduate"
             width={110}
@@ -60,6 +64,7 @@ export default function SuccessPath() {
         <div className="flex flex-row justify-between relative">
           <div className="absolute top-[0] -left-[5%] z-10">
             <Image
+              priority
               src={apply}
               alt="success-path-apply"
               width={125}
@@ -71,6 +76,7 @@ export default function SuccessPath() {
           </div>
           <div className="absolute -top-[32px] left-[31%] z-10">
             <Image
+              priority
               src={consult}
               alt="success-path-consult"
               width={150}
@@ -85,6 +91,7 @@ export default function SuccessPath() {
           </div>
           <div className="absolute top-[85px] left-[60%] z-10">
             <Image
+              priority
               src={flight}
               alt="success-path-flight"
               width={125}
@@ -97,6 +104,7 @@ export default function SuccessPath() {
           </div>
           <div className="absolute top-[18px] -right-[5%] z-10">
             <Image
+              priority
               src={graduate}
               alt="success-path-graduate"
               width={100}
@@ -108,6 +116,7 @@ export default function SuccessPath() {
           </div>
         </div>
         <Image
+          priority
           src="/curve-dotted-line.svg"
           alt="success-path-curve-dotted-line"
           width="0"
