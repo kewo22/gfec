@@ -14,14 +14,14 @@ export default function SitePage() {
     <section className="bg-slate-100">
       <StudyOverseasWithGfec />
 
-      <SuccessPath />
+      {/* <SuccessPath />
 
       <HowWeDifferentiateFromOthers />
 
-      <CouldYourNextHomeBe />
+      <CouldYourNextHomeBe /> */}
 
       {/* <SuccessStories /> audio not using*/}
-      <SuccessStoriesText />
+      {/* <SuccessStoriesText />
 
       <Testimonial />
 
@@ -29,7 +29,7 @@ export default function SitePage() {
 
       <div id="get-in-touch-container">
         <GetInTouch />
-      </div>
+      </div> */}
     </section>
   );
 }

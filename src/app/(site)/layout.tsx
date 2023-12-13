@@ -25,9 +25,9 @@ export default function SiteLayout({
   return (
     <html lang="en">
       <body className={ubuntu.className}>
-        <Navigation />
+        {/* <Navigation /> */}
         <main className="">{children}</main>
-        <Footer />
+        {/* <Footer /> */}
         <Analytics />
         <SpeedInsights />
       </body>
