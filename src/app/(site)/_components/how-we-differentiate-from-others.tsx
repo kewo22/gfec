@@ -5,11 +5,23 @@ import Container from "./layouts/container";
 import { Typography } from "../../_components/ui/typography";
 import SectionTitle from "./section-title";
 
+import books from "../../../../public/books.svg";
+import graduationHat from "../../../../public/graduation-hat.svg";
+import offer from "../../../../public/offer.svg";
+import finSupport from "../../../../public/fin-support.svg";
+import studentVisa from "../../../../public/student-visa.svg";
+import waitingRoom from "../../../../public/waiting-room.png";
+import roomKey from "../../../../public/room-key.png";
+import immigration from "../../../../public/immigration.png";
+import discussion from "../../../../public/discussion.png";
+import visa from "../../../../public/visa.png";
+import eng from "../../../../public/eng.png";
+
 export default function HowWeDifferentiateFromOthers() {
   const dataArr = [
     {
       image: {
-        name: "/books.png",
+        name: books,
         alt: "books",
         height: 50,
         width: 50,
@@ -20,7 +32,7 @@ export default function HowWeDifferentiateFromOthers() {
     },
     {
       image: {
-        name: "/graduation-hat.png",
+        name: graduationHat,
         alt: "graduation-hat",
         height: 70,
         width: 70,
@@ -31,7 +43,7 @@ export default function HowWeDifferentiateFromOthers() {
     },
     {
       image: {
-        name: "/offer.png",
+        name: offer,
         alt: "offer",
         height: 60,
         width: 60,
@@ -42,7 +54,7 @@ export default function HowWeDifferentiateFromOthers() {
     },
     {
       image: {
-        name: "/fin-support.png",
+        name: finSupport,
         alt: "fin-support",
         height: 70,
         width: 70,
@@ -53,7 +65,7 @@ export default function HowWeDifferentiateFromOthers() {
     },
     {
       image: {
-        name: "/student-visa.png",
+        name: studentVisa,
         alt: "student-visa",
         height: 70,
         width: 70,
@@ -64,7 +76,7 @@ export default function HowWeDifferentiateFromOthers() {
     },
     {
       image: {
-        name: "/waiting-room.png",
+        name: waitingRoom,
         alt: "waiting-room",
         height: 70,
         width: 70,
@@ -75,7 +87,7 @@ export default function HowWeDifferentiateFromOthers() {
     },
     {
       image: {
-        name: "/room-key.png",
+        name: roomKey,
         alt: "room-key",
         height: 70,
         width: 70,
@@ -86,7 +98,7 @@ export default function HowWeDifferentiateFromOthers() {
     },
     {
       image: {
-        name: "/immigration.png",
+        name: immigration,
         alt: "immigration",
         height: 75,
         width: 75,
@@ -97,7 +109,7 @@ export default function HowWeDifferentiateFromOthers() {
     },
     {
       image: {
-        name: "/discussion.png",
+        name: discussion,
         alt: "discussion",
         height: 50,
         width: 50,
@@ -108,7 +120,7 @@ export default function HowWeDifferentiateFromOthers() {
     },
     {
       image: {
-        name: "/visa.png",
+        name: visa,
         alt: "visa",
         height: 50,
         width: 50,
@@ -119,7 +131,7 @@ export default function HowWeDifferentiateFromOthers() {
     },
     {
       image: {
-        name: "/eng.png",
+        name: eng,
         alt: "eng",
         height: 55,
         width: 55,
@@ -156,6 +168,7 @@ export default function HowWeDifferentiateFromOthers() {
                 height={data.image.height}
                 width={data.image.width}
                 className="!relative mb-3 text-center"
+                priority
               />
               <Typography variant="p" className="text-secondary">
                 {data.title}
