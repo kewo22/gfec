@@ -5,17 +5,17 @@ import Container from "./layouts/container";
 import { Typography } from "../../_components/ui/typography";
 import SectionTitle from "./section-title";
 
-import books from "../../../../public/books.png";
-import graduationHat from "../../../../public/graduation-hat.png";
-import offer from "../../../../public/offer.png";
-import finSupport from "../../../../public/fin-support.png";
-import studentVisa from "../../../../public/student-visa.png";
-import waitingRoom from "../../../../public/waiting-room.png";
-import roomKey from "../../../../public/room-key.png";
-import immigration from "../../../../public/immigration.png";
-import discussion from "../../../../public/discussion.png";
-import visa from "../../../../public/visa.png";
-import eng from "../../../../public/eng.png";
+import books from "../../../../public/comp/books.png";
+import graduationHat from "../../../../public/comp/graduation-hat.png";
+import offer from "../../../../public/comp/offer.png";
+import finSupport from "../../../../public/comp/fin-support.png";
+import studentVisa from "../../../../public/comp/student-visa.png";
+import waitingRoom from "../../../../public/comp/waiting-room.png";
+import roomKey from "../../../../public/comp/room-key.png";
+import immigration from "../../../../public/comp/immigration.png";
+import discussion from "../../../../public/comp/discussion.png";
+import visa from "../../../../public/comp/visa.png";
+import eng from "../../../../public/comp/eng.png";
 
 export default function HowWeDifferentiateFromOthers() {
   const dataArr = [
