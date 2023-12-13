@@ -14,6 +14,8 @@ import Button from "@/app/_components/ui/button";
 import SectionTitle from "./section-title";
 import { ResolveBaseUrl } from "@/app/utils/common";
 
+import grad1 from "../../../../public/comp/grad-1.webp";
+
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 export default function StudyOverseasWithGfec() {
@@ -70,7 +72,8 @@ export default function StudyOverseasWithGfec() {
         <div className="row-span-2">
           <div className="image-container inline-block relative rounded-lg">
             <Image
-              src="/comp/grad-1.webp"
+              // src="/comp/grad-1.webp"
+              src={grad1}
               alt="grad-1"
               width="400"
               height="600"
@@ -110,9 +113,7 @@ export default function StudyOverseasWithGfec() {
         </div>
       </div>
 
-      <div className="about-plyr">
-        {/* <Plyr {...plyrProps} /> */}
-      </div>
+      <div className="about-plyr">{/* <Plyr {...plyrProps} /> */}</div>
     </Container>
   );
 }
