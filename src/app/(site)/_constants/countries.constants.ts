@@ -1,5 +1,20 @@
 import { Country } from "../_types/country";
+
 import aus from '../../../../public/comp/aus.webp'
+import uk from '../../../../public/comp/uk.webp'
+import canada from '../../../../public/comp/canada.webp'
+import finland from '../../../../public/comp/finland.webp'
+import belarus from '../../../../public/comp/belarus.webp'
+import germany from '../../../../public/comp/germany.webp'
+import italy from '../../../../public/comp/italy.webp'
+import sweden from '../../../../public/comp/sweden.webp'
+import russia from '../../../../public/comp/russia.webp'
+import france from '../../../../public/comp/france.webp'
+import netherlands from '../../../../public/comp/netherlands.webp'
+import latvia from '../../../../public/comp/latvia.webp'
+import switzerland from '../../../../public/comp/switzerland.webp'
+import dxb from '../../../../public/comp/dxb.webp'
+import malta from '../../../../public/comp/malta.webp'
 
 export const COUNTRIES: Country[] = [
     {
@@ -14,7 +29,7 @@ export const COUNTRIES: Country[] = [
     },
     {
         id: "uk",
-        image: "/comp/uk.webp",
+        image: uk,
         country: "United Kingdom",
         class: "",
         description: "",
@@ -24,7 +39,7 @@ export const COUNTRIES: Country[] = [
     },
     {
         id: "can",
-        image: "/comp/canada.webp",
+        image: canada,
         country: "Canada",
         class: "",
         description: "",
@@ -34,7 +49,7 @@ export const COUNTRIES: Country[] = [
     },
     {
         id: "fin",
-        image: "/comp/finland.webp",
+        image: finland,
         country: "Finland",
         class: "",
         description: "",
@@ -44,7 +59,7 @@ export const COUNTRIES: Country[] = [
     },
     {
         id: "bal",
-        image: "/comp/belarus.webp",
+        image: belarus,
         country: "Belarus",
         class: "",
         description: "",
@@ -54,7 +69,7 @@ export const COUNTRIES: Country[] = [
     },
     {
         id: "ger",
-        image: "/comp/germany.webp",
+        image: germany,
         country: "Germany",
         class: "",
         description: "",
@@ -64,7 +79,7 @@ export const COUNTRIES: Country[] = [
     },
     {
         id: "ita",
-        image: "/comp/italy.webp",
+        image: italy,
         country: "Italy",
         class: "",
         description: "",
@@ -74,7 +89,7 @@ export const COUNTRIES: Country[] = [
     },
     {
         id: "swe",
-        image: "/comp/sweden.webp",
+        image: sweden,
         country: "Sweden",
         class: "",
         description: "",
@@ -84,7 +99,7 @@ export const COUNTRIES: Country[] = [
     },
     {
         id: "rus",
-        image: "/comp/russia.webp",
+        image: russia,
         country: "Russia",
         class: "",
         description: "",
@@ -94,7 +109,7 @@ export const COUNTRIES: Country[] = [
     },
     {
         id: "fra",
-        image: "/comp/france.webp",
+        image: france,
         country: "France",
         class: "",
         description: "",
@@ -104,7 +119,7 @@ export const COUNTRIES: Country[] = [
     },
     {
         id: "ned",
-        image: "/comp/netherlands.webp",
+        image: netherlands,
         country: "Netherlands",
         class: "",
         description: "",
@@ -114,7 +129,7 @@ export const COUNTRIES: Country[] = [
     },
     {
         id: "lat",
-        image: "/comp/latvia.webp",
+        image: latvia,
         country: "Latvia",
         class: "",
         description: "",
@@ -124,7 +139,7 @@ export const COUNTRIES: Country[] = [
     },
     {
         id: "swi",
-        image: "/comp/switzerland.webp",
+        image: switzerland,
         country: "Switzerland",
         class: "",
         description: "",
@@ -134,7 +149,7 @@ export const COUNTRIES: Country[] = [
     },
     {
         id: "dxb",
-        image: "/comp/dxb.webp",
+        image: dxb,
         country: "UAE - Dubai",
         class: "",
         description: "",
@@ -144,7 +159,7 @@ export const COUNTRIES: Country[] = [
     },
     {
         id: "malta",
-        image: "/comp/malta.webp",
+        image: malta,
         country: "Malta",
         class: "",
         description: "",
