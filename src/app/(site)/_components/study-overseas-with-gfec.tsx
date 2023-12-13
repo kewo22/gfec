@@ -2,21 +2,16 @@
 
 import React, { useEffect } from "react";
 
-import useSWR from "swr";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import Plyr, { PlyrProps } from "plyr-react";
 
 import Container from "./layouts/container";
-import "plyr-react/plyr.css";
 import { Typography } from "@/app/_components/ui/typography";
 import Button from "@/app/_components/ui/button";
 import SectionTitle from "./section-title";
-import { ResolveBaseUrl } from "@/app/utils/common";
 
 import grad1 from "../../../../public/comp/grad-1.webp";
-
-const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 export default function StudyOverseasWithGfec() {
   const router = useRouter();
@@ -26,19 +21,6 @@ export default function StudyOverseasWithGfec() {
     console.log(process.env.NEXT_PUBLIC_VERCEL_URL);
     console.log(process.env.NEXT_PUBLIC_VERCEL_BRANCH_URL);
   }, []);
-
-  // const privacyBasePolicyUrl = ResolveBaseUrl(
-  //   process.env.NEXT_PUBLIC_VERCEL_ENV!
-  // );
-
-  // const { data, isLoading } = useSWR(
-  //   `${privacyBasePolicyUrl}/api`,
-  //   fetcher
-  //   // { revalidateOnFocus: false, revalidateOnReconnect: false }
-  // );
-
-  // console.log(isLoading);
-  // console.log(data);
 
   const plyrProps: PlyrProps = {
     source: {
@@ -55,8 +37,6 @@ export default function StudyOverseasWithGfec() {
     }, // https://github.com/sampotts/plyr#the-source-setter
     options: {
       volume: 0.3,
-      // controls: ["play-large", "f"],
-      // hideControls: true,
     }, // https://github.com/sampotts/plyr#options
   };
 
@@ -72,7 +52,6 @@ export default function StudyOverseasWithGfec() {
         <div className="row-span-2">
           <div className="image-container inline-block relative rounded-lg">
             <Image
-              // src="/comp/grad-1.webp"
               src={grad1}
               priority
               alt="grad-1"
@@ -82,7 +61,7 @@ export default function StudyOverseasWithGfec() {
             />
           </div>
         </div>
-        {/* <div>
+        <div>
           <Typography className="text-justify p-6 md:p-10 bg-primary/80 text-secondary rounded-lg leading-8 sm:relative -left-[35%] top-[12%] sm:w-[130%] lg:-left-[25%] lg:w-[100%]">
             Are you a student looking to pursue higher education but feeling
             overwhelmed by the process? Look no further! Our team of expert
@@ -111,7 +90,7 @@ export default function StudyOverseasWithGfec() {
               onApplyNowClick();
             }}
           />
-        </div> */}
+        </div>
       </div>
 
       <div className="about-plyr">
