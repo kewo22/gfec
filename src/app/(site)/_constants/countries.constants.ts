@@ -1,9 +1,10 @@
 import { Country } from "../_types/country";
+import aus from '../../../../public/comp/aus.webp'
 
 export const COUNTRIES: Country[] = [
     {
         id: "aus",
-        image: "/comp/aus.webp",
+        image: aus,
         country: "Australia",
         class: "",
         description: "",

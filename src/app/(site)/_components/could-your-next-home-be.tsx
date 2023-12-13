@@ -4,11 +4,6 @@ import React from "react";
 
 import Image from "next/image";
 import Slider from "react-slick";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faChevronLeft,
-  faChevronRight,
-} from "@fortawesome/free-solid-svg-icons";
 
 import Container from "./layouts/container";
 import { Typography } from "../../_components/ui/typography";
@@ -17,6 +12,8 @@ import { COUNTRIES } from "../_constants/countries.constants";
 import SectionTitle from "./section-title";
 import PrevIcon from "./ui/slider-previous";
 import NextIcon from "./ui/slider-next";
+
+import buildings from '../../../../public/comp/buildings.png'
 
 export default function CouldYourNextHomeBe() {
   const settings = {
@@ -50,7 +47,7 @@ export default function CouldYourNextHomeBe() {
   return (
     <Container className="mx-0 lg:mx-auto py-20 relative bg-white">
       <Image
-        src="/buildings.png"
+        src={buildings}
         alt="buildings-bg"
         priority
         width="0"
