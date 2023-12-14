@@ -17,7 +17,7 @@ import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import GetInTouchForm, { GetInTouchFormHandle } from "./get-in-touch-form";
 import { Modal } from "@/app/_components/ui/modal";
 
-import gfecTrans from '../../../../public/comp/GFEC-Trans.png'
+import gfecTrans from "../../../../public/comp/GFEC-Trans.png";
 
 export default function Navigation() {
   const modalRef = useRef(null);
@@ -49,22 +49,24 @@ export default function Navigation() {
     return (
       <>
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 w-full h-[90%] max-w-[1000px] flex flex-col gap-10">
-          {/* <Image
-            src={gfecTrans}
-            alt="GFEC-Trans-mobile-lg"
-            width={210}
-            height={160}
-            priority
-            className="!hidden lg:!block mx-auto"
-          />
-          <Image
-            src={gfecTrans}
-            alt="GFEC-Trans-mobile-sm"
-            width={170}
-            height={140}
-            priority
-            className="!block lg:!hidden mx-auto"
-          /> */}
+          <div className="min-h-[160px]">
+            <Image
+              src={gfecTrans}
+              alt="GFEC-Trans-mobile-lg"
+              width={210}
+              height={160}
+              priority
+              className="!hidden lg:!block mx-auto"
+            />
+            <Image
+              src={gfecTrans}
+              alt="GFEC-Trans-mobile-sm"
+              width={170}
+              height={140}
+              priority
+              className="!block lg:!hidden mx-auto"
+            />
+          </div>
 
           <NavLinks />
 
