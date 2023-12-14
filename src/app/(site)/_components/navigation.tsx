@@ -138,7 +138,7 @@ export default function Navigation() {
 
   return (
     <nav
-      className={`h-[900px] flex flex-col items-center relative`}
+      className={`min-h-[900px] h-[900px] flex flex-col items-center relative`}
       id="main-nav"
       ref={ref}
     >
