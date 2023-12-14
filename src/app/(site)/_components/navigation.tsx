@@ -147,10 +147,10 @@ export default function Navigation() {
       </section>
 
       <Slider {...settings}>
-        <div className="bg-home-banner-1 bg-center bg-cover w-full h-full banner-img">
+        <div className="bg-home-banner-1 bg-center bg-cover w-full min-h-[900px] h-[900px] banner-img">
           <Items />
         </div>
-        <div className="bg-home-banner-2 bg-center bg-cover w-full h-full banner-img">
+        <div className="bg-home-banner-2 bg-center bg-cover w-full min-h-[900px] h-[900px] banner-img">
           <Items />
         </div>
       </Slider>
