@@ -49,7 +49,7 @@ export default function Navigation() {
     return (
       <>
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 w-full h-[90%] max-w-[1000px] flex flex-col gap-10">
-          <Image
+          {/* <Image
             src={gfecTrans}
             alt="GFEC-Trans-mobile-lg"
             width={210}
@@ -64,7 +64,7 @@ export default function Navigation() {
             height={140}
             priority
             className="!block lg:!hidden mx-auto"
-          />
+          /> */}
 
           <NavLinks />
 
