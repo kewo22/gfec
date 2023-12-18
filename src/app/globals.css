@@ -108,7 +108,7 @@ body {
   height: 868px;
   top: 32px;
   left: 0;
-  background: linear-gradient(180deg, rgb(0 0 0 / 55%), rgba(190, 190, 190, 0.342));
+  background: linear-gradient(180deg, rgb(0 0 0 / 55%), rgba(190, 190, 190));
   transform: matrix(1, 0, 0, -1, 0, 0);
   z-index: 2;
 }
