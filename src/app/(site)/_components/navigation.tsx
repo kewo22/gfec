@@ -56,36 +56,42 @@ export default function Navigation() {
 
   const slides = useMemo(() => {
     let TEMP_SLIDES = [...SLIDES];
-    if (slidNo > 2) {
-      const bannerWrapper = document.querySelector("#banner-wrapper");
-      const el = document.createElement("div");
-      el.setAttribute("id", `banner-img-${slidNo}`);
-      el.classList.add(
-        SLIDES[slidNo % 2],
-        "w-full",
-        "flex-[0_0_auto]",
-        "bg-cover",
-        "bg-center",
-        "appended-banner-images"
-      );
-      bannerWrapper?.appendChild(el);
-      const element = document.querySelector(`#banner-img-${slidNo}`);
-      element?.scrollIntoView({
-        behavior: "smooth",
-        block: "end",
-        inline: "nearest",
-      });
+    if (typeof window !== "undefined") {
+      // browser code
+      if (slidNo > 2) {
+        const bannerWrapper = document.querySelector("#banner-wrapper");
+        const el = document.createElement("div");
+        el.setAttribute("id", `banner-img-${slidNo}`);
+        el.classList.add(
+          SLIDES[slidNo % 2],
+          "w-full",
+          "flex-[0_0_auto]",
+          "bg-cover",
+          "bg-center",
+          "appended-banner-images"
+        );
+        bannerWrapper?.appendChild(el);
+        const element = document.querySelector(`#banner-img-${slidNo}`);
+        element?.scrollIntoView({
+          behavior: "smooth",
+          block: "end",
+          inline: "nearest",
+        });
+      }
     }
+
     return TEMP_SLIDES;
   }, [slidNo]);
 
   if (!inView) {
     clearInterval(intervalId.current);
-    document.querySelectorAll(".appended-banner-images").forEach((el) => {
-      el.remove();
-    });
-    const element = document.querySelector(`#banner-wrapper`);
-    element?.scrollTo({ left: 0 });
+    if (typeof window !== "undefined") {
+      document.querySelectorAll(".appended-banner-images").forEach((el) => {
+        el.remove();
+      });
+      const element = document.querySelector(`#banner-wrapper`);
+      element?.scrollTo({ left: 0 });
+    }
   } else {
     clearInterval(intervalId.current);
     const timer = setInterval(() => {
