@@ -97,7 +97,7 @@ export default function Navigation() {
       setSlideNo((val) => {
         return ++val;
       });
-    }, 2000) as unknown as number;
+    }, 5000) as unknown as number;
     intervalId.current = timer;
   }
 
@@ -107,9 +107,9 @@ export default function Navigation() {
       id="main-nav"
       ref={ref}
     >
-      <section className="w-full h-[32px]">
+     
         <NavContactRibbon />
-      </section>
+     
 
       <div className="absolute w-full h-full">
         <MemoizedNavItems onOpenModel={onOpenModel} />
