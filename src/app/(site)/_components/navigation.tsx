@@ -49,7 +49,7 @@ export default function Navigation() {
       setSlideNo((val) => {
         return ++val;
       });
-    }, 2000) as unknown as number;
+    }, 5000) as unknown as number;
     intervalId.current = timer;
     return () => clearInterval(intervalId.current);
   }, []);
