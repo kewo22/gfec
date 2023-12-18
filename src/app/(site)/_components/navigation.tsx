@@ -16,7 +16,6 @@ import { Typography } from "@/app/_components/ui/typography";
 import GetInTouchForm, { GetInTouchFormHandle } from "./get-in-touch-form";
 import { Modal } from "@/app/_components/ui/modal";
 
-import gfecTrans from "../../../../public/comp/GFEC-Trans.png";
 import { MemoizedNavItems } from "./nav-items";
 
 const SLIDES = ["bg-home-banner-1", "bg-home-banner-2"];

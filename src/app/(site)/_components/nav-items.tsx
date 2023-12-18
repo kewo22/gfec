@@ -7,6 +7,7 @@ import { Typography } from "@/app/_components/ui/typography";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import NavActions from "./nav-actions";
 import NavSocial from "./nav-social";
+import gfecTrans from "../../../../public/comp/GFEC-Trans.png";
 
 function NavItems({ onOpenModel }: any) {
   return (
@@ -14,7 +15,7 @@ function NavItems({ onOpenModel }: any) {
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 w-full h-[80%] max-w-[1000px] flex flex-col gap-10">
         <div className="">
           <Image
-            src="/comp/GFEC-Trans.png"
+            src={gfecTrans}
             alt="GFEC-Trans-mobile-lg"
             width={210}
             height={160}
