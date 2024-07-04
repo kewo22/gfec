@@ -35,6 +35,8 @@ export default function Testimonial() {
     "https://gfce.s3.amazonaws.com/testimonial-1.mp4",
     "https://gfce.s3.amazonaws.com/testimonial-2.mp4",
     "https://gfce.s3.amazonaws.com/testimonial-3.mp4",
+    "https://gfce.s3.amazonaws.com/testimonial-4.mp4",
+    "https://gfce.s3.amazonaws.com/testimonial-5.mp4",
   ];
 
   const onNextClick = () => {
