@@ -7,7 +7,7 @@ export default function NavContactRibbon() {
   const phoneNos = (process.env.PHONE as unknown as string)?.split(",") || [];
 
   return (
-    <section className="hidden sm:flex justify-between bg-secondary py-1 px-2">
+    <section className="hidden sm:flex sm:w-full sm:h-[32px] justify-between bg-secondary py-1 px-2">
       <div className="flex items-center">
         {emails?.map((mail, i) => {
           return (

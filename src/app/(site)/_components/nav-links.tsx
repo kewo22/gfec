@@ -37,7 +37,9 @@ export default function NavLinks() {
           >
             <Typography
               variant="p"
-              className="uppercase tracking-widest text-white font-bold"
+              className={`uppercase tracking-widest text-white font-bold ${
+                item.isActive && "!text-white"
+              }`}
             >
               {item.text}
             </Typography>

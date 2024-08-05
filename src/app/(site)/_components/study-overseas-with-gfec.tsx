@@ -2,19 +2,16 @@
 
 import React, { useEffect } from "react";
 
-import useSWR from "swr";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import Plyr, { PlyrProps } from "plyr-react";
 
 import Container from "./layouts/container";
-import "plyr-react/plyr.css";
 import { Typography } from "@/app/_components/ui/typography";
 import Button from "@/app/_components/ui/button";
 import SectionTitle from "./section-title";
-import { ResolveBaseUrl } from "@/app/utils/common";
 
-const fetcher = (url: string) => fetch(url).then((res) => res.json());
+import grad1 from "../../../../public/comp/grad-1.webp";
 
 export default function StudyOverseasWithGfec() {
   const router = useRouter();
@@ -24,19 +21,6 @@ export default function StudyOverseasWithGfec() {
     console.log(process.env.NEXT_PUBLIC_VERCEL_URL);
     console.log(process.env.NEXT_PUBLIC_VERCEL_BRANCH_URL);
   }, []);
-
-  // const privacyBasePolicyUrl = ResolveBaseUrl(
-  //   process.env.NEXT_PUBLIC_VERCEL_ENV!
-  // );
-
-  // const { data, isLoading } = useSWR(
-  //   `${privacyBasePolicyUrl}/api`,
-  //   fetcher
-  //   // { revalidateOnFocus: false, revalidateOnReconnect: false }
-  // );
-
-  // console.log(isLoading);
-  // console.log(data);
 
   const plyrProps: PlyrProps = {
     source: {
@@ -53,8 +37,6 @@ export default function StudyOverseasWithGfec() {
     }, // https://github.com/sampotts/plyr#the-source-setter
     options: {
       volume: 0.3,
-      // controls: ["play-large", "f"],
-      // hideControls: true,
     }, // https://github.com/sampotts/plyr#options
   };
 
@@ -70,9 +52,9 @@ export default function StudyOverseasWithGfec() {
         <div className="row-span-2">
           <div className="image-container inline-block relative rounded-lg">
             <Image
-              src="/comp/grad-1.webp"
-              alt="grad-1"
+              src={grad1}
               priority
+              alt="grad-1"
               width="400"
               height="600"
               className="rounded-lg"

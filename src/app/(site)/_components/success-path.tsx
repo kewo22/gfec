@@ -6,6 +6,12 @@ import { Typography } from "../../_components/ui/typography";
 import Container from "./layouts/container";
 import SectionTitle from "./section-title";
 
+import apply from "../../../../public/apply.svg";
+import consult from "../../../../public/consult.svg";
+import flight from "../../../../public/flight.svg";
+import graduate from "../../../../public/graduate.svg";
+import curveDottedLine from "../../../../public/curve-dotted-line.svg";
+
 export default function SuccessPath() {
   return (
     <Container className="mx-auto py-20 bg-white">
@@ -14,9 +20,9 @@ export default function SuccessPath() {
       <div className="flex flex-col items-center lg:hidden gap-10">
         <div className="flex flex-col items-center">
           <Image
-            src="/apply.svg"
-            alt="success-path-apply"
             priority
+            src={apply}
+            alt="success-path-apply"
             width={140}
             height={140}
           />
@@ -24,9 +30,9 @@ export default function SuccessPath() {
         </div>
         <div className="flex flex-col items-center">
           <Image
-            src="/consult.svg"
-            alt="success-path-consult"
             priority
+            src={consult}
+            alt="success-path-consult"
             width={140}
             height={140}
           />
@@ -34,9 +40,9 @@ export default function SuccessPath() {
         </div>
         <div className="flex flex-col items-center">
           <Image
-            src="/flight.svg"
-            alt="success-path-flight"
             priority
+            src={flight}
+            alt="success-path-flight"
             width={140}
             height={140}
             className="-scale-x-[1] -rotate-[20deg] "
@@ -45,9 +51,9 @@ export default function SuccessPath() {
         </div>
         <div className="flex flex-col items-center">
           <Image
-            src="/graduate.svg"
-            alt="success-path-graduate"
             priority
+            src={graduate}
+            alt="success-path-graduate"
             width={110}
             height={110}
           />
@@ -59,9 +65,9 @@ export default function SuccessPath() {
         <div className="flex flex-row justify-between relative">
           <div className="absolute top-[0] -left-[5%] z-10">
             <Image
-              src="/apply.svg"
-              alt="success-path-apply"
               priority
+              src={apply}
+              alt="success-path-apply"
               width={125}
               height={125}
             />
@@ -71,9 +77,9 @@ export default function SuccessPath() {
           </div>
           <div className="absolute -top-[32px] left-[31%] z-10">
             <Image
-              src="/consult.svg"
-              alt="success-path-consult"
               priority
+              src={consult}
+              alt="success-path-consult"
               width={150}
               height={150}
             />
@@ -86,9 +92,9 @@ export default function SuccessPath() {
           </div>
           <div className="absolute top-[85px] left-[60%] z-10">
             <Image
-              src="/flight.svg"
-              alt="success-path-flight"
               priority
+              src={flight}
+              alt="success-path-flight"
               width={125}
               height={125}
               className="-scale-x-[1] -rotate-[20deg] "
@@ -99,9 +105,9 @@ export default function SuccessPath() {
           </div>
           <div className="absolute top-[18px] -right-[5%] z-10">
             <Image
-              src="/graduate.svg"
-              alt="success-path-graduate"
               priority
+              src={graduate}
+              alt="success-path-graduate"
               width={100}
               height={100}
             />
@@ -111,9 +117,9 @@ export default function SuccessPath() {
           </div>
         </div>
         <Image
-          src="/curve-dotted-line.svg"
-          alt="success-path-curve-dotted-line"
           priority
+          src={curveDottedLine}
+          alt="success-path-curve-dotted-line"
           width="0"
           height="0"
           sizes="100vw"
