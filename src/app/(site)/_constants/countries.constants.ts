@@ -18,7 +18,7 @@ import malta from '../../../../public/comp/malta.webp'
 
 export const COUNTRIES: Country[] = [
     {
-        id: "aus",
+        id: "aus1",
         image: aus,
         country: "Australia",
         class: "",
