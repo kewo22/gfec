@@ -6,7 +6,7 @@ export type Country = {
     country: string;
     class: string;
     description?: string;
-    isCourseDetailAvailable: boolean;
+    isCourseDetailAvailable: boolean; // not using anywhere
     flag: string;
     flagBg: string;
 };
