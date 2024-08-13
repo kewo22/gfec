@@ -29,6 +29,8 @@ import Lat from "../_components/countries/lat";
 import Swi from "../_components/countries/swi";
 import Dxb from "../_components/countries/dxb";
 import Malta from "../_components/countries/malta";
+import Spain from "../_components/countries/spain";
+import Ireland from "../_components/countries/ireland";
 
 export default function Destination() {
   const [selectedCountry, setSelectedCountry] = useState(PRE_SELECTED_COUNTRY);
@@ -114,6 +116,8 @@ export default function Destination() {
             {selectedCountry.id === "swi" && <Swi />}
             {selectedCountry.id === "dxb" && <Dxb />}
             {selectedCountry.id === "malta" && <Malta />}
+            {selectedCountry.id === "esp" && <Spain />}
+            {selectedCountry.id === "ire" && <Ireland />}
           </div>
         </div>
       </Container>

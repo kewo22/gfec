@@ -33,6 +33,8 @@ const config: Config = {
         "ch-flag": "url('/ch.svg')",
         "dxb-flag": "url('/dxb.svg')",
         "malta-flag": "url('/malta.svg')",
+        "spain-flag": "url('/spain.svg')",
+        "ireland-flag": "url('/ireland.svg')",
         "aus-banner": "url('/aus.jpg')",
         "belarus-banner": "url('/belarus.jpg')",
         "finland-banner": "url('/finland.jpg')",
@@ -48,6 +50,8 @@ const config: Config = {
         "uk-banner": "url('/uk.jpg')",
         "dxb-banner": "url('/dxb.jpg')",
         "malta-banner": "url('/malta.jpg')",
+        "spain-banner": "url('/spain.jpg')",
+        "ireland-banner": "url('/ireland.jpg')",
       },
       colors: {
         primary: "#BD9519",
