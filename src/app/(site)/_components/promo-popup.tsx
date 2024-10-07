@@ -14,12 +14,12 @@ export default function PromoPopUp() {
     setTimeout(() => {
       setIsShow(true)
       document.body.classList.add('!overflow-hidden');
-      document.querySelector("#ad-img")?.classList.replace('scale-0', 'scale-1')
+      document.querySelector("#ad-img")?.classList.add('!scale-1')
     }, 1000);
   }, [])
 
   const onCloseAd = () => {
-    document.querySelector("#ad-img")?.classList.replace('scale-1', 'scale-0')
+    document.querySelector("#ad-img")?.classList.add('!scale-0')
     setTimeout(() => {
       setIsShow(false)
       document.body.classList.remove('!overflow-hidden')
