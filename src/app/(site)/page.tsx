@@ -10,6 +10,7 @@ import SuccessStoriesText from "./_components/success-stories-text";
 import StudentLife from "./_components/student-life";
 
 export default function SitePage() {
+
   return (
     <section className="bg-slate-100">
       <StudyOverseasWithGfec />
