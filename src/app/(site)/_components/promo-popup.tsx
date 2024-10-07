@@ -14,11 +14,7 @@ export default function PromoPopUp() {
     setTimeout(() => {
       setIsShow(true)
       document.body.classList.add('!overflow-hidden');
-
-      setTimeout(() => {
-        document.querySelector("#ad-img")?.classList.replace('scale-0', 'scale-1')
-      }, 0);
-
+      document.querySelector("#ad-img")?.classList.replace('scale-0', 'scale-1')
     }, 1000);
   }, [])
 
