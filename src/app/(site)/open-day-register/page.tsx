@@ -130,12 +130,17 @@ export default function OpenDayRegister() {
               useControllerProps={{ control, name: "mobile" }}
             />
 
-            <Input
-              label="Recent Education Qualification"
-              type="text"
-              isRequired={false}
-              useControllerProps={{ control, name: "recentEducationQualification" }}
-            />
+            <div className="">
+              <Input
+                label="Recent Education Qualification"
+                type="text"
+                isRequired={false}
+                useControllerProps={{ control, name: "recentEducationQualification" }}
+              />
+              <Typography variant="small" className="text-gray-400 text-left ml-0 sm:ml-3 mt-1">
+                Eg. O/L, A/L, Diploma, Bachelors
+              </Typography>
+            </div>
 
             <div className="flex flex-col items-start gap-3">
               <Typography variant="label" className="font-bold">
@@ -150,6 +155,7 @@ export default function OpenDayRegister() {
               </div>
             </div>
           </ApplyFormLayout>
+
           <div className="flex flex-col gap-2">
             <Button
               text="Save"
@@ -158,7 +164,10 @@ export default function OpenDayRegister() {
               isLoading={isLoading}
             />
             {
-              (isSuccess && !isLoading) && <div className="text-green-900">Successfully Submitted</div>
+              (isSuccess && !isLoading) &&
+              <Typography variant="p" className="font-bold text-green-900">
+                Successfully Submitted
+              </Typography>
             }
           </div>
         </form>
@@ -166,3 +175,4 @@ export default function OpenDayRegister() {
     </section>
   );
 }
+{/* <div className="text-green-900">Successfully Submitted</div> */ }
