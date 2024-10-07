@@ -19,7 +19,7 @@ export default function PromoPopUp() {
         document.querySelector("#ad-img")?.classList.replace('scale-0', 'scale-1')
       }, 0);
 
-    }, 0);
+    }, 1000);
   }, [])
 
   const onCloseAd = () => {
