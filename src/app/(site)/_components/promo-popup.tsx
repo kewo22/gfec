@@ -15,13 +15,14 @@ export default function PromoPopUp() {
       setIsShow(true)
       document.body.classList.add('!overflow-hidden');
       setTimeout(() => {
-        document.querySelector("#ad-img")?.classList.add('!scale-1')
+        console.log(document.querySelector("#ad-img"))
+        document.querySelector("#ad-img")?.classList.replace('scale-0', 'scale-1')
       }, 500);
-    }, 1000);
+    }, 500);
   }, [])
 
   const onCloseAd = () => {
-    document.querySelector("#ad-img")?.classList.add('!scale-0')
+    document.querySelector("#ad-img")?.classList.replace('scale-1', 'scale-0')
     setTimeout(() => {
       setIsShow(false)
       document.body.classList.remove('!overflow-hidden')
