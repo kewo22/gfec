@@ -51,7 +51,6 @@ export default function OpenDayRegister() {
     handleSubmit,
     control,
     formState: { errors },
-    setValue,
   } = useForm<OpenDayRegisterModal>({
     defaultValues,
     mode: "all",
