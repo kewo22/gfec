@@ -158,7 +158,7 @@ export default function OpenDayRegister() {
 
           <div className="flex flex-col gap-2">
             <Button
-              text="Save"
+              text="Register"
               type="submit"
               customClass="w-[150px] mx-auto"
               isLoading={isLoading}

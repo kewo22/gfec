@@ -21,7 +21,7 @@ export default function PromoPopUp() {
         document.querySelector("#ad-img")?.classList.replace('scale-0', 'scale-1')
         document.querySelector(".ad-btn")?.classList.replace('scale-0', 'scale-1')
       }, 500);
-    }, 500);
+    }, 1000);
   }, [])
 
   const onCloseAd = () => {
