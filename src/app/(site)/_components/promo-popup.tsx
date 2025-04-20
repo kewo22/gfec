@@ -1,12 +1,15 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-
+import { useRouter } from "next/navigation";
 import Image from "next/image";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClose } from "@fortawesome/free-solid-svg-icons";
+import Button from "@/app/_components/ui/button";
 
 export default function PromoPopUp() {
+  const router = useRouter();
 
   const [isShow, setIsShow] = useState(false)
 
@@ -50,7 +53,7 @@ export default function PromoPopUp() {
           className="w-[calc(100%-10%)] md:w-[calc(100%-40%)] lg:w-[calc(100%-55%)] scale-0 transition-all ease-in-out duration-500"
           id="ad-img"
         />
-      </div>
+      </div >
     );
   }
 

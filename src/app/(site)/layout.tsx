@@ -26,7 +26,7 @@ export default function SiteLayout({
   return (
     <html lang="en">
       <body className={ubuntu.className}>
-        <PromoPopUp />
+        {/* <PromoPopUp /> */}
         <Navigation />
         <main className="">{children}</main>
         <Footer />
