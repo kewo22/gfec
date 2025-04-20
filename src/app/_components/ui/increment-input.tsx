@@ -39,11 +39,13 @@ export default function IncrementInput(props: IncrementInputProps) {
         disabled: "",
       },
       label: {
-        wrapper: "inline-block truncate max-w-[50px] min-w-[10px] align-middle",
+        wrapper: "inline-block truncate max-w-[50px] min-w-[15px] align-middle",
         default: "text-left",
         error: "",
       },
-      input: "outline-none bg-transparent overflow-hidden flex-[1_0_40%]",
+      // min-w-[136px]
+      // flex-[1_0_40%]
+      input: "outline-none bg-transparent overflow-hidden flex-grow",
       errorText:
         "text-red-600 text-xs font-semibold text-right absolute right-0 z-10",
     };
@@ -99,14 +101,15 @@ export default function IncrementInput(props: IncrementInputProps) {
           {isRequired && <span className="absolute text-red-700">*</span>}
         </div>
       )}
-      <input
-        {...field}
-        id={field.name}
-        value={field.value ? field.value : ""} // if date format val - 2000-05-05
-        className={className.input}
-        placeholder={placeHolder}
-        disabled={isDisabled}
-      />
+      <div className={className.input}>
+        <input
+          {...field}
+          id={field.name}
+          value={field.value ? field.value : ""} // if date format val - 2000-05-05
+          placeholder={placeHolder}
+          disabled={isDisabled}
+        />
+      </div>
       <div className="flex flex-row gap-1">
         <button
           type="button"

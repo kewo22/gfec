@@ -6,6 +6,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import Navigation from "./_components/navigation";
 import Footer from "./_components/footer";
+import PromoPopUp from "./_components/promo-popup";
 
 const ubuntu = Ubuntu({
   weight: "400",
@@ -25,6 +26,7 @@ export default function SiteLayout({
   return (
     <html lang="en">
       <body className={ubuntu.className}>
+        {/* <PromoPopUp /> */}
         <Navigation />
         <main className="">{children}</main>
         <Footer />

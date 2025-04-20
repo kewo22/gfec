@@ -16,12 +16,6 @@ import grad1 from "../../../../public/comp/grad-1.webp";
 export default function StudyOverseasWithGfec() {
   const router = useRouter();
 
-  useEffect(() => {
-    console.log(process.env.NEXT_PUBLIC_VERCEL_ENV);
-    console.log(process.env.NEXT_PUBLIC_VERCEL_URL);
-    console.log(process.env.NEXT_PUBLIC_VERCEL_BRANCH_URL);
-  }, []);
-
   const plyrProps: PlyrProps = {
     source: {
       type: "video",

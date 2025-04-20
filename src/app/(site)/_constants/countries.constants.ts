@@ -15,6 +15,8 @@ import latvia from '../../../../public/comp/latvia.webp'
 import switzerland from '../../../../public/comp/switzerland.webp'
 import dxb from '../../../../public/comp/dxb.webp'
 import malta from '../../../../public/comp/malta.webp'
+import spain from '../../../../public/comp/spain.webp'
+import ireland from '../../../../public/comp/ireland.webp'
 
 export const COUNTRIES: Country[] = [
     {
@@ -23,7 +25,7 @@ export const COUNTRIES: Country[] = [
         country: "Australia",
         class: "",
         description: "",
-        isCourseDetailAvailable: true,
+        isCourseDetailAvailable: true, // not using anywhere
         flag: "/au.svg",
         flagBg: 'bg-au-flag'
     },
@@ -33,7 +35,7 @@ export const COUNTRIES: Country[] = [
         country: "United Kingdom",
         class: "",
         description: "",
-        isCourseDetailAvailable: false,
+        isCourseDetailAvailable: false, // not using anywhere
         flag: "/gb.svg",
         flagBg: 'bg-gb-flag'
     },
@@ -43,37 +45,37 @@ export const COUNTRIES: Country[] = [
         country: "Canada",
         class: "",
         description: "",
-        isCourseDetailAvailable: false,
+        isCourseDetailAvailable: false, // not using anywhere
         flag: "/ca.svg",
         flagBg: 'bg-ca-flag'
     },
-    {
-        id: "fin",
-        image: finland,
-        country: "Finland",
-        class: "",
-        description: "",
-        isCourseDetailAvailable: false,
-        flag: "/fi.svg",
-        flagBg: 'bg-fi-flag'
-    },
-    {
-        id: "bal",
-        image: belarus,
-        country: "Belarus",
-        class: "",
-        description: "",
-        isCourseDetailAvailable: false,
-        flag: "/by.svg",
-        flagBg: 'bg-by-flag'
-    },
+    // {
+    //     id: "fin",
+    //     image: finland,
+    //     country: "Finland",
+    //     class: "",
+    //     description: "",
+    //     isCourseDetailAvailable: false, // not using anywhere
+    //     flag: "/fi.svg",
+    //     flagBg: 'bg-fi-flag'
+    // },
+    // {
+    //     id: "bal",
+    //     image: belarus,
+    //     country: "Belarus",
+    //     class: "",
+    //     description: "",
+    //     isCourseDetailAvailable: false, // not using anywhere
+    //     flag: "/by.svg",
+    //     flagBg: 'bg-by-flag'
+    // },
     {
         id: "ger",
         image: germany,
         country: "Germany",
         class: "",
         description: "",
-        isCourseDetailAvailable: false,
+        isCourseDetailAvailable: false, // not using anywhere
         flag: "/de.svg",
         flagBg: 'bg-de-flag'
     },
@@ -83,37 +85,37 @@ export const COUNTRIES: Country[] = [
         country: "Italy",
         class: "",
         description: "",
-        isCourseDetailAvailable: false,
+        isCourseDetailAvailable: false, // not using anywhere
         flag: "/it.svg",
         flagBg: 'bg-it-flag'
     },
-    {
-        id: "swe",
-        image: sweden,
-        country: "Sweden",
-        class: "",
-        description: "",
-        isCourseDetailAvailable: false,
-        flag: "/se.svg",
-        flagBg: 'bg-se-flag'
-    },
-    {
-        id: "rus",
-        image: russia,
-        country: "Russia",
-        class: "",
-        description: "",
-        isCourseDetailAvailable: false,
-        flag: "/ru.svg",
-        flagBg: 'bg-ru-flag'
-    },
+    // {
+    //     id: "swe",
+    //     image: sweden,
+    //     country: "Sweden",
+    //     class: "",
+    //     description: "",
+    //     isCourseDetailAvailable: false, // not using anywhere
+    //     flag: "/se.svg",
+    //     flagBg: 'bg-se-flag'
+    // },
+    // {
+    //     id: "rus",
+    //     image: russia,
+    //     country: "Russia",
+    //     class: "",
+    //     description: "",
+    //     isCourseDetailAvailable: false, // not using anywhere
+    //     flag: "/ru.svg",
+    //     flagBg: 'bg-ru-flag'
+    // },
     {
         id: "fra",
         image: france,
         country: "France",
         class: "",
         description: "",
-        isCourseDetailAvailable: false,
+        isCourseDetailAvailable: false, // not using anywhere
         flag: "/fr.svg",
         flagBg: 'bg-fr-flag'
     },
@@ -123,37 +125,37 @@ export const COUNTRIES: Country[] = [
         country: "Netherlands",
         class: "",
         description: "",
-        isCourseDetailAvailable: false,
+        isCourseDetailAvailable: false, // not using anywhere
         flag: "/nl.svg",
         flagBg: 'bg-nl-flag'
     },
-    {
-        id: "lat",
-        image: latvia,
-        country: "Latvia",
-        class: "",
-        description: "",
-        isCourseDetailAvailable: false,
-        flag: "/lv.svg",
-        flagBg: 'bg-lv-flag'
-    },
-    {
-        id: "swi",
-        image: switzerland,
-        country: "Switzerland",
-        class: "",
-        description: "",
-        isCourseDetailAvailable: false,
-        flag: "/ch.svg",
-        flagBg: 'bg-ch-flag'
-    },
+    // {
+    //     id: "lat",
+    //     image: latvia,
+    //     country: "Latvia",
+    //     class: "",
+    //     description: "",
+    //     isCourseDetailAvailable: false, // not using anywhere
+    //     flag: "/lv.svg",
+    //     flagBg: 'bg-lv-flag'
+    // },
+    // {
+    //     id: "swi",
+    //     image: switzerland,
+    //     country: "Switzerland",
+    //     class: "",
+    //     description: "",
+    //     isCourseDetailAvailable: false, // not using anywhere
+    //     flag: "/ch.svg",
+    //     flagBg: 'bg-ch-flag'
+    // },
     {
         id: "dxb",
         image: dxb,
         country: "UAE - Dubai",
         class: "",
         description: "",
-        isCourseDetailAvailable: false,
+        isCourseDetailAvailable: false, // not using anywhere
         flag: "/dxb.svg",
         flagBg: 'bg-dxb-flag'
     },
@@ -163,9 +165,29 @@ export const COUNTRIES: Country[] = [
         country: "Malta",
         class: "",
         description: "",
-        isCourseDetailAvailable: false,
+        isCourseDetailAvailable: false, // not using anywhere
         flag: "/malta.svg",
         flagBg: 'bg-malta-flag'
+    },
+    {
+        id: "esp",
+        image: spain,
+        country: "Spain",
+        class: "",
+        description: "",
+        isCourseDetailAvailable: false, // not using anywhere
+        flag: "/spain.svg",
+        flagBg: 'bg-spain-flag'
+    },
+    {
+        id: "ire",
+        image: ireland,
+        country: "Ireland",
+        class: "",
+        description: "",
+        isCourseDetailAvailable: false, // not using anywhere
+        flag: "/ireland.svg",
+        flagBg: 'bg-ireland-flag'
     },
 ];
 
