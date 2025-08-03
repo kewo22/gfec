@@ -41,8 +41,6 @@
     "react-dom": "^19.1.0",
     "react-hook-form": "^7.46.2",
     "react-intersection-observer": "^9.5.3",
-    "react-slick": "^0.29.0",
-    "slick-carousel": "^1.8.1",
     "swiper": "^10.3.0",
     "swr": "^2.2.4",
     "tailwind-merge": "^1.14.0",
@@ -53,7 +51,6 @@
   },
   "devDependencies": {
     "@types/mongodb": "^4.0.7",
-    "@types/react-slick": "^0.23.10",
     "postcss-nesting": "^13.0.2"
   }
 }

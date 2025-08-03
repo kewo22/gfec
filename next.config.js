@@ -63,8 +63,6 @@ const nextConfig = {
     "react-dom",
     "react-hook-form",
     "react-intersection-observer",
-    "react-slick",
-    "slick-carousel",
     "swiper",
     "swr",
     "tailwind-merge",
