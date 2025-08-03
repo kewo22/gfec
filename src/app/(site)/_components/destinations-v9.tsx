@@ -127,7 +127,7 @@ const ScrollAnimationSection = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-4xl w-full">
                   {/* Image */}
                   <div className="flex items-center justify-center">
-                    <div className="w-full max-w-md h-96 rounded-lg overflow-hidden shadow-xl">
+                    <div className="w-full max-w-md h-64 md:h-96 rounded-lg overflow-hidden shadow-xl">
                       <Image
                         src={contentData[activeIndex].image}
                         alt={contentData[activeIndex].country}
