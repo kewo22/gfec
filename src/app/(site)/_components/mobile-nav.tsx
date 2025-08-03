@@ -16,7 +16,7 @@ export default function MobileNav({ isMainNavInView }: any) {
   const rawPathName = pathname.split("/")[1];
 
   const menuIconRef = useRef<HTMLUListElement | null>(null);
-  const bottomMenuRef = useRef<HTMLDivElement | null>(null);
+  // const bottomMenuRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     window.scrollTo({
@@ -27,7 +27,7 @@ export default function MobileNav({ isMainNavInView }: any) {
     setTimeout(() => {
       document.querySelector("body")?.classList.remove("overflow-hidden");
       document.getElementById("menu")!.classList.remove("active");
-      document.getElementById("sss")!.classList.add("-right-[500px]");
+      document.getElementById("sss")!.classList.add("-right-[850px]");
       document.getElementById("sss")!.classList.remove("right-0");
     }, 100);
   }, [pathname]);
@@ -35,53 +35,55 @@ export default function MobileNav({ isMainNavInView }: any) {
   const menuOnClick = () => {
     document.querySelector("body")?.classList.toggle("overflow-hidden");
     document.getElementById("menu")!.classList.toggle("active");
-    document.getElementById("sss")!.classList.toggle("-right-[500px]");
+    document.getElementById("sss")!.classList.toggle("-right-[850px]");
     document.getElementById("sss")!.classList.toggle("right-0");
   };
 
   if (
     menuIconRef &&
     menuIconRef.current &&
-    bottomMenuRef &&
-    bottomMenuRef.current &&
+    // bottomMenuRef &&
+    // bottomMenuRef.current &&
     isMobile
   ) {
     if (isMainNavInView) {
       // show menu bar
       menuIconRef.current.classList.remove("!-right-[15%]");
       menuIconRef.current.classList.add("!right-[5%]");
-
+      menuIconRef.current.classList.add("!top-[5%]");
+      
       // hide bottom menu
-      bottomMenuRef.current.classList.add("-bottom-[80px]");
-      bottomMenuRef.current.classList.remove("bottom-0");
-      document.querySelector("body")!.classList.remove("pb-[80px]");
+      // bottomMenuRef.current.classList.add("-bottom-[80px]");
+      // bottomMenuRef.current.classList.remove("bottom-0");
+      // document.querySelector("body")!.classList.remove("pb-[80px]");
     } else {
       // hide menu bar
       menuIconRef.current.classList.remove("!right-[5%]");
+      menuIconRef.current.classList.remove("!top-[5%]");
       menuIconRef.current.classList.add("!-right-[15%]");
 
       // show bottom menu
-      bottomMenuRef.current.classList.remove("-bottom-[80px]");
-      bottomMenuRef.current.classList.add("bottom-0");
-      document.querySelector("body")!.classList.add("pb-[80px]");
+      // bottomMenuRef.current.classList.remove("-bottom-[80px]");
+      // bottomMenuRef.current.classList.add("bottom-0");
+      // document.querySelector("body")!.classList.add("pb-[80px]");
     }
   }
 
-  const navItems = NavItems.map((item) => {
-    const clonedItem = { ...item };
-    if (rawPathName === "" && item.route === "/") {
-      clonedItem.isActive = true;
-      return clonedItem;
-    }
-    return { ...item, isActive: rawPathName === item.route };
-  });
+  // const navItems = NavItems.map((item) => {
+  //   const clonedItem = { ...item };
+  //   if (rawPathName === "" && item.route === "/") {
+  //     clonedItem.isActive = true;
+  //     return clonedItem;
+  //   }
+  //   return { ...item, isActive: rawPathName === item.route };
+  // });
 
   return (
     <>
       <ul
         id="menu"
         onClick={menuOnClick}
-        className="block sm:hidden z-[41] menu transition-all ease-in-out duration-500"
+        className="block lg:hidden z-[41] menu transition-all ease-in-out duration-500"
         ref={menuIconRef}
       >
         <li className="bar"></li>
@@ -92,7 +94,7 @@ export default function MobileNav({ isMainNavInView }: any) {
       <section
         id="sss"
         // mobile-nav-height
-        className="sm:hidden z-40 fixed top-0 -right-[500px] h-screen w-full bg-slate-100 transition-all ease-in-out duration-1000"
+        className="lg:hidden z-40 fixed top-0 -right-[850px] h-screen w-full bg-slate-100 transition-all ease-in-out duration-1000"
       >
         <div className="h-full flex flex-col items-center justify-around">
           <Image
@@ -108,11 +110,10 @@ export default function MobileNav({ isMainNavInView }: any) {
               return (
                 <Link
                   key={i}
-                  className={`transition-all ease-in-out border-b-4 ${
-                    rawPathName === item.route
+                  className={`transition-all ease-in-out border-b-4 ${rawPathName === item.route
                       ? "border-b-secondary"
                       : "border-b-transparent"
-                  } `}
+                    } `}
                   href={item.route}
                 >
                   <Typography
@@ -132,7 +133,7 @@ export default function MobileNav({ isMainNavInView }: any) {
         </div>
       </section>
 
-      <div
+      {/* <div
         className="sm:hidden h-20 w-full fixed -bottom-[80px] left-0 z-50 bg-secondary transition-all ease-in-out duration-500 flex items-center justify-evenly"
         ref={bottomMenuRef}
       >
@@ -157,7 +158,7 @@ export default function MobileNav({ isMainNavInView }: any) {
             </Link>
           );
         })}
-      </div>
+      </div> */}
     </>
   );
 }

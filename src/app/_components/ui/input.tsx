@@ -118,7 +118,7 @@ export default function Input(props: TextInputProps) {
         disabled={isDisabled}
       />
       {!isDisabled && (
-        <Typography variant="xs" className={className.errorText}>
+        <Typography variant="label" className={className.errorText}>
           {fieldState.error?.message}
         </Typography>
         // <p className={className.errorText}></p>

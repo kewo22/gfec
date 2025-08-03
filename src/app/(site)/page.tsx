@@ -8,25 +8,38 @@ import GetInTouch from "./_components/get-in-touch";
 import Testimonial from "./_components/testimonial";
 import SuccessStoriesText from "./_components/success-stories-text";
 import StudentLife from "./_components/student-life";
+import ChooseYourDestination from "./_components/could-your-next-home-be-new";
+import WhatGfecOffers from "./_components/what-gfec-offers";
+import SummaryCounterGroup from "./_components/summary-counter-group";
+import SuccessPathNew from "./_components/success-path-new";
+import ScrollAnimationSection from "./_components/destinations-v8";
 
 export default function SitePage() {
 
   return (
     <section className="bg-slate-100">
-      <StudyOverseasWithGfec />
 
-      <SuccessPath />
+      <SummaryCounterGroup />
 
-      <HowWeDifferentiateFromOthers />
+      <WhatGfecOffers />
 
-      <CouldYourNextHomeBe />
+      {/* <ChooseYourDestination /> */}
+      <ScrollAnimationSection />
+
+      {/* <StudyOverseasWithGfec /> */}
+
+      {/* <SuccessPath /> */}
+
+      <SuccessPathNew />
+
+      {/* <HowWeDifferentiateFromOthers /> */}
 
       {/* <SuccessStories /> audio not using*/}
-      <SuccessStoriesText />
+      {/* <SuccessStoriesText /> */}
 
-      <Testimonial />
+      {/* <Testimonial /> */}
 
-      <StudentLife />
+      {/* <StudentLife /> */}
 
       <div id="get-in-touch-container">
         <GetInTouch />

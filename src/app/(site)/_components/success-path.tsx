@@ -26,7 +26,7 @@ export default function SuccessPath() {
             width={140}
             height={140}
           />
-          <Typography className="">Apply Online</Typography>
+          <Typography>Apply Online</Typography>
         </div>
         <div className="flex flex-col items-center">
           <Image
@@ -36,7 +36,7 @@ export default function SuccessPath() {
             width={140}
             height={140}
           />
-          <Typography className="">Meet Our Consultants</Typography>
+          <Typography>Meet Our Consultants</Typography>
         </div>
         <div className="flex flex-col items-center">
           <Image
@@ -47,7 +47,7 @@ export default function SuccessPath() {
             height={140}
             className="-scale-x-[1] -rotate-[20deg] "
           />
-          <Typography className="">Depart to Your Destination</Typography>
+          <Typography>Depart to Your Destination</Typography>
         </div>
         <div className="flex flex-col items-center">
           <Image
@@ -57,7 +57,7 @@ export default function SuccessPath() {
             width={110}
             height={110}
           />
-          <Typography className="">Earn Your Degree</Typography>
+          <Typography>Earn Your Degree</Typography>
         </div>
       </div>
 
@@ -71,7 +71,7 @@ export default function SuccessPath() {
               width={125}
               height={125}
             />
-            <Typography variant="small" className="absolute top-[110%]">
+            <Typography variant="p" className="absolute top-[110%] font-semibold">
               Apply Online
             </Typography>
           </div>
@@ -84,8 +84,8 @@ export default function SuccessPath() {
               height={150}
             />
             <Typography
-              variant="small"
-              className="absolute top-[88%] left-[20%] w-[100px]"
+              variant="p"
+              className="absolute top-[88%] left-[20%] w-[100px] font-semibold"
             >
               Meet Our Consultants
             </Typography>
@@ -99,7 +99,7 @@ export default function SuccessPath() {
               height={125}
               className="-scale-x-[1] -rotate-[20deg] "
             />
-            <Typography variant="small" className="absolute top-[80%]">
+            <Typography variant="p" className="absolute top-[80%] font-semibold">
               Depart to Your Destination
             </Typography>
           </div>
@@ -111,7 +111,7 @@ export default function SuccessPath() {
               width={100}
               height={100}
             />
-            <Typography variant="small" className="absolute top-[110%]">
+            <Typography variant="p" className="absolute top-[110%] font-semibold">
               Earn Your Degree
             </Typography>
           </div>

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 
-import { Ubuntu } from "next/font/google";
+import { Abel } from "next/font/google";
 
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
@@ -13,9 +13,9 @@ import "slick-carousel/slick/slick-theme.css";
 
 import "./globals.css";
 
-const ubuntu = Ubuntu({
+const abel = Abel({
   weight: "400",
-  subsets: ["latin"],
+  subsets: ['latin']
 });
 
 export const metadata: Metadata = {
@@ -40,7 +40,7 @@ export default function RootLayout({
           gtag('config', 'G-VGW6MGB10Q');
         `}
       </Script>
-      <body className={ubuntu.className}>{children}</body>
+      <body className={abel.className}>{children}</body>
     </html>
   );
 }

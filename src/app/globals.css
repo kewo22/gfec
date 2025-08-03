@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('plyr-react/plyr.css');
+@import url("plyr-react/plyr.css");
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -141,12 +141,13 @@ body {
 }
 
 .app-btn:hover:enabled {
-  box-shadow: 300px 0 0 0 theme("colors.primary") inset, -300px 0 0 0 theme("colors.primary") inset;
+  box-shadow: 300px 0 0 0 theme("colors.primary") inset,
+    -300px 0 0 0 theme("colors.primary") inset;
 }
 
 .sm-btn::after {
   transition: all 0.2s ease-in-out;
-  content: '';
+  content: "";
   position: absolute;
   top: 50%;
   left: 50%;
@@ -160,7 +161,7 @@ body {
 }
 
 .sm-btn:hover::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 50%;
   left: 50%;
@@ -218,7 +219,7 @@ body {
 
 .menu.active .bar:nth-of-type(2) {
   transform: translateY(-50%) rotate(405deg);
-  transition-delay: .5s;
+  transition-delay: 0.5s;
 }
 
 .menu.active .bar:nth-of-type(3) {
@@ -228,7 +229,7 @@ body {
 }
 
 .menu .bar:nth-of-type(2)::before {
-  content: '';
+  content: "";
   position: absolute;
   top: -150px;
   left: 0;
@@ -237,7 +238,7 @@ body {
   background: theme("colors.secondary");
   transform: rotate(90deg);
   transition: 1s;
-  transition-delay: .5s;
+  transition-delay: 0.5s;
 }
 
 .menu.active .bar:nth-of-type(2)::before {
@@ -253,7 +254,8 @@ body {
 }
 
 .about-plyr .plyr {
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
 
 /* plyr styles */
@@ -309,7 +311,7 @@ body {
   min-height: 900px;
 }
 
-.nav-slider .slick-slide>div {
+.nav-slider .slick-slide > div {
   height: 100%;
   width: 100%;
 }
@@ -321,7 +323,6 @@ body {
 .nav-slider .slick-next {
   display: none !important;
 }
-
 
 .nav-banner-container {
   position: absolute;
@@ -342,8 +343,8 @@ body {
 
 /* Hide scrollbar for IE, Edge and Firefox */
 #banner-wrapper {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 /* nav-slider */
@@ -384,21 +385,19 @@ body {
 /* playing */
 .playing {
   background: theme("colors.secondary");
-  ;
   width: 2rem;
   height: 2rem;
-  border-radius: .3rem;
+  border-radius: 0.3rem;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  padding: .5rem;
+  padding: 0.5rem;
   box-sizing: border-box;
 }
 
 .playing__bar {
   display: inline-block;
   background: theme("colors.primary");
-  ;
   width: 30%;
   height: 100%;
   animation: up-and-down 1.3s ease infinite alternate;
@@ -453,7 +452,7 @@ body {
   border-radius: 50%;
   transform: translateX(-50%) translateY(-50%);
   background-color: theme("colors.secondary");
-  ;
+  z-index: 1;
 }
 
 .section-title__border-box:after {
@@ -466,6 +465,7 @@ body {
   border-radius: 50%;
   transform: translateX(-50%) translateY(-50%);
   background-color: theme("colors.secondary");
+  z-index: 1;
   border: none;
 }
 
@@ -478,7 +478,7 @@ div.image-container {
 
 div.image-container:before {
   display: block;
-  content: '';
+  content: "";
   position: absolute;
   top: 15px;
   right: 15px;
@@ -530,41 +530,40 @@ div.image-container:before {
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
   animation-play-state: running;
-  color: theme('colors.secondary');
+  color: theme("colors.secondary");
 }
 
 @-webkit-keyframes animation {
   0% {
-    color: theme('colors.secondary');
+    color: theme("colors.secondary");
   }
 
   50% {
-    color: theme('colors.primary');
+    color: theme("colors.primary");
   }
 
   100% {
-    color: theme('colors.secondary');
+    color: theme("colors.secondary");
   }
 }
 
 @keyframes animation {
   0% {
-    color: theme('colors.secondary');
+    color: theme("colors.secondary");
   }
 
   50% {
-    color: theme('colors.primary');
+    color: theme("colors.primary");
   }
 
   100% {
-    color: theme('colors.secondary');
+    color: theme("colors.secondary");
   }
 }
 
-
 /* CHECKBOX AND RADIO */
-input[type='checkbox'],
-input[type='radio'] {
+input[type="checkbox"],
+input[type="radio"] {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -579,9 +578,9 @@ input[type='radio'] {
   transition: background 0.3s, border-color 0.3s, outline 0.2s;
 }
 
-input[type='checkbox']:after,
-input[type='radio']:after {
-  content: '';
+input[type="checkbox"]:after,
+input[type="radio"]:after {
+  content: "";
   display: block;
   left: 0;
   top: 0;
@@ -589,48 +588,48 @@ input[type='radio']:after {
   transition: transform 0.3s ease, opacity 0.2s;
 }
 
-input[type='checkbox']:checked,
-input[type='radio']:checked {
+input[type="checkbox"]:checked,
+input[type="radio"]:checked {
   background-color: transparent;
   border-color: theme("colors.secondary");
   transition: transform 0.6s cubic-bezier(0.2, 0.85, 0.32, 1.2), opacity 0.3s;
 }
 
-input[type='checkbox']:disabled,
-input[type='radio']:disabled {
-  background-color: theme('colors.gray.100');
-  border-color: #8F8F8F;
+input[type="checkbox"]:disabled,
+input[type="radio"]:disabled {
+  background-color: theme("colors.gray.100");
+  border-color: #8f8f8f;
   cursor: not-allowed;
 }
 
-input[type='checkbox']:disabled:checked,
-input[type='radio']:disabled:checked {
-  background-color: #8F8F8F;
+input[type="checkbox"]:disabled:checked,
+input[type="radio"]:disabled:checked {
+  background-color: #8f8f8f;
 }
 
-input[type='checkbox']:disabled+label,
-input[type='radio']:disabled+label {
+input[type="checkbox"]:disabled + label,
+input[type="radio"]:disabled + label {
   cursor: not-allowed;
 }
 
-input[type='checkbox']:hover:not(:checked):not(:disabled),
-input[type='radio']:hover:not(:checked):not(:disabled) {
-  border-color: #275EFE;
+input[type="checkbox"]:hover:not(:checked):not(:disabled),
+input[type="radio"]:hover:not(:checked):not(:disabled) {
+  border-color: #275efe;
 }
 
-input[type='checkbox']:focus-visible,
-input[type='radio']:focus-visible {
-  outline: 2px solid #275EFE;
+input[type="checkbox"]:focus-visible,
+input[type="radio"]:focus-visible {
+  outline: 2px solid #275efe;
   outline-offset: 4px;
 }
 
-input[type='checkbox']:not(.switch),
-input[type='radio']:not(.switch) {
+input[type="checkbox"]:not(.switch),
+input[type="radio"]:not(.switch) {
   width: 1.2rem;
 }
 
-input[type='checkbox']+label,
-input[type='radio']+label {
+input[type="checkbox"] + label,
+input[type="radio"] + label {
   display: inline-block;
   cursor: pointer;
   /* font-size: 1.4rem; */
@@ -638,11 +637,11 @@ input[type='radio']+label {
   vertical-align: top;
 }
 
-input[type='checkbox']:not(.switch) {
+input[type="checkbox"]:not(.switch) {
   border-radius: 0.4rem;
 }
 
-input[type='checkbox']:not(.switch):after {
+input[type="checkbox"]:not(.switch):after {
   border: 2px solid transparent;
   height: 45%;
   width: 25%;
@@ -653,44 +652,44 @@ input[type='checkbox']:not(.switch):after {
   transform: rotate(23deg);
 }
 
-input[type='checkbox']:not(.switch):disabled:not(:checked):after {
+input[type="checkbox"]:not(.switch):disabled:not(:checked):after {
   border-color: transparent;
 }
 
-input[type='checkbox']:not(.switch):checked:after {
+input[type="checkbox"]:not(.switch):checked:after {
   transform: rotate(43deg);
   border-color: theme("colors.blue.600");
 }
 
-input[type='checkbox'].switch {
+input[type="checkbox"].switch {
   width: 2.6rem;
   border-radius: 1.1rem;
 }
 
-input[type='checkbox'].switch:after {
+input[type="checkbox"].switch:after {
   left: 5%;
   top: 10%;
   border-radius: 50%;
   width: 45%;
   height: 80%;
-  background: #4F565D;
+  background: #4f565d;
   transform: translateX(0);
 }
 
-input[type='checkbox'].switch:checked:after {
-  background: #F6F8FF;
+input[type="checkbox"].switch:checked:after {
+  background: #f6f8ff;
   transform: translateX(100%);
 }
 
-input[type='checkbox'].switch:disabled:not(:checked):after {
-  background-color: #8F8F8F;
+input[type="checkbox"].switch:disabled:not(:checked):after {
+  background-color: #8f8f8f;
 }
 
-input[type='radio'] {
+input[type="radio"] {
   border-radius: 50%;
 }
 
-input[type='radio']:after {
+input[type="radio"]:after {
   width: 100%;
   height: 100%;
   border-radius: 50%;
@@ -698,11 +697,11 @@ input[type='radio']:after {
   transform: scale(0.7);
 }
 
-input[type='radio']:disabled:after {
-  background: #F6F8FF;
+input[type="radio"]:disabled:after {
+  background: #f6f8ff;
 }
 
-input[type='radio']:checked:after {
+input[type="radio"]:checked:after {
   transform: scale(0.5);
   background: theme("colors.secondary");
 }
@@ -711,4 +710,144 @@ input[type='radio']:checked:after {
 
 .modal::backdrop {
   background: hsl(0 0% 0% / 50%);
+}
+
+/*  */
+#what-we-offer-card {
+  /* From Uiverse.io by alexruix */
+  .card {
+    /* color: #1b1b1b; */
+    /* width: 190px; */
+    width: 100%;
+    /* height: 254px; */
+    height: 250px;
+    position: relative;
+    /* outline: 6px solid #f5f5f5; */
+    border-radius: 8px;
+    /* line-height: 150%; */
+    /* padding: 16px; */
+    /* background: #ff930f; */
+    /* background-blend-mode: multiply; */
+    /* background: linear-gradient(to top, #ff930f, #ffcc33); */
+    /* transition: background-color 0.5s ease-in-out; */
+    overflow: hidden;
+
+    background: #ffffff;
+    box-shadow: -6px -6px 11px #dbdbdb, 6px 6px 11px #f2f2f2;
+  }
+
+  .card-front {
+    bottom: 84px;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    transition: transform 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  }
+
+  .card-back {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateX(120%);
+    transition: transform 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  }
+
+  /*Text*/
+  /* .title {
+    font-size: 1.3rem;
+    font-weight: bold;
+  } */
+
+  /*Hover*/
+  .card:hover {
+    background-color: #ffffff;
+  }
+
+  .card:hover .card-front {
+    transform: translateX(-100%);
+  }
+
+  .card:hover .card-back {
+    transform: translateX(0);
+  }
+}
+
+#paper {
+  .page {
+    position: relative;
+    box-sizing: border-box;
+    max-width: 450px;
+    font-family: cursive;
+    font-size: 20px;
+    border-radius: 10px;
+    background: #fff;
+    background-image: linear-gradient(#f5f5f0 1.1rem, #ccc 1.2rem);
+    background-size: 100% 1.2rem;
+    line-height: 1.2rem;
+    padding: 1.4rem 0.5rem 0.3rem 4.5rem;
+  }
+
+  .page::before,
+  .page::after {
+    position: absolute;
+    content: "";
+    bottom: 10px;
+    width: 40%;
+    height: 10px;
+    box-shadow: 0 5px 14px rgba(0, 0, 0, 0.7);
+    z-index: -1;
+    transition: all 0.3s ease;
+  }
+
+  .page::before {
+    left: 15px;
+    transform: skew(-5deg) rotate(-5deg);
+  }
+
+  .page::after {
+    right: 15px;
+    transform: skew(5deg) rotate(5deg);
+  }
+
+  .page:hover::before,
+  .page:hover::after {
+    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.4);
+  }
+
+  .margin {
+    position: absolute;
+    border-left: 2px solid theme("colors.secondary");
+    height: 100%;
+    left: 3.3rem;
+    top: 0;
+  }
+
+  .page p {
+    margin: 0;
+    text-indent: 1rem;
+    padding-bottom: 1.2rem;
+    color: black;
+    line-height: 30px;
+  }
+}
+
+/* particle button */
+/* From Uiverse.io by cssbuttons-io */
+.particle-button {
+  @apply text-black border-none rounded-xl cursor-pointer outline-none transition-all ease-in-out duration-300;
+  background-color: theme("colors.primary");
+  /* box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1); */
+}
+
+.particle-button:hover {
+  background-color: theme("colors.secondary");
+  /* box-shadow: 0px 5px 10px theme("colors.primary"); */
+  color: #fff;
+  transform: translateY(-7px);
+}
+
+.particle-button:active {
+  transform: translateY(-1px);
 }

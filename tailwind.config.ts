@@ -32,6 +32,7 @@ const config: Config = {
         "lv-flag": "url('/lv.svg')",
         "ch-flag": "url('/ch.svg')",
         "dxb-flag": "url('/dxb.svg')",
+        "south-korea-flag": "url('/south-korea.svg')",
         "malta-flag": "url('/malta.svg')",
         "spain-flag": "url('/spain.svg')",
         "ireland-flag": "url('/ireland.svg')",
@@ -54,8 +55,10 @@ const config: Config = {
         "ireland-banner": "url('/ireland.jpg')",
       },
       colors: {
-        primary: "#BD9519",
-        secondary: "#000080",
+        // primary: "#BD9519",
+        primary: "#C2962D",
+        // secondary: "#000080",
+        secondary: "#110C82",
         accent: "#040607",
       },
       height: {

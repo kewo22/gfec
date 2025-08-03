@@ -13,27 +13,41 @@ export const NavItems: NavItemLink[] = [
     route: "/",
     class: "",
     isActive: false,
-    icon: faHouse
+    icon: faHouse,
   },
   {
-    text: "About",
+    text: "About GFEC",
     route: "about",
     class: "",
     isActive: false,
-    icon: faCircleInfo
+    icon: faCircleInfo,
   },
   {
-    text: "Destination",
+    text: "Study Destinations",
     route: "destination",
     class: "",
     isActive: false,
-    icon: faPlaneDeparture
+    icon: faPlaneDeparture,
   },
   {
-    text: "Contact",
+    text: "Gallery",
+    route: "gallery",
+    class: "",
+    isActive: false,
+    icon: faPlaneDeparture,
+  },
+  {
+    text: "Events",
+    route: "events",
+    class: "",
+    isActive: false,
+    icon: faPlaneDeparture,
+  },
+  {
+    text: "Contact Us",
     route: "contact",
     class: "",
     isActive: false,
-    icon: faLocationDot
+    icon: faLocationDot,
   },
 ];
