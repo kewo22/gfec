@@ -12,7 +12,7 @@ import ChooseYourDestination from "./_components/could-your-next-home-be-new";
 import WhatGfecOffers from "./_components/what-gfec-offers";
 import SummaryCounterGroup from "./_components/summary-counter-group";
 import SuccessPathNew from "./_components/success-path-new";
-import ScrollAnimationSection from "./_components/destinations-v8";
+import ScrollAnimationSection from "./_components/destinations-v9";
 
 export default function SitePage() {
 
