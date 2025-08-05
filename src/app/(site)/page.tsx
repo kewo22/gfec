@@ -13,6 +13,7 @@ import WhatGfecOffers from "./_components/what-gfec-offers";
 import SummaryCounterGroup from "./_components/summary-counter-group";
 import SuccessPathNew from "./_components/success-path-new";
 import ScrollAnimationSection from "./_components/destinations-v9";
+import DestinationsMobile from "./_components/destinations-mobile";
 
 export default function SitePage() {
 
@@ -24,7 +25,13 @@ export default function SitePage() {
       <WhatGfecOffers />
 
       {/* <ChooseYourDestination /> */}
-      <ScrollAnimationSection />
+
+      <div className="hidden md:block">
+        <ScrollAnimationSection />
+      </div>
+      <div className="block md:hidden">
+        <DestinationsMobile />
+      </div>
 
       {/* <StudyOverseasWithGfec /> */}
 

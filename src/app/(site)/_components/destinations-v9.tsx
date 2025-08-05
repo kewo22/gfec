@@ -12,46 +12,7 @@ const ScrollAnimationSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [direction, setDirection] = useState(1); // 1 for next, -1 for previous
 
-  // Sample data array - replace with your actual country data
-  // const contentData = [
-  //   {
-  //     image: 'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=500&h=400&fit=crop',
-  //     title: 'United Kingdom',
-  //     description: 'Discover world-class universities and rich cultural heritage. Study in the birthplace of the English language with globally recognized degrees and diverse academic opportunities.',
-  //   },
-  //   {
-  //     image: 'https://images.unsplash.com/photo-1566073771259-6a8506862ae3?w=500&h=400&fit=crop',
-  //     title: 'Malta',
-  //     description: 'Experience Mediterranean charm while studying in English. Enjoy a safe, sunny island nation with European education standards and a vibrant international student community.',
-  //   },
-  //   {
-  //     image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=500&h=400&fit=crop',
-  //     title: 'Dubai (UAE)',
-  //     description: 'Study in a modern global hub where East meets West. Access cutting-edge facilities, multicultural campuses, and excellent career opportunities in the heart of the Middle East.',
-  //   },
-  //   {
-  //     image: 'https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=500&h=400&fit=crop',
-  //     title: 'Spain',
-  //     description: 'Immerse yourself in vibrant culture while pursuing quality education. Learn in a country known for its warm hospitality, beautiful landscapes, and growing international programs.',
-  //   },
-  //   {
-  //     image: 'https://images.unsplash.com/photo-1502602898536-47ad22581b52?w=500&h=400&fit=crop',
-  //     title: 'France',
-  //     description: 'Study in the land of innovation and art. Experience world-renowned education, rich history, and cultural diversity while building your future in the heart of Europe.',
-  //   },
-  //   {
-  //     image: 'https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=500&h=400&fit=crop',
-  //     title: 'Germany',
-  //     description: 'Access top-tier engineering and technology programs. Study in Europe\'s economic powerhouse with excellent research facilities, affordable education, and strong industry connections.',
-  //   },
-  //   {
-  //     image: 'https://images.unsplash.com/photo-1517154421773-0529f29ea451?w=500&h=400&fit=crop',
-  //     title: 'South Korea',
-  //     description: 'Explore advanced technology and rich traditions. Study in Asia\'s education leader with modern campuses, innovative programs, and growing global influence in technology and culture.',
-  //   }
-  // ];
   const contentData = COUNTRIES;
-
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
