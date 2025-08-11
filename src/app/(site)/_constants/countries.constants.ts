@@ -1,23 +1,36 @@
-import { Country } from "../_types/country";
+import { Country, University } from "../_types/country";
 
-import aus from "../../../../public/comp/aus.webp";
+// import aus from "../../../../public/comp/aus.webp";
 import uk from "../../../../public/comp/uk.webp";
-import canada from "../../../../public/comp/canada.webp";
-import finland from "../../../../public/comp/finland.webp";
-import belarus from "../../../../public/comp/belarus.webp";
+// import canada from "../../../../public/comp/canada.webp";
+// import finland from "../../../../public/comp/finland.webp";
+// import belarus from "../../../../public/comp/belarus.webp";
 import germany from "../../../../public/comp/germany.webp";
-import italy from "../../../../public/comp/italy.webp";
-import sweden from "../../../../public/comp/sweden.webp";
-import russia from "../../../../public/comp/russia.webp";
+// import italy from "../../../../public/comp/italy.webp";
+// import sweden from "../../../../public/comp/sweden.webp";
+// import russia from "../../../../public/comp/russia.webp";
 import france from "../../../../public/comp/france.webp";
-import netherlands from "../../../../public/comp/netherlands.webp";
-import latvia from "../../../../public/comp/latvia.webp";
-import switzerland from "../../../../public/comp/switzerland.webp";
+// import netherlands from "../../../../public/comp/netherlands.webp";
+// import latvia from "../../../../public/comp/latvia.webp";
+// import switzerland from "../../../../public/comp/switzerland.webp";
 import dxb from "../../../../public/comp/dxb.webp";
 import malta from "../../../../public/comp/malta.webp";
 import spain from "../../../../public/comp/spain.webp";
-import ireland from "../../../../public/comp/ireland.webp";
+// import ireland from "../../../../public/comp/ireland.webp";
 import south_korea from "../../../../public/comp/south_korea.webp";
+
+import brittsUaeImg from "../../../../public/comp/Britts-Imperial-University-College.jpeg";
+import globalMaltaImg from "../../../../public/comp/Global-College-Malta.jpeg";
+import gbsDubaiImg from "../../../../public/comp/GBS-Dubai-Campus.png";
+import birminghamCityUniImg from "../../../../public/comp/Birmingham-City-University.jpg";
+import universityOfHertfordshireImg from "../../../../public/comp/University-of-Hertfordshire.jpeg";
+import universityOfEastLondonImg from "../../../../public/comp/University-of-East-London.jpg";
+import liverpoolJonMooresUniImg from "../../../../public/comp/Liverpool-John-Moores-University.png";
+import schillerSpainUnImg from "../../../../public/comp/schiller-international-university-madrid.jpg";
+import schillerGermanyImg from "../../../../public/comp/Schiller-International-University-germany.jpeg";
+import schillerFranceImg from "../../../../public/comp/Schiller-International-University-France.jpg";
+import manipalImg from "../../../../public/comp/manipal-university-dubai.jpg";
+import uniOfSunderlandImg from "../../../../public/comp/university-of-sunderland.jpg";
 
 //////////////////////////// ----> FLAG SOURCE https://www.countryflags.com/south-korea-flag-vector/
 
@@ -221,3 +234,136 @@ export const COUNTRIES_FOR_SELECT = COUNTRIES.map((obj) => {
   };
   return mapped;
 });
+
+export const UNIVERSITIES: University[] = [
+  {
+    id: 1,
+    name: "Britts Imperial University College",
+    country: "UAE - Sharjah",
+    logo: brittsUaeImg,
+    ranking: "Top in UAE",
+    programs: ["Medicine", "Engineering", "Business"],
+    established: "1982",
+    category: "uae",
+  },
+  {
+    id: 2,
+    name: "Global College Malta",
+    country: "Malta",
+    logo: globalMaltaImg,
+    ranking: "#35 in Globally",
+    programs: ["Computer Science", "Medicine", "Law"],
+    established: "2012",
+    category: "malta",
+  },
+  {
+    id: 3,
+    name: "Global Business Studies",
+    country: "UAE - Dubai",
+    logo: gbsDubaiImg,
+    ranking: "Top in UAE",
+    programs: ["Arts", "Sciences", "Medicine"],
+    established: "2010",
+    category: "uae",
+  },
+  {
+    id: 4,
+    name: "Birmingham City University",
+    country: "UK",
+    logo: birminghamCityUniImg,
+    ranking: "#87th in UK",
+    programs: ["Engineering", "Technology", "Sciences"],
+    established: "1992",
+    category: "uk",
+  },
+  {
+    id: 5,
+    name: "University of Hertfordshire",
+    country: "UK",
+    logo: universityOfHertfordshireImg,
+    ranking: "#82 in UK",
+    programs: ["Business", "IT", "Medicine"],
+    established: "1952",
+    category: "uk",
+  },
+  {
+    id: 6,
+    name: "University of East London",
+    country: "Dubai (UAE)",
+    logo: universityOfEastLondonImg,
+    ranking: "Top in UK",
+    programs: ["Business", "Engineering", "Architecture"],
+    established: "1898",
+    category: "dubai",
+  },
+  {
+    id: 7,
+    name: "Global Business Studies",
+    country: "Malta",
+    logo: gbsDubaiImg,
+    ranking: "Top 100 globally",
+    programs: ["Arts", "Sciences", "Medicine"],
+    established: "2010",
+    category: "malta",
+  },
+  {
+    id: 8,
+    name: "Liverpool John Moores University",
+    country: "UK",
+    logo: liverpoolJonMooresUniImg,
+    ranking: "#98 in Europe",
+    programs: ["Engineering", "Medicine", "Business"],
+    established: "1823",
+    category: "uk",
+  },
+  {
+    id: 9,
+    name: "Schiller International University",
+    country: "Spain",
+    logo: schillerSpainUnImg,
+    ranking: "Top in Europe",
+    programs: ["Medicine", "Law", "Psychology"],
+    established: "1964",
+    category: "spain",
+  },
+  {
+    id: 10,
+    name: "Schiller International University",
+    country: "Germany",
+    logo: schillerGermanyImg,
+    ranking: "Top in Europe",
+    programs: ["Medicine", "Law", "Psychology"],
+    established: "1964",
+    category: "germany",
+  },
+  {
+    id: 11,
+    name: "Schiller International University",
+    country: "France",
+    logo: schillerFranceImg,
+    ranking: "Top in Europe",
+    programs: ["Engineering", "Sciences", "Mathematics"],
+    established: "1794",
+    category: "france",
+  },
+  {
+    id: 12,
+    name: "Manipal University",
+    country: "UAE - Dubai",
+    logo: manipalImg,
+    ranking: "#901 Globally",
+    programs: ["Medicine", "Law", "Sciences"],
+    established: "2000",
+    category: "uae",
+  },
+  {
+    id: 13,
+    name: "University of Sunderland",
+    country: "UK",
+    logo: uniOfSunderlandImg,
+    ranking: "Top in Europe",
+    programs: ["Engineering", "IT", "Sciences"],
+    established: "1901",
+    category: "uk",
+  },
+];

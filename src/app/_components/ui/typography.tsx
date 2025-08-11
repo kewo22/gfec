@@ -52,7 +52,10 @@ const typographyClasses = {
   h3: "font-bold text-2xl xl:text-3xl",
   h4: "font-bold text-2xl xl:text-2xl",
   h5: "font-bold text-lg xl:text-xl",
-  p: "text-xl xl:text-xl 2xl:text-xl",
+  
+  p: "text-base 2xl:text-xl",
+  // p: "text-xl xl:text-xl 2xl:text-xl",
+
   md: "text-base xl:text-base",
   small: "text-xs xl:text-sm 2xl:text-sm",
   xs: "text-xs xl:text-sm",

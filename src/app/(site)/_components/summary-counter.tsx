@@ -15,9 +15,9 @@ export default function SummaryCounter(props: SummaryCounterProps) {
 
   const { maxCount, className, restProps } = props;
 
-  // const { ref, inView } = useInView({
-  //   threshold: 0,
-  // });
+  const { ref, inView } = useInView({
+    threshold: 0,
+  });
 
   const [hasAnimated, setHasAnimated] = useState(false);
 
@@ -25,7 +25,7 @@ export default function SummaryCounter(props: SummaryCounterProps) {
   const rounded = useTransform(count, Math.round);
 
   useEffect(() => {
-    // if (!inView || hasAnimated) return;
+    if (!inView || hasAnimated) return;
 
     const animation = animate(count, maxCount, {
       duration: 2,
@@ -34,15 +34,15 @@ export default function SummaryCounter(props: SummaryCounterProps) {
     });
 
     return () => animation.stop();
-  }, [, count, hasAnimated, maxCount]); // inView
+  }, [inView, count, hasAnimated, maxCount]); // inView
 
   return (
     <motion.h1
       className={className}
-      // ref={ref}
+      ref={ref}
       initial={{ opacity: 0, y: 20 }}
-      // animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
+      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+      // animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
     >
       {rounded}

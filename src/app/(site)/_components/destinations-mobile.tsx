@@ -5,22 +5,46 @@ import { motion } from 'framer-motion';
 import { COUNTRIES } from '../_constants/countries.constants';
 import Image from 'next/image';
 
-const DestinationsMobile = () => {
+const HorizontalScrollCarousel = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const scrollRef = useRef<any>(null);
 
+  // Country data for education consultancy
   const contentData = COUNTRIES;
 
-  // Handle scroll to update active index
+
+  // Handle scroll to update active index with debouncing
   const handleScroll = () => {
-    if (scrollRef.current && !isDragging) {
+    if (scrollRef.current) {
       const scrollLeft = scrollRef.current.scrollLeft;
       const itemWidth = scrollRef.current.offsetWidth;
       const index = Math.round(scrollLeft / itemWidth);
-      setActiveIndex(index);
+
+      // Only update if index actually changed
+      if (index !== activeIndex && index >= 0 && index < contentData.length) {
+        setActiveIndex(index);
+      }
     }
   };
+
+  // Debounced scroll handler
+  useEffect(() => {
+    let timeoutId: any;
+    const debouncedHandleScroll = () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(handleScroll, 150);
+    };
+
+    const scrollElement = scrollRef.current;
+    if (scrollElement) {
+      scrollElement.addEventListener('scroll', debouncedHandleScroll, { passive: true });
+      return () => {
+        scrollElement.removeEventListener('scroll', debouncedHandleScroll);
+        clearTimeout(timeoutId);
+      };
+    }
+  }, [activeIndex]);
 
   // Navigate to specific slide
   const goToSlide = (index: number) => {
@@ -78,9 +102,9 @@ const DestinationsMobile = () => {
             <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
-          </button> */}
+          </button>
 
-          {/* <button
+          <button
             onClick={goToNext}
             className="hidden md:flex absolute right-4 top-1/2 transform -translate-y-1/2 z-10 bg-white rounded-full p-3 shadow-lg hover:shadow-xl transition-shadow duration-300 hover:bg-gray-50"
             aria-label="Next slide"
@@ -93,18 +117,21 @@ const DestinationsMobile = () => {
           {/* Carousel */}
           <div
             ref={scrollRef}
-            onScroll={handleScroll}
             onTouchStart={handleDragStart}
             onTouchEnd={handleDragEnd}
             onMouseDown={handleDragStart}
             onMouseUp={handleDragEnd}
-            className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4"
-            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            className="flex overflow-x-scroll snap-x snap-mandatory scrollbar-hide pb-4 scroll-smooth"
+            style={{
+              scrollbarWidth: 'none',
+              msOverflowStyle: 'none',
+              WebkitOverflowScrolling: 'touch'
+            }}
           >
             {contentData.map((item, index) => (
               <motion.div
                 key={index}
-                className="flex-none w-full snap-center px-2 md:px-4"
+                className="flex-none w-full snap-center snap-always px-2 md:px-4"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
@@ -172,8 +199,8 @@ const DestinationsMobile = () => {
               key={index}
               onClick={() => goToSlide(index)}
               className={`w-3 h-3 rounded-full transition-colors duration-300 ${index === activeIndex
-                ? 'bg-primary'
-                : 'bg-secondary hover:bg-gray-400'
+                ? 'bg-blue-600'
+                : 'bg-gray-300 hover:bg-gray-400'
                 }`}
               aria-label={`Go to slide ${index + 1}`}
             />
@@ -199,4 +226,4 @@ const DestinationsMobile = () => {
   );
 };
 
-export default DestinationsMobile;
+export default HorizontalScrollCarousel;

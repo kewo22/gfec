@@ -14,11 +14,14 @@ import SummaryCounterGroup from "./_components/summary-counter-group";
 import SuccessPathNew from "./_components/success-path-new";
 import ScrollAnimationSection from "./_components/destinations-v9";
 import DestinationsMobile from "./_components/destinations-mobile";
+import UniversityPartnersGrid from "./_components/uni-list";
 
 export default function SitePage() {
 
   return (
     <section className="bg-slate-100">
+
+      <UniversityPartnersGrid />
 
       <SummaryCounterGroup />
 
