@@ -81,7 +81,7 @@ const UniversityPartnersGrid = () => {
             Our University Partners
           </h1>
           <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-            We've partnered with world-renowned institutions to provide you with exceptional educational opportunities across the globe.
+            We&apos;ve partnered with world-renowned institutions to provide you with exceptional educational opportunities across the globe.
           </p>
           {/* <div className="bg-blue-600 text-white px-6 py-2 rounded-full inline-block text-sm font-semibold">
             {universities.length}+ Partner Universities
