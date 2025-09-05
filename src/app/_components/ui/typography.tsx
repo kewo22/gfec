@@ -29,6 +29,9 @@ interface Props {
   as?: ElementType;
   htmlFor?: string;
   ref?: any;
+
+  onClick?: () => void;
+
 }
 
 const tags: Record<Variant, ElementType> = {
@@ -52,7 +55,7 @@ const typographyClasses = {
   h3: "font-bold text-2xl xl:text-3xl",
   h4: "font-bold text-2xl xl:text-2xl",
   h5: "font-bold text-lg xl:text-xl",
-  
+
   p: "text-base 2xl:text-xl",
   // p: "text-xl xl:text-xl 2xl:text-xl",
 
@@ -102,13 +105,14 @@ export const Typography = forwardRef<HTMLDivElement, Props>(function Typography(
   props,
   ref
 ) {
-  const { variant = "p", children, className, as, htmlFor = "" } = props;
+  const { variant = "p", children, className, as, htmlFor = "", onClick } = props;
 
   const sizeClasses = sizes[variant];
   const Tag = as || tags[variant];
   const mergedClassName = twMerge(sizeClasses, className);
   return (
-    <Tag htmlFor={htmlFor} className={mergedClassName} ref={ref}>
+
+    <Tag htmlFor={htmlFor} className={mergedClassName} ref={ref} onClick={onClick}>
       {children}
     </Tag>
   );

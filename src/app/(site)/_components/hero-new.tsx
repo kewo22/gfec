@@ -16,7 +16,7 @@ export default function HeroNew() {
 
   const images = [
     {
-      src: "/new/slider01.jpg",
+      src: "/new/slider02.jpg",
       alt: "Beautiful landscape with mountains"
     },
     {
@@ -112,7 +112,7 @@ export default function HeroNew() {
 
     <div>
       {/* className='fixed top-0 left-0 w-full z-[1]' */}
-      <NavigationNew className='sticky top-0 left-0 w-full z-50' />
+      {/* <NavigationNew className='sticky top-0 left-0 w-full z-50' /> */}
       <FullscreenImageSlider
         images={images}
         autoPlay={true}
