@@ -82,6 +82,34 @@
   }
 }
 
+@theme {
+  --animate-scaleUp: scaleUp 0.3s ease-in-out;
+  @keyframes scaleUp {
+    0% {
+      transform: scale(1);
+    }
+
+    50% {
+      transform: scale(0.95);
+    }
+
+    100% {
+      transform: scale(1);
+    }
+  }
+}
+
+.inherit-text {
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+  text-decoration: inherit;
+  text-transform: inherit;
+  letter-spacing: inherit;
+  word-spacing: inherit;
+  text-shadow: inherit;
+}
+
 /* 
 @layer base {
   * {
@@ -650,24 +678,12 @@ input[type="radio"]:checked:after {
 
 /*  */
 #what-we-offer-card {
-  /* From Uiverse.io by alexruix */
   .card {
-    /* color: #1b1b1b; */
-    /* width: 190px; */
     width: 100%;
-    /* height: 254px; */
     height: 250px;
     position: relative;
-    /* outline: 6px solid #f5f5f5; */
     border-radius: 8px;
-    /* line-height: 150%; */
-    /* padding: 16px; */
-    /* background: #ff930f; */
-    /* background-blend-mode: multiply; */
-    /* background: linear-gradient(to top, #ff930f, #ffcc33); */
-    /* transition: background-color 0.5s ease-in-out; */
     overflow: hidden;
-
     background: #ffffff;
     box-shadow: -6px -6px 11px #dbdbdb, 6px 6px 11px #f2f2f2;
   }
@@ -689,13 +705,6 @@ input[type="radio"]:checked:after {
     transform: translateX(120%);
     transition: transform 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86);
   }
-
-  /*Text*/
-  /* .title {
-    font-size: 1.3rem;
-    font-weight: bold;
-  } */
-
   /*Hover*/
   .card:hover {
     background-color: #ffffff;
@@ -769,21 +778,25 @@ input[type="radio"]:checked:after {
   }
 }
 
-/* particle button */
-/* From Uiverse.io by cssbuttons-io */
-.particle-button {
-  @apply text-black border-none rounded-xl cursor-pointer outline-none transition-all ease-in-out duration-300;
-  background-color: theme("colors.primary");
-  /* box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1); */
+/* DESTINATION - V9 BTN STYLES */
+.destination-learn-more-btn {
+  @apply relative flex items-center justify-center rounded-[5px] bg-secondary shadow overflow-hidden cursor-pointer border-none w-max;
 }
 
-.particle-button:hover {
-  background-color: theme("colors.secondary");
-  /* box-shadow: 0px 5px 10px theme("colors.primary"); */
-  color: #fff;
-  transform: translateY(-7px);
+.destination-learn-more-btn:after {
+  @apply content-[''] w-[0%] h-full bg-primary absolute transition-all duration-500 ease-in-out right-0;
 }
 
-.particle-button:active {
-  transform: translateY(-1px);
+.destination-learn-more-btn:hover::after {
+  @apply right-auto left-0 w-full;
 }
+
+.destination-learn-more-btn span {
+  @apply text-white z-20 transition-all ease-in-out duration-300;
+}
+
+.destination-learn-more-btn:hover span {
+  /* ANIM IN @theme */
+  @apply text-secondary animate-['scaleUp'];
+}
+/* DESTINATION - V9 BTN STYLES */

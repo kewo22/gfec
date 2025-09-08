@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { COUNTRIES } from '../_constants/countries.constants';
 import Image from 'next/image';
+import ParticleButton from '@/app/_components/ui/particle-btn';
 
 const HorizontalScrollCarousel = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -12,7 +13,6 @@ const HorizontalScrollCarousel = () => {
 
   // Country data for education consultancy
   const contentData = COUNTRIES;
-
 
   // Handle scroll to update active index with debouncing
   const handleScroll = () => {
@@ -156,12 +156,10 @@ const HorizontalScrollCarousel = () => {
                       </div>
                     </div>
                     <div className="p-6">
-                      <p className="text-gray-600 leading-relaxed text-base">
+                      <p className="text-gray-600 leading-relaxed text-base mb-6">
                         {item.description}
                       </p>
-                      <button className="mt-4 bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition-colors duration-300 text-sm font-medium">
-                        Learn More
-                      </button>
+                      <ParticleButton size='xs' customClass='capitalize font-bold tracking-wider'>Learn More</ParticleButton>
                     </div>
                   </div>
 

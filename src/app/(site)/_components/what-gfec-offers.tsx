@@ -147,10 +147,9 @@ export default function WhatGfecOffers() {
     <Container className="mx-5 xl:mx-auto py-12">
       <SectionTitle title="What GFEC offers ?" />
 
-      <div id="what-we-offer-card" className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div id="what-we-offer-card" className="w-full md:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 hidden">
         {dataArr.map((data, i) => {
           return (
-
             <div key={i} className="card">
               <div className="card-front">
                 <Image
@@ -173,8 +172,36 @@ export default function WhatGfecOffers() {
             </div>
           )
         })}
-
       </div>
+
+      <div className="space-y-6 block md:hidden">
+        {dataArr.map((data, i) => {
+          return (
+            <div className="flex flex-row items-center border border-secondary bg-white rounded-lg px-5 py-8" key={i}>
+              <div className="flex-[0_0_120px]">
+                <Image
+                  src={data.image.name}
+                  alt={data.image.alt}
+                  height={data.image.height}
+                  width={data.image.width}
+                  className="!relative mx-auto"
+                  priority
+                />
+              </div>
+              <div className="flex flex-col gap-2">
+                <Typography variant="p" className="font-bold text-left">
+                  {data.title}
+                </Typography>
+                <Typography variant="p" className="text-left">
+                  {data.description}
+                </Typography>
+              </div>
+            </div>
+          )
+        })}
+      </div>
+
+
 
 
       <section id="paper" className="mt-10 flex flex-col lg:flex-row justify-evenly items-center gap-5 lg:gap-0">

@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { COUNTRIES } from '../_constants/countries.constants';
 import SectionTitle from './section-title';
 import { Typography } from '@/app/_components/ui/typography';
+import ParticleButton from '@/app/_components/ui/particle-btn';
 
 const ScrollAnimationSection = () => {
   const containerRef = useRef(null);
@@ -62,7 +63,7 @@ const ScrollAnimationSection = () => {
       {/* Main scroll section - height based on number of items */}
       <div ref={containerRef} className="relative" style={{ height: `${contentData.length * 100}vh` }}>
         <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden bg-white">
-            <SectionTitle title="Explore You Dream Destination" />
+          <SectionTitle title="Explore You Dream Destination" />
           <div className="w-full max-w-6xl mx-auto px-8">
 
             {/* Fixed Section Title */}
@@ -108,6 +109,12 @@ const ScrollAnimationSection = () => {
                   <div className="flex flex-col justify-center space-y-6 text-center lg:text-left">
                     <Typography variant="h2">{contentData[activeIndex].country}</Typography>
                     <Typography variant="p">{contentData[activeIndex].description}</Typography>
+                    {/* <button className='destination-learn-more-btn'>
+                      <span>Learn More</span>
+                    </button> */}
+                    <ParticleButton size='sm' customClass='font-bold tracking-widest'>Learn More</ParticleButton>
+
+
                     {/* <h2 className="text-4xl font-bold text-gray-900">
                       {contentData[activeIndex].country}
                     </h2>

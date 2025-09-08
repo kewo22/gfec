@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 
 import Image from 'next/image';
 import { UNIVERSITIES } from '../_constants/countries.constants';
+import ParticleButton from '@/app/_components/ui/particle-btn';
 
 
 const UniversityPartnersGrid = () => {
@@ -192,13 +193,15 @@ const UniversityPartnersGrid = () => {
                   </div>
 
                   {/* Action Button */}
-                  <motion.button
+                  {/* <motion.button
                     className="w-full bg-secondary text-white py-2 px-4 rounded-lg transition-colors duration-300 text-sm font-medium"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
                     Learn More
-                  </motion.button>
+                  </motion.button> */}
+                  <ParticleButton size='xs' customClass='capitalize'>Learn More</ParticleButton>
+
                 </div>
 
                 {/* Hover Overlay */}

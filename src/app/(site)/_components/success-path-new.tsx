@@ -271,7 +271,7 @@ export default function SuccessPathNew() {
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.3 }}
                         viewport={{ once: true }}
-                        className="text-center mt-16"
+                        className="text-center mt-16 flex flex-row justify-center"
                     >
                         {/* <motion.button
                             className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transform transition-all duration-300"
@@ -280,7 +280,7 @@ export default function SuccessPathNew() {
                         >
                             Start Your Journey Today
                         </motion.button> */}
-                        <ParticleButton size='md' customClass='text-xl font-bold'>Start your journey today</ParticleButton>
+                        <ParticleButton size='md' customClass='capitalize font-bold tracking-wider'>Start your journey today</ParticleButton>
                     </motion.div>
                 </div>
             </section>

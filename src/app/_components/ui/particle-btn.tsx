@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { twMerge } from "tailwind-merge";
 
 type ButtonProps = {
-  text?: string;
+  // text?: string;
   type?: "submit" | "reset" | "button";
   buttonStyle?: string;
   size?: "xs" | "sm" | "md" | "lg";
@@ -21,7 +21,7 @@ type ButtonProps = {
 
 export default function ParticleButton(props: ButtonProps) {
   const {
-    text,
+    // text,
     type = "button",
     size = "sm",
     buttonStyle,
@@ -32,12 +32,12 @@ export default function ParticleButton(props: ButtonProps) {
     onClick,
   } = props;
 
-  const baseClass = "particle-button";
+  const baseClass = "destination-learn-more-btn";
 
   const disabledClass =
     "disabled:bg-slate-900 disabled:cursor-default disabled:text-white/50";
 
-  let className = "bg-secondary text-white";
+  let className = "";
 
   switch (size) {
     case "xs":
@@ -64,6 +64,7 @@ export default function ParticleButton(props: ButtonProps) {
     customClass,
   );
 
+
   if (isLoading) {
     return (
       <button className={mergedClassName} disabled>
@@ -84,8 +85,10 @@ export default function ParticleButton(props: ButtonProps) {
       className={mergedClassName}
       disabled={isDisabled}
     >
-      {children && children}
-      {!children && text}
+      <span className="inherit-text">
+        {children && children}
+        {/* {!children && text} */}
+      </span>
     </button>
   );
 }
