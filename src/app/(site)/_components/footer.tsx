@@ -69,7 +69,7 @@ export default function Footer() {
   return (
     <>
 
-      <footer className="flex flex-col items-center justify-center max-w-5xl mx-auto py-8">
+      <footer className="flex flex-col items-center justify-center max-w-7xl mx-auto py-8">
         <div className="flex flex-col items-center justify-center gap-8">
           <Image
             src={gfecTrans}
