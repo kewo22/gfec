@@ -62,7 +62,7 @@ const ScrollAnimationSection = () => {
     <>
       {/* Main scroll section - height based on number of items */}
       <div ref={containerRef} className="relative" style={{ height: `${contentData.length * 100}vh` }}>
-        <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden bg-white">
+        <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden">
           <SectionTitle title="Explore You Dream Destination" />
           <div className="w-full max-w-6xl mx-auto px-8">
 
@@ -108,7 +108,7 @@ const ScrollAnimationSection = () => {
                   {/* Content */}
                   <div className="flex flex-col justify-center space-y-6 text-center lg:text-left">
                     <Typography variant="h2">{contentData[activeIndex].country}</Typography>
-                    <Typography variant="p">{contentData[activeIndex].description}</Typography>
+                    <Typography className='text-justify' variant="p">{contentData[activeIndex].description}</Typography>
                     {/* <button className='destination-learn-more-btn'>
                       <span>Learn More</span>
                     </button> */}

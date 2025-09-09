@@ -13,7 +13,8 @@ type SectionTitleProps = {
 export default function SectionTitle(props: SectionTitleProps) {
   const { title } = props;
   return (
-    <div className="relative inline-block mb-10 text-center">
+    // inline-block
+    <div className="relative w-fit mx-auto mb-10 text-center">
       <Typography variant="h2" className="text-secondary">
         {title}
       </Typography>

@@ -28,7 +28,6 @@ export default function SitePage() {
 
       <UniversityPartnersGrid />
 
-
       {/* <ChooseYourDestination /> */}
 
       <div className="hidden md:block">

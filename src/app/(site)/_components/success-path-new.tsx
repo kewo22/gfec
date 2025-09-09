@@ -12,6 +12,7 @@ import graduate from "../../../../public/graduate.svg";
 import Image from 'next/image';
 import { Typography } from '@/app/_components/ui/typography';
 import ParticleButton from '@/app/_components/ui/particle-btn';
+import ContainerNew from './layouts/container-new';
 
 export default function SuccessPathNew() {
     const containerRef = useRef(null);
@@ -234,7 +235,7 @@ export default function SuccessPathNew() {
     };
 
     return (
-        <Container className="mx-auto py-20 bg-white">
+        <ContainerNew className="mx-auto py-20">
             <SectionTitle title="You Pathway to Achieving Success" />
 
             <section className="overflow-hidden">
@@ -284,7 +285,7 @@ export default function SuccessPathNew() {
                     </motion.div>
                 </div>
             </section>
-        </Container>
+        </ContainerNew>
     );
 };
 

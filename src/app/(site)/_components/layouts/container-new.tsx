@@ -11,12 +11,11 @@ export default function ContainerNew(props: ContainerProps) {
 
   let wrapperClasses = "relative max-w-screen-xl mx-auto";
 
-  if (full) {
+  // if (full) {
 
-  }
+  // }
 
   const mergedClassName = twMerge(wrapperClasses, className);
-
 
   return (
     <section className={mergedClassName} {...rest}>

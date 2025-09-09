@@ -17,6 +17,7 @@ import discussion from "../../../../public/comp/discussion.png";
 import visa from "../../../../public/comp/visa.png";
 import eng from "../../../../public/comp/eng.png";
 import { TypingEffect } from "./typing-effect";
+import ContainerNew from "./layouts/container-new";
 
 export default function WhatGfecOffers() {
   const dataArr = [
@@ -144,7 +145,7 @@ export default function WhatGfecOffers() {
   ];
 
   return (
-    <Container className="mx-5 xl:mx-auto py-12">
+    <ContainerNew className="mx-5 xl:mx-auto py-12">
       <SectionTitle title="What GFEC offers ?" />
 
       <div id="what-we-offer-card" className="w-full md:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 hidden">
@@ -165,7 +166,7 @@ export default function WhatGfecOffers() {
                 </Typography>
               </div>
               <div className="card-back">
-                <Typography variant="p" className=" px-5">
+                <Typography variant="p" className="px-5">
                   {data.description}
                 </Typography>
               </div>
@@ -218,6 +219,6 @@ export default function WhatGfecOffers() {
           <TypingEffect variant="p" textClassName="text-left" text="Navigating international education can be overwhelming—but not with GFEC. With over a decade of experience helping Sri Lankan students study abroad, our counselors provide personalized support tailored to your academic goals and budget. From selecting the right course to securing your visa, we&apos;re with you from start to finish." />
         </div>
       </section>
-    </Container>
+    </ContainerNew>
   );
 }
