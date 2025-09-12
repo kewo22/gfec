@@ -37,7 +37,8 @@ export default function SiteLayout({
   );
 }
 
-// <html lang="en" suppressHydrationWarning>
+// need suppressHydrationWarning ??
+// <html lang="en" >
 //   <body suppressHydrationWarning>
 //     {/* <PromoPopUp /> */}
 //     {/* <NavigationNew /> */}
