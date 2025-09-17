@@ -1,28 +1,42 @@
 import React from "react";
 
 import { Typography } from "@/app/_components/ui/typography";
+import DestinationBulletPointsAnimComp, { DestinationBulletPoints } from "../destination-bullet-points-amin-comp";
 
 export default function Fra() {
+  const benefits: DestinationBulletPoints[] = [
+    {
+      title: "Affordable Education",
+      description: "Public universities offer subsidized tuition for international students, while scholarships are widely available from the French government."
+    },
+    {
+      title: "Top Business & Fashion Schools",
+      description: "France is home to world-renowned institutions in Business, Luxury Brand Management, Fashion Design, and Culinary Arts."
+    },
+    {
+      title: "Work While Studying",
+      description: "International students can work part-time for up to 964 hours per year to support their studies."
+    },
+    {
+      title: "Cultural Immersion & Language Skills",
+      description: "GWhile many programs are offered in English, living in France allows students to immerse themselves in the language and culture."
+    },
+    {
+      title: "Gateway to the EU Job Market",
+      description: "Graduates can explore a wide range of job opportunities across the European Union, with post-study stay options available."
+    },
+  ];
+
+
   return (
-    <div className="">
-      <div className="bg-france-banner bg-center bg-cover w-full h-60 grid place-items-center">
-        <Typography
-          variant="h1"
-          className="text-white tracking-wider shadow-2xl"
-        >
-          FRANCE
+    <div className="flex flex-col gap-20">
+      <div className="flex flex-col sm:flex-row gap-20 px-10 xl:px-0">
+        <Typography variant="p" className="text-justify !leading-normal sm:!leading-8">
+          France is globally recognized for its contribution to arts, fashion, philosophy, and science—and its higher education system is no exception. With some of the world's top-ranked universities and business schools, France offers an academic journey rich in quality, culture, and career potential.
         </Typography>
       </div>
 
-      <div className="p-10">
-        <Typography className="text-justify sm:text-left">
-          France is known for its prestigious universities, cultural heritage
-          and culinary delights. With a strong emphasis on arts, humanities and
-          sciences, France offers a wide array of programs. The country&apos;s
-          cosmopolitan cities and picturesque regions provide an enriching
-          backdrop for academic pursuits.
-        </Typography>
-      </div>
+      <DestinationBulletPointsAnimComp list={benefits} title="Why Choose the France?" />
     </div>
   );
 }

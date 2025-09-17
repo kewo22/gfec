@@ -53,6 +53,7 @@ const config: Config = {
         "malta-banner": "url('/malta.jpg')",
         "spain-banner": "url('/spain.jpg')",
         "ireland-banner": "url('/ireland.jpg')",
+        "southkorea-banner": "url('/comp/south_korea.webp')",
       },
       colors: {
         // primary: "#BD9519",

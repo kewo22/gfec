@@ -63,7 +63,7 @@ const ScrollAnimationSection = () => {
       {/* Main scroll section - height based on number of items */}
       <div ref={containerRef} className="relative" style={{ height: `${contentData.length * 100}vh` }}>
         <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden">
-          <SectionTitle title="Explore You Dream Destination" />
+          <SectionTitle title="Explore Your Dream Destination" />
           <div className="w-full max-w-6xl mx-auto px-8">
 
             {/* Fixed Section Title */}

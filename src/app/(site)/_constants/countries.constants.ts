@@ -1,7 +1,10 @@
 import { Country, University } from "../_types/country";
 
 // import aus from "../../../../public/comp/aus.webp";
+
 import uk from "../../../../public/comp/uk.webp";
+// import uk from "../../../../public/comp/uk-ori.jpg";
+
 // import canada from "../../../../public/comp/canada.webp";
 // import finland from "../../../../public/comp/finland.webp";
 // import belarus from "../../../../public/comp/belarus.webp";
@@ -31,6 +34,7 @@ import schillerGermanyImg from "../../../../public/comp/Schiller-International-U
 import schillerFranceImg from "../../../../public/comp/Schiller-International-University-France.jpg";
 import manipalImg from "../../../../public/comp/manipal-university-dubai.jpg";
 import uniOfSunderlandImg from "../../../../public/comp/university-of-sunderland.jpg";
+import ukSvg from "../../../../public/svg/uk-svg.svg";
 
 //////////////////////////// ----> FLAG SOURCE https://www.countryflags.com/south-korea-flag-vector/
 
@@ -55,6 +59,8 @@ export const COUNTRIES: Country[] = [
     isCourseDetailAvailable: false, // not using anywhere
     flag: "/gb.svg",
     flagBg: "bg-gb-flag",
+    route: "united-kingdom",
+    // outlineSvg: ukSvg,
   },
   //   {
   //     id: "can",
@@ -96,7 +102,10 @@ export const COUNTRIES: Country[] = [
     isCourseDetailAvailable: false, // not using anywhere
     flag: "/de.svg",
     flagBg: "bg-de-flag",
+    route: "germany",
+    // outlineSvg: ukSvg,
   },
+
   //   {
   //     id: "ita",
   //     image: italy,
@@ -137,6 +146,8 @@ export const COUNTRIES: Country[] = [
     isCourseDetailAvailable: false, // not using anywhere
     flag: "/fr.svg",
     flagBg: "bg-fr-flag",
+    route: "france",
+    // outlineSvg: ukSvg,
   },
   //   {
   //     id: "ned",
@@ -178,6 +189,8 @@ export const COUNTRIES: Country[] = [
     isCourseDetailAvailable: false, // not using anywhere
     flag: "/dxb.svg",
     flagBg: "bg-dxb-flag",
+    route: "UAE",
+    // outlineSvg: ukSvg,
   },
   {
     id: "malta",
@@ -189,6 +202,8 @@ export const COUNTRIES: Country[] = [
     isCourseDetailAvailable: false, // not using anywhere
     flag: "/malta.svg",
     flagBg: "bg-malta-flag",
+    route: "malta",
+    // outlineSvg: ukSvg,
   },
   {
     id: "esp",
@@ -200,6 +215,8 @@ export const COUNTRIES: Country[] = [
     isCourseDetailAvailable: false, // not using anywhere
     flag: "/spain.svg",
     flagBg: "bg-spain-flag",
+    route: "spain",
+    // outlineSvg: ukSvg,
   },
   //   {
   //     id: "ire",
@@ -221,6 +238,8 @@ export const COUNTRIES: Country[] = [
     isCourseDetailAvailable: false, // not using anywhere
     flag: "/spain.svg",
     flagBg: "bg-south-korea-flag",
+    route: "south-korea",
+    // outlineSvg: ukSvg,
   },
 ];
 

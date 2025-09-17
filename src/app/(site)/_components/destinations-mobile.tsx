@@ -5,6 +5,8 @@ import { motion } from 'framer-motion';
 import { COUNTRIES } from '../_constants/countries.constants';
 import Image from 'next/image';
 import ParticleButton from '@/app/_components/ui/particle-btn';
+import SectionTitle from './section-title';
+import { Typography } from '@/app/_components/ui/typography';
 
 const HorizontalScrollCarousel = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -79,6 +81,7 @@ const HorizontalScrollCarousel = () => {
   return (
     <div className="w-full bg-gradient-to-br from-blue-50 to-indigo-100 py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <SectionTitle title="Explore Your Dream Destination" />
 
         {/* Header */}
         {/* <div className="text-center mb-12">
@@ -136,7 +139,7 @@ const HorizontalScrollCarousel = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
               >
-                <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300">
+                <div className="bg-white rounded-2xl  overflow-hidden  ">
 
                   {/* Mobile Layout - Stacked */}
                   <div className="">
@@ -156,9 +159,9 @@ const HorizontalScrollCarousel = () => {
                       </div>
                     </div>
                     <div className="p-6">
-                      <p className="text-gray-600 leading-relaxed text-base mb-6">
+                      <Typography variant='p' className='mb-6 leading-relaxed'>
                         {item.description}
-                      </p>
+                      </Typography>
                       <ParticleButton size='xs' customClass='capitalize font-bold tracking-wider'>Learn More</ParticleButton>
                     </div>
                   </div>

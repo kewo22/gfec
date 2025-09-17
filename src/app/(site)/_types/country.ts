@@ -1,7 +1,7 @@
 import { StaticImageData } from "next/image";
 
 export type Country = {
-  id: string;
+  id: string; // make enum
   image: StaticImageData;
   country: string;
   class: string;
@@ -9,6 +9,9 @@ export type Country = {
   isCourseDetailAvailable: boolean; // not using anywhere
   flag: string;
   flagBg: string;
+  route: string;
+  outlineSvg?: string;
+  // dest?: string;
 };
 
 export type University = {

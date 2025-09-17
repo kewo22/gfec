@@ -15,12 +15,13 @@ import ScrollAnimationSection from "./_components/destinations-v9";
 import DestinationsMobile from "./_components/destinations-mobile";
 import UniversityPartnersGrid from "./_components/uni-list";
 import Testimonial from "./_components/testimonial";
+import HeroNew from "./_components/hero-new";
 
 export default function SitePage() {
 
   return (
     <section className="bg-slate-100">
-
+      <HeroNew />
 
       <SummaryCounterGroup />
 
