@@ -40,7 +40,7 @@ export default function DestinationPage() {
     };
 
     return (
-        <section className="bg-slate-100 py-20">
+        <section className="bg-slate-100">
             <motion.div
                 className="relative w-full h-[400px] overflow-hidden cursor-none"
                 initial={{ opacity: 0 }}
@@ -157,7 +157,7 @@ export default function DestinationPage() {
 
             {/* Universities Grid */}
 
-            <div className="px-10 xl:px-0 max-w-7xl mx-auto">
+            <div className="px-10 xl:px-0 max-w-7xl mx-auto pb-20">
                 <UniversityPartnerItem universities={filteredUniversities} countryFilter={foundCountry.id} />
             </div>
         </section>
