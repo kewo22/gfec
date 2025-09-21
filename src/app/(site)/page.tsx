@@ -27,7 +27,7 @@ export default function SitePage() {
 
       <WhatGfecOffers />
 
-      <UniversityPartnersGrid />
+      <UniversityPartnersGrid countryFilter="all" />
 
       {/* <ChooseYourDestination /> */}
 

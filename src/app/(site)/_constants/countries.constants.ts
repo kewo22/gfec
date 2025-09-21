@@ -16,6 +16,7 @@ import france from "../../../../public/comp/france.webp";
 // import netherlands from "../../../../public/comp/netherlands.webp";
 // import latvia from "../../../../public/comp/latvia.webp";
 // import switzerland from "../../../../public/comp/switzerland.webp";
+// import dxb from "../../../../public/comp/dxb.webp";
 import dxb from "../../../../public/comp/dxb.webp";
 import malta from "../../../../public/comp/malta.webp";
 import spain from "../../../../public/comp/spain.webp";
@@ -39,18 +40,8 @@ import ukSvg from "../../../../public/svg/uk-svg.svg";
 //////////////////////////// ----> FLAG SOURCE https://www.countryflags.com/south-korea-flag-vector/
 
 export const COUNTRIES: Country[] = [
-  // {
-  //     id: "aus",
-  //     image: aus,
-  //     country: "Australia",
-  //     class: "",
-  //     description: "",
-  //     isCourseDetailAvailable: true, // not using anywhere
-  //     flag: "/au.svg",
-  //     flagBg: 'bg-au-flag'
-  // },
   {
-    id: "uk",
+    id: "united_kingdom",
     image: uk,
     country: "United Kingdom",
     class: "",
@@ -59,41 +50,11 @@ export const COUNTRIES: Country[] = [
     isCourseDetailAvailable: false, // not using anywhere
     flag: "/gb.svg",
     flagBg: "bg-gb-flag",
-    route: "united-kingdom",
+    route: "united_kingdom",
     // outlineSvg: ukSvg,
   },
-  //   {
-  //     id: "can",
-  //     image: canada,
-  //     country: "Canada",
-  //     class: "",
-  //     description: "",
-  //     isCourseDetailAvailable: false, // not using anywhere
-  //     flag: "/ca.svg",
-  //     flagBg: "bg-ca-flag",
-  //   },
-  // {
-  //     id: "fin",
-  //     image: finland,
-  //     country: "Finland",
-  //     class: "",
-  //     description: "",
-  //     isCourseDetailAvailable: false, // not using anywhere
-  //     flag: "/fi.svg",
-  //     flagBg: 'bg-fi-flag'
-  // },
-  // {
-  //     id: "bal",
-  //     image: belarus,
-  //     country: "Belarus",
-  //     class: "",
-  //     description: "",
-  //     isCourseDetailAvailable: false, // not using anywhere
-  //     flag: "/by.svg",
-  //     flagBg: 'bg-by-flag'
-  // },
   {
-    id: "ger",
+    id: "germany",
     image: germany,
     country: "Germany",
     class: "",
@@ -105,39 +66,8 @@ export const COUNTRIES: Country[] = [
     route: "germany",
     // outlineSvg: ukSvg,
   },
-
-  //   {
-  //     id: "ita",
-  //     image: italy,
-  //     country: "Italy",
-  //     class: "",
-  //     description: "",
-  //     isCourseDetailAvailable: false, // not using anywhere
-  //     flag: "/it.svg",
-  //     flagBg: "bg-it-flag",
-  //   },
-  // {
-  //     id: "swe",
-  //     image: sweden,
-  //     country: "Sweden",
-  //     class: "",
-  //     description: "",
-  //     isCourseDetailAvailable: false, // not using anywhere
-  //     flag: "/se.svg",
-  //     flagBg: 'bg-se-flag'
-  // },
-  // {
-  //     id: "rus",
-  //     image: russia,
-  //     country: "Russia",
-  //     class: "",
-  //     description: "",
-  //     isCourseDetailAvailable: false, // not using anywhere
-  //     flag: "/ru.svg",
-  //     flagBg: 'bg-ru-flag'
-  // },
   {
-    id: "fra",
+    id: "france",
     image: france,
     country: "France",
     class: "",
@@ -149,6 +79,79 @@ export const COUNTRIES: Country[] = [
     route: "france",
     // outlineSvg: ukSvg,
   },
+  {
+    id: "uae",
+    image: dxb,
+    country: "UAE",
+    class: "",
+    description:
+      "Study in a modern global hub where East meets West. Access cutting-edge facilities, multicultural campuses, and excellent career opportunities in the heart of the Middle East.",
+    isCourseDetailAvailable: false, // not using anywhere
+    flag: "/dxb.svg",
+    flagBg: "bg-dxb-flag",
+    route: "UAE",
+    // outlineSvg: ukSvg,
+  },
+  {
+    id: "malta",
+    image: malta,
+    country: "Malta",
+    class: "",
+    description:
+      "Experience Mediterranean charm while studying in English. Enjoy a safe, sunny island nation with European education standards and a vibrant international student community.",
+    isCourseDetailAvailable: false, // not using anywhere
+    flag: "/malta.svg",
+    flagBg: "bg-malta-flag",
+    route: "malta",
+    // outlineSvg: ukSvg,
+  },
+  {
+    id: "spain",
+    image: spain,
+    country: "Spain",
+    class: "",
+    description:
+      "Immerse yourself in vibrant culture while pursuing quality education. Learn in a country known for its warm hospitality, beautiful landscapes, and growing international programs.",
+    isCourseDetailAvailable: false, // not using anywhere
+    flag: "/spain.svg",
+    flagBg: "bg-spain-flag",
+    route: "spain",
+    // outlineSvg: ukSvg,
+  },
+  {
+    id: "south_korea",
+    image: south_korea,
+    country: "South Korea",
+    class: "",
+    description:
+      "Explore advanced technology and rich traditions. Study in Asia's education leader with modern campuses, innovative programs, and growing global influence in technology and culture.",
+    isCourseDetailAvailable: false, // not using anywhere
+    flag: "/spain.svg",
+    flagBg: "bg-south-korea-flag",
+    route: "south-korea",
+    // outlineSvg: ukSvg,
+  },
+
+  //   {
+  //     id: "ire",
+  //     image: ireland,
+  //     country: "Ireland",
+  //     class: "",
+  //     description: "",
+  //     isCourseDetailAvailable: false, // not using anywhere
+  //     flag: "/ireland.svg",
+  //     flagBg: "bg-ireland-flag",
+  //   },
+  // {
+  //     id: "aus",
+  //     image: aus,
+  //     country: "Australia",
+  //     class: "",
+  //     description: "",
+  //     isCourseDetailAvailable: true, // not using anywhere
+  //     flag: "/au.svg",
+  //     flagBg: 'bg-au-flag'
+  // },
   //   {
   //     id: "ned",
   //     image: netherlands,
@@ -179,68 +182,66 @@ export const COUNTRIES: Country[] = [
   //     flag: "/ch.svg",
   //     flagBg: 'bg-ch-flag'
   // },
-  {
-    id: "dxb",
-    image: dxb,
-    country: "UAE - Dubai",
-    class: "",
-    description:
-      "Study in a modern global hub where East meets West. Access cutting-edge facilities, multicultural campuses, and excellent career opportunities in the heart of the Middle East.",
-    isCourseDetailAvailable: false, // not using anywhere
-    flag: "/dxb.svg",
-    flagBg: "bg-dxb-flag",
-    route: "UAE",
-    // outlineSvg: ukSvg,
-  },
-  {
-    id: "malta",
-    image: malta,
-    country: "Malta",
-    class: "",
-    description:
-      "Experience Mediterranean charm while studying in English. Enjoy a safe, sunny island nation with European education standards and a vibrant international student community.",
-    isCourseDetailAvailable: false, // not using anywhere
-    flag: "/malta.svg",
-    flagBg: "bg-malta-flag",
-    route: "malta",
-    // outlineSvg: ukSvg,
-  },
-  {
-    id: "esp",
-    image: spain,
-    country: "Spain",
-    class: "",
-    description:
-      "Immerse yourself in vibrant culture while pursuing quality education. Learn in a country known for its warm hospitality, beautiful landscapes, and growing international programs.",
-    isCourseDetailAvailable: false, // not using anywhere
-    flag: "/spain.svg",
-    flagBg: "bg-spain-flag",
-    route: "spain",
-    // outlineSvg: ukSvg,
-  },
   //   {
-  //     id: "ire",
-  //     image: ireland,
-  //     country: "Ireland",
+  //     id: "can",
+  //     image: canada,
+  //     country: "Canada",
   //     class: "",
   //     description: "",
   //     isCourseDetailAvailable: false, // not using anywhere
-  //     flag: "/ireland.svg",
-  //     flagBg: "bg-ireland-flag",
+  //     flag: "/ca.svg",
+  //     flagBg: "bg-ca-flag",
   //   },
-  {
-    id: "sk",
-    image: south_korea,
-    country: "South Korea",
-    class: "",
-    description:
-      "Explore advanced technology and rich traditions. Study in Asia's education leader with modern campuses, innovative programs, and growing global influence in technology and culture.",
-    isCourseDetailAvailable: false, // not using anywhere
-    flag: "/spain.svg",
-    flagBg: "bg-south-korea-flag",
-    route: "south-korea",
-    // outlineSvg: ukSvg,
-  },
+  // {
+  //     id: "fin",
+  //     image: finland,
+  //     country: "Finland",
+  //     class: "",
+  //     description: "",
+  //     isCourseDetailAvailable: false, // not using anywhere
+  //     flag: "/fi.svg",
+  //     flagBg: 'bg-fi-flag'
+  // },
+  // {
+  //     id: "bal",
+  //     image: belarus,
+  //     country: "Belarus",
+  //     class: "",
+  //     description: "",
+  //     isCourseDetailAvailable: false, // not using anywhere
+  //     flag: "/by.svg",
+  //     flagBg: 'bg-by-flag'
+  // },
+  //   {
+  //     id: "ita",
+  //     image: italy,
+  //     country: "Italy",
+  //     class: "",
+  //     description: "",
+  //     isCourseDetailAvailable: false, // not using anywhere
+  //     flag: "/it.svg",
+  //     flagBg: "bg-it-flag",
+  //   },
+  // {
+  //     id: "swe",
+  //     image: sweden,
+  //     country: "Sweden",
+  //     class: "",
+  //     description: "",
+  //     isCourseDetailAvailable: false, // not using anywhere
+  //     flag: "/se.svg",
+  //     flagBg: 'bg-se-flag'
+  // },
+  // {
+  //     id: "rus",
+  //     image: russia,
+  //     country: "Russia",
+  //     class: "",
+  //     description: "",
+  //     isCourseDetailAvailable: false, // not using anywhere
+  //     flag: "/ru.svg",
+  //     flagBg: 'bg-ru-flag'
+  // },
 ];
 
 export const PRE_SELECTED_COUNTRY: Country = COUNTRIES[0];
@@ -293,7 +294,7 @@ export const UNIVERSITIES: University[] = [
     ranking: "#87th in UK",
     programs: ["Engineering", "Technology", "Sciences"],
     established: "1992",
-    category: "uk",
+    category: "united_kingdom",
   },
   {
     id: 5,
@@ -303,7 +304,7 @@ export const UNIVERSITIES: University[] = [
     ranking: "#82 in UK",
     programs: ["Business", "IT", "Medicine"],
     established: "1952",
-    category: "uk",
+    category: "united_kingdom",
   },
   {
     id: 6,
@@ -333,7 +334,7 @@ export const UNIVERSITIES: University[] = [
     ranking: "#98 in Europe",
     programs: ["Engineering", "Medicine", "Business"],
     established: "1823",
-    category: "uk",
+    category: "united_kingdom",
   },
   {
     id: 9,
@@ -383,6 +384,6 @@ export const UNIVERSITIES: University[] = [
     ranking: "Top in Europe",
     programs: ["Engineering", "IT", "Sciences"],
     established: "1901",
-    category: "uk",
+    category: "united_kingdom",
   },
 ];

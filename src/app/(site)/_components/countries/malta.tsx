@@ -39,7 +39,9 @@ export default function Malta() {
         </Typography>
       </div>
 
-      <DestinationBulletPointsAnimComp list={benefits} title="Why Choose the Malta?" />
+      <div className="px-10 xl:px-0">
+        <DestinationBulletPointsAnimComp list={benefits} title="Why Choose the Malta?" />
+      </div>
     </div>
   );
 }

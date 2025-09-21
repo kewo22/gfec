@@ -7,6 +7,7 @@ import { COUNTRIES } from '../_constants/countries.constants';
 import SectionTitle from './section-title';
 import { Typography } from '@/app/_components/ui/typography';
 import ParticleButton from '@/app/_components/ui/particle-btn';
+import Link from "next/link";
 
 const ScrollAnimationSection = () => {
   const containerRef = useRef(null);
@@ -112,7 +113,10 @@ const ScrollAnimationSection = () => {
                     {/* <button className='destination-learn-more-btn'>
                       <span>Learn More</span>
                     </button> */}
-                    <ParticleButton size='sm' customClass='font-bold tracking-widest'>Learn More</ParticleButton>
+                    <Link href={`/study-abroad/${contentData[activeIndex].route}`}>
+                      <ParticleButton size='sm' customClass='font-bold tracking-widest'>Learn More</ParticleButton>
+                    </Link>
+                    {/* <ParticleButton size='xs' customClass='capitalize font-bold tracking-wider'>Learn More</ParticleButton> */}
 
 
                     {/* <h2 className="text-4xl font-bold text-gray-900">

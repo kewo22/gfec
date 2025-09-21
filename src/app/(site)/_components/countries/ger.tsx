@@ -39,7 +39,9 @@ export default function Ger() {
           Germany is one of the most sought-after study destinations in Europe, known for its academic excellence, strong economy, and innovation-driven education system. Whether you're pursuing a career in engineering, business, technology, or research, Germany offers international students a globally respected education in a thriving professional environment.        </Typography>
       </div>
 
-      <DestinationBulletPointsAnimComp list={benefits} title="Why Choose the Germany?" />
+      <div className="px-10 xl:px-0">
+        <DestinationBulletPointsAnimComp list={benefits} title="Why Choose the Germany?" />
+      </div>
     </div>
   );
 }

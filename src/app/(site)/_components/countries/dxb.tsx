@@ -40,7 +40,9 @@ export default function Dxb() {
         </Typography>
       </div>
 
-      <DestinationBulletPointsAnimComp list={benefits} title="Why Choose the Dubai?" />
+      <div className="px-10 xl:px-0">
+        <DestinationBulletPointsAnimComp list={benefits} title="Why Choose the Dubai?" />
+      </div>
     </div>
   );
 }

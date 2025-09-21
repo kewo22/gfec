@@ -2,7 +2,7 @@
 
 import { TypewriterEffect } from "../../_components/typewriter-effect";
 import { useParams } from "next/navigation";
-import { COUNTRIES } from "../../_constants/countries.constants";
+import { COUNTRIES, UNIVERSITIES } from "../../_constants/countries.constants";
 import Image from "next/image";
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from "react";
@@ -13,6 +13,7 @@ import Dxb from "../../_components/countries/dxb";
 import Malta from "../../_components/countries/malta";
 import Spain from "../../_components/countries/spain";
 import Sk from "../../_components/countries/sk";
+import UniversityPartnerItem from "../../_components/uni-item";
 
 type DestinationPageParams = {
     country: string;
@@ -21,7 +22,9 @@ type DestinationPageParams = {
 export default function DestinationPage() {
     const { country } = useParams<DestinationPageParams>();
 
-    const foundCountry = COUNTRIES.find(_country => _country.route.toLowerCase() === country.toLowerCase())
+    const foundCountry = COUNTRIES.find(_country => _country.route.toLowerCase() === country.toLowerCase());
+
+    const filteredUniversities = UNIVERSITIES.filter(university => university.category === foundCountry?.id);
 
     if (!foundCountry) {
         return <><h1>Country not found</h1></>
@@ -37,7 +40,7 @@ export default function DestinationPage() {
     };
 
     return (
-        <section className="bg-slate-100">
+        <section className="bg-slate-100 py-20">
             <motion.div
                 className="relative w-full h-[400px] overflow-hidden cursor-none"
                 initial={{ opacity: 0 }}
@@ -142,16 +145,21 @@ export default function DestinationPage() {
                 /> */}
             </motion.div>
 
-            <div className="py-20 max-w-7xl mx-auto">
-                {foundCountry.id === "uk" && <Uk />}
-                {foundCountry.id === "ger" && <Ger />}
-                {foundCountry.id === "fra" && <Fra />}
-                {foundCountry.id === "dxb" && <Dxb />}
+            <div className="max-w-7xl mx-auto py-20">
+                {foundCountry.id === "united_kingdom" && <Uk />}
+                {foundCountry.id === "germany" && <Ger />}
+                {foundCountry.id === "france" && <Fra />}
+                {foundCountry.id === "uae" && <Dxb />}
                 {foundCountry.id === "malta" && <Malta />}
-                {foundCountry.id === "esp" && <Spain />}
-                {foundCountry.id === "sk" && <Sk />}
+                {foundCountry.id === "spain" && <Spain />}
+                {foundCountry.id === "south_korea" && <Sk />}
             </div>
 
+            {/* Universities Grid */}
+
+            <div className="px-10 xl:px-0 max-w-7xl mx-auto">
+                <UniversityPartnerItem universities={filteredUniversities} countryFilter={foundCountry.id} />
+            </div>
         </section>
     )
 }

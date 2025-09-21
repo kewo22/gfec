@@ -44,15 +44,10 @@ import Link from "next/link";
 import { it } from "node:test";
 
 export default function StudyAbroad() {
-    const [selectedCountry, setSelectedCountry] = useState(PRE_SELECTED_COUNTRY);
     const [isHeaderTextAnimationComplete, setIsHeaderTextAnimationComplete] = useState(false);
 
     const COUNTRIES_DATA = COUNTRIES;
     const countryNames = ['', ...COUNTRIES_DATA.map(country => country.country)];
-
-    const onCountryClick = (country: Country) => {
-        setSelectedCountry(country);
-    };
 
     const onComplete = () => {
         setTimeout(() => {

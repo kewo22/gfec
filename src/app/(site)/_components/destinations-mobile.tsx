@@ -7,6 +7,7 @@ import Image from 'next/image';
 import ParticleButton from '@/app/_components/ui/particle-btn';
 import SectionTitle from './section-title';
 import { Typography } from '@/app/_components/ui/typography';
+import Link from 'next/link';
 
 const HorizontalScrollCarousel = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -162,7 +163,10 @@ const HorizontalScrollCarousel = () => {
                       <Typography variant='p' className='mb-6 leading-relaxed'>
                         {item.description}
                       </Typography>
-                      <ParticleButton size='xs' customClass='capitalize font-bold tracking-wider'>Learn More</ParticleButton>
+                      <Link href={`/study-abroad/${contentData[activeIndex].route}`}>
+                        {/* <ParticleButton size='sm' customClass='font-bold tracking-widest'>Learn More</ParticleButton> */}
+                        <ParticleButton size='xs' customClass='capitalize font-bold tracking-widest'>Learn More</ParticleButton>
+                      </Link>
                     </div>
                   </div>
 

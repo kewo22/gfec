@@ -36,7 +36,10 @@ export default function Fra() {
         </Typography>
       </div>
 
-      <DestinationBulletPointsAnimComp list={benefits} title="Why Choose the France?" />
+      <div className="px-10 xl:px-0">
+        <DestinationBulletPointsAnimComp list={benefits} title="Why Choose the France?" />
+      </div>
+
     </div>
   );
 }

@@ -48,7 +48,9 @@ export default function Uk() {
         </Typography>
       </div>
 
-      <DestinationBulletPointsAnimComp list={benefits} title="Why Choose the UK?" />
+      <div className="px-10 xl:px-0">
+        <DestinationBulletPointsAnimComp list={benefits} title="Why Choose the UK?" />
+      </div>
     </div>
   );
 }

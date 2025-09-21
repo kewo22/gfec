@@ -43,7 +43,9 @@ export default function Sk() {
                 </Typography>
             </div>
 
-            <DestinationBulletPointsAnimComp list={benefits} title="Why Choose the South Korea?" />
+            <div className="px-10 xl:px-0">
+                <DestinationBulletPointsAnimComp list={benefits} title="Why Choose the South Korea?" />
+            </div>
         </div>
     );
 }
