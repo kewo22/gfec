@@ -44,7 +44,7 @@ const ScrollAnimationSection = () => {
       rotateY: 0,
       transition: {
         duration: 0.5,
-        ease: "easeInOut"
+        ease: "easeInOut" as const  // Add 'as const' here
       }
     },
     exit: (direction: any) => ({
@@ -54,7 +54,7 @@ const ScrollAnimationSection = () => {
       rotateY: direction < 0 ? 15 : -15,
       transition: {
         duration: 0.5,
-        ease: "easeInOut"
+        ease: "easeInOut" as const  // Add 'as const' here
       }
     })
   };

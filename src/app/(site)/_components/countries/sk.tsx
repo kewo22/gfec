@@ -38,7 +38,7 @@ export default function Sk() {
         <div className="flex flex-col gap-20">
             <div className="flex flex-col sm:flex-row gap-20 px-10 xl:px-0">
                 <Typography variant="p" className="text-justify !leading-normal sm:!leading-8">
-                    South Korea is quickly becoming one of Asia's top study destinations, known for its world-class universities, cutting-edge technology, and global influence in culture and entertainment. With an increasing number of English-taught programs and a growing international student population, Korea offers a dynamic and unique educational experience.
+                    South Korea is quickly becoming one of Asia&apos;s top study destinations, known for its world-class universities, cutting-edge technology, and global influence in culture and entertainment. With an increasing number of English-taught programs and a growing international student population, Korea offers a dynamic and unique educational experience.
                     Students in South Korea not only benefit from academic excellence but also immerse themselves in a culture known for innovation, discipline, and creativity.
                 </Typography>
             </div>

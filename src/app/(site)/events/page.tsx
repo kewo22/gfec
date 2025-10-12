@@ -152,8 +152,9 @@ export default function Contact() {
       y: 0,
       opacity: 1,
       transition: {
-        type: 'spring',
-        stiffness: 100
+        type: 'spring' as const,  // Add 'as const' here
+        stiffness: 100,
+        damping: 15  // Also add damping for better spring animation
       }
     }
   };
@@ -385,7 +386,7 @@ export default function Contact() {
         className="max-w-7xl mx-auto px-4 py-16"
       >
         <div className="bg-gradient-to-r from-purple-600 to-blue-600 rounded-3xl p-12 text-center text-white shadow-2xl">
-          <h2 className="text-4xl font-bold mb-4">Don't See What You're Looking For?</h2>
+          <h2 className="text-4xl font-bold mb-4">Don&apos;t See What You&apos;re Looking For?</h2>
           <p className="text-xl mb-8 opacity-90">Contact us to schedule a personal consultation session</p>
           <motion.button
             whileHover={{ scale: 1.05 }}

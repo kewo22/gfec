@@ -31,7 +31,6 @@ const nextConfig = {
     LAT: process.env.LAT || "NO LAT FROM NEXT.CONFIG",
     LNG: process.env.LNG || "NO LNG FROM NEXT.CONFIG",
   },
-  swcMinify: true,
   transpilePackages: [
     "@fortawesome/fontawesome-svg-core",
     "@fortawesome/free-brands-svg-icons",

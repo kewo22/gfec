@@ -80,7 +80,7 @@ export default function SuccessPathNew() {
                 transition: {
                     duration: 0.8,
                     delay: index * 0.2,
-                    ease: "easeOut"
+                    ease: "easeOut" as const
                 }
             }
         };
@@ -98,7 +98,7 @@ export default function SuccessPathNew() {
                 transition: {
                     duration: 0.6,
                     delay: index * 0.2 + 0.3,
-                    ease: "easeOut"
+                    ease: "easeOut" as const
                 }
             }
         };
@@ -116,7 +116,7 @@ export default function SuccessPathNew() {
                 transition: {
                     duration: 0.6,
                     delay: index * 0.2 + 0.4,
-                    ease: "easeOut"
+                    ease: "easeOut" as const
                 }
             }
         };

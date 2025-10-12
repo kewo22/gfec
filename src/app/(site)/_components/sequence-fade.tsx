@@ -28,7 +28,7 @@ export function SequentialTextFade({
             opacity: 1,
             y: 0,
             transition: {
-                type: 'spring',
+                type: 'spring' as const,
                 duration: 0.5
             }
         },

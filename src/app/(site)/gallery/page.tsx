@@ -87,7 +87,8 @@ const MasonryGallery = () => {
   const [selectedImage, setSelectedImage] = useState<any>(null);
   const [columns, setColumns] = useState(4);
   const [activeFilter, setActiveFilter] = useState<any>('all');
-  const [filteredImages, setFilteredImages] = useState<any>([]);
+  // const [filteredImages, setFilteredImages] = useState<any>([]);
+  const [isInitialized, setIsInitialized] = useState(false);
 
   const images = [
     { id: 1, src: agentMeetup1, alt: 'agentMeetup1', width: 400, height: 600, categoryId: 'Agent_Meetup', category: 'Agent Meetup' },
@@ -190,18 +191,28 @@ const MasonryGallery = () => {
     return () => window.removeEventListener('resize', updateColumns);
   }, []);
 
-  // Filter images based on active filter
-  useEffect(() => {
-    if (activeFilter === 'all') {
-      setFilteredImages(images);
-    } else {
-      setFilteredImages(images.filter(image => image.categoryId === activeFilter));
-    }
-  }, [activeFilter]);
+  // // Filter images based on active filter
+  // useEffect(() => {
+  //   if (activeFilter === 'all') {
+  //     setFilteredImages(images);
+  //   } else {
+  //     setFilteredImages(images.filter(image => image.categoryId === activeFilter));
+  //   }
+  // }, [activeFilter]);
 
-  // Initialize filtered images
+  // // Initialize filtered images
+  // useEffect(() => {
+  //   setFilteredImages(images);
+  // }, []);
+
+  // Filter images based on active filter (computed, not state)
+  const filteredImages = activeFilter === 'all'
+    ? images
+    : images.filter(image => image.categoryId === activeFilter);
+
+  // Initialize after mount to trigger animations
   useEffect(() => {
-    setFilteredImages(images);
+    setIsInitialized(true);
   }, []);
 
   // Distribute images across columns for masonry layout
@@ -225,7 +236,7 @@ const MasonryGallery = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1
+        staggerChildren: 0.05
       }
     }
   };
@@ -233,17 +244,17 @@ const MasonryGallery = () => {
   const imageVariants = {
     hidden: {
       opacity: 0,
-      y: 50,
-      scale: 0.9
+      y: 30,
+      scale: 0.95
     },
     visible: {
       opacity: 1,
       y: 0,
       scale: 1,
       transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 12
+        type: "spring" as const,
+        stiffness: 200,
+        damping: 20
       }
     }
   };
@@ -259,7 +270,7 @@ const MasonryGallery = () => {
       scale: 1,
       backdropFilter: "blur(10px)",
       transition: {
-        type: "spring",
+        type: "spring" as const,
         stiffness: 300,
         damping: 30
       }
@@ -329,7 +340,7 @@ const MasonryGallery = () => {
           className="max-w-7xl mx-auto"
           variants={containerVariants}
           initial="hidden"
-          animate="visible"
+          animate={isInitialized ? "visible" : "hidden"}
           exit="hidden"
         >
           <div className="flex gap-4">

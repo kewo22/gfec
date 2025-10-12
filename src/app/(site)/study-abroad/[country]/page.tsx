@@ -21,6 +21,7 @@ type DestinationPageParams = {
 
 export default function DestinationPage() {
     const { country } = useParams<DestinationPageParams>();
+    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
     const foundCountry = COUNTRIES.find(_country => _country.route.toLowerCase() === country.toLowerCase());
 
@@ -29,8 +30,6 @@ export default function DestinationPage() {
     if (!foundCountry) {
         return <><h1>Country not found</h1></>
     }
-
-    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
     const handleMouseMove = (e: any) => {
         const rect = e.currentTarget.getBoundingClientRect();

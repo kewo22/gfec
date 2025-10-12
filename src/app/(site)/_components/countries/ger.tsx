@@ -15,7 +15,7 @@ export default function Ger() {
     },
     {
       title: "English-Taught Programs",
-      description: "Germany offers a wide range of Bachelor’s and Master’s programs in English, especially in areas like Business, IT, and Engineering."
+      description: "Germany offers a wide range of Bachelor's and Master's programs in English, especially in areas like Business, IT, and Engineering."
     },
     {
       title: "Innovation & Research Hub",
@@ -36,7 +36,8 @@ export default function Ger() {
     <div className="flex flex-col gap-20">
       <div className="flex flex-col sm:flex-row gap-20 px-10 xl:px-0">
         <Typography variant="p" className="text-justify !leading-normal sm:!leading-8">
-          Germany is one of the most sought-after study destinations in Europe, known for its academic excellence, strong economy, and innovation-driven education system. Whether you're pursuing a career in engineering, business, technology, or research, Germany offers international students a globally respected education in a thriving professional environment.        </Typography>
+          Germany is one of the most sought-after study destinations in Europe, known for its academic excellence, strong economy, and innovation-driven education system. Whether you&apos;re pursuing a career in engineering, business, technology, or research, Germany offers international students a globally respected education in a thriving professional environment.
+        </Typography>
       </div>
 
       <div className="px-10 xl:px-0">

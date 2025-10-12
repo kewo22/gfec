@@ -39,7 +39,7 @@ const UniversityPartnerItem = (props: UniversityPartnerItemProps) => {
       scale: 1,
       transition: {
         duration: 0.5,
-        ease: "easeOut"
+        ease: "easeOut" as const
       }
     }
   };
@@ -50,7 +50,7 @@ const UniversityPartnerItem = (props: UniversityPartnerItemProps) => {
       scale: 1.02,
       transition: {
         duration: 0.3,
-        ease: "easeOut"
+        ease: "easeOut" as const
       }
     }
   };

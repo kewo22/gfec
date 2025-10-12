@@ -22,12 +22,12 @@ export function FullscreenImageSlider({
   // Move to next image after interval if autoPlay is enabled
   React.useEffect(() => {
     if (!autoPlay) return;
-    
+
     const timer = setInterval(() => {
       setDirection(1);
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
     }, interval);
-    
+
     return () => clearInterval(timer);
   }, [autoPlay, interval, images.length]);
 
@@ -57,7 +57,7 @@ export function FullscreenImageSlider({
       x: 0,
       opacity: 1,
       transition: {
-        x: { type: 'spring', stiffness: 300, damping: 30 },
+        x: { type: 'spring' as const, stiffness: 300, damping: 30 },
         opacity: { duration: 0.2 }
       }
     },
@@ -65,7 +65,7 @@ export function FullscreenImageSlider({
       x: direction > 0 ? '-100%' : '100%',
       opacity: 0,
       transition: {
-        x: { type: 'spring', stiffness: 300, damping: 30 },
+        x: { type: 'spring' as const, stiffness: 300, damping: 30 },
         opacity: { duration: 0.2 }
       }
     })

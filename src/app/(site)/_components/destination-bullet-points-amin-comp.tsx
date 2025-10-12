@@ -43,10 +43,10 @@ export default function DestinationBulletPointsAnimComp(props: DestinationBullet
             y: 0,
             scale: 1,
             transition: {
-                duration: 0.8,
-                ease: "easeOut",
-                type: "spring",
-                stiffness: 100
+                type: "spring" as const,
+                stiffness: 100,
+                damping: 20, // Add damping for spring animations
+                // Remove duration and ease - they're for tween animations
             }
         }
     };
@@ -62,30 +62,30 @@ export default function DestinationBulletPointsAnimComp(props: DestinationBullet
             x: 0,
             scale: 1,
             transition: {
-                duration: 0.6,
-                ease: "easeOut",
-                type: "spring",
-                stiffness: 80
+                type: "spring" as const,
+                stiffness: 80,
+                damping: 15
+                // Remove duration and ease
             }
         }
     };
 
     const checkmarkVariants = {
-        hidden: {
-            scale: 0,
-            rotate: -180
-        },
-        visible: {
-            scale: 1,
-            rotate: 0,
-            transition: {
-                duration: 0.5,
-                ease: "easeOut",
-                type: "spring",
-                stiffness: 200,
-                delay: 0.2
-            }
+      hidden: {
+        scale: 0,
+        rotate: -180
+    },
+    visible: {
+        scale: 1,
+        rotate: 0,
+        transition: {
+            type: "spring" as const,
+            stiffness: 200,
+            damping: 15,
+            delay: 0.2
+            // Remove duration and ease
         }
+    }
     };
 
 
