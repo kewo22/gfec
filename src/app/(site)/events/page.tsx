@@ -1,13 +1,22 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
+import { Typography } from '@/app/_components/ui/typography';
 
 export default function Contact() {
 
   const [selectedFilter, setSelectedFilter] = useState('all');
   const [selectedEvent, setSelectedEvent] = useState<any>(null);
+  const [isInitialized, setIsInitialized] = useState(false);
+
+
+  // Initialize after mount to trigger animations
+  useEffect(() => {
+    setIsInitialized(true);
+  }, []);
+
 
   const events = [
     {
@@ -161,9 +170,9 @@ export default function Contact() {
 
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 p-4">
       {/* Header */}
-      <motion.div
+      {/* <motion.div
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
@@ -187,11 +196,22 @@ export default function Contact() {
             Join our events and take the next step in your study abroad journey
           </motion.p>
         </div>
+      </motion.div> */}
+
+      <motion.div
+        className="text-center my-10 lg:my-20"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+      >
+        <Typography variant='h1' className="text-primary">
+          Explore Our Photo Gallery
+        </Typography>
       </motion.div>
 
       <div className="max-w-7xl mx-auto px-4 py-12">
         {/* Filter Section */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
@@ -215,6 +235,31 @@ export default function Contact() {
               </motion.button>
             ))}
           </div>
+        </motion.div> */}
+
+        <motion.div
+          className="flex flex-wrap justify-center gap-3 mb-8"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          {categories.map((category) => (
+            <motion.button
+              key={category.id}
+              onClick={() => setSelectedFilter(category.id)}
+              className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${selectedFilter === category.id
+                ? 'bg-gradient-to-r from-primary to-secondary text-white shadow-lg scale-105'
+                : 'bg-white text-gray-600 hover:bg-gray-50 border border-gray-200 hover:border-purple-300'
+                }`}
+              whileHover={{ scale: selectedFilter === category.id ? 1.05 : 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <span className="flex items-center space-x-2">
+                <span>{category.label}</span>
+                <span className="mr-2">{category.icon}</span>
+              </span>
+            </motion.button>
+          ))}
         </motion.div>
 
         {/* Events Grid */}
@@ -231,6 +276,7 @@ export default function Contact() {
                 variants={itemVariants}
                 layout
                 whileHover={{ y: -8 }}
+                animate={isInitialized ? "visible" : "hidden"}
                 className="bg-white rounded-2xl shadow-lg overflow-hidden cursor-pointer transform transition-all duration-300 hover:shadow-2xl"
                 onClick={() => setSelectedEvent(event)}
               >

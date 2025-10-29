@@ -294,9 +294,6 @@ const MasonryGallery = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        {/* <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 bg-clip-text text-transparent mb-4">
-          Masonry Gallery
-        </h1> */}
         <Typography variant='h1' className="text-primary">
           Explore Our Photo Gallery
         </Typography>
