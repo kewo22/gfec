@@ -25,7 +25,7 @@ export default function DestinationPage() {
 
     const foundCountry = COUNTRIES.find(_country => _country.route.toLowerCase() === country.toLowerCase());
 
-    const filteredUniversities = UNIVERSITIES.filter(university => university.category === foundCountry?.id);
+    // const filteredUniversities = UNIVERSITIES.filter(university => university.category === foundCountry?.id);
 
     if (!foundCountry) {
         return <><h1>Country not found</h1></>
@@ -145,19 +145,19 @@ export default function DestinationPage() {
             </motion.div>
 
             <div className="max-w-7xl mx-auto py-20">
-                {foundCountry.id === "united_kingdom" && <Uk />}
-                {foundCountry.id === "germany" && <Ger />}
-                {foundCountry.id === "france" && <Fra />}
-                {foundCountry.id === "uae" && <Dxb />}
-                {foundCountry.id === "malta" && <Malta />}
-                {foundCountry.id === "spain" && <Spain />}
-                {foundCountry.id === "south_korea" && <Sk />}
+                {foundCountry.id === "united_kingdom" && <Uk foundCountry={foundCountry} />}
+                {foundCountry.id === "germany" && <Ger foundCountry={foundCountry} />}
+                {foundCountry.id === "france" && <Fra foundCountry={foundCountry} />}
+                {foundCountry.id === "uae" && <Dxb foundCountry={foundCountry} />}
+                {foundCountry.id === "malta" && <Malta foundCountry={foundCountry} />}
+                {foundCountry.id === "spain" && <Spain foundCountry={foundCountry} />}
+                {foundCountry.id === "south_korea" && <Sk foundCountry={foundCountry} />}
             </div>
 
             {/* Universities Grid */}
-            <div className="px-10 xl:px-0 max-w-7xl mx-auto pb-20">
+            {/* <div className="px-10 xl:px-0 max-w-7xl mx-auto pb-20">
                 <UniversityPartnerItem universities={filteredUniversities} countryFilter={foundCountry.id} />
-            </div>
+            </div> */}
         </section>
     )
 }

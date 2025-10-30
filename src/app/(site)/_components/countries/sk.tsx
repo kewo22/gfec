@@ -2,8 +2,16 @@ import React from "react";
 
 import { Typography } from "@/app/_components/ui/typography";
 import DestinationBulletPointsAnimComp, { DestinationBulletPoints } from "../destination-bullet-points-amin-comp";
+import { UNIVERSITIES } from "../../_constants/countries.constants";
+import UniversityPartnerItem from "../uni-item";
+import { CountryProps } from "../../_types/country";
 
-export default function Sk() {
+export default function Sk(props: CountryProps) {
+
+    const { foundCountry } = props;
+    const filteredUniversities = UNIVERSITIES.filter(university => university.category === foundCountry?.id);
+
+
     const benefits = [
         {
             title: "Top-Tier Universities & Global Recognition",
@@ -41,6 +49,10 @@ export default function Sk() {
                     South Korea is quickly becoming one of Asia&apos;s top study destinations, known for its world-class universities, cutting-edge technology, and global influence in culture and entertainment. With an increasing number of English-taught programs and a growing international student population, Korea offers a dynamic and unique educational experience.
                     Students in South Korea not only benefit from academic excellence but also immerse themselves in a culture known for innovation, discipline, and creativity.
                 </Typography>
+            </div>
+
+            <div className="px-10 xl:px-0 max-w-7xl mx-auto pb-20">
+                <UniversityPartnerItem universities={filteredUniversities} countryFilter={foundCountry.id} />
             </div>
 
             <div className="px-10 xl:px-0">

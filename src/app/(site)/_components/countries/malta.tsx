@@ -2,8 +2,15 @@ import React from "react";
 
 import { Typography } from "@/app/_components/ui/typography";
 import DestinationBulletPointsAnimComp, { DestinationBulletPoints } from "../destination-bullet-points-amin-comp";
+import UniversityPartnerItem from "../uni-item";
+import { CountryProps } from "../../_types/country";
+import { UNIVERSITIES } from "../../_constants/countries.constants";
 
-export default function Malta() {
+export default function Malta(props: CountryProps) {
+
+  const { foundCountry } = props;
+  const filteredUniversities = UNIVERSITIES.filter(university => university.category === foundCountry?.id);
+
   const benefits = [
     {
       title: "UK-Accredited Degrees at Lower Cost",
@@ -37,6 +44,10 @@ export default function Malta() {
         <Typography variant="p" className="text-justify !leading-normal sm:!leading-8">
           Malta, a rising star in European education, offers internationally recognized qualifications through its collaboration with top UK and European institutions. Located in the heart of the Mediterranean, Malta blends quality education, a peaceful lifestyle, and affordability—making it a top pick for students seeking UK-standard education in a sunny, student-friendly environment.
         </Typography>
+      </div>
+
+      <div className="px-10 xl:px-0 max-w-7xl mx-auto pb-20">
+        <UniversityPartnerItem universities={filteredUniversities} countryFilter={foundCountry.id} />
       </div>
 
       <div className="px-10 xl:px-0">

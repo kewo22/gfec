@@ -2,8 +2,14 @@ import React from "react";
 
 import { Typography } from "@/app/_components/ui/typography";
 import DestinationBulletPointsAnimComp, { DestinationBulletPoints } from "../destination-bullet-points-amin-comp";
+import { CountryProps } from "../../_types/country";
+import { UNIVERSITIES } from "../../_constants/countries.constants";
+import UniversityPartnerItem from "../uni-item";
 
-export default function Fra() {
+export default function Fra(props: CountryProps) {
+  const { foundCountry } = props;
+  const filteredUniversities = UNIVERSITIES.filter(university => university.category === foundCountry?.id);
+
   const benefits: DestinationBulletPoints[] = [
     {
       title: "Affordable Education",
@@ -34,6 +40,10 @@ export default function Fra() {
         <Typography variant="p" className="text-justify !leading-normal sm:!leading-8">
           France is globally recognized for its contribution to arts, fashion, philosophy, and science—and its higher education system is no exception. With some of the world&apos;s top-ranked universities and business schools, France offers an academic journey rich in quality, culture, and career potential.
         </Typography>
+      </div>
+
+      <div className="px-10 xl:px-0 max-w-7xl mx-auto pb-20">
+        <UniversityPartnerItem universities={filteredUniversities} countryFilter={foundCountry.id} />
       </div>
 
       <div className="px-10 xl:px-0">

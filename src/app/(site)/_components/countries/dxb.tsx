@@ -1,9 +1,17 @@
 import React from "react";
 
 import { Typography } from "@/app/_components/ui/typography";
-import DestinationBulletPointsAnimComp, { DestinationBulletPoints } from "../destination-bullet-points-amin-comp";
+import DestinationBulletPointsAnimComp from "../destination-bullet-points-amin-comp";
+import { CountryProps } from "../../_types/country";
+import { UNIVERSITIES } from "../../_constants/countries.constants";
+import UniversityPartnerItem from "../uni-item";
 
-export default function Dxb() {
+export default function Dxb(props: CountryProps) {
+
+  const { foundCountry } = props;
+  const filteredUniversities = UNIVERSITIES.filter(university => university.category === foundCountry?.id);
+
+
   const benefits = [
     {
       title: "International Campuses of Top Global Universities",
@@ -38,6 +46,10 @@ export default function Dxb() {
           Dubai is quickly becoming an education hub for international students with its world-class infrastructure, international university campuses, and dynamic lifestyle. The city offers a unique opportunity to study in one of the fastest-growing economies, blending academic excellence with career potential.
           With a wide range of globally recognized programs and top-tier facilities, Dubai is the gateway to education in the Middle East with a global impact.
         </Typography>
+      </div>
+
+      <div className="px-10 xl:px-0 max-w-7xl mx-auto pb-20">
+        <UniversityPartnerItem universities={filteredUniversities} countryFilter={foundCountry.id} />
       </div>
 
       <div className="px-10 xl:px-0">

@@ -2,8 +2,17 @@ import React from "react";
 
 import { Typography } from "@/app/_components/ui/typography";
 import DestinationBulletPointsAnimComp, { DestinationBulletPoints } from "../destination-bullet-points-amin-comp";
+import { CountryProps } from "../../_types/country";
+import UniversityPartnerItem from "../uni-item";
+import { UNIVERSITIES } from "../../_constants/countries.constants";
 
-export default function Ger() {
+export default function Ger(props: CountryProps) {
+
+  const { foundCountry } = props;
+
+  const filteredUniversities = UNIVERSITIES.filter(university => university.category === foundCountry?.id);
+
+
   const benefits: DestinationBulletPoints[] = [
     {
       title: "Industry-Focused Education",
@@ -38,6 +47,10 @@ export default function Ger() {
         <Typography variant="p" className="text-justify !leading-normal sm:!leading-8">
           Germany is one of the most sought-after study destinations in Europe, known for its academic excellence, strong economy, and innovation-driven education system. Whether you&apos;re pursuing a career in engineering, business, technology, or research, Germany offers international students a globally respected education in a thriving professional environment.
         </Typography>
+      </div>
+
+      <div className="px-10 xl:px-0 max-w-7xl mx-auto pb-20">
+        <UniversityPartnerItem universities={filteredUniversities} countryFilter={foundCountry.id} />
       </div>
 
       <div className="px-10 xl:px-0">

@@ -2,8 +2,15 @@ import React from "react";
 
 import { Typography } from "@/app/_components/ui/typography";
 import DestinationBulletPointsAnimComp, { DestinationBulletPoints } from "../destination-bullet-points-amin-comp";
+import UniversityPartnerItem from "../uni-item";
+import { UNIVERSITIES } from "../../_constants/countries.constants";
+import { Country, CountryProps } from "../../_types/country";
 
-export default function Uk() {
+
+export default function Uk(props: CountryProps) {
+
+  const { foundCountry } = props;
+
   const benefits: DestinationBulletPoints[] = [
     {
       title: "Globally Recognized Qualifications",
@@ -35,6 +42,8 @@ export default function Uk() {
     }
   ];
 
+  const filteredUniversities = UNIVERSITIES.filter(university => university.category === foundCountry?.id);
+
 
   return (
     <div className="flex flex-col gap-20">
@@ -46,6 +55,10 @@ export default function Uk() {
         <Typography variant="p" className="text-justify !leading-normal sm:!leading-8">
           The UK is not just about academics—its diverse and inclusive society, vibrant student communities, and dynamic cities make it a welcoming destination for students from all walks of life. Whether you’re walking through historic campuses, attending lectures from leading experts, or immersing yourself in the arts, culture, and innovation, studying in the UK offers a once-in-a-lifetime experience.
         </Typography>
+      </div>
+
+      <div className="px-10 xl:px-0 max-w-7xl mx-auto pb-20">
+        <UniversityPartnerItem universities={filteredUniversities} countryFilter={foundCountry.id} />
       </div>
 
       <div className="px-10 xl:px-0">
