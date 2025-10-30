@@ -23,18 +23,15 @@ export default function SummaryCounterGroup() {
             <Typography variant="h5">Countries</Typography>
           </div>
           <div className="text-center">
-            <SummaryCounter maxCount={600} className='text-5xl sm:text-7xl' />
-            <span>+</span>
+            <SummaryCounter maxCount={600} className='text-5xl sm:text-7xl' plusIconClassName='text-5xl' />
             <Typography variant="h5">Universities</Typography>
           </div>
           <div className="text-center">
-            <SummaryCounter maxCount={150} className='text-5xl sm:text-7xl' />
-            <span>+</span>
+            <SummaryCounter maxCount={150} className='text-5xl sm:text-7xl' plusIconClassName='text-5xl' />
             <Typography variant="h5">Courses</Typography>
           </div>
           <div className="text-center">
-            <SummaryCounter maxCount={30} className='text-5xl sm:text-7xl' />
-            <span>+</span>
+            <SummaryCounter maxCount={30} className='text-5xl sm:text-7xl' plusIconClassName='text-5xl' />
             <Typography variant="h5">Students</Typography>
           </div>
         </div>
