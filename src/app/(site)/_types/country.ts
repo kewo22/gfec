@@ -24,7 +24,6 @@ export type University = {
   established: string;
   category: string;
 };
-export type CountryProps {
+export type CountryProps = {
   foundCountry: Country;
-}
-
+};
