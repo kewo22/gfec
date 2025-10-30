@@ -39,23 +39,23 @@ export default function SummaryCounter(props: SummaryCounterProps) {
   return (
     <div className="flex flex-row items-center justify-center">
       <motion.h1
-      className={className}
-      ref={ref}
-      initial={{ opacity: 0, y: 20 }}
-      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-      transition={{ duration: 0.5 }}
-      >
-      {rounded}
-      </motion.h1>
-      {plusIconClassName && (
-      <motion.span 
-        className={plusIconClassName}
+        className={className}
+        ref={ref}
         initial={{ opacity: 0, y: 20 }}
         animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-        transition={{ duration: 0.5, delay: 0.2 }}
+        transition={{ duration: 0.5 }}
       >
-        +
-      </motion.span>
+        {rounded}
+      </motion.h1>
+      {plusIconClassName && (
+        <motion.span
+          className={plusIconClassName}
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          +
+        </motion.span>
       )}
     </div>
   );
