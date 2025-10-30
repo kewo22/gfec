@@ -4,6 +4,7 @@ import { Typography } from "@/app/_components/ui/typography";
 import DestinationBulletPointsAnimComp, { DestinationBulletPoints } from "../destination-bullet-points-amin-comp";
 import { UNIVERSITIES } from "../../_constants/countries.constants";
 import UniversityPartnerItem from "../uni-item";
+import { CountryProps } from "../../_types/country";
 
 export default function Spain(props: CountryProps) {
   const { foundCountry } = props;
