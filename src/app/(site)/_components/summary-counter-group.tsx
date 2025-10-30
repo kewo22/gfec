@@ -19,19 +19,22 @@ export default function SummaryCounterGroup() {
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-10">
           <div className="text-center">
-            <SummaryCounter maxCount={7} className='text-8xl sm:text-9xl' />
+            <SummaryCounter maxCount={14} className='text-5xl sm:text-7xl' />
             <Typography variant="h5">Countries</Typography>
           </div>
           <div className="text-center">
-            <SummaryCounter maxCount={13} className='text-8xl sm:text-9xl' />
+            <SummaryCounter maxCount={600} className='text-5xl sm:text-7xl' />
+            <span>+</span>
             <Typography variant="h5">Universities</Typography>
           </div>
           <div className="text-center">
-            <SummaryCounter maxCount={80} className='text-8xl sm:text-9xl' />
+            <SummaryCounter maxCount={150} className='text-5xl sm:text-7xl' />
+            <span>+</span>
             <Typography variant="h5">Courses</Typography>
           </div>
           <div className="text-center">
-            <SummaryCounter maxCount={20} className='text-8xl sm:text-9xl' />
+            <SummaryCounter maxCount={30} className='text-5xl sm:text-7xl' />
+            <span>+</span>
             <Typography variant="h5">Students</Typography>
           </div>
         </div>
