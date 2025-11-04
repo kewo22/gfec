@@ -1,10 +1,9 @@
 "use client";
 
-import { TypewriterEffect } from "../../_components/typewriter-effect";
 import { useParams } from "next/navigation";
-import { COUNTRIES, UNIVERSITIES } from "../../_constants/countries.constants";
+import { COUNTRIES, } from "../../_constants/countries.constants";
 import Image from "next/image";
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, } from 'framer-motion';
 import { useState } from "react";
 import Uk from "../../_components/countries/uk";
 import Ger from "../../_components/countries/ger";
@@ -13,7 +12,9 @@ import Dxb from "../../_components/countries/dxb";
 import Malta from "../../_components/countries/malta";
 import Spain from "../../_components/countries/spain";
 import Sk from "../../_components/countries/sk";
-import UniversityPartnerItem from "../../_components/uni-item";
+import Aus from "../../_components/countries/aus";
+import Ireland from "../../_components/countries/ireland";
+import Singapore from "../../_components/countries/singapore";
 
 type DestinationPageParams = {
     country: string;
@@ -152,6 +153,9 @@ export default function DestinationPage() {
                 {foundCountry.id === "malta" && <Malta foundCountry={foundCountry} />}
                 {foundCountry.id === "spain" && <Spain foundCountry={foundCountry} />}
                 {foundCountry.id === "south_korea" && <Sk foundCountry={foundCountry} />}
+                {foundCountry.id === "australia" && <Aus foundCountry={foundCountry} />}
+                {foundCountry.id === "ireland" && <Ireland foundCountry={foundCountry} />}
+                {foundCountry.id === "singapore" && <Singapore foundCountry={foundCountry} />}
             </div>
 
             {/* Universities Grid */}

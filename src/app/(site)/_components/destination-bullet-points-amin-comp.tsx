@@ -90,7 +90,7 @@ export default function DestinationBulletPointsAnimComp(props: DestinationBullet
 
 
     return (
-        <div ref={ref} className="min-h-screen">
+        <div ref={ref} className="">
             <div className="max-w-4xl mx-auto">
                 <motion.div
                     variants={containerVariants}

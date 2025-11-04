@@ -2,35 +2,17 @@
 
 "use client"
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion"
-// import { motion } from "motion/react"
-import Image from "next/image";
-import { COUNTRIES } from "../_constants/countries.constants";
-import { TextFade } from "./text-fade";
-import { Typography } from "@/app/_components/ui/typography";
 import { SequentialTextFade } from "./sequence-fade";
 import { FullscreenImageSlider } from "./full-screen-image-slider";
-import NavigationNew from "./navigation-new";
+import aus from "../../../../public/new/hero-aus.webp";
 
 export default function HeroNew() {
 
   const images = [
     {
-      src: "/new/slider02.jpg",
-      alt: "Beautiful landscape with mountains"
+      src: aus,
+      alt: "hero aus image"
     },
-    {
-      src: "https://fastly.picsum.photos/id/237/1920/1080.jpg?hmac=1hPzsubx1j8fMddzUgP5NbuX2rNLOEaQML1rD_g1C5Y",
-      alt: "Urban cityscape at night"
-    },
-    {
-      src: "https://fastly.picsum.photos/id/1/1920/1080.jpg?hmac=F3y4Fj0qI8heo51givSFTbNc8P5g1eR8ztnE7zDiVDg",
-      alt: "Serene beach at sunset"
-    },
-    {
-      src: "https://fastly.picsum.photos/id/18/2500/1667.jpg?hmac=JR0Z_jRs9rssQHZJ4b7xKF82kOj8-4Ackq75D_9Wmz8",
-      alt: "Dense forest with sunlight streaming through trees"
-    }
   ];
 
   const [index, setIndex] = useState(0)

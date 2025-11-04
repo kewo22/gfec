@@ -26,6 +26,8 @@ const UniversityPartnersGrid = (props: UniversityPartnersGridProps) => {
     { key: 'germany', label: 'Germany', count: universities.filter(u => u.category === 'germany').length },
     { key: 'spain', label: 'Spain', count: universities.filter(u => u.category === 'spain').length },
     { key: 'malta', label: 'Malta', count: universities.filter(u => u.category === 'malta').length },
+    { key: 'australia', label: 'Australia', count: universities.filter(u => u.category === 'australia').length },
+    { key: 'ireland', label: 'Ireland', count: universities.filter(u => u.category === 'ireland').length },
   ];
 
   const filteredUniversities = filter === countryFilter ? universities : universities.filter(university => university.category === filter);

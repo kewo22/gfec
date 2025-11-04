@@ -6,22 +6,22 @@ import { UNIVERSITIES } from "../../_constants/countries.constants";
 import UniversityPartnerItem from "../uni-item";
 import DestinationBulletPointsAnimComp from "../destination-bullet-points-amin-comp";
 
-export default function Ireland(props: CountryProps) {
+export default function Singapore(props: CountryProps) {
     const { foundCountry } = props;
     const filteredUniversities = UNIVERSITIES.filter(university => university.category === foundCountry?.id);
 
     const benefits = [
         {
-            title: "The Silicon Valley of Europe",
-            description: "Ireland is home to top global tech companies and innovation hubs."
+            title: "World Class Education",
+            description: "Study at globally recognized universities known for academic excellence."
         },
         {
-            title: "Globally Recognized Education",
-            description: "Study at world-ranked universities known for academic excellence."
+            title: "Safe Modern & Multicultural ",
+            description: "Experience a safe, vibrant city with a rich blend of cultures and traditions."
         },
         {
-            title: "Gateway to Europe",
-            description: "Gain access to exciting career and travel opportunities across the European Union."
+            title: "Pathway Programs & Career Opportunities",
+            description: "Access pathway programs and strong career prospects in a thriving economy."
         },
     ];
 
@@ -30,7 +30,8 @@ export default function Ireland(props: CountryProps) {
         <div className="flex flex-col gap-20">
             <div className="flex flex-col sm:flex-row gap-20 px-10 xl:px-0">
                 <Typography variant="p" className="text-justify !leading-normal sm:!leading-8">
-                    Ireland is a beautiful island nation in Western Europe, celebrated for its lush green landscapes, rich history, and warm, friendly people. Known as the “Emerald Isle,” it features rolling hills, dramatic coastlines, and charming villages. Ireland’s culture is deeply rooted in music, literature, and folklore, with famous writers like James Joyce and W.B. Yeats hailing from its shores. Dublin, the capital, is a lively city blending historic landmarks with modern culture. From ancient castles to cozy pubs, Ireland offers a captivating mix of natural beauty, heritage, and heartfelt hospitality.                </Typography>
+                    Singapore is a vibrant island city-state in Southeast Asia, known for its modern skyline, lush green spaces, and cultural diversity. Blending Chinese, Malay, Indian, and Western influences, it offers a unique mix of traditions and innovation. Renowned for its cleanliness, safety, and efficient infrastructure, Singapore is also a global financial hub and a popular travel destination, home to landmarks like Marina Bay Sands, Gardens by the Bay, and Sentosa Island. Despite its small size, Singapore stands out as one of the world’s most dynamic and forward-thinking nations.
+                </Typography>
             </div>
 
             <div className="px-10 xl:px-0 max-w-7xl pb-20">

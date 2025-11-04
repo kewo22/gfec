@@ -2,46 +2,16 @@
 
 import React, { useState } from "react";
 
-import { twMerge } from "tailwind-merge";
-
-import {
-    COUNTRIES,
-    PRE_SELECTED_COUNTRY,
-} from "../_constants/countries.constants";
-import { Country } from "../_types/country";
-
+import { COUNTRIES, } from "../_constants/countries.constants";
 import { Typography } from "@/app/_components/ui/typography";
-
 import StudyAbroadBannerImage from "../../../../public/comp/study-abroad-banner.webp";
 import Image from "next/image";
 
-// import Container from "../_components/layouts/container";
-// import SectionTitle from "../_components/section-title";
-// import Aus from "../_components/countries/aus";
-// import Uk from "../_components/countries/uk";
-// import Can from "../_components/countries/can";
-// import Fin from "../_components/countries/fin";
-// import Bel from "../_components/countries/bel";
-// import Ger from "../_components/countries/ger";
-// import Ita from "../_components/countries/ita";
-// import Swe from "../_components/countries/swe";
-// import Rus from "../_components/countries/rus";
-// import Fra from "../_components/countries/fra";
-// import Ned from "../_components/countries/ned";
-// import Lat from "../_components/countries/lat";
-// import Swi from "../_components/countries/swi";
-// import Dxb from "../_components/countries/dxb";
-// import Malta from "../_components/countries/malta";
-// import Spain from "../_components/countries/spain";
-// import Ireland from "../_components/countries/ireland";
-// import ContainerNew from "../_components/layouts/container-new";
-import germany from "../../../../public/comp/germany.webp";
 import { TypewriterEffect } from "../_components/typewriter-effect";
 import { SequentialTextFade } from "../_components/sequence-fade";
 import SectionTitle from "../_components/section-title";
 import ParticleButton from "@/app/_components/ui/particle-btn";
 import Link from "next/link";
-import { it } from "node:test";
 
 export default function StudyAbroad() {
     const [isHeaderTextAnimationComplete, setIsHeaderTextAnimationComplete] = useState(false);

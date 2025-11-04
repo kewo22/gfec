@@ -1,6 +1,6 @@
 import { Country, University } from "../_types/country";
 
-// import aus from "../../../../public/comp/aus.webp";
+import aus from "../../../../public/comp/aus.webp";
 
 import uk from "../../../../public/comp/uk.webp";
 // import uk from "../../../../public/comp/uk-ori.jpg";
@@ -20,8 +20,9 @@ import france from "../../../../public/comp/france.webp";
 import dxb from "../../../../public/comp/dxb.webp";
 import malta from "../../../../public/comp/malta.webp";
 import spain from "../../../../public/comp/spain.webp";
-// import ireland from "../../../../public/comp/ireland.webp";
+import ireland from "../../../../public/comp/ireland.webp";
 import south_korea from "../../../../public/comp/south_korea.webp";
+import singapore from "../../../../public/comp/singapore.jpg";
 
 import brittsUaeImg from "../../../../public/comp/Britts-Imperial-University-College.jpeg";
 import globalMaltaImg from "../../../../public/comp/Global-College-Malta.jpeg";
@@ -35,22 +36,43 @@ import schillerGermanyImg from "../../../../public/comp/Schiller-International-U
 import schillerFranceImg from "../../../../public/comp/Schiller-International-University-France.jpg";
 import manipalImg from "../../../../public/comp/manipal-university-dubai.jpg";
 import uniOfSunderlandImg from "../../../../public/comp/university-of-sunderland.jpg";
-import ukSvg from "../../../../public/svg/uk-svg.svg";
+import edithCowanCollege from "../../../../public/comp/EdithCowanCollege.jpg";
+import cQUniversity from "../../../../public/comp/CQUniversity.jpg";
+import universityOfTasmaniaImg from "../../../../public/comp/UniversityofTasmania.webp";
+import laTrobeUniversity from "../../../../public/comp/LaTrobeUniversity.jpg";
+import deakinCollege from "../../../../public/comp/DeakinCollege.jpg";
+import trinityCollegeDublin from "../../../../public/comp/TrinityCollegeDublin.webp";
+import universityCollegeDublin from "../../../../public/comp/UniversityCollegeDublin.jpg";
+import dublinCityUniversity from "../../../../public/comp/DublinCityUniversity.webp";
+import universityCollegeCork from "../../../../public/comp/UniversityCollegeCork.webp";
+import academiesAustralasiaCollege from "../../../../public/comp/academies-australasia-college.webp";
 
 //////////////////////////// ----> FLAG SOURCE https://www.countryflags.com/south-korea-flag-vector/
 
 export const COUNTRIES: Country[] = [
   {
-    id: "united_kingdom",
-    image: uk,
-    country: "United Kingdom",
+    id: "australia",
+    image: aus,
+    country: "Australia",
     class: "",
     description:
-      "Discover world-class universities and rich cultural heritage. Study in the birthplace of the English language with globally recognized degrees and diverse academic opportunities.",
+      "Study in a land of endless opportunities and natural beauty. Experience world-class education, diverse culture, and excellent post-study work opportunities in one of the world's most liveable countries.",
+    isCourseDetailAvailable: true, // not using anywhere
+    flag: "/au.svg",
+    flagBg: "bg-au-flag",
+    route: "australia",
+  },
+  {
+    id: "france",
+    image: france,
+    country: "France",
+    class: "",
+    description:
+      "Study in the land of innovation and art. Experience world-renowned education, rich history, and cultural diversity while building your future in the heart of Europe.",
     isCourseDetailAvailable: false, // not using anywhere
-    flag: "/gb.svg",
-    flagBg: "bg-gb-flag",
-    route: "united_kingdom",
+    flag: "/fr.svg",
+    flagBg: "bg-fr-flag",
+    route: "france",
     // outlineSvg: ukSvg,
   },
   {
@@ -67,30 +89,16 @@ export const COUNTRIES: Country[] = [
     // outlineSvg: ukSvg,
   },
   {
-    id: "france",
-    image: france,
-    country: "France",
+    id: "ireland",
+    image: ireland,
+    country: "Ireland",
     class: "",
     description:
-      "Study in the land of innovation and art. Experience world-renowned education, rich history, and cultural diversity while building your future in the heart of Europe.",
+      "Study in the Emerald Isle with a strong academic tradition. Enjoy friendly communities, English-language programs, and a thriving tech industry in one of Europe's most welcoming nations.",
     isCourseDetailAvailable: false, // not using anywhere
-    flag: "/fr.svg",
-    flagBg: "bg-fr-flag",
-    route: "france",
-    // outlineSvg: ukSvg,
-  },
-  {
-    id: "uae",
-    image: dxb,
-    country: "UAE",
-    class: "",
-    description:
-      "Study in a modern global hub where East meets West. Access cutting-edge facilities, multicultural campuses, and excellent career opportunities in the heart of the Middle East.",
-    isCourseDetailAvailable: false, // not using anywhere
-    flag: "/dxb.svg",
-    flagBg: "bg-dxb-flag",
-    route: "UAE",
-    // outlineSvg: ukSvg,
+    flag: "/ireland.svg",
+    flagBg: "bg-ireland-flag",
+    route: "ireland",
   },
   {
     id: "malta",
@@ -103,6 +111,31 @@ export const COUNTRIES: Country[] = [
     flag: "/malta.svg",
     flagBg: "bg-malta-flag",
     route: "malta",
+    // outlineSvg: ukSvg,
+  },
+  {
+    id: "singapore",
+    image: singapore,
+    country: "Singapore",
+    class: "",
+    description: "Study in Asia's global education hub. Benefit from world-class universities, a multicultural environment, and strong industry links in a safe and vibrant city-state.",
+    isCourseDetailAvailable: false, // not using anywhere
+    flag: "/malta.svg",
+    flagBg: "bg-malta-flag",
+    route: "singapore",
+    // outlineSvg: ukSvg,
+  },
+  {
+    id: "south_korea",
+    image: south_korea,
+    country: "South Korea",
+    class: "",
+    description:
+      "Explore advanced technology and rich traditions. Study in Asia's education leader with modern campuses, innovative programs, and growing global influence in technology and culture.",
+    isCourseDetailAvailable: false, // not using anywhere
+    flag: "/spain.svg",
+    flagBg: "bg-south-korea-flag",
+    route: "south-korea",
     // outlineSvg: ukSvg,
   },
   {
@@ -119,39 +152,31 @@ export const COUNTRIES: Country[] = [
     // outlineSvg: ukSvg,
   },
   {
-    id: "south_korea",
-    image: south_korea,
-    country: "South Korea",
+    id: "uae",
+    image: dxb,
+    country: "UAE",
     class: "",
     description:
-      "Explore advanced technology and rich traditions. Study in Asia's education leader with modern campuses, innovative programs, and growing global influence in technology and culture.",
+      "Study in a modern global hub where East meets West. Access cutting-edge facilities, multicultural campuses, and excellent career opportunities in the heart of the Middle East.",
     isCourseDetailAvailable: false, // not using anywhere
-    flag: "/spain.svg",
-    flagBg: "bg-south-korea-flag",
-    route: "south-korea",
+    flag: "/dxb.svg",
+    flagBg: "bg-dxb-flag",
+    route: "UAE",
     // outlineSvg: ukSvg,
   },
-
-  //   {
-  //     id: "ire",
-  //     image: ireland,
-  //     country: "Ireland",
-  //     class: "",
-  //     description: "",
-  //     isCourseDetailAvailable: false, // not using anywhere
-  //     flag: "/ireland.svg",
-  //     flagBg: "bg-ireland-flag",
-  //   },
-  // {
-  //     id: "aus",
-  //     image: aus,
-  //     country: "Australia",
-  //     class: "",
-  //     description: "",
-  //     isCourseDetailAvailable: true, // not using anywhere
-  //     flag: "/au.svg",
-  //     flagBg: 'bg-au-flag'
-  // },
+  {
+    id: "united_kingdom",
+    image: uk,
+    country: "United Kingdom",
+    class: "",
+    description:
+      "Discover world-class universities and rich cultural heritage. Study in the birthplace of the English language with globally recognized degrees and diverse academic opportunities.",
+    isCourseDetailAvailable: false, // not using anywhere
+    flag: "/gb.svg",
+    flagBg: "bg-gb-flag",
+    route: "united_kingdom",
+    // outlineSvg: ukSvg,
+  },
   //   {
   //     id: "ned",
   //     image: netherlands,
@@ -385,5 +410,105 @@ export const UNIVERSITIES: University[] = [
     programs: ["Engineering", "IT", "Sciences"],
     established: "1901",
     category: "united_kingdom",
+  },
+  {
+    id: 14,
+    name: "Edith Cowan College",
+    country: "Australia",
+    logo: edithCowanCollege,
+    ranking: "Top in Australia",
+    programs: ["Engineering", "IT", "Sciences"],
+    established: "1994",
+    category: "australia",
+  },
+  {
+    id: 15,
+    name: "CQUniversity",
+    country: "Australia",
+    logo: cQUniversity,
+    ranking: "Top in Australia",
+    programs: ["Engineering", "IT", "Sciences"],
+    established: "1967",
+    category: "australia",
+  },
+  {
+    id: 16,
+    name: "University of Tasmania",
+    country: "Australia",
+    logo: universityOfTasmaniaImg,
+    ranking: "Top in Australia",
+    programs: ["Engineering", "IT", "Sciences"],
+    established: "1890",
+    category: "australia",
+  },
+  {
+    id: 17,
+    name: "La Trobe University",
+    country: "Australia",
+    logo: laTrobeUniversity,
+    ranking: "Top in Australia",
+    programs: ["Engineering", "IT", "Sciences"],
+    established: "1964",
+    category: "australia",
+  },
+  {
+    id: 18,
+    name: "Deakin College",
+    country: "Australia",
+    logo: deakinCollege,
+    ranking: "Top in Australia",
+    programs: ["Engineering", "IT", "Sciences"],
+    established: "1996",
+    category: "australia",
+  },
+  {
+    id: 19,
+    name: "Trinity College Dublin",
+    country: "Ireland",
+    logo: trinityCollegeDublin,
+    ranking: "Top in Ireland",
+    programs: ["Engineering", "IT", "Sciences"],
+    established: "1592",
+    category: "ireland",
+  },
+  {
+    id: 20,
+    name: "University College Dublin",
+    country: "Ireland",
+    logo: universityCollegeDublin,
+    ranking: "Top in Ireland",
+    programs: ["Engineering", "IT", "Sciences"],
+    established: "1854",
+    category: "ireland",
+  },
+  {
+    id: 21,
+    name: "Dublin City University",
+    country: "Ireland",
+    logo: dublinCityUniversity,
+    ranking: "Top in Ireland",
+    programs: ["Engineering", "IT", "Sciences"],
+    established: "1989",
+    category: "ireland",
+  },
+  {
+    id: 22,
+    name: "University College Cork",
+    country: "Ireland",
+    logo: universityCollegeCork,
+    ranking: "Top in Ireland",
+    programs: ["Engineering", "IT", "Sciences"],
+    established: "1989",
+    category: "ireland",
+  },
+  {
+    id: 24,
+    name: "Academies Australasia College",
+    country: "Singapore",
+    logo: academiesAustralasiaCollege,
+    ranking: "Top in Singapore",
+    programs: ["Engineering", "IT", "Sciences"],
+    established: "1989",
+    category: "singapore",
   },
 ];

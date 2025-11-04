@@ -11,7 +11,6 @@ export default function Sk(props: CountryProps) {
     const { foundCountry } = props;
     const filteredUniversities = UNIVERSITIES.filter(university => university.category === foundCountry?.id);
 
-
     const benefits = [
         {
             title: "Top-Tier Universities & Global Recognition",
@@ -51,7 +50,7 @@ export default function Sk(props: CountryProps) {
                 </Typography>
             </div>
 
-            <div className="px-10 xl:px-0 max-w-7xl mx-auto pb-20">
+            <div className="px-10 xl:px-0 max-w-7xl pb-20">
                 <UniversityPartnerItem universities={filteredUniversities} countryFilter={foundCountry.id} />
             </div>
 

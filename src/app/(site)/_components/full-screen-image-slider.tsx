@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import * as React from 'react';
+import Image from 'next/image';
 
 export function FullscreenImageSlider({
   images = [],
@@ -10,7 +11,7 @@ export function FullscreenImageSlider({
   showIndicators = false,
   showArrows = false,
 }: {
-  images: { src: string; alt: string }[];
+  images: { src: any; alt: string }[];
   autoPlay?: boolean;
   interval?: number;
   showIndicators?: boolean;
@@ -72,7 +73,7 @@ export function FullscreenImageSlider({
   };
 
   return (
-    <div className="relative w-full h-96 max-h-96 overflow-hidden bg-black">
+    <div className="relative w-full h-[768px] max-h-[768px] overflow-hidden bg-black">
       {/* Image Container */}
       <AnimatePresence initial={false} custom={direction}>
         <motion.div
@@ -85,10 +86,11 @@ export function FullscreenImageSlider({
           className="absolute inset-0"
         >
           <div className="relative w-full h-full">
-            <img
+            <Image
               src={images[currentIndex].src}
               alt={images[currentIndex].alt}
               className="w-full h-full object-cover"
+              fill
             />
             {/* Optional: Image Caption/Text Overlay */}
             {/* <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-4">
