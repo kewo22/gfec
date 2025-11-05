@@ -94,7 +94,6 @@ export default function ApplyNow() {
         education: formData.education || undefined,
       });
 
-      // Simulate API call
       setIsLoading(true);
 
       fetch(`${privacyBasePolicyUrl}/api/apply`, {
@@ -129,7 +128,7 @@ export default function ApplyNow() {
         setSubmitError('An unexpected error occurred. Please try again.');
       }
     } finally {
-      setIsLoading(false);
+      // setIsLoading(false);
     }
   };
 
