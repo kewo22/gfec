@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import { motion } from 'framer-motion';
 
 import { SubmitHandler, useForm } from "react-hook-form";
 import { array, date, object, string } from "yup";
@@ -28,741 +29,279 @@ import {
   COUNTRIES_FOR_SELECT,
 } from "../_constants/countries.constants";
 import { ApplicationFormModel } from "@/app/_interfaces/application-form";
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { AlertCircle, CheckCircle2, Loader2 } from "lucide-react";
 
-const schema = object().shape({
-  firstName: string().required("Required"),
-  lastName: string().required("Required"),
-  address: string(),
-  dob: date().required("Required"),
-  gender: string().required("Required"),
-  email: string().email("Invalid Email").required("Required"),
-  mobile: string()
-    .required("Required")
-    .matches(/^[0]{1}[7]{1}[01245678]{1}[0-9]{7}$/, "Invalid Format"),
+const educationLevels = ['O/L', 'A/L', 'Foundation', 'HND', "Bachelors", "Masters"] as const;
 
-  //
-  olSchool: string().optional(),
-  olYear: string().optional(),
-  olType: string().optional(),
-  olMathematics: string().optional(),
-  olEnglish: string().optional(),
-  olResultA: string().optional(),
-  olResultB: string().optional(),
-  olResultC: string().optional(),
-  olResultS: string().optional(),
-  olResultW: string().optional(),
-
-  //
-  alSchool: string().optional(),
-  alYear: string().optional(),
-  alType: string().optional(),
-  alMathematics: string().optional(),
-  alEnglish: string().optional(),
-  alResultA: string().optional(),
-  alResultB: string().optional(),
-  alResultC: string().optional(),
-  alResultS: string().optional(),
-  alResultW: string().optional(),
-
-  //
-  yearOfCompletion: string().optional(),
-  affiliatedUniversity: string().optional(),
-  stream: string().optional(),
-  gpa: string().optional(),
-  class: string().optional(),
-
-  //
-  country: string().optional(),
-  studyArea: array().optional(),
+const StudentDetailsSchema = z.object({
+  name: z.string().regex(/^[a-zA-Z\s]+$/, 'Name must contain only letters and spaces').min(1, 'Name is required'),
+  city: z.string().regex(/^[a-zA-Z\s]+$/, 'City must contain only letters and spaces').min(1, 'City is required'),
+  email: z.email('Invalid email address'),
+  mobile: z.string().regex(/^(071|072|075|076|077|078)\d{7}$/, 'Mobile must be 10 digits and start with 071, 072, 075, 076, 077, or 078'),
+  education: z.enum(educationLevels, {
+    message: 'Please select an education level',
+  }),
 });
 
-const defaultValues = {
-  firstName: "",
-  lastName: "",
-  address: "",
-  dob: null,
-  gender: null,
-  email: "",
-  mobile: "",
-
-  //
-  olSchool: "",
-  olYear: "",
-  olType: "",
-  olMathematics: "",
-  olEnglish: "",
-  olResultA: "",
-  olResultB: "",
-  olResultC: "",
-  olResultS: "",
-  olResultW: "",
-  //
-  alSchool: "",
-  alYear: "",
-  alType: "",
-  alMathematics: "",
-  alEnglish: "",
-  alResultA: "",
-  alResultB: "",
-  alResultC: "",
-  alResultS: "",
-  alResultW: "",
-
-  //
-  yearOfCompletion: "",
-  affiliatedUniversity: "",
-  stream: "",
-  gpa: "",
-  class: "",
-
-  //
-  country: "",
-  studyArea: [],
-};
+type StudentDetailsFormData = z.infer<typeof StudentDetailsSchema>;
 
 export default function ApplyNow() {
   const privacyBasePolicyUrl = ResolveBaseUrl(
     process.env.NEXT_PUBLIC_VERCEL_ENV!
   );
-  const [isLoading, setIsLoading] = useState(false);
-
-  const {
-    reset,
-    handleSubmit,
-    control,
-    formState: { errors },
-    setValue,
-  } = useForm<ApplicationFormModel>({
-    defaultValues,
-    mode: "all",
-    resolver: yupResolver<ApplicationFormModel>(schema),
-    reValidateMode: "onBlur",
+  const [formData, setFormData] = useState({
+    name: '',
+    city: '',
+    email: '',
+    mobile: '',
+    education: '',
   });
 
-  const yearsList = useMemo(() => {
-    const years = [];
-    for (let i = 0; i < 22; i++) {
-      const d = new Date();
-      const pastYear = d.getFullYear() - i;
-      years.push({
-        id: i,
-        text: pastYear,
-        value: pastYear,
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [isLoading, setIsLoading] = useState(false);
+  const [submitError, setSubmitError] = useState('');
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+
+    // Clear error for this field when user starts typing
+    if (errors[name]) {
+      setErrors(prev => {
+        const newErrors = { ...prev };
+        delete newErrors[name];
+        return newErrors;
       });
     }
-    return years;
-  }, []);
-
-  const studyPreferences = [
-    "Computing",
-    "Business",
-    "Biomedical Science",
-    "Law",
-    "Civil Engineering",
-    "Study Medicine",
-    "Hotel Management",
-    "Quantity Surveying",
-    "Teacher Training",
-    "Foundation",
-    "LLB",
-    "MBA",
-    "MSC",
-    "IT Top-Up",
-    "Business Top-Up",
-    "Civil Top-Up",
-    "Qs Top-Up",
-    "Biomedical Science Top-Up",
-  ];
-
-  const onChange = (value: number, field: any) => {
-    setValue(field, value.toString());
   };
 
-  const onOlYearChange = (value: string) => {
-    setValue("olYear", value.toString());
-  };
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setErrors({});
+    setSubmitError('');
+    setSubmitSuccess(false);
 
-  const onAlYearChange = (value: string) => {
-    setValue("alYear", value.toString());
-  };
-
-  const onCountryChange = (value: string) => {
-    setValue("country", value.toString());
-  };
-
-  const onYearOfCompletionChange = (value: string) => {
-    setValue("yearOfCompletion", value.toString());
-  };
-
-  const onSubmit: SubmitHandler<ApplicationFormModel> = (data) => {
-    let tempData = data;
-    const studyArea = data.studyArea?.filter((obj) => {
-      return obj !== null || obj !== undefined;
-    });
-    tempData = { ...tempData, studyArea };
-    setIsLoading(true);
-    fetch(`${privacyBasePolicyUrl}/api/apply`, {
-      method: "post",
-      body: JSON.stringify(tempData),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then(() => {
-        setIsLoading(false);
-      })
-      .catch(() => {
-        setIsLoading(false);
-      })
-      .finally(() => {
-        setIsLoading(false);
-        setValue("gender", null);
-        reset(
-          { ...defaultValues },
-          {
-            keepDefaultValues: true,
-          }
-        );
+    try {
+      // Parse form data with Zod
+      const validatedData = StudentDetailsSchema.parse({
+        name: formData.name,
+        city: formData.city,
+        email: formData.email,
+        mobile: formData.mobile,
+        education: formData.education || undefined,
       });
+
+      // Simulate API call
+      setIsLoading(true);
+
+      fetch(`${privacyBasePolicyUrl}/api/apply`, {
+        method: "post",
+        body: JSON.stringify(validatedData),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then(() => {
+          setSubmitSuccess(true);
+        })
+        .catch(() => {
+        })
+        .finally(() => {
+          setIsLoading(false);
+          console.log('Validated data:', validatedData, privacyBasePolicyUrl);
+          setFormData({ name: '', city: '', email: '', mobile: '', education: '' });
+        });
+
+    } catch (error: any) {
+      if (error instanceof z.ZodError) {
+        // Convert Zod errors to field-specific errors
+        const fieldErrors: Record<string, string> = {};
+        error.issues.forEach(err => {
+          if (err.path[0]) {
+            fieldErrors[err.path[0].toString()] = err.message;
+          }
+        });
+        setErrors(fieldErrors);
+      } else {
+        setSubmitError('An unexpected error occurred. Please try again.');
+      }
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
     <section className="bg-slate-100">
       <Container className="mx-5 xl:mx-auto py-20">
-        <SectionTitle title="Apply now" />
-
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          className="flex flex-col gap-14"
+        {/* Header Section */}
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: -30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
         >
-          <ApplyFormLayout icon={faUserTie} title="About you">
-            <div className="flex flex-col sm:flex-row gap-8">
-              <Input
-                label="First Name"
-                type="text"
-                isRequired={true}
-                useControllerProps={{ control, name: "firstName" }}
-              />
-              <Input
-                label="Last Name"
-                type="text"
-                isRequired={true}
-                useControllerProps={{ control, name: "lastName" }}
-              />
-            </div>
+          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+            Apply Now
+          </h1>
+          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+            Free and easy application process to kickstart your journey with us.
+          </p>
+        </motion.div>
 
-            <div className="">
-              <Input
-                label="Address"
-                type="text"
-                useControllerProps={{ control, name: "address" }}
-              />
-            </div>
+        <div className="max-w-md mx-auto bg-white rounded-lg shadow-lg p-8">
 
-            <div className="flex flex-col sm:flex-row gap-8">
-              <div className="flex-grow">
-                <Input
-                  label="Date of Birth"
-                  type="date"
-                  isRequired={true}
-                  useControllerProps={{ control, name: "dob" }}
-                />
-              </div>
-              <div className="flex flex-row gap-8 items-center flex-grow">
-                <div className="relative">
-                  <Typography
-                    variant="label"
-                    className={`${
-                      errors.gender ? "text-red-600" : "text-black"
-                    }`}
-                  >
-                    Gender
-                  </Typography>
-                  <span className="absolute text-red-600">*</span>
-                </div>
-
-                <div className="flex flex-row gap-5">
-                  <RadioButton
-                    label="Male"
-                    value="male"
-                    useControllerProps={{ control, name: "gender" }}
-                  />
-                  <RadioButton
-                    label="Female"
-                    value="female"
-                    useControllerProps={{ control, name: "gender" }}
-                  />
-                </div>
+          {submitSuccess && (
+            <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg flex items-center flex-row gap-3">
+              <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+              <div className="flex flex-row items-center gap-2 justify-center">
+                <Typography variant="md" className="text-green-800 font-semibold tracking-wide">Success! Your details submitted successfully.</Typography>
               </div>
             </div>
+          )}
 
-            <div className="flex flex-col sm:flex-row gap-8">
-              <Input
-                label="Email"
-                type="text"
-                isRequired={true}
-                useControllerProps={{ control, name: "email" }}
-              />
-
-              <Input
-                label="Mobile"
-                type="text"
-                isRequired={true}
-                useControllerProps={{ control, name: "mobile" }}
-              />
+          {submitError && (
+            <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg flex items-start gap-3">
+              <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
+              <p className="text-red-800 text-sm">{submitError}</p>
             </div>
-          </ApplyFormLayout>
+          )}
 
-          <ApplyFormLayout icon={faGraduationCap} title="About your education">
-            <div className="flex flex-col gap-8">
-              {/* OL */}
-              <div className="border border-slate-300 px-3 py-4 rounded-md relative">
-                <Typography
-                  variant="md"
-                  className="absolute -top-[14px] left-[5%] font-bold bg-white px-3"
-                >
-                  OL
-                </Typography>
-
-                <div className="flex flex-col gap-5">
-                  <div className="">
-                    <Input
-                      label="School"
-                      type="text"
-                      useControllerProps={{ control, name: "olSchool" }}
-                    />
-                  </div>
-
-                  <Select
-                    label="Year"
-                    selectionItems={yearsList}
-                    placeHolder="Select One"
-                    useControllerProps={{ control, name: "olYear" }}
-                    isDisabled={false}
-                    onChange={onOlYearChange}
-                  />
-
-                  <div className="flex flex-col sm:flex-row gap-5">
-                    <div className="flex flex-col gap-2 items-start flex-grow">
-                      <div className="relative">
-                        <Typography variant="label">Type</Typography>
-                      </div>
-
-                      <div className="flex flex-row gap-2">
-                        <RadioButton
-                          label="Local"
-                          value="local"
-                          useControllerProps={{ control, name: "olType" }}
-                        />
-                        <RadioButton
-                          label="London"
-                          value="london"
-                          useControllerProps={{ control, name: "olType" }}
-                        />
-                      </div>
-                    </div>
-
-                    <div className="flex flex-col gap-2 items-start flex-grow">
-                      <div className="relative">
-                        <Typography variant="label">Mathematics</Typography>
-                      </div>
-
-                      <div className="flex flex-row gap-2">
-                        <RadioButton
-                          label="A"
-                          value="a"
-                          useControllerProps={{
-                            control,
-                            name: "olMathematics",
-                          }}
-                        />
-                        <RadioButton
-                          label="B"
-                          value="b"
-                          useControllerProps={{
-                            control,
-                            name: "olMathematics",
-                          }}
-                        />
-                        <RadioButton
-                          label="C"
-                          value="c"
-                          useControllerProps={{
-                            control,
-                            name: "olMathematics",
-                          }}
-                        />
-                        <RadioButton
-                          label="S"
-                          value="s"
-                          useControllerProps={{
-                            control,
-                            name: "olMathematics",
-                          }}
-                        />
-                        <RadioButton
-                          label="W"
-                          value="w"
-                          useControllerProps={{
-                            control,
-                            name: "olMathematics",
-                          }}
-                        />
-                      </div>
-                    </div>
-
-                    <div className="flex flex-col gap-2 items-start flex-grow">
-                      <div className="relative">
-                        <Typography variant="label">English</Typography>
-                      </div>
-
-                      <div className="flex flex-row gap-2">
-                        <RadioButton
-                          label="A"
-                          value="a"
-                          useControllerProps={{ control, name: "olEnglish" }}
-                        />
-                        <RadioButton
-                          label="B"
-                          value="b"
-                          useControllerProps={{ control, name: "olEnglish" }}
-                        />
-                        <RadioButton
-                          label="C"
-                          value="c"
-                          useControllerProps={{ control, name: "olEnglish" }}
-                        />
-                        <RadioButton
-                          label="S"
-                          value="s"
-                          useControllerProps={{ control, name: "olEnglish" }}
-                        />
-                        <RadioButton
-                          label="W"
-                          value="w"
-                          useControllerProps={{ control, name: "olEnglish" }}
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="flex flex-col items-start gap-2">
-                    <Typography variant="label">Results</Typography>
-
-                    <div className="w-full flex flex-col md:flex-row items-start gap-2">
-                      <IncrementInput
-                        label="A"
-                        onChange={(e: number) => {
-                          onChange(e, "olResultA");
-                        }}
-                        useControllerProps={{ control, name: "olResultA" }}
-                      />
-
-                      <IncrementInput
-                        label="B"
-                        onChange={(e: number) => {
-                          onChange(e, "olResultB");
-                        }}
-                        useControllerProps={{ control, name: "olResultB" }}
-                      />
-
-                      <IncrementInput
-                        label="C"
-                        onChange={(e: number) => {
-                          onChange(e, "olResultC");
-                        }}
-                        useControllerProps={{ control, name: "olResultC" }}
-                      />
-
-                      <IncrementInput
-                        label="S"
-                        onChange={(e: number) => {
-                          onChange(e, "olResultS");
-                        }}
-                        useControllerProps={{ control, name: "olResultS" }}
-                      />
-
-                      <IncrementInput
-                        label="W"
-                        onChange={(e: number) => {
-                          onChange(e, "olResultW");
-                        }}
-                        useControllerProps={{ control, name: "olResultW" }}
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-              {/* END OL */}
-
-              {/* AL */}
-              <div className="border border-slate-300 px-3 py-4 rounded-md relative">
-                <Typography
-                  variant="md"
-                  className="absolute -top-[14px] left-[5%] font-bold bg-white px-3"
-                >
-                  AL
-                </Typography>
-
-                <div className="flex flex-col gap-5">
-                  <div className="">
-                    <Input
-                      label="School"
-                      type="text"
-                      useControllerProps={{ control, name: "alSchool" }}
-                    />
-                  </div>
-                  <Select
-                    label="Year"
-                    selectionItems={yearsList}
-                    placeHolder="Select One"
-                    useControllerProps={{ control, name: "alYear" }}
-                    isDisabled={false}
-                    onChange={onAlYearChange}
-                  />
-
-                  <div className="flex flex-col sm:flex-row gap-5">
-                    <div className="flex flex-col gap-2 items-start flex-grow">
-                      <div className="relative">
-                        <Typography variant="label">Type</Typography>
-                      </div>
-
-                      <div className="flex flex-row gap-2">
-                        <RadioButton
-                          label="Local"
-                          value="local"
-                          useControllerProps={{ control, name: "alType" }}
-                        />
-                        <RadioButton
-                          label="London"
-                          value="london"
-                          useControllerProps={{ control, name: "alType" }}
-                        />
-                      </div>
-                    </div>
-
-                    <div className="flex flex-col gap-2 items-start flex-grow">
-                      <div className="relative">
-                        <Typography variant="label">Mathematics</Typography>
-                      </div>
-
-                      <div className="flex flex-row gap-2">
-                        <RadioButton
-                          label="A"
-                          value="a"
-                          useControllerProps={{
-                            control,
-                            name: "alMathematics",
-                          }}
-                        />
-                        <RadioButton
-                          label="B"
-                          value="b"
-                          useControllerProps={{
-                            control,
-                            name: "alMathematics",
-                          }}
-                        />
-                        <RadioButton
-                          label="C"
-                          value="c"
-                          useControllerProps={{
-                            control,
-                            name: "alMathematics",
-                          }}
-                        />
-                        <RadioButton
-                          label="S"
-                          value="s"
-                          useControllerProps={{
-                            control,
-                            name: "alMathematics",
-                          }}
-                        />
-                        <RadioButton
-                          label="W"
-                          value="w"
-                          useControllerProps={{
-                            control,
-                            name: "alMathematics",
-                          }}
-                        />
-                      </div>
-                    </div>
-
-                    <div className="flex flex-col gap-2 items-start flex-grow">
-                      <div className="relative">
-                        <Typography variant="label">English</Typography>
-                      </div>
-
-                      <div className="flex flex-row gap-2">
-                        <RadioButton
-                          label="A"
-                          value="a"
-                          useControllerProps={{ control, name: "alEnglish" }}
-                        />
-                        <RadioButton
-                          label="B"
-                          value="b"
-                          useControllerProps={{ control, name: "alEnglish" }}
-                        />
-                        <RadioButton
-                          label="C"
-                          value="c"
-                          useControllerProps={{ control, name: "alEnglish" }}
-                        />
-                        <RadioButton
-                          label="S"
-                          value="s"
-                          useControllerProps={{ control, name: "alEnglish" }}
-                        />
-                        <RadioButton
-                          label="W"
-                          value="w"
-                          useControllerProps={{ control, name: "alEnglish" }}
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="flex flex-col items-start gap-2">
-                    <Typography variant="label">Results</Typography>
-
-                    <div className="w-full flex flex-col md:flex-row items-start gap-2">
-                      <IncrementInput
-                        label="A"
-                        onChange={(e: number) => {
-                          onChange(e, "alResultA");
-                        }}
-                        useControllerProps={{ control, name: "alResultA" }}
-                      />
-
-                      <IncrementInput
-                        label="B"
-                        onChange={(e: number) => {
-                          onChange(e, "alResultB");
-                        }}
-                        useControllerProps={{ control, name: "alResultB" }}
-                      />
-
-                      <IncrementInput
-                        label="C"
-                        onChange={(e: number) => {
-                          onChange(e, "alResultC");
-                        }}
-                        useControllerProps={{ control, name: "alResultC" }}
-                      />
-
-                      <IncrementInput
-                        label="D"
-                        onChange={(e: number) => {
-                          onChange(e, "alResultS");
-                        }}
-                        useControllerProps={{ control, name: "alResultS" }}
-                      />
-
-                      <IncrementInput
-                        label="S"
-                        onChange={(e: number) => {
-                          onChange(e, "alResultW");
-                        }}
-                        useControllerProps={{ control, name: "alResultW" }}
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-              {/* END AL */}
-
-              <div className="border border-slate-300 px-3 py-4 rounded-md relative">
-                <Typography
-                  variant="md"
-                  className="absolute -top-[14px] left-[5%] font-bold bg-white px-3"
-                >
-                  Degree
-                </Typography>
-                <div className="flex flex-col gap-5">
-                  <div className="">
-                    <Select
-                      label="Year of completion"
-                      selectionItems={yearsList}
-                      placeHolder="Select One"
-                      useControllerProps={{ control, name: "yearOfCompletion" }}
-                      isDisabled={false}
-                      onChange={onYearOfCompletionChange}
-                    />
-                  </div>
-                  <div className="flex flex-col items-start gap-3">
-                    <Input
-                      label="Affiliated University"
-                      useControllerProps={{
-                        control,
-                        name: "affiliatedUniversity",
-                      }}
-                    />
-                  </div>
-                  <div>
-                    <Input
-                      label="Stream"
-                      useControllerProps={{
-                        control,
-                        name: "stream",
-                      }}
-                    />
-                  </div>
-                  <div className="flex flex-row gap-3">
-                    <Input
-                      label="GPA"
-                      useControllerProps={{
-                        control,
-                        name: "gpa",
-                      }}
-                    />
-                    <Input
-                      label="Class"
-                      useControllerProps={{
-                        control,
-                        name: "class",
-                      }}
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </ApplyFormLayout>
-
-          <ApplyFormLayout icon={faHeart} title="Your preferences">
-            <div className="flex flex-col items-start gap-3">
-              <Typography variant="label" className="font-bold">
-                Study Area
+          <div className="space-y-5">
+            <div className="flex flex-col items-start">
+              <Typography variant="label" className="mb-1">
+                Full Name *
               </Typography>
-              <div className="w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-                <Checkboxes
-                  options={studyPreferences}
-                  control={control}
-                  name="studyArea"
-                />
-              </div>
-            </div>
-            <div>
-              <Select
-                label="Country"
-                selectionItems={COUNTRIES_FOR_SELECT}
-                placeHolder="Select One"
-                useControllerProps={{ control, name: "country" }}
-                isDisabled={false}
-                onChange={onCountryChange}
+              <input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition ${errors.name ? 'border-red-500 bg-red-50' : 'border-gray-300'
+                  }`}
+                disabled={isLoading}
               />
+              {errors.name && (
+                <p className="mt-1 text-sm text-red-600 flex items-center gap-1">
+                  <AlertCircle className="w-4 h-4" />
+                  {errors.name}
+                </p>
+              )}
             </div>
-          </ApplyFormLayout>
 
-          <Button
-            text="Save"
-            type="submit"
-            customClass="w-[150px] mx-auto"
-            isLoading={isLoading}
-          />
-        </form>
+            <div className="flex flex-col items-start">
+              <Typography variant="label" className="mb-1">
+                City *
+              </Typography>
+              <input
+                type="text"
+                name="city"
+                value={formData.city}
+                onChange={handleChange}
+                className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition ${errors.city ? 'border-red-500 bg-red-50' : 'border-gray-300'
+                  }`}
+                disabled={isLoading}
+              />
+              {errors.city && (
+                <p className="mt-1 text-sm text-red-600 flex items-center gap-1">
+                  <AlertCircle className="w-4 h-4" />
+                  {errors.city}
+                </p>
+              )}
+            </div>
+
+            <div className="flex flex-col items-start">
+              <Typography variant="label" className="mb-1">
+                Email *
+              </Typography>
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition ${errors.email ? 'border-red-500 bg-red-50' : 'border-gray-300'
+                  }`}
+                disabled={isLoading}
+              />
+              {errors.email && (
+                <p className="mt-1 text-sm text-red-600 flex items-center gap-1">
+                  <AlertCircle className="w-4 h-4" />
+                  {errors.email}
+                </p>
+              )}
+            </div>
+
+            <div className="flex flex-col items-start">
+              <Typography variant="label" className="mb-1">
+                Mobile number *
+              </Typography>
+              <input
+                type="tel"
+                name="mobile"
+                value={formData.mobile}
+                onChange={handleChange}
+                className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition ${errors.mobile ? 'border-red-500 bg-red-50' : 'border-gray-300'
+                  }`}
+                disabled={isLoading}
+              />
+              {errors.mobile && (
+                <p className="mt-1 text-sm text-red-600 flex items-start gap-1 flex-row justify-start text-left">
+                  <AlertCircle className="w-4 h-4" />
+                  {errors.mobile}
+                </p>
+              )}
+            </div>
+
+            <div className="flex flex-col items-start">
+              <Typography variant="label" className="mb-1">
+                Recent Education Qualification *
+              </Typography>
+              <select
+                name="education"
+                value={formData.education}
+                onChange={handleChange}
+                className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition ${errors.education ? 'border-red-500 bg-red-50' : 'border-gray-300'
+                  }`}
+                disabled={isLoading}
+              >
+                <option value="">Select education level</option>
+                <option value="O/L">O/L</option>
+                <option value="A/L">A/L</option>
+                <option value="Foundation">Foundation</option>
+                <option value="HND">HND</option>
+                <option value="Bachelors">Bachelors</option>
+                <option value="Masters">Masters</option>
+              </select>
+              {errors.education && (
+                <p className="mt-1 text-sm text-red-600 flex items-center gap-1">
+                  <AlertCircle className="w-4 h-4" />
+                  {errors.education}
+                </p>
+              )}
+            </div>
+
+
+
+            <button
+              onClick={handleSubmit}
+              disabled={isLoading}
+              className="w-full bg-secondary text-white font-medium py-3 px-4 rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            >
+              {isLoading ? (
+                <>
+                  <Loader2 className="w-5 h-5 animate-spin" />
+                  Submitting your details...
+                </>
+              ) : (
+                'Submit Your Details'
+              )}
+            </button>
+          </div>
+
+        </div>
+
       </Container>
     </section>
   );
