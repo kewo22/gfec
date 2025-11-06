@@ -52,10 +52,10 @@ export default function SitePage() {
       {/* <Testimonial /> */}
 
       {/* <StudentLife /> */}
-
+{/* 
       <div id="get-in-touch-container">
         <GetInTouch />
-      </div>
+      </div> */}
     </section>
   );
 }

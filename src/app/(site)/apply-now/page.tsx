@@ -151,7 +151,6 @@ export default function ApplyNow() {
         </motion.div>
 
         <div className="max-w-md mx-auto bg-white rounded-lg shadow-lg p-8">
-
           {submitSuccess && (
             <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg flex items-center flex-row gap-3">
               <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
@@ -298,7 +297,6 @@ export default function ApplyNow() {
               )}
             </button>
           </div>
-
         </div>
 
       </Container>

@@ -39,14 +39,14 @@ export default function NavActionsNew({ openModel, className }: any) {
           onApplyNowClick();
         }}
       />
-      <Button
+      {/* <Button
         text="Free Consultation"
         size="md"
         customClass="w-fit"
         onClick={() => {
           onFreeConsultationClick();
         }}
-      />
+      /> */}
     </div>
   );
 }

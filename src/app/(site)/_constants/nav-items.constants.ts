@@ -43,13 +43,13 @@ export const NavItems: NavItemLink[] = [
     isActive: false,
     icon: faPlaneDeparture,
   },
-  {
-    text: "Events",
-    route: "/events",
-    class: "",
-    isActive: false,
-    icon: faPlaneDeparture,
-  },
+  // {
+  //   text: "Events",
+  //   route: "/events",
+  //   class: "",
+  //   isActive: false,
+  //   icon: faPlaneDeparture,
+  // },
   {
     text: "Contact Us",
     route: "/contact",
