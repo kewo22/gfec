@@ -1,113 +1,119 @@
-// "use client";
-
 "use client"
 import { useEffect, useState } from "react";
-import { SequentialTextFade } from "./sequence-fade";
-import { FullscreenImageSlider } from "./full-screen-image-slider";
-import aus from "../../../../public/new/hero-aus.webp";
+
+import aus from "../../../../public/comp/hero-banner/aus.webp";
+import dxb from "../../../../public/comp/hero-banner/dxb.webp";
+import france from "../../../../public/comp/hero-banner/france.webp";
+import germany from "../../../../public/comp/hero-banner/germany.webp";
+import malta from "../../../../public/comp/hero-banner/malta.webp";
+import singapore from "../../../../public/comp/hero-banner/singapore.webp";
+import spain from "../../../../public/comp/hero-banner/spain.webp";
+import south_korea from "../../../../public/comp/hero-banner/south-korea.webp";
+import uk from "../../../../public/comp/hero-banner/uk.webp";
+import { TextFade } from "./text-fade";
+import { Typography } from "@/app/_components/ui/typography";
+import { motion, AnimatePresence } from 'framer-motion';
+import Image from "next/image";
+
 
 export default function HeroNew() {
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const images = [
     {
-      src: aus,
-      alt: "hero aus image"
+      src: uk,
+      alt: "United Kingdom",
+      description: "A blend of tradition and innovation in education"
     },
+    {
+      src: aus,
+      alt: "Australia",
+      description: "Where academic excellence meets endless adventure"
+    },
+    {
+      src: dxb,
+      alt: "Dubai",
+      description: "Innovation and luxury in the heart of the Middle East"
+    },
+    {
+      src: france,
+      alt: "France",
+      description: "Embrace culture, art, and world-class education"
+    },
+    {
+      src: germany,
+      alt: "Germany",
+      description: "Engineering excellence and tuition-free opportunities"
+    },
+    {
+      src: malta,
+      alt: "Malta",
+      description: "Mediterranean paradise with English-taught programs"
+    },
+    {
+      src: singapore,
+      alt: "Singapore",
+      description: "Asia's gateway to cutting-edge technology and business"
+    },
+    {
+      src: spain,
+      alt: "Spain",
+      description: "Rich heritage meets modern innovation and vibrant life"
+    },
+    {
+      src: south_korea,
+      alt: "South Korea",
+      description: "K-culture hub with leading technology and research"
+    },
+
   ];
-
-  const [index, setIndex] = useState(0)
-  const [indexEeee, setEeeIndex] = useState(0)
-
-  const words = ["UK", "Malta", "Dubai", "Spain", "Canada", "Germany", "France"];
-  const text = "Study with GFEC in";
-
-  const texts = ['Your success journey start with us!', 'Better Choices for a better future', 'Build your application portfolio with our experts'];
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setIndex((prevIndex) => (prevIndex + 1) % words.length)
-    }, 2000) // Change word every 1 second
-    // Clean up interval on unmount
-    return () => clearInterval(interval)
-  }, [words.length])
+      setCurrentIndex((prev) => (prev + 1) % images.length);
+    }, 4000); // Change slide every 4 seconds
 
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setEeeIndex((prevIndex) => (prevIndex + 1) % eee.length)
-  //   }, 2000) // Change word every 1 second
-  //   // Clean up interval on unmount
-  //   return () => clearInterval(interval)
-  // }, [eee.length])
+    return () => clearInterval(interval);
+  }, [images.length]);
 
   return (
-    // <Image
-    //   src={COUNTRIES[0].image}
-    //   alt={`country-${COUNTRIES[0].image}`}
-    //   fill
-    //   priority
-    //   className="rounded-xl"
-    // />
-    // <div className="text-xl text-center sm:text-4xl font-bold tracking-tighter md:text-6xl md:leading-[4rem] w-fit flex items-center justify-center mx-auto mt-48">
-    //   {text}&nbsp;
-    //   <AnimatePresence mode="wait">
-    //     <motion.p
-    //       key={words[index]}
-    //       initial={{ opacity: 0, y: -40 }}
-    //       animate={{ opacity: 1, y: 0 }}
-    //       exit={{ opacity: 0, y: 40 }}
-    //       transition={{ duration: 0.5 }}
-    //       className="min-w-[222px] text-left"
-    //     >
-    //       {words[index]}
-    //     </motion.p>
-    //   </AnimatePresence>
-    // </div>
+    <div className="relative h-[400px] xl:h-[800px] w-full overflow-hidden">
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={currentIndex}
+          initial={{ opacity: 0, scale: 1.1 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.95 }}
+          transition={{ duration: 0.9 }}
+          className="absolute inset-0"
+        >
+          <Image
+            src={images[currentIndex].src}
+            alt={images[currentIndex].alt}
+            fill
+            className="object-cover"
+            priority={currentIndex === 0}
+          />
+          <div className="absolute inset-0 bg-black/40" />
 
-    // <TextFade
-    //   direction="up"
-    // >
-    //   <Typography
-    //     variant="h1"
-    //     className=""
-    //   >
-    //     Start your success journey with GFEC!
-    //   </Typography>
-    //   <Typography
-    //     variant="h1"
-    //     className=""
-    //   >
-    //     GFEC Great
-    //   </Typography>
-    //   <Typography
-    //     variant="h1"
-    //     className=""
-    //   >
-    //     In Srilanka
-    //   </Typography>
-    // </TextFade>
-
-    // <SequentialTextFade
-    //   direction="up"
-    //   texts={texts}
-    //   interval={2000} // Change text every 2 seconds
-    // />
-
-    <div>
-      {/* className='fixed top-0 left-0 w-full z-[1]' */}
-      {/* <NavigationNew className='sticky top-0 left-0 w-full z-50' /> */}
-      <FullscreenImageSlider
-        images={images}
-        autoPlay={true}
-        interval={5000}
-      />
-      <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center z-[2]">
-        <SequentialTextFade
-          direction="up"
-          texts={texts}
-          interval={5000} // Change text every 5 seconds
-          typographyClass="text-white"
-        />
-      </div>
+          <div className="absolute inset-0 flex items-center justify-center">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -30 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-center text-white z-10 px-4"
+            >
+              <Typography variant="h1" className="mb-4">
+                {images[currentIndex].alt}
+              </Typography>
+              <Typography variant="h4" className="mx-auto tracking-wider">
+                {images[currentIndex].description}
+              </Typography>
+            </motion.div>
+          </div>
+        </motion.div>
+      </AnimatePresence>
     </div>
   )
 }

@@ -73,7 +73,7 @@ export function FullscreenImageSlider({
   };
 
   return (
-    <div className="relative w-full h-[768px] max-h-[768px] overflow-hidden bg-black">
+    <div className="relative w-full h-[800px] max-h-[800px] overflow-hidden bg-black">
       {/* Image Container */}
       <AnimatePresence initial={false} custom={direction}>
         <motion.div

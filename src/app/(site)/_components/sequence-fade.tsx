@@ -58,7 +58,7 @@ export function SequentialTextFade({
                     exit="exit"
                     variants={variants}
                 >
-                    <Typography variant='h2' className={typographyClass}>{texts[currentIndex]}</Typography>
+                    <Typography variant='h1' className={typographyClass}>{texts[currentIndex]}</Typography>
                 </motion.div>
             </AnimatePresence>
         </div>
