@@ -1,5 +1,12 @@
 "use client"
+
 import { useEffect, useState } from "react";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+
+import { motion, AnimatePresence } from 'framer-motion';
+
+import { Typography } from "@/app/_components/ui/typography";
 
 import aus from "../../../../public/comp/hero-banner/aus.webp";
 import dxb from "../../../../public/comp/hero-banner/dxb.webp";
@@ -10,13 +17,11 @@ import singapore from "../../../../public/comp/hero-banner/singapore.webp";
 import spain from "../../../../public/comp/hero-banner/spain.webp";
 import south_korea from "../../../../public/comp/hero-banner/south-korea.webp";
 import uk from "../../../../public/comp/hero-banner/uk.webp";
-import { TextFade } from "./text-fade";
-import { Typography } from "@/app/_components/ui/typography";
-import { motion, AnimatePresence } from 'framer-motion';
-import Image from "next/image";
 
 
 export default function HeroNew() {
+  const router = useRouter();
+
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const images = [
@@ -76,6 +81,10 @@ export default function HeroNew() {
     return () => clearInterval(interval);
   }, [images.length]);
 
+  const onApplyClick = () => {
+    router.push('/apply-now', { scroll: true })
+  }
+
   return (
     <div className="relative h-[400px] xl:h-[800px] w-full overflow-hidden">
       <AnimatePresence mode="wait">
@@ -110,6 +119,15 @@ export default function HeroNew() {
               <Typography variant="h4" className="mx-auto tracking-wider">
                 {images[currentIndex].description}
               </Typography>
+              <motion.button
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: currentIndex === 0 ? 0.3 : 0.5 }}
+                className="mt-6 px-8 py-3 bg-white text-secondary font-semibold rounded-full hover:bg-gray-100 transition-colors duration-300 block mx-auto sm:hidden"
+                onClick={onApplyClick}
+              >
+                Apply Now
+              </motion.button>
             </motion.div>
           </div>
         </motion.div>
