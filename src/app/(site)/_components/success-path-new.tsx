@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useRef, useEffect } from 'react';
+import { useRouter } from "next/navigation";
+
 import { motion, useInView, useAnimation } from 'framer-motion';
 import Container from './layouts/container';
 import SectionTitle from './section-title';
@@ -15,6 +17,8 @@ import ParticleButton from '@/app/_components/ui/particle-btn';
 import ContainerNew from './layouts/container-new';
 
 export default function SuccessPathNew() {
+    const router = useRouter();
+
     const containerRef = useRef(null);
 
     const steps = [
@@ -234,6 +238,10 @@ export default function SuccessPathNew() {
         );
     };
 
+    const onStartJourneyClick = () => {
+        router.push('/apply-now')
+    }
+
     return (
         <ContainerNew className="mx-auto py-20">
             <SectionTitle title="You Pathway to Achieving Success" />
@@ -281,7 +289,7 @@ export default function SuccessPathNew() {
                         >
                             Start Your Journey Today
                         </motion.button> */}
-                        <ParticleButton size='md' customClass='capitalize font-bold tracking-wider'>Start your journey today</ParticleButton>
+                        <ParticleButton size='md' customClass='capitalize font-bold tracking-wider' onClick={onStartJourneyClick}>Start your journey today</ParticleButton>
                     </motion.div>
                 </div>
             </section>

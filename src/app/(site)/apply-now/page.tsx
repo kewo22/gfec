@@ -1,36 +1,13 @@
 "use client";
 
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useState } from "react";
 import { motion } from 'framer-motion';
 
-import { SubmitHandler, useForm } from "react-hook-form";
-import { array, date, object, string } from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
-import {
-  faGraduationCap,
-  faHeart,
-  faUserTie,
-} from "@fortawesome/free-solid-svg-icons";
-
 import Container from "../_components/layouts/container";
-import ApplyFormLayout from "../_components/layouts/apply-form-layout";
 
-import SectionTitle from "../_components/section-title";
-import Input from "@/app/_components/ui/input";
-import RadioButton from "@/app/_components/ui/radio";
-import Button from "@/app/_components/ui/button";
 import { Typography } from "@/app/_components/ui/typography";
-import Select from "@/app/_components/ui/select";
-import IncrementInput from "@/app/_components/ui/increment-input";
-import Checkboxes from "@/app/_components/ui/checkbox";
 import { ResolveBaseUrl } from "@/app/utils/common";
-import {
-  COUNTRIES,
-  COUNTRIES_FOR_SELECT,
-} from "../_constants/countries.constants";
-import { ApplicationFormModel } from "@/app/_interfaces/application-form";
 import { z } from 'zod';
-import { zodResolver } from '@hookform/resolvers/zod';
 import { AlertCircle, CheckCircle2, Loader2 } from "lucide-react";
 
 const educationLevels = ['O/L', 'A/L', 'Foundation', 'HND', "Bachelors", "Masters"] as const;
@@ -279,8 +256,6 @@ export default function ApplyNow() {
                 </p>
               )}
             </div>
-
-
 
             <button
               onClick={handleSubmit}
