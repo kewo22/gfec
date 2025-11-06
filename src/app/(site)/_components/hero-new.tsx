@@ -81,7 +81,7 @@ export default function HeroNew() {
       <AnimatePresence mode="wait">
         <motion.div
           key={currentIndex}
-          initial={{ opacity: 0, scale: 1.1 }}
+          initial={currentIndex === 0 ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 1.1 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.95 }}
           transition={{ duration: 0.9 }}
@@ -98,10 +98,10 @@ export default function HeroNew() {
 
           <div className="absolute inset-0 flex items-center justify-center">
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={currentIndex === 0 ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -30 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
+              transition={{ duration: 0.5, delay: currentIndex === 0 ? 0 : 0.2 }}
               className="text-center text-white z-10 px-4"
             >
               <Typography variant="h1" className="mb-4">
