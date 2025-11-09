@@ -108,13 +108,13 @@ export async function POST(request: Request) {
       };
 
       await transporter.sendMail(mailOptions).then(res => {
-        console.info(res)
+        // console.info(res)
         loggerCollection.insertOne({
           type: "email success",
           log: JSON.stringify(res)
         })
       }).catch(error => {
-        console.error(error)
+        // console.error(error)
         loggerCollection.insertOne({
           type: "email failed",
           log: JSON.stringify(error)
@@ -123,13 +123,13 @@ export async function POST(request: Request) {
       })
 
       await transporter.sendMail(mailOptions1).then(res => {
-        console.info(res)
+        // console.info(res)
         loggerCollection.insertOne({
           type: "email success",
           log: JSON.stringify(res)
         })
       }).catch(error => {
-        console.error(error)
+        // console.error(error)
         loggerCollection.insertOne({
           type: "email failed",
           log: JSON.stringify(error)
@@ -138,13 +138,13 @@ export async function POST(request: Request) {
       })
 
       await transporter.sendMail(mailOptions2).then(res => {
-        console.info(res)
+        // console.info(res)
         loggerCollection.insertOne({
           type: "email success",
           log: JSON.stringify(res)
         })
       }).catch(error => {
-        console.error(error)
+        // console.error(error)
         loggerCollection.insertOne({
           type: "email failed",
           log: JSON.stringify(error)
@@ -153,13 +153,13 @@ export async function POST(request: Request) {
       })
 
       await transporter.sendMail(mailOptions3).then(res => {
-        console.info(res)
+        // console.info(res)
         loggerCollection.insertOne({
           type: "email success",
           log: JSON.stringify(res)
         })
       }).catch(error => {
-        console.error(error)
+        // console.error(error)
         loggerCollection.insertOne({
           type: "email failed",
           log: JSON.stringify(error)
@@ -204,7 +204,7 @@ export async function POST(request: Request) {
     // return res.status(200).json({ message: `Success`, data: insertOneRes });
     return Response.json({ message: `Success`, data: insertOneRes });
   } catch (error) {
-    console.error(error)
+    // console.error(error)
     loggerCollection.insertOne({
       type: "failed",
       log: JSON.stringify(error)

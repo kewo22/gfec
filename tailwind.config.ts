@@ -56,9 +56,7 @@ const config: Config = {
         "southkorea-banner": "url('/comp/south_korea.webp')",
       },
       colors: {
-        // primary: "#BD9519",
         primary: "#C2962D",
-        // secondary: "#000080",
         secondary: "#110C82",
         accent: "#040607",
       },

@@ -68,16 +68,7 @@ export default function Input(props: TextInputProps) {
     return className;
   }, [isDisabled, fieldState, type]);
 
-  let inputMode: any =
-    "none" ||
-    "text" ||
-    "tel" ||
-    "url" ||
-    "email" ||
-    "numeric" ||
-    "decimal" ||
-    "search" ||
-    undefined;
+  let inputMode: "none" | "text" | "tel" | "url" | "email" | "numeric" | "decimal" | "search" | undefined;
 
   if (type === "num") {
     inputMode = "numeric";

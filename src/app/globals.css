@@ -1,13 +1,9 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-@import url("plyr-react/plyr.css");
+@import "tailwindcss";
 
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
-  --plyr-video-background: transparent;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -275,18 +271,6 @@ body {
 }
 
 /* menu styles */
-
-/* plyr styles */
-.plyr {
-  border-radius: 12px;
-}
-
-.about-plyr .plyr {
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
-    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
-}
-
-/* plyr styles */
 
 .nav-banner-container {
   position: absolute;

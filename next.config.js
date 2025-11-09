@@ -1,3 +1,5 @@
+const path = require('path');
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -55,7 +57,6 @@ const nextConfig = {
     "mongodb",
     "next",
     "nodemailer",
-    "plyr-react",
     "postcss",
     "react",
     "react-device-detect",
@@ -70,6 +71,9 @@ const nextConfig = {
     "typescript",
     "yup",
   ],
+  turbopack: {
+    root: path.join(__dirname, '..'),
+  },
 };
 
 module.exports = nextConfig;

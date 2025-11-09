@@ -10,15 +10,8 @@ import Input from "@/app/_components/ui/input";
 import Button from "@/app/_components/ui/button";
 import Select from "@/app/_components/ui/select";
 import { ResolveBaseUrl } from "@/app/utils/common";
+import { GetInTouchModel } from "@/app/_interfaces/get-in-touch";
 
-export interface GetInTouchModel {
-  firstName: string;
-  lastName: string;
-  email: string;
-  mobile: string;
-  preferredTime?: string;
-  preferredDate?: Date | null;
-}
 
 const dateMinusOne = (): Date => {
   const today = new Date();
@@ -35,9 +28,10 @@ const schema = object().shape({
     .matches(/^[0]{1}[7]{1}[01245678]{1}[0-9]{7}$/, "Invalid Format"),
   preferredTime: string().optional(),
   preferredDate: date().notRequired().min(dateMinusOne(), "Select future date"),
+  createdAt: date().required(),
 });
 
-interface GetInTouchFormProps {}
+interface GetInTouchFormProps { }
 
 export type GetInTouchFormHandle = {
   resetForm: () => void;
@@ -61,6 +55,7 @@ const GetInTouchForm = forwardRef<GetInTouchFormHandle, GetInTouchFormProps>(
         mobile: "",
         preferredTime: "",
         preferredDate: null,
+        createdAt: new Date(),
       },
       mode: "all",
       resolver: yupResolver<GetInTouchModel>(schema),
@@ -78,7 +73,7 @@ const GetInTouchForm = forwardRef<GetInTouchFormHandle, GetInTouchFormProps>(
     );
 
     const onSubmit: SubmitHandler<GetInTouchModel> = (data) => {
-      let tempData = { ...data, preferredDate: "" };
+      let tempData = { ...data, preferredDate: "", };
       if (data.preferredDate) {
         tempData = {
           ...data,
@@ -86,7 +81,7 @@ const GetInTouchForm = forwardRef<GetInTouchFormHandle, GetInTouchFormProps>(
         };
       }
       setIsLoading(true);
-      fetch(`${privacyBasePolicyUrl}/api`, {
+      fetch(`${privacyBasePolicyUrl}/api/getInTouch`, {
         method: "post",
         body: JSON.stringify(tempData),
         headers: {
@@ -222,8 +217,6 @@ const GetInTouchForm = forwardRef<GetInTouchFormHandle, GetInTouchFormProps>(
         text: "7:30 - 8:00",
       },
     ];
-
-    const resetForm = () => {};
 
     return (
       <>

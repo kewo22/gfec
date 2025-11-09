@@ -38,11 +38,11 @@ export default function SuccessStoriesText() {
   const [selectedSuccessStory, setSelectedSuccessStory] = useState(0);
   const [isChanging, setIsChanging] = useState(false);
 
-  const fullNameRef = useRef<any>();
-  const uniRef = useRef<any>();
-  const successStoryRef = useRef<any>();
-  const startsRef = useRef<any>();
-  const imageRef = useRef<any>();
+  const fullNameRef = useRef<any>(null);
+  const uniRef = useRef<any>(null);
+  const successStoryRef = useRef<any>(null);
+  const startsRef = useRef<any>(null);
+  const imageRef = useRef<any>(null);
 
   useEffect(() => {
     if (!fullNameRef) return;
