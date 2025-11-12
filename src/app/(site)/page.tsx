@@ -38,7 +38,7 @@ export default function SitePage() {
       {/*   */}
       {/* onClick={(event) => event.preventDefault()}  */}
       <div className='fixed z-[999999999] bottom-5 right-5'>
-        <SocialIcon network="whatsapp" url="https://wa.me/+94771789038" target="_blank" />
+        <SocialIcon network="whatsapp" url="https://wa.me/+94773889161" target="_blank" />
       </div>
       {/* </a> */}
 
