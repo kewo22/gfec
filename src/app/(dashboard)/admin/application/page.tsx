@@ -47,7 +47,7 @@ export default function Application() {
         Applications
       </Typography>
       <div className="h-full overflow-hidden flex flex-row gap-5">
-        <div className="flex-grow overflow-hidden flex-[0_0_70%]">
+        <div className="grow overflow-hidden flex-[0_0_70%]">
           {data && <DataGrid data={data.data} onViewRow={onViewRow} />}
         </div>
         <div className="bg-slate-50 border border-slate-300 rounded-lg flex-[0_0_27%] m-5 p-5 overflow-hidden">

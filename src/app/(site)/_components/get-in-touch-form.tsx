@@ -58,7 +58,7 @@ const GetInTouchForm = forwardRef<GetInTouchFormHandle, GetInTouchFormProps>(
         createdAt: new Date(),
       },
       mode: "all",
-      resolver: yupResolver<GetInTouchModel>(schema),
+      resolver: yupResolver<GetInTouchModel, any, any>(schema),
       reValidateMode: "onBlur",
     });
 

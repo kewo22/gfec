@@ -44,7 +44,7 @@ export default function Ger(props: CountryProps) {
   return (
     <div className="flex flex-col gap-20">
       <div className="flex flex-col sm:flex-row gap-20 px-10 xl:px-0">
-        <Typography variant="p" className="text-justify !leading-normal sm:!leading-8">
+        <Typography variant="p" className="text-justify leading-normal! sm:leading-8!">
           Germany is one of the most sought-after study destinations in Europe, known for its academic excellence, strong economy, and innovation-driven education system. Whether you&apos;re pursuing a career in engineering, business, technology, or research, Germany offers international students a globally respected education in a thriving professional environment.
         </Typography>
       </div>

@@ -37,7 +37,7 @@ export default function StudyAbroad() {
                     height={400}
                 />
 
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[2] bg-black/50 h-full w-full flex flex-col items-center justify-center gap-2">
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-2 bg-black/50 h-full w-full flex flex-col items-center justify-center gap-2">
                     <TypewriterEffect text="Explore Destinations" loop={false} showCursor={false} className='text-white text-center' variant="h1" onComplete={onComplete} />
                     <SequentialTextFade
                         direction="up"
@@ -62,7 +62,7 @@ export default function StudyAbroad() {
                                     alt={`${index}_${item.country}`}
                                     fill
                                     priority
-                                    className="rounded-t-xl w-full h-full object-cover !relative"
+                                    className="rounded-t-xl w-full h-full object-cover relative!"
                                 />
                                 <div className="absolute bottom-4 left-4 right-4">
                                     <h2 className="text-2xl font-bold text-white mb-2">
@@ -70,7 +70,7 @@ export default function StudyAbroad() {
                                     </h2>
                                 </div>
                             </div>
-                            <div className="p-6 flex-grow flex flex-col gap-6 justify-between">
+                            <div className="p-6 grow flex flex-col gap-6 justify-between">
                                 <Typography variant='p' className='leading-relaxed'>
                                     {item.description}
                                 </Typography>

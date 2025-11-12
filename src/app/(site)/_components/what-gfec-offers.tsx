@@ -1,7 +1,5 @@
-import React from "react";
 import Image from "next/image";
 
-import Container from "./layouts/container";
 import { Typography } from "../../_components/ui/typography";
 import SectionTitle from "./section-title";
 
@@ -16,8 +14,8 @@ import immigration from "../../../../public/comp/immigration.png";
 import discussion from "../../../../public/comp/discussion.png";
 import visa from "../../../../public/comp/visa.png";
 import eng from "../../../../public/comp/eng.png";
-import { TypingEffect } from "./typing-effect";
 import ContainerNew from "./layouts/container-new";
+import { TypingEffect } from "./typing-effect";
 
 export default function WhatGfecOffers() {
   const dataArr = [
@@ -158,7 +156,7 @@ export default function WhatGfecOffers() {
                   alt={data.image.alt}
                   height={data.image.height}
                   width={data.image.width}
-                  className="!relative mb-3 text-center mx-auto"
+                  className="relative! mb-3 text-center mx-auto"
                   priority
                 />
                 <Typography variant="p" className="font-bold ">
@@ -185,7 +183,7 @@ export default function WhatGfecOffers() {
                   alt={data.image.alt}
                   height={data.image.height}
                   width={data.image.width}
-                  className="!relative mx-auto"
+                  className="relative! mx-auto"
                   priority
                 />
               </div>

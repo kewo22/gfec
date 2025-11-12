@@ -36,7 +36,7 @@ export default function Spain(props: CountryProps) {
   return (
     <div className="flex flex-col gap-20">
       <div className="flex flex-col sm:flex-row gap-20 px-10 xl:px-0">
-        <Typography variant="p" className="text-justify !leading-normal sm:!leading-8">
+        <Typography variant="p" className="text-justify leading-normal! sm:leading-8!">
           Spain is rapidly becoming one of the most popular study destinations in Europe, known for its vibrant culture, affordable living, and high-quality education. With a rich history, world-famous cuisine, and globally ranked universities, Spain offers students a well-rounded academic and cultural experience. From sun-kissed Mediterranean cities to centuries-old universities, Spain offers both tradition and innovation in education.
         </Typography>
       </div>

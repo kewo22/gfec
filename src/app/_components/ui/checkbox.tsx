@@ -42,14 +42,14 @@ import { Typography } from "./typography";
 
 //     const classNameCopy = JSON.parse(JSON.stringify(className));
 //     if (isDisabled) {
-//       classNameCopy.input.disabled = "!bg-gray-100";
+//       classNameCopy.input.disabled = "bg-gray-100!";
 //       className = { ...classNameCopy };
 //     }
 
 //     if (!isDisabled) {
 //       if (fieldState && fieldState.error && fieldState.error.message) {
 //         console.log('errrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr', fieldState.error.message)
-//         classNameCopy.input.error = "!border-red-600";
+//         classNameCopy.input.error = "border-red-600!";
 //         className = { ...classNameCopy };
 //       } else {
 //         classNameCopy.input.error = "";

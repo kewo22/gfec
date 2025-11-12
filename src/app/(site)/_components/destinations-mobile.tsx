@@ -80,7 +80,7 @@ const HorizontalScrollCarousel = () => {
   };
 
   return (
-    <div className="w-full bg-gradient-to-br from-blue-50 to-indigo-100 py-16">
+    <div className="w-full bg-linear-to-br from-blue-50 to-indigo-100 py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionTitle title="Explore Your Dream Destination" />
 
@@ -150,9 +150,9 @@ const HorizontalScrollCarousel = () => {
                         alt={`${index}_${item.country}`}
                         fill
                         priority
-                        className="rounded-xl w-full h-full object-cover !relative"
+                        className="rounded-xl w-full h-full object-cover relative!"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                      <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent" />
                       <div className="absolute bottom-4 left-4 right-4">
                         <h2 className="text-2xl font-bold text-white mb-2">
                           {item.country}

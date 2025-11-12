@@ -96,7 +96,7 @@ const ScrollAnimationSection = () => {
                         alt={contentData[activeIndex].country}
                         fill
                         priority
-                        className="rounded-xl w-full h-full object-cover !relative"
+                        className="rounded-xl w-full h-full object-cover relative!"
                       />
                       {/* <img
                         src={contentData[activeIndex].image}

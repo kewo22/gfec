@@ -9,7 +9,6 @@ import { isMobile } from "react-device-detect";
 import { NavItems } from "../_constants/nav-items.constants";
 import { Typography } from "@/app/_components/ui/typography";
 import NavSocial from "./nav-social";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function MobileNav({ isMainNavInView }: any) {
   const pathname = usePathname();
@@ -48,9 +47,9 @@ export default function MobileNav({ isMainNavInView }: any) {
   ) {
     if (isMainNavInView) {
       // show menu bar
-      menuIconRef.current.classList.remove("!-right-[15%]");
-      menuIconRef.current.classList.add("!right-[5%]");
-      menuIconRef.current.classList.add("!top-[5%]");
+      menuIconRef.current.classList.remove("-right-[15%]!");
+      menuIconRef.current.classList.add("right-[5%]!");
+      menuIconRef.current.classList.add("top-[5%]!");
       
       // hide bottom menu
       // bottomMenuRef.current.classList.add("-bottom-[80px]");
@@ -58,9 +57,9 @@ export default function MobileNav({ isMainNavInView }: any) {
       // document.querySelector("body")!.classList.remove("pb-[80px]");
     } else {
       // hide menu bar
-      menuIconRef.current.classList.remove("!right-[5%]");
-      menuIconRef.current.classList.remove("!top-[5%]");
-      menuIconRef.current.classList.add("!-right-[15%]");
+      menuIconRef.current.classList.remove("right-[5%]!");
+      menuIconRef.current.classList.remove("top-[5%]!");
+      menuIconRef.current.classList.add("-right-[15%]!");
 
       // show bottom menu
       // bottomMenuRef.current.classList.remove("-bottom-[80px]");
@@ -83,7 +82,7 @@ export default function MobileNav({ isMainNavInView }: any) {
       <ul
         id="menu"
         onClick={menuOnClick}
-        className="block lg:hidden z-[41] menu transition-all ease-in-out duration-500"
+        className="block lg:hidden z-41 menu transition-all ease-in-out duration-500"
         ref={menuIconRef}
       >
         <li className="bar"></li>

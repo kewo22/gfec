@@ -86,7 +86,7 @@ export default function Page() {
 
         <br />
 
-        <ul className="text-base !list-disc !list-outside mb-3 px-4">
+        <ul className="text-base list-disc! list-outside! mb-3 px-4">
           <li>Provide, operate, and maintain our website</li>
           <li>Improve, personalize, and expand our website</li>
           <li>Understand and analyze how you use our website</li>
@@ -148,7 +148,7 @@ export default function Page() {
 
         <br />
 
-        <ul className="text-base !list-disc !list-outside mb-3 px-4">
+        <ul className="text-base list-disc! list-outside! mb-3 px-4">
           <li>
             <p>Google</p>
             <p>

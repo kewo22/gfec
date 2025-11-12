@@ -170,13 +170,13 @@ export default function Contact() {
 
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 p-4">
+    <div className="min-h-screen bg-linear-to-br from-slate-50 to-slate-100 p-4">
       {/* Header */}
       {/* <motion.div
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="bg-gradient-to-r from-primary to-secondary text-white py-20 px-4"
+        className="bg-linear-to-r from-primary to-secondary text-white py-20 px-4"
       >
         <div className="max-w-7xl mx-auto text-center">
           <motion.h1
@@ -226,7 +226,7 @@ export default function Contact() {
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setSelectedFilter(category.id)}
                 className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 ${selectedFilter === category.id
-                  ? 'bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-lg'
+                  ? 'bg-linear-to-r from-purple-600 to-blue-600 text-white shadow-lg'
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }`}
               >
@@ -248,7 +248,7 @@ export default function Contact() {
               key={category.id}
               onClick={() => setSelectedFilter(category.id)}
               className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${selectedFilter === category.id
-                ? 'bg-gradient-to-r from-primary to-secondary text-white shadow-lg scale-105'
+                ? 'bg-linear-to-r from-primary to-secondary text-white shadow-lg scale-105'
                 : 'bg-white text-gray-600 hover:bg-gray-50 border border-gray-200 hover:border-purple-300'
                 }`}
               whileHover={{ scale: selectedFilter === category.id ? 1.05 : 1.02 }}
@@ -280,7 +280,7 @@ export default function Contact() {
                 className="bg-white rounded-2xl shadow-lg overflow-hidden cursor-pointer transform transition-all duration-300 hover:shadow-2xl"
                 onClick={() => setSelectedEvent(event)}
               >
-                <div className="bg-gradient-to-br from-purple-500 to-blue-500 h-48 flex items-center justify-center text-8xl">
+                <div className="bg-linear-to-br from-purple-500 to-blue-500 h-48 flex items-center justify-center text-8xl">
                   {event.image}
                 </div>
                 <div className="p-6">
@@ -313,7 +313,7 @@ export default function Contact() {
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="px-4 py-2 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-lg font-semibold hover:shadow-lg transition-all"
+                      className="px-4 py-2 bg-linear-to-r from-purple-600 to-blue-600 text-white rounded-lg font-semibold hover:shadow-lg transition-all"
                     >
                       Register Now
                     </motion.button>
@@ -353,7 +353,7 @@ export default function Contact() {
               onClick={(e) => e.stopPropagation()}
               className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl"
             >
-              <div className="bg-gradient-to-br from-purple-500 to-blue-500 h-64 flex items-center justify-center text-9xl relative">
+              <div className="bg-linear-to-br from-purple-500 to-blue-500 h-64 flex items-center justify-center text-9xl relative">
                 {selectedEvent.image}
                 <button
                   onClick={() => setSelectedEvent(null)}
@@ -405,7 +405,7 @@ export default function Contact() {
                     ))}
                   </div>
                 </div>
-                <div className="bg-gradient-to-r from-purple-50 to-blue-50 rounded-xl p-5 mb-6">
+                <div className="bg-linear-to-r from-purple-50 to-blue-50 rounded-xl p-5 mb-6">
                   <p className="text-center text-lg">
                     <span className="font-bold text-purple-600 text-2xl">{selectedEvent.spots}</span>
                     <span className="text-gray-700 ml-2">spots remaining</span>
@@ -414,7 +414,7 @@ export default function Contact() {
                 <motion.button
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-xl font-bold text-lg hover:shadow-lg transition-all"
+                  className="w-full py-4 bg-linear-to-r from-purple-600 to-blue-600 text-white rounded-xl font-bold text-lg hover:shadow-lg transition-all"
                 >
                   Register for This Event
                 </motion.button>
@@ -431,7 +431,7 @@ export default function Contact() {
         viewport={{ once: true }}
         className="max-w-7xl mx-auto px-4 py-16"
       >
-        <div className="bg-gradient-to-r from-purple-600 to-blue-600 rounded-3xl p-12 text-center text-white shadow-2xl">
+        <div className="bg-linear-to-r from-purple-600 to-blue-600 rounded-3xl p-12 text-center text-white shadow-2xl">
           <h2 className="text-4xl font-bold mb-4">Don&apos;t See What You&apos;re Looking For?</h2>
           <p className="text-xl mb-8 opacity-90">Contact us to schedule a personal consultation session</p>
           <motion.button

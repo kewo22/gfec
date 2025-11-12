@@ -41,7 +41,7 @@ export default function Malta(props: CountryProps) {
   return (
     <div className="flex flex-col gap-20">
       <div className="flex flex-col sm:flex-row gap-20 px-10 xl:px-0">
-        <Typography variant="p" className="text-justify !leading-normal sm:!leading-8">
+        <Typography variant="p" className="text-justify leading-normal! sm:leading-8!">
           Malta, a rising star in European education, offers internationally recognized qualifications through its collaboration with top UK and European institutions. Located in the heart of the Mediterranean, Malta blends quality education, a peaceful lifestyle, and affordability—making it a top pick for students seeking UK-standard education in a sunny, student-friendly environment.
         </Typography>
       </div>

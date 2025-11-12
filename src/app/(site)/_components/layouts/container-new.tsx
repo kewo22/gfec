@@ -9,7 +9,7 @@ interface ContainerProps extends React.HTMLAttributes<HTMLElement> {
 export default function ContainerNew(props: ContainerProps) {
   const { className, full = true, children, ...rest } = props
 
-  let wrapperClasses = "relative max-w-screen-xl mx-auto";
+  let wrapperClasses = "relative max-w-(--breakpoint-xl) mx-auto";
 
   // if (full) {
 

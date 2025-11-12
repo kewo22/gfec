@@ -108,7 +108,7 @@ export default function DestinationBulletPointsAnimComp(props: DestinationBullet
                             </motion.span>
                         </Typography>
                         {/* <motion.div
-                className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full"
+                className="w-24 h-1 bg-linear-to-r from-blue-500 to-purple-500 mx-auto rounded-full"
                 variants={{
                   hidden: { width: 0 },
                   visible: {
@@ -138,9 +138,9 @@ export default function DestinationBulletPointsAnimComp(props: DestinationBullet
                                     {/* Checkmark */}
                                     <motion.div
                                         variants={checkmarkVariants}
-                                        className="flex-shrink-0"
+                                        className="shrink-0"
                                     >
-                                        <div className="w-8 h-8 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center shadow-lg">
+                                        <div className="w-8 h-8 bg-linear-to-r from-primary to-secondary rounded-full flex items-center justify-center shadow-lg">
                                             <motion.svg
                                                 className="w-5 h-5 text-white"
                                                 fill="none"
@@ -202,7 +202,7 @@ export default function DestinationBulletPointsAnimComp(props: DestinationBullet
             >
 
               <motion.div
-                className="inline-flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full shadow-lg"
+                className="inline-flex items-center space-x-2 px-6 py-3 bg-linear-to-r from-blue-500 to-purple-600 text-white rounded-full shadow-lg"
                 whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(0,0,0,0.1)" }}
                 whileTap={{ scale: 0.95 }}
               >

@@ -35,20 +35,20 @@ export default function Select(props: SelectInputs) {
         error: "",
       },
       input:
-        "outline-none bg-transparent flex-grow appearance-none select-input text-sm",
+        "outline-none bg-transparent grow appearance-none select-input text-sm",
       errorText: "text-red-600 text-xs font-semibold",
     };
 
     const classNameCopy = JSON.parse(JSON.stringify(className));
     if (isDisabled) {
-      classNameCopy.wrapper.disabled = "!bg-gray-100";
+      classNameCopy.wrapper.disabled = "bg-gray-100!";
       className = { ...classNameCopy };
     }
 
     if (!isDisabled) {
       if (fieldState && fieldState.error && fieldState.error.message) {
         const classNameCopy = JSON.parse(JSON.stringify(className));
-        classNameCopy.wrapper.error = "!border-b-red-600";
+        classNameCopy.wrapper.error = "border-b-red-600!";
         classNameCopy.label.error = "text-red-600";
         className = { ...classNameCopy };
       } else {

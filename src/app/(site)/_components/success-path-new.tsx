@@ -150,13 +150,13 @@ export default function SuccessPathNew() {
                 className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 lg:gap-8 mb-8 sm:mb-12 lg:mb-16 mx-4 sm:mx-6 lg:mx-0 p-4 sm:p-6 lg:p-8 bg-white rounded-xl sm:rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300"
             >
                 {/* Image Section */}
-                <div className="w-24 h-24 sm:w-32 sm:h-32 lg:w-40 lg:h-40 relative flex-shrink-0">
+                <div className="w-24 h-24 sm:w-32 sm:h-32 lg:w-40 lg:h-40 relative shrink-0">
                     <motion.div
                         variants={imageVariants}
                         className="relative overflow-hidden rounded-full shadow-lg"
                         whileHover={{ rotate: 10 }}
                     >
-                        {/* <div className={`absolute inset-0 bg-gradient-to-br ${step.color} opacity-20`}></div> */}
+                        {/* <div className={`absolute inset-0 bg-linear-to-br ${step.color} opacity-20`}></div> */}
                         <Image
                             priority
                             src={step.image}
@@ -172,7 +172,7 @@ export default function SuccessPathNew() {
                         /> */}
                         {/* <motion.div
                             variants={numberVariants}
-                            className={`absolute -top-1 -right-1 sm:-top-2 sm:-right-2 w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br ${step.color} rounded-full flex items-center justify- center shadow-md`}
+                            className={`absolute -top-1 -right-1 sm:-top-2 sm:-right-2 w-8 h-8 sm:w-10 sm:h-10 bg-linear-to-br ${step.color} rounded-full flex items-center justify- center shadow-md`}
                         >
                             <span className="text-white text-sm sm:text-base font-bold">{step.id}</span>
                         </motion.div> */}
@@ -194,7 +194,7 @@ export default function SuccessPathNew() {
                                 {step.icon}
                             </motion.div> */}
 
-                            {/* bg-gradient-to-r  bg-clip-text text-transparent ${step.color} */}
+                            {/* bg-linear-to-r  bg-clip-text text-transparent ${step.color} */}
                             <motion.span
                                 whileHover={{ scale: 1.05 }}
                                 className='mb-2'
@@ -229,7 +229,7 @@ export default function SuccessPathNew() {
                 transition={{ delay: index * 0.2 + 0.8, duration: 0.5 }}
             >
                 <motion.div
-                    className="w-1 h-8 sm:h-20 bg-gradient-to-b from-primary to-secondary rounded-full"
+                    className="w-1 h-8 sm:h-20 bg-linear-to-b from-primary to-secondary rounded-full"
                     initial={{ scaleY: 0 }}
                     animate={isInView ? { scaleY: 1 } : { scaleY: 0 }}
                     transition={{ delay: index * 0.2 + 1, duration: 0.6 }}
@@ -256,7 +256,7 @@ export default function SuccessPathNew() {
                         viewport={{ once: true }}
                         className="text-center mb-16"
                     >
-                        <h2 className="text-4xl lg:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                        <h2 className="text-4xl lg:text-5xl font-bold mb-6 bg-linear-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                             Your Pathway to Achieving Success
                         </h2>
                         <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -283,7 +283,7 @@ export default function SuccessPathNew() {
                         className="text-center mt-16 flex flex-row justify-center"
                     >
                         {/* <motion.button
-                            className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transform transition-all duration-300"
+                            className="bg-linear-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transform transition-all duration-300"
                             whileHover={{ scale: 1.05, y: -2 }}
                             whileTap={{ scale: 0.95 }}
                         >

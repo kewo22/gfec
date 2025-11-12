@@ -1,7 +1,6 @@
 "use client";
 import { Typography } from "@/app/_components/ui/typography";
 import { Fetcher, ResolveBaseUrl } from "@/app/utils/common";
-import { useState } from "react";
 import useSWR from "swr";
 import { DataGrid } from "./DataGrid";
 import { GetInTouchResponse } from "@/app/_interfaces/get-in-touch";

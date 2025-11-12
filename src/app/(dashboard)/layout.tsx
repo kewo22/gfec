@@ -17,12 +17,11 @@ export default async function DashBoardLayout({
 
   const session = await getServerSession();
 
-
   return (
     <SessionProvider session={session}>
       <div className="min-h-screen max-h-screen w-screen overflow-hidden flex flex-row gap-5 bg-alice-blue p-5">
         <SideNav />
-        <main className="flex-grow bg-white rounded-lg shadow-lg h-auto">
+        <main className="grow bg-white rounded-lg shadow-lg h-auto">
           {children}
         </main>
       </div>

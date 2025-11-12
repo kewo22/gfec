@@ -48,11 +48,11 @@ export default function Uk(props: CountryProps) {
   return (
     <div className="flex flex-col gap-20">
       <div className="flex flex-col sm:flex-row gap-20 px-10 xl:px-0">
-        <Typography variant="p" className="text-justify !leading-normal sm:!leading-8">
+        <Typography variant="p" className="text-justify leading-normal! sm:leading-8!">
           The United Kingdom is a global leader in higher education, renowned for its academic excellence, world-class universities, and centuries-old tradition of scholarship. Home to prestigious institutions such as Oxford, Cambridge, and many top-ranking modern universities, the UK offers students an enriching academic journey with qualifications that are globally recognized and respected by employers and institutions alike.
         </Typography>
 
-        <Typography variant="p" className="text-justify !leading-normal sm:!leading-8">
+        <Typography variant="p" className="text-justify leading-normal! sm:leading-8!">
           The UK is not just about academics—its diverse and inclusive society, vibrant student communities, and dynamic cities make it a welcoming destination for students from all walks of life. Whether you’re walking through historic campuses, attending lectures from leading experts, or immersing yourself in the arts, culture, and innovation, studying in the UK offers a once-in-a-lifetime experience.
         </Typography>
       </div>

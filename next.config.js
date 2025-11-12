@@ -34,11 +34,6 @@ const nextConfig = {
     LNG: process.env.LNG || "NO LNG FROM NEXT.CONFIG",
   },
   transpilePackages: [
-    "@fortawesome/fontawesome-svg-core",
-    "@fortawesome/free-brands-svg-icons",
-    "@fortawesome/free-regular-svg-icons",
-    "@fortawesome/free-solid-svg-icons",
-    "@fortawesome/react-fontawesome",
     "@hookform/resolvers",
     "@radix-ui/react-icons",
     "@react-google-maps/api",

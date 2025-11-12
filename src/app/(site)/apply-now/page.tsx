@@ -130,7 +130,7 @@ export default function ApplyNow() {
         <div className="max-w-md mx-auto bg-white rounded-lg shadow-lg p-8">
           {submitSuccess && (
             <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg flex items-center flex-row gap-3">
-              <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+              <CheckCircle2 className="w-5 h-5 text-green-600 shrink-0 mt-0.5" />
               <div className="flex flex-row items-center gap-2 justify-center">
                 <Typography variant="md" className="text-green-800 font-semibold tracking-wide">Success! Your details submitted successfully.</Typography>
               </div>
@@ -139,7 +139,7 @@ export default function ApplyNow() {
 
           {submitError && (
             <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg flex items-start gap-3">
-              <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
+              <AlertCircle className="w-5 h-5 text-red-600 shrink-0 mt-0.5" />
               <p className="text-red-800 text-sm">{submitError}</p>
             </div>
           )}

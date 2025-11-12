@@ -36,20 +36,20 @@ export default function Input(props: TextInputProps) {
         default: "text-left sm:block w-max",
         error: "",
       },
-      input: "outline-none bg-transparent flex-grow pl-3 w-full",
+      input: "outline-none bg-transparent grow pl-3 w-full",
       errorText:
         "text-red-600 text-xs font-semibold text-right absolute right-0 z-10 mt-2 sm:mt-0",
     };
 
     const classNameCopy = JSON.parse(JSON.stringify(className));
     if (isDisabled) {
-      classNameCopy.wrapper.disabled = "!bg-gray-100";
+      classNameCopy.wrapper.disabled = "bg-gray-100!";
       className = { ...classNameCopy };
     }
 
     if (!isDisabled) {
       if (fieldState && fieldState.error && fieldState.error.message) {
-        classNameCopy.wrapper.error = "!border-b-red-600";
+        classNameCopy.wrapper.error = "border-b-red-600!";
         classNameCopy.label.error = "text-red-600";
         className = { ...classNameCopy };
       } else {

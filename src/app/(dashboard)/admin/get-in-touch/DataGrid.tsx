@@ -179,7 +179,7 @@ export function DataGrid(props: DataGridProps) {
           className="max-w-sm border border-slate-500 rounded pl-2"
         />
       </div>
-      <div className="w-full rounded-md border flex-grow overflow-hidden">
+      <div className="w-full rounded-md border grow overflow-hidden">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (

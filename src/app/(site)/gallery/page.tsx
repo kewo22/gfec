@@ -286,7 +286,7 @@ const MasonryGallery = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 p-4">
+    <div className="min-h-screen bg-linear-to-br from-slate-50 to-slate-100 p-4">
       {/* Header */}
       <motion.div
         className="text-center my-10 lg:my-20"
@@ -311,7 +311,7 @@ const MasonryGallery = () => {
             key={category.id}
             onClick={() => setActiveFilter(category.id)}
             className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${activeFilter === category.id
-              ? 'bg-gradient-to-r from-primary to-secondary text-white shadow-lg scale-105'
+              ? 'bg-linear-to-r from-primary to-secondary text-white shadow-lg scale-105'
               : 'bg-white text-gray-600 hover:bg-gray-50 border border-gray-200 hover:border-purple-300'
               }`}
             whileHover={{ scale: activeFilter === category.id ? 1.05 : 1.02 }}
@@ -401,7 +401,7 @@ const MasonryGallery = () => {
                     </div> */}
 
                     {/* Image info */}
-                    <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black to-transparent text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="absolute bottom-0 left-0 right-0 p-4 bg-linear-to-t from-black to-transparent text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <p className="font-medium text-sm">{image.alt}</p>
                     </div>
                   </motion.div>
@@ -464,7 +464,7 @@ const MasonryGallery = () => {
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full hover:from-purple-600 hover:to-pink-600 transition-all"
+                    className="flex items-center space-x-2 px-6 py-3 bg-linear-to-r from-purple-500 to-pink-500 text-white rounded-full hover:from-purple-600 hover:to-pink-600 transition-all"
                   >
                     <Heart className="w-5 h-5" />
                     <span>Like</span>

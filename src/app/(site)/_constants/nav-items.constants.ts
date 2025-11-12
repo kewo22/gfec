@@ -1,11 +1,11 @@
 import { NavItemLink } from "../_types/mobile-nav-item";
 
-import {
-  faCircleInfo,
-  faHouse,
-  faLocationDot,
-  faPlaneDeparture,
-} from "@fortawesome/free-solid-svg-icons";
+// import {
+//   faCircleInfo,
+//   faHouse,
+//   faLocationDot,
+//   faPlaneDeparture,
+// } from "@fortawesome/free-solid-svg-icons";
 
 export const NavItems: NavItemLink[] = [
   {
@@ -13,21 +13,21 @@ export const NavItems: NavItemLink[] = [
     route: "/",
     class: "",
     isActive: false,
-    icon: faHouse,
+    // icon: faHouse,
   },
   {
     text: "About GFEC",
     route: "/about",
     class: "",
     isActive: false,
-    icon: faCircleInfo,
+    // icon: faCircleInfo,
   },
   {
     text: "Study Destinations",
     route: "/study-abroad",
     class: "",
     isActive: false,
-    icon: faPlaneDeparture,
+    // icon: faPlaneDeparture,
   },
   // {
   //   text: "Study Destinations",
@@ -41,7 +41,7 @@ export const NavItems: NavItemLink[] = [
     route: "/gallery",
     class: "",
     isActive: false,
-    icon: faPlaneDeparture,
+    // icon: faPlaneDeparture,
   },
   // {
   //   text: "Events",
@@ -55,6 +55,6 @@ export const NavItems: NavItemLink[] = [
     route: "/contact",
     class: "",
     isActive: false,
-    icon: faLocationDot,
+    // icon: faLocationDot,
   },
 ];

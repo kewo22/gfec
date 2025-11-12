@@ -2,18 +2,19 @@
 
 import { forwardRef, memo, ReactNode } from "react";
 
-import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useMutationObserver } from "@/app/_hooks/useMutationObserver";
+import { X } from "lucide-react";
+import { cn } from "@/app/utils/utils";
 
 interface ModalProps {
+  dialogWrapperClassName?: string;
   children?: ReactNode;
   onClose?: () => void;
 }
 export type Ref = HTMLDialogElement;
 
 export const Modal = forwardRef<Ref, ModalProps>((props, ref) => {
-  const { children, onClose } = props;
+  const { children, dialogWrapperClassName, onClose } = props;
 
   useMutationObserver(ref, (e: any) => {
     const el =
@@ -32,21 +33,20 @@ export const Modal = forwardRef<Ref, ModalProps>((props, ref) => {
 
   const onCloseModel = () => {
     if (onClose) onClose();
-    ((ref as any).current as HTMLDialogElement).close();
+    const dialogElement = (ref as any)?.current as HTMLDialogElement;
+    if (dialogElement) {
+      dialogElement.close();
+    }
     const bodyEl = document.querySelector("body");
     bodyEl?.classList.remove("overflow-hidden");
   };
 
   return (
-    <dialog className="p-5 modal" id="modal" ref={ref}>
-      <div className="flex justify-end">
-        <FontAwesomeIcon
-          icon={faTimesCircle}
-          size="2x"
-          className="cursor-pointer"
-          onClick={onCloseModel}
-        />
-      </div>
+    <dialog className={cn("p-5 modal", dialogWrapperClassName)} id="modal" ref={ref}>
+      <X
+        className="cursor-pointer ml-auto"
+        onClick={onCloseModel}
+      />
       {children}
     </dialog>
   );

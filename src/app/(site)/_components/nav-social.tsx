@@ -1,11 +1,4 @@
-import React from "react";
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faFacebook,
-  faInstagram,
-  faLinkedin,
-} from "@fortawesome/free-brands-svg-icons";
+import { SocialIcon } from 'react-social-icons';
 
 type NavSocialProps = {
   iconClass?: string;
@@ -33,19 +26,20 @@ export default function NavSocial(props: NavSocialProps) {
         className="flex items-center justify-center relative transition-all sm-btn"
         onClick={onFbClick}
       >
-        <FontAwesomeIcon icon={faFacebook} size="2x" className={iconClass} />
+        <SocialIcon url="https://facebook.com" onClick={(event) => event.preventDefault()} />
       </button>
       <button
         className="flex items-center justify-center relative transition-all sm-btn"
         onClick={onInstagramClick}
       >
-        <FontAwesomeIcon icon={faInstagram} size="2x" className={iconClass} />
+        <SocialIcon url="https://instagram.com" onClick={(event) => event.preventDefault()} />
+
       </button>
       <button
         className="flex items-center justify-center relative transition-all sm-btn"
         onClick={onInClick}
       >
-        <FontAwesomeIcon icon={faLinkedin} size="2x" className={iconClass} />
+        <SocialIcon url="https://linkedin.com" onClick={(event) => event.preventDefault()} />
       </button>
     </div>
   );

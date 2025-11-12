@@ -28,7 +28,7 @@ export default function Aus(props: CountryProps) {
   return (
     <div className="flex flex-col gap-20">
       <div className="flex flex-col sm:flex-row gap-20 px-10 xl:px-0">
-        <Typography variant="p" className="text-justify !leading-normal sm:!leading-8">
+        <Typography variant="p" className="text-justify leading-normal! sm:leading-8!">
           Australia is a vast and diverse country known for its stunning natural landscapes, unique wildlife, and vibrant cities. As both a continent and a nation, it features everything from golden beaches and tropical rainforests to arid deserts and snowy mountains. Major cities like Sydney, Melbourne, and Brisbane blend modern living with laid-back charm, while iconic landmarks such as the Sydney Opera House, the Great Barrier Reef, and Uluru highlight the country&apos;s natural and cultural beauty. With its friendly people, outdoor lifestyle, and rich Indigenous heritage, Australia is a land of adventure and opportunity.
         </Typography>
       </div>

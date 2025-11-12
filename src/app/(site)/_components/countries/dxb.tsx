@@ -42,7 +42,7 @@ export default function Dxb(props: CountryProps) {
   return (
     <div className="flex flex-col gap-20">
       <div className="flex flex-col sm:flex-row gap-20 px-10 xl:px-0">
-        <Typography variant="p" className="text-justify !leading-normal sm:!leading-8">
+        <Typography variant="p" className="text-justify leading-normal! sm:leading-8!">
           Dubai is quickly becoming an education hub for international students with its world-class infrastructure, international university campuses, and dynamic lifestyle. The city offers a unique opportunity to study in one of the fastest-growing economies, blending academic excellence with career potential.
           With a wide range of globally recognized programs and top-tier facilities, Dubai is the gateway to education in the Middle East with a global impact.
         </Typography>

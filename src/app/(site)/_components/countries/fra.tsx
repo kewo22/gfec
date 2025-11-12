@@ -37,7 +37,7 @@ export default function Fra(props: CountryProps) {
   return (
     <div className="flex flex-col gap-20">
       <div className="flex flex-col sm:flex-row gap-20 px-10 xl:px-0">
-        <Typography variant="p" className="text-justify !leading-normal sm:!leading-8">
+        <Typography variant="p" className="text-justify leading-normal! sm:leading-8!">
           France is globally recognized for its contribution to arts, fashion, philosophy, and science—and its higher education system is no exception. With some of the world&apos;s top-ranked universities and business schools, France offers an academic journey rich in quality, culture, and career potential.
         </Typography>
       </div>

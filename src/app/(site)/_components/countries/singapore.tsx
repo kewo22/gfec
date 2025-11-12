@@ -29,7 +29,7 @@ export default function Singapore(props: CountryProps) {
     return (
         <div className="flex flex-col gap-20">
             <div className="flex flex-col sm:flex-row gap-20 px-10 xl:px-0">
-                <Typography variant="p" className="text-justify !leading-normal sm:!leading-8">
+                <Typography variant="p" className="text-justify leading-normal! sm:leading-8!">
                     Singapore is a vibrant island city-state in Southeast Asia, known for its modern skyline, lush green spaces, and cultural diversity. Blending Chinese, Malay, Indian, and Western influences, it offers a unique mix of traditions and innovation. Renowned for its cleanliness, safety, and efficient infrastructure, Singapore is also a global financial hub and a popular travel destination, home to landmarks like Marina Bay Sands, Gardens by the Bay, and Sentosa Island. Despite its small size, Singapore stands out as one of the world’s most dynamic and forward-thinking nations.
                 </Typography>
             </div>

@@ -3,7 +3,7 @@ export type NavItemLink = {
     route: string;
     class: string;
     isActive: boolean;
-    icon: any
+    icon?: any
 };
 
 export type CountriesLink = {

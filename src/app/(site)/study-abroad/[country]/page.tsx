@@ -92,7 +92,7 @@ export default function DestinationPage() {
 
                 {/* Gradient overlay */}
                 <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-primary/50 to-secondary/50"
+                    className="absolute inset-0 bg-linear-to-r from-primary/50 to-secondary/50"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.5 }}
