@@ -310,7 +310,7 @@ const MasonryGallery = () => {
           <motion.button
             key={category.id}
             onClick={() => setActiveFilter(category.id)}
-            className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${activeFilter === category.id
+            className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 cursor-pointer ${activeFilter === category.id
               ? 'bg-linear-to-r from-primary to-secondary text-white shadow-lg scale-105'
               : 'bg-white text-gray-600 hover:bg-gray-50 border border-gray-200 hover:border-purple-300'
               }`}
@@ -320,7 +320,7 @@ const MasonryGallery = () => {
             <span className="flex items-center space-x-2">
               <span>{category.name}</span>
               <span className={`text-xs px-2 py-1 rounded-full ${activeFilter === category.id
-                ? 'bg-white bg-opacity-20 text-white'
+                ? 'bg-white bg-opacity-20 text-secondary'
                 : 'bg-gray-100 text-gray-500'
                 }`}>
                 {category.count}

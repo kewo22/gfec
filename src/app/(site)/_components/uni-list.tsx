@@ -57,7 +57,7 @@ const UniversityPartnersGrid = (props: UniversityPartnersGridProps) => {
 
         {/* Filter Tabs */}
         <motion.div
-          className="flex flex-wrap justify-center gap-2 mb-12"
+          className="flex flex-wrap justify-center gap-2.5 mb-12"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
@@ -66,7 +66,7 @@ const UniversityPartnersGrid = (props: UniversityPartnersGridProps) => {
             <button
               key={filterItem.key}
               onClick={() => setFilter(filterItem.key)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${filter === filterItem.key
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 cursor-pointer ${filter === filterItem.key
                 ? 'bg-primary text-white shadow-lg scale-105'
                 : 'bg-white text-gray-600 hover:bg-blue-50 hover:text-blue-600 shadow-sm'
                 }`}
