@@ -1,7 +1,3 @@
-'use client';
-
-import { SocialIcon } from 'react-social-icons';
-
 import SuccessStoriesText from "./_components/success-stories-text";
 import WhatGfecOffers from "./_components/what-gfec-offers";
 import SummaryCounterGroup from "./_components/summary-counter-group";
@@ -27,21 +23,6 @@ export default function SitePage() {
       </div>
       <SuccessPathNew />
       <SuccessStoriesText />
-
-      {/* <a
-        className="whatsapp-float"
-        href="https://wa.me/15551234567?text=Hello%20there%2C%20I%27d%20like%20help%20with%20..."
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Chat on WhatsApp"
-      > */}
-      {/*   */}
-      {/* onClick={(event) => event.preventDefault()}  */}
-      <div className='fixed z-[999999999] bottom-5 right-5'>
-        <SocialIcon network="whatsapp" url="https://wa.me/+94773889161" target="_blank" />
-      </div>
-      {/* </a> */}
-
     </section>
   );
 }

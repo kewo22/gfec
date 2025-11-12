@@ -2,10 +2,10 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { SocialIcon } from 'react-social-icons';
 
 import Footer from "./_components/footer";
 import NavigationNew from "./_components/navigation-new";
-
 
 export const metadata: Metadata = {
   title: "GFEC",
@@ -24,6 +24,9 @@ export default function SiteLayout({
       <Footer />
       <Analytics />
       <SpeedInsights />
+      <div className='fixed z-[999999999] bottom-5 right-5'>
+        <SocialIcon network="whatsapp" url="https://wa.me/+94773889161" target="_blank" />
+      </div>
     </div>
   );
 }
