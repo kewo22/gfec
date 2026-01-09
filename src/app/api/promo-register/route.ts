@@ -1,4 +1,4 @@
-import { MongoClient } from "mongodb";
+import { connectToDatabase } from "../../utils/mongodb";
 
 type ApiResponse<T> = {
     data?: T;
@@ -12,11 +12,9 @@ export async function GET(request: Request) {
 
 export async function POST(request: Request) {
     const data = await request.json();
-    const uri = process.env.MONGO_URL || "";
 
     try {
-        const client = await new MongoClient(uri.trim()).connect();
-        const db = await client.db("gfec");
+        const { db } = await connectToDatabase();
         const collection = db.collection("promo-register");
         const insertOneRes = await collection.insertOne(data);
 
