@@ -105,59 +105,28 @@ export async function POST(request: Request) {
         html,
       };
 
-      await Promise.all([
-        transporter.sendMail(mailOptions).then(res => {
-          console.info(res)
-          loggerCollection.insertOne({
+      const sendEmailWithLogging = async (mailOptions: Mail.Options) => {
+        try {
+          const res = await transporter.sendMail(mailOptions);
+          console.info(res);
+          await loggerCollection.insertOne({
             type: "email success",
             log: JSON.stringify(res)
-          })
-        }).catch(error => {
-          console.error(error)
-          loggerCollection.insertOne({
+          });
+        } catch (error) {
+          console.error(error);
+          await loggerCollection.insertOne({
             type: "email failed",
             log: JSON.stringify(error)
-          })
-        }),
-        transporter.sendMail(mailOptions1).then(res => {
-          console.info(res)
-          loggerCollection.insertOne({
-            type: "email success",
-            log: JSON.stringify(res)
-          })
-        }).catch(error => {
-          console.error(error)
-          loggerCollection.insertOne({
-            type: "email failed",
-            log: JSON.stringify(error)
-          })
-        }),
-        transporter.sendMail(mailOptions2).then(res => {
-          console.info(res)
-          loggerCollection.insertOne({
-            type: "email success",
-            log: JSON.stringify(res)
-          })
-        }).catch(error => {
-          console.error(error)
-          loggerCollection.insertOne({
-            type: "email failed",
-            log: JSON.stringify(error)
-          })
-        }),
-        transporter.sendMail(mailOptions3).then(res => {
-          console.info(res)
-          loggerCollection.insertOne({
-            type: "email success",
-            log: JSON.stringify(res)
-          })
-        }).catch(error => {
-          console.error(error)
-          loggerCollection.insertOne({
-            type: "email failed",
-            log: JSON.stringify(error)
-          })
-        })
+          });
+        }
+      };
+
+      await Promise.allSettled([
+        sendEmailWithLogging(mailOptions),
+        sendEmailWithLogging(mailOptions1),
+        sendEmailWithLogging(mailOptions2),
+        sendEmailWithLogging(mailOptions3)
       ]);
 
     } else {
