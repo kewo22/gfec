@@ -1,6 +1,6 @@
 import nodemailer from "nodemailer";
-import { MongoClient } from "mongodb";
 import Mail from "nodemailer/lib/mailer";
+import { connectToDatabase } from "../utils/mongodb";
 
 type ApiResponse<T> = {
   data?: T;
@@ -23,9 +23,7 @@ export async function GET(request: Request) {
 export async function POST(request: Request) {
   const data = await request.json();
 
-  const uri = process.env.MONGO_URL || "";
-  const client = await new MongoClient(uri.trim()).connect();
-  const db = await client.db("gfec");
+  const { db } = await connectToDatabase();
   const collection = db.collection("getInTouch");
   const loggerCollection = db.collection("logger");
   const insertOneRes = await collection.insertOne(data);
@@ -107,87 +105,60 @@ export async function POST(request: Request) {
         html,
       };
 
-      await transporter.sendMail(mailOptions).then(res => {
-        console.info(res)
-        loggerCollection.insertOne({
-          type: "email success",
-          log: JSON.stringify(res)
+      await Promise.all([
+        transporter.sendMail(mailOptions).then(res => {
+          console.info(res)
+          loggerCollection.insertOne({
+            type: "email success",
+            log: JSON.stringify(res)
+          })
+        }).catch(error => {
+          console.error(error)
+          loggerCollection.insertOne({
+            type: "email failed",
+            log: JSON.stringify(error)
+          })
+        }),
+        transporter.sendMail(mailOptions1).then(res => {
+          console.info(res)
+          loggerCollection.insertOne({
+            type: "email success",
+            log: JSON.stringify(res)
+          })
+        }).catch(error => {
+          console.error(error)
+          loggerCollection.insertOne({
+            type: "email failed",
+            log: JSON.stringify(error)
+          })
+        }),
+        transporter.sendMail(mailOptions2).then(res => {
+          console.info(res)
+          loggerCollection.insertOne({
+            type: "email success",
+            log: JSON.stringify(res)
+          })
+        }).catch(error => {
+          console.error(error)
+          loggerCollection.insertOne({
+            type: "email failed",
+            log: JSON.stringify(error)
+          })
+        }),
+        transporter.sendMail(mailOptions3).then(res => {
+          console.info(res)
+          loggerCollection.insertOne({
+            type: "email success",
+            log: JSON.stringify(res)
+          })
+        }).catch(error => {
+          console.error(error)
+          loggerCollection.insertOne({
+            type: "email failed",
+            log: JSON.stringify(error)
+          })
         })
-      }).catch(error => {
-        console.error(error)
-        loggerCollection.insertOne({
-          type: "email failed",
-          log: JSON.stringify(error)
-        })
-        return Response.json({ message: `Failed`, data: null, error });
-      })
-
-      await transporter.sendMail(mailOptions1).then(res => {
-        console.info(res)
-        loggerCollection.insertOne({
-          type: "email success",
-          log: JSON.stringify(res)
-        })
-      }).catch(error => {
-        console.error(error)
-        loggerCollection.insertOne({
-          type: "email failed",
-          log: JSON.stringify(error)
-        })
-        return Response.json({ message: `Failed`, data: null, error });
-      })
-
-      await transporter.sendMail(mailOptions2).then(res => {
-        console.info(res)
-        loggerCollection.insertOne({
-          type: "email success",
-          log: JSON.stringify(res)
-        })
-      }).catch(error => {
-        console.error(error)
-        loggerCollection.insertOne({
-          type: "email failed",
-          log: JSON.stringify(error)
-        })
-        return Response.json({ message: `Failed`, data: null, error });
-      })
-
-      await transporter.sendMail(mailOptions3).then(res => {
-        console.info(res)
-        loggerCollection.insertOne({
-          type: "email success",
-          log: JSON.stringify(res)
-        })
-      }).catch(error => {
-        console.error(error)
-        loggerCollection.insertOne({
-          type: "email failed",
-          log: JSON.stringify(error)
-        })
-        return Response.json({ message: `Failed`, data: null, error });
-      })
-
-      // Promise.all([
-      //   transporter.sendMail(mailOptions),
-      //   transporter.sendMail(mailOptions1),
-      //   transporter.sendMail(mailOptions2),
-      //   transporter.sendMail(mailOptions3),
-      // ])
-      //   .then((res) => {
-      // console.log(res)
-      // loggerCollection.insertOne({
-      //   type: "email success",
-      //   log: JSON.stringify(res)
-      // })
-      //   })
-      //   .catch((error) => {
-      // console.log(error)
-      // loggerCollection.insertOne({
-      //   type: "email failed",
-      //   log: JSON.stringify(error)
-      // })
-      // return Response.json({ message: `Failed`, data: null, error });
-      //   });
+      ]);
 
     } else {
       loggerCollection.insertOne({
