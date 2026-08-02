@@ -1,8 +1,5 @@
 import React, {
-  DOMElement,
   ElementType,
-  InputHTMLAttributes,
-  RefAttributes,
   forwardRef,
 } from "react";
 import { twMerge } from "tailwind-merge";

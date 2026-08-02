@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef, useState, useEffect } from 'react';
-import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
+import { motion, useScroll, useMotionValueEvent } from 'motion/react';
 import Image from 'next/image';
 import { COUNTRIES } from '../_constants/countries.constants';
 import SectionTitle from './section-title';

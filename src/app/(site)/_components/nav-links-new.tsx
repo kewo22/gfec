@@ -7,7 +7,11 @@ import { usePathname } from "next/navigation";
 import { NavItems } from "../_constants/nav-items.constants";
 import { Typography } from "@/app/_components/ui/typography";
 
-export default function NavLinksNew({ className }: any) {
+interface NavLinksNewProps {
+  className?: string;
+}
+
+export default function NavLinksNew({ className }: NavLinksNewProps) {
   const pathname = usePathname();
 
   const navItems = NavItems.map((item) => {

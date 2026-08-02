@@ -3,7 +3,7 @@
 import { useParams } from "next/navigation";
 import { COUNTRIES, } from "../../_constants/countries.constants";
 import Image from "next/image";
-import { motion, } from 'framer-motion';
+import { motion, } from 'motion/react';
 import { useState } from "react";
 import Uk from "../../_components/countries/uk";
 import Ger from "../../_components/countries/ger";

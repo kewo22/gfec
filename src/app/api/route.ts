@@ -2,12 +2,6 @@ import nodemailer from "nodemailer";
 import { MongoClient } from "mongodb";
 import Mail from "nodemailer/lib/mailer";
 
-type ApiResponse<T> = {
-  data?: T;
-  message: string;
-  error?: any;
-};
-
 export async function GET(request: Request) {
   //   const res = await fetch("https://data.mongodb-api.com/...", {
   //     headers: {

@@ -8,8 +8,9 @@ import Footer from "./_components/footer";
 import NavigationNew from "./_components/navigation-new";
 
 export const metadata: Metadata = {
-  title: "GFEC",
-  description: "GFEC DESC",
+  title: "GFEC | Gordon Foreign Education Consultancy",
+  description:
+    "GFEC helps students in Sri Lanka study abroad. We partner with universities worldwide for visa, admissions, and relocation support.",
 };
 
 export default function SiteLayout({

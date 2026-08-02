@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Image from "next/image";
 
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'motion/react';
 import { X, Heart, Download, Share2 } from 'lucide-react';
 import { Typography } from '@/app/_components/ui/typography';
 

@@ -52,7 +52,6 @@ export default function GfecMap() {
           >
             <MarkerF
               position={mapCenter}
-              onLoad={() => console.log("Marker Loaded")}
             />
           </GoogleMap>
         )}

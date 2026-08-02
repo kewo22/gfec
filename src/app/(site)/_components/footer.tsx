@@ -120,7 +120,7 @@ export default function Footer() {
             {emails?.map((mail, i) => {
               return (
                 <Typography key={i} className="text-secondary hover:underline cursor-pointer" variant="p">
-                  <a className="" href={`tel:${mail}`}>
+                  <a className="" href={`mailto:${mail}`}>
                     {mail}
                   </a>
                 </Typography>

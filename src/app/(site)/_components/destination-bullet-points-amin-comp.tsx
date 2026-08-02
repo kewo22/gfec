@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView } from 'motion/react';
 
 import { Typography } from "@/app/_components/ui/typography";
 
@@ -71,21 +71,21 @@ export default function DestinationBulletPointsAnimComp(props: DestinationBullet
     };
 
     const checkmarkVariants = {
-      hidden: {
-        scale: 0,
-        rotate: -180
-    },
-    visible: {
-        scale: 1,
-        rotate: 0,
-        transition: {
-            type: "spring" as const,
-            stiffness: 200,
-            damping: 15,
-            delay: 0.2
-            // Remove duration and ease
+        hidden: {
+            scale: 0,
+            rotate: -180
+        },
+        visible: {
+            scale: 1,
+            rotate: 0,
+            transition: {
+                type: "spring" as const,
+                stiffness: 200,
+                damping: 15,
+                delay: 0.2
+                // Remove duration and ease
+            }
         }
-    }
     };
 
 

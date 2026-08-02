@@ -1,6 +1,6 @@
 'use client';
 import { Typography } from '@/app/_components/ui/typography';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'motion/react';
 import * as React from 'react';
 
 export function SequentialTextFade({

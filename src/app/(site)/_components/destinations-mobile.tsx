@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { COUNTRIES } from '../_constants/countries.constants';
 import Image from 'next/image';
 import ParticleButton from '@/app/_components/ui/particle-btn';

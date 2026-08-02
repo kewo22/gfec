@@ -7,7 +7,7 @@ import SectionTitle from "./section-title";
 import Button from "@/app/_components/ui/button";
 import { Modal } from "@/app/_components/ui/modal";
 import { ChevronLeft, ChevronRight, Quote, Star } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 
 export default function SuccessStoriesText() {
   const modalRef = useRef(null);

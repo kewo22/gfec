@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 
 import Container from "../_components/layouts/container";
 
@@ -87,7 +87,6 @@ export default function ApplyNow() {
         })
         .finally(() => {
           setIsLoading(false);
-          console.log('Validated data:', validatedData, privacyBasePolicyUrl);
           setFormData({ name: '', city: '', email: '', mobile: '', education: '' });
         });
 

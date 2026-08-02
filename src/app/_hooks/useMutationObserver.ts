@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 
 export const useMutationObserver = (
-    ref: any,
-    callback: any,
-    options = {
+    ref: React.RefObject<Element | null>,
+    callback: MutationCallback,
+    options: MutationObserverInit = {
         attributes: true,
         characterData: true,
         childList: true,

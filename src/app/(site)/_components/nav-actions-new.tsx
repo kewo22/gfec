@@ -5,7 +5,12 @@ import { useRouter } from "next/navigation";
 
 import Button from "@/app/_components/ui/button";
 
-export default function NavActionsNew({ openModel, className }: any) {
+interface NavActionsNewProps {
+  openModel?: () => void;
+  className?: string;
+}
+
+export default function NavActionsNew({ openModel, className }: NavActionsNewProps) {
   const router = useRouter();
 
   // take out from nav actions
@@ -20,7 +25,7 @@ export default function NavActionsNew({ openModel, className }: any) {
           block: "center",
         });
       } else {
-        openModel();
+        openModel?.();
       }
     }, 100);
   };

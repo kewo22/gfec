@@ -3,20 +3,9 @@ import { Country, University } from "../_types/country";
 import aus from "../../../../public/comp/aus.webp";
 
 import uk from "../../../../public/comp/uk.webp";
-// import uk from "../../../../public/comp/uk-ori.jpg";
 
-// import canada from "../../../../public/comp/canada.webp";
-// import finland from "../../../../public/comp/finland.webp";
-// import belarus from "../../../../public/comp/belarus.webp";
 import germany from "../../../../public/comp/germany.webp";
-// import italy from "../../../../public/comp/italy.webp";
-// import sweden from "../../../../public/comp/sweden.webp";
-// import russia from "../../../../public/comp/russia.webp";
 import france from "../../../../public/comp/france.webp";
-// import netherlands from "../../../../public/comp/netherlands.webp";
-// import latvia from "../../../../public/comp/latvia.webp";
-// import switzerland from "../../../../public/comp/switzerland.webp";
-// import dxb from "../../../../public/comp/dxb.webp";
 import dxb from "../../../../public/comp/dxb.webp";
 import malta from "../../../../public/comp/malta.webp";
 import spain from "../../../../public/comp/spain.webp";
@@ -57,7 +46,6 @@ export const COUNTRIES: Country[] = [
     class: "",
     description:
       "Study in a land of endless opportunities and natural beauty. Experience world-class education, diverse culture, and excellent post-study work opportunities in one of the world's most liveable countries.",
-    isCourseDetailAvailable: true, // not using anywhere
     flag: "/au.svg",
     flagBg: "bg-au-flag",
     route: "australia",
@@ -69,7 +57,6 @@ export const COUNTRIES: Country[] = [
     class: "",
     description:
       "Study in the land of innovation and art. Experience world-renowned education, rich history, and cultural diversity while building your future in the heart of Europe.",
-    isCourseDetailAvailable: false, // not using anywhere
     flag: "/fr.svg",
     flagBg: "bg-fr-flag",
     route: "france",
@@ -82,7 +69,6 @@ export const COUNTRIES: Country[] = [
     class: "",
     description:
       "Access top-tier engineering and technology programs. Study in Europe's economic powerhouse with excellent research facilities, affordable education, and strong industry connections.",
-    isCourseDetailAvailable: false, // not using anywhere
     flag: "/de.svg",
     flagBg: "bg-de-flag",
     route: "germany",
@@ -95,7 +81,6 @@ export const COUNTRIES: Country[] = [
     class: "",
     description:
       "Study in the Emerald Isle with a strong academic tradition. Enjoy friendly communities, English-language programs, and a thriving tech industry in one of Europe's most welcoming nations.",
-    isCourseDetailAvailable: false, // not using anywhere
     flag: "/ireland.svg",
     flagBg: "bg-ireland-flag",
     route: "ireland",
@@ -107,7 +92,6 @@ export const COUNTRIES: Country[] = [
     class: "",
     description:
       "Experience Mediterranean charm while studying in English. Enjoy a safe, sunny island nation with European education standards and a vibrant international student community.",
-    isCourseDetailAvailable: false, // not using anywhere
     flag: "/malta.svg",
     flagBg: "bg-malta-flag",
     route: "malta",
@@ -119,7 +103,6 @@ export const COUNTRIES: Country[] = [
     country: "Singapore",
     class: "",
     description: "Study in Asia's global education hub. Benefit from world-class universities, a multicultural environment, and strong industry links in a safe and vibrant city-state.",
-    isCourseDetailAvailable: false, // not using anywhere
     flag: "/malta.svg",
     flagBg: "bg-malta-flag",
     route: "singapore",
@@ -132,7 +115,6 @@ export const COUNTRIES: Country[] = [
     class: "",
     description:
       "Explore advanced technology and rich traditions. Study in Asia's education leader with modern campuses, innovative programs, and growing global influence in technology and culture.",
-    isCourseDetailAvailable: false, // not using anywhere
     flag: "/spain.svg",
     flagBg: "bg-south-korea-flag",
     route: "south-korea",
@@ -145,7 +127,6 @@ export const COUNTRIES: Country[] = [
     class: "",
     description:
       "Immerse yourself in vibrant culture while pursuing quality education. Learn in a country known for its warm hospitality, beautiful landscapes, and growing international programs.",
-    isCourseDetailAvailable: false, // not using anywhere
     flag: "/spain.svg",
     flagBg: "bg-spain-flag",
     route: "spain",
@@ -158,7 +139,6 @@ export const COUNTRIES: Country[] = [
     class: "",
     description:
       "Study in a modern global hub where East meets West. Access cutting-edge facilities, multicultural campuses, and excellent career opportunities in the heart of the Middle East.",
-    isCourseDetailAvailable: false, // not using anywhere
     flag: "/dxb.svg",
     flagBg: "bg-dxb-flag",
     route: "UAE",
@@ -171,7 +151,6 @@ export const COUNTRIES: Country[] = [
     class: "",
     description:
       "Discover world-class universities and rich cultural heritage. Study in the birthplace of the English language with globally recognized degrees and diverse academic opportunities.",
-    isCourseDetailAvailable: false, // not using anywhere
     flag: "/gb.svg",
     flagBg: "bg-gb-flag",
     route: "united_kingdom",
@@ -183,8 +162,7 @@ export const COUNTRIES: Country[] = [
   //     country: "Netherlands",
   //     class: "",
   //     description: "",
-  //     isCourseDetailAvailable: false, // not using anywhere
-  //     flag: "/nl.svg",
+  //   //     flag: "/nl.svg",
   //     flagBg: "bg-nl-flag",
   //   },
   // {
@@ -193,8 +171,7 @@ export const COUNTRIES: Country[] = [
   //     country: "Latvia",
   //     class: "",
   //     description: "",
-  //     isCourseDetailAvailable: false, // not using anywhere
-  //     flag: "/lv.svg",
+  //   //     flag: "/lv.svg",
   //     flagBg: 'bg-lv-flag'
   // },
   // {
@@ -203,8 +180,7 @@ export const COUNTRIES: Country[] = [
   //     country: "Switzerland",
   //     class: "",
   //     description: "",
-  //     isCourseDetailAvailable: false, // not using anywhere
-  //     flag: "/ch.svg",
+  //   //     flag: "/ch.svg",
   //     flagBg: 'bg-ch-flag'
   // },
   //   {
@@ -213,8 +189,7 @@ export const COUNTRIES: Country[] = [
   //     country: "Canada",
   //     class: "",
   //     description: "",
-  //     isCourseDetailAvailable: false, // not using anywhere
-  //     flag: "/ca.svg",
+  //   //     flag: "/ca.svg",
   //     flagBg: "bg-ca-flag",
   //   },
   // {
@@ -223,8 +198,7 @@ export const COUNTRIES: Country[] = [
   //     country: "Finland",
   //     class: "",
   //     description: "",
-  //     isCourseDetailAvailable: false, // not using anywhere
-  //     flag: "/fi.svg",
+  //   //     flag: "/fi.svg",
   //     flagBg: 'bg-fi-flag'
   // },
   // {
@@ -233,8 +207,7 @@ export const COUNTRIES: Country[] = [
   //     country: "Belarus",
   //     class: "",
   //     description: "",
-  //     isCourseDetailAvailable: false, // not using anywhere
-  //     flag: "/by.svg",
+  //   //     flag: "/by.svg",
   //     flagBg: 'bg-by-flag'
   // },
   //   {
@@ -243,8 +216,7 @@ export const COUNTRIES: Country[] = [
   //     country: "Italy",
   //     class: "",
   //     description: "",
-  //     isCourseDetailAvailable: false, // not using anywhere
-  //     flag: "/it.svg",
+  //   //     flag: "/it.svg",
   //     flagBg: "bg-it-flag",
   //   },
   // {
@@ -253,8 +225,7 @@ export const COUNTRIES: Country[] = [
   //     country: "Sweden",
   //     class: "",
   //     description: "",
-  //     isCourseDetailAvailable: false, // not using anywhere
-  //     flag: "/se.svg",
+  //   //     flag: "/se.svg",
   //     flagBg: 'bg-se-flag'
   // },
   // {
@@ -263,8 +234,7 @@ export const COUNTRIES: Country[] = [
   //     country: "Russia",
   //     class: "",
   //     description: "",
-  //     isCourseDetailAvailable: false, // not using anywhere
-  //     flag: "/ru.svg",
+  //   //     flag: "/ru.svg",
   //     flagBg: 'bg-ru-flag'
   // },
 ];

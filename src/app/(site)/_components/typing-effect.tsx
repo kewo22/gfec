@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from 'react';
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView } from 'motion/react';
 import { Typography, Variant } from '@/app/_components/ui/typography';
 
 interface Props {

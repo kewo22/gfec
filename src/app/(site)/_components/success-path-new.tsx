@@ -3,7 +3,7 @@
 import React, { useRef, useEffect } from 'react';
 import { useRouter } from "next/navigation";
 
-import { motion, useInView, useAnimation } from 'framer-motion';
+import { motion, useInView, useAnimation } from 'motion/react';
 import Container from './layouts/container';
 import SectionTitle from './section-title';
 

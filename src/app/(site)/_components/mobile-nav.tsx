@@ -10,7 +10,11 @@ import { NavItems } from "../_constants/nav-items.constants";
 import { Typography } from "@/app/_components/ui/typography";
 import NavSocial from "./nav-social";
 
-export default function MobileNav({ isMainNavInView }: any) {
+interface MobileNavProps {
+  isMainNavInView: boolean;
+}
+
+export default function MobileNav({ isMainNavInView }: MobileNavProps) {
   const pathname = usePathname();
   const rawPathName = pathname.split("/")[1];
 
@@ -26,16 +30,16 @@ export default function MobileNav({ isMainNavInView }: any) {
     setTimeout(() => {
       document.querySelector("body")?.classList.remove("overflow-hidden");
       document.getElementById("menu")!.classList.remove("active");
-      document.getElementById("sss")!.classList.add("-right-[850px]");
-      document.getElementById("sss")!.classList.remove("right-0");
+      document.getElementById("mobile-nav-drawer")!.classList.add("-right-[850px]");
+      document.getElementById("mobile-nav-drawer")!.classList.remove("right-0");
     }, 100);
   }, [pathname]);
 
   const menuOnClick = () => {
     document.querySelector("body")?.classList.toggle("overflow-hidden");
     document.getElementById("menu")!.classList.toggle("active");
-    document.getElementById("sss")!.classList.toggle("-right-[850px]");
-    document.getElementById("sss")!.classList.toggle("right-0");
+    document.getElementById("mobile-nav-drawer")!.classList.toggle("-right-[850px]");
+    document.getElementById("mobile-nav-drawer")!.classList.toggle("right-0");
   };
 
   if (
@@ -91,7 +95,7 @@ export default function MobileNav({ isMainNavInView }: any) {
       </ul>
 
       <section
-        id="sss"
+        id="mobile-nav-drawer"
         // mobile-nav-height
         className="lg:hidden z-40 fixed top-0 -right-[850px] h-screen w-full bg-slate-100 transition-all ease-in-out duration-1000"
       >

@@ -1,6 +1,6 @@
 "use client";
 
-import { forwardRef, memo, ReactNode } from "react";
+import { forwardRef, memo, ReactNode, RefObject } from "react";
 
 import { useMutationObserver } from "@/app/_hooks/useMutationObserver";
 import { X } from "lucide-react";
@@ -16,7 +16,7 @@ export type Ref = HTMLDialogElement;
 export const Modal = forwardRef<Ref, ModalProps>((props, ref) => {
   const { children, dialogWrapperClassName, onClose } = props;
 
-  useMutationObserver(ref, (e: any) => {
+  useMutationObserver(ref as RefObject<Element | null>, (e: any) => {
     const el =
       (e[0].target as HTMLDialogElement) ||
       ((ref as any).current as HTMLDialogElement);

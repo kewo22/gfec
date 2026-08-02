@@ -89,19 +89,16 @@ const GetInTouchForm = forwardRef<GetInTouchFormHandle, GetInTouchFormProps>(
         },
       })
         .then(() => {
-          setIsLoading(false);
         })
         .catch(() => {
-          setIsLoading(false);
         })
         .finally(() => {
           setIsLoading(false);
           reset();
-          // submitted();
         });
     };
 
-    const onYearOfCompletionChange = (e: string) => {
+    const onPreferredTimeChange = (e: string) => {
       setValue("preferredTime", e);
     };
 
@@ -264,7 +261,7 @@ const GetInTouchForm = forwardRef<GetInTouchFormHandle, GetInTouchFormProps>(
               placeHolder="Select One"
               useControllerProps={{ control, name: "preferredTime" }}
               isDisabled={false}
-              onChange={onYearOfCompletionChange}
+              onChange={onPreferredTimeChange}
             />
           </div>
 
