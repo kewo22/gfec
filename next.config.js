@@ -1,5 +1,3 @@
-const path = require('path');
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -33,42 +31,6 @@ const nextConfig = {
     LAT: process.env.LAT || "NO LAT FROM NEXT.CONFIG",
     LNG: process.env.LNG || "NO LNG FROM NEXT.CONFIG",
   },
-  transpilePackages: [
-    "@hookform/resolvers",
-    "@radix-ui/react-icons",
-    "@react-google-maps/api",
-    "@tanstack/react-table",
-    // "@types/node",
-    // "@types/nodemailer",
-    // "@types/react",
-    // "@types/react-dom",
-    "@vercel/analytics",
-    "@vercel/speed-insights",
-    "autoprefixer",
-    "class-variance-authority",
-    "clsx",
-    // "eslint",
-    "eslint-config-next",
-    "mongodb",
-    // "next",
-    "nodemailer",
-    "postcss",
-    "react",
-    "react-device-detect",
-    "react-dom",
-    "react-hook-form",
-    "react-intersection-observer",
-    "swiper",
-    "swr",
-    "tailwind-merge",
-    "tailwindcss",
-    "tailwindcss-animate",
-    // "typescript",
-    "yup",
-  ],
-  // turbopack: {
-  //   root: path.join(__dirname, '..'),
-  // },
 };
 
 module.exports = nextConfig;
