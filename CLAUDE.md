@@ -64,3 +64,17 @@ Tailwind v4 with CSS-based theme config in `src/app/globals.css` (`@import "tail
 - Several `*-new.tsx` / `*-v9.tsx` files (e.g. `navigation-new.tsx`, `nav-actions-new.tsx`, `nav-links-new.tsx`, `hero-new.tsx`, `destinations-v9.tsx`, `success-path-new.tsx`) are the currently-active versions superseding older non-`-new` siblings that are still present but unused — check actual imports in `layout.tsx`/`page.tsx` before editing a component to confirm it's the one actually rendered.
 - `success-stories-text-bkp.tsx`, `globals-bkp.txt`, `faviconnn.ico` are backup files left in place, not dead-code to silently assume unused without checking imports.
 - `IMPLEMENTATION_PLAN.md` in the repo root is a pre-existing cleanup audit (dead code, `any` typing, naming, SEO gaps) — consult it if asked to do cleanup work, but confirm each item against current code since the branch has moved on since it was written.
+
+## Versioning
+
+This repo follows [Semantic Versioning](https://semver.org/), starting from `v1.0.0` (the completed site redesign, merged to `main`). Older tags (`before-layout-change`, `gfec-v1`, `initial-web-release`) predate this convention and are historical only.
+
+Releases are automated by [release-please](https://github.com/googleapis/release-please) (`.github/workflows/release-please.yml`), driven entirely by [Conventional Commits](https://www.conventionalcommits.org/) on `main`. A commit-msg hook (`.husky/commit-msg` + `commitlint.config.js`) enforces the format locally — non-conventional commit messages are rejected at commit time.
+
+Commit type → version bump:
+
+- `fix:`, `chore:`, `perf:`, `refactor:` → **patch** (`1.0.x`) — bug fixes, dependency bumps, dead code removal (e.g. working through `CODE_REVIEW.md`)
+- `feat:` → **minor** (`1.x.0`) — new pages/features added without breaking the current design
+- `feat!:` or a `BREAKING CHANGE:` footer → **major** (`x.0.0`) — reserve for the planned full site revamp (→ `v2.0.0`)
+
+release-please maintains an open "Release PR" on `main` accumulating unreleased changes into `CHANGELOG.md`; merging that PR is what actually cuts a release (bumps `package.json`, tags `vX.Y.Z`, publishes a GitHub Release). Nothing releases automatically on a normal merge — only on merging the release PR itself.
