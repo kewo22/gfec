@@ -12,7 +12,7 @@ export default function NavContactRibbon() {
         {emails?.map((mail, i) => {
           return (
             <div className="flex flex-row items-center" key={i}>
-              <a href={`tel:${mail}`}>
+              <a href={`mailto:${mail}`}>
                 <Typography
                   variant="small"
                   className="text-white hover:text-primary hover:underline transition-all"

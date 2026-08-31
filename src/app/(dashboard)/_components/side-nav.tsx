@@ -1,18 +1,10 @@
 "use client";
 
-import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import {
-  faArrowRightFromBracket,
-  faChartSimple,
-  faChevronRight,
-  faFilePen,
-  faHeadset,
-} from "@fortawesome/free-solid-svg-icons";
+import { ChevronRight, LogOut } from 'lucide-react';
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { Typography } from "@/app/_components/ui/typography";
 import { NavItems } from "../_constants/nav-items.constants";
@@ -40,7 +32,7 @@ export default function SideNav() {
           DASHBOARD
         </Typography>
       </div>
-      <div className="flex flex-col flex-grow">
+      <div className="flex flex-col grow">
         {navItems.map((navItem, i) => {
           return (
             <Link
@@ -48,23 +40,20 @@ export default function SideNav() {
               className={`w-full flex flex-row items-center gap-2 px-4 py-4 }`}
               href={navItem.route}
             >
-              <FontAwesomeIcon
+              {/* <FontAwesomeIcon
                 icon={navItem.icon}
-                className={`text-white ${
-                  navItem.isActive && "!text-primary font-bold"
-                }`}
-              />
+                className={`text-white ${navItem.isActive && "!text-primary font-bold"
+                  }`}
+              /> */}
               <Typography
                 variant="small"
-                className={`text-white flex-grow ${
-                  navItem.isActive && "!text-primary font-bold"
-                }`}
+                className={`text-white grow ${navItem.isActive && "!text-primary font-bold"
+                  }`}
               >
                 {navItem.text}
               </Typography>
               {navItem.isActive && (
-                <FontAwesomeIcon
-                  icon={faChevronRight}
+                <ChevronRight
                   className="text-primary"
                 />
               )}
@@ -74,8 +63,7 @@ export default function SideNav() {
       </div>
       <div className="flex flex-col py-10">
         <button>
-          <FontAwesomeIcon
-            icon={faArrowRightFromBracket}
+          <LogOut
             className="text-white"
           />
         </button>

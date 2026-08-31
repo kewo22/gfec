@@ -2,10 +2,8 @@
 
 import React from "react";
 
-import { faSpinner } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 import { twMerge } from "tailwind-merge";
+import { Spinner } from "./spinner";
 
 type ButtonProps = {
   text?: string;
@@ -67,12 +65,7 @@ export default function Button(props: ButtonProps) {
   if (isLoading) {
     return (
       <button className={mergedClassName} disabled>
-        <FontAwesomeIcon
-          icon={faSpinner}
-          size="lg"
-          spin
-          className="text-white"
-        />
+        <Spinner />
       </button>
     );
   }

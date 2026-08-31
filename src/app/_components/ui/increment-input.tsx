@@ -45,20 +45,20 @@ export default function IncrementInput(props: IncrementInputProps) {
       },
       // min-w-[136px]
       // flex-[1_0_40%]
-      input: "outline-none bg-transparent overflow-hidden flex-grow",
+      input: "outline-none bg-transparent overflow-hidden grow",
       errorText:
         "text-red-600 text-xs font-semibold text-right absolute right-0 z-10",
     };
 
     const classNameCopy = JSON.parse(JSON.stringify(className));
     if (isDisabled) {
-      classNameCopy.wrapper.disabled = "!bg-gray-100";
+      classNameCopy.wrapper.disabled = "bg-gray-100!";
       className = { ...classNameCopy };
     }
 
     if (!isDisabled) {
       if (fieldState && fieldState.error && fieldState.error.message) {
-        classNameCopy.wrapper.error = "!border-b-red-600";
+        classNameCopy.wrapper.error = "border-b-red-600!";
         classNameCopy.label.error = "text-red-600";
         className = { ...classNameCopy };
       } else {

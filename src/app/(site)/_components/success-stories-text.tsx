@@ -1,26 +1,18 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCaretLeft,
-  faCaretRight,
-  faQuoteLeft,
-  faQuoteRight,
-  faStar,
-} from "@fortawesome/free-solid-svg-icons";
-
+import { useState, useEffect, useRef } from "react";
 import Container from "./layouts/container";
 import { Typography } from "../../_components/ui/typography";
 import SectionTitle from "./section-title";
 import Button from "@/app/_components/ui/button";
 import { Modal } from "@/app/_components/ui/modal";
+import { ChevronLeft, ChevronRight, Quote, Star } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
 
 export default function SuccessStoriesText() {
   const modalRef = useRef(null);
 
-  let data: any[] | null = [
+  const data: any[] | null = [
     {
       name: "Isanka Edirisooriya",
       uni: "Student",
@@ -36,64 +28,20 @@ export default function SuccessStoriesText() {
   ];
 
   const [selectedSuccessStory, setSelectedSuccessStory] = useState(0);
-  const [isChanging, setIsChanging] = useState(false);
-
-  const fullNameRef = useRef<any>();
-  const uniRef = useRef<any>();
-  const successStoryRef = useRef<any>();
-  const startsRef = useRef<any>();
-  const imageRef = useRef<any>();
-
-  useEffect(() => {
-    if (!fullNameRef) return;
-    setTimeout(() => {
-      fullNameRef.current?.classList.remove("opacity-0");
-      fullNameRef.current?.classList.add("opacity-1");
-      uniRef.current?.classList.remove("opacity-0");
-      uniRef.current?.classList.add("opacity-1");
-      successStoryRef.current?.classList.remove("opacity-0");
-      successStoryRef.current?.classList.add("opacity-1");
-      startsRef.current?.classList.remove("opacity-0");
-      startsRef.current?.classList.add("opacity-1");
-      imageRef.current?.classList.remove("opacity-0");
-      imageRef.current?.classList.add("opacity-1");
-    }, 500);
-  }, [selectedSuccessStory]);
+  const [direction, setDirection] = useState(0);
 
   const onPrevClick = () => {
-    setIsChanging(true);
-    fullNameRef.current?.classList.add("opacity-0");
-    uniRef.current?.classList.add("opacity-0");
-    successStoryRef.current?.classList.add("opacity-0");
-    startsRef.current?.classList.add("opacity-0");
-    imageRef.current?.classList.add("opacity-0");
-    setTimeout(() => {
-      if (selectedSuccessStory === 0) {
-        setSelectedSuccessStory(data!.length - 1);
-        setIsChanging(false);
-        return;
-      }
-      setSelectedSuccessStory((state) => state - 1);
-      setIsChanging(false);
-    }, 500);
+    setDirection(-1);
+    setSelectedSuccessStory((state) =>
+      state === 0 ? data!.length - 1 : state - 1
+    );
   };
 
   const onNextClick = () => {
-    setIsChanging(true);
-    fullNameRef.current?.classList.add("opacity-0");
-    uniRef.current?.classList.add("opacity-0");
-    successStoryRef.current?.classList.add("opacity-0");
-    startsRef.current?.classList.add("opacity-0");
-    imageRef.current?.classList.add("opacity-0");
-    setTimeout(() => {
-      if (selectedSuccessStory === data!.length - 1) {
-        setSelectedSuccessStory(0);
-        setIsChanging(false);
-        return;
-      }
-      setSelectedSuccessStory((state) => state + 1);
-      setIsChanging(false);
-    }, 500);
+    setDirection(1);
+    setSelectedSuccessStory((state) =>
+      state === data!.length - 1 ? 0 : state + 1
+    );
   };
 
   const onOpenModel = () => {
@@ -102,84 +50,84 @@ export default function SuccessStoriesText() {
     }
   };
 
+  const slideVariants = {
+    enter: (direction: number) => ({
+      x: direction > 0 ? 100 : -100,
+      opacity: 0,
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+    },
+    exit: (direction: number) => ({
+      x: direction > 0 ? -100 : 100,
+      opacity: 0,
+    }),
+  };
+
   return (
     <Container className="mx-0 lg:mx-auto py-20">
       <SectionTitle title="Our Success Stories" />
 
-      <div className="relative border-4 border-secondary mx-5 p-12 sm:p-20">
-        <div className="absolute -top-[40px] left-[5%] bg-slate-100 px-1">
-          <FontAwesomeIcon
-            icon={faQuoteLeft}
-            size="4x"
-            className="text-secondary"
-          />
+      <div className="relative border-4 border-secondary mx-5 p-12 sm:p-20 overflow-hidden rounded-4xl">
+        {/* <div className="absolute -top-[26px] left-[5%] bg-slate-100 px-1 transform-[rotateX(180deg)_rotateY(180deg)]">
+          <Quote className="text-secondary size-14" />
         </div>
-        <div className="absolute -bottom-[40px] right-[5%] bg-slate-100 px-1">
-          <FontAwesomeIcon
-            icon={faQuoteRight}
-            size="4x"
-            className="text-secondary"
-          />
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-[auto_1fr] gap-5 place-items-center sm:place-items-start sm:items-center">
-          {/* <Image
-            src="/team1.png"
-            alt="img"
-            width={100}
-            height={100}
-            className="rounded-full transition-all duration-500 ease-in-out"
-            ref={imageRef}
-          /> */}
-          <div>
-            <Typography
-              className="text-center sm:text-left transition-all duration-500 ease-in-out"
-              variant="h4"
-              ref={fullNameRef}
-            >
-              {data![selectedSuccessStory].name}
-            </Typography>
-            <Typography
-              variant="small"
-              className="text-center sm:text-left transition-all duration-500 ease-in-out"
-              ref={uniRef}
-            >
-              {data![selectedSuccessStory].uni}
-            </Typography>
-          </div>
-          <div
-            className="justify-self-center sm:justify-self-end flex flex-row gap-1 transition-all duration-500 ease-in-out"
-            ref={startsRef}
+        <div className="absolute -bottom-[28px] right-[5%] bg-slate-100 px-1">
+          <Quote className="text-secondary size-14" />
+        </div> */}
+
+        <AnimatePresence mode="wait" custom={direction}>
+          <motion.div
+            key={selectedSuccessStory}
+            custom={direction}
+            variants={slideVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{ duration: 0.5, ease: "easeInOut" }}
           >
-            {[1, 2, 3, 4, 5].map((i) => {
-              return (
-                <FontAwesomeIcon
-                  key={i}
-                  icon={faStar}
-                  size="2x"
-                  className="text-secondary animation_background_test "
-                />
-              );
-            })}
-          </div>
-        </div>
-        <Typography
-          className="text-justify my-10 multi-line-truncate transition-all duration-500 ease-in-out"
-          ref={successStoryRef}
-        >
-          {data![selectedSuccessStory].successStory}
-        </Typography>
+            <div className="grid grid-cols-1 sm:grid-cols-[auto_1fr] gap-5 place-items-center sm:place-items-start sm:items-center">
+              <div>
+                <Typography
+                  className="text-center sm:text-left"
+                  variant="h4"
+                >
+                  {data![selectedSuccessStory].name}
+                </Typography>
+                <Typography variant="small" className="text-center sm:text-left">
+                  {data![selectedSuccessStory].uni}
+                </Typography>
+              </div>
+              <div className="justify-self-center sm:justify-self-end flex flex-row gap-1">
+                {[1, 2, 3, 4, 5].map((i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ scale: 0, rotate: -180 }}
+                    animate={{ scale: 1, rotate: 0 }}
+                    transition={{ delay: i * 0.1, duration: 0.3 }}
+                  >
+                    <Star
+                      className="fill-primary size-10"
+                      strokeWidth={0}
+                    />
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+            <Typography className="text-justify my-10 multi-line-truncate">
+              {data![selectedSuccessStory].successStory}
+            </Typography>
+          </motion.div>
+        </AnimatePresence>
 
         <div className="flex flex-row gap-5 justify-center items-center sm:justify-end">
           <Button
             customClass="bg-secondary rounded-full"
-            isDisabled={isChanging}
             onClick={onPrevClick}
           >
-            <FontAwesomeIcon
-              icon={faCaretLeft}
-              className="text-white"
-              size="1x"
-            />
+            <ChevronLeft className="text-white" />
           </Button>
 
           <Button customClass="block sm:hidden" onClick={onOpenModel}>
@@ -188,22 +136,17 @@ export default function SuccessStoriesText() {
 
           <Button
             customClass="bg-secondary rounded-full"
-            isDisabled={isChanging}
             onClick={onNextClick}
           >
-            <FontAwesomeIcon
-              icon={faCaretRight}
-              className="text-white"
-              size="1x"
-            />
+            <ChevronRight className="text-white" />
           </Button>
         </div>
       </div>
 
-      <Modal ref={modalRef}>
-        <div className="">
+      <Modal dialogWrapperClassName="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[95%]" ref={modalRef}>
+        <div className=" max-w-2xl w-full max-h-[90vh] overflow-y-auto">
           <div className="flex flex-row items-center justify-start gap-5 mb-5">
-            <div className="flex-grow">
+            <div className="grow">
               <Typography className="" variant="h4">
                 {data![selectedSuccessStory].name}
               </Typography>
@@ -220,3 +163,5 @@ export default function SuccessStoriesText() {
     </Container>
   );
 }
+
+

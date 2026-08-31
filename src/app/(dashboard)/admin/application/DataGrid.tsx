@@ -22,8 +22,7 @@ import {
   TableRow,
 } from "@/app/_components/ui/table";
 import { ApplicationFormModel } from "@/app/_interfaces/application-form";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye } from "@fortawesome/free-solid-svg-icons";
+import { Eye } from "lucide-react";
 // import { ArrowUpDown, ChevronDown, MoreHorizontal } from "lucide-react";
 
 // import { Button } from "@/components/ui/button";
@@ -273,9 +272,7 @@ export function DataGrid(props: DataGridProps) {
         const record = row.original;
         return (
           <>
-            <FontAwesomeIcon
-              icon={faEye}
-              size="lg"
+            <Eye
               className="text-slate-700 px-10 cursor-pointer hover:text-secondary"
               onClick={() => onViewClick(record)}
             />
@@ -366,7 +363,7 @@ export function DataGrid(props: DataGridProps) {
           </DropdownMenuContent>
         </DropdownMenu> */}
       </div>
-      <div className="w-full rounded-md border flex-grow overflow-auto">
+      <div className="w-full rounded-md border grow overflow-auto">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
@@ -377,9 +374,9 @@ export function DataGrid(props: DataGridProps) {
                       {header.isPlaceholder
                         ? null
                         : flexRender(
-                            header.column.columnDef.header,
-                            header.getContext()
-                          )}
+                          header.column.columnDef.header,
+                          header.getContext()
+                        )}
                     </TableHead>
                   );
                 })}

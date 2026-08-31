@@ -1,5 +1,9 @@
+'use client';
+
 import React from "react";
 import Image from "next/image";
+import { motion } from 'motion/react';
+
 
 import SectionTitle from "../_components/section-title";
 import Container from "../_components/layouts/container";
@@ -9,38 +13,63 @@ export default function About() {
   return (
     <section className="bg-slate-100">
       <Container className="relative mx-5 xl:mx-auto py-20">
-        <SectionTitle title="Who We Are ?" />
+        {/* <SectionTitle title="Who We Are ?" /> */}
+
+        <motion.div
+          className="text-center my-10 lg:my-20"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <Typography variant='h1' className="text-primary">
+            About Us
+          </Typography>
+        </motion.div>
 
         <div className="block sm:flex flex-col lg:flex-row gap-10 mb-20">
           <div className="">
-            <Typography variant="h2" className="text-left mb-5">
-              Leading Visa & Immigration Agency
-            </Typography>
-            <Typography className="text-justify">
-              We believe that access to quality education is a fundamental
-              right, and we&apos;re proud to be part of a community of
-              organizations that share this vision.
-              <br />
-              <br />
-              As a leading overseas educational consultation service provider in
-              Sri Lanka, we understand the importance of providing reliable and
-              comprehensive guidance to students who are looking to pursue
-              higher education abroad. We recognize that studying overseas can
-              be a daunting prospect, with numerous challenges and uncertainties
-              that can make the process overwhelming.
-              <br />
-              <br />
-              At GFEC we&apos;re driven by a passion for education and a
-              commitment to ensuring that every student has access to the best
-              possible opportunities to achieve their goals. We&apos;re proud to
-              be a leading overseas educational consultation service provider in
-              Sri Lanka, and we&apos;re committed to continuing to provide
-              exceptional guidance and support to students for years to come.
-            </Typography>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <Typography variant="h2" className="text-left mb-5">
+                Leading Visa & Immigration Agency
+              </Typography>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <Typography className="text-justify">
+                We believe that access to quality education is a fundamental
+                right, and we&apos;re proud to be part of a community of
+                organizations that share this vision.
+                <br />
+                <br />
+                As a leading overseas educational consultation service provider in
+                Sri Lanka, we understand the importance of providing reliable and
+                comprehensive guidance to students who are looking to pursue
+                higher education abroad. We recognize that studying overseas can
+                be a daunting prospect, with numerous challenges and uncertainties
+                that can make the process overwhelming.
+                <br />
+                <br />
+                At GFEC we&apos;re driven by a passion for education and a
+                commitment to ensuring that every student has access to the best
+                possible opportunities to achieve their goals. We&apos;re proud to
+                be a leading overseas educational consultation service provider in
+                Sri Lanka, and we&apos;re committed to continuing to provide
+                exceptional guidance and support to students for years to come.
+              </Typography>
+            </motion.div>
+
+
           </div>
           <div className="flex-[0_0_450px] 2xl:flex-[0_0_650px] flex flex-row items-start gap-5">
             <div className="image-container inline-block relative rounded-lg">
-              {/* // src="/about-1.jpg" */}
               <Image
                 src="/comp/about-1.webp"
                 alt="about-1"
@@ -64,7 +93,13 @@ export default function About() {
         </div>
 
         <div className="flex flex-col sm:flex-row gap-10 mb-20">
-          <div className="flex-[0_0_50%] bg-secondary text-white p-10">
+          <motion.div
+            className="flex-[0_0_50%] bg-secondary text-white p-10"
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+          >
             <div className="flex flex-row gap-5 items-center mb-5">
               <div className="w-[80px] h-[80px] bg-primary p-3 rounded-full">
                 <Image
@@ -83,9 +118,15 @@ export default function About() {
               Our Vision is to be a market leader and most reliable organization
               in International Education Consultation Services in Sri Lanka.
             </Typography>
-          </div>
+          </motion.div>
 
-          <div className="flex-[0_0_50%] bg-secondary text-white p-10">
+          <motion.div
+            className="flex-[0_0_50%] bg-secondary text-white p-10"
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
             <div className="flex flex-row gap-5 items-center mb-5">
               <div className="w-[80px] h-[80px] bg-primary p-4 rounded-full">
                 <Image
@@ -105,11 +146,17 @@ export default function About() {
               service and maintain the highest level success rate in
               international education student enrollments.
             </Typography>
-          </div>
+          </motion.div>
         </div>
 
         <div className="flex flex-col lg:flex-row gap-10 mb-20">
-          <div className="bg-white shadow-about-card rounded-2xl border-2 border-secondary p-10 flex flex-col justify-center items-center gap-5">
+          <motion.div
+            className="bg-white shadow-about-card rounded-2xl border-2 border-secondary p-10 flex flex-col justify-center items-center gap-5"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
             <Image
               src="/personalized-guidance.svg"
               alt="personalized-guidance"
@@ -128,8 +175,14 @@ export default function About() {
                 decisions about your study abroad plans.
               </Typography>
             </div>
-          </div>
-          <div className="bg-white shadow-about-card rounded-2xl border-2 border-secondary p-10 flex flex-col justify-center items-center gap-5">
+          </motion.div>
+          <motion.div
+            className="bg-white shadow-about-card rounded-2xl border-2 border-secondary p-10 flex flex-col justify-center items-center gap-5"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
             <Image
               src="/comprehensive-support.svg"
               alt="comprehensive-support"
@@ -149,8 +202,14 @@ export default function About() {
                 journey.
               </Typography>
             </div>
-          </div>
-          <div className="bg-white shadow-about-card rounded-2xl border-2 border-secondary p-10 flex flex-col justify-center items-center gap-5">
+          </motion.div>
+          <motion.div
+            className="bg-white shadow-about-card rounded-2xl border-2 border-secondary p-10 flex flex-col justify-center items-center gap-5"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+          >
             <Image
               src="/unwavering-commitment.svg"
               alt="unwavering-commitment"
@@ -169,7 +228,7 @@ export default function About() {
                 the highest level of service and support at all times.
               </Typography>
             </div>
-          </div>
+          </motion.div>
         </div>
       </Container>
     </section>

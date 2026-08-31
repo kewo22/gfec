@@ -1,53 +1,65 @@
 "use client";
-import { ResolveBaseUrl } from "@/app/utils/common";
+import { Typography } from "@/app/_components/ui/typography";
+import { Fetcher, ResolveBaseUrl } from "@/app/utils/common";
 import useSWR from "swr";
+import { DataGrid } from "./DataGrid";
+import { GetInTouchResponse } from "@/app/_interfaces/get-in-touch";
+import Loader from "../../_components/Loader";
 
-interface UserDetails {
-  id: string;
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: string;
-  address: string;
-}
 
-const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 export default function GetInTouch() {
   const baseUrl = ResolveBaseUrl(process.env.NEXT_PUBLIC_VERCEL_ENV!);
 
-  const { data, isLoading } = useSWR(`${baseUrl}/api/getInTouch`, fetcher, {
-    revalidateOnFocus: false,
-    revalidateOnReconnect: false,
-  });
+  const { data, isLoading, mutate: mutateGetInTouch } = useSWR<{ data: GetInTouchResponse[] }>(
+    `${baseUrl}/api/getInTouch`,
+    Fetcher,
+    {
+      revalidateOnFocus: false,
+      revalidateOnReconnect: false,
+    }
+  );
 
   if (isLoading) {
-    return <>LOADING...</>;
+    return <Loader />;
+  }
+  if (!data || !data.data.length) {
+    return <>No Data Available</>;
+  }
+
+
+  const deleteRow = async (row: GetInTouchResponse) => {
+    try {
+      const response = await fetch(`${baseUrl}/api/getInTouch/${row._id}`, {
+        method: 'DELETE',
+      });
+      if (!response.ok) {
+        throw new Error('Failed to delete');
+      }
+      // Optimistic update with bound mutate
+      mutateGetInTouch(
+        (currentData) => ({
+          ...currentData!,
+          data: currentData!.data!.filter((item) => item._id !== row._id)
+        }),
+        false
+      );
+      mutateGetInTouch();
+    } catch (error) {
+      mutateGetInTouch();
+    } finally {
+      // 
+    }
   }
 
   return (
-    <div className="max-w-2xl mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Data Table</h1>
-      <table className="min-w-full bg-white border border-gray-300">
-        <thead>
-          <tr>
-            <th className="py-2 px-4 border-b">FirstName</th>
-            <th className="py-2 px-4 border-b">LastName</th>
-            <th className="py-2 px-4 border-b">Email</th>
-            <th className="py-2 px-4 border-b">Address</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.data.map((item: any) => (
-            <tr key={item.id}>
-              <td className="py-2 px-4 border-b">{item.firstName}</td>
-              <td className="py-2 px-4 border-b">{item.lastName}</td>
-              <td className="py-2 px-4 border-b">{item.email}</td>
-              <td className="py-2 px-4 border-b">{item.address}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div className="p-5 h-full overflow-hidden flex flex-col">
+      <Typography variant="h3" className="text-slate-700 flex-auto">
+        Get In Touch Submissions
+      </Typography>
+      <div className="h-full overflow-hidden flex flex-row gap-5">
+        {data && <DataGrid data={data.data} deleteRow={deleteRow} />}
+      </div>
     </div>
   );
 }

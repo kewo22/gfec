@@ -1,13 +1,10 @@
 import React, {
-  DOMElement,
   ElementType,
-  InputHTMLAttributes,
-  RefAttributes,
   forwardRef,
 } from "react";
 import { twMerge } from "tailwind-merge";
 
-type Variant =
+export type Variant =
   | "h1"
   | "h2"
   | "h3"
@@ -18,7 +15,8 @@ type Variant =
   | "xs"
   | "xl"
   | "md"
-  | "label";
+  | "label"
+  | 'link';
 
 interface Props {
   // interface Props extends React.HtmlHTMLAttributes<HTMLElement> {
@@ -28,6 +26,9 @@ interface Props {
   as?: ElementType;
   htmlFor?: string;
   ref?: any;
+
+  onClick?: () => void;
+
 }
 
 const tags: Record<Variant, ElementType> = {
@@ -42,20 +43,25 @@ const tags: Record<Variant, ElementType> = {
   xl: "p",
   md: "p",
   label: "label",
+  link: "span",
 };
 
 const typographyClasses = {
-  h1: "font-bold text-4xl xl:text-5xl",
-  h2: "font-bold text-3xl xl:text-3xl",
-  h3: "font-bold text-xl xl:text-2xl",
-  h4: "font-bold text-xl xl:text-xl",
+  h1: "font-bold text-5xl xl:text-6xl",
+  h2: "font-bold text-4xl xl:text-4xl",
+  h3: "font-bold text-2xl xl:text-3xl",
+  h4: "font-bold text-2xl xl:text-2xl",
   h5: "font-bold text-lg xl:text-xl",
-  p: "text-base xl:text-base 2xl:text-base",
+
+  p: "text-base 2xl:text-xl",
+  // p: "text-xl xl:text-xl 2xl:text-xl",
+
   md: "text-base xl:text-base",
   small: "text-xs xl:text-sm 2xl:text-sm",
   xs: "text-xs xl:text-sm",
   xl: "font-bold text-4xl lg:font-normal lg:text-5xl xl:text-7xl",
   label: "text-sm xl:text-base text-left",
+  link: "text-xl font-medium normal-case",
 };
 
 const sizes: Record<Variant, string> = {
@@ -70,6 +76,7 @@ const sizes: Record<Variant, string> = {
   xl: typographyClasses.xl,
   md: typographyClasses.md,
   label: typographyClasses.label,
+  link: typographyClasses.link,
 };
 
 // export const Typography = ({
@@ -95,13 +102,14 @@ export const Typography = forwardRef<HTMLDivElement, Props>(function Typography(
   props,
   ref
 ) {
-  const { variant = "p", children, className, as, htmlFor = "" } = props;
+  const { variant = "p", children, className, as, htmlFor = "", onClick } = props;
 
   const sizeClasses = sizes[variant];
   const Tag = as || tags[variant];
   const mergedClassName = twMerge(sizeClasses, className);
   return (
-    <Tag htmlFor={htmlFor} className={mergedClassName} ref={ref}>
+
+    <Tag htmlFor={htmlFor} className={mergedClassName} ref={ref} onClick={onClick}>
       {children}
     </Tag>
   );

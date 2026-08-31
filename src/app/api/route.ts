@@ -2,12 +2,6 @@ import nodemailer from "nodemailer";
 import { MongoClient } from "mongodb";
 import Mail from "nodemailer/lib/mailer";
 
-type ApiResponse<T> = {
-  data?: T;
-  message: string;
-  error?: any;
-};
-
 export async function GET(request: Request) {
   //   const res = await fetch("https://data.mongodb-api.com/...", {
   //     headers: {
@@ -108,13 +102,13 @@ export async function POST(request: Request) {
       };
 
       await transporter.sendMail(mailOptions).then(res => {
-        console.info(res)
+        // console.info(res)
         loggerCollection.insertOne({
           type: "email success",
           log: JSON.stringify(res)
         })
       }).catch(error => {
-        console.error(error)
+        // console.error(error)
         loggerCollection.insertOne({
           type: "email failed",
           log: JSON.stringify(error)
@@ -123,13 +117,13 @@ export async function POST(request: Request) {
       })
 
       await transporter.sendMail(mailOptions1).then(res => {
-        console.info(res)
+        // console.info(res)
         loggerCollection.insertOne({
           type: "email success",
           log: JSON.stringify(res)
         })
       }).catch(error => {
-        console.error(error)
+        // console.error(error)
         loggerCollection.insertOne({
           type: "email failed",
           log: JSON.stringify(error)
@@ -138,13 +132,13 @@ export async function POST(request: Request) {
       })
 
       await transporter.sendMail(mailOptions2).then(res => {
-        console.info(res)
+        // console.info(res)
         loggerCollection.insertOne({
           type: "email success",
           log: JSON.stringify(res)
         })
       }).catch(error => {
-        console.error(error)
+        // console.error(error)
         loggerCollection.insertOne({
           type: "email failed",
           log: JSON.stringify(error)
@@ -153,13 +147,13 @@ export async function POST(request: Request) {
       })
 
       await transporter.sendMail(mailOptions3).then(res => {
-        console.info(res)
+        // console.info(res)
         loggerCollection.insertOne({
           type: "email success",
           log: JSON.stringify(res)
         })
       }).catch(error => {
-        console.error(error)
+        // console.error(error)
         loggerCollection.insertOne({
           type: "email failed",
           log: JSON.stringify(error)
@@ -204,7 +198,7 @@ export async function POST(request: Request) {
     // return res.status(200).json({ message: `Success`, data: insertOneRes });
     return Response.json({ message: `Success`, data: insertOneRes });
   } catch (error) {
-    console.error(error)
+    // console.error(error)
     loggerCollection.insertOne({
       type: "failed",
       log: JSON.stringify(error)

@@ -7,8 +7,7 @@ const useNavigationEvent = () => {
   const searchParams = useSearchParams();
 
   const url = useMemo(() => {
-    const xxx = pathname + searchParams.toString();
-    return xxx;
+    return pathname + searchParams.toString();
   }, [pathname, searchParams]);
 
   return { url };

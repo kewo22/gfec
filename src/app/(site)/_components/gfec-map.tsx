@@ -3,10 +3,9 @@ import React, { useMemo } from "react";
 
 import { GoogleMap, MarkerF, useJsApiLoader } from "@react-google-maps/api";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import Container from "./layouts/container";
 import SectionTitle from "./section-title";
+import { Spinner } from "@/app/_components/ui/spinner";
 
 const containerStyle = {
   width: "100%",
@@ -53,17 +52,11 @@ export default function GfecMap() {
           >
             <MarkerF
               position={mapCenter}
-              onLoad={() => console.log("Marker Loaded")}
             />
           </GoogleMap>
         )}
         {!isLoaded && (
-          <FontAwesomeIcon
-            icon={faSpinner}
-            spin
-            size="6x"
-            className="text-secondary"
-          />
+          <Spinner className="size-14" />
         )}
       </div>
     </Container>

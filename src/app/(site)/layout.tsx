@@ -1,21 +1,16 @@
-import { Ubuntu } from "next/font/google";
 
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { SocialIcon } from 'react-social-icons';
 
-import Navigation from "./_components/navigation";
 import Footer from "./_components/footer";
-import PromoPopUp from "./_components/promo-popup";
-
-const ubuntu = Ubuntu({
-  weight: "400",
-  subsets: ["latin"],
-});
+import NavigationNew from "./_components/navigation-new";
 
 export const metadata: Metadata = {
-  title: "GFEC",
-  description: "GFEC DESC",
+  title: "GFEC | Gordon Foreign Education Consultancy",
+  description:
+    "GFEC helps students in Sri Lanka study abroad. We partner with universities worldwide for visa, admissions, and relocation support.",
 };
 
 export default function SiteLayout({
@@ -24,15 +19,29 @@ export default function SiteLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={ubuntu.className}>
-        {/* <PromoPopUp /> */}
-        <Navigation />
-        <main className="">{children}</main>
-        <Footer />
-        <Analytics />
-        <SpeedInsights />
-      </body>
-    </html>
+    <div>
+      <NavigationNew className='sticky top-0 left-0 w-full z-50' />
+      <main>{children}</main>
+      <Footer />
+      <Analytics />
+      <SpeedInsights />
+      <div className='fixed z-[999999999] bottom-5 right-5'>
+        <SocialIcon network="whatsapp" url="https://wa.me/+94771789038" target="_blank" />
+      </div>
+    </div>
   );
 }
+
+// need suppressHydrationWarning ??
+// <html lang="en" >
+//   <body suppressHydrationWarning>
+//     {/* <PromoPopUp /> */}
+//     {/* <NavigationNew /> */}
+//     <HeroNew />
+//     <main className="">{children}</main>
+//     {/* <Navigation />
+//     <Footer />
+//     <Analytics />
+//     <SpeedInsights /> */}
+//   </body>
+// </html>

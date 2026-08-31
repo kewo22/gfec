@@ -1,11 +1,5 @@
 import { MongoClient } from "mongodb";
 
-type ApiResponse<T> = {
-    data?: T;
-    message: string;
-    error?: any;
-};
-
 export async function GET(request: Request) {
     return Response.json({ message: `Success`, data: 'ww' })
 }

@@ -1,5 +1,7 @@
+"use client";
+
 import { Typography } from "@/app/_components/ui/typography";
-import React from "react";
+import AnimatedSectionBorder from "./animated-section-border";
 
 type SectionTitleProps = {
   title: string;
@@ -8,11 +10,11 @@ type SectionTitleProps = {
 export default function SectionTitle(props: SectionTitleProps) {
   const { title } = props;
   return (
-    <div className="relative inline-block mb-10">
+    <div className="relative w-fit mx-auto mb-10 text-center">
       <Typography variant="h2" className="text-secondary">
         {title}
       </Typography>
-      <div className="section-title__border-box relative block h-[3px] w-1/2 bg-primary mt-3 mx-auto mb-0"></div>
+      <AnimatedSectionBorder />
     </div>
   );
 }
