@@ -45,7 +45,7 @@ Route-group-local code is colocated and prefixed with `_` so Next.js ignores it 
 Route handlers live in `src/app/api/*/route.ts` and talk directly to MongoDB:
 
 - `src/app/_lib/mongodb.ts` — shared `MongoClient` promise (global-cached in dev, per-request in prod). Requires `MONGO_URL`.
-- Individual route handlers (e.g. `api/route.ts`, `api/getInTouch/`, `api/apply/`, `api/application/`, `api/promo-register/`) mostly open their own `MongoClient` connection inline rather than importing the shared `mongodb.ts` client — follow the existing pattern in the specific file you're editing rather than assuming one shared client is used everywhere.
+- Individual route handlers (e.g. `api/getInTouch/`, `api/apply/`, `api/application/`, `api/promo-register/`) mostly open their own `MongoClient` connection inline rather than importing the shared `mongodb.ts` client — follow the existing pattern in the specific file you're editing rather than assuming one shared client is used everywhere.
 - Database name is `gfec`; known collections include `getInTouch`, `logger`, and an applications collection.
 - Form submissions trigger Nodemailer emails (Gmail SMTP) to multiple `TO_MAIL*` recipients, with success/failure logged to the `logger` collection.
 

@@ -2,9 +2,9 @@
 
 import React, { forwardRef, useImperativeHandle, useState } from "react";
 
-import { SubmitHandler, useForm } from "react-hook-form";
-import { date, object, string } from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
+import { Resolver, SubmitHandler, useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 import Input from "@/app/_components/ui/input";
 import Button from "@/app/_components/ui/button";
@@ -19,16 +19,21 @@ const dateMinusOne = (): Date => {
   return today;
 };
 
-const schema = object().shape({
-  firstName: string().required("Required"),
-  lastName: string().required("Required"),
-  email: string().email("Invalid Email").required("Required"),
-  mobile: string()
-    .required("Required")
-    .matches(/^[0]{1}[7]{1}[01245678]{1}[0-9]{7}$/, "Invalid Format"),
-  preferredTime: string().optional(),
-  preferredDate: date().notRequired().min(dateMinusOne(), "Select future date"),
-  createdAt: date().required(),
+const schema = z.object({
+  firstName: z.string().min(1, "Required"),
+  lastName: z.string().min(1, "Required"),
+  email: z.email("Invalid Email").min(1, "Required"),
+  mobile: z
+    .string()
+    .min(1, "Required")
+    .regex(/^[0]{1}[7]{1}[01245678]{1}[0-9]{7}$/, "Invalid Format"),
+  preferredTime: z.string().optional(),
+  preferredDate: z
+    .union([z.coerce.date(), z.literal(""), z.null()])
+    .optional()
+    .transform((val) => (val === "" ? null : val))
+    .refine((val) => !val || val >= dateMinusOne(), "Select future date"),
+  createdAt: z.date(),
 });
 
 interface GetInTouchFormProps { }
@@ -58,7 +63,7 @@ const GetInTouchForm = forwardRef<GetInTouchFormHandle, GetInTouchFormProps>(
         createdAt: new Date(),
       },
       mode: "all",
-      resolver: yupResolver<GetInTouchModel, any, any>(schema),
+      resolver: zodResolver(schema) as Resolver<GetInTouchModel>,
       reValidateMode: "onBlur",
     });
 
