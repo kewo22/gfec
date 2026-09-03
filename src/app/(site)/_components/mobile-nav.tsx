@@ -1,167 +1,113 @@
 "use client";
-import React, { useEffect, useRef } from "react";
 
-import { usePathname } from "next/navigation";
+import React, { useEffect, useState } from "react";
+
+import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { isMobile } from "react-device-detect";
+import { Menu, X } from "lucide-react";
 
 import { NavItems } from "../_constants/nav-items.constants";
-import { Typography } from "@/app/_components/ui/typography";
 import NavSocial from "./nav-social";
+
+import gfecTrans from "../../../../public/comp/GFEC-Trans.png";
 
 interface MobileNavProps {
   isMainNavInView: boolean;
 }
 
-export default function MobileNav({ isMainNavInView }: MobileNavProps) {
+export default function MobileNav({ }: MobileNavProps) {
   const pathname = usePathname();
-  const rawPathName = pathname.split("/")[1];
-
-  const menuIconRef = useRef<HTMLUListElement | null>(null);
-  // const bottomMenuRef = useRef<HTMLDivElement | null>(null);
+  const router = useRouter();
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: "auto",
-    });
-    setTimeout(() => {
-      document.querySelector("body")?.classList.remove("overflow-hidden");
-      document.getElementById("menu")!.classList.remove("active");
-      document.getElementById("mobile-nav-drawer")!.classList.add("-right-[850px]");
-      document.getElementById("mobile-nav-drawer")!.classList.remove("right-0");
-    }, 100);
-  }, [pathname]);
+    document.body.classList.toggle("overflow-hidden", isOpen);
+    return () => document.body.classList.remove("overflow-hidden");
+  }, [isOpen]);
 
-  const menuOnClick = () => {
-    document.querySelector("body")?.classList.toggle("overflow-hidden");
-    document.getElementById("menu")!.classList.toggle("active");
-    document.getElementById("mobile-nav-drawer")!.classList.toggle("-right-[850px]");
-    document.getElementById("mobile-nav-drawer")!.classList.toggle("right-0");
+  const onFreeConsultationClick = () => {
+    setIsOpen(false);
+    router.push("/contact#get-in-touch-container");
   };
-
-  if (
-    menuIconRef &&
-    menuIconRef.current &&
-    // bottomMenuRef &&
-    // bottomMenuRef.current &&
-    isMobile
-  ) {
-    if (isMainNavInView) {
-      // show menu bar
-      menuIconRef.current.classList.remove("-right-[15%]!");
-      menuIconRef.current.classList.add("right-[5%]!");
-      menuIconRef.current.classList.add("top-[5%]!");
-      
-      // hide bottom menu
-      // bottomMenuRef.current.classList.add("-bottom-[80px]");
-      // bottomMenuRef.current.classList.remove("bottom-0");
-      // document.querySelector("body")!.classList.remove("pb-[80px]");
-    } else {
-      // hide menu bar
-      menuIconRef.current.classList.remove("right-[5%]!");
-      menuIconRef.current.classList.remove("top-[5%]!");
-      menuIconRef.current.classList.add("-right-[15%]!");
-
-      // show bottom menu
-      // bottomMenuRef.current.classList.remove("-bottom-[80px]");
-      // bottomMenuRef.current.classList.add("bottom-0");
-      // document.querySelector("body")!.classList.add("pb-[80px]");
-    }
-  }
-
-  // const navItems = NavItems.map((item) => {
-  //   const clonedItem = { ...item };
-  //   if (rawPathName === "" && item.route === "/") {
-  //     clonedItem.isActive = true;
-  //     return clonedItem;
-  //   }
-  //   return { ...item, isActive: rawPathName === item.route };
-  // });
 
   return (
     <>
-      <ul
-        id="menu"
-        onClick={menuOnClick}
-        className="block lg:hidden z-41 menu transition-all ease-in-out duration-500"
-        ref={menuIconRef}
+      <button
+        type="button"
+        aria-label={isOpen ? "Close menu" : "Open menu"}
+        aria-expanded={isOpen}
+        onClick={() => setIsOpen((v) => !v)}
+        className="lg:hidden ml-auto flex items-center justify-center w-11 h-11 text-navy cursor-pointer"
       >
-        <li className="bar"></li>
-        <li className="bar"></li>
-        <li className="bar"></li>
-      </ul>
+        {isOpen ? <X size={26} /> : <Menu size={26} />}
+      </button>
 
       <section
-        id="mobile-nav-drawer"
-        // mobile-nav-height
-        className="lg:hidden z-40 fixed top-0 -right-[850px] h-screen w-full bg-slate-100 transition-all ease-in-out duration-1000"
+        aria-hidden={!isOpen}
+        className={`lg:hidden fixed inset-0 z-[60] bg-paper transition-transform duration-500 ease-in-out ${isOpen ? "translate-x-0" : "translate-x-full"
+          }`}
       >
-        <div className="h-full flex flex-col items-center justify-around">
-          <Image
-            src="/GFEC-Trans.png"
-            alt="GFEC-Trans-mobile"
-            width={150}
-            height={100}
-            priority
-            className="mx-auto"
-          />
-          <div className="flex items-center justify-center flex-col gap-5">
+        <div className="stitch-rule-v absolute left-6 top-0 bottom-0" />
+
+        <div className="h-full flex flex-col px-8 py-8 overflow-y-auto">
+          <div className="flex items-center justify-between mb-12">
+            <Image src={gfecTrans} alt="GFEC logo" width={56} height={50} priority />
+            <button
+              type="button"
+              aria-label="Close menu"
+              onClick={() => setIsOpen(false)}
+              className="flex items-center justify-center w-11 h-11 text-navy cursor-pointer"
+            >
+              <X size={26} />
+            </button>
+          </div>
+
+          <nav className="flex flex-col gap-1">
             {NavItems.map((item, i) => {
+              const active =
+                item.route === "/" ? pathname === "/" : pathname.startsWith(item.route);
               return (
                 <Link
                   key={i}
-                  className={`transition-all ease-in-out border-b-4 ${rawPathName === item.route
-                      ? "border-b-secondary"
-                      : "border-b-transparent"
-                    } `}
                   href={item.route}
+                  onClick={() => setIsOpen(false)}
+                  className="group flex items-center gap-4 py-4 border-b border-hairline"
                 >
-                  <Typography
-                    variant="p"
-                    className="uppercase font-bold tracking-widest text-secondary"
+                  <span className="ledger-ref text-xs text-gold">{String(i + 1).padStart(2, "0")}</span>
+                  <span
+                    className={`font-display text-2xl font-semibold ${active ? "text-navy" : "text-navy/60 group-hover:text-navy"
+                      }`}
                   >
                     {item.text}
-                  </Typography>
+                  </span>
                 </Link>
               );
             })}
+          </nav>
+
+          <div className="mt-auto flex flex-col gap-4 pt-8">
+            <button
+              type="button"
+              onClick={onFreeConsultationClick}
+              className="bg-navy text-paper font-display font-semibold text-base px-6 py-4 rounded-sm text-center cursor-pointer"
+            >
+              Book a Free Consultation
+            </button>
+            <Link
+              href="/apply-now"
+              onClick={() => setIsOpen(false)}
+              className="border border-navy/30 text-navy font-display font-semibold text-base px-6 py-4 rounded-sm text-center"
+            >
+              Apply Now
+            </Link>
+            <NavSocial
+              iconClass="text-navy"
+              wrapperClass="flex flex-row gap-6 items-center justify-center pt-4"
+            />
           </div>
-          <NavSocial
-            iconClass="text-secondary"
-            wrapperClass="flex flex-row gap-8 items-center justify-center"
-          />
         </div>
       </section>
-
-      {/* <div
-        className="sm:hidden h-20 w-full fixed -bottom-[80px] left-0 z-50 bg-secondary transition-all ease-in-out duration-500 flex items-center justify-evenly"
-        ref={bottomMenuRef}
-      >
-        {navItems.map((item, i) => {
-          return (
-            <Link
-              key={i}
-              href={item.route}
-              className="flex flex-col items-center justify-center gap-1"
-            >
-              <FontAwesomeIcon
-                size="sm"
-                className={`text-white ${item.isActive && "!text-primary"}`}
-                icon={item.icon}
-              />
-              <Typography
-                variant="small"
-                className={`text-white ${item.isActive && "!text-primary"}`}
-              >
-                {item.text}
-              </Typography>
-            </Link>
-          );
-        })}
-      </div> */}
     </>
   );
 }

@@ -1,9 +1,7 @@
 "use client";
 
 import React from "react";
-import { useRouter } from "next/navigation";
-
-import Button from "@/app/_components/ui/button";
+import { useRouter, usePathname } from "next/navigation";
 
 interface NavActionsNewProps {
   openModel?: () => void;
@@ -12,46 +10,42 @@ interface NavActionsNewProps {
 
 export default function NavActionsNew({ openModel, className }: NavActionsNewProps) {
   const router = useRouter();
+  const pathname = usePathname();
 
-  // take out from nav actions
   const onFreeConsultationClick = () => {
-    const getInTouchContainer = document.querySelector(
-      "#get-in-touch-container"
-    );
-    setTimeout(() => {
-      if (getInTouchContainer) {
-        getInTouchContainer.scrollIntoView({
-          behavior: "smooth",
-          block: "center",
-        });
-      } else {
-        openModel?.();
-      }
-    }, 100);
+    if (pathname !== "/contact") {
+      router.push("/contact#get-in-touch-container");
+      return;
+    }
+    const getInTouchContainer = document.querySelector("#get-in-touch-container");
+    if (getInTouchContainer) {
+      getInTouchContainer.scrollIntoView({ behavior: "smooth", block: "center" });
+    } else {
+      openModel?.();
+    }
   };
 
   const onApplyNowClick = () => {
-    router.push('/apply-now', { scroll: true })
+    router.push("/apply-now", { scroll: true });
   };
 
   return (
-    <div className={`flex flex-col sm:flex-row gap-5 ${className}`}>
-      <Button
-        text="Apply Now"
-        size="md"
-        customClass="w-fit"
-        onClick={() => {
-          onApplyNowClick();
-        }}
-      />
-      {/* <Button
-        text="Free Consultation"
-        size="md"
-        customClass="w-fit"
-        onClick={() => {
-          onFreeConsultationClick();
-        }}
-      /> */}
+    <div className={`flex flex-row items-center gap-4 ${className}`}>
+      <button
+        type="button"
+        onClick={onApplyNowClick}
+        className="font-display text-[15px] font-medium text-navy/80 hover:text-navy transition-colors"
+      >
+        Apply Now
+      </button>
+      <button
+        type="button"
+        onClick={onFreeConsultationClick}
+        className="group relative overflow-hidden bg-navy text-paper font-display text-[15px] font-semibold px-6 py-3 rounded-sm cursor-pointer"
+      >
+        <span className="absolute inset-x-0 bottom-0 h-[3px] bg-gold scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300" />
+        Book a Free Consultation
+      </button>
     </div>
   );
 }

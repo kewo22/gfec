@@ -5,7 +5,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { NavItems } from "../_constants/nav-items.constants";
-import { Typography } from "@/app/_components/ui/typography";
 
 interface NavLinksNewProps {
   className?: string;
@@ -27,22 +26,21 @@ export default function NavLinksNew({ className }: NavLinksNewProps) {
     }
   });
 
-
   return (
-    <div className={`flex flex-row items-center gap-x-10 ${className}`}>
+    <div className={`flex flex-row items-center gap-x-9 ${className}`}>
       {navItems.map((item, i) => {
         return (
-          <Link
-            key={i}
-            href={item.route}
-          >
-            <Typography
-              variant="link"
-              className={`hover:border-b-4 hover:border-b-primary transition-all ease-in-out pb-2 ${item.isActive && "!border-b-primary border-b-4"
+          <Link key={i} href={item.route} className="group relative py-2">
+            <span
+              className={`font-display text-[15px] font-medium tracking-wide transition-colors ${item.isActive ? "text-navy" : "text-navy/70 group-hover:text-navy"
                 }`}
             >
               {item.text}
-            </Typography>
+            </span>
+            <span
+              className={`absolute -bottom-0.5 left-0 h-[2px] bg-gold transition-all duration-300 ease-out ${item.isActive ? "w-full" : "w-0 group-hover:w-full"
+                }`}
+            />
           </Link>
         );
       })}

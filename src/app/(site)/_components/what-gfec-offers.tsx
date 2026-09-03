@@ -1,222 +1,97 @@
-import Image from "next/image";
-
-import { Typography } from "../../_components/ui/typography";
-import SectionTitle from "./section-title";
-
-import books from "../../../../public/comp/books.png";
-import graduationHat from "../../../../public/comp/graduation-hat.png";
-import offer from "../../../../public/comp/offer.png";
-import finSupport from "../../../../public/comp/fin-support.png";
-import studentVisa from "../../../../public/comp/student-visa.png";
-import waitingRoom from "../../../../public/comp/waiting-room.png";
-import roomKey from "../../../../public/comp/room-key.png";
-import immigration from "../../../../public/comp/immigration.png";
-import discussion from "../../../../public/comp/discussion.png";
-import visa from "../../../../public/comp/visa.png";
-import eng from "../../../../public/comp/eng.png";
 import ContainerNew from "./layouts/container-new";
-import { TypingEffect } from "./typing-effect";
+
+const SERVICES = [
+  {
+    title: "Program Selection",
+    description:
+      "Explore a wide range of study programs tailored to your career goals and academic interests.",
+  },
+  {
+    title: "University Selection",
+    description: "Choose from top universities across the globe to find the right fit for your future.",
+  },
+  {
+    title: "Offers & Admissions",
+    description: "Get access to exclusive admission discounts and personalized application support.",
+  },
+  {
+    title: "Financial Guidance",
+    description: "Receive expert advice on budgeting, scholarships, and making your education affordable.",
+  },
+  {
+    title: "Visa Processing Assistance",
+    description: "We guide you through every step of your student visa application with ease and accuracy.",
+  },
+  {
+    title: "Pre-Departure Briefing",
+    description: "Be fully prepared before you fly — get practical tips, cultural insights, and travel guidance.",
+  },
+  {
+    title: "Accommodation Guidance",
+    description: "Find safe and convenient student housing options near your campus with our help.",
+  },
+  {
+    title: "Immigration Guidance",
+    description: "Understand immigration policies and procedures with reliable, up-to-date support and Q&A.",
+  },
+];
 
 export default function WhatGfecOffers() {
-  const dataArr = [
-    {
-      image: {
-        name: books,
-        alt: "books",
-        height: 50,
-        width: 50,
-      },
-      title: "Program Selections",
-      description:
-        "Explore a wide range of study programs tailored to your career goals and academic interests",
-    },
-    {
-      image: {
-        name: graduationHat,
-        alt: "graduation-hat",
-        height: 70,
-        width: 70,
-      },
-      title: "University Selections",
-      description:
-        "Choose from top universities across the globe to find the right fit for your future",
-    },
-    {
-      image: {
-        name: offer,
-        alt: "offer",
-        height: 60,
-        width: 60,
-      },
-      title: "Offers & Admissions",
-      description:
-        "Get access to exclusive admission discounts and personalized application support",
-    },
-    {
-      image: {
-        name: finSupport,
-        alt: "fin-support",
-        height: 70,
-        width: 70,
-      },
-      title: "Financial Guidance",
-      description:
-        "Receive expert advice on budgeting, scholarships, and making your education affordable",
-    },
-    {
-      image: {
-        name: studentVisa,
-        alt: "student-visa",
-        height: 70,
-        width: 70,
-      },
-      title: "Visa processing assistance",
-      description:
-        "We guide you through every step of your student visa application with ease and accuracy",
-    },
-    {
-      image: {
-        name: waitingRoom,
-        alt: "waiting-room",
-        height: 70,
-        width: 70,
-      },
-      title: "Pre-departure Briefings",
-      description:
-        "Be fully prepared before you fly—get practical tips, cultural insights, and travel guidance",
-    },
-    {
-      image: {
-        name: roomKey,
-        alt: "room-key",
-        height: 70,
-        width: 70,
-      },
-      title: "Accommodation Guidance",
-      description:
-        "Find safe and convenient student housing options near your campus with our help",
-    },
-    {
-      image: {
-        name: immigration,
-        alt: "immigration",
-        height: 75,
-        width: 75,
-      },
-      title: "Immigration Guidance",
-      description:
-        "Understand immigration policies and procedures with reliable, up-to-date support and Q&A",
-    },
-    // {
-    //   image: {
-    //     name: discussion,
-    //     alt: "discussion",
-    //     height: 50,
-    //     width: 50,
-    //   },
-    //   title: "Free Counselling & Personalized Service",
-    //   description:
-    //     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab provident incidunt at magni sapiente tenetur doloribus dolorem nobis nisi. Repellendus?",
-    // },
-    // {
-    //   image: {
-    //     name: visa,
-    //     alt: "visa",
-    //     height: 50,
-    //     width: 50,
-    //   },
-    //   title: "Total Process Until Visa Free of Charge",
-    //   description:
-    //     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab provident incidunt at magni sapiente tenetur doloribus dolorem nobis nisi. Repellendus?",
-    // },
-    // {
-    //   image: {
-    //     name: eng,
-    //     alt: "eng",
-    //     height: 55,
-    //     width: 55,
-    //   },
-    //   title: "IELTS Classes / Spoken English Classes",
-    //   description:
-    //     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab provident incidunt at magni sapiente tenetur doloribus dolorem nobis nisi. Repellendus?",
-    // },
-  ];
-
   return (
-    <ContainerNew className="mx-5 xl:mx-auto py-12">
-      <SectionTitle title="What GFEC offers ?" />
-
-      <div id="what-we-offer-card" className="w-full md:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 hidden">
-        {dataArr.map((data, i) => {
-          return (
-            <div key={i} className="card">
-              <div className="card-front">
-                <Image
-                  src={data.image.name}
-                  alt={data.image.alt}
-                  height={data.image.height}
-                  width={data.image.width}
-                  className="relative! mb-3 text-center mx-auto"
-                  priority
-                />
-                <Typography variant="p" className="font-bold ">
-                  {data.title}
-                </Typography>
-              </div>
-              <div className="card-back">
-                <Typography variant="p" className="px-5">
-                  {data.description}
-                </Typography>
-              </div>
-            </div>
-          )
-        })}
-      </div>
-
-      <div className="space-y-6 block md:hidden">
-        {dataArr.map((data, i) => {
-          return (
-            <div className="flex flex-row items-center border border-secondary bg-white rounded-lg px-5 py-8" key={i}>
-              <div className="flex-[0_0_120px]">
-                <Image
-                  src={data.image.name}
-                  alt={data.image.alt}
-                  height={data.image.height}
-                  width={data.image.width}
-                  className="relative! mx-auto"
-                  priority
-                />
-              </div>
-              <div className="flex flex-col gap-2">
-                <Typography variant="p" className="font-bold text-left">
-                  {data.title}
-                </Typography>
-                <Typography variant="p" className="text-left">
-                  {data.description}
-                </Typography>
-              </div>
-            </div>
-          )
-        })}
-      </div>
-
-
-
-
-      <section id="paper" className="mt-10 flex flex-col lg:flex-row justify-evenly items-center gap-5 lg:gap-0">
-        <div className="page">
-          <div className="margin"></div>
-          <TypingEffect variant="h5" text="Start Your Global Education Journey with Confidence!" duration={0.01} />
-          <br />
-          <TypingEffect variant="p" textClassName="text-left" text="Whether you&apos;re dreaming of studying in the UK, Malta, Germany, or Dubai—GFEC is here to guide you every step of the way. Our expert counselors are partnered with leading global universities to offer you trusted advice, step-by-step application support, and a pathway to success. " />
+    <section className="bg-surface py-20 lg:py-28">
+      <ContainerNew className="px-5 lg:px-12">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-14">
+          <div className="max-w-2xl">
+            <p className="ledger-ref text-gold text-xs uppercase mb-3">What GFEC offers</p>
+            <h2 className="font-display font-bold text-navy text-3xl lg:text-[44px] leading-[1.1]">
+              Your journey, handled at every stage.
+            </h2>
+          </div>
+          <p className="font-body text-mist max-w-md">
+            Eight services, one consultant carrying your file through all of them — from your
+            first program search to the day you land.
+          </p>
         </div>
-        <div className="page">
-          <div className="margin"></div>
-          <TypingEffect variant="h5" text="Global Admissions & Visa Expertise You Can Trust" duration={0.01} />
-          <br />
-          <TypingEffect variant="p" textClassName="text-left" text="Navigating international education can be overwhelming—but not with GFEC. With over a decade of experience helping Sri Lankan students study abroad, our counselors provide personalized support tailored to your academic goals and budget. From selecting the right course to securing your visa, we&apos;re with you from start to finish." />
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-t border-l border-hairline">
+          {SERVICES.map((service, i) => (
+            <div key={service.title} className="border-r border-b border-hairline p-7 group hover:bg-paper transition-colors">
+              <span className="ledger-ref text-gold text-sm block mb-6">{String(i + 1).padStart(2, "0")}</span>
+              <h3 className="font-display font-semibold text-navy text-lg mb-2 leading-snug">
+                {service.title}
+              </h3>
+              <p className="font-body text-mist text-sm leading-relaxed">{service.description}</p>
+            </div>
+          ))}
         </div>
-      </section>
-    </ContainerNew>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
+          <div className="ledger-card rounded-sm p-8">
+            <p className="ledger-ref text-gold text-xs uppercase mb-4">Note 01</p>
+            <h3 className="font-display font-bold text-navy text-xl mb-3">
+              Start your global education journey with confidence
+            </h3>
+            <p className="font-body text-ink/75 leading-relaxed">
+              Whether you&apos;re dreaming of studying in the UK, Malta, Germany, or Dubai — GFEC
+              is here to guide you every step of the way. Our expert counselors are partnered
+              with leading global universities to offer trusted advice, step-by-step application
+              support, and a clear pathway to success.
+            </p>
+          </div>
+          <div className="ledger-card rounded-sm p-8">
+            <p className="ledger-ref text-gold text-xs uppercase mb-4">Note 02</p>
+            <h3 className="font-display font-bold text-navy text-xl mb-3">
+              Admissions &amp; visa expertise you can trust
+            </h3>
+            <p className="font-body text-ink/75 leading-relaxed">
+              Navigating international education can be overwhelming — but not with GFEC. With
+              years of experience helping Sri Lankan students study abroad, our counselors
+              provide personalized support tailored to your academic goals and budget, from
+              selecting the right course to securing your visa.
+            </p>
+          </div>
+        </div>
+      </ContainerNew>
+    </section>
   );
 }

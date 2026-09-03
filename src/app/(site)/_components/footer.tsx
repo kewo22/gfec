@@ -5,7 +5,6 @@ import Image from "next/image";
 
 import gfecTrans from "../../../../public/comp/GFEC-Trans.png";
 
-import { Typography } from "@/app/_components/ui/typography";
 import { NavItems } from "../_constants/nav-items.constants";
 import { ResolveBaseUrl } from "@/app/utils/common";
 import NavSocial from "./nav-social";
@@ -21,122 +20,76 @@ export default function Footer() {
   const LAT = process.env.LAT as unknown as string;
   const LNG = process.env.LNG as unknown as string;
 
-  const privacyBasePolicyUrl = ResolveBaseUrl(
-    process.env.NEXT_PUBLIC_VERCEL_ENV!
-  );
+  const privacyBasePolicyUrl = ResolveBaseUrl(process.env.NEXT_PUBLIC_VERCEL_ENV!);
 
   const onVisitClick = () => {
     const url = `https://www.google.com/maps?q=${LAT},${LNG}`;
-    window.open(url, '_blank');
-  }
+    window.open(url, "_blank");
+  };
 
   return (
-    <footer className="flex flex-col md:flex-row gap-8 md:gap-16 items-center justify-center max-w-7xl py-16 mx-auto">
-      <div className="flex flex-col gap-6">
-        <div>
-          <Image
-            src={gfecTrans}
-            alt="GFEC-LOGO"
-            width={100}
-            height={90}
-            priority
-            className="block lg:hidden mx-auto"
-          />
-          <Image
-            src={gfecTrans}
-            alt="GFEC-LOGO"
-            width={140}
-            height={120}
-            priority
-            className="hidden lg:block mx-auto"
-          />
-        </div>
+    <footer className="bg-navy-deep">
+      <div className="stitch-rule" />
+      <div className="max-w-[1600px] mx-auto px-5 lg:px-12 py-16">
+        <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr_1fr_1fr] gap-12">
+          <div className="flex flex-col gap-4">
+            <Image src={gfecTrans} alt="GFEC logo" width={100} height={90} className="brightness-0 invert opacity-90" />
+            <p className="font-body text-paper/60 text-sm leading-relaxed max-w-xs">
+              GFEC helps students from Sri Lanka pursue international education — from program
+              selection to visa approval and departure.
+            </p>
+          </div>
 
-        <div className="flex flex-col text-sm text-secondary text-center md:text-left">
-          <span className="">
-            © 2025 &nbsp;
-            <a href="https://www.gfeconsultancy.com/" className="underline hover:font-bold hover:decoration-primary">
-              GEFC™
-            </a>
-            . All Rights Reserved.
-          </span>
-          <span className="">
-            <a
-              href={`${privacyBasePolicyUrl}/privacy-policy`}
-              className="underline hover:font-bold hover:decoration-primary"
+          <div className="flex flex-col gap-3">
+            <p className="font-display font-semibold text-gold text-xs uppercase tracking-wide mb-1">Explore</p>
+            {NavItems.map((item, i) => (
+              <Link key={i} href={item.route} className="font-body text-paper/70 hover:text-paper text-sm transition-colors">
+                {item.text}
+              </Link>
+            ))}
+          </div>
+
+          <div className="flex flex-col gap-3">
+            <p className="font-display font-semibold text-gold text-xs uppercase tracking-wide mb-1">Visit us at</p>
+            <button
+              type="button"
+              onClick={onVisitClick}
+              className="font-body text-paper/70 hover:text-paper text-sm text-left transition-colors cursor-pointer"
             >
-              Privacy Policy
+              {addressLine1}, {addressLine2}, <br /> {addressLine3}.
+            </button>
+          </div>
+
+          <div className="flex flex-col gap-3">
+            <p className="font-display font-semibold text-gold text-xs uppercase tracking-wide mb-1">Contact us</p>
+            {phoneNos?.map((phoneNo, i) => (
+              <a key={i} href={`tel:${phoneNo}`} className="font-body text-paper/70 hover:text-paper text-sm transition-colors">
+                {phoneNo}
+              </a>
+            ))}
+            {emails?.map((mail, i) => (
+              <a key={i} href={`mailto:${mail}`} className="font-body text-paper/70 hover:text-paper text-sm transition-colors break-all">
+                {mail}
+              </a>
+            ))}
+            <NavSocial
+              iconClass="text-paper/70 hover:text-gold transition-colors"
+              wrapperClass="flex flex-row gap-4 items-center pt-2"
+            />
+          </div>
+        </div>
+
+        <div className="border-t border-paper/10 mt-12 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="font-body text-paper/50 text-xs">
+            © 2025{" "}
+            <a href="https://www.gfeconsultancy.com/" className="hover:text-paper/80">
+              GFEC™
             </a>
-          </span>
-        </div>
-      </div>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 xl:gap-16">
-        <div className="flex flex-col justify-center items-center sm:items-start gap-2">
-          <Typography className="text-primary font-bold tracking-wide" variant="h5">
-            Explore
-          </Typography>
-          <div className="flex flex-col justify-center items-center sm:items-start">
-            {NavItems.map((item, i) => {
-              return (
-                <Link key={i} className="hover:font-bold" href={item.route}>
-                  <Typography className="text-secondary" variant="p">
-                    {item.text}
-                  </Typography>
-                </Link>
-              );
-            })}
-          </div>
-        </div>
-
-        <div className="text-center sm:text-left flex flex-col gap-2">
-          <Typography className="text-primary font-bold tracking-wide" variant="h5">
-            Visit As At
-          </Typography>
-          <Typography
-            className="text-secondary hover:underline cursor-pointer"
-            variant="p"
-            onClick={onVisitClick}
-          >
-            <span className="block sm:hidden">{addressLine1}, {addressLine2}, <br /> {addressLine3}.</span>
-            <span className="hidden sm:block">{addressLine1}, <br /> {addressLine2}, <br /> {addressLine3}.</span>
-          </Typography>
-        </div>
-
-        <div className="text-center sm:text-left flex flex-col gap-2">
-          <Typography className="text-primary font-bold tracking-wide" variant="h5">
-            Contact Us
-          </Typography>
-          <div className="flex flex-col justify-center items-center md:items-start">
-            {phoneNos?.map((phoneNo, i) => {
-              return (
-                <Typography key={i} className="text-secondary hover:underline cursor-pointer" variant="p">
-                  <a className="" href={`tel:${phoneNo}`}>
-                    {phoneNo}
-                  </a>
-                </Typography>
-              );
-            })}
-            {emails?.map((mail, i) => {
-              return (
-                <Typography key={i} className="text-secondary hover:underline cursor-pointer" variant="p">
-                  <a className="" href={`mailto:${mail}`}>
-                    {mail}
-                  </a>
-                </Typography>
-              );
-            })}
-          </div>
-        </div>
-
-        <div className="text-center sm:text-left flex flex-col gap-2">
-          <Typography className="text-primary font-bold tracking-wide" variant="h5">
-            Follow Us On
-          </Typography>
-          <NavSocial
-            iconClass="text-secondary"
-            wrapperClass="flex flex-row md:flex-col xl:flex-row gap-4 lg:gap-6 items-center md:items-start justify-center xl:justify-start"
-          />
+            . All rights reserved.
+          </p>
+          <a href={`${privacyBasePolicyUrl}/privacy-policy`} className="font-body text-paper/50 hover:text-paper/80 text-xs">
+            Privacy Policy
+          </a>
         </div>
       </div>
     </footer>

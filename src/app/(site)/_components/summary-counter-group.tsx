@@ -1,42 +1,47 @@
 import React from "react";
 
 import ContainerNew from "./layouts/container-new";
-import { Typography } from "../../_components/ui/typography";
-import SectionTitle from "./section-title";
-
 import SummaryCounter from "./summary-counter";
 
+const STATS = [
+  { max: 14, suffix: false, label: "Countries" },
+  { max: 600, suffix: true, label: "University partners" },
+  { max: 150, suffix: true, label: "Courses" },
+  { max: 30, suffix: true, label: "Students guided" },
+];
+
 export default function SummaryCounterGroup() {
-
   return (
-    <ContainerNew className="h-auto py-10 flex flex-col justify-center">
+    <section className="bg-navy py-16 lg:py-20">
+      <ContainerNew className="px-5 lg:px-12">
+        <div className="flex flex-col xl:flex-row items-center xl:items-stretch gap-12 xl:gap-20">
+          <div className="w-full xl:w-[420px] shrink-0 text-center xl:text-left">
+            <p className="ledger-ref text-gold text-xs uppercase mb-4">Est. 2021 — Colombo, Sri Lanka</p>
+            <h2 className="font-display font-bold text-paper text-3xl lg:text-4xl leading-tight mb-4">
+              Providing trusted visa &amp; admissions guidance since 2021
+            </h2>
+            <p className="font-body text-paper/70 leading-relaxed">
+              We understand that the prospect of higher education can be daunting, but with our
+              help, you can confidently navigate the college and university landscape. Our
+              counselors have years of experience helping students identify the right path
+              forward.
+            </p>
+          </div>
 
-      <div className="w-full flex justify-between items-center flex-col xl:flex-row gap-10">
-        <div className="w-full sm:w-[560px] text-justify flex flex-col gap-2 px-2 py-4">
-          <Typography variant="h3" className="text-secondary text-center xl:text-left">Providing best visa services since 2021</Typography>
-          <Typography variant="p" className="text-justify">We understand that the prospect of higher education can be daunting, but with our help, you can confidently navigate the college and university landscape. Our counselors have years of experience working with students just like you, and they have the knowledge and expertise to help you identify your strengths, interests, and career goals.</Typography>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-paper/15 flex-1 rounded-sm overflow-hidden">
+            {STATS.map((stat) => (
+              <div key={stat.label} className="bg-navy px-6 py-8 flex flex-col items-center justify-center text-center">
+                <SummaryCounter
+                  maxCount={stat.max}
+                  className="text-gold font-display font-bold text-4xl sm:text-5xl"
+                  plusIconClassName={stat.suffix ? "text-gold font-display font-bold text-3xl sm:text-4xl" : undefined}
+                />
+                <p className="font-body text-paper/70 text-sm mt-2">{stat.label}</p>
+              </div>
+            ))}
+          </div>
         </div>
-
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-10">
-          <div className="text-center min-w-[140px]">
-            <SummaryCounter maxCount={14} className='text-5xl sm:text-7xl' />
-            <Typography variant="h5">Countries</Typography>
-          </div>
-          <div className="text-center min-w-[140px]">
-            <SummaryCounter maxCount={600} className='text-5xl sm:text-7xl' plusIconClassName='text-5xl' />
-            <Typography variant="h5">Universities</Typography>
-          </div>
-          <div className="text-center min-w-[140px]">
-            <SummaryCounter maxCount={150} className='text-5xl sm:text-7xl' plusIconClassName='text-5xl' />
-            <Typography variant="h5">Courses</Typography>
-          </div>
-          <div className="text-center min-w-[140px]">
-            <SummaryCounter maxCount={30} className='text-5xl sm:text-7xl' plusIconClassName='text-5xl' />
-            <Typography variant="h5">Students</Typography>
-          </div>
-        </div>
-      </div>
-
-    </ContainerNew>
+      </ContainerNew>
+    </section>
   );
 }

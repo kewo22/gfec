@@ -271,9 +271,9 @@ const GetInTouchForm = forwardRef<GetInTouchFormHandle, GetInTouchFormProps>(
           </div>
 
           <Button
-            text="Save"
+            text="Book My Consultation"
             type="submit"
-            customClass="w-[150px] mx-auto"
+            customClass="w-full sm:w-fit mx-auto bg-navy hover:bg-navy-deep rounded-sm px-8"
             isLoading={isLoading}
           />
         </form>

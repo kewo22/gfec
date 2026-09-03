@@ -3,8 +3,7 @@ import React, { useMemo } from "react";
 
 import { GoogleMap, MarkerF, useJsApiLoader } from "@react-google-maps/api";
 
-import Container from "./layouts/container";
-import SectionTitle from "./section-title";
+import ContainerNew from "./layouts/container-new";
 import { Spinner } from "@/app/_components/ui/spinner";
 
 const containerStyle = {
@@ -38,27 +37,26 @@ export default function GfecMap() {
   }, []);
 
   return (
-    <Container className="relative mx-5 xl:mx-auto py-20">
-      <SectionTitle title="Locate Us" />
+    <section className="bg-paper py-16 lg:py-20">
+      <ContainerNew className="px-5 lg:px-12">
+        <p className="ledger-ref text-gold text-xs uppercase mb-3">Find us</p>
+        <h2 className="font-display font-bold text-navy text-2xl lg:text-3xl mb-8">Visit our Colombo office</h2>
 
-      <div className="w-full h-[450px] flex items-center justify-center">
-        {isLoaded && (
-          <GoogleMap
-            mapContainerStyle={containerStyle}
-            center={mapCenter}
-            zoom={16}
-            onLoad={onLoad}
-            onUnmount={onUnmount}
-          >
-            <MarkerF
-              position={mapCenter}
-            />
-          </GoogleMap>
-        )}
-        {!isLoaded && (
-          <Spinner className="size-14" />
-        )}
-      </div>
-    </Container>
+        <div className="w-full h-[420px] rounded-sm overflow-hidden border border-hairline flex items-center justify-center">
+          {isLoaded && (
+            <GoogleMap
+              mapContainerStyle={containerStyle}
+              center={mapCenter}
+              zoom={16}
+              onLoad={onLoad}
+              onUnmount={onUnmount}
+            >
+              <MarkerF position={mapCenter} />
+            </GoogleMap>
+          )}
+          {!isLoaded && <Spinner className="size-14" />}
+        </div>
+      </ContainerNew>
+    </section>
   );
 }

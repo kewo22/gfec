@@ -36,3 +36,8 @@ yarn-error.log*
 next-env.d.ts
 
 .env*
+
+# impeccable skill local/machine state (surface briefs under .impeccable/surfaces/ are kept)
+.impeccable/build/
+.impeccable/hook.cache.json
+.impeccable/config.local.json

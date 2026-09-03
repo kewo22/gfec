@@ -1,28 +1,36 @@
-"use client";
-
-import React from "react";
-import { motion } from 'motion/react';
+import type { Metadata } from "next";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 
 import GfecMap from "../_components/gfec-map";
 import GetInTouch from "../_components/get-in-touch";
-import Container from "../_components/layouts/container";
+import ContainerNew from "../_components/layouts/container-new";
+import Breadcrumbs from "../_components/breadcrumbs";
 import NavSocial from "../_components/nav-social";
 
-import { Typography } from "@/app/_components/ui/typography";
-
-const fadeInUp = {
-  initial: { opacity: 0, y: 30 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.5 }
+export const metadata: Metadata = {
+  title: "Contact GFEC",
+  description:
+    "Book a free study abroad consultation with GFEC in Colombo. Call 0112271854, email info@gfeconsultancy.com, or visit us at Galle Road, Colombo 3.",
+  alternates: { canonical: "https://gfeconsultancy.com/contact" },
 };
 
-const staggerContainer = {
-  animate: {
-    transition: {
-      staggerChildren: 0.1
-    }
-  }
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: "GFEC — Gordon Foreign Education Consultancy",
+  image: "https://gfeconsultancy.com/comp/GFEC-Trans.png",
+  telephone: "0112271854",
+  email: "info@gfeconsultancy.com",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "408 (3rd Floor), Galle Road",
+    addressLocality: "Colombo 3",
+    addressCountry: "LK",
+  },
+  openingHoursSpecification: [
+    { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], opens: "09:00", closes: "17:00" },
+    { "@type": "OpeningHoursSpecification", dayOfWeek: "Saturday", opens: "09:00", closes: "13:00" },
+  ],
 };
 
 export default function Contact() {
@@ -32,153 +40,69 @@ export default function Contact() {
   const addressLine2 = process.env.NEXT_PUBLIC_ADDRESS_LINE_2 || process.env.ADDRESS_LINE_2 || "Galle Road";
   const addressLine3 = process.env.NEXT_PUBLIC_ADDRESS_LINE_3 || process.env.ADDRESS_LINE_3 || "Colombo 3";
 
+  const INFO_CARDS = [
+    { icon: Phone, label: "Phone", items: phoneNos.map((p) => ({ text: p, href: `tel:${p}` })) },
+    { icon: Mail, label: "Email", items: emails.map((e) => ({ text: e, href: `mailto:${e}` })) },
+    { icon: MapPin, label: "Address", items: [{ text: `${addressLine1}, ${addressLine2}, ${addressLine3}` }] },
+    {
+      icon: Clock,
+      label: "Office hours",
+      items: [{ text: "Mon–Fri: 9:00 AM – 5:00 PM" }, { text: "Sat: 9:00 AM – 1:00 PM" }, { text: "Sunday: Closed" }],
+    },
+  ];
+
   return (
-    <section className="bg-slate-100">
-      <Container className="relative mx-5 xl:mx-auto py-20">
+    <div className="bg-paper">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-        {/* Header */}
-        <motion.div
-          className="text-center my-10 lg:my-20"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <Typography variant='h1' className="text-primary">
-            Contact Us
-          </Typography>
-        </motion.div>
+      <section className="bg-navy py-16 lg:py-20">
+        <ContainerNew className="px-5 lg:px-12 text-paper">
+          <Breadcrumbs items={[{ label: "Contact" }]} />
+          <p className="ledger-ref text-gold text-xs uppercase mt-6 mb-3">Get in touch</p>
+          <h1 className="font-display font-bold text-4xl sm:text-5xl leading-[1.05] max-w-xl">
+            Let&apos;s plan your global future.
+          </h1>
+          <p className="font-body text-paper/70 text-lg mt-5 max-w-xl">
+            Have questions about studying abroad? Our consultants are ready to help.
+          </p>
+        </ContainerNew>
+      </section>
 
-        {/* <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <SectionTitle title="Contact Us" />
-        </motion.div> */}
-
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12"
-          variants={staggerContainer}
-          initial="initial"
-          animate="animate"
-        >
-          {/* Phone */}
-          <motion.div
-            variants={fadeInUp}
-            className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
-          >
-            <div className="flex flex-col items-center text-center gap-4">
-              <div className="w-16 h-16 bg-secondary rounded-full flex items-center justify-center">
-                <Phone className="text-white w-8 h-8" />
+      <ContainerNew className="px-5 lg:px-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-hairline rounded-sm overflow-hidden -mt-8 relative z-10">
+          {INFO_CARDS.map((card) => (
+            <div key={card.label} className="ledger-card bg-surface p-7 flex flex-col items-center text-center gap-3">
+              <div className="w-12 h-12 rounded-full bg-navy flex items-center justify-center">
+                <card.icon size={20} className="text-gold" />
               </div>
-              <Typography variant="h5" className="text-secondary font-bold">
-                Phone
-              </Typography>
-              <div className="flex flex-col gap-1">
-                {phoneNos?.map((phone, i) => (
-                  <a
-                    key={i}
-                    href={`tel:${phone}`}
-                    className="text-gray-700 hover:text-primary transition-colors duration-300"
-                  >
-                    <Typography variant="p">{phone}</Typography>
-                  </a>
-                ))}
+              <p className="font-display font-semibold text-navy text-sm uppercase tracking-wide">{card.label}</p>
+              <div className="flex flex-col gap-0.5">
+                {card.items.map((item, i) =>
+                  "href" in item && item.href ? (
+                    <a key={i} href={item.href} className="font-body text-mist text-sm hover:text-royal transition-colors break-all">
+                      {item.text}
+                    </a>
+                  ) : (
+                    <p key={i} className="font-body text-mist text-sm">
+                      {item.text}
+                    </p>
+                  )
+                )}
               </div>
             </div>
-          </motion.div>
+          ))}
+        </div>
 
-          {/* Email */}
-          <motion.div
-            variants={fadeInUp}
-            className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
-          >
-            <div className="flex flex-col items-center text-center gap-4">
-              <div className="w-16 h-16 bg-secondary rounded-full flex items-center justify-center">
-                <Mail className="text-white w-8 h-8" />
-              </div>
-              <Typography variant="h5" className="text-secondary font-bold">
-                Email
-              </Typography>
-              <div className="flex flex-col gap-1">
-                {emails?.map((email, i) => (
-                  <a
-                    key={i}
-                    href={`mailto:${email}`}
-                    className="text-gray-700 hover:text-primary transition-colors duration-300 break-all"
-                  >
-                    <Typography variant="p">{email}</Typography>
-                  </a>
-                ))}
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Address */}
-          <motion.div
-            variants={fadeInUp}
-            className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
-          >
-            <div className="flex flex-col items-center text-center gap-4">
-              <div className="w-16 h-16 bg-secondary rounded-full flex items-center justify-center">
-                <MapPin className="text-white w-8 h-8" />
-              </div>
-              <Typography variant="h5" className="text-secondary font-bold">
-                Address
-              </Typography>
-              <Typography variant="p" className="text-gray-700">
-                {addressLine1},<br />
-                {addressLine2},<br />
-                {addressLine3}
-              </Typography>
-            </div>
-          </motion.div>
-
-          {/* Office Hours */}
-          <motion.div
-            variants={fadeInUp}
-            className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
-          >
-            <div className="flex flex-col items-center text-center gap-4">
-              <div className="w-16 h-16 bg-secondary rounded-full flex items-center justify-center">
-                <Clock className="text-white w-8 h-8" />
-              </div>
-              <Typography variant="h5" className="text-secondary font-bold">
-                Office Hours
-              </Typography>
-              <div className="text-gray-700">
-                <Typography variant="p">Mon - Fri: 9:00 AM - 5:00 PM</Typography>
-                <Typography variant="p">Sat: 9:00 AM - 1:00 PM</Typography>
-                <Typography variant="p" className="text-gray-500">Sunday: Closed</Typography>
-              </div>
-            </div>
-          </motion.div>
-        </motion.div>
-
-        {/* Social Media Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-12 bg-white p-8 rounded-lg shadow-lg"
-        >
-          <div className="flex flex-col items-center gap-6">
-            <Typography variant="h4" className="text-secondary font-bold">
-              Follow Us On Social Media
-            </Typography>
-            <NavSocial
-              iconClass="text-secondary hover:text-primary transition-colors duration-300"
-              wrapperClass="flex flex-row gap-8 items-center justify-center"
-            />
-          </div>
-        </motion.div>
-      </Container>
+        <div className="flex justify-center pt-10 pb-4">
+          <NavSocial iconClass="text-navy hover:text-royal transition-colors" wrapperClass="flex flex-row gap-8 items-center" />
+        </div>
+      </ContainerNew>
 
       <GfecMap />
 
       <div id="get-in-touch-container">
         <GetInTouch />
       </div>
-    </section>
+    </div>
   );
 }

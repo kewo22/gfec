@@ -1,236 +1,166 @@
-'use client';
-
-import React from "react";
+import type { Metadata } from "next";
 import Image from "next/image";
-import { motion } from 'motion/react';
+import Link from "next/link";
+import { Compass, HeartHandshake, ShieldCheck, ArrowRight } from "lucide-react";
 
+import ContainerNew from "../_components/layouts/container-new";
+import Breadcrumbs from "../_components/breadcrumbs";
 
-import SectionTitle from "../_components/section-title";
-import Container from "../_components/layouts/container";
-import { Typography } from "@/app/_components/ui/typography";
+export const metadata: Metadata = {
+  title: "About GFEC",
+  description:
+    "GFEC is a Colombo-based study abroad consultancy helping Sri Lankan students since 2021 — personalized guidance, comprehensive support, and unwavering commitment from program selection to departure.",
+  alternates: { canonical: "https://gfeconsultancy.com/about" },
+};
+
+const PILLARS = [
+  {
+    icon: Compass,
+    title: "Personalized Guidance",
+    description:
+      "We believe in tailoring our services to meet your unique needs, providing individualized guidance to help you make informed decisions about your study abroad plans.",
+  },
+  {
+    icon: HeartHandshake,
+    title: "Comprehensive Support",
+    description:
+      "We offer end-to-end assistance, covering everything from university selection to visa processing, ensuring you receive comprehensive support throughout your educational journey.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Unwavering Commitment",
+    description:
+      "Our dedication knows no bounds. We are committed to going the extra mile, ensuring your satisfaction and success by providing the highest level of service and support at all times.",
+  },
+];
 
 export default function About() {
   return (
-    <section className="bg-slate-100">
-      <Container className="relative mx-5 xl:mx-auto py-20">
-        {/* <SectionTitle title="Who We Are ?" /> */}
+    <div className="bg-paper">
+      <section className="relative w-full min-h-[380px] flex items-end overflow-hidden bg-navy-deep">
+        <Image src="/comp/about-1.webp" alt="GFEC team and students" fill priority className="object-cover opacity-45" />
+        <div className="absolute inset-0 bg-gradient-to-t from-navy-deep via-navy-deep/85 to-navy-deep/50" />
 
-        <motion.div
-          className="text-center my-10 lg:my-20"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <Typography variant='h1' className="text-primary">
-            About Us
-          </Typography>
-        </motion.div>
+        <ContainerNew className="relative z-10 px-5 lg:px-12 pb-12 pt-28 text-paper">
+          <Breadcrumbs items={[{ label: "About GFEC" }]} />
+          <p className="ledger-ref text-gold text-xs uppercase mt-6 mb-3">About GFEC</p>
+          <h1 className="font-display font-bold text-4xl sm:text-5xl lg:text-6xl leading-[1.05] max-w-2xl">
+            Helping Sri Lankan students build global futures.
+          </h1>
+        </ContainerNew>
+      </section>
 
-        <div className="block sm:flex flex-col lg:flex-row gap-10 mb-20">
-          <div className="">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              <Typography variant="h2" className="text-left mb-5">
-                Leading Visa & Immigration Agency
-              </Typography>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              <Typography className="text-justify">
-                We believe that access to quality education is a fundamental
-                right, and we&apos;re proud to be part of a community of
-                organizations that share this vision.
-                <br />
-                <br />
-                As a leading overseas educational consultation service provider in
-                Sri Lanka, we understand the importance of providing reliable and
-                comprehensive guidance to students who are looking to pursue
-                higher education abroad. We recognize that studying overseas can
-                be a daunting prospect, with numerous challenges and uncertainties
-                that can make the process overwhelming.
-                <br />
-                <br />
-                At GFEC we&apos;re driven by a passion for education and a
-                commitment to ensuring that every student has access to the best
-                possible opportunities to achieve their goals. We&apos;re proud to
-                be a leading overseas educational consultation service provider in
-                Sri Lanka, and we&apos;re committed to continuing to provide
-                exceptional guidance and support to students for years to come.
-              </Typography>
-            </motion.div>
-
-
-          </div>
-          <div className="flex-[0_0_450px] 2xl:flex-[0_0_650px] flex flex-row items-start gap-5">
-            <div className="image-container inline-block relative rounded-lg">
-              <Image
-                src="/comp/about-1.webp"
-                alt="about-1"
-                priority
-                width="400"
-                height="600"
-                className="rounded-lg"
-              />
+      <section className="py-16 lg:py-24">
+        <ContainerNew className="px-5 lg:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+            <div className="flex gap-5">
+              <div className="relative w-1/2 aspect-[3/4] rounded-sm overflow-hidden">
+                <Image src="/comp/about-1.webp" alt="GFEC consultation" fill className="object-cover" />
+              </div>
+              <div className="relative w-1/2 aspect-[3/4] rounded-sm overflow-hidden mt-10">
+                <Image src="/comp/about-2.webp" alt="GFEC students" fill className="object-cover" />
+              </div>
             </div>
-            <div className="image-container inline-block relative rounded-lg mt-0 lg:mt-[40%]">
-              <Image
-                src="/comp/about-2.webp"
-                alt="about-2"
-                priority
-                width="400"
-                height="600"
-                className="rounded-lg"
-              />
+
+            <div>
+              <p className="ledger-ref text-gold text-xs uppercase mb-3">Our story</p>
+              <h2 className="font-display font-bold text-navy text-2xl lg:text-3xl mb-5">
+                A leading visa &amp; immigration consultancy
+              </h2>
+              <p className="font-body text-ink/80 leading-relaxed mb-4">
+                We believe that access to quality education is a fundamental right, and we&apos;re proud to be part
+                of a community of organizations that share this vision.
+              </p>
+              <p className="font-body text-ink/80 leading-relaxed mb-4">
+                As a leading overseas educational consultation service provider in Sri Lanka, we understand the
+                importance of providing reliable and comprehensive guidance to students who are looking to pursue
+                higher education abroad. We recognize that studying overseas can be a daunting prospect, with
+                numerous challenges and uncertainties that can make the process overwhelming.
+              </p>
+              <p className="font-body text-ink/80 leading-relaxed">
+                At GFEC, we&apos;re driven by a passion for education and a commitment to ensuring that every
+                student has access to the best possible opportunities to achieve their goals.
+              </p>
             </div>
           </div>
-        </div>
+        </ContainerNew>
+      </section>
 
-        <div className="flex flex-col sm:flex-row gap-10 mb-20">
-          <motion.div
-            className="flex-[0_0_50%] bg-secondary text-white p-10"
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="flex flex-row gap-5 items-center mb-5">
-              <div className="w-[80px] h-[80px] bg-primary p-3 rounded-full">
-                <Image
-                  src="/vision.png"
-                  alt="vision"
-                  priority
-                  width="64"
-                  height="64"
-                />
+      <section className="bg-navy py-16 lg:py-20">
+        <ContainerNew className="px-5 lg:px-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-paper/15 rounded-sm overflow-hidden">
+            <div className="bg-navy p-8 lg:p-12">
+              <Image src="/vision.png" alt="" width={56} height={56} className="mb-6" />
+              <p className="ledger-ref text-gold text-xs uppercase mb-3">Our vision</p>
+              <p className="font-display font-semibold text-paper text-xl lg:text-2xl leading-snug">
+                To be a market leader and most reliable organization in International Education Consultation
+                Services in Sri Lanka.
+              </p>
+            </div>
+            <div className="bg-navy p-8 lg:p-12">
+              <Image src="/mission.png" alt="" width={56} height={56} className="mb-6" />
+              <p className="ledger-ref text-gold text-xs uppercase mb-3">Our mission</p>
+              <p className="font-display font-semibold text-paper text-xl lg:text-2xl leading-snug">
+                To provide accurate information, professional service, and maintain the highest level of success
+                in international education student enrollments.
+              </p>
+            </div>
+          </div>
+        </ContainerNew>
+      </section>
+
+      <section className="py-16 lg:py-24">
+        <ContainerNew className="px-5 lg:px-12">
+          <p className="ledger-ref text-gold text-xs uppercase mb-3">Our approach</p>
+          <h2 className="font-display font-bold text-navy text-2xl lg:text-3xl mb-10 max-w-xl">
+            Three pillars behind every student file we handle.
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {PILLARS.map((pillar, i) => (
+              <div key={pillar.title} className="ledger-card rounded-sm p-8">
+                <span className="ledger-ref text-gold text-xs block mb-6">{String(i + 1).padStart(2, "0")}</span>
+                <pillar.icon size={30} className="text-royal mb-4" strokeWidth={1.5} />
+                <h3 className="font-display font-semibold text-navy text-lg mb-3">{pillar.title}</h3>
+                <p className="font-body text-mist text-sm leading-relaxed">{pillar.description}</p>
               </div>
-              <Typography variant="h2" className="text-left">
-                Our Vision
-              </Typography>
-            </div>
-            <Typography className="text-left">
-              Our Vision is to be a market leader and most reliable organization
-              in International Education Consultation Services in Sri Lanka.
-            </Typography>
-          </motion.div>
+            ))}
+          </div>
+        </ContainerNew>
+      </section>
 
-          <motion.div
-            className="flex-[0_0_50%] bg-secondary text-white p-10"
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <div className="flex flex-row gap-5 items-center mb-5">
-              <div className="w-[80px] h-[80px] bg-primary p-4 rounded-full">
-                <Image
-                  src="/mission.png"
-                  alt="mission"
-                  priority
-                  width="64"
-                  height="64"
-                />
-              </div>
-              <Typography variant="h2" className="text-left">
-                Our Mission
-              </Typography>
-            </div>
-            <Typography className="text-left">
-              Our Mission is to provide accurate information, professional
-              service and maintain the highest level success rate in
-              international education student enrollments.
-            </Typography>
-          </motion.div>
-        </div>
+      <section className="bg-surface py-16 lg:py-24">
+        <ContainerNew className="px-5 lg:px-12">
+          <div className="max-w-2xl">
+            <p className="ledger-ref text-gold text-xs uppercase mb-3">Why students choose GFEC</p>
+            <h2 className="font-display font-bold text-navy text-2xl lg:text-3xl mb-5">
+              Clarity and confidence, from a consultant who knows your file.
+            </h2>
+            <p className="font-body text-ink/75 leading-relaxed">
+              Choosing to study abroad is one of the biggest decisions a student and their family will make. We
+              exist to make that decision less overwhelming — clear guidance instead of guesswork, one consultant
+              who knows your situation instead of a call centre, and honest answers about what&apos;s realistic
+              for your goals and budget. That&apos;s the confidence we aim to give every student who walks through
+              our door.
+            </p>
+          </div>
+        </ContainerNew>
+      </section>
 
-        <div className="flex flex-col lg:flex-row gap-10 mb-20">
-          <motion.div
-            className="bg-white shadow-about-card rounded-2xl border-2 border-secondary p-10 flex flex-col justify-center items-center gap-5"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
+      <section className="bg-navy-deep relative">
+        <div className="stitch-rule" />
+        <ContainerNew className="px-5 lg:px-12 py-16 lg:py-20 text-center">
+          <h2 className="font-display font-bold text-paper text-3xl lg:text-4xl mb-4 max-w-2xl mx-auto">
+            Ready to start your international education journey?
+          </h2>
+          <Link
+            href="/contact#get-in-touch-container"
+            className="group inline-flex items-center gap-2 bg-gold text-navy-deep font-display font-semibold text-base px-8 py-4 rounded-sm mt-6"
           >
-            <Image
-              src="/personalized-guidance.svg"
-              alt="personalized-guidance"
-              priority
-              width="170"
-              height="170"
-              className=""
-            />
-            <div className="flex flex-col">
-              <Typography variant="h5" className="mb-3">
-                Personalized Guidance
-              </Typography>
-              <Typography className="text-justify">
-                We believe in tailoring our services to meet your unique needs,
-                providing individualized guidance to help you make informed
-                decisions about your study abroad plans.
-              </Typography>
-            </div>
-          </motion.div>
-          <motion.div
-            className="bg-white shadow-about-card rounded-2xl border-2 border-secondary p-10 flex flex-col justify-center items-center gap-5"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
-            <Image
-              src="/comprehensive-support.svg"
-              alt="comprehensive-support"
-              priority
-              width="125"
-              height="125"
-              className=""
-            />
-            <div className="flex flex-col">
-              <Typography variant="h5" className="mb-3">
-                Comprehensive Support
-              </Typography>
-              <Typography className="text-justify">
-                We offer end-to-end assistance, covering everything from
-                university selection to visa processing, ensuring that you
-                receive comprehensive support throughout your educational
-                journey.
-              </Typography>
-            </div>
-          </motion.div>
-          <motion.div
-            className="bg-white shadow-about-card rounded-2xl border-2 border-secondary p-10 flex flex-col justify-center items-center gap-5"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-          >
-            <Image
-              src="/unwavering-commitment.svg"
-              alt="unwavering-commitment"
-              priority
-              width="150"
-              height="150"
-              className=""
-            />
-            <div className="flex flex-col">
-              <Typography variant="h5" className="mb-3">
-                Unwavering Commitment
-              </Typography>
-              <Typography className="text-justify">
-                Our dedication knows no bounds. We are committed to going the
-                extra mile, ensuring your satisfaction and success by providing
-                the highest level of service and support at all times.
-              </Typography>
-            </div>
-          </motion.div>
-        </div>
-      </Container>
-    </section>
+            Book a Free Consultation
+            <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
+          </Link>
+        </ContainerNew>
+      </section>
+    </div>
   );
 }

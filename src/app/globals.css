@@ -8,6 +8,80 @@
 
   --shadow-about-card: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
     rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+
+  /* GFEC 2026 revamp — "tailor's ledger" design system (public site only) */
+  --color-navy: #0a1f3d;
+  --color-navy-deep: #061527;
+  --color-royal: #1d4ed8;
+  --color-gold: #c9972e;
+  --color-gold-soft: #e8d5a3;
+  --color-paper: #f8f5ee;
+  --color-paper-warm: #f2ecdd;
+  --color-ink: #1c2029;
+  --color-mist: #6b7180;
+  --color-hairline: #e2ddcf;
+  --color-surface: #fffdf8;
+  --color-ok: #2f7a4f;
+  --color-caution: #b4552b;
+
+  --font-display: var(--font-plus-jakarta), "Plus Jakarta Sans", ui-sans-serif, sans-serif;
+  --font-body: var(--font-manrope), "Manrope", ui-sans-serif, sans-serif;
+  --font-ledger-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+
+  --shadow-ledger-card: 0 1px 2px rgba(10, 31, 61, 0.06), 0 12px 32px -16px rgba(10, 31, 61, 0.28);
+}
+
+/* GFEC 2026 revamp — ledger stitch + swatch primitives (public site only) */
+.stitch-rule {
+  background-image: repeating-linear-gradient(
+    90deg,
+    var(--color-gold) 0 10px,
+    transparent 10px 18px
+  );
+  background-size: 18px 2px;
+  background-repeat: repeat-x;
+  height: 2px;
+}
+
+.stitch-rule-v {
+  background-image: repeating-linear-gradient(
+    180deg,
+    var(--color-gold) 0 10px,
+    transparent 10px 18px
+  );
+  background-size: 2px 18px;
+  background-repeat: repeat-y;
+  width: 2px;
+}
+
+.ledger-lines {
+  background-image: repeating-linear-gradient(
+    180deg,
+    transparent 0,
+    transparent 35px,
+    var(--color-hairline) 35px,
+    var(--color-hairline) 36px
+  );
+}
+
+.ledger-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-hairline);
+  box-shadow: var(--shadow-ledger-card);
+}
+
+.ledger-ref {
+  font-family: var(--font-ledger-mono);
+  letter-spacing: 0.08em;
+}
+
+.scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
 }
 
 * {
