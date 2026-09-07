@@ -17,7 +17,7 @@ export default function SitePage() {
       <WhyGfec />
       <WhatGfecOffers />
       <DestinationExplorer />
-      <UniversityPartnersGrid countryFilter="all" />
+      {/* <UniversityPartnersGrid /> */}
       <SuccessPathNew />
       <SuccessStoriesText />
       <FinalCta />
