@@ -37,6 +37,7 @@
   --color-exam-ink: #201d18;
   --color-exam-green: #1e5631;
   --color-exam-green-deep: #123d21;
+  --color-exam-green-bright: #47b579;
   --color-stamp-red: #a63a2e;
   --color-slip-rule: #d9cfae;
   --color-slip-mist: #6b6455;
@@ -117,12 +118,13 @@
 
 .slip-flip-char {
   transform-origin: 50% 100%;
-  animation: slip-flip 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) both;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .slip-flip-char {
-    animation: none;
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
   }
 }
 

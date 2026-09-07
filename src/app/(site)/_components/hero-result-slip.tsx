@@ -1,28 +1,14 @@
 import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
 
+import FlipValue from "./flip-value";
+
 const FILE_SUMMARY = [
   { label: "Countries covered", value: "14" },
   { label: "University partners", value: "600+" },
   { label: "Courses available", value: "150+" },
   { label: "Students guided", value: "30+" },
 ];
-
-function FlipValue({ value, delayMs = 0 }: { value: string; delayMs?: number }) {
-  return (
-    <span className="inline-flex" style={{ perspective: "240px" }}>
-      {value.split("").map((char, i) => (
-        <span
-          key={`${char}-${i}`}
-          className="slip-flip-char inline-block"
-          style={{ animationDelay: `${delayMs + i * 80}ms` }}
-        >
-          {char}
-        </span>
-      ))}
-    </span>
-  );
-}
 
 function ResultSeal({ className = "w-[168px] h-[168px]" }: { className?: string }) {
   return (
