@@ -41,31 +41,38 @@ export default function WhyGfec() {
   const [featured, ...rest] = HIGHLIGHTS;
 
   return (
-    <section className="bg-paper py-20 lg:py-28">
+    <section className="bg-gazette py-20 lg:py-28">
       <ContainerNew className="px-5 lg:px-12">
         <div className="max-w-2xl mb-14">
-          <p className="ledger-ref text-gold text-xs uppercase mb-3">Why GFEC</p>
-          <h2 className="font-display font-bold text-navy text-3xl lg:text-[44px] leading-[1.1]">
-            More than admissions. We build your path forward.
+          <h2 className="font-slip-display font-bold text-exam-ink text-3xl lg:text-[44px] leading-[1.1]">
+            More than admissions. Every file gets a personal verdict.
           </h2>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-1 lg:row-span-2 bg-navy rounded-sm p-8 lg:p-10 flex flex-col justify-between min-h-[280px] lg:min-h-[420px]">
-            <featured.icon size={36} className="text-gold" strokeWidth={1.5} />
+          <div className="lg:col-span-1 lg:row-span-2 bg-exam-ink rounded-sm p-8 lg:p-10 flex flex-col justify-between min-h-[280px] lg:min-h-[420px]">
+            <div className="flex items-start justify-between">
+              <featured.icon size={36} className="text-exam-green-bright" strokeWidth={1.5} />
+              <span className="slip-mono text-[10px] text-gazette/35">01</span>
+            </div>
             <div>
-              <h3 className="font-display font-bold text-paper text-2xl mb-3">{featured.title}</h3>
-              <p className="font-body text-paper/70 leading-relaxed">{featured.description}</p>
+              <h3 className="font-slip-display font-bold text-gazette text-2xl mb-3">{featured.title}</h3>
+              <p className="font-body text-gazette/65 leading-relaxed">{featured.description}</p>
             </div>
           </div>
 
-          <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-px bg-hairline rounded-sm overflow-hidden">
-            {rest.map((item) => (
-              <div key={item.title} className="bg-surface p-7 flex flex-col gap-4">
-                <item.icon size={26} className="text-royal" strokeWidth={1.5} />
+          <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-px bg-slip-rule rounded-sm overflow-hidden">
+            {rest.map((item, i) => (
+              <div key={item.title} className="bg-slip-surface p-7 flex flex-col gap-4">
+                <div className="flex items-start justify-between">
+                  <item.icon size={26} className="text-exam-green" strokeWidth={1.5} />
+                  <span className="slip-mono text-[10px] text-slip-mist/60">
+                    {String(i + 2).padStart(2, "0")}
+                  </span>
+                </div>
                 <div>
-                  <h3 className="font-display font-semibold text-navy text-lg mb-2">{item.title}</h3>
-                  <p className="font-body text-mist text-sm leading-relaxed">{item.description}</p>
+                  <h3 className="font-slip-display font-bold text-exam-ink text-lg mb-2">{item.title}</h3>
+                  <p className="font-body text-slip-mist text-sm leading-relaxed">{item.description}</p>
                 </div>
               </div>
             ))}
