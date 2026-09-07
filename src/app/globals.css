@@ -29,6 +29,21 @@
   --font-ledger-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
 
   --shadow-ledger-card: 0 1px 2px rgba(10, 31, 61, 0.06), 0 12px 32px -16px rgba(10, 31, 61, 0.28);
+
+  /* GFEC alternate direction — "the result slip" design system (feat/site-revamp-impeccable-v2 only) */
+  --color-gazette: #f5f0e1;
+  --color-gazette-warm: #ece2c4;
+  --color-slip-surface: #fffdf6;
+  --color-exam-ink: #201d18;
+  --color-exam-green: #1e5631;
+  --color-exam-green-deep: #123d21;
+  --color-stamp-red: #a63a2e;
+  --color-slip-rule: #d9cfae;
+  --color-slip-mist: #6b6455;
+
+  --font-slip-display: var(--font-courier-prime), "Courier Prime", ui-monospace, monospace;
+
+  --shadow-slip-card: 0 1px 0 rgba(32, 29, 24, 0.05), 0 18px 40px -20px rgba(32, 29, 24, 0.35);
 }
 
 /* GFEC 2026 revamp — ledger stitch + swatch primitives (public site only) */
@@ -73,6 +88,57 @@
 .ledger-ref {
   font-family: var(--font-ledger-mono);
   letter-spacing: 0.08em;
+}
+
+/* GFEC alternate direction — result-slip rule + register primitives */
+.slip-rule {
+  height: 2px;
+  background: var(--color-exam-ink);
+}
+
+.slip-rule-thin {
+  height: 1px;
+  background: var(--color-slip-rule);
+}
+
+.slip-register {
+  border-top: 1px solid var(--color-slip-rule);
+}
+
+.slip-register > * {
+  border-bottom: 1px solid var(--color-slip-rule);
+}
+
+.slip-mono {
+  font-family: var(--font-jetbrains-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+
+.slip-flip-char {
+  transform-origin: 50% 100%;
+  animation: slip-flip 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slip-flip-char {
+    animation: none;
+  }
+}
+
+@keyframes slip-flip {
+  0% {
+    transform: rotateX(90deg);
+    opacity: 0;
+  }
+  60% {
+    transform: rotateX(-10deg);
+    opacity: 1;
+  }
+  100% {
+    transform: rotateX(0deg);
+    opacity: 1;
+  }
 }
 
 .scrollbar-none {

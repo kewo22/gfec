@@ -38,26 +38,27 @@ export default function MobileNav({ }: MobileNavProps) {
         aria-label={isOpen ? "Close menu" : "Open menu"}
         aria-expanded={isOpen}
         onClick={() => setIsOpen((v) => !v)}
-        className="lg:hidden ml-auto flex items-center justify-center w-11 h-11 text-navy cursor-pointer"
+        className="xl:hidden ml-auto flex items-center justify-center w-11 h-11 text-exam-ink cursor-pointer"
       >
         {isOpen ? <X size={26} /> : <Menu size={26} />}
       </button>
 
       <section
         aria-hidden={!isOpen}
-        className={`lg:hidden fixed inset-0 z-[60] bg-paper transition-transform duration-500 ease-in-out ${isOpen ? "translate-x-0" : "translate-x-full"
+        className={`xl:hidden fixed inset-0 z-[60] bg-gazette transition-transform duration-500 ease-in-out ${isOpen ? "translate-x-0" : "translate-x-full"
           }`}
       >
-        <div className="stitch-rule-v absolute left-6 top-0 bottom-0" />
+        <div className="absolute left-6 top-0 bottom-0 w-[2px] bg-stamp-red opacity-70" />
+        <div className="absolute left-[26px] top-0 bottom-0 w-px bg-stamp-red opacity-30" />
 
-        <div className="h-full flex flex-col px-8 py-8 overflow-y-auto">
+        <div className="h-full flex flex-col px-8 pl-10 py-8 overflow-y-auto">
           <div className="flex items-center justify-between mb-12">
             <Image src={gfecTrans} alt="GFEC logo" width={56} height={50} priority />
             <button
               type="button"
               aria-label="Close menu"
               onClick={() => setIsOpen(false)}
-              className="flex items-center justify-center w-11 h-11 text-navy cursor-pointer"
+              className="flex items-center justify-center w-11 h-11 text-exam-ink cursor-pointer"
             >
               <X size={26} />
             </button>
@@ -72,15 +73,20 @@ export default function MobileNav({ }: MobileNavProps) {
                   key={i}
                   href={item.route}
                   onClick={() => setIsOpen(false)}
-                  className="group flex items-center gap-4 py-4 border-b border-hairline"
+                  className="group flex items-center gap-4 py-4 border-b border-slip-rule"
                 >
-                  <span className="ledger-ref text-xs text-gold">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="slip-mono text-xs text-stamp-red">{String(i + 1).padStart(2, "0")}</span>
                   <span
-                    className={`font-display text-2xl font-semibold ${active ? "text-navy" : "text-navy/60 group-hover:text-navy"
+                    className={`font-slip-display text-2xl font-bold ${active ? "text-exam-ink" : "text-exam-ink/55 group-hover:text-exam-ink"
                       }`}
                   >
                     {item.text}
                   </span>
+                  {active && (
+                    <span className="ml-auto slip-mono text-[10px] text-exam-green flex items-center gap-1">
+                      PASS
+                    </span>
+                  )}
                 </Link>
               );
             })}
@@ -90,19 +96,19 @@ export default function MobileNav({ }: MobileNavProps) {
             <button
               type="button"
               onClick={onFreeConsultationClick}
-              className="bg-navy text-paper font-display font-semibold text-base px-6 py-4 rounded-sm text-center cursor-pointer"
+              className="bg-stamp-red text-slip-surface font-slip-display font-bold uppercase tracking-wide text-sm px-6 py-4 rounded-sm text-center cursor-pointer"
             >
               Book a Free Consultation
             </button>
             <Link
               href="/apply-now"
               onClick={() => setIsOpen(false)}
-              className="border border-navy/30 text-navy font-display font-semibold text-base px-6 py-4 rounded-sm text-center"
+              className="border border-exam-ink/30 text-exam-ink font-slip-display font-bold uppercase tracking-wide text-sm px-6 py-4 rounded-sm text-center"
             >
               Apply Now
             </Link>
             <NavSocial
-              iconClass="text-navy"
+              iconClass="text-exam-ink"
               wrapperClass="flex flex-row gap-6 items-center justify-center pt-4"
             />
           </div>

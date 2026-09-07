@@ -26,7 +26,7 @@ export default function NavigationNew({ className }: { className?: string }) {
   };
 
   return (
-    <header className={`relative bg-paper transition-shadow duration-300 ${scrolled ? "shadow-[0_4px_20px_-8px_rgba(10,31,61,0.18)]" : ""} ${className ?? ""}`}>
+    <header className={`relative bg-gazette transition-shadow duration-300 ${scrolled ? "shadow-[0_4px_20px_-8px_rgba(32,29,24,0.18)]" : ""} ${className ?? ""}`}>
       <nav className="flex flex-row items-center gap-x-10 h-[92px] px-5 lg:px-12 max-w-[1600px] mx-auto">
         <button
           type="button"
@@ -36,18 +36,19 @@ export default function NavigationNew({ className }: { className?: string }) {
         >
           <Image src={gfecTrans} alt="GFEC logo" width={64} height={58} priority />
           <span className="hidden sm:flex flex-col leading-none">
-            <span className="font-display font-bold text-navy text-lg tracking-tight">GFEC</span>
-            <span className="font-body text-[11px] text-mist tracking-wide">Study Abroad Consultancy</span>
+            <span className="font-slip-display font-bold text-exam-ink text-lg tracking-tight">GFEC</span>
+            <span className="font-body text-[11px] text-slip-mist tracking-wide">Study Abroad Consultancy</span>
           </span>
         </button>
 
         <MobileNav isMainNavInView={true} />
 
-        <NavLinksNew className="hidden lg:flex ml-6" />
+        <NavLinksNew className="hidden xl:flex ml-6" />
 
-        <NavActionsNew className="ml-auto hidden lg:flex" />
+        <NavActionsNew className="ml-auto hidden xl:flex" />
       </nav>
-      <div className="stitch-rule" />
+      <div className="slip-rule" />
+      <div className="slip-rule-thin mt-[3px]" />
     </header>
   );
 }

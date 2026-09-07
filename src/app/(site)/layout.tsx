@@ -1,6 +1,6 @@
 
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Manrope, JetBrains_Mono } from "next/font/google";
+import { Plus_Jakarta_Sans, Manrope, JetBrains_Mono, Courier_Prime } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { SocialIcon } from 'react-social-icons';
@@ -25,6 +25,13 @@ const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
   display: "swap",
   weight: ["500"],
+});
+
+const courierPrime = Courier_Prime({
+  subsets: ["latin"],
+  variable: "--font-courier-prime",
+  display: "swap",
+  weight: ["400", "700"],
 });
 
 export const metadata: Metadata = {
@@ -66,7 +73,7 @@ export default function SiteLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className={`${plusJakarta.variable} ${manrope.variable} ${jetbrainsMono.variable} font-body bg-paper text-ink`}>
+    <div className={`${plusJakarta.variable} ${manrope.variable} ${jetbrainsMono.variable} ${courierPrime.variable} font-body bg-paper text-ink`}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }} />
       <NavigationNew className='sticky top-0 left-0 w-full z-50' />

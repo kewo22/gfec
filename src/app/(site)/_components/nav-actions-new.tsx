@@ -34,16 +34,15 @@ export default function NavActionsNew({ openModel, className }: NavActionsNewPro
       <button
         type="button"
         onClick={onApplyNowClick}
-        className="font-display text-[15px] font-medium text-navy/80 hover:text-navy transition-colors"
+        className="font-slip-display text-[13px] font-bold uppercase tracking-wide text-exam-ink/75 hover:text-exam-green transition-colors"
       >
         Apply Now
       </button>
       <button
         type="button"
         onClick={onFreeConsultationClick}
-        className="group relative overflow-hidden bg-navy text-paper font-display text-[15px] font-semibold px-6 py-3 rounded-sm cursor-pointer"
+        className="bg-stamp-red text-slip-surface font-slip-display text-[13px] font-bold uppercase tracking-wide px-6 py-3 rounded-sm cursor-pointer transition-transform active:scale-[0.97]"
       >
-        <span className="absolute inset-x-0 bottom-0 h-[3px] bg-gold scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300" />
         Book a Free Consultation
       </button>
     </div>

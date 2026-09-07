@@ -1,4 +1,5 @@
 {
+  "buildPath": "code",
   "detector": {
     "ignoreRules": [],
     "ignoreFiles": [],
@@ -8,6 +9,12 @@
         "value": "cubic-bezier(0.2, 0.85, 0.32, 1.2)",
         "createdAt": "2026-09-03T09:55:11.476Z",
         "reason": "pre-existing generic checkbox/radio :checked transition, not authored in this session and outside the tailor's-ledger redesign scope (site-wide shared input styling, may affect admin forms too)"
+      },
+      {
+        "rule": "bounce-easing",
+        "value": "cubic-bezier(0.34, 1.56, 0.64, 1)",
+        "createdAt": "2026-09-07T07:00:53.347Z",
+        "reason": "Result-slip direction's ballistic raise: stat digits flip with real mechanical overshoot (split-flap/odometer physics), an explicit named raise in the locked direction contract (.impeccable/surfaces/site.md), not decorative bounce UI."
       }
     ]
   }
