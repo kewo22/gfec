@@ -1,48 +1,67 @@
 "use client";
 
-import { SocialIcon } from 'react-social-icons';
+import { Facebook, Instagram, Linkedin, type LucideIcon } from "lucide-react";
 
 type NavSocialProps = {
   iconClass?: string;
   wrapperClass: string;
+  variant?: "outline" | "solid";
 };
 
+const SOCIALS: { name: string; url: string; icon: LucideIcon }[] = [
+  { name: "Facebook", url: "https://www.facebook.com/profile.php?id=100089486356607", icon: Facebook },
+  { name: "Instagram", url: "https://instagram.com/gfe_consultancy?igshid=MTk0NTkyODZkYg==", icon: Instagram },
+  {
+    name: "LinkedIn",
+    url: "https://www.linkedin.com/company/gordon-foreign-education-consultancy-pvt-ltd/",
+    icon: Linkedin,
+  },
+];
+
 export default function NavSocial(props: NavSocialProps) {
-  const { wrapperClass, iconClass = "text-white" } = props;
+  const { wrapperClass, iconClass = "text-exam-ink", variant = "outline" } = props;
 
-  const onFbClick = () => {
-    window.open("https://www.facebook.com/profile.php?id=100089486356607", "_blank");
-  };
-
-  const onInstagramClick = () => {
-    window.open("https://instagram.com/gfe_consultancy?igshid=MTk0NTkyODZkYg==", "_blank");
-  };
-
-  const onInClick = () => {
-    window.open("https://www.linkedin.com/company/gordon-foreign-education-consultancy-pvt-ltd/", "_blank");
-  };
+  if (variant === "solid") {
+    return (
+      <div className={wrapperClass}>
+        {SOCIALS.map((social) => (
+          <a
+            key={social.name}
+            href={social.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`GFEC on ${social.name}`}
+            className="group flex items-center justify-center w-12 h-12 rounded-full bg-exam-ink transition-all duration-300 hover:bg-exam-green-bright hover:-translate-y-0.5 hover:shadow-[0_10px_20px_-8px_rgba(71,181,121,0.5)]"
+          >
+            <social.icon
+              size={19}
+              strokeWidth={1.75}
+              className="text-exam-green-bright transition-colors duration-300 group-hover:text-exam-ink"
+            />
+          </a>
+        ))}
+      </div>
+    );
+  }
 
   return (
     <div className={wrapperClass}>
-      <button
-        className="flex items-center justify-center relative transition-all sm-btn"
-        onClick={onFbClick}
-      >
-        <SocialIcon url="https://facebook.com" onClick={(event) => event.preventDefault()} />
-      </button>
-      <button
-        className="flex items-center justify-center relative transition-all sm-btn"
-        onClick={onInstagramClick}
-      >
-        <SocialIcon url="https://instagram.com" onClick={(event) => event.preventDefault()} />
-
-      </button>
-      <button
-        className="flex items-center justify-center relative transition-all sm-btn"
-        onClick={onInClick}
-      >
-        <SocialIcon url="https://linkedin.com" onClick={(event) => event.preventDefault()} />
-      </button>
+      {SOCIALS.map((social) => (
+        <a
+          key={social.name}
+          href={social.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`GFEC on ${social.name}`}
+          className={`group flex items-center justify-center w-9 h-9 rounded-full border border-current/20 transition-colors duration-300 hover:border-exam-green-bright ${iconClass}`}
+        >
+          <social.icon
+            size={15}
+            strokeWidth={1.75}
+            className="transition-colors duration-300 group-hover:text-exam-green-bright"
+          />
+        </a>
+      ))}
     </div>
   );
 }

@@ -2,12 +2,16 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { MapPin } from "lucide-react";
+import { useInView } from "react-intersection-observer";
 
 import gfecTrans from "../../../../public/comp/GFEC-Trans.png";
 
 import { NavItems } from "../_constants/nav-items.constants";
 import { ResolveBaseUrl } from "@/app/utils/common";
 import NavSocial from "./nav-social";
+
+const REVEAL_STAGGER_MS = 60;
 
 export default function Footer() {
   const emails = (process.env.EMAILS as unknown as string)?.split(",") || [];
@@ -22,75 +26,107 @@ export default function Footer() {
 
   const privacyBasePolicyUrl = ResolveBaseUrl(process.env.NEXT_PUBLIC_VERCEL_ENV!);
 
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
+
   const onVisitClick = () => {
     const url = `https://www.google.com/maps?q=${LAT},${LNG}`;
     window.open(url, "_blank");
   };
 
   return (
-    <footer className="bg-navy-deep">
-      <div className="stitch-rule" />
-      <div className="max-w-[1600px] mx-auto px-5 lg:px-12 py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr_1fr_1fr] gap-12">
-          <div className="flex flex-col gap-4">
+    <footer className="bg-exam-ink relative">
+      <div className="slip-rule-thin" />
+      <div ref={ref} className="max-w-[1600px] mx-auto px-5 lg:px-12 py-16 lg:py-20">
+        <div className="grid grid-cols-1 lg:grid-cols-[1.3fr_1fr_1fr_1fr] gap-12">
+          <div
+            style={{ transitionDelay: "0ms" }}
+            className={`reveal-card ${inView ? "reveal-card-in" : ""} transition-all duration-500 flex flex-col gap-4`}
+          >
             <Image src={gfecTrans} alt="GFEC logo" width={100} height={90} className="brightness-0 invert opacity-90" />
-            <p className="font-body text-paper/60 text-sm leading-relaxed max-w-xs">
+            <p className="slip-mono text-exam-green-bright text-[10px] uppercase tracking-[0.2em]">
+              GFEC · Colombo · Est. 2021
+            </p>
+            <p className="font-body text-gazette/60 text-sm leading-relaxed max-w-xs">
               GFEC helps students from Sri Lanka pursue international education — from program
               selection to visa approval and departure.
             </p>
           </div>
 
-          <div className="flex flex-col gap-3">
-            <p className="font-display font-semibold text-gold text-xs uppercase tracking-wide mb-1">Explore</p>
+          <div
+            style={{ transitionDelay: `${REVEAL_STAGGER_MS}ms` }}
+            className={`reveal-card ${inView ? "reveal-card-in" : ""} transition-all duration-500 flex flex-col gap-3`}
+          >
+            <p className="slip-mono text-exam-green-bright text-xs uppercase tracking-wider mb-1">Explore</p>
             {NavItems.map((item, i) => (
-              <Link key={i} href={item.route} className="font-body text-paper/70 hover:text-paper text-sm transition-colors">
+              <Link
+                key={i}
+                href={item.route}
+                className="group flex items-center gap-2.5 font-body text-gazette/70 hover:text-gazette text-sm transition-colors"
+              >
+                <span className="slip-mono text-[10px] text-gazette/30 group-hover:text-exam-green-bright transition-colors">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
                 {item.text}
               </Link>
             ))}
           </div>
 
-          <div className="flex flex-col gap-3">
-            <p className="font-display font-semibold text-gold text-xs uppercase tracking-wide mb-1">Visit us at</p>
+          <div
+            style={{ transitionDelay: `${REVEAL_STAGGER_MS * 2}ms` }}
+            className={`reveal-card ${inView ? "reveal-card-in" : ""} transition-all duration-500 flex flex-col gap-3`}
+          >
+            <p className="slip-mono text-exam-green-bright text-xs uppercase tracking-wider mb-1">Visit us at</p>
             <button
               type="button"
               onClick={onVisitClick}
-              className="font-body text-paper/70 hover:text-paper text-sm text-left transition-colors cursor-pointer"
+              className="group flex items-start gap-2.5 font-body text-gazette/70 hover:text-gazette text-sm text-left transition-colors cursor-pointer"
             >
-              {addressLine1}, {addressLine2}, <br /> {addressLine3}.
+              <MapPin size={14} className="shrink-0 mt-0.5 text-exam-green-bright" />
+              <span>
+                {addressLine1}, {addressLine2}, <br /> {addressLine3}.
+              </span>
             </button>
           </div>
 
-          <div className="flex flex-col gap-3">
-            <p className="font-display font-semibold text-gold text-xs uppercase tracking-wide mb-1">Contact us</p>
+          <div
+            style={{ transitionDelay: `${REVEAL_STAGGER_MS * 3}ms` }}
+            className={`reveal-card ${inView ? "reveal-card-in" : ""} transition-all duration-500 flex flex-col gap-3`}
+          >
+            <p className="slip-mono text-exam-green-bright text-xs uppercase tracking-wider mb-1">Contact us</p>
             {phoneNos?.map((phoneNo, i) => (
-              <a key={i} href={`tel:${phoneNo}`} className="font-body text-paper/70 hover:text-paper text-sm transition-colors">
+              <a key={i} href={`tel:${phoneNo}`} className="font-body text-gazette/70 hover:text-gazette text-sm transition-colors">
                 {phoneNo}
               </a>
             ))}
             {emails?.map((mail, i) => (
-              <a key={i} href={`mailto:${mail}`} className="font-body text-paper/70 hover:text-paper text-sm transition-colors break-all">
+              <a
+                key={i}
+                href={`mailto:${mail}`}
+                className="font-body text-gazette/70 hover:text-gazette text-sm transition-colors break-all"
+              >
                 {mail}
               </a>
             ))}
-            <NavSocial
-              iconClass="text-paper/70 hover:text-gold transition-colors"
-              wrapperClass="flex flex-row gap-4 items-center pt-2"
-            />
+            <NavSocial iconClass="text-gazette/70" wrapperClass="flex flex-row gap-3 items-center pt-2" />
           </div>
         </div>
 
-        <div className="border-t border-paper/10 mt-12 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="font-body text-paper/50 text-xs">
+        <div className="border-t border-gazette/10 mt-12 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="font-body text-gazette/50 text-xs">
             © 2025{" "}
-            <a href="https://www.gfeconsultancy.com/" className="hover:text-paper/80">
+            <a href="https://www.gfeconsultancy.com/" className="hover:text-gazette/80">
               GFEC™
             </a>
             . All rights reserved.
           </p>
-          <a href={`${privacyBasePolicyUrl}/privacy-policy`} className="font-body text-paper/50 hover:text-paper/80 text-xs">
+          <a href={`${privacyBasePolicyUrl}/privacy-policy`} className="font-body text-gazette/50 hover:text-gazette/80 text-xs">
             Privacy Policy
           </a>
         </div>
+
+        <p className="slip-mono text-gazette/20 text-[10px] uppercase tracking-[0.3em] text-center mt-8">
+          — Filed &amp; Verified —
+        </p>
       </div>
     </footer>
   );

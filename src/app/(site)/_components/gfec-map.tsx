@@ -6,10 +6,29 @@ import { GoogleMap, MarkerF, useJsApiLoader } from "@react-google-maps/api";
 import ContainerNew from "./layouts/container-new";
 import { Spinner } from "@/app/_components/ui/spinner";
 
+const MAP_STYLE: google.maps.MapTypeStyle[] = [
+  { elementType: "geometry", stylers: [{ color: "#322d24" }] },
+  { elementType: "labels.text.stroke", stylers: [{ color: "#171512" }] },
+  { elementType: "labels.text.fill", stylers: [{ color: "#d9cfae" }] },
+  { featureType: "water", elementType: "geometry", stylers: [{ color: "#171512" }] },
+  { featureType: "road", elementType: "geometry", stylers: [{ color: "#423b2e" }] },
+  { featureType: "poi", elementType: "labels", stylers: [{ visibility: "off" }] },
+  { featureType: "transit", elementType: "labels", stylers: [{ visibility: "off" }] },
+];
+
 const containerStyle = {
   width: "100%",
   height: "100%",
 };
+
+const MARKER_ICON =
+  "data:image/svg+xml;charset=UTF-8," +
+  encodeURIComponent(`
+    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+      <circle cx="20" cy="20" r="18" fill="#a63a2e" opacity="0.18" />
+      <circle cx="20" cy="20" r="10" fill="#a63a2e" stroke="#fffdf6" stroke-width="2.5" />
+    </svg>
+  `);
 
 export default function GfecMap() {
   const [map, setMap] = React.useState<google.maps.Map | null>(null);
@@ -37,12 +56,14 @@ export default function GfecMap() {
   }, []);
 
   return (
-    <section className="bg-paper py-16 lg:py-20">
+    <section className="bg-gazette py-16 lg:py-24">
       <ContainerNew className="px-5 lg:px-12">
-        <p className="ledger-ref text-gold text-xs uppercase mb-3">Find us</p>
-        <h2 className="font-display font-bold text-navy text-2xl lg:text-3xl mb-8">Visit our Colombo office</h2>
+        <p className="slip-mono text-exam-green text-xs uppercase tracking-wider mb-3">Find us</p>
+        <h2 className="font-slip-display font-bold text-exam-ink text-2xl lg:text-3xl mb-8">
+          Visit our Colombo office
+        </h2>
 
-        <div className="w-full h-[420px] rounded-sm overflow-hidden border border-hairline flex items-center justify-center">
+        <div className="w-full h-[420px] rounded-sm overflow-hidden border border-slip-rule flex items-center justify-center bg-slip-surface shadow-[var(--shadow-slip-card)]">
           {isLoaded && (
             <GoogleMap
               mapContainerStyle={containerStyle}
@@ -50,8 +71,13 @@ export default function GfecMap() {
               zoom={16}
               onLoad={onLoad}
               onUnmount={onUnmount}
+              options={{
+                styles: MAP_STYLE,
+                disableDefaultUI: true,
+                zoomControl: true,
+              }}
             >
-              <MarkerF position={mapCenter} />
+              <MarkerF position={mapCenter} icon={MARKER_ICON} />
             </GoogleMap>
           )}
           {!isLoaded && <Spinner className="size-14" />}

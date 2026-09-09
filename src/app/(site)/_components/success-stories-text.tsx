@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useRef } from "react";
-import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
-import { AnimatePresence, motion } from "motion/react";
+import { useRef, useState } from "react";
+import { ChevronLeft, ChevronRight, Quote, Stamp } from "lucide-react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 
 import ContainerNew from "./layouts/container-new";
 import { Modal } from "@/app/_components/ui/modal";
@@ -26,6 +26,7 @@ export default function SuccessStoriesText() {
   const modalRef = useRef(null);
   const [selected, setSelected] = useState(0);
   const [direction, setDirection] = useState(0);
+  const reduceMotion = useReducedMotion() ?? false;
 
   const onPrevClick = () => {
     setDirection(-1);
@@ -42,23 +43,39 @@ export default function SuccessStoriesText() {
   };
 
   const slideVariants = {
-    enter: (dir: number) => ({ x: dir > 0 ? 60 : -60, opacity: 0 }),
+    enter: (dir: number) => ({ x: dir > 0 ? 40 : -40, opacity: 0 }),
     center: { x: 0, opacity: 1 },
-    exit: (dir: number) => ({ x: dir > 0 ? -60 : 60, opacity: 0 }),
+    exit: (dir: number) => ({ x: dir > 0 ? -40 : 40, opacity: 0 }),
   };
 
   return (
-    <section className="bg-navy py-20 lg:py-28">
+    <section className="bg-exam-ink py-20 lg:py-28">
       <ContainerNew className="px-5 lg:px-12">
         <div className="max-w-2xl mb-14">
-          <p className="ledger-ref text-gold text-xs uppercase mb-3">Success stories</p>
-          <h2 className="font-display font-bold text-paper text-3xl lg:text-[44px] leading-[1.1]">
+          <p className="slip-mono text-exam-green-bright text-xs uppercase tracking-wider mb-3">Success stories</p>
+          <h2 className="font-slip-display font-bold text-gazette text-3xl lg:text-[44px] leading-[1.1]">
             Real students, real outcomes.
           </h2>
         </div>
 
-        <div className="relative bg-surface rounded-sm p-8 sm:p-14 max-w-4xl mx-auto overflow-hidden">
-          <Quote className="absolute top-6 right-6 text-gold/20" size={64} strokeWidth={1} />
+        <div className="relative bg-slip-surface border border-slip-rule rounded-sm p-8 sm:p-14 max-w-4xl mx-auto overflow-hidden shadow-[var(--shadow-slip-card)]">
+          <Quote className="absolute top-6 right-6 text-exam-ink/10" size={64} strokeWidth={1} />
+
+          <AnimatePresence>
+            <motion.div
+              key={`stamp-${selected}`}
+              initial={reduceMotion ? false : { opacity: 0, scale: 0.5, rotate: -18 }}
+              animate={{ opacity: 1, scale: 1, rotate: 8 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.4, ease: [0.34, 1.56, 0.64, 1] }}
+              className="absolute -top-4 -right-3 sm:-right-4 z-10"
+            >
+              <div className="flex items-center gap-1.5 bg-stamp-red text-slip-surface font-slip-display font-bold text-[11px] uppercase tracking-wide px-3 py-1.5 rounded-sm shadow-[var(--shadow-slip-card)]">
+                <Stamp className="w-3.5 h-3.5" />
+                Verified Outcome
+              </div>
+            </motion.div>
+          </AnimatePresence>
 
           <AnimatePresence mode="wait" custom={direction}>
             <motion.div
@@ -68,11 +85,13 @@ export default function SuccessStoriesText() {
               initial="enter"
               animate="center"
               exit="exit"
-              transition={{ duration: 0.4, ease: "easeInOut" }}
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
             >
-              <p className="font-display font-bold text-navy text-xl mb-1">{STORIES[selected].name}</p>
-              <p className="ledger-ref text-gold text-xs uppercase mb-6">{STORIES[selected].detail}</p>
-              <p className="font-body text-ink/80 leading-relaxed multi-line-truncate">
+              <p className="slip-mono text-exam-green text-xs uppercase tracking-wide mb-2">
+                {`File ${String(selected + 1).padStart(2, "0")} · ${STORIES[selected].detail}`}
+              </p>
+              <p className="font-slip-display font-bold text-exam-ink text-xl mb-6">{STORIES[selected].name}</p>
+              <p className="font-body text-exam-ink/80 leading-relaxed multi-line-truncate">
                 {STORIES[selected].successStory}
               </p>
             </motion.div>
@@ -82,40 +101,47 @@ export default function SuccessStoriesText() {
             <button
               type="button"
               onClick={onOpenModal}
-              className="font-display font-semibold text-royal text-sm sm:hidden cursor-pointer"
+              className="font-slip-display font-bold text-exam-green hover:text-exam-green-deep text-sm uppercase tracking-wide transition-colors cursor-pointer"
             >
               Read full story
             </button>
-            <div className="flex items-center gap-3 ml-auto">
-              <button
-                type="button"
-                aria-label="Previous story"
-                onClick={onPrevClick}
-                className="w-10 h-10 rounded-full border border-navy/20 flex items-center justify-center text-navy hover:bg-navy hover:text-paper transition-colors cursor-pointer"
-              >
-                <ChevronLeft size={18} />
-              </button>
-              <button
-                type="button"
-                aria-label="Next story"
-                onClick={onNextClick}
-                className="w-10 h-10 rounded-full border border-navy/20 flex items-center justify-center text-navy hover:bg-navy hover:text-paper transition-colors cursor-pointer"
-              >
-                <ChevronRight size={18} />
-              </button>
+            <div className="flex items-center gap-4 ml-auto">
+              <span className="slip-mono text-slip-mist text-xs">
+                {String(selected + 1).padStart(2, "0")} / {String(STORIES.length).padStart(2, "0")}
+              </span>
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  aria-label="Previous story"
+                  onClick={onPrevClick}
+                  className="w-10 h-10 rounded-full border border-exam-ink/20 flex items-center justify-center text-exam-ink hover:bg-exam-ink hover:text-gazette hover:border-exam-ink transition-colors cursor-pointer"
+                >
+                  <ChevronLeft size={18} />
+                </button>
+                <button
+                  type="button"
+                  aria-label="Next story"
+                  onClick={onNextClick}
+                  className="w-10 h-10 rounded-full border border-exam-ink/20 flex items-center justify-center text-exam-ink hover:bg-exam-ink hover:text-gazette hover:border-exam-ink transition-colors cursor-pointer"
+                >
+                  <ChevronRight size={18} />
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </ContainerNew>
 
       <Modal
-        dialogWrapperClassName="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[95%]"
+        dialogWrapperClassName="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[95%] max-w-2xl bg-slip-surface border border-slip-rule rounded-sm text-exam-ink"
         ref={modalRef}
       >
-        <div className="max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-          <p className="font-display font-bold text-navy text-xl mb-1">{STORIES[selected].name}</p>
-          <p className="ledger-ref text-gold text-xs uppercase mb-5">{STORIES[selected].detail}</p>
-          <p className="font-body text-ink/80 leading-relaxed">{STORIES[selected].successStory}</p>
+        <div className="max-h-[80vh] overflow-y-auto">
+          <p className="slip-mono text-exam-green text-xs uppercase tracking-wide mb-2">
+            {`File ${String(selected + 1).padStart(2, "0")} · ${STORIES[selected].detail}`}
+          </p>
+          <p className="font-slip-display font-bold text-exam-ink text-xl mb-5">{STORIES[selected].name}</p>
+          <p className="font-body text-exam-ink/80 leading-relaxed">{STORIES[selected].successStory}</p>
         </div>
       </Modal>
     </section>
