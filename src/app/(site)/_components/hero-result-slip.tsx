@@ -10,7 +10,19 @@ const FILE_SUMMARY = [
   { label: "Students guided", value: "30+" },
 ];
 
-function ResultSeal({ className = "w-[168px] h-[168px]" }: { className?: string }) {
+export function ResultSeal({
+  className = "w-[168px] h-[168px]",
+  ringText = "GFEC · COLOMBO · EST. 2021 · VERIFIED FILE ·",
+  centerLine1 = "APPROVED",
+  centerLine2 = "FOR STUDY ABROAD",
+  pathId = "seal-ring-path",
+}: {
+  className?: string;
+  ringText?: string;
+  centerLine1?: string;
+  centerLine2?: string;
+  pathId?: string;
+}) {
   return (
     <svg
       viewBox="0 0 200 200"
@@ -18,13 +30,13 @@ function ResultSeal({ className = "w-[168px] h-[168px]" }: { className?: string 
       aria-hidden="true"
     >
       <defs>
-        <path id="seal-ring-path" d="M 100,100 m -78,0 a 78,78 0 1,1 156,0 a 78,78 0 1,1 -156,0" />
+        <path id={pathId} d="M 100,100 m -78,0 a 78,78 0 1,1 156,0 a 78,78 0 1,1 -156,0" />
       </defs>
       <circle cx="100" cy="100" r="94" fill="none" stroke="var(--color-stamp-red)" strokeWidth="2.5" opacity="0.9" />
       <circle cx="100" cy="100" r="80" fill="none" stroke="var(--color-stamp-red)" strokeWidth="1.5" opacity="0.75" />
       <text fill="var(--color-stamp-red)" fontFamily="var(--font-slip-display)" fontSize="11.5" letterSpacing="3" opacity="0.95">
-        <textPath href="#seal-ring-path" startOffset="2%">
-          GFEC · COLOMBO · EST. 2021 · VERIFIED FILE ·
+        <textPath href={`#${pathId}`} startOffset="2%">
+          {ringText}
         </textPath>
       </text>
       <circle cx="100" cy="100" r="46" fill="none" stroke="var(--color-stamp-red)" strokeWidth="2" opacity="0.9" />
@@ -38,7 +50,7 @@ function ResultSeal({ className = "w-[168px] h-[168px]" }: { className?: string 
         fontSize="21"
         letterSpacing="1"
       >
-        APPROVED
+        {centerLine1}
       </text>
       <text
         x="100"
@@ -50,7 +62,7 @@ function ResultSeal({ className = "w-[168px] h-[168px]" }: { className?: string 
         letterSpacing="2"
         opacity="0.85"
       >
-        FOR STUDY ABROAD
+        {centerLine2}
       </text>
     </svg>
   );
