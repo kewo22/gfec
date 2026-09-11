@@ -132,7 +132,7 @@ export default function DestinationExplorer() {
           <div className="flex items-center gap-4 shrink-0">
             <Link
               href="/study-abroad"
-              className="group font-slip-display font-bold text-exam-green hover:text-exam-green-deep text-sm uppercase tracking-wide flex items-center gap-1.5"
+              className="group font-slip-display font-bold text-exam-navy hover:text-exam-navy-deep text-sm uppercase tracking-wide flex items-center gap-1.5"
             >
               View all destinations
               <ArrowUpRight size={18} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -177,7 +177,7 @@ export default function DestinationExplorer() {
                 href={`/study-abroad/${country.route}`}
                 style={{ transitionDelay: `${delay}ms` }}
                 draggable={false}
-                className={`dest-card ${inView ? "dest-card-in" : ""} group relative shrink-0 ${CARD_WIDTH} aspect-[3/4] rounded-sm overflow-hidden snap-start border border-transparent transition-colors duration-300 hover:border-exam-green-bright/60 ${isDragging ? "cursor-grabbing" : "cursor-grab"}`}
+                className={`dest-card ${inView ? "dest-card-in" : ""} group relative shrink-0 ${CARD_WIDTH} aspect-[3/4] rounded-sm overflow-hidden snap-start border border-transparent transition-colors duration-300 hover:border-exam-gold/60 ${isDragging ? "cursor-grabbing" : "cursor-grab"}`}
               >
                 <Image
                   src={country.image}
@@ -203,7 +203,7 @@ export default function DestinationExplorer() {
                   <p className="font-body text-gazette/75 text-sm leading-relaxed line-clamp-2 mb-4 max-w-[90%]">
                     {country.description}
                   </p>
-                  <span className="inline-flex items-center gap-1.5 font-slip-display font-bold text-exam-green-bright text-sm uppercase tracking-wide">
+                  <span className="inline-flex items-center gap-1.5 font-slip-display font-bold text-exam-gold text-sm uppercase tracking-wide">
                     Explore
                     <ArrowUpRight size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </span>
@@ -215,7 +215,7 @@ export default function DestinationExplorer() {
 
         <div className="relative h-[2px] bg-exam-ink/10 rounded-full overflow-hidden">
           <div
-            className="absolute inset-y-0 bg-exam-green rounded-full"
+            className="absolute inset-y-0 bg-exam-navy rounded-full"
             style={{ width: `${thumb.widthPct}%`, left: `${thumb.leftPct}%` }}
           />
         </div>

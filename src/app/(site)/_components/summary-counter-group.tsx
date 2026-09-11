@@ -40,10 +40,10 @@ export default function SummaryCounterGroup() {
                 <FlipValue
                   value={stat.value}
                   delayMs={i * 100}
-                  className="slip-mono text-exam-green-bright font-bold text-4xl sm:text-5xl"
+                  className="slip-mono text-exam-gold font-bold text-4xl sm:text-5xl"
                 />
                 <p className="font-body text-gazette/60 text-sm">{stat.label}</p>
-                <span className="flex items-center gap-1 text-exam-green-bright">
+                <span className="flex items-center gap-1 text-exam-gold">
                   <Check size={12} strokeWidth={3} />
                   <span className="slip-mono text-[9px] tracking-wider">PASS</span>
                 </span>

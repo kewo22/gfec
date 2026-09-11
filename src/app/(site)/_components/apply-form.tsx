@@ -201,7 +201,7 @@ function SearchableDropdown({
     <div ref={wrapRef} className="relative">
       <div
         className={`flex items-center gap-2 border-b-2 bg-transparent transition-colors ${
-          error ? "border-stamp-red" : open ? "border-exam-green" : "border-exam-ink/30"
+          error ? "border-stamp-red" : open ? "border-exam-navy" : "border-exam-ink/30"
         }`}
       >
         <Search className="w-4 h-4 text-slip-mist shrink-0" />
@@ -257,7 +257,7 @@ function SearchableDropdown({
               }`}
             >
               {item}
-              {item === value && <Check className="w-3.5 h-3.5 text-exam-green" />}
+              {item === value && <Check className="w-3.5 h-3.5 text-exam-navy" />}
             </li>
           ))}
         </motion.ul>
@@ -286,14 +286,14 @@ function ServiceStamp({
       onClick={onToggle}
       className={`group relative flex items-center gap-2.5 rounded-sm border px-3.5 py-2.5 text-left transition-all duration-150 disabled:opacity-50 ${
         checked
-          ? "border-exam-green bg-exam-green/[0.07]"
+          ? "border-exam-navy bg-exam-navy/[0.07]"
           : "border-exam-ink/20 hover:border-exam-ink/40 hover:bg-exam-ink/[0.02]"
       }`}
     >
       <span
         className={`flex items-center justify-center w-5 h-5 rounded-[3px] border-2 shrink-0 transition-all ${
           checked
-            ? "border-exam-green bg-exam-green scale-100"
+            ? "border-exam-navy bg-exam-navy scale-100"
             : "border-exam-ink/30 bg-transparent scale-95"
         }`}
       >
@@ -444,10 +444,10 @@ export default function ApplyForm({ className = "", refLabel = "Ref. GFEC/APP" }
           <motion.div
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mt-6 p-4 border border-exam-green/40 bg-exam-green/[0.06] rounded-sm flex items-center gap-3"
+            className="mt-6 p-4 border border-exam-navy/40 bg-exam-navy/[0.06] rounded-sm flex items-center gap-3"
           >
-            <CheckCircle2 className="w-5 h-5 text-exam-green shrink-0" />
-            <p className="font-body text-sm text-exam-green-deep font-medium">
+            <CheckCircle2 className="w-5 h-5 text-exam-navy shrink-0" />
+            <p className="font-body text-sm text-exam-navy-deep font-medium">
               Filed successfully — we&apos;ll be in touch shortly.
             </p>
           </motion.div>
@@ -475,7 +475,7 @@ export default function ApplyForm({ className = "", refLabel = "Ref. GFEC/APP" }
               disabled={isLoading}
               placeholder="As it appears on your NIC / passport"
               className={`w-full bg-transparent font-body text-exam-ink text-[15px] py-2.5 border-b-2 outline-none transition-colors placeholder:text-slip-mist/70 disabled:opacity-50 ${
-                errors.name ? "border-stamp-red" : "border-exam-ink/30 focus:border-exam-green"
+                errors.name ? "border-stamp-red" : "border-exam-ink/30 focus:border-exam-navy"
               }`}
             />
           </FieldSlip>
@@ -501,7 +501,7 @@ export default function ApplyForm({ className = "", refLabel = "Ref. GFEC/APP" }
               disabled={isLoading}
               placeholder="you@example.com"
               className={`w-full bg-transparent font-body text-exam-ink text-[15px] py-2.5 border-b-2 outline-none transition-colors placeholder:text-slip-mist/70 disabled:opacity-50 ${
-                errors.email ? "border-stamp-red" : "border-exam-ink/30 focus:border-exam-green"
+                errors.email ? "border-stamp-red" : "border-exam-ink/30 focus:border-exam-navy"
               }`}
             />
           </FieldSlip>
@@ -516,7 +516,7 @@ export default function ApplyForm({ className = "", refLabel = "Ref. GFEC/APP" }
               disabled={isLoading}
               placeholder="07XXXXXXXX"
               className={`w-full bg-transparent font-body text-exam-ink text-[15px] py-2.5 border-b-2 outline-none transition-colors placeholder:text-slip-mist/70 disabled:opacity-50 ${
-                errors.mobile ? "border-stamp-red" : "border-exam-ink/30 focus:border-exam-green"
+                errors.mobile ? "border-stamp-red" : "border-exam-ink/30 focus:border-exam-navy"
               }`}
             />
           </FieldSlip>

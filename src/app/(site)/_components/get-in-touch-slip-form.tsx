@@ -95,7 +95,7 @@ function FieldSlip({
 
 const fieldClass = (hasError: boolean) =>
   `w-full bg-transparent font-body text-exam-ink text-[15px] py-2.5 border-b-2 outline-none transition-colors placeholder:text-slip-mist/70 disabled:opacity-50 ${
-    hasError ? "border-stamp-red" : "border-exam-ink/30 focus:border-exam-green"
+    hasError ? "border-stamp-red" : "border-exam-ink/30 focus:border-exam-navy"
   }`;
 
 export default function GetInTouchSlipForm() {
@@ -212,10 +212,10 @@ export default function GetInTouchSlipForm() {
           <motion.div
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mt-6 p-4 border border-exam-green/40 bg-exam-green/[0.06] rounded-sm flex items-center gap-3"
+            className="mt-6 p-4 border border-exam-navy/40 bg-exam-navy/[0.06] rounded-sm flex items-center gap-3"
           >
-            <CheckCircle2 className="w-5 h-5 text-exam-green shrink-0" />
-            <p className="font-body text-sm text-exam-green-deep font-medium">
+            <CheckCircle2 className="w-5 h-5 text-exam-navy shrink-0" />
+            <p className="font-body text-sm text-exam-navy-deep font-medium">
               Booked — a consultant will confirm your slot shortly.
             </p>
           </motion.div>
@@ -287,7 +287,7 @@ export default function GetInTouchSlipForm() {
 
           <FieldSlip index={5} label="Preferred Consultation Slot" error={errors.preferredDate || errors.preferredTime}>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-              <div className="flex items-center gap-2 border-b-2 border-exam-ink/30 focus-within:border-exam-green transition-colors">
+              <div className="flex items-center gap-2 border-b-2 border-exam-ink/30 focus-within:border-exam-navy transition-colors">
                 <CalendarDays className="w-4 h-4 text-slip-mist shrink-0" />
                 <input
                   type="date"
@@ -298,7 +298,7 @@ export default function GetInTouchSlipForm() {
                   className="w-full bg-transparent font-body text-exam-ink text-[15px] py-2.5 outline-none disabled:opacity-50"
                 />
               </div>
-              <div className="flex items-center gap-2 border-b-2 border-exam-ink/30 focus-within:border-exam-green transition-colors">
+              <div className="flex items-center gap-2 border-b-2 border-exam-ink/30 focus-within:border-exam-navy transition-colors">
                 <Clock className="w-4 h-4 text-slip-mist shrink-0" />
                 <select
                   name="preferredTime"

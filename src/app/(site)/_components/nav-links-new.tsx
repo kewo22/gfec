@@ -41,7 +41,7 @@ export default function NavLinksNew({ className }: NavLinksNewProps) {
               {item.text}
             </span>
             <span
-              className={`absolute -bottom-0.5 left-0 h-[2px] bg-exam-green transition-all duration-300 ease-out ${item.isActive ? "w-full" : "w-0 group-hover:w-full"
+              className={`absolute -bottom-0.5 left-0 h-[2px] bg-exam-navy transition-all duration-300 ease-out ${item.isActive ? "w-full" : "w-0 group-hover:w-full"
                 }`}
             />
           </Link>

@@ -23,7 +23,7 @@ const STATS = [
 ];
 
 const CARD_HOVER =
-  "transition-all duration-300 hover:-translate-y-1 hover:border-exam-green-bright/50 hover:shadow-[0_16px_36px_-16px_rgba(71,181,121,0.35)]";
+  "transition-all duration-300 hover:-translate-y-1 hover:border-exam-gold/50 hover:shadow-[0_16px_36px_-16px_rgba(201,151,46,0.35)]";
 
 const COMMITMENTS = [
   {
@@ -95,7 +95,7 @@ export default function AboutContent() {
 
           <div className="grid lg:grid-cols-[1fr_auto] gap-10 items-end mt-8 lg:mt-12">
             <div>
-              <p className="slip-mono text-exam-green text-xs uppercase tracking-wider mb-3">About GFEC</p>
+              <p className="slip-mono text-exam-navy text-xs uppercase tracking-wider mb-3">About GFEC</p>
               <h1 className="font-slip-display font-bold text-exam-ink text-4xl sm:text-5xl lg:text-[64px] leading-[1.05] max-w-3xl">
                 Helping Sri Lankan students build global futures.
               </h1>
@@ -118,7 +118,7 @@ export default function AboutContent() {
         <ContainerNew className="px-5 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             <div>
-              <p className="slip-mono text-exam-green text-xs uppercase tracking-wider mb-3">Our story</p>
+              <p className="slip-mono text-exam-navy text-xs uppercase tracking-wider mb-3">Our story</p>
               <h2 className="font-slip-display font-bold text-exam-ink text-2xl lg:text-3xl mb-5">
                 A leading visa &amp; immigration consultancy
               </h2>
@@ -147,10 +147,10 @@ export default function AboutContent() {
                   <FlipValue
                     value={stat.value}
                     delayMs={i * 100}
-                    className="slip-mono text-exam-green-bright font-bold text-4xl sm:text-5xl"
+                    className="slip-mono text-exam-gold font-bold text-4xl sm:text-5xl"
                   />
                   <p className="font-body text-gazette/60 text-sm">{stat.label}</p>
-                  <span className="flex items-center gap-1 text-exam-green-bright">
+                  <span className="flex items-center gap-1 text-exam-gold">
                     <Check size={12} strokeWidth={3} />
                     <span className="slip-mono text-[9px] tracking-wider">PASS</span>
                   </span>
@@ -166,7 +166,7 @@ export default function AboutContent() {
       <section className="bg-exam-ink py-20 lg:py-28">
         <ContainerNew className="px-5 lg:px-12">
           <div className="max-w-2xl mb-14">
-            <p className="slip-mono text-exam-green-bright text-xs uppercase tracking-wider mb-3">
+            <p className="slip-mono text-exam-gold text-xs uppercase tracking-wider mb-3">
               Our commitments
             </p>
             <h2 className="font-slip-display font-bold text-gazette text-3xl lg:text-[44px] leading-[1.1]">
@@ -183,10 +183,10 @@ export default function AboutContent() {
                   className={`reveal-card ${inView ? "reveal-card-in" : ""} bg-gazette/5 border border-gazette/10 rounded-sm p-8 lg:p-10`}
                 >
                   <div className="flex items-start justify-between mb-6">
-                    <item.icon size={32} strokeWidth={1.5} className="text-exam-green-bright" />
+                    <item.icon size={32} strokeWidth={1.5} className="text-exam-gold" />
                     <span className="slip-mono text-[10px] text-gazette/30">{String(i + 1).padStart(2, "0")}</span>
                   </div>
-                  <p className="slip-mono text-exam-green-bright text-xs uppercase tracking-wide mb-3">
+                  <p className="slip-mono text-exam-gold text-xs uppercase tracking-wide mb-3">
                     {item.label}
                   </p>
                   <p className="font-slip-display font-bold text-gazette text-xl lg:text-2xl leading-snug">
@@ -201,7 +201,7 @@ export default function AboutContent() {
 
       <section className="bg-gazette py-20 lg:py-24">
         <ContainerNew className="px-5 lg:px-12">
-          <p className="slip-mono text-exam-green text-xs uppercase tracking-wider mb-3">Our approach</p>
+          <p className="slip-mono text-exam-navy text-xs uppercase tracking-wider mb-3">Our approach</p>
           <h2 className="font-slip-display font-bold text-exam-ink text-2xl lg:text-3xl mb-10 max-w-xl">
             Three pillars behind every student file we handle.
           </h2>
@@ -217,7 +217,7 @@ export default function AboutContent() {
                   <span className="slip-mono text-exam-ink/30 text-xs block mb-6">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <pillar.icon size={30} className="text-exam-green-bright mb-4" strokeWidth={1.5} />
+                  <pillar.icon size={30} className="text-exam-gold mb-4" strokeWidth={1.5} />
                   <h3 className="font-slip-display font-bold text-exam-ink text-lg mb-3">{pillar.title}</h3>
                   <p className="font-body text-slip-mist text-sm leading-relaxed">{pillar.description}</p>
                 </div>
@@ -234,7 +234,7 @@ export default function AboutContent() {
       <section className="bg-exam-ink py-20 lg:py-28">
         <ContainerNew className="px-5 lg:px-12">
           <div className="max-w-2xl mb-10">
-            <p className="slip-mono text-exam-green-bright text-xs uppercase tracking-wider mb-3">
+            <p className="slip-mono text-exam-gold text-xs uppercase tracking-wider mb-3">
               Why students choose GFEC
             </p>
             <h2 className="font-slip-display font-bold text-gazette text-2xl lg:text-3xl mb-5">
@@ -254,7 +254,7 @@ export default function AboutContent() {
                   style={{ transitionDelay: `${i * REVEAL_STAGGER_MS}ms` }}
                   className={`reveal-card ${inView ? "reveal-card-in" : ""} flex items-start gap-3 bg-gazette/5 border border-gazette/10 rounded-sm p-6`}
                 >
-                  <Check size={16} strokeWidth={3} className="text-exam-green-bright shrink-0 mt-0.5" />
+                  <Check size={16} strokeWidth={3} className="text-exam-gold shrink-0 mt-0.5" />
                   <p className="font-body text-gazette/85 text-sm leading-relaxed">{point}</p>
                 </div>
               ))

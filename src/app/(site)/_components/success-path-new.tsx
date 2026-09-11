@@ -53,9 +53,9 @@ function useStampMotion(progress: MotionValue<number>, index: number) {
 function TravelMarker({ rotateClass }: { rotateClass?: string }) {
   return (
     <span className="relative flex items-center justify-center w-8 h-8">
-      <span className="absolute inset-0 rounded-full bg-exam-green-bright/20 blur-[3px]" aria-hidden="true" />
+      <span className="absolute inset-0 rounded-full bg-exam-gold/20 blur-[3px]" aria-hidden="true" />
       <span className="absolute inset-[3px] rounded-full bg-gazette" aria-hidden="true" />
-      <PlaneTakeoff size={22} strokeWidth={2.25} className={`relative text-exam-green-bright drop-shadow-[0_1px_2px_rgba(0,0,0,0.25)] ${rotateClass ?? ""}`} />
+      <PlaneTakeoff size={22} strokeWidth={2.25} className={`relative text-exam-gold drop-shadow-[0_1px_2px_rgba(0,0,0,0.25)] ${rotateClass ?? ""}`} />
     </span>
   );
 }
@@ -159,7 +159,7 @@ function VerticalPath({ reduceMotion }: { reduceMotion: boolean }) {
         <div className="absolute top-0 bottom-0 left-[23px] w-[2px] bg-exam-ink/10" aria-hidden="true" />
         <motion.div
           style={{ scaleY: reduceMotion ? 1 : fillProgress }}
-          className="absolute top-0 bottom-0 left-[23px] w-[2px] bg-exam-green origin-top"
+          className="absolute top-0 bottom-0 left-[23px] w-[2px] bg-exam-navy origin-top"
           aria-hidden="true"
         />
         {!reduceMotion && (
@@ -197,7 +197,7 @@ function HorizontalPath({ reduceMotion }: { reduceMotion: boolean }) {
         <div className="absolute top-7 left-0 right-0 h-[2px] bg-exam-ink/10" aria-hidden="true" />
         <motion.div
           style={{ scaleX: reduceMotion ? 1 : fillProgress, transformOrigin: "left" }}
-          className="absolute top-7 left-0 right-0 h-[2px] bg-exam-green"
+          className="absolute top-7 left-0 right-0 h-[2px] bg-exam-navy"
           aria-hidden="true"
         />
         {!reduceMotion && (
@@ -243,7 +243,7 @@ export default function SuccessPathNew() {
     <section className="bg-gazette py-20 lg:py-28">
       <ContainerNew className="px-5 lg:px-12">
         <div className="max-w-2xl mb-16">
-          <p className="slip-mono text-exam-green text-xs uppercase tracking-wider mb-3">Student journey</p>
+          <p className="slip-mono text-exam-navy text-xs uppercase tracking-wider mb-3">Student journey</p>
           <h2 className="font-slip-display font-bold text-exam-ink text-3xl lg:text-[44px] leading-[1.1]">
             Six steps, one consultant, start to finish.
           </h2>

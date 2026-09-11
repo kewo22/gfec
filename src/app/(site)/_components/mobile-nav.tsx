@@ -83,7 +83,7 @@ export default function MobileNav({ }: MobileNavProps) {
                     {item.text}
                   </span>
                   {active && (
-                    <span className="ml-auto slip-mono text-[10px] text-exam-green flex items-center gap-1">
+                    <span className="ml-auto slip-mono text-[10px] text-exam-navy flex items-center gap-1">
                       PASS
                     </span>
                   )}

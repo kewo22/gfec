@@ -18,15 +18,15 @@ export default function DestinationFaq({ faqs }: { faqs: { question: string; ans
               aria-expanded={isOpen}
               className="w-full flex items-start gap-4 py-6 text-left group"
             >
-              <span className="slip-mono text-exam-green text-xs shrink-0 pt-1.5 w-8">
+              <span className="slip-mono text-exam-navy text-xs shrink-0 pt-1.5 w-8">
                 {`Q${String(i + 1).padStart(2, "0")}`}
               </span>
-              <span className="font-slip-display font-bold text-exam-ink text-base lg:text-lg flex-1 group-hover:text-exam-green-deep transition-colors">
+              <span className="font-slip-display font-bold text-exam-ink text-base lg:text-lg flex-1 group-hover:text-exam-navy-deep transition-colors">
                 {faq.question}
               </span>
               <span
                 className={`shrink-0 w-7 h-7 rounded-full border flex items-center justify-center transition-transform duration-300 motion-reduce:transition-none ${
-                  isOpen ? "rotate-45 border-exam-green-bright text-exam-green-bright" : "border-exam-ink/20 text-exam-ink/50"
+                  isOpen ? "rotate-45 border-exam-gold text-exam-gold" : "border-exam-ink/20 text-exam-ink/50"
                 }`}
               >
                 <Plus size={14} strokeWidth={2.5} />

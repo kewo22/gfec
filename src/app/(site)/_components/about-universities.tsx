@@ -40,7 +40,7 @@ export default function AboutUniversities() {
     <section className="bg-exam-ink py-20 lg:py-28 overflow-hidden">
       <ContainerNew className="px-5 lg:px-12">
         <div className="max-w-2xl mb-14">
-          <p className="slip-mono text-exam-green-bright text-xs uppercase tracking-wider mb-3">
+          <p className="slip-mono text-exam-gold text-xs uppercase tracking-wider mb-3">
             University partners
           </p>
           <h2 className="font-slip-display font-bold text-gazette text-3xl lg:text-[44px] leading-[1.1]">

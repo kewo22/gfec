@@ -225,10 +225,10 @@ export default function WorldPartnersMap() {
             </button>
 
             <div className="flex items-center gap-2 mb-1">
-              <GraduationCap size={16} className="text-exam-green shrink-0" />
+              <GraduationCap size={16} className="text-exam-navy shrink-0" />
               <h3 className="font-slip-display font-bold text-exam-ink text-lg">{active.country}</h3>
             </div>
-            <p className="slip-mono text-exam-green text-[11px] uppercase tracking-wide mb-3">
+            <p className="slip-mono text-exam-navy text-[11px] uppercase tracking-wide mb-3">
               {active.universities.length} partner {active.universities.length === 1 ? "university" : "universities"}
             </p>
 
@@ -245,7 +245,7 @@ export default function WorldPartnersMap() {
 
             <Link
               href={`/study-abroad/${active.route}`}
-              className="group flex items-center justify-center gap-1.5 w-full bg-exam-ink text-gazette rounded-sm py-2.5 font-slip-display font-bold text-xs uppercase tracking-wide transition-colors hover:bg-exam-green-deep"
+              className="group flex items-center justify-center gap-1.5 w-full bg-exam-ink text-gazette rounded-sm py-2.5 font-slip-display font-bold text-xs uppercase tracking-wide transition-colors hover:bg-exam-navy-deep"
             >
               View Destination
               <ArrowUpRight size={14} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -257,7 +257,7 @@ export default function WorldPartnersMap() {
       <ContainerNew className="px-5 lg:px-12">
         <p className="font-body text-slip-mist text-sm mt-6 leading-relaxed">
           {markers.length} countries on file — scroll or pinch to zoom, drag to pan, and use the{" "}
-          <span className="slip-mono text-exam-green">{europeCount}</span> badge to open the Europe cluster.
+          <span className="slip-mono text-exam-navy">{europeCount}</span> badge to open the Europe cluster.
         </p>
       </ContainerNew>
     </div>

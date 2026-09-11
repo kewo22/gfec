@@ -117,10 +117,10 @@ export default function MasonryGallery() {
               className={`slip-mono text-[11px] uppercase tracking-wide px-4 py-2 rounded-sm border transition-colors duration-200 inline-flex items-center gap-1.5 ${
                 active
                   ? "bg-exam-ink border-exam-ink text-gazette"
-                  : "border-exam-ink/15 text-exam-ink/70 hover:border-exam-green-bright/50 hover:text-exam-ink"
+                  : "border-exam-ink/15 text-exam-ink/70 hover:border-exam-gold/50 hover:text-exam-ink"
               }`}
             >
-              {Icon && <Icon size={12} className={active ? "text-exam-green-bright" : "text-exam-ink/40"} />}
+              {Icon && <Icon size={12} className={active ? "text-exam-gold" : "text-exam-ink/40"} />}
               {category.name}
               <span className={active ? "text-gazette/50" : "text-exam-ink/40"}>({category.count})</span>
             </button>
@@ -142,7 +142,7 @@ export default function MasonryGallery() {
                 >
                   <button
                     type="button"
-                    className="group relative overflow-hidden rounded-sm border border-exam-ink/10 bg-slip-surface hover:border-exam-green-bright/50 transition-colors duration-300 block w-full text-left"
+                    className="group relative overflow-hidden rounded-sm border border-exam-ink/10 bg-slip-surface hover:border-exam-gold/50 transition-colors duration-300 block w-full text-left"
                     onClick={() => openImage(image.id)}
                   >
                     <motion.div
@@ -175,7 +175,7 @@ export default function MasonryGallery() {
 
                     <div className="absolute top-3 right-3">
                       <span className="slip-mono text-[9px] uppercase tracking-wide text-gazette bg-exam-ink/70 px-2 py-1 rounded-sm inline-flex items-center gap-1">
-                        {Icon && <Icon size={10} className="text-exam-green-bright" />}
+                        {Icon && <Icon size={10} className="text-exam-gold" />}
                         {image.category}
                       </span>
                     </div>
@@ -218,7 +218,7 @@ export default function MasonryGallery() {
                 className="flex items-center justify-between px-5 py-3 border-b border-slip-rule shrink-0"
               >
                 <div className="flex items-center gap-2">
-                  <span className="slip-mono text-[11px] text-exam-green">
+                  <span className="slip-mono text-[11px] text-exam-navy">
                     {`EXHIBIT ${String(selectedImage.id).padStart(3, "0")}`}
                   </span>
                   <span className="slip-mono text-[10px] uppercase tracking-wide text-slip-mist">

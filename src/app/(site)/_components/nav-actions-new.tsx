@@ -34,7 +34,7 @@ export default function NavActionsNew({ openModel, className }: NavActionsNewPro
       <button
         type="button"
         onClick={onApplyNowClick}
-        className="font-slip-display text-[13px] font-bold uppercase tracking-wide text-exam-ink/75 hover:text-exam-green transition-colors"
+        className="font-slip-display text-[13px] font-bold uppercase tracking-wide text-exam-ink/75 hover:text-exam-navy transition-colors"
       >
         Apply Now
       </button>

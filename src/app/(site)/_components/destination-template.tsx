@@ -66,7 +66,7 @@ export default function DestinationTemplate({ country, content, universities }: 
                 className="flex items-center gap-3 mb-4"
               >
                 <Image src={country.flag} alt="" width={30} height={20} className="rounded-[2px] shadow" />
-                <span className="slip-mono text-exam-green-bright text-xs uppercase tracking-wider">
+                <span className="slip-mono text-exam-gold text-xs uppercase tracking-wider">
                   Destination file · {country.country}
                 </span>
               </motion.div>
@@ -95,7 +95,7 @@ export default function DestinationTemplate({ country, content, universities }: 
                 </a>
                 <Link
                   href="/contact#get-in-touch-container"
-                  className="group font-slip-display font-bold text-gazette text-sm tracking-wide uppercase px-1 py-4 flex items-center gap-2 border-b-2 border-gazette/30 hover:border-exam-green-bright transition-colors"
+                  className="group font-slip-display font-bold text-gazette text-sm tracking-wide uppercase px-1 py-4 flex items-center gap-2 border-b-2 border-gazette/30 hover:border-exam-gold transition-colors"
                 >
                   Book a Free Consultation
                   <ArrowRight size={17} className="transition-transform group-hover:translate-x-1" />
@@ -139,7 +139,7 @@ export default function DestinationTemplate({ country, content, universities }: 
             }`}
           >
             <div>
-              <p className="slip-mono text-exam-green text-xs uppercase tracking-wider mb-3">Country overview</p>
+              <p className="slip-mono text-exam-navy text-xs uppercase tracking-wider mb-3">Country overview</p>
               <h2 className="font-slip-display font-bold text-exam-ink text-2xl lg:text-3xl mb-5">
                 Why study in {country.country} from Sri Lanka?
               </h2>
@@ -159,15 +159,15 @@ export default function DestinationTemplate({ country, content, universities }: 
                   >
                     <div className="flex items-center justify-between w-full">
                       <span className="slip-mono text-[10px] text-gazette/40">{String(i + 1).padStart(2, "0")}</span>
-                      <cell.icon size={16} className="text-exam-green-bright/70" />
+                      <cell.icon size={16} className="text-exam-gold/70" />
                     </div>
                     <FlipValue
                       value={cell.value}
                       delayMs={i * 100}
-                      className="slip-mono text-exam-green-bright font-bold text-4xl sm:text-5xl"
+                      className="slip-mono text-exam-gold font-bold text-4xl sm:text-5xl"
                     />
                     <p className="font-body text-gazette/60 text-sm">{cell.label}</p>
-                    <span className="flex items-center gap-1 text-exam-green-bright">
+                    <span className="flex items-center gap-1 text-exam-gold">
                       <Check size={12} strokeWidth={3} />
                       <span className="slip-mono text-[9px] tracking-wider">PASS</span>
                     </span>
@@ -181,7 +181,7 @@ export default function DestinationTemplate({ country, content, universities }: 
 
       <section id="universities" className="bg-exam-ink py-16 lg:py-24 scroll-mt-24">
         <ContainerNew className="px-5 lg:px-12">
-          <p className="slip-mono text-exam-green-bright text-xs uppercase tracking-wider mb-3">Universities</p>
+          <p className="slip-mono text-exam-gold text-xs uppercase tracking-wider mb-3">Universities</p>
           <h2 className="font-slip-display font-bold text-gazette text-2xl lg:text-3xl mb-10">
             {country.country} universities GFEC works with
           </h2>
@@ -198,7 +198,7 @@ export default function DestinationTemplate({ country, content, universities }: 
 
       <section className="py-16 lg:py-24">
         <ContainerNew className="px-5 lg:px-12">
-          <p className="slip-mono text-exam-green text-xs uppercase tracking-wider mb-3">
+          <p className="slip-mono text-exam-navy text-xs uppercase tracking-wider mb-3">
             Why choose {country.country}?
           </p>
           <h2 className="font-slip-display font-bold text-exam-ink text-2xl lg:text-3xl mb-10 max-w-2xl">
@@ -209,7 +209,7 @@ export default function DestinationTemplate({ country, content, universities }: 
             {content.benefits.map((benefit, i) => (
               <div
                 key={benefit.title}
-                className={`border rounded-sm p-8 transition-all duration-300 hover:-translate-y-1 hover:border-exam-green-bright/50 hover:shadow-[0_16px_36px_-16px_rgba(71,181,121,0.35)] ${
+                className={`border rounded-sm p-8 transition-all duration-300 hover:-translate-y-1 hover:border-exam-gold/50 hover:shadow-[0_16px_36px_-16px_rgba(201,151,46,0.35)] ${
                   i === 0
                     ? "md:col-span-2 lg:col-span-2 lg:row-span-2 bg-exam-ink border-exam-ink"
                     : "bg-slip-surface border-slip-rule"
@@ -252,7 +252,7 @@ export default function DestinationTemplate({ country, content, universities }: 
       {content.faqs.length > 0 && (
         <section className="bg-gazette py-16 lg:py-24">
           <ContainerNew className="px-5 lg:px-12 max-w-3xl">
-            <p className="slip-mono text-exam-green text-xs uppercase tracking-wider mb-3">FAQs</p>
+            <p className="slip-mono text-exam-navy text-xs uppercase tracking-wider mb-3">FAQs</p>
             <h2 className="font-slip-display font-bold text-exam-ink text-2xl lg:text-3xl mb-8">
               Frequently asked questions
             </h2>
@@ -263,14 +263,14 @@ export default function DestinationTemplate({ country, content, universities }: 
 
       <section className="py-16 lg:py-24">
         <ContainerNew className="px-5 lg:px-12">
-          <p className="slip-mono text-exam-green text-xs uppercase tracking-wider mb-3">Keep exploring</p>
+          <p className="slip-mono text-exam-navy text-xs uppercase tracking-wider mb-3">Keep exploring</p>
           <h2 className="font-slip-display font-bold text-exam-ink text-2xl lg:text-3xl mb-8">Other destinations</h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
             {otherDestinations.map((dest, i) => (
               <Link
                 key={dest.id}
                 href={`/study-abroad/${dest.route}`}
-                className="group relative aspect-[4/3] rounded-sm overflow-hidden border border-transparent transition-colors duration-300 hover:border-exam-green-bright/60"
+                className="group relative aspect-[4/3] rounded-sm overflow-hidden border border-transparent transition-colors duration-300 hover:border-exam-gold/60"
               >
                 <Image
                   src={dest.image}
@@ -292,7 +292,7 @@ export default function DestinationTemplate({ country, content, universities }: 
                   <span className="font-slip-display font-bold text-gazette text-xl block mb-1">
                     {dest.country}
                   </span>
-                  <span className="inline-flex items-center gap-1 font-slip-display font-bold text-exam-green-bright text-xs uppercase tracking-wide opacity-0 -translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                  <span className="inline-flex items-center gap-1 font-slip-display font-bold text-exam-gold text-xs uppercase tracking-wide opacity-0 -translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
                     Explore
                     <ArrowUpRight size={13} />
                   </span>

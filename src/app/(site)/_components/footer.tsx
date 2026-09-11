@@ -36,7 +36,7 @@ export default function Footer() {
             className={`reveal-card ${inView ? "reveal-card-in" : ""} transition-all duration-500 flex flex-col gap-4`}
           >
             <Image src={gfecTrans} alt="GFEC logo" width={100} height={90} className="brightness-0 invert opacity-90" />
-            <p className="slip-mono text-exam-green-bright text-[10px] uppercase tracking-[0.2em]">
+            <p className="slip-mono text-exam-gold text-[10px] uppercase tracking-[0.2em]">
               GFEC · Colombo · Est. 2021
             </p>
             <p className="font-body text-gazette/60 text-sm leading-relaxed max-w-xs">
@@ -49,14 +49,14 @@ export default function Footer() {
             style={{ transitionDelay: `${REVEAL_STAGGER_MS}ms` }}
             className={`reveal-card ${inView ? "reveal-card-in" : ""} transition-all duration-500 flex flex-col gap-3`}
           >
-            <p className="slip-mono text-exam-green-bright text-xs uppercase tracking-wider mb-1">Explore</p>
+            <p className="slip-mono text-exam-gold text-xs uppercase tracking-wider mb-1">Explore</p>
             {NavItems.map((item, i) => (
               <Link
                 key={i}
                 href={item.route}
                 className="group flex items-center gap-2.5 font-body text-gazette/70 hover:text-gazette text-sm transition-colors"
               >
-                <span className="slip-mono text-[10px] text-gazette/30 group-hover:text-exam-green-bright transition-colors">
+                <span className="slip-mono text-[10px] text-gazette/30 group-hover:text-exam-gold transition-colors">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 {item.text}
@@ -68,14 +68,14 @@ export default function Footer() {
             style={{ transitionDelay: `${REVEAL_STAGGER_MS * 2}ms` }}
             className={`reveal-card ${inView ? "reveal-card-in" : ""} transition-all duration-500 flex flex-col gap-3`}
           >
-            <p className="slip-mono text-exam-green-bright text-xs uppercase tracking-wider mb-1">Visit us at</p>
+            <p className="slip-mono text-exam-gold text-xs uppercase tracking-wider mb-1">Visit us at</p>
             <a
               href={GFEC_GOOGLE_MAPS_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="group flex items-start gap-2.5 font-body text-gazette/70 hover:text-gazette text-sm transition-colors"
             >
-              <MapPin size={14} className="shrink-0 mt-0.5 text-exam-green-bright" />
+              <MapPin size={14} className="shrink-0 mt-0.5 text-exam-gold" />
               <span>
                 {addressLine1}, {addressLine2}, <br /> {addressLine3}.
               </span>
@@ -86,7 +86,7 @@ export default function Footer() {
             style={{ transitionDelay: `${REVEAL_STAGGER_MS * 3}ms` }}
             className={`reveal-card ${inView ? "reveal-card-in" : ""} transition-all duration-500 flex flex-col gap-3`}
           >
-            <p className="slip-mono text-exam-green-bright text-xs uppercase tracking-wider mb-1">Contact us</p>
+            <p className="slip-mono text-exam-gold text-xs uppercase tracking-wider mb-1">Contact us</p>
             {phoneNos?.map((phoneNo, i) => (
               <a key={i} href={`tel:${phoneNo}`} className="font-body text-gazette/70 hover:text-gazette text-sm transition-colors">
                 {phoneNo}

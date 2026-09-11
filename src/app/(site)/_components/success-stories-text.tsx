@@ -52,7 +52,7 @@ export default function SuccessStoriesText() {
     <section className="bg-exam-ink py-20 lg:py-28">
       <ContainerNew className="px-5 lg:px-12">
         <div className="max-w-2xl mb-14">
-          <p className="slip-mono text-exam-green-bright text-xs uppercase tracking-wider mb-3">Success stories</p>
+          <p className="slip-mono text-exam-gold text-xs uppercase tracking-wider mb-3">Success stories</p>
           <h2 className="font-slip-display font-bold text-gazette text-3xl lg:text-[44px] leading-[1.1]">
             Real students, real outcomes.
           </h2>
@@ -87,7 +87,7 @@ export default function SuccessStoriesText() {
               exit="exit"
               transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
             >
-              <p className="slip-mono text-exam-green text-xs uppercase tracking-wide mb-2">
+              <p className="slip-mono text-exam-navy text-xs uppercase tracking-wide mb-2">
                 {`File ${String(selected + 1).padStart(2, "0")} · ${STORIES[selected].detail}`}
               </p>
               <p className="font-slip-display font-bold text-exam-ink text-xl mb-6">{STORIES[selected].name}</p>
@@ -101,7 +101,7 @@ export default function SuccessStoriesText() {
             <button
               type="button"
               onClick={onOpenModal}
-              className="font-slip-display font-bold text-exam-green hover:text-exam-green-deep text-sm uppercase tracking-wide transition-colors cursor-pointer"
+              className="font-slip-display font-bold text-exam-navy hover:text-exam-navy-deep text-sm uppercase tracking-wide transition-colors cursor-pointer"
             >
               Read full story
             </button>
@@ -137,7 +137,7 @@ export default function SuccessStoriesText() {
         ref={modalRef}
       >
         <div className="max-h-[80vh] overflow-y-auto">
-          <p className="slip-mono text-exam-green text-xs uppercase tracking-wide mb-2">
+          <p className="slip-mono text-exam-navy text-xs uppercase tracking-wide mb-2">
             {`File ${String(selected + 1).padStart(2, "0")} · ${STORIES[selected].detail}`}
           </p>
           <p className="font-slip-display font-bold text-exam-ink text-xl mb-5">{STORIES[selected].name}</p>

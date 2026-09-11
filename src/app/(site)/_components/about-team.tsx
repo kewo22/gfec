@@ -24,7 +24,7 @@ export default function AboutTeam() {
     <section className="bg-gazette py-20 lg:py-28">
       <ContainerNew className="px-5 lg:px-12">
         <div className="max-w-2xl mb-14">
-          <p className="slip-mono text-exam-green text-xs uppercase tracking-wider mb-3">Team members</p>
+          <p className="slip-mono text-exam-navy text-xs uppercase tracking-wider mb-3">Team members</p>
           <h2 className="font-slip-display font-bold text-exam-ink text-3xl lg:text-[44px] leading-[1.1]">
             The consultants behind your file.
           </h2>
@@ -35,10 +35,10 @@ export default function AboutTeam() {
             <div
               key={role.title}
               style={{ transitionDelay: `${i * REVEAL_STAGGER_MS}ms` }}
-              className={`reveal-card ${inView ? "reveal-card-in" : ""} group bg-slip-surface border border-slip-rule rounded-sm p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:border-exam-green-bright/50 hover:shadow-[0_16px_36px_-16px_rgba(71,181,121,0.35)]`}
+              className={`reveal-card ${inView ? "reveal-card-in" : ""} group bg-slip-surface border border-slip-rule rounded-sm p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:border-exam-gold/50 hover:shadow-[0_16px_36px_-16px_rgba(201,151,46,0.35)]`}
             >
               <div className="w-16 h-16 mx-auto rounded-full bg-exam-ink flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-105">
-                <UserRound size={26} strokeWidth={1.5} className="text-exam-green-bright" />
+                <UserRound size={26} strokeWidth={1.5} className="text-exam-gold" />
               </div>
               <h3 className="font-slip-display font-bold text-exam-ink text-sm leading-snug">{role.title}</h3>
             </div>

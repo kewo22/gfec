@@ -20,7 +20,7 @@ export default function GalleryContent() {
 
           <div className="grid lg:grid-cols-[1fr_auto] gap-10 items-end mt-8 lg:mt-12">
             <div>
-              <p className="slip-mono text-exam-green text-xs uppercase tracking-wider mb-3">Photo register</p>
+              <p className="slip-mono text-exam-navy text-xs uppercase tracking-wider mb-3">Photo register</p>
               <h1 className="font-slip-display font-bold text-exam-ink text-4xl sm:text-5xl lg:text-[64px] leading-[1.05] max-w-3xl">
                 Moments, filed for the record.
               </h1>

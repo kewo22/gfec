@@ -119,11 +119,11 @@ function CriteriaCheck({ delay, reduceMotion }: { delay: number; reduceMotion: b
       viewport={{ once: true, amount: 0.6 }}
       transition={{ duration: 0.2, delay }}
     >
-      <circle cx="10" cy="10" r="9" fill="none" stroke="var(--color-exam-green-bright)" strokeWidth="1.5" opacity="0.6" />
+      <circle cx="10" cy="10" r="9" fill="none" stroke="var(--color-exam-gold)" strokeWidth="1.5" opacity="0.6" />
       <motion.path
         d="M5.5 10.3l3 3 6-6.5"
         fill="none"
-        stroke="var(--color-exam-green-bright)"
+        stroke="var(--color-exam-gold)"
         strokeWidth="1.8"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -147,15 +147,15 @@ function FaqItem({ index, question, answer }: { index: number; question: string;
         aria-expanded={open}
         className="w-full flex items-start gap-4 py-6 text-left group"
       >
-        <span className="slip-mono text-exam-green text-xs shrink-0 pt-1.5 w-8">
+        <span className="slip-mono text-exam-navy text-xs shrink-0 pt-1.5 w-8">
           {`Q${String(index + 1).padStart(2, "0")}`}
         </span>
-        <span className="font-slip-display font-bold text-exam-ink text-base lg:text-lg flex-1 group-hover:text-exam-green-deep transition-colors">
+        <span className="font-slip-display font-bold text-exam-ink text-base lg:text-lg flex-1 group-hover:text-exam-navy-deep transition-colors">
           {question}
         </span>
         <span
           className={`shrink-0 w-7 h-7 rounded-full border flex items-center justify-center transition-transform duration-300 motion-reduce:transition-none ${
-            open ? "rotate-45 border-exam-green-bright text-exam-green-bright" : "border-exam-ink/20 text-exam-ink/50"
+            open ? "rotate-45 border-exam-gold text-exam-gold" : "border-exam-ink/20 text-exam-ink/50"
           }`}
         >
           <Plus size={14} strokeWidth={2.5} />
@@ -217,7 +217,7 @@ export default function StudyDestinationsContent() {
 
           <div className="grid lg:grid-cols-[1fr_auto] gap-10 items-end mt-8 lg:mt-12">
             <div>
-              <p className="slip-mono text-exam-green text-xs uppercase tracking-wider mb-3">
+              <p className="slip-mono text-exam-navy text-xs uppercase tracking-wider mb-3">
                 Destination register
               </p>
               <h1 className="font-slip-display font-bold text-exam-ink text-4xl sm:text-5xl lg:text-[64px] leading-[1.05] max-w-3xl">
@@ -238,7 +238,7 @@ export default function StudyDestinationsContent() {
                 </Link>
                 <a
                   href="#how-to-choose"
-                  className="group font-slip-display font-bold text-exam-ink text-sm tracking-wide uppercase px-1 py-4 flex items-center gap-2 border-b-2 border-exam-ink/25 hover:border-exam-green transition-colors"
+                  className="group font-slip-display font-bold text-exam-ink text-sm tracking-wide uppercase px-1 py-4 flex items-center gap-2 border-b-2 border-exam-ink/25 hover:border-exam-navy transition-colors"
                 >
                   How to choose
                   <ArrowRight size={17} className="transition-transform group-hover:translate-x-1" />
@@ -263,7 +263,7 @@ export default function StudyDestinationsContent() {
       <section className="bg-gazette py-16 lg:py-24">
         <ContainerNew className="px-5 lg:px-12">
           <div className="max-w-2xl mb-10">
-            <p className="slip-mono text-exam-green text-xs uppercase tracking-wider mb-3">The register</p>
+            <p className="slip-mono text-exam-navy text-xs uppercase tracking-wider mb-3">The register</p>
             <h2 className="font-slip-display font-bold text-exam-ink text-3xl lg:text-[44px] leading-[1.1]">
               Every destination, filed by region.
             </h2>
@@ -281,7 +281,7 @@ export default function StudyDestinationsContent() {
                   className={`slip-mono text-[11px] uppercase tracking-wide px-4 py-2 rounded-sm border transition-colors duration-200 ${
                     active
                       ? "bg-exam-ink border-exam-ink text-gazette"
-                      : "border-exam-ink/15 text-exam-ink/70 hover:border-exam-green-bright/50 hover:text-exam-ink"
+                      : "border-exam-ink/15 text-exam-ink/70 hover:border-exam-gold/50 hover:text-exam-ink"
                   }`}
                 >
                   {label}
@@ -307,7 +307,7 @@ export default function StudyDestinationsContent() {
                 >
                   <Link
                     href={`/study-abroad/${country.route}`}
-                    className="group relative block aspect-[4/5] rounded-sm overflow-hidden border border-transparent transition-colors duration-300 hover:border-exam-green-bright/60"
+                    className="group relative block aspect-[4/5] rounded-sm overflow-hidden border border-transparent transition-colors duration-300 hover:border-exam-gold/60"
                   >
                     <Image
                       src={country.image}
@@ -341,7 +341,7 @@ export default function StudyDestinationsContent() {
                       <p className="font-body text-gazette/75 text-sm leading-relaxed line-clamp-2 mb-4 max-w-[90%]">
                         {country.description}
                       </p>
-                      <span className="inline-flex items-center gap-1.5 font-slip-display font-bold text-exam-green-bright text-sm uppercase tracking-wide">
+                      <span className="inline-flex items-center gap-1.5 font-slip-display font-bold text-exam-gold text-sm uppercase tracking-wide">
                         Explore
                         <ArrowUpRight
                           size={16}
@@ -360,7 +360,7 @@ export default function StudyDestinationsContent() {
       <section id="how-to-choose" className="bg-exam-ink py-20 lg:py-28">
         <ContainerNew className="px-5 lg:px-12">
           <div className="max-w-2xl mb-14">
-            <p className="slip-mono text-exam-green-bright text-xs uppercase tracking-wider mb-3">How it works</p>
+            <p className="slip-mono text-exam-gold text-xs uppercase tracking-wider mb-3">How it works</p>
             <h2 className="font-slip-display font-bold text-gazette text-3xl lg:text-[44px] leading-[1.1]">
               How to choose your study destination.
             </h2>
@@ -380,13 +380,13 @@ export default function StudyDestinationsContent() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.2 }}
                   transition={{ duration: 0.5, delay, ease: [0.16, 1, 0.3, 1] }}
-                  className="bg-gazette/5 border border-gazette/10 rounded-sm p-8 transition-colors duration-300 hover:border-exam-green-bright/40 hover:bg-gazette/[0.07]"
+                  className="bg-gazette/5 border border-gazette/10 rounded-sm p-8 transition-colors duration-300 hover:border-exam-gold/40 hover:bg-gazette/[0.07]"
                 >
                   <div className="flex items-start justify-between mb-6">
                     <span className="slip-mono text-gazette/30 text-xs">{String(i + 1).padStart(2, "0")}</span>
                     <CriteriaCheck delay={delay} reduceMotion={reduceMotion} />
                   </div>
-                  <item.icon size={28} strokeWidth={1.5} className="text-exam-green-bright mb-4" />
+                  <item.icon size={28} strokeWidth={1.5} className="text-exam-gold mb-4" />
                   <h3 className="font-slip-display font-bold text-gazette text-lg mb-2">{item.title}</h3>
                   <p className="font-body text-gazette/60 text-sm leading-relaxed">{item.description}</p>
                 </motion.div>
@@ -401,7 +401,7 @@ export default function StudyDestinationsContent() {
           <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-10 lg:gap-16">
             <div>
-              <p className="slip-mono text-exam-green text-xs uppercase tracking-wider mb-3">FAQ</p>
+              <p className="slip-mono text-exam-navy text-xs uppercase tracking-wider mb-3">FAQ</p>
               <h2 className="font-slip-display font-bold text-exam-ink text-3xl lg:text-[44px] leading-[1.1] mb-4">
                 Questions students actually ask.
               </h2>
@@ -410,7 +410,7 @@ export default function StudyDestinationsContent() {
               </p>
               <Link
                 href="/contact#get-in-touch-container"
-                className="mt-6 inline-flex items-center gap-1.5 font-slip-display font-bold text-xs uppercase tracking-wide text-exam-green hover:text-exam-green-deep transition-colors"
+                className="mt-6 inline-flex items-center gap-1.5 font-slip-display font-bold text-xs uppercase tracking-wide text-exam-navy hover:text-exam-navy-deep transition-colors"
               >
                 Ask a consultant
                 <ArrowRight size={13} />
@@ -430,7 +430,7 @@ export default function StudyDestinationsContent() {
         <div className="slip-rule" />
         <ContainerNew className="px-5 lg:px-12 py-16 lg:py-20">
           <div className="max-w-2xl mx-auto text-center">
-            <p className="slip-mono text-exam-green-bright text-xs uppercase tracking-wider mb-4">Not sure yet?</p>
+            <p className="slip-mono text-exam-gold text-xs uppercase tracking-wider mb-4">Not sure yet?</p>
             <h2 className="font-slip-display font-bold text-gazette text-3xl lg:text-4xl mb-4">
               Not sure which country is right for you?
             </h2>
@@ -448,7 +448,7 @@ export default function StudyDestinationsContent() {
               </Link>
               <Link
                 href="/apply-now"
-                className="group font-slip-display font-bold text-gazette text-sm tracking-wide uppercase px-1 py-4 flex items-center gap-2 border-b-2 border-gazette/25 hover:border-exam-green-bright transition-colors"
+                className="group font-slip-display font-bold text-gazette text-sm tracking-wide uppercase px-1 py-4 flex items-center gap-2 border-b-2 border-gazette/25 hover:border-exam-gold transition-colors"
               >
                 Start Your Application
                 <ArrowRight size={17} className="transition-transform group-hover:translate-x-1" />

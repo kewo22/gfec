@@ -11,7 +11,7 @@ import GfecMap from "./gfec-map";
 import GetInTouchSlipForm from "./get-in-touch-slip-form";
 
 const CARD_HOVER =
-  "transition-all duration-300 hover:-translate-y-1 hover:border-exam-green-bright/50 hover:shadow-[0_16px_36px_-16px_rgba(71,181,121,0.35)]";
+  "transition-all duration-300 hover:-translate-y-1 hover:border-exam-gold/50 hover:shadow-[0_16px_36px_-16px_rgba(201,151,46,0.35)]";
 
 type ContactContentProps = {
   phoneNos: string[];
@@ -53,7 +53,7 @@ export default function ContactContent({
 
           <div className="grid lg:grid-cols-[1fr_auto] gap-10 items-end mt-8 lg:mt-12">
             <div>
-              <p className="slip-mono text-exam-green text-xs uppercase tracking-wider mb-3">Get in touch</p>
+              <p className="slip-mono text-exam-navy text-xs uppercase tracking-wider mb-3">Get in touch</p>
               <h1 className="font-slip-display font-bold text-exam-ink text-4xl sm:text-5xl lg:text-[64px] leading-[1.05] max-w-3xl">
                 Let&apos;s get your file started.
               </h1>
@@ -89,7 +89,7 @@ export default function ContactContent({
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <div className="w-12 h-12 rounded-full bg-exam-ink flex items-center justify-center -mt-2">
-                  <card.icon size={20} className="text-exam-green-bright" />
+                  <card.icon size={20} className="text-exam-gold" />
                 </div>
                 <p className="font-slip-display font-bold text-exam-ink text-sm uppercase tracking-wide">
                   {card.label}
@@ -102,7 +102,7 @@ export default function ContactContent({
                         href={item.href}
                         target={"external" in item && item.external ? "_blank" : undefined}
                         rel={"external" in item && item.external ? "noopener noreferrer" : undefined}
-                        className="font-body text-slip-mist text-sm hover:text-exam-green transition-colors break-all"
+                        className="font-body text-slip-mist text-sm hover:text-exam-navy transition-colors break-all"
                       >
                         {item.text}
                       </a>
@@ -128,7 +128,7 @@ export default function ContactContent({
       <section id="get-in-touch-container" className="bg-exam-ink py-20 lg:py-28">
         <ContainerNew className="px-5 lg:px-12 max-w-3xl">
           <div className="text-center mb-12">
-            <p className="slip-mono text-exam-green-bright text-xs uppercase tracking-wider mb-3">
+            <p className="slip-mono text-exam-gold text-xs uppercase tracking-wider mb-3">
               Book my consultation
             </p>
             <h2 className="font-slip-display font-bold text-gazette text-3xl lg:text-[44px] leading-[1.1]">

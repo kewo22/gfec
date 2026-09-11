@@ -44,7 +44,7 @@ const HIGHLIGHTS = [
 ];
 
 const CARD_HOVER =
-  "group transition-all duration-300 hover:-translate-y-1 hover:border-exam-green-bright/50 hover:shadow-[0_16px_36px_-16px_rgba(71,181,121,0.35)]";
+  "group transition-all duration-300 hover:-translate-y-1 hover:border-exam-gold/50 hover:shadow-[0_16px_36px_-16px_rgba(201,151,46,0.35)]";
 
 export default function WhyGfec() {
   const [featured, ...rest] = HIGHLIGHTS;
@@ -67,7 +67,7 @@ export default function WhyGfec() {
               <featured.icon
                 size={36}
                 strokeWidth={1.5}
-                className="text-exam-green-bright transition-transform duration-300 group-hover:scale-110"
+                className="text-exam-gold transition-transform duration-300 group-hover:scale-110"
               />
               <span className="slip-mono text-[10px] text-gazette/35">01</span>
             </div>
@@ -88,7 +88,7 @@ export default function WhyGfec() {
                   <item.icon
                     size={26}
                     strokeWidth={1.5}
-                    className="text-exam-green-bright transition-transform duration-300 group-hover:scale-110"
+                    className="text-exam-gold transition-transform duration-300 group-hover:scale-110"
                   />
                   <span className="slip-mono text-[10px] text-gazette/35">
                     {String(i + 2).padStart(2, "0")}

@@ -84,13 +84,13 @@ export default function WhatGfecOffers() {
             <div
               key={service.title}
               style={{ transitionDelay: `${Math.min(i, REVEAL_STAGGER_CAP) * REVEAL_STAGGER_MS}ms` }}
-              className={`reveal-card ${inView ? "reveal-card-in" : ""} group relative bg-gazette/5 border border-gazette/10 rounded-sm p-6 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:bg-gazette/[0.07] hover:border-exam-green-bright/50 hover:shadow-[0_16px_36px_-16px_rgba(71,181,121,0.35)]`}
+              className={`reveal-card ${inView ? "reveal-card-in" : ""} group relative bg-gazette/5 border border-gazette/10 rounded-sm p-6 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:bg-gazette/[0.07] hover:border-exam-gold/50 hover:shadow-[0_16px_36px_-16px_rgba(201,151,46,0.35)]`}
             >
               <div className="flex items-start justify-between mb-6">
                 <service.icon
                   size={26}
                   strokeWidth={1.5}
-                  className="text-exam-green-bright transition-transform duration-300 group-hover:scale-110"
+                  className="text-exam-gold transition-transform duration-300 group-hover:scale-110"
                 />
                 <span className="slip-mono text-[10px] text-gazette/30">
                   {String(i + 1).padStart(2, "0")}
@@ -101,7 +101,7 @@ export default function WhatGfecOffers() {
               </h3>
               <p className="font-body text-gazette/55 text-sm leading-relaxed">{service.description}</p>
 
-              <div className="mt-4 flex items-center gap-1.5 text-exam-green-bright opacity-0 -translate-y-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
+              <div className="mt-4 flex items-center gap-1.5 text-exam-gold opacity-0 -translate-y-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
                 <Check size={12} strokeWidth={3} />
                 <span className="slip-mono text-[10px] tracking-wider">INCLUDED IN YOUR FILE</span>
               </div>
@@ -113,7 +113,7 @@ export default function WhatGfecOffers() {
           <div
             className={`reveal-card transition-opacity duration-500 ${remarkInView ? "reveal-card-in" : ""} bg-gazette/5 border border-gazette/10 rounded-sm p-8`}
           >
-            <p className="slip-mono text-exam-green-bright text-xs uppercase mb-4">Remark 01</p>
+            <p className="slip-mono text-exam-gold text-xs uppercase mb-4">Remark 01</p>
             <h3 className="font-slip-display font-bold text-gazette text-xl mb-3">
               Start your global education journey with confidence
             </h3>
@@ -128,7 +128,7 @@ export default function WhatGfecOffers() {
             style={{ transitionDelay: "90ms" }}
             className={`reveal-card transition-opacity duration-500 ${remarkInView ? "reveal-card-in" : ""} bg-gazette/5 border border-gazette/10 rounded-sm p-8`}
           >
-            <p className="slip-mono text-exam-green-bright text-xs uppercase mb-4">Remark 02</p>
+            <p className="slip-mono text-exam-gold text-xs uppercase mb-4">Remark 02</p>
             <h3 className="font-slip-display font-bold text-gazette text-xl mb-3">
               Admissions &amp; visa expertise you can trust
             </h3>

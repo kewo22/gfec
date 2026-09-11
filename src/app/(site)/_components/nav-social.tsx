@@ -31,12 +31,12 @@ export default function NavSocial(props: NavSocialProps) {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`GFEC on ${social.name}`}
-            className="group flex items-center justify-center w-12 h-12 rounded-full bg-exam-ink transition-all duration-300 hover:bg-exam-green-bright hover:-translate-y-0.5 hover:shadow-[0_10px_20px_-8px_rgba(71,181,121,0.5)]"
+            className="group flex items-center justify-center w-12 h-12 rounded-full bg-exam-ink transition-all duration-300 hover:bg-exam-gold hover:-translate-y-0.5 hover:shadow-[0_10px_20px_-8px_rgba(201,151,46,0.5)]"
           >
             <social.icon
               size={19}
               strokeWidth={1.75}
-              className="text-exam-green-bright transition-colors duration-300 group-hover:text-exam-ink"
+              className="text-exam-gold transition-colors duration-300 group-hover:text-exam-ink"
             />
           </a>
         ))}
@@ -53,12 +53,12 @@ export default function NavSocial(props: NavSocialProps) {
           target="_blank"
           rel="noopener noreferrer"
           aria-label={`GFEC on ${social.name}`}
-          className={`group flex items-center justify-center w-9 h-9 rounded-full border border-current/20 transition-colors duration-300 hover:border-exam-green-bright ${iconClass}`}
+          className={`group flex items-center justify-center w-9 h-9 rounded-full border border-current/20 transition-colors duration-300 hover:border-exam-gold ${iconClass}`}
         >
           <social.icon
             size={15}
             strokeWidth={1.75}
-            className="transition-colors duration-300 group-hover:text-exam-green-bright"
+            className="transition-colors duration-300 group-hover:text-exam-gold"
           />
         </a>
       ))}

@@ -29,7 +29,7 @@ function MilestoneNode({ index, progress, done }: { index: number; progress: Mot
   const ringColor = useTransform(
     progress,
     [windowStart, windowEnd],
-    ["var(--color-slip-rule)", done ? "var(--color-exam-green)" : "var(--color-stamp-red)"],
+    ["var(--color-slip-rule)", done ? "var(--color-exam-navy)" : "var(--color-stamp-red)"],
   );
 
   return (
@@ -38,7 +38,7 @@ function MilestoneNode({ index, progress, done }: { index: number; progress: Mot
       className="relative z-10 shrink-0 w-9 h-9 rounded-full bg-slip-surface border-2 flex items-center justify-center"
     >
       {done ? (
-        <Check size={15} strokeWidth={3} className="text-exam-green" />
+        <Check size={15} strokeWidth={3} className="text-exam-navy" />
       ) : (
         <Clock size={14} strokeWidth={2.25} className="text-stamp-red" />
       )}
@@ -56,7 +56,7 @@ export default function AboutTimeline() {
     <section className="bg-gazette py-20 lg:py-28">
       <ContainerNew className="px-5 lg:px-12">
         <div className="max-w-2xl mx-auto text-center mb-14">
-          <p className="slip-mono text-exam-green text-xs uppercase tracking-wider mb-3">Milestones</p>
+          <p className="slip-mono text-exam-navy text-xs uppercase tracking-wider mb-3">Milestones</p>
           <h2 className="font-slip-display font-bold text-exam-ink text-3xl lg:text-[44px] leading-[1.1]">
             A practice built one file at a time.
           </h2>
@@ -69,7 +69,7 @@ export default function AboutTimeline() {
           <div className="absolute top-4 bottom-4 left-[17px] w-[2px] bg-exam-ink/10" aria-hidden="true" />
           <motion.div
             style={{ scaleY: reduceMotion ? 1 : fillProgress }}
-            className="absolute top-4 bottom-4 left-[17px] w-[2px] bg-exam-green origin-top"
+            className="absolute top-4 bottom-4 left-[17px] w-[2px] bg-exam-navy origin-top"
             aria-hidden="true"
           />
 

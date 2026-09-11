@@ -62,7 +62,7 @@ export default function GfecMap() {
       <ContainerNew className="px-5 lg:px-12">
         <div className="flex flex-wrap items-end justify-between gap-4 mb-8">
           <div>
-            <p className="slip-mono text-exam-green text-xs uppercase tracking-wider mb-3">Find us</p>
+            <p className="slip-mono text-exam-navy text-xs uppercase tracking-wider mb-3">Find us</p>
             <h2 className="font-slip-display font-bold text-exam-ink text-2xl lg:text-3xl">
               Visit our Colombo office
             </h2>
@@ -71,7 +71,7 @@ export default function GfecMap() {
             href={GFEC_GOOGLE_MAPS_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex items-center gap-1.5 font-slip-display font-bold text-exam-green hover:text-exam-green-deep text-sm uppercase tracking-wide"
+            className="group inline-flex items-center gap-1.5 font-slip-display font-bold text-exam-navy hover:text-exam-navy-deep text-sm uppercase tracking-wide"
           >
             Get directions
             <ArrowUpRight size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

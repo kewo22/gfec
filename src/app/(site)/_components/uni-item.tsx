@@ -52,8 +52,8 @@ function UniversityCard({ university, index }: { university: University; index: 
         </div>
 
         <div className="absolute inset-0 flex items-center justify-center opacity-0 scale-75 -rotate-12 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:scale-100 group-hover:rotate-[-8deg] pointer-events-none">
-          <div className="w-20 h-20 rounded-full border-2 border-exam-green-bright/85 flex items-center justify-center bg-exam-ink/50">
-            <span className="slip-mono text-exam-green-bright text-[9px] uppercase tracking-wider text-center leading-tight">
+          <div className="w-20 h-20 rounded-full border-2 border-exam-gold/85 flex items-center justify-center bg-exam-ink/50">
+            <span className="slip-mono text-exam-gold text-[9px] uppercase tracking-wider text-center leading-tight">
               Verified
               <br />
               Partner
@@ -68,17 +68,17 @@ function UniversityCard({ university, index }: { university: University; index: 
         </h3>
 
         <div className="flex items-center gap-2 text-slip-mist text-sm mb-1.5">
-          <MapPin size={14} className="text-exam-green shrink-0" />
+          <MapPin size={14} className="text-exam-navy shrink-0" />
           <span>{university.country}</span>
         </div>
         <div className="flex items-center gap-2 text-slip-mist text-sm mb-4">
-          <CalendarDays size={14} className="text-exam-green shrink-0" />
+          <CalendarDays size={14} className="text-exam-navy shrink-0" />
           <span className="slip-mono">Est. {university.established}</span>
         </div>
 
         <div className="mb-5 flex flex-wrap gap-1.5">
           {university.programs.slice(0, 2).map((program) => (
-            <span key={program} className="bg-exam-green/10 text-exam-green-deep px-2 py-1 rounded-sm text-xs font-medium">
+            <span key={program} className="bg-exam-navy/10 text-exam-navy-deep px-2 py-1 rounded-sm text-xs font-medium">
               {program}
             </span>
           ))}

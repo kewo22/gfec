@@ -32,9 +32,9 @@ export function ResultSeal({
       <defs>
         <path id={pathId} d="M 100,100 m -78,0 a 78,78 0 1,1 156,0 a 78,78 0 1,1 -156,0" />
       </defs>
-      <circle cx="100" cy="100" r="94" fill="none" stroke="var(--color-stamp-red)" strokeWidth="2.5" opacity="0.9" />
+      <circle cx="100" cy="100" r="94" fill="none" stroke="var(--color-exam-gold)" strokeWidth="2.5" opacity="0.95" />
       <circle cx="100" cy="100" r="80" fill="none" stroke="var(--color-stamp-red)" strokeWidth="1.5" opacity="0.75" />
-      <text fill="var(--color-stamp-red)" fontFamily="var(--font-slip-display)" fontSize="11.5" letterSpacing="3" opacity="0.95">
+      <text fill="var(--color-exam-gold)" fontFamily="var(--font-slip-display)" fontSize="11.5" letterSpacing="3" opacity="1">
         <textPath href={`#${pathId}`} startOffset="2%">
           {ringText}
         </textPath>
@@ -100,7 +100,7 @@ export default function HeroResultSlip() {
             </Link>
             <Link
               href="/study-abroad"
-              className="group font-slip-display font-bold text-exam-ink text-sm tracking-wide uppercase px-1 py-4 flex items-center gap-2 border-b-2 border-exam-ink/25 hover:border-exam-green transition-colors"
+              className="group font-slip-display font-bold text-exam-ink text-sm tracking-wide uppercase px-1 py-4 flex items-center gap-2 border-b-2 border-exam-ink/25 hover:border-exam-navy transition-colors"
             >
               Browse the Register
               <ArrowRight size={17} className="transition-transform group-hover:translate-x-1" />
@@ -124,10 +124,10 @@ export default function HeroResultSlip() {
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <span className="font-body text-sm text-exam-ink/85 flex-1">{row.label}</span>
-                  <span className="slip-mono text-exam-green font-bold text-base">
+                  <span className="slip-mono text-exam-navy font-bold text-base">
                     <FlipValue value={row.value} delayMs={i * 120} />
                   </span>
-                  <span className="flex items-center gap-1 text-exam-green shrink-0">
+                  <span className="flex items-center gap-1 text-exam-navy shrink-0">
                     <Check size={14} strokeWidth={3} />
                     <span className="slip-mono text-[10px] tracking-wider">PASS</span>
                   </span>
@@ -137,7 +137,7 @@ export default function HeroResultSlip() {
 
             <Link
               href="/about"
-              className="mt-6 inline-flex items-center gap-1.5 font-slip-display font-bold text-xs uppercase tracking-wide text-exam-green hover:text-exam-green-deep transition-colors"
+              className="mt-6 inline-flex items-center gap-1.5 font-slip-display font-bold text-xs uppercase tracking-wide text-exam-navy hover:text-exam-navy-deep transition-colors"
             >
               More about GFEC
               <ArrowRight size={13} />
