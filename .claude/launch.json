@@ -6,6 +6,12 @@
       "runtimeExecutable": "pnpm",
       "runtimeArgs": ["dev2"],
       "port": 3000
+    },
+    {
+      "name": "gfec-dev-8080",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["dev"],
+      "port": 8080
     }
   ]
 }

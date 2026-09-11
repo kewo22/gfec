@@ -3,6 +3,7 @@ import React, { useMemo } from "react";
 
 import { GoogleMap, MarkerF, useJsApiLoader } from "@react-google-maps/api";
 import { ArrowUpRight } from "lucide-react";
+import { useInView } from "react-intersection-observer";
 
 import { GFEC_GOOGLE_MAPS_URL } from "../_constants/google-maps.constants";
 import ContainerNew from "./layouts/container-new";
@@ -32,7 +33,7 @@ const MARKER_ICON =
     </svg>
   `);
 
-export default function GfecMap() {
+function InteractiveMap() {
   const [map, setMap] = React.useState<google.maps.Map | null>(null);
 
   const mapCenter = useMemo(() => {
@@ -57,6 +58,29 @@ export default function GfecMap() {
     setMap(null);
   }, []);
 
+  if (!isLoaded) return <Spinner className="size-14" />;
+
+  return (
+    <GoogleMap
+      mapContainerStyle={containerStyle}
+      center={mapCenter}
+      zoom={16}
+      onLoad={onLoad}
+      onUnmount={onUnmount}
+      options={{
+        styles: MAP_STYLE,
+        disableDefaultUI: true,
+        zoomControl: true,
+      }}
+    >
+      <MarkerF position={mapCenter} icon={MARKER_ICON} />
+    </GoogleMap>
+  );
+}
+
+export default function GfecMap() {
+  const { ref, inView } = useInView({ triggerOnce: true, rootMargin: "200px 0px" });
+
   return (
     <section className="bg-gazette py-16 lg:py-24">
       <ContainerNew className="px-5 lg:px-12">
@@ -78,24 +102,11 @@ export default function GfecMap() {
           </a>
         </div>
 
-        <div className="w-full h-[420px] rounded-sm overflow-hidden border border-slip-rule flex items-center justify-center bg-slip-surface shadow-[var(--shadow-slip-card)]">
-          {isLoaded && (
-            <GoogleMap
-              mapContainerStyle={containerStyle}
-              center={mapCenter}
-              zoom={16}
-              onLoad={onLoad}
-              onUnmount={onUnmount}
-              options={{
-                styles: MAP_STYLE,
-                disableDefaultUI: true,
-                zoomControl: true,
-              }}
-            >
-              <MarkerF position={mapCenter} icon={MARKER_ICON} />
-            </GoogleMap>
-          )}
-          {!isLoaded && <Spinner className="size-14" />}
+        <div
+          ref={ref}
+          className="w-full h-[420px] rounded-sm overflow-hidden border border-slip-rule flex items-center justify-center bg-slip-surface shadow-[var(--shadow-slip-card)]"
+        >
+          {inView ? <InteractiveMap /> : <Spinner className="size-14" />}
         </div>
       </ContainerNew>
     </section>

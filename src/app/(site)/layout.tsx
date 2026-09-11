@@ -1,6 +1,6 @@
 
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Manrope, JetBrains_Mono, Courier_Prime } from "next/font/google";
+import { Manrope, Courier_Prime } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { SocialIcon } from 'react-social-icons';
@@ -8,23 +8,10 @@ import { SocialIcon } from 'react-social-icons';
 import Footer from "./_components/footer";
 import NavigationNew from "./_components/navigation-new";
 
-const plusJakarta = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  variable: "--font-plus-jakarta",
-  display: "swap",
-});
-
 const manrope = Manrope({
   subsets: ["latin"],
   variable: "--font-manrope",
   display: "swap",
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-jetbrains-mono",
-  display: "swap",
-  weight: ["500"],
 });
 
 const courierPrime = Courier_Prime({
@@ -73,7 +60,7 @@ export default function SiteLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className={`${plusJakarta.variable} ${manrope.variable} ${jetbrainsMono.variable} ${courierPrime.variable} font-body bg-paper text-ink`}>
+    <div className={`${manrope.variable} ${courierPrime.variable} font-body bg-paper text-ink`}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }} />
       <NavigationNew className='sticky top-0 left-0 w-full z-50' />
