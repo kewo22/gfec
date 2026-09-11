@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 import {
@@ -40,11 +40,23 @@ export default function MasonryGallery() {
   const [activeFilter, setActiveFilter] = useState(CATEGORIES[0].id);
   const [mounted, setMounted] = useState(false);
   const reduceMotion = useReducedMotion() ?? false;
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const lastFocusedRef = useRef<HTMLElement | null>(null);
 
   const openImage = (id: number) => {
+    lastFocusedRef.current = document.activeElement as HTMLElement;
     setOpenedFromId(id);
     setSelectedId(id);
   };
+
+  const closeImage = useCallback(() => {
+    setSelectedId(null);
+    lastFocusedRef.current?.focus();
+  }, []);
+
+  useEffect(() => {
+    if (selectedId !== null) closeButtonRef.current?.focus();
+  }, [selectedId]);
 
   useEffect(() => {
     const id = window.setTimeout(() => setMounted(true), 20);
@@ -80,13 +92,13 @@ export default function MasonryGallery() {
   useEffect(() => {
     if (selectedId === null) return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setSelectedId(null);
+      if (e.key === "Escape") closeImage();
       if (e.key === "ArrowRight") showRelative(1);
       if (e.key === "ArrowLeft") showRelative(-1);
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [selectedId, showRelative]);
+  }, [selectedId, showRelative, closeImage]);
 
   const distributeImages = () => {
     const cols: { image: GalleryImage; flatIndex: number }[][] = Array.from({ length: columns }, () => []);
@@ -194,12 +206,15 @@ export default function MasonryGallery() {
       <AnimatePresence>
         {selectedImage && (
           <motion.div
+            role="dialog"
+            aria-modal="true"
+            aria-label={`Photo ${String(selectedImage.id).padStart(3, "0")} — ${selectedImage.category}`}
             className="fixed inset-0 z-50 flex items-center justify-center p-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.35 }}
-            onClick={() => setSelectedId(null)}
+            onClick={closeImage}
           >
             <div className="absolute inset-0 bg-exam-ink/90" />
 
@@ -226,10 +241,11 @@ export default function MasonryGallery() {
                   </span>
                 </div>
                 <button
+                  ref={closeButtonRef}
                   type="button"
                   aria-label="Close"
                   className="p-1.5 -mr-1.5 text-exam-ink/60 hover:text-exam-ink transition-colors cursor-pointer"
-                  onClick={() => setSelectedId(null)}
+                  onClick={closeImage}
                 >
                   <X className="w-5 h-5" />
                 </button>

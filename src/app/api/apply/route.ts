@@ -19,6 +19,6 @@ export async function POST(request: Request) {
       throw Error("Insert failed");
     }
   } catch (error) {
-    return Response.json({ message: `Failed`, data: null, error });
+    return Response.json({ message: `Failed`, data: null, error }, { status: 500 });
   }
 }

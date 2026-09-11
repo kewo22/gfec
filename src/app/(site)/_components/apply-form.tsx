@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useId, useMemo, useRef, useState } from "react";
 import { motion } from "motion/react";
 import { z } from "zod";
 import {
@@ -143,6 +143,7 @@ function SearchableDropdown({
   const [activeIndex, setActiveIndex] = useState(0);
   const wrapRef = useRef<HTMLDivElement>(null);
   const listRef = useRef<HTMLUListElement>(null);
+  const listboxId = useId();
 
   useEffect(() => {
     setQuery(value);
@@ -210,6 +211,7 @@ function SearchableDropdown({
           role="combobox"
           aria-expanded={open}
           aria-autocomplete="list"
+          aria-controls={listboxId}
           aria-invalid={!!error}
           disabled={disabled}
           value={query}
@@ -231,6 +233,7 @@ function SearchableDropdown({
       {open && !disabled && (
         <motion.ul
           ref={listRef}
+          id={listboxId}
           initial={{ opacity: 0, y: -6 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.15 }}
@@ -393,16 +396,20 @@ export default function ApplyForm({ className = "", refLabel = "Ref. GFEC/APP" }
           "Content-Type": "application/json",
         },
       })
-        .then(() => {
+        .then(async (res) => {
+          const body = await res.json().catch(() => null);
+          if (!res.ok || body?.message !== "Success") {
+            throw new Error("Submission failed");
+          }
           setSubmitSuccess(true);
+          setFormData({ name: "", city: "", email: "", mobile: "", education: "" });
+          setServicesNeeded([]);
         })
         .catch(() => {
           setSubmitError("An unexpected error occurred. Please try again.");
         })
         .finally(() => {
           setIsLoading(false);
-          setFormData({ name: "", city: "", email: "", mobile: "", education: "" });
-          setServicesNeeded([]);
         });
     } catch (error: any) {
       if (error instanceof z.ZodError) {

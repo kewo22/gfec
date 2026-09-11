@@ -43,10 +43,9 @@ export const Modal = forwardRef<Ref, ModalProps>((props, ref) => {
 
   return (
     <dialog className={cn("p-5 modal", dialogWrapperClassName)} id="modal" ref={ref}>
-      <X
-        className="cursor-pointer ml-auto"
-        onClick={onCloseModel}
-      />
+      <button type="button" aria-label="Close" className="block ml-auto cursor-pointer" onClick={onCloseModel}>
+        <X />
+      </button>
       {children}
     </dialog>
   );

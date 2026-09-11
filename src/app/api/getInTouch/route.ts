@@ -1,4 +1,4 @@
-import { MongoClient, ObjectId } from "mongodb";
+import { Collection, MongoClient, ObjectId } from "mongodb";
 import nodemailer from "nodemailer";
 import Mail from "nodemailer/lib/mailer";
 
@@ -25,13 +25,16 @@ export async function POST(request: Request) {
   const data = await request.json();
 
   const uri = process.env.MONGO_URL || "";
-  const client = await new MongoClient(uri.trim()).connect();
-  const db = await client.db("gfec");
-  const collection = db.collection("getInTouch");
-  const loggerCollection = db.collection("logger");
-  const insertOneRes = await collection.insertOne(data);
+
+  let loggerCollection: Collection | null = null;
 
   try {
+    const client = await new MongoClient(uri.trim()).connect();
+    const db = await client.db("gfec");
+    const collection = db.collection("getInTouch");
+    loggerCollection = db.collection("logger");
+    const insertOneRes = await collection.insertOne(data);
+
     if (insertOneRes.insertedId) {
       const port = process.env.NODEMAILER_PORT as unknown as number;
       const transporter = nodemailer.createTransport({
@@ -82,6 +85,8 @@ export async function POST(request: Request) {
         process.env.TO_MAIL_3,
       ].filter((to): to is string => Boolean(to));
 
+      const logger = loggerCollection;
+
       await Promise.all(
         recipients.map((to) => {
           const mailOptions: Mail.Options = {
@@ -95,13 +100,13 @@ export async function POST(request: Request) {
           return transporter
             .sendMail(mailOptions)
             .then((res) => {
-              loggerCollection.insertOne({
+              logger.insertOne({
                 type: "email success",
                 log: JSON.stringify(res),
               });
             })
             .catch((error) => {
-              loggerCollection.insertOne({
+              logger.insertOne({
                 type: "email failed",
                 log: JSON.stringify(error),
               });
@@ -113,7 +118,7 @@ export async function POST(request: Request) {
         type: "insert failed",
         log: JSON.stringify(insertOneRes),
       });
-      return Response.json({ message: `Failed`, data: null });
+      return Response.json({ message: `Failed`, data: null }, { status: 500 });
     }
 
     loggerCollection.insertOne({
@@ -124,10 +129,10 @@ export async function POST(request: Request) {
     return Response.json({ message: `Success`, data: insertOneRes });
   } catch (error) {
     // console.error(error)
-    loggerCollection.insertOne({
+    loggerCollection?.insertOne({
       type: "failed",
       log: JSON.stringify(error),
     });
-    return Response.json({ message: `Failed`, data: null, error });
+    return Response.json({ message: `Failed`, data: null, error }, { status: 500 });
   }
 }

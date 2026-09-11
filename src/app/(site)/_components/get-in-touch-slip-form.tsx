@@ -155,14 +155,12 @@ export default function GetInTouchSlipForm() {
           "Content-Type": "application/json",
         },
       })
-        .then(() => {
+        .then(async (res) => {
+          const body = await res.json().catch(() => null);
+          if (!res.ok || body?.message !== "Success") {
+            throw new Error("Submission failed");
+          }
           setSubmitSuccess(true);
-        })
-        .catch(() => {
-          setSubmitError("An unexpected error occurred. Please try again.");
-        })
-        .finally(() => {
-          setIsLoading(false);
           setFormData({
             firstName: "",
             lastName: "",
@@ -171,6 +169,12 @@ export default function GetInTouchSlipForm() {
             preferredDate: "",
             preferredTime: "",
           });
+        })
+        .catch(() => {
+          setSubmitError("An unexpected error occurred. Please try again.");
+        })
+        .finally(() => {
+          setIsLoading(false);
         });
     } catch (error: unknown) {
       if (error instanceof z.ZodError) {
