@@ -7,23 +7,41 @@ export default function DestinationFaq({ faqs }: { faqs: { question: string; ans
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <div className="flex flex-col divide-y divide-hairline border-t border-b border-hairline">
+    <div className="border-t border-exam-ink/10">
       {faqs.map((faq, i) => {
         const isOpen = openIndex === i;
         return (
-          <div key={faq.question}>
+          <div key={faq.question} className="border-b border-exam-ink/10">
             <button
               type="button"
               onClick={() => setOpenIndex(isOpen ? null : i)}
               aria-expanded={isOpen}
-              className="w-full flex items-center justify-between gap-4 py-5 text-left cursor-pointer"
+              className="w-full flex items-start gap-4 py-6 text-left group"
             >
-              <span className="font-display font-semibold text-navy text-base">{faq.question}</span>
-              <Plus size={18} className={`text-gold shrink-0 transition-transform duration-300 ${isOpen ? "rotate-45" : ""}`} />
+              <span className="slip-mono text-exam-green text-xs shrink-0 pt-1.5 w-8">
+                {`Q${String(i + 1).padStart(2, "0")}`}
+              </span>
+              <span className="font-slip-display font-bold text-exam-ink text-base lg:text-lg flex-1 group-hover:text-exam-green-deep transition-colors">
+                {faq.question}
+              </span>
+              <span
+                className={`shrink-0 w-7 h-7 rounded-full border flex items-center justify-center transition-transform duration-300 motion-reduce:transition-none ${
+                  isOpen ? "rotate-45 border-exam-green-bright text-exam-green-bright" : "border-exam-ink/20 text-exam-ink/50"
+                }`}
+              >
+                <Plus size={14} strokeWidth={2.5} />
+              </span>
             </button>
-            {isOpen && (
-              <p className="font-body text-mist text-sm leading-relaxed pb-5 max-w-2xl">{faq.answer}</p>
-            )}
+            <div
+              className="grid transition-[grid-template-rows] duration-300 ease-out motion-reduce:transition-none"
+              style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}
+            >
+              <div className="overflow-hidden">
+                <p className="font-body text-slip-mist text-sm leading-relaxed pb-6 pl-12 pr-6 max-w-2xl">
+                  {faq.answer}
+                </p>
+              </div>
+            </div>
           </div>
         );
       })}
