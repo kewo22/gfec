@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import { GFEC_GOOGLE_MAPS_URL } from "../_constants/google-maps.constants";
 import ContactContent from "../_components/contact-content";
 
 export const metadata: Metadata = {
@@ -22,6 +23,7 @@ const jsonLd = {
     addressLocality: "Colombo 3",
     addressCountry: "LK",
   },
+  hasMap: GFEC_GOOGLE_MAPS_URL,
   openingHoursSpecification: [
     { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], opens: "09:00", closes: "17:00" },
     { "@type": "OpeningHoursSpecification", dayOfWeek: "Saturday", opens: "09:00", closes: "13:00" },

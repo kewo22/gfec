@@ -2,6 +2,7 @@
 
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
 
+import { GFEC_GOOGLE_MAPS_URL } from "../_constants/google-maps.constants";
 import ContainerNew from "./layouts/container-new";
 import Breadcrumbs from "./breadcrumbs";
 import { ResultSeal } from "./hero-result-slip";
@@ -30,7 +31,11 @@ export default function ContactContent({
   const INFO_CARDS = [
     { icon: Phone, label: "Phone", items: phoneNos.map((p) => ({ text: p, href: `tel:${p}` })) },
     { icon: Mail, label: "Email", items: emails.map((e) => ({ text: e, href: `mailto:${e}` })) },
-    { icon: MapPin, label: "Address", items: [{ text: `${addressLine1}, ${addressLine2}, ${addressLine3}` }] },
+    {
+      icon: MapPin,
+      label: "Address",
+      items: [{ text: `${addressLine1}, ${addressLine2}, ${addressLine3}`, href: GFEC_GOOGLE_MAPS_URL, external: true }],
+    },
     {
       icon: Clock,
       label: "Office hours",
@@ -95,6 +100,8 @@ export default function ContactContent({
                       <a
                         key={j}
                         href={item.href}
+                        target={"external" in item && item.external ? "_blank" : undefined}
+                        rel={"external" in item && item.external ? "noopener noreferrer" : undefined}
                         className="font-body text-slip-mist text-sm hover:text-exam-green transition-colors break-all"
                       >
                         {item.text}

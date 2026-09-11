@@ -8,6 +8,7 @@ import { useInView } from "react-intersection-observer";
 import gfecTrans from "../../../../public/comp/GFEC-Trans.png";
 
 import { NavItems } from "../_constants/nav-items.constants";
+import { GFEC_GOOGLE_MAPS_URL } from "../_constants/google-maps.constants";
 import { ResolveBaseUrl } from "@/app/utils/common";
 import NavSocial from "./nav-social";
 
@@ -21,17 +22,9 @@ export default function Footer() {
   const addressLine2 = process.env.ADDRESS_LINE_2 as unknown as string;
   const addressLine3 = process.env.ADDRESS_LINE_3 as unknown as string;
 
-  const LAT = process.env.LAT as unknown as string;
-  const LNG = process.env.LNG as unknown as string;
-
   const privacyBasePolicyUrl = ResolveBaseUrl(process.env.NEXT_PUBLIC_VERCEL_ENV!);
 
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
-
-  const onVisitClick = () => {
-    const url = `https://www.google.com/maps?q=${LAT},${LNG}`;
-    window.open(url, "_blank");
-  };
 
   return (
     <footer className="bg-exam-ink relative">
@@ -76,16 +69,17 @@ export default function Footer() {
             className={`reveal-card ${inView ? "reveal-card-in" : ""} transition-all duration-500 flex flex-col gap-3`}
           >
             <p className="slip-mono text-exam-green-bright text-xs uppercase tracking-wider mb-1">Visit us at</p>
-            <button
-              type="button"
-              onClick={onVisitClick}
-              className="group flex items-start gap-2.5 font-body text-gazette/70 hover:text-gazette text-sm text-left transition-colors cursor-pointer"
+            <a
+              href={GFEC_GOOGLE_MAPS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-start gap-2.5 font-body text-gazette/70 hover:text-gazette text-sm transition-colors"
             >
               <MapPin size={14} className="shrink-0 mt-0.5 text-exam-green-bright" />
               <span>
                 {addressLine1}, {addressLine2}, <br /> {addressLine3}.
               </span>
-            </button>
+            </a>
           </div>
 
           <div
