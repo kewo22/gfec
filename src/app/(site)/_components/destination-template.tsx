@@ -12,6 +12,7 @@ import Breadcrumbs from "./breadcrumbs";
 import UniversityPartnerItem from "./uni-item";
 import ContainerNew from "./layouts/container-new";
 import DestinationFaq from "./destination-faq";
+import DestinationFactExhibit from "./destination-fact-exhibit";
 import FlipValue from "./flip-value";
 import { ResultSeal } from "./hero-result-slip";
 
@@ -26,13 +27,21 @@ export default function DestinationTemplate({ country, content, universities }: 
 
   const establishedYears = universities.map((u) => parseInt(u.established, 10)).filter((n) => !Number.isNaN(n));
   const oldestYear = establishedYears.length ? Math.min(...establishedYears) : null;
-  const popularPrograms = Array.from(new Set(universities.flatMap((u) => u.programs))).slice(0, 6);
+  const popularPrograms = Array.from(new Set(universities.flatMap((u) => u.programs)));
 
   const otherDestinations = COUNTRIES.filter((c) => c.id !== country.id).slice(0, 3);
 
+  const officialFileExhibits: { title: string; fact: DestinationContent["visa"] }[] = [
+    { title: "Visa & Entry Requirements", fact: content.visa },
+    { title: "Cost to Study — Tuition & Living", fact: content.cost },
+    { title: "Intakes & Application Timeline", fact: content.intakes },
+    { title: "Scholarships & Financial Support", fact: content.scholarships },
+    { title: "Work Rights & Post-Study Pathway", fact: content.workRights },
+  ].filter((e) => e.fact);
+
   const statCells = [
     { icon: GraduationCap, value: String(universities.length), label: "Partner universities" },
-    { icon: BookOpen, value: `${popularPrograms.length}+`, label: "Popular study areas" },
+    { icon: BookOpen, value: `${popularPrograms.slice(0, 6).length}+`, label: "Popular study areas" },
     ...(oldestYear ? [{ icon: CalendarClock, value: String(oldestYear), label: "Oldest partner institution" }] : []),
   ];
 
@@ -50,7 +59,7 @@ export default function DestinationTemplate({ country, content, universities }: 
     <div className="bg-gazette">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
 
-      <section className="relative w-full min-h-[520px] flex items-end overflow-hidden bg-exam-ink">
+      <section className="relative w-full min-h-[520px] flex flex-col justify-end overflow-hidden bg-exam-ink">
         <Image src={country.image} alt={`Study in ${country.country}`} fill priority className="object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-exam-ink via-exam-ink/70 to-exam-ink/30" />
 
@@ -127,6 +136,17 @@ export default function DestinationTemplate({ country, content, universities }: 
               </motion.div>
             </div>
           </div>
+
+          {content.quickFacts && content.quickFacts.length > 0 && (
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-px bg-gazette/15 border border-gazette/15 rounded-sm overflow-hidden mt-10 max-w-xl">
+              {content.quickFacts.map((qf) => (
+                <div key={qf.label} className="bg-exam-ink/40 px-4 py-3">
+                  <p className="slip-mono text-[9px] uppercase tracking-wide text-gazette/50 mb-1">{qf.label}</p>
+                  <p className="font-slip-display font-bold text-sm text-gazette">{qf.value}</p>
+                </div>
+              ))}
+            </div>
+          )}
         </ContainerNew>
         <div className="slip-rule" />
       </section>
@@ -176,36 +196,8 @@ export default function DestinationTemplate({ country, content, universities }: 
               </div>
             )}
           </div>
-        </ContainerNew>
-      </section>
 
-      <section id="universities" className="bg-exam-ink py-16 lg:py-24 scroll-mt-24">
-        <ContainerNew className="px-5 lg:px-12">
-          <p className="slip-mono text-exam-gold text-xs uppercase tracking-wider mb-3">Universities</p>
-          <h2 className="font-slip-display font-bold text-gazette text-2xl lg:text-3xl mb-10">
-            {country.country} universities GFEC works with
-          </h2>
-          {universities.length > 0 ? (
-            <UniversityPartnerItem universities={universities} countryFilter={country.id} />
-          ) : (
-            <p className="font-body text-gazette/60">
-              We&apos;re expanding our partner network in {country.country} — talk to a consultant for the latest
-              options.
-            </p>
-          )}
-        </ContainerNew>
-      </section>
-
-      <section className="py-16 lg:py-24">
-        <ContainerNew className="px-5 lg:px-12">
-          <p className="slip-mono text-exam-navy text-xs uppercase tracking-wider mb-3">
-            Why choose {country.country}?
-          </p>
-          <h2 className="font-slip-display font-bold text-exam-ink text-2xl lg:text-3xl mb-10 max-w-2xl">
-            Benefits worth weighing before you apply.
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 mt-14">
             {content.benefits.map((benefit, i) => (
               <div
                 key={benefit.title}
@@ -215,9 +207,7 @@ export default function DestinationTemplate({ country, content, universities }: 
                     : "bg-slip-surface border-slip-rule"
                 }`}
               >
-                <span
-                  className={`slip-mono text-xs block mb-4 ${i === 0 ? "text-gazette/30" : "text-exam-ink/30"}`}
-                >
+                <span className={`slip-mono text-xs block mb-4 ${i === 0 ? "text-gazette/30" : "text-exam-ink/30"}`}>
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <h3
@@ -237,15 +227,92 @@ export default function DestinationTemplate({ country, content, universities }: 
               </div>
             ))}
           </div>
+        </ContainerNew>
+      </section>
 
-          <div className="flex items-start gap-3 mt-8 p-5 bg-stamp-red/5 rounded-sm border border-stamp-red/25 max-w-3xl">
-            <AlertTriangle size={18} className="text-stamp-red shrink-0 mt-0.5" />
-            <p className="font-body text-exam-ink/70 text-sm leading-relaxed">
-              Visa, work-right, and permanent residency rules can change. Please verify current immigration
-              requirements with official government sources — your GFEC consultant can help you check the latest
-              position before you apply.
+      {officialFileExhibits.length > 0 && (
+        <section className="bg-exam-ink py-16 lg:py-24">
+          <ContainerNew className="px-5 lg:px-12">
+            <p className="slip-mono text-exam-gold text-xs uppercase tracking-wider mb-3">The official file</p>
+            <h2 className="font-slip-display font-bold text-gazette text-2xl lg:text-3xl mb-3 max-w-2xl">
+              Visa, cost & requirements for {country.country}.
+            </h2>
+            <p className="font-body text-gazette/60 text-sm mb-10 max-w-2xl">
+              The practical facts a serious applicant needs, researched from official and authoritative sources.
+              Sections marked <span className="text-stamp-red">Draft — verify</span> are pending confirmation by a
+              GFEC consultant before they're treated as final.
             </p>
-          </div>
+
+            <div className="bg-slip-surface border border-slip-rule rounded-sm shadow-[var(--shadow-slip-card)] px-6 py-2 sm:px-9">
+              {officialFileExhibits.map((exhibit, i) => (
+                <DestinationFactExhibit key={exhibit.title} index={i + 1} title={exhibit.title} fact={exhibit.fact} />
+              ))}
+            </div>
+
+            <div className="flex items-start gap-3 mt-6 p-5 bg-stamp-red/5 rounded-sm border border-stamp-red/25 max-w-3xl">
+              <AlertTriangle size={18} className="text-stamp-red shrink-0 mt-0.5" />
+              <p className="font-body text-gazette/70 text-sm leading-relaxed">
+                Visa, fee, and work-right rules change without notice. Please verify current requirements with
+                official government sources — your GFEC consultant can confirm the latest position before you apply.
+              </p>
+            </div>
+          </ContainerNew>
+        </section>
+      )}
+
+      {(popularPrograms.length > 0 || (content.studentCities && content.studentCities.length > 0)) && (
+        <section className="py-16 lg:py-24">
+          <ContainerNew className="px-5 lg:px-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-14">
+              {popularPrograms.length > 0 && (
+                <div>
+                  <p className="slip-mono text-exam-navy text-xs uppercase tracking-wider mb-3">Popular fields</p>
+                  <h2 className="font-slip-display font-bold text-exam-ink text-xl lg:text-2xl mb-5">
+                    Fields Sri Lankan students choose
+                  </h2>
+                  <div className="flex flex-wrap gap-2.5">
+                    {popularPrograms.map((program) => (
+                      <span
+                        key={program}
+                        className="slip-mono text-xs px-3.5 py-2 rounded-sm border border-slip-rule bg-slip-surface text-exam-ink"
+                      >
+                        {program}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {content.studentCities && content.studentCities.length > 0 && (
+                <div>
+                  <p className="slip-mono text-exam-navy text-xs uppercase tracking-wider mb-3">Student life</p>
+                  <h2 className="font-slip-display font-bold text-exam-ink text-xl lg:text-2xl mb-5">
+                    Popular cities to study in
+                  </h2>
+                  <p className="font-body text-slip-mist text-sm leading-relaxed">
+                    {content.studentCities.join(", ")} are {country.country}&apos;s best-known student hubs.
+                  </p>
+                </div>
+              )}
+            </div>
+          </ContainerNew>
+        </section>
+      )}
+
+      <section id="universities" className="bg-exam-ink py-16 lg:py-24 scroll-mt-24">
+        <ContainerNew className="px-5 lg:px-12">
+          <p className="slip-mono text-exam-gold text-xs uppercase tracking-wider mb-3">Universities</p>
+          <h2 className="font-slip-display font-bold text-gazette text-2xl lg:text-3xl mb-10">
+            {country.country} universities GFEC works with
+          </h2>
+          {universities.length > 0 ? (
+            <UniversityPartnerItem universities={universities} countryFilter={country.id} />
+          ) : (
+            <p className="font-body text-gazette/60">
+              We&apos;re expanding our partner network in {country.country} — talk to a consultant for the latest
+              options.
+            </p>
+          )}
         </ContainerNew>
       </section>
 
