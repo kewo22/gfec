@@ -9,7 +9,7 @@ export default function FinalCta() {
   const router = useRouter();
 
   const onBookClick = () => {
-    router.push("/contact#get-in-touch-container");
+    router.push("/apply-now");
   };
 
   return (

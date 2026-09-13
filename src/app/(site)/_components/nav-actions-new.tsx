@@ -1,29 +1,14 @@
 "use client";
 
 import React from "react";
-import { useRouter, usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 interface NavActionsNewProps {
-  openModel?: () => void;
   className?: string;
 }
 
-export default function NavActionsNew({ openModel, className }: NavActionsNewProps) {
+export default function NavActionsNew({ className }: NavActionsNewProps) {
   const router = useRouter();
-  const pathname = usePathname();
-
-  const onFreeConsultationClick = () => {
-    if (pathname !== "/contact") {
-      router.push("/contact#get-in-touch-container");
-      return;
-    }
-    const getInTouchContainer = document.querySelector("#get-in-touch-container");
-    if (getInTouchContainer) {
-      getInTouchContainer.scrollIntoView({ behavior: "smooth", block: "center" });
-    } else {
-      openModel?.();
-    }
-  };
 
   const onApplyNowClick = () => {
     router.push("/apply-now", { scroll: true });
@@ -31,19 +16,19 @@ export default function NavActionsNew({ openModel, className }: NavActionsNewPro
 
   return (
     <div className={`flex flex-row items-center gap-4 ${className}`}>
-      <button
+      {/* <button
         type="button"
         onClick={onApplyNowClick}
         className="font-slip-display text-[13px] font-bold uppercase tracking-wide text-exam-ink/75 hover:text-exam-navy transition-colors"
       >
         Apply Now
-      </button>
+      </button> */}
       <button
         type="button"
-        onClick={onFreeConsultationClick}
+        onClick={onApplyNowClick}
         className="bg-stamp-red text-slip-surface font-slip-display text-[13px] font-bold uppercase tracking-wide px-6 py-3 rounded-sm cursor-pointer transition-transform active:scale-[0.97]"
       >
-        Book a Free Consultation
+        Apply Now
       </button>
     </div>
   );

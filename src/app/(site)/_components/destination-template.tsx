@@ -103,7 +103,7 @@ export default function DestinationTemplate({ country, content, universities }: 
                   <ArrowRight size={17} className="transition-transform group-hover:translate-x-1" />
                 </a>
                 <Link
-                  href="/contact#get-in-touch-container"
+                  href="/apply-now"
                   className="group font-slip-display font-bold text-gazette text-sm tracking-wide uppercase px-1 py-4 flex items-center gap-2 border-b-2 border-gazette/30 hover:border-exam-gold transition-colors"
                 >
                   Book a Free Consultation
@@ -380,7 +380,7 @@ export default function DestinationTemplate({ country, content, universities }: 
             Talk to a GFEC consultant about your options, costs, and next steps.
           </p>
           <Link
-            href="/contact#get-in-touch-container"
+            href="/apply-now"
             className="group relative overflow-hidden bg-stamp-red text-slip-surface font-slip-display font-bold text-sm tracking-wide uppercase px-8 py-4 rounded-sm inline-flex items-center gap-2 transition-transform active:scale-[0.97]"
           >
             Speak with a consultant

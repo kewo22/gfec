@@ -57,7 +57,7 @@ export default function GalleryContent() {
             Ready to add your own file to the register?
           </h2>
           <Link
-            href="/contact#get-in-touch-container"
+            href="/apply-now"
             className="group relative overflow-hidden bg-stamp-red text-slip-surface font-slip-display font-bold text-sm tracking-wide uppercase px-8 py-4 rounded-sm inline-flex items-center gap-2 transition-transform active:scale-[0.97]"
           >
             Book a Free Consultation

@@ -49,7 +49,7 @@ export default function HeroNew() {
   }, []);
 
   const onStartJourneyClick = () => {
-    router.push("/contact#get-in-touch-container");
+    router.push("/apply-now");
   };
 
   return (

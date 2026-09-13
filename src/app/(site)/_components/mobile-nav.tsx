@@ -28,7 +28,7 @@ export default function MobileNav({ }: MobileNavProps) {
 
   const onFreeConsultationClick = () => {
     setIsOpen(false);
-    router.push("/contact#get-in-touch-container");
+    router.push("/apply-now");
   };
 
   return (

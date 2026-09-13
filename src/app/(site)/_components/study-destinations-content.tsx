@@ -230,7 +230,7 @@ export default function StudyDestinationsContent() {
 
               <div className="flex flex-wrap items-center gap-6 mt-8">
                 <Link
-                  href="/contact#get-in-touch-container"
+                  href="/apply-now"
                   className="group relative overflow-hidden bg-stamp-red text-slip-surface font-slip-display font-bold text-sm tracking-wide uppercase px-8 py-4 rounded-sm flex items-center gap-2 transition-transform active:scale-[0.97]"
                 >
                   Book a Free Consultation
@@ -409,7 +409,7 @@ export default function StudyDestinationsContent() {
                 Don&apos;t see yours here? A consultant can answer it directly — free of charge.
               </p>
               <Link
-                href="/contact#get-in-touch-container"
+                href="/apply-now"
                 className="mt-6 inline-flex items-center gap-1.5 font-slip-display font-bold text-xs uppercase tracking-wide text-exam-navy hover:text-exam-navy-deep transition-colors"
               >
                 Ask a consultant
@@ -440,7 +440,7 @@ export default function StudyDestinationsContent() {
             </p>
             <div className="flex flex-wrap items-center justify-center gap-6">
               <Link
-                href="/contact#get-in-touch-container"
+                href="/apply-now"
                 className="group relative overflow-hidden bg-stamp-red text-slip-surface font-slip-display font-bold text-sm tracking-wide uppercase px-8 py-4 rounded-sm inline-flex items-center gap-2 transition-transform active:scale-[0.97]"
               >
                 Talk to a Consultant
