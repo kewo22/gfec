@@ -39,6 +39,12 @@ const REGION_BY_COUNTRY_ID: Record<string, Region> = {
 
 const REGIONS: Region[] = ["Europe", "Asia-Pacific", "Middle East", "Oceania"];
 
+const EASE_OUT = [0.16, 1, 0.3, 1] as const;
+const EASE_STAMP = [0.34, 1.56, 0.64, 1] as const;
+
+const CTA_FOCUS =
+  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-exam-gold focus-visible:ring-offset-2 focus-visible:ring-offset-gazette";
+
 const CRITERIA = [
   {
     icon: GraduationCap,
@@ -138,6 +144,7 @@ function CriteriaCheck({ delay, reduceMotion }: { delay: number; reduceMotion: b
 
 function FaqItem({ index, question, answer }: { index: number; question: string; answer: string }) {
   const [open, setOpen] = useState(false);
+  const panelId = `faq-panel-${index}`;
 
   return (
     <div className="border-b border-exam-ink/10">
@@ -145,7 +152,8 @@ function FaqItem({ index, question, answer }: { index: number; question: string;
         type="button"
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
-        className="w-full flex items-start gap-4 py-6 text-left group"
+        aria-controls={panelId}
+        className="w-full flex items-start gap-4 py-6 text-left group rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-exam-gold focus-visible:ring-offset-2 focus-visible:ring-offset-gazette"
       >
         <span className="slip-mono text-exam-navy text-xs shrink-0 pt-1.5 w-8">
           {`Q${String(index + 1).padStart(2, "0")}`}
@@ -162,6 +170,7 @@ function FaqItem({ index, question, answer }: { index: number; question: string;
         </span>
       </button>
       <div
+        id={panelId}
         className="grid transition-[grid-template-rows] duration-300 ease-out motion-reduce:transition-none"
         style={{ gridTemplateRows: open ? "1fr" : "0fr" }}
       >
@@ -217,43 +226,77 @@ export default function StudyDestinationsContent() {
 
           <div className="grid lg:grid-cols-[1fr_auto] gap-10 items-end mt-8 lg:mt-12">
             <div>
-              <p className="slip-mono text-exam-navy text-xs uppercase tracking-wider mb-3">
+              <motion.p
+                initial={reduceMotion ? false : { opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4 }}
+                className="slip-mono text-exam-navy text-xs uppercase tracking-wider mb-3"
+              >
                 Destination register
-              </p>
-              <h1 className="font-slip-display font-bold text-exam-ink text-4xl sm:text-5xl lg:text-[64px] leading-[1.05] max-w-3xl">
-                Choose your destination. We&apos;ll handle the file.
-              </h1>
-              <p className="font-body text-slip-mist text-lg mt-5 max-w-xl leading-relaxed">
+              </motion.p>
+              <motion.h1
+                initial={reduceMotion ? false : { opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.55, delay: 0.1, ease: EASE_OUT }}
+                className="font-slip-display font-bold text-exam-ink text-4xl sm:text-5xl lg:text-[64px] leading-[1.05] max-w-3xl"
+              >
+                Choose your destination. We'll handle the file.
+              </motion.h1>
+              <motion.p
+                initial={reduceMotion ? false : { opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2, ease: EASE_OUT }}
+                className="font-body text-slip-mist text-lg mt-5 max-w-xl leading-relaxed"
+              >
                 {COUNTRIES.length} countries, real partner universities, and one consultant guiding your
                 application from shortlist to visa.
-              </p>
+              </motion.p>
 
-              <div className="flex flex-wrap items-center gap-6 mt-8">
+              <motion.div
+                initial={reduceMotion ? false : { opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.3, ease: EASE_OUT }}
+                className="flex flex-wrap items-center gap-6 mt-8"
+              >
                 <Link
                   href="/apply-now"
-                  className="group relative overflow-hidden bg-stamp-red text-slip-surface font-slip-display font-bold text-sm tracking-wide uppercase px-8 py-4 rounded-sm flex items-center gap-2 transition-transform active:scale-[0.97]"
+                  className={`group relative overflow-hidden bg-stamp-red text-slip-surface font-slip-display font-bold text-sm tracking-wide uppercase px-8 py-4 rounded-sm flex items-center gap-2 transition-transform active:scale-[0.97] ${CTA_FOCUS}`}
                 >
                   Book a Free Consultation
                   <ArrowRight size={17} className="transition-transform group-hover:translate-x-1" />
                 </Link>
                 <a
                   href="#how-to-choose"
-                  className="group font-slip-display font-bold text-exam-ink text-sm tracking-wide uppercase px-1 py-4 flex items-center gap-2 border-b-2 border-exam-ink/25 hover:border-exam-navy transition-colors"
+                  className={`group font-slip-display font-bold text-exam-ink text-sm tracking-wide uppercase px-1 py-4 flex items-center gap-2 border-b-2 border-exam-ink/25 hover:border-exam-navy transition-colors ${CTA_FOCUS}`}
                 >
                   How to choose
                   <ArrowRight size={17} className="transition-transform group-hover:translate-x-1" />
                 </a>
-              </div>
+              </motion.div>
             </div>
 
-            <div className="hidden lg:block shrink-0">
-              <ResultSeal
-                className="w-[140px] h-[140px]"
-                ringText="GFEC · COLOMBO · DESTINATION REGISTER ·"
-                centerLine1={String(COUNTRIES.length)}
-                centerLine2="DESTINATIONS"
-                pathId="study-abroad-seal-ring"
-              />
+            <div className="hidden lg:block shrink-0 relative">
+              {!reduceMotion && (
+                <motion.div
+                  initial={{ opacity: 0.55, scale: 0.3 }}
+                  animate={{ opacity: 0, scale: 2.4 }}
+                  transition={{ duration: 0.85, delay: 0.15, ease: "easeOut" }}
+                  className="absolute inset-0 rounded-full bg-stamp-red/30 pointer-events-none"
+                />
+              )}
+              <motion.div
+                initial={reduceMotion ? false : { opacity: 0, scale: 1.9, rotate: 18 }}
+                animate={{ opacity: 1, scale: 1, rotate: -9 }}
+                transition={{ duration: 0.6, delay: 0.15, ease: EASE_STAMP }}
+              >
+                <ResultSeal
+                  className="w-[140px] h-[140px]"
+                  ringText="GFEC · COLOMBO · DESTINATION REGISTER ·"
+                  centerLine1={String(COUNTRIES.length)}
+                  centerLine2="DESTINATIONS"
+                  pathId="study-abroad-seal-ring"
+                />
+              </motion.div>
             </div>
           </div>
         </ContainerNew>
@@ -278,7 +321,8 @@ export default function StudyDestinationsContent() {
                   key={region}
                   type="button"
                   onClick={() => setActiveRegion(region)}
-                  className={`slip-mono text-[11px] uppercase tracking-wide px-4 py-2 rounded-sm border transition-colors duration-200 ${
+                  aria-pressed={active}
+                  className={`slip-mono text-[11px] uppercase tracking-wide px-4 py-2 rounded-sm border transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-exam-gold focus-visible:ring-offset-2 focus-visible:ring-offset-gazette ${
                     active
                       ? "bg-exam-ink border-exam-ink text-gazette"
                       : "border-exam-ink/15 text-exam-ink/70 hover:border-exam-gold/50 hover:text-exam-ink"
@@ -291,69 +335,75 @@ export default function StudyDestinationsContent() {
             })}
           </div>
 
-          <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {visibleCountries.map((country) => {
-              const originalIndex = COUNTRIES.findIndex((c) => c.id === country.id);
-              const region = REGION_BY_COUNTRY_ID[country.id];
-              const delay = Math.min(originalIndex, 6) * 0.06;
-              return (
-                <motion.div
-                  key={country.id}
-                  layout
-                  initial={reduceMotion ? false : { opacity: 0, y: 24, scale: 0.97 }}
-                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{ duration: 0.45, delay, ease: [0.16, 1, 0.3, 1] }}
-                >
-                  <Link
-                    href={`/study-abroad/${country.route}`}
-                    className="group relative block aspect-[4/5] rounded-sm overflow-hidden border border-transparent transition-colors duration-300 hover:border-exam-gold/60"
+          {visibleCountries.length === 0 ? (
+            <p className="font-body text-slip-mist text-sm py-10 text-center">
+              No destinations filed under this region yet — check back soon or ask a consultant.
+            </p>
+          ) : (
+            <motion.div layout={!reduceMotion} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {visibleCountries.map((country) => {
+                const originalIndex = COUNTRIES.findIndex((c) => c.id === country.id);
+                const region = REGION_BY_COUNTRY_ID[country.id];
+                const delay = Math.min(originalIndex, 6) * 0.06;
+                return (
+                  <motion.div
+                    key={country.id}
+                    layout={!reduceMotion}
+                    initial={reduceMotion ? false : { opacity: 0, y: 24, scale: 0.97 }}
+                    whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.45, delay, ease: [0.16, 1, 0.3, 1] }}
                   >
-                    <Image
-                      src={country.image}
-                      alt={country.country}
-                      fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      className="object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-exam-ink via-exam-ink/25 to-transparent" />
-                    <div className="absolute inset-0 bg-exam-ink/0 group-hover:bg-exam-ink/20 transition-colors duration-500" />
-
-                    <div className="absolute top-5 left-5 flex items-center gap-2">
-                      <Image src={country.flag} alt="" width={22} height={16} className="rounded-[2px] shadow" />
-                      <FlipValue
-                        value={String(originalIndex + 1).padStart(2, "0")}
-                        delayMs={delay * 1000 + 300}
-                        className="slip-mono text-gazette/85 text-[11px] uppercase"
+                    <Link
+                      href={`/study-abroad/${country.route}`}
+                      className="group relative block aspect-[4/5] rounded-sm overflow-hidden border border-transparent transition-colors duration-300 hover:border-exam-gold/60"
+                    >
+                      <Image
+                        src={country.image}
+                        alt={country.country}
+                        fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        className="object-cover transition-transform duration-700 group-hover:scale-110"
                       />
-                    </div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-exam-ink via-exam-ink/25 to-transparent" />
+                      <div className="absolute inset-0 bg-exam-ink/0 group-hover:bg-exam-ink/20 transition-colors duration-500" />
 
-                    <div className="absolute top-5 right-5">
-                      <span className="slip-mono text-[10px] uppercase tracking-wide text-gazette/70 bg-exam-ink/50 px-2 py-1 rounded-sm border border-gazette/15">
-                        {region}
-                      </span>
-                    </div>
-
-                    <div className="absolute inset-x-0 bottom-0 p-6">
-                      <h3 className="font-slip-display font-bold text-gazette text-2xl mb-2">
-                        {country.country}
-                      </h3>
-                      <p className="font-body text-gazette/75 text-sm leading-relaxed line-clamp-2 mb-4 max-w-[90%]">
-                        {country.description}
-                      </p>
-                      <span className="inline-flex items-center gap-1.5 font-slip-display font-bold text-exam-gold text-sm uppercase tracking-wide">
-                        Explore
-                        <ArrowUpRight
-                          size={16}
-                          className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                      <div className="absolute top-5 left-5 flex items-center gap-2">
+                        <Image src={country.flag} alt="" width={22} height={16} className="rounded-[2px] shadow" />
+                        <FlipValue
+                          value={String(originalIndex + 1).padStart(2, "0")}
+                          delayMs={delay * 1000 + 300}
+                          className="slip-mono text-gazette/85 text-[11px] uppercase"
                         />
-                      </span>
-                    </div>
-                  </Link>
-                </motion.div>
-              );
-            })}
-          </motion.div>
+                      </div>
+
+                      <div className="absolute top-5 right-5">
+                        <span className="slip-mono text-[10px] uppercase tracking-wide text-gazette/70 bg-exam-ink/50 px-2 py-1 rounded-sm border border-gazette/15">
+                          {region}
+                        </span>
+                      </div>
+
+                      <div className="absolute inset-x-0 bottom-0 p-6">
+                        <h3 className="font-slip-display font-bold text-gazette text-2xl mb-2">
+                          {country.country}
+                        </h3>
+                        <p className="font-body text-gazette/75 text-sm leading-relaxed line-clamp-2 mb-4 max-w-[90%]">
+                          {country.description}
+                        </p>
+                        <span className="inline-flex items-center gap-1.5 font-slip-display font-bold text-exam-gold text-sm uppercase tracking-wide">
+                          Explore
+                          <ArrowUpRight
+                            size={16}
+                            className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                          />
+                        </span>
+                      </div>
+                    </Link>
+                  </motion.div>
+                );
+              })}
+            </motion.div>
+          )}
         </ContainerNew>
       </section>
 
@@ -410,7 +460,7 @@ export default function StudyDestinationsContent() {
               </p>
               <Link
                 href="/apply-now"
-                className="mt-6 inline-flex items-center gap-1.5 font-slip-display font-bold text-xs uppercase tracking-wide text-exam-navy hover:text-exam-navy-deep transition-colors"
+                className="mt-6 inline-flex items-center gap-1.5 font-slip-display font-bold text-xs uppercase tracking-wide text-exam-navy hover:text-exam-navy-deep transition-colors rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-exam-gold focus-visible:ring-offset-2 focus-visible:ring-offset-gazette"
               >
                 Ask a consultant
                 <ArrowRight size={13} />
@@ -441,14 +491,14 @@ export default function StudyDestinationsContent() {
             <div className="flex flex-wrap items-center justify-center gap-6">
               <Link
                 href="/apply-now"
-                className="group relative overflow-hidden bg-stamp-red text-slip-surface font-slip-display font-bold text-sm tracking-wide uppercase px-8 py-4 rounded-sm inline-flex items-center gap-2 transition-transform active:scale-[0.97]"
+                className="group relative overflow-hidden bg-stamp-red text-slip-surface font-slip-display font-bold text-sm tracking-wide uppercase px-8 py-4 rounded-sm inline-flex items-center gap-2 transition-transform active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-exam-gold focus-visible:ring-offset-2 focus-visible:ring-offset-exam-ink"
               >
                 Talk to a Consultant
                 <ArrowRight size={17} className="transition-transform group-hover:translate-x-1" />
               </Link>
               <Link
                 href="/apply-now"
-                className="group font-slip-display font-bold text-gazette text-sm tracking-wide uppercase px-1 py-4 flex items-center gap-2 border-b-2 border-gazette/25 hover:border-exam-gold transition-colors"
+                className="group font-slip-display font-bold text-gazette text-sm tracking-wide uppercase px-1 py-4 flex items-center gap-2 border-b-2 border-gazette/25 hover:border-exam-gold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-exam-gold focus-visible:ring-offset-2 focus-visible:ring-offset-exam-ink"
               >
                 Start Your Application
                 <ArrowRight size={17} className="transition-transform group-hover:translate-x-1" />
