@@ -5,7 +5,7 @@ import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import { GFEC_GOOGLE_MAPS_URL } from "../_constants/google-maps.constants";
 import ContainerNew from "./layouts/container-new";
 import Breadcrumbs from "./breadcrumbs";
-import { ResultSeal } from "./hero-result-slip";
+import { ResultSeal } from "./result-seal";
 import NavSocial from "./nav-social";
 import GfecMap from "./gfec-map";
 import GetInTouchSlipForm from "./get-in-touch-slip-form";

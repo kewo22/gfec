@@ -6,7 +6,7 @@ import { useInView } from "react-intersection-observer";
 
 import ContainerNew from "./layouts/container-new";
 import Breadcrumbs from "./breadcrumbs";
-import { ResultSeal } from "./hero-result-slip";
+import { ResultSeal } from "./result-seal";
 import FlipValue from "./flip-value";
 import AboutTimeline from "./about-timeline";
 import AboutUniversities from "./about-universities";

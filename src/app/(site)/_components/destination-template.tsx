@@ -14,7 +14,7 @@ import ContainerNew from "./layouts/container-new";
 import DestinationFaq from "./destination-faq";
 import DestinationFactExhibit from "./destination-fact-exhibit";
 import FlipValue from "./flip-value";
-import { ResultSeal } from "./hero-result-slip";
+import { ResultSeal } from "./result-seal";
 
 type DestinationTemplateProps = {
   country: Country;

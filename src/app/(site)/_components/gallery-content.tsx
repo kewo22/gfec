@@ -5,7 +5,7 @@ import { ArrowRight } from "lucide-react";
 
 import ContainerNew from "./layouts/container-new";
 import Breadcrumbs from "./breadcrumbs";
-import { ResultSeal } from "./hero-result-slip";
+import { ResultSeal } from "./result-seal";
 import MasonryGallery from "./masonry-gallery";
 import { IMAGES } from "../_constants/gallery-images";
 

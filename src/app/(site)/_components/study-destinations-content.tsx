@@ -19,7 +19,7 @@ import { motion, useReducedMotion } from "motion/react";
 import { COUNTRIES } from "../_constants/countries.constants";
 import ContainerNew from "./layouts/container-new";
 import Breadcrumbs from "./breadcrumbs";
-import { ResultSeal } from "./hero-result-slip";
+import { ResultSeal } from "./result-seal";
 import FlipValue from "./flip-value";
 
 type Region = "Europe" | "Asia-Pacific" | "Middle East" | "Oceania";
