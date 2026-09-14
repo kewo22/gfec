@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Compass, HeartHandshake, ShieldCheck, Telescope, Target, Check, ArrowRight } from "lucide-react";
 import { useInView } from "react-intersection-observer";
+import { motion, useReducedMotion } from "motion/react";
 
 import ContainerNew from "./layouts/container-new";
 import Breadcrumbs from "./breadcrumbs";
@@ -14,6 +15,9 @@ import AboutTeam from "./about-team";
 
 const REVEAL_STAGGER_MS = 70;
 const REVEAL_STAGGER_CAP = 6;
+
+const EASE_OUT = [0.16, 1, 0.3, 1] as const;
+const EASE_STAMP = [0.34, 1.56, 0.64, 1] as const;
 
 const STATS = [
   { value: "14", label: "Countries" },
@@ -85,6 +89,8 @@ function RevealGroup({
 }
 
 export default function AboutContent() {
+  const reduceMotion = useReducedMotion() ?? false;
+
   return (
     <div className="bg-gazette">
       <section className="relative w-full bg-gazette overflow-hidden">
@@ -95,19 +101,45 @@ export default function AboutContent() {
 
           <div className="grid lg:grid-cols-[1fr_auto] gap-10 items-end mt-8 lg:mt-12">
             <div>
-              <p className="slip-mono text-exam-navy text-xs uppercase tracking-wider mb-3">About GFEC</p>
-              <h1 className="font-slip-display font-bold text-exam-ink text-4xl sm:text-5xl lg:text-[64px] leading-[1.05] max-w-3xl">
+              <motion.p
+                initial={reduceMotion ? false : { opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4 }}
+                className="slip-mono text-exam-navy text-xs uppercase tracking-wider mb-3"
+              >
+                About GFEC
+              </motion.p>
+              <motion.h1
+                initial={reduceMotion ? false : { opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.55, delay: 0.1, ease: EASE_OUT }}
+                className="font-slip-display font-bold text-exam-ink text-4xl sm:text-5xl lg:text-[64px] leading-[1.05] max-w-3xl"
+              >
                 Helping Sri Lankan students build global futures.
-              </h1>
+              </motion.h1>
             </div>
-            <div className="hidden lg:block shrink-0">
-              <ResultSeal
-                className="w-[140px] h-[140px]"
-                ringText="GFEC · COLOMBO · ABOUT OUR PRACTICE ·"
-                centerLine1="REGISTERED"
-                centerLine2="EST. 2021"
-                pathId="about-seal-ring"
-              />
+            <div className="hidden lg:block shrink-0 relative">
+              {!reduceMotion && (
+                <motion.div
+                  initial={{ opacity: 0.55, scale: 0.3 }}
+                  animate={{ opacity: 0, scale: 2.4 }}
+                  transition={{ duration: 0.85, delay: 0.15, ease: "easeOut" }}
+                  className="absolute inset-0 rounded-full bg-stamp-red/30 pointer-events-none"
+                />
+              )}
+              <motion.div
+                initial={reduceMotion ? false : { opacity: 0, scale: 1.9, rotate: 18 }}
+                animate={{ opacity: 1, scale: 1, rotate: -9 }}
+                transition={{ duration: 0.6, delay: 0.15, ease: EASE_STAMP }}
+              >
+                <ResultSeal
+                  className="w-[140px] h-[140px]"
+                  ringText="GFEC · COLOMBO · ABOUT OUR PRACTICE ·"
+                  centerLine1="REGISTERED"
+                  centerLine2="EST. 2021"
+                  pathId="about-seal-ring"
+                />
+              </motion.div>
             </div>
           </div>
         </ContainerNew>
@@ -116,48 +148,55 @@ export default function AboutContent() {
 
       <section className="bg-gazette py-16 lg:py-24">
         <ContainerNew className="px-5 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-            <div>
-              <p className="slip-mono text-exam-navy text-xs uppercase tracking-wider mb-3">Our story</p>
-              <h2 className="font-slip-display font-bold text-exam-ink text-2xl lg:text-3xl mb-5">
-                A leading visa &amp; immigration consultancy
-              </h2>
-              <p className="font-body text-slip-mist leading-relaxed mb-4">
-                We believe access to quality education is a fundamental right, and we&apos;re proud to stand
-                alongside a community of organizations that share that vision.
-              </p>
-              <p className="font-body text-slip-mist leading-relaxed mb-4">
-                Studying overseas can be daunting — the options, the paperwork, the uncertainty. As a leading
-                overseas education consultancy in Sri Lanka, we exist to cut through that and give students a
-                clear, reliable path to the university that actually fits them.
-              </p>
-              <p className="font-body text-slip-mist leading-relaxed">
-                At GFEC, that&apos;s the whole practice: a passion for education, and a commitment to making sure
-                every student gets a real shot at their goals.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-2 gap-px bg-exam-ink/10 rounded-sm overflow-hidden border border-exam-ink/10">
-              {STATS.map((stat, i) => (
-                <div
-                  key={stat.label}
-                  className="bg-exam-ink px-6 py-8 flex flex-col items-center justify-center text-center gap-2"
-                >
-                  <span className="slip-mono text-[10px] text-gazette/40">{String(i + 1).padStart(2, "0")}</span>
-                  <FlipValue
-                    value={stat.value}
-                    delayMs={i * 100}
-                    className="slip-mono text-exam-gold font-bold text-4xl sm:text-5xl"
-                  />
-                  <p className="font-body text-gazette/60 text-sm">{stat.label}</p>
-                  <span className="flex items-center gap-1 text-exam-gold">
-                    <Check size={12} strokeWidth={3} />
-                    <span className="slip-mono text-[9px] tracking-wider">PASS</span>
-                  </span>
+          <RevealGroup className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+            {(inView) => (
+              <>
+                <div className={`reveal-card ${inView ? "reveal-card-in" : ""} transition-all duration-500`}>
+                  <p className="slip-mono text-exam-navy text-xs uppercase tracking-wider mb-3">Our story</p>
+                  <h2 className="font-slip-display font-bold text-exam-ink text-2xl lg:text-3xl mb-5">
+                    A leading visa &amp; immigration consultancy
+                  </h2>
+                  <p className="font-body text-slip-mist leading-relaxed mb-4">
+                    We believe access to quality education is a fundamental right, and we&apos;re proud to stand
+                    alongside a community of organizations that share that vision.
+                  </p>
+                  <p className="font-body text-slip-mist leading-relaxed mb-4">
+                    Studying overseas can be daunting — the options, the paperwork, the uncertainty. As a leading
+                    overseas education consultancy in Sri Lanka, we exist to cut through that and give students a
+                    clear, reliable path to the university that actually fits them.
+                  </p>
+                  <p className="font-body text-slip-mist leading-relaxed">
+                    At GFEC, that&apos;s the whole practice: a passion for education, and a commitment to making
+                    sure every student gets a real shot at their goals.
+                  </p>
                 </div>
-              ))}
-            </div>
-          </div>
+
+                <div
+                  style={{ transitionDelay: `${REVEAL_STAGGER_MS}ms` }}
+                  className={`reveal-card ${inView ? "reveal-card-in" : ""} transition-all duration-500 grid grid-cols-2 gap-px bg-exam-ink/10 rounded-sm overflow-hidden border border-exam-ink/10`}
+                >
+                  {STATS.map((stat, i) => (
+                    <div
+                      key={stat.label}
+                      className="bg-exam-ink px-6 py-8 flex flex-col items-center justify-center text-center gap-2"
+                    >
+                      <span className="slip-mono text-[10px] text-gazette/40">{String(i + 1).padStart(2, "0")}</span>
+                      <FlipValue
+                        value={stat.value}
+                        delayMs={i * 100}
+                        className="slip-mono text-exam-gold font-bold text-4xl sm:text-5xl"
+                      />
+                      <p className="font-body text-gazette/60 text-sm">{stat.label}</p>
+                      <span className="flex items-center gap-1 text-exam-gold">
+                        <Check size={12} strokeWidth={3} />
+                        <span className="slip-mono text-[9px] tracking-wider">PASS</span>
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </>
+            )}
+          </RevealGroup>
         </ContainerNew>
       </section>
 
@@ -275,7 +314,7 @@ export default function AboutContent() {
           </h2>
           <Link
             href="/apply-now"
-            className="group relative overflow-hidden bg-stamp-red text-slip-surface font-slip-display font-bold text-sm tracking-wide uppercase px-8 py-4 rounded-sm inline-flex items-center gap-2 transition-transform active:scale-[0.97]"
+            className="group relative overflow-hidden bg-stamp-red text-slip-surface font-slip-display font-bold text-sm tracking-wide uppercase px-8 py-4 rounded-sm inline-flex items-center gap-2 transition-transform active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-exam-gold focus-visible:ring-offset-2 focus-visible:ring-offset-exam-ink"
           >
             Book a Free Consultation
             <ArrowRight size={17} className="transition-transform group-hover:translate-x-1" />
