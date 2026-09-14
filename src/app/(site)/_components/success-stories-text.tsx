@@ -1,11 +1,15 @@
 "use client";
 
 import { useRef, useState } from "react";
+import { useInView } from "react-intersection-observer";
 import { ChevronLeft, ChevronRight, Quote, Stamp } from "lucide-react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 
 import ContainerNew from "./layouts/container-new";
 import { Modal } from "@/app/_components/ui/modal";
+
+const NAV_FOCUS =
+  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-exam-gold focus-visible:ring-offset-2 focus-visible:ring-offset-slip-surface";
 
 const STORIES = [
   {
@@ -27,6 +31,7 @@ export default function SuccessStoriesText() {
   const [selected, setSelected] = useState(0);
   const [direction, setDirection] = useState(0);
   const reduceMotion = useReducedMotion() ?? false;
+  const { ref: cardRef, inView: cardInView } = useInView({ triggerOnce: true, threshold: 0.15 });
 
   const onPrevClick = () => {
     setDirection(-1);
@@ -43,9 +48,9 @@ export default function SuccessStoriesText() {
   };
 
   const slideVariants = {
-    enter: (dir: number) => ({ x: dir > 0 ? 40 : -40, opacity: 0 }),
+    enter: (dir: number) => (reduceMotion ? { opacity: 0 } : { x: dir > 0 ? 40 : -40, opacity: 0 }),
     center: { x: 0, opacity: 1 },
-    exit: (dir: number) => ({ x: dir > 0 ? -40 : 40, opacity: 0 }),
+    exit: (dir: number) => (reduceMotion ? { opacity: 0 } : { x: dir > 0 ? -40 : 40, opacity: 0 }),
   };
 
   return (
@@ -58,7 +63,10 @@ export default function SuccessStoriesText() {
           </h2>
         </div>
 
-        <div className="relative bg-slip-surface border border-slip-rule rounded-sm p-8 sm:p-14 max-w-4xl mx-auto overflow-hidden shadow-[var(--shadow-slip-card)]">
+        <div
+          ref={cardRef}
+          className={`reveal-card ${cardInView ? "reveal-card-in" : ""} transition-all duration-500 relative bg-slip-surface border border-slip-rule rounded-sm p-8 sm:p-14 max-w-4xl mx-auto overflow-hidden shadow-[var(--shadow-slip-card)]`}
+        >
           <Quote className="absolute top-6 right-6 text-exam-ink/10" size={64} strokeWidth={1} />
 
           <AnimatePresence>
@@ -77,57 +85,61 @@ export default function SuccessStoriesText() {
             </motion.div>
           </AnimatePresence>
 
-          <AnimatePresence mode="wait" custom={direction}>
-            <motion.div
-              key={selected}
-              custom={direction}
-              variants={slideVariants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <p className="slip-mono text-exam-navy text-xs uppercase tracking-wide mb-2">
-                {`File ${String(selected + 1).padStart(2, "0")} · ${STORIES[selected].detail}`}
-              </p>
-              <p className="font-slip-display font-bold text-exam-ink text-xl mb-6">{STORIES[selected].name}</p>
-              <p className="font-body text-exam-ink/80 leading-relaxed multi-line-truncate">
-                {STORIES[selected].successStory}
-              </p>
-            </motion.div>
-          </AnimatePresence>
+          <div aria-live="polite" aria-atomic="true">
+            <AnimatePresence mode="wait" custom={direction}>
+              <motion.div
+                key={selected}
+                custom={direction}
+                variants={slideVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <p className="slip-mono text-exam-navy text-xs uppercase tracking-wide mb-2">
+                  {`File ${String(selected + 1).padStart(2, "0")} · ${STORIES[selected].detail}`}
+                </p>
+                <p className="font-slip-display font-bold text-exam-ink text-xl mb-6">{STORIES[selected].name}</p>
+                <p className="font-body text-exam-ink/80 leading-relaxed multi-line-truncate">
+                  {STORIES[selected].successStory}
+                </p>
+              </motion.div>
+            </AnimatePresence>
+          </div>
 
           <div className="flex items-center justify-between mt-8">
             <button
               type="button"
               onClick={onOpenModal}
-              className="font-slip-display font-bold text-exam-navy hover:text-exam-navy-deep text-sm uppercase tracking-wide transition-colors cursor-pointer"
+              className={`font-slip-display font-bold text-exam-navy hover:text-exam-navy-deep text-sm uppercase tracking-wide transition-colors cursor-pointer rounded-sm ${NAV_FOCUS}`}
             >
               Read full story
             </button>
-            <div className="flex items-center gap-4 ml-auto">
-              <span className="slip-mono text-slip-mist text-xs">
-                {String(selected + 1).padStart(2, "0")} / {String(STORIES.length).padStart(2, "0")}
-              </span>
-              <div className="flex items-center gap-2">
-                <button
-                  type="button"
-                  aria-label="Previous story"
-                  onClick={onPrevClick}
-                  className="w-10 h-10 rounded-full border border-exam-ink/20 flex items-center justify-center text-exam-ink hover:bg-exam-ink hover:text-gazette hover:border-exam-ink transition-colors cursor-pointer"
-                >
-                  <ChevronLeft size={18} />
-                </button>
-                <button
-                  type="button"
-                  aria-label="Next story"
-                  onClick={onNextClick}
-                  className="w-10 h-10 rounded-full border border-exam-ink/20 flex items-center justify-center text-exam-ink hover:bg-exam-ink hover:text-gazette hover:border-exam-ink transition-colors cursor-pointer"
-                >
-                  <ChevronRight size={18} />
-                </button>
+            {STORIES.length > 1 && (
+              <div className="flex items-center gap-4 ml-auto">
+                <span className="slip-mono text-slip-mist text-xs">
+                  {String(selected + 1).padStart(2, "0")} / {String(STORIES.length).padStart(2, "0")}
+                </span>
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    aria-label="Previous story"
+                    onClick={onPrevClick}
+                    className={`w-10 h-10 rounded-full border border-exam-ink/20 flex items-center justify-center text-exam-ink hover:bg-exam-ink hover:text-gazette hover:border-exam-ink active:scale-90 transition-all cursor-pointer ${NAV_FOCUS}`}
+                  >
+                    <ChevronLeft size={18} />
+                  </button>
+                  <button
+                    type="button"
+                    aria-label="Next story"
+                    onClick={onNextClick}
+                    className={`w-10 h-10 rounded-full border border-exam-ink/20 flex items-center justify-center text-exam-ink hover:bg-exam-ink hover:text-gazette hover:border-exam-ink active:scale-90 transition-all cursor-pointer ${NAV_FOCUS}`}
+                  >
+                    <ChevronRight size={18} />
+                  </button>
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </ContainerNew>
