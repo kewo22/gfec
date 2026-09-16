@@ -1,6 +1,8 @@
 "use client";
 
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
+import { useInView } from "react-intersection-observer";
+import { motion, useReducedMotion } from "motion/react";
 
 import { GFEC_GOOGLE_MAPS_URL } from "../_constants/google-maps.constants";
 import ContainerNew from "./layouts/container-new";
@@ -12,6 +14,13 @@ import GetInTouchSlipForm from "./get-in-touch-slip-form";
 
 const CARD_HOVER =
   "transition-all duration-300 hover:-translate-y-1 hover:border-exam-gold/50 hover:shadow-[0_16px_36px_-16px_rgba(201,151,46,0.35)]";
+
+const EASE_OUT = [0.16, 1, 0.3, 1] as const;
+const EASE_STAMP = [0.34, 1.56, 0.64, 1] as const;
+const REVEAL_STAGGER_MS = 70;
+
+const LINK_FOCUS =
+  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-exam-gold focus-visible:ring-offset-2 focus-visible:ring-offset-slip-surface";
 
 type ContactContentProps = {
   phoneNos: string[];
@@ -28,6 +37,9 @@ export default function ContactContent({
   addressLine2,
   addressLine3,
 }: ContactContentProps) {
+  const reduceMotion = useReducedMotion() ?? false;
+  const { ref: cardsRef, inView: cardsInView } = useInView({ triggerOnce: true, threshold: 0.15 });
+
   const INFO_CARDS = [
     { icon: Phone, label: "Phone", items: phoneNos.map((p) => ({ text: p, href: `tel:${p}` })) },
     { icon: Mail, label: "Email", items: emails.map((e) => ({ text: e, href: `mailto:${e}` })) },
@@ -53,24 +65,55 @@ export default function ContactContent({
 
           <div className="grid lg:grid-cols-[1fr_auto] gap-10 items-end mt-8 lg:mt-12">
             <div>
-              <p className="slip-mono text-exam-navy text-xs uppercase tracking-wider mb-3">Get in touch</p>
-              <h1 className="font-slip-display font-bold text-exam-ink text-4xl sm:text-5xl lg:text-[64px] leading-[1.05] max-w-3xl">
-                Let&apos;s get your file started.
-              </h1>
-              <p className="font-body text-slip-mist text-lg mt-5 max-w-xl leading-relaxed">
+              <motion.p
+                initial={reduceMotion ? false : { opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4 }}
+                className="slip-mono text-exam-navy text-xs uppercase tracking-wider mb-3"
+              >
+                Get in touch
+              </motion.p>
+              <motion.h1
+                initial={reduceMotion ? false : { opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.55, delay: 0.1, ease: EASE_OUT }}
+                className="font-slip-display font-bold text-exam-ink text-4xl sm:text-5xl lg:text-[64px] leading-[1.05] max-w-3xl"
+              >
+                Let's get your file started.
+              </motion.h1>
+              <motion.p
+                initial={reduceMotion ? false : { opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2, ease: EASE_OUT }}
+                className="font-body text-slip-mist text-lg mt-5 max-w-xl leading-relaxed"
+              >
                 Have questions about studying abroad? Book a free consultation, or reach us directly — every
                 enquiry is reviewed by a consultant, by hand.
-              </p>
+              </motion.p>
             </div>
 
-            <div className="hidden lg:block shrink-0">
-              <ResultSeal
-                className="w-[140px] h-[140px]"
-                ringText="GFEC · COLOMBO · CONSULTATION REGISTER ·"
-                centerLine1="OPEN"
-                centerLine2="FOR ENQUIRIES"
-                pathId="contact-seal-ring"
-              />
+            <div className="hidden lg:block shrink-0 relative">
+              {!reduceMotion && (
+                <motion.div
+                  initial={{ opacity: 0.55, scale: 0.3 }}
+                  animate={{ opacity: 0, scale: 2.4 }}
+                  transition={{ duration: 0.85, delay: 0.15, ease: "easeOut" }}
+                  className="absolute inset-0 rounded-full bg-stamp-red/30 pointer-events-none"
+                />
+              )}
+              <motion.div
+                initial={reduceMotion ? false : { opacity: 0, scale: 1.9, rotate: 18 }}
+                animate={{ opacity: 1, scale: 1, rotate: -9 }}
+                transition={{ duration: 0.6, delay: 0.15, ease: EASE_STAMP }}
+              >
+                <ResultSeal
+                  className="w-[140px] h-[140px]"
+                  ringText="GFEC · COLOMBO · CONSULTATION REGISTER ·"
+                  centerLine1="OPEN"
+                  centerLine2="FOR ENQUIRIES"
+                  pathId="contact-seal-ring"
+                />
+              </motion.div>
             </div>
           </div>
         </ContainerNew>
@@ -79,11 +122,12 @@ export default function ContactContent({
 
       <section className="bg-gazette py-16 lg:py-24">
         <ContainerNew className="px-5 lg:px-12">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+          <div ref={cardsRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
             {INFO_CARDS.map((card, i) => (
               <div
                 key={card.label}
-                className={`bg-slip-surface border border-slip-rule rounded-sm p-7 flex flex-col items-center text-center gap-3 ${CARD_HOVER}`}
+                style={{ transitionDelay: `${i * REVEAL_STAGGER_MS}ms` }}
+                className={`reveal-card ${cardsInView ? "reveal-card-in" : ""} bg-slip-surface border border-slip-rule rounded-sm p-7 flex flex-col items-center text-center gap-3 ${CARD_HOVER}`}
               >
                 <span className="slip-mono text-exam-ink/30 text-xs self-start">
                   {String(i + 1).padStart(2, "0")}
@@ -102,7 +146,7 @@ export default function ContactContent({
                         href={item.href}
                         target={"external" in item && item.external ? "_blank" : undefined}
                         rel={"external" in item && item.external ? "noopener noreferrer" : undefined}
-                        className="font-body text-slip-mist text-sm hover:text-exam-navy transition-colors break-all"
+                        className={`font-body text-slip-mist text-sm hover:text-exam-navy transition-colors break-all rounded-sm ${LINK_FOCUS}`}
                       >
                         {item.text}
                       </a>

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import { z } from "zod";
 import {
   AlertCircle,
@@ -100,6 +100,7 @@ const fieldClass = (hasError: boolean) =>
 
 export default function GetInTouchSlipForm() {
   const privacyBasePolicyUrl = ResolveBaseUrl(process.env.NEXT_PUBLIC_VERCEL_ENV!);
+  const reduceMotion = useReducedMotion() ?? false;
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -193,12 +194,18 @@ export default function GetInTouchSlipForm() {
 
   return (
     <div className="relative">
-      <div className="absolute -top-4 -right-3 sm:-right-6 rotate-[8deg] z-10">
+      <motion.div
+        className="absolute -top-4 -right-3 sm:-right-6 z-10"
+        initial={reduceMotion ? false : { opacity: 0, scale: 1.6, rotate: 20 }}
+        whileInView={{ opacity: 1, scale: 1, rotate: 8 }}
+        viewport={{ once: true, amount: 0.4 }}
+        transition={{ duration: 0.45, ease: [0.34, 1.56, 0.64, 1] }}
+      >
         <div className="flex items-center gap-1.5 bg-stamp-red text-slip-surface font-slip-display font-bold text-[11px] uppercase tracking-wide px-3 py-1.5 rounded-sm shadow-[var(--shadow-slip-card)]">
           <Stamp className="w-3.5 h-3.5" />
           Reserve Slot
         </div>
-      </div>
+      </motion.div>
 
       <form
         onSubmit={handleSubmit}
@@ -214,7 +221,9 @@ export default function GetInTouchSlipForm() {
 
         {submitSuccess && (
           <motion.div
-            initial={{ opacity: 0, y: -8 }}
+            role="status"
+            aria-live="polite"
+            initial={reduceMotion ? false : { opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
             className="mt-6 p-4 border border-exam-navy/40 bg-exam-navy/[0.06] rounded-sm flex items-center gap-3"
           >
@@ -227,7 +236,9 @@ export default function GetInTouchSlipForm() {
 
         {submitError && (
           <motion.div
-            initial={{ opacity: 0, y: -8 }}
+            role="alert"
+            aria-live="assertive"
+            initial={reduceMotion ? false : { opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
             className="mt-6 p-4 border border-stamp-red/40 bg-stamp-red/[0.06] rounded-sm flex items-center gap-3"
           >
@@ -326,7 +337,7 @@ export default function GetInTouchSlipForm() {
         <button
           type="submit"
           disabled={isLoading}
-          className="group relative w-full overflow-hidden mt-7 bg-stamp-red text-slip-surface font-slip-display font-bold text-sm uppercase tracking-wide py-4 rounded-sm transition-transform active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+          className="group relative w-full overflow-hidden mt-7 bg-stamp-red text-slip-surface font-slip-display font-bold text-sm uppercase tracking-wide py-4 rounded-sm transition-transform active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-exam-gold focus-visible:ring-offset-2 focus-visible:ring-offset-slip-surface"
         >
           {isLoading ? (
             <>
