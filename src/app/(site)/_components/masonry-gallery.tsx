@@ -126,7 +126,8 @@ export default function MasonryGallery() {
               key={category.id}
               type="button"
               onClick={() => setActiveFilter(category.id)}
-              className={`slip-mono text-[11px] uppercase tracking-wide px-4 py-2 rounded-sm border transition-colors duration-200 inline-flex items-center gap-1.5 ${
+              aria-pressed={active}
+              className={`slip-mono text-[11px] uppercase tracking-wide px-4 py-2 rounded-sm border transition-colors duration-200 inline-flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-exam-gold focus-visible:ring-offset-2 focus-visible:ring-offset-gazette ${
                 active
                   ? "bg-exam-ink border-exam-ink text-gazette"
                   : "border-exam-ink/15 text-exam-ink/70 hover:border-exam-gold/50 hover:text-exam-ink"
@@ -140,8 +141,13 @@ export default function MasonryGallery() {
         })}
       </div>
 
-      <div className="flex gap-4">
-        {imageColumns.map((column, colIndex) => (
+      {filteredImages.length === 0 ? (
+        <p className="font-body text-slip-mist text-sm py-10 text-center">
+          No photos filed under this category yet — check back soon.
+        </p>
+      ) : (
+        <div className="flex gap-4">
+          {imageColumns.map((column, colIndex) => (
           <div key={colIndex} className="flex-1 space-y-4">
             {column.map(({ image, flatIndex }) => {
               const Icon = CATEGORY_ICONS[image.categoryId];
@@ -154,7 +160,7 @@ export default function MasonryGallery() {
                 >
                   <button
                     type="button"
-                    className="group relative overflow-hidden rounded-sm border border-exam-ink/10 bg-slip-surface hover:border-exam-gold/50 transition-colors duration-300 block w-full text-left"
+                    className="group relative overflow-hidden rounded-sm border border-exam-ink/10 bg-slip-surface hover:border-exam-gold/50 transition-colors duration-300 block w-full text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-exam-gold focus-visible:ring-offset-2 focus-visible:ring-offset-gazette"
                     onClick={() => openImage(image.id)}
                   >
                     <motion.div
@@ -202,6 +208,7 @@ export default function MasonryGallery() {
           </div>
         ))}
       </div>
+      )}
 
       <AnimatePresence>
         {selectedImage && (
@@ -244,7 +251,7 @@ export default function MasonryGallery() {
                   ref={closeButtonRef}
                   type="button"
                   aria-label="Close"
-                  className="p-1.5 -mr-1.5 text-exam-ink/60 hover:text-exam-ink transition-colors cursor-pointer"
+                  className="p-1.5 -mr-1.5 text-exam-ink/60 hover:text-exam-ink transition-colors cursor-pointer rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-exam-gold focus-visible:ring-offset-2 focus-visible:ring-offset-slip-surface"
                   onClick={closeImage}
                 >
                   <X className="w-5 h-5" />
@@ -284,7 +291,7 @@ export default function MasonryGallery() {
                       type="button"
                       aria-label="Previous exhibit"
                       onClick={() => showRelative(-1)}
-                      className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-exam-ink/70 hover:bg-exam-ink text-gazette flex items-center justify-center transition-colors"
+                      className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-exam-ink/70 hover:bg-exam-ink text-gazette flex items-center justify-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-exam-gold focus-visible:ring-offset-2 focus-visible:ring-offset-slip-surface"
                     >
                       <ChevronLeft size={18} />
                     </button>
@@ -292,7 +299,7 @@ export default function MasonryGallery() {
                       type="button"
                       aria-label="Next exhibit"
                       onClick={() => showRelative(1)}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-exam-ink/70 hover:bg-exam-ink text-gazette flex items-center justify-center transition-colors"
+                      className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-exam-ink/70 hover:bg-exam-ink text-gazette flex items-center justify-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-exam-gold focus-visible:ring-offset-2 focus-visible:ring-offset-slip-surface"
                     >
                       <ChevronRight size={18} />
                     </button>
